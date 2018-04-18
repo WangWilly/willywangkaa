@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next_cat.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/blog/images/logo_cat.svg?v=6.0.4" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Pisces',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="String,Palindromic,Z Algorithm,Substring,Manacher's Algorithm," />
+
+
+<meta name="description" content="Manacher&amp;#39;s Algorithm 使用了Gusfield&amp;#39;s Algorithm(Z algorithm)的概念，使得時間複雜度為 O(N) 。 $Z$ 陣列  $Z[i]$ 是指以 $String[i]$ 為中心的最長迴文，從中心到外端的長度，也就是說 $$String[i \ldots i-Z(i)+1] = String[i \ldots i+Z(i)-1]$$ 呈鏡">
+<meta name="keywords" content="String,Palindromic,Z Algorithm,Substring,Manacher&#39;s Algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Longest Palindromic Substring (Manacher’s Algorithm)">
+<meta property="og:url" content="http://WangWilly.github.io/blog/2018/03/25/Longest-Palindromic-Substring-Manacher’s-Algorithm/index.html">
+<meta property="og:site_name" content="WillyWangkaa">
+<meta property="og:description" content="Manacher&amp;#39;s Algorithm 使用了Gusfield&amp;#39;s Algorithm(Z algorithm)的概念，使得時間複雜度為 O(N) 。 $Z$ 陣列  $Z[i]$ 是指以 $String[i]$ 為中心的最長迴文，從中心到外端的長度，也就是說 $$String[i \ldots i-Z(i)+1] = String[i \ldots i+Z(i)-1]$$ 呈鏡">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/Palindromic%20Substring_1.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/Palindromic%20Substring_2.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/Palindromic%20Substring_3.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/Palindromic%20Substring_4.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/Palindromic%20Substring_5.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/Palindromic%20Substring_6.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/Palindromic%20Substring_7.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/Palindromic%20Substring_8.png">
+<meta property="og:updated_time" content="2018-04-17T12:39:47.907Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Longest Palindromic Substring (Manacher’s Algorithm)">
+<meta name="twitter:description" content="Manacher&amp;#39;s Algorithm 使用了Gusfield&amp;#39;s Algorithm(Z algorithm)的概念，使得時間複雜度為 O(N) 。 $Z$ 陣列  $Z[i]$ 是指以 $String[i]$ 為中心的最長迴文，從中心到外端的長度，也就是說 $$String[i \ldots i-Z(i)+1] = String[i \ldots i+Z(i)-1]$$ 呈鏡">
+<meta name="twitter:image" content="http://wangwilly.github.io/blog/images/Palindromic%20Substring_1.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://WangWilly.github.io/blog/2018/03/25/Longest-Palindromic-Substring-Manacher’s-Algorithm/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>Longest Palindromic Substring (Manacher’s Algorithm) | WillyWangkaa</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WillyWangkaa</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/blog/blog/2018/03/25/Longest-Palindromic-Substring-Manacher’s-Algorithm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Willy Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar_me.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WillyWangkaa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Longest Palindromic Substring (Manacher’s Algorithm)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-25T19:41:00+08:00">2018-03-25</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-04-17T20:39:47+08:00">2018-04-17</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/blog/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/blog/2018/03/25/Longest-Palindromic-Substring-Manacher’s-Algorithm/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/03/25/Longest-Palindromic-Substring-Manacher’s-Algorithm/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Manacher&#39;s Algorithm 使用了<a href="https://wangwilly.github.io/blog/2018/03/19/Z-algorithm/#more">Gusfield&#39;s Algorithm(Z algorithm)</a>的概念，使得時間複雜度為 O(N) 。<br></p>
+<h1 id="Z-陣列"><a href="#Z-陣列" class="headerlink" title="$Z$ 陣列"></a>$Z$ 陣列</h1><hr>
+<p> $Z[i]$ 是指以 $String[i]$ 為中心的最長迴文，從中心到外端的長度，也就是說 $$String[i \ldots i-Z(i)+1] = String[i \ldots i+Z(i)-1]$$ 呈鏡面對稱。</p>
+<h1 id="步驟"><a href="#步驟" class="headerlink" title="步驟"></a>步驟</h1><hr>
+<h2 id="Step1"><a href="#Step1" class="headerlink" title="Step1."></a>Step1.</h2><p> 而這種方式無法記錄偶數長度的迴文。解決辦法是：在開頭和結尾與每個字元中間，同時插入一個沒出現過的字元( # )，如此就只剩下奇數長度的迴文了，而且也能記錄原先偶數長度的迴文。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">  |                    10  12  14  16</span><br><span class="line">  | 0 1 2 3 4 5 6 7 8 9  11  13  15</span><br><span class="line">--+-----------------------------------</span><br><span class="line">s | a b a a b a a b</span><br><span class="line">s&apos;| # a # b # a # a # b # a # a # b #</span><br><span class="line">Z | 1 2 1 4 1 2 7 2 1 8 1 2 5 2 1 2 1 (Step2之後會講解如何計算)</span><br></pre></td></tr></table></figure>
+<h2 id="Step-2"><a href="#Step-2" class="headerlink" title="Step 2"></a>Step 2</h2><p>宣告一個陣列 $Z[n]$ ： 其中 $n$為 $String$ 的長度。$Z[i]$ 表示以 $i$ 為中心的最長回文串長度。續上例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Z(0)=1：.，由中心可以左右延伸長度1。</span><br><span class="line">Z(1)=2：.a.，由中心可以左右延伸長度2。</span><br><span class="line">Z(2)=1：.，由中心可以左右延伸長度1。</span><br><span class="line">Z(3)=4：.a.b.a.，由中心可以左右延伸長度4。</span><br></pre></td></tr></table></figure>
+<p>宣告變量 $Cur$ ：表示當前回文串最長的中心的下標（current position），初值為0。<br>
+宣告變量 $Right$ ： 表示以 $Cur$ 為中心的回文串最右一個字符所處位置。如下：</p>
+<p><img src="\blog\images\Palindromic Substring_1.png" alt="Palindromic Substring_1"></p>
+<h2 id="Step-3"><a href="#Step-3" class="headerlink" title="Step 3"></a>Step 3</h2><p>開始計算 $Z[i]$ ，是運用<em>已經算好</em>的 $Z[j]$ ， $j &lt; i$ 。也就是指某一段已經算好的 $$String[j  \ldots  j-z(j)+1] = String[j  \ldots  j+z(j)-1]$$ 。首先找出有覆蓋到 $String[i]$ 的 $String[j  \ldots  j+Z[j-1]]$ 是哪一段，而且 $j+Z[j]-1$ 越右邊越好。<br>
+所以我們使用剛剛所宣告的 $Cur$ 與 $Right$ 紀錄目前能跨越最右邊的中心點在哪。</p>
+<p>$String ：$<img src="\blog\images\Palindromic Substring_2.png" alt="Palindromic Substring_2"></p>
+<p>再來會分成兩種情況：</p>
+<h3 id="Case1"><a href="#Case1" class="headerlink" title="Case1"></a>Case1</h3><p>如果 $Right$ 不能覆蓋 $String[i]$ ，表示已經算好的部份都派不上用場。從 $String[i+1]$ 與 $String[i-1]$ 開始比對，逐字比下去。</p>
+<p>$String ：$
+<img src="\blog\images\Palindromic Substring_3.png" alt="upload successful"></p>
+<h3 id="Case2"><a href="#Case2" class="headerlink" title="Case2"></a>Case2</h3><p>如果 $Right$ 能覆蓋 $String[i]$，表示 $String[i]$ 也會出現在 $String[j  \ldots  j-Z[j]+1]$ 之中，把 $i$ 鏡射到對應的位置 $i&#39;$ (出現在 $String[j  \ldots  j-Z[j]+1]$的位置)。接著運用 $Z[i&#39;]$ ，也就是指 $String[i&#39;  \ldots i&#39;-Z[i&#39;]+1] = String[i&#39;  \ldots  i&#39;+Z(i&#39;)-1]$ ，再看看是否要繼續比對字串，會分成三種子情況：</p>
+<h4 id="Subcase1"><a href="#Subcase1" class="headerlink" title="Subcase1"></a>Subcase1</h4><p>若 $String[i  \ldots  i+z(i&#39;)-1]$ 短少於 $Right$，那就可以直接賦予 $Z[i]$ 與 $Z(i&#39;)$ 一樣的值。</p>
+<p><img src="\blog\images\Palindromic Substring_4.png" alt="Palindromic Substring_4"></p>
+<h4 id="Subcase2"><a href="#Subcase2" class="headerlink" title="Subcase2"></a>Subcase2</h4><p>若 $String[i  \ldots  i+Z[i&#39;] -1]$ 剛好貼齊於 $Right$ ，那就必須檢查<strong>未確定</strong>的部分，直接從 $String[i+Z[i&#39;]]$ 與 $String[i-Z[i&#39;]]$ 繼續比對，逐字比下去。</p>
+<p><img src="\blog\images\Palindromic Substring_5.png" alt="upload successful"></p>
+<h4 id="Subcase3"><a href="#Subcase3" class="headerlink" title="Subcase3"></a>Subcase3</h4><p>若 $String[i  \ldots  i+Z[i&#39;]-1]$ 突出了 $Right$，根據 $Z[j]$ 可知 $String[j-Z[j]]$ 與 $String[j+Z[j]]$ 一定是不同字元，根據 $Z[i&#39;]$ 可知 $String[j-Z[j]]$ 與其鏡射位置是相同字元。對於 $i$ 來說， $String[j+Z[j]]$ 與其鏡射位置就會是不同字元，不可能形成更長的迴文，因此可以直接算出 $Z[i]$ 的值，就是 $j+z[j]-i$ 。</p>
+<p><img src="\blog\images\Palindromic Substring_6.png" alt="Palindromic Substring_6"><br></p>
+<p><img src="\blog\images\Palindromic Substring_7.png" alt="Palindromic Substring_7"><br></p>
+<p><img src="\blog\images\Palindromic Substring_8.png" alt="Palindromic Substring_8"><br></p>
+<h1 id="範例程式"><a href="#範例程式" class="headerlink" title="範例程式"></a>範例程式</h1><h2 id="Palindrome-演算法筆記-1"><a href="#Palindrome-演算法筆記-1" class="headerlink" title="Palindrome - 演算法筆記_1"></a><a href="http://www.csie.ntnu.edu.tw/~u91029/Palindrome.html#3" target="_blank" rel="noopener">Palindrome - 演算法筆記_1</a></h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> t[<span class="number">1001</span>];           <span class="comment">// 原字串</span></span><br><span class="line"><span class="keyword">char</span> s[<span class="number">1001</span> * <span class="number">2</span>];       <span class="comment">// 穿插特殊字元之後的t</span></span><br><span class="line"><span class="keyword">int</span> z[<span class="number">1001</span> * <span class="number">2</span>], L, R;  <span class="comment">// 源自Gusfield's Algorithm</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 由a往左、由b往右，對稱地作字元比對。</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">extend</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (a-i&gt;=<span class="number">0</span> &amp;&amp; b+i&lt;N &amp;&amp; s[a-i] == s[b+i]) i++;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">longest_palindromic_substring</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> N = <span class="built_in">strlen</span>(t);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// t穿插特殊字元，存放到s。</span></span><br><span class="line">    <span class="comment">// （實際上不會這麼做，都是細算索引值。）</span></span><br><span class="line">    <span class="built_in">memset</span>(s, <span class="string">'.'</span>, N*<span class="number">2</span>+<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;N; ++i) s[i*<span class="number">2</span>+<span class="number">1</span>] = t[i];</span><br><span class="line"> </span><br><span class="line">    N = N*<span class="number">2</span>+<span class="number">1</span>;</span><br><span class="line"><span class="comment">//  s[N] = '\0';    // 可做可不做</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">// Manacher's Algorithm</span></span><br><span class="line">    z[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    L = R = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;N; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> ii = L - (i - L);   <span class="comment">// i的映射位置</span></span><br><span class="line">        <span class="keyword">int</span> n = R + <span class="number">1</span> - i;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">if</span> (i &gt; R)</span><br><span class="line">        &#123;</span><br><span class="line">            z[i] = extend(i, i);</span><br><span class="line">            L = i;</span><br><span class="line">            R = i + z[i] - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (z[ii] == n)</span><br><span class="line">        &#123;</span><br><span class="line">            z[i] = n + extend(i-n, i+n);</span><br><span class="line">            L = i;</span><br><span class="line">            R = i + z[i] - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            z[i] = min(z[ii], n);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 尋找最長迴文子字串的長度。</span></span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">0</span>, p = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;N; ++i)</span><br><span class="line">        <span class="keyword">if</span> (z[i] &gt; n)</span><br><span class="line">            n = z[p = i];</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 記得去掉特殊字元。</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"最長迴文子字串的長度是"</span> &lt;&lt; (n<span class="number">-1</span>) / <span class="number">2</span>;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 印出最長迴文子字串，記得別印特殊字元。</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=p-z[p]+<span class="number">1</span>; i&lt;=p+z[p]<span class="number">-1</span>; ++i)</span><br><span class="line">        <span class="keyword">if</span> (i &amp; <span class="number">1</span>)</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; s[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Palindrome-演算法筆記-2"><a href="#Palindrome-演算法筆記-2" class="headerlink" title="Palindrome - 演算法筆記_2"></a><a href="http://www.csie.ntnu.edu.tw/~u91029/Palindrome.html#3" target="_blank" rel="noopener">Palindrome - 演算法筆記_2</a></h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> t[<span class="number">1001</span>];</span><br><span class="line"><span class="keyword">char</span> s[<span class="number">1001</span> * <span class="number">2</span>];</span><br><span class="line"><span class="keyword">int</span> z[<span class="number">1001</span> * <span class="number">2</span>];</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">longest_palindromic_substring</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// t穿插特殊字元，存放到s。</span></span><br><span class="line">    <span class="keyword">int</span> n = <span class="built_in">strlen</span>(t);</span><br><span class="line">    <span class="keyword">int</span> N = n * <span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">memset</span>(s, <span class="string">'.'</span>, N);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; ++i) s[i*<span class="number">2</span>+<span class="number">1</span>] = t[i];</span><br><span class="line"><span class="comment">//  s[N] = '\0';</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//  z[0] = 1;   // 無須使用，無須計算。</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">int</span> L = <span class="number">0</span>, R = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;N; ++i) <span class="comment">// 從z[1]開始</span></span><br><span class="line">    &#123;</span><br><span class="line">        z[i] = (R &gt; i) ? min(z[<span class="number">2</span>*L-i], R-i) : <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (i-z[i] &gt;= <span class="number">0</span> &amp;&amp; i+z[i] &lt; N &amp;&amp;</span><br><span class="line">               s[i-z[i]] == s[i+z[i]]) z[i]++;</span><br><span class="line">        <span class="keyword">if</span> (i+z[i] &gt; R) L = i, R = i+z[i];</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 尋找最長迴文子字串的長度</span></span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">0</span>, p = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;N; ++i) <span class="comment">// 從z[1]開始</span></span><br><span class="line">        <span class="keyword">if</span> (z[i] &gt; n)</span><br><span class="line">            n = z[p = i];</span><br><span class="line"> </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"最長迴文子字串的長度是"</span> &lt;&lt; (n<span class="number">-1</span>) / <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="相關題目"><a href="#相關題目" class="headerlink" title="相關題目"></a>相關題目</h1><hr>
+<p><a href="http://acm.timus.ru/problem.aspx?space=1&amp;num=1297" target="_blank" rel="noopener">Timus-1297</a><br>
+<a href="https://leetcode.com/problems/longest-palindromic-substring/description/" target="_blank" rel="noopener">LeetCode</a></p>
+<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><hr>
+<p><a href="http://xpower2888.pixnet.net/blog/post/221920327-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E9%95%B7%E5%9B%9E%E6%96%87%E4%B8%B2%EF%BC%9Amanacher%E2%80%99s-algorithm" target="_blank" rel="noopener">Manacher’s Algorithm - Simon的網路人工智慧實驗室</a></p>
+<p><a href="http://www.csie.ntnu.edu.tw/~u91029/Palindrome.html#3" target="_blank" rel="noopener">Palindrome - 演算法筆記</a></p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/String/" rel="tag"># String</a>
+          
+            <a href="/blog/tags/Palindromic/" rel="tag"># Palindromic</a>
+          
+            <a href="/blog/tags/Z-Algorithm/" rel="tag"># Z Algorithm</a>
+          
+            <a href="/blog/tags/Substring/" rel="tag"># Substring</a>
+          
+            <a href="/blog/tags/Manacher-s-Algorithm/" rel="tag"># Manacher's Algorithm</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2018/03/21/有關字串的名詞解釋/" rel="next" title="有關字串的名詞解釋">
+                <i class="fa fa-chevron-left"></i> 有關字串的名詞解釋
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2018/04/18/Decision-Tree-Learning/" rel="prev" title="Decision Tree Learning">
+                Decision Tree Learning <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/blog/images/avatar_me.gif"
+                alt="Willy Wang" />
+            
+              <p class="site-author-name" itemprop="name">Willy Wang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/blog/archives/">
+                
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/blog/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/blog/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.codecogs.com/latex/eqneditor.php" title="Online LaTeX Equation Editor" target="_blank">Online LaTeX Equation Editor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://marxi.co/" title="Marxico" target="_blank">Marxico</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.geeksforgeeks.org/" title="GeeksforGeeks" target="_blank">GeeksforGeeks</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Z-陣列"><span class="nav-number">1.</span> <span class="nav-text">$Z$ 陣列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#步驟"><span class="nav-number">2.</span> <span class="nav-text">步驟</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step1"><span class="nav-number">2.1.</span> <span class="nav-text">Step1.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-2"><span class="nav-number">2.2.</span> <span class="nav-text">Step 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-3"><span class="nav-number">2.3.</span> <span class="nav-text">Step 3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Case1"><span class="nav-number">2.3.1.</span> <span class="nav-text">Case1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Case2"><span class="nav-number">2.3.2.</span> <span class="nav-text">Case2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Subcase1"><span class="nav-number">2.3.2.1.</span> <span class="nav-text">Subcase1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Subcase2"><span class="nav-number">2.3.2.2.</span> <span class="nav-text">Subcase2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Subcase3"><span class="nav-number">2.3.2.3.</span> <span class="nav-text">Subcase3</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#範例程式"><span class="nav-number">3.</span> <span class="nav-text">範例程式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Palindrome-演算法筆記-1"><span class="nav-number">3.1.</span> <span class="nav-text">Palindrome - 演算法筆記_1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Palindrome-演算法筆記-2"><span class="nav-number">3.2.</span> <span class="nav-text">Palindrome - 演算法筆記_2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#相關題目"><span class="nav-number">4.</span> <span class="nav-text">相關題目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#參考"><span class="nav-number">5.</span> <span class="nav-text">參考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Willy Wang</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=6.0.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://https-wangwilly-github-io-blog.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://WangWilly.github.io/blog/2018/03/25/Longest-Palindromic-Substring-Manacher’s-Algorithm/';
+        this.page.identifier = '2018/03/25/Longest-Palindromic-Substring-Manacher’s-Algorithm/';
+        this.page.title = 'Longest Palindromic Substring (Manacher’s Algorithm)';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-wangwilly-github-io-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/blog/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/blog/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>
