@@ -110,7 +110,7 @@
 <meta property="og:url" content="http://WangWilly.github.io/blog/2018/05/01/Integration-by-parts-分部積分法以及常用的分部積分/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
 <meta property="og:description" content="分部積分法是種積分的技巧常應用於微積分數學與數值分析之中。它是由微分的乘法定則和微積分基本定理推導而來的。其基本思路是將不易求得結果的積分形式，轉化為等價的但易於求出結果的積分形式。 規則 當 $u = u(x)$ 、 $du = u&amp;#39;(x)dx$ 、 $v = v(x)$ 與 $dv = v&amp;#39;(x)dx$ ， 那分部積分就可以寫為： $$\int_a^b u(x)v&amp;#39;(x">
-<meta property="og:updated_time" content="2018-05-01T02:32:10.550Z">
+<meta property="og:updated_time" content="2018-05-01T03:55:37.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Integration by parts - 分部積分法以及常用的分部積分">
 <meta name="twitter:description" content="分部積分法是種積分的技巧常應用於微積分數學與數值分析之中。它是由微分的乘法定則和微積分基本定理推導而來的。其基本思路是將不易求得結果的積分形式，轉化為等價的但易於求出結果的積分形式。 規則 當 $u = u(x)$ 、 $du = u&amp;#39;(x)dx$ 、 $v = v(x)$ 與 $dv = v&amp;#39;(x)dx$ ， 那分部積分就可以寫為： $$\int_a^b u(x)v&amp;#39;(x">
@@ -359,7 +359,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-05-01T10:32:10+08:00">2018-05-01</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2018-05-01T11:55:37+08:00">2018-05-01</time>
             
           </span>
 
@@ -441,9 +441,20 @@
 <p>$\int \ln(x) dx = \ln(x) \cdot x - \int x\cdot \frac{1}{x}dx$</p>
 <p>$\Leftrightarrow \ln(x)\cdot x - \int(1)dx$</p>
 <p>$\Leftrightarrow \ln(x)\cdot x - x + C$</p>
+<h2 id="int-log-x-dx-x-cdot-log-x-frac-x-ln-10-C"><a href="#int-log-x-dx-x-cdot-log-x-frac-x-ln-10-C" class="headerlink" title="$\int \log (x) dx = x\cdot \log (x) - \frac{x}{\ln 10} + C$"></a>$\int \log (x) dx = x\cdot \log (x) - \frac{x}{\ln 10} + C$</h2><p>令 $u = \log (x)$ 、 $dv = dx$ ，</p>
+<p>則 $du= d(\log (x)) \Leftrightarrow d(\frac{\ln x}{\ln 10})$</p>
+<p><strong>＜乘法定理＞：</strong> 上微下不微 + 下微上不微</p>
+<p>$\Leftrightarrow d(ln x)\cdot \frac{1}{\ln 10} + \ln x\cdot d(\ln 10)$</p>
+<p>$\Leftrightarrow \frac{1}{x}\cdot \frac{1}{\ln 10} + \ln x \cdot 0$</p>
+<p>$\Leftrightarrow \frac{1}{x\ln 10}$</p>
+<p>接著 $v = x$ 。</p>
+<p>$\int \log x dx = \log x \cdot x - \int x \cdot \frac{1}{x \ln 10} dx$</p>
+<p>$\Leftrightarrow x\cdot \log x - \int \frac{1}{\ln 10} dx$</p>
+<p>$\Leftrightarrow x\cdot \log x - x\cdot\frac{1}{\ln 10} + C$</p>
 <h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><hr>
 <p><a href="https://zh.wikipedia.org/wiki/%E5%88%86%E9%83%A8%E7%A9%8D%E5%88%86%E6%B3%95" target="_blank" rel="noopener">Wiki - 分部積分法</a></p>
 <p><a href="http://math2.org/math/integrals/more/ln.htm" target="_blank" rel="noopener">Math2.org Math Tables: <em>Integral ln(x)</em></a></p>
+<p><a href="https://www.emathzone.com/tutorials/calculus/derivative-of-log-x.html" target="_blank" rel="noopener">Derivative of Log X</a></p>
 
       
     </div>
@@ -723,7 +734,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#規則"><span class="nav-number">1.</span> <span class="nav-text">規則</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定理"><span class="nav-number">2.</span> <span class="nav-text">定理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用的分部積分"><span class="nav-number">3.</span> <span class="nav-text">常用的分部積分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#int-ln-x-dx-x-ln-x-x-C"><span class="nav-number">3.1.</span> <span class="nav-text">$\int \ln(x) dx = x\ln(x) - x + C$</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#參考"><span class="nav-number">4.</span> <span class="nav-text">參考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#規則"><span class="nav-number">1.</span> <span class="nav-text">規則</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定理"><span class="nav-number">2.</span> <span class="nav-text">定理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用的分部積分"><span class="nav-number">3.</span> <span class="nav-text">常用的分部積分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#int-ln-x-dx-x-ln-x-x-C"><span class="nav-number">3.1.</span> <span class="nav-text">$\int \ln(x) dx = x\ln(x) - x + C$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#int-log-x-dx-x-cdot-log-x-frac-x-ln-10-C"><span class="nav-number">3.2.</span> <span class="nav-text">$\int \log (x) dx = x\cdot \log (x) - \frac{x}{\ln 10} + C$</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#參考"><span class="nav-number">4.</span> <span class="nav-text">參考</span></a></li></ol></div>
             
 
           </div>

@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Integration by parts - 分部積分法以及常用的分部積分]]></title>
     <url>%2Fblog%2F2018%2F05%2F01%2FIntegration-by-parts-%E5%88%86%E9%83%A8%E7%A9%8D%E5%88%86%E6%B3%95%E4%BB%A5%E5%8F%8A%E5%B8%B8%E7%94%A8%E7%9A%84%E5%88%86%E9%83%A8%E7%A9%8D%E5%88%86%2F</url>
-    <content type="text"><![CDATA[分部積分法是種積分的技巧常應用於微積分數學與數值分析之中。它是由微分的乘法定則和微積分基本定理推導而來的。其基本思路是將不易求得結果的積分形式，轉化為等價的但易於求出結果的積分形式。 規則 當 $u = u(x)$ 、 $du = u&#39;(x)dx$ 、 $v = v(x)$ 與 $dv = v&#39;(x)dx$ ， 那分部積分就可以寫為： $$\int_a^b u(x)v&#39;(x) dx = [u(x)v(x)]_a^b - \int_a^b u&#39;(x)v(x)dx$$ $$\Leftrightarrow u(b)v(b) - u(a)v(a) - \int_a^b u&#39;(x)v(x)dx$$ 或是以更常見的簡寫： $$\int u \; dv = uv - \int v \; du$$ 定理 假設 $u(x)$ 與 $v(x)$ 是兩個連續可導函數 (continuously differentiable functions)). 由乘法定理 (product rule) 可知(用來布尼茲表示法 Leibniz&#39;s notation)： $\frac{d}{dx} ( u(x) \cdot v(x) ) = \frac{d(u(x))}{dx}\cdot v(x) + u(x)\cdot \frac{d(v(x))}{dx}$ 對兩側求不定積分： $uv = \int (\frac{d(u(x))}{dx}\cdot v(x) + u(x)\cdot \frac{d(v(x))}{dx})dx$ $\Leftrightarrow \int d(u(x))\cdot v(x) + \int u(x)\cdot d(v(x))$ $\Rightarrow \int u \; dv = uv - \int v \; du$ 常用的分部積分 $\int \ln(x) dx = x\ln(x) - x + C$$\int \ln(x)dx$ 令 $u = \ln(x)$ 、 $dv = dx$ ， 則 $du = \frac{1}{x} dx$ 、 $v = x$ 帶入： $\int \ln(x) dx = \ln(x) \cdot x - \int x\cdot \frac{1}{x}dx$ $\Leftrightarrow \ln(x)\cdot x - \int(1)dx$ $\Leftrightarrow \ln(x)\cdot x - x + C$ 參考 Wiki - 分部積分法 Math2.org Math Tables: Integral ln(x)]]></content>
+    <content type="text"><![CDATA[分部積分法是種積分的技巧常應用於微積分數學與數值分析之中。它是由微分的乘法定則和微積分基本定理推導而來的。其基本思路是將不易求得結果的積分形式，轉化為等價的但易於求出結果的積分形式。 規則 當 $u = u(x)$ 、 $du = u&#39;(x)dx$ 、 $v = v(x)$ 與 $dv = v&#39;(x)dx$ ， 那分部積分就可以寫為： $$\int_a^b u(x)v&#39;(x) dx = [u(x)v(x)]_a^b - \int_a^b u&#39;(x)v(x)dx$$ $$\Leftrightarrow u(b)v(b) - u(a)v(a) - \int_a^b u&#39;(x)v(x)dx$$ 或是以更常見的簡寫： $$\int u \; dv = uv - \int v \; du$$ 定理 假設 $u(x)$ 與 $v(x)$ 是兩個連續可導函數 (continuously differentiable functions)). 由乘法定理 (product rule) 可知(用來布尼茲表示法 Leibniz&#39;s notation)： $\frac{d}{dx} ( u(x) \cdot v(x) ) = \frac{d(u(x))}{dx}\cdot v(x) + u(x)\cdot \frac{d(v(x))}{dx}$ 對兩側求不定積分： $uv = \int (\frac{d(u(x))}{dx}\cdot v(x) + u(x)\cdot \frac{d(v(x))}{dx})dx$ $\Leftrightarrow \int d(u(x))\cdot v(x) + \int u(x)\cdot d(v(x))$ $\Rightarrow \int u \; dv = uv - \int v \; du$ 常用的分部積分 $\int \ln(x) dx = x\ln(x) - x + C$$\int \ln(x)dx$ 令 $u = \ln(x)$ 、 $dv = dx$ ， 則 $du = \frac{1}{x} dx$ 、 $v = x$ 帶入： $\int \ln(x) dx = \ln(x) \cdot x - \int x\cdot \frac{1}{x}dx$ $\Leftrightarrow \ln(x)\cdot x - \int(1)dx$ $\Leftrightarrow \ln(x)\cdot x - x + C$ $\int \log (x) dx = x\cdot \log (x) - \frac{x}{\ln 10} + C$令 $u = \log (x)$ 、 $dv = dx$ ， 則 $du= d(\log (x)) \Leftrightarrow d(\frac{\ln x}{\ln 10})$ ＜乘法定理＞： 上微下不微 + 下微上不微 $\Leftrightarrow d(ln x)\cdot \frac{1}{\ln 10} + \ln x\cdot d(\ln 10)$ $\Leftrightarrow \frac{1}{x}\cdot \frac{1}{\ln 10} + \ln x \cdot 0$ $\Leftrightarrow \frac{1}{x\ln 10}$ 接著 $v = x$ 。 $\int \log x dx = \log x \cdot x - \int x \cdot \frac{1}{x \ln 10} dx$ $\Leftrightarrow x\cdot \log x - \int \frac{1}{\ln 10} dx$ $\Leftrightarrow x\cdot \log x - x\cdot\frac{1}{\ln 10} + C$ 參考 Wiki - 分部積分法 Math2.org Math Tables: Integral ln(x) Derivative of Log X]]></content>
       <categories>
         <category>Calculus</category>
       </categories>
@@ -72,9 +72,9 @@
       </categories>
       <tags>
         <tag>String</tag>
-        <tag>Substring</tag>
-        <tag>Z Algorithm</tag>
         <tag>Palindromic</tag>
+        <tag>Z Algorithm</tag>
+        <tag>Substring</tag>
         <tag>Manacher&#39;s Algorithm</tag>
       </tags>
   </entry>
@@ -98,8 +98,8 @@
       </categories>
       <tags>
         <tag>String</tag>
-        <tag>Substring</tag>
         <tag>Z Algorithm</tag>
+        <tag>Substring</tag>
       </tags>
   </entry>
   <entry>
