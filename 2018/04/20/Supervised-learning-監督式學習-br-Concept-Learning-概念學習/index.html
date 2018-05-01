@@ -119,7 +119,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/blog/images/versionspacegraph.png">
 <meta property="og:image" content="http://wangwilly.github.io/blog/images/candidate-eliminationalgorithm.png">
 <meta property="og:image" content="http://wangwilly.github.io/blog/images/candidate-eliminationalgorithm2.png">
-<meta property="og:updated_time" content="2018-04-20T08:33:26.143Z">
+<meta property="og:updated_time" content="2018-05-01T13:08:47.785Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Supervised learning 監督式學習 - Concept Learning 概念學習">
 <meta name="twitter:description" content="Supervised learning 監督式學習 - Concept Learning 概念學習  機器學習簡介( 節錄自 Mr&amp;#39; OpenGate )機器學習是近20多年興起的一門多領域交叉學科，涉及機率論、統計學、逼近論、凸分析、計算複雜性理論等多門學科。機器學習理論主要是設計和分析一些讓計算機可以自動「學習」的演算法。機器學習算法是一類從資料中自動分析獲得規律，並利用規律對未知資料">
@@ -369,7 +369,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-04-20T16:33:26+08:00">2018-04-20</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2018-05-01T21:08:47+08:00">2018-05-01</time>
             
           </span>
 
@@ -455,7 +455,7 @@
 <ul>
 <li>六個會影響的<strong>環境狀態 ( Attribute )</strong></li>
 <li>四個<strong>案例 ( Instance )</strong></li>
-<li>學習目標：<strong>判斷</strong>當時是否很享受運動。$EnjoySport = {Yes, No}$</li>
+<li>學習目標：<strong>判斷</strong>當時是否很享受運動。$EnjoySport = \{Yes, No\}$</li>
 </ul>
 <h4 id="環境狀態-Attribute"><a href="#環境狀態-Attribute" class="headerlink" title="環境狀態( Attribute )"></a>環境狀態( Attribute )</h4><ul>
 <li>每個事件(instance)發生時會引響結果的<em>基本元素</em>。</li>
@@ -500,41 +500,46 @@ $$&lt;x_1, c(x_1)&gt;, &lt;x_2, c(x_2)&gt; \ldots &lt;x_m, c(x_m)&gt;$$</li>
 </li>
 <li><p>若今天有一<strong>案例( Instance )</strong>符合了我們的假說，也就是說它每個<strong>環境狀態( Attributes )</strong>全部都不逾越我們假說中的所有<strong>限制( Constraints )</strong>。</p>
 </li>
-<li>$Ex.$
-$$h \leftarrow &lt; Sunny, Warm, ?, Strong, ?, ? &gt;$$</li>
+<li>$Ex.$</li>
+</ul>
+<p>$$h \leftarrow &lt; Sunny, Warm, ?, Strong, ?, ? &gt;$$</p>
+<ul>
 <li>假說空間( Hypotheses Space )的大小<ul>
-<li>語意上來說( Syntactically distinct number )
-$$M_H = ( n_1 + 2 ) \cdot ( n_2 + 2 ) \cdot \ldots \cdot ( n_{N-1} + 2 ) \cdot ( n_{N} + 2 )$$
-$$( Two \; more \; &quot;values&quot; \; have \; been \; added, &quot;?&quot; and &quot;\phi&quot; )$$</li>
-<li>實際上來說( Semantically distinct number )
-$$M_H = 1+ ( n_1 + 1 ) \cdot ( n_2 + 1 ) \cdot \ldots \cdot ( n_{N-1} + 1 ) \cdot ( n_{N} + 1 )$$
-$$因為如果該假說的限制交集裡，有一個以上的&quot;\phi&quot;存在於集合中，$$
-$$代表所有的案例( Instances )絕對都不可能不逾越我們的假說$$
-$$，全部的案例都會判定為錯誤(False)。$$</li>
+<li>語意上來說( Syntactically distinct number )</li>
 </ul>
 </li>
 </ul>
+<p>$$M_H = ( n_1 + 2 ) \cdot ( n_2 + 2 ) \cdot \ldots \cdot ( n_{N-1} + 2 ) \cdot ( n_{N} + 2 )$$</p>
+<p>$$( Two \; more \; &quot;values&quot; \; have \; been \; added, &quot;?&quot; and &quot;\phi&quot; )$$</p>
+<ul>
+<li>實際上來說( Semantically distinct number )</li>
+</ul>
+<p>$$M_H = 1+ ( n_1 + 1 ) \cdot ( n_2 + 1 ) \cdot \ldots \cdot ( n_{N-1} + 1 ) \cdot ( n_{N} + 1 )​$$</p>
+<p>$$因為如果該假說的限制交集裡，有一個以上的&quot;\phi&quot;存在於集合中，$$</p>
+<p>$$代表所有的案例( Instances )絕對都不可能不逾越我們的假說$$</p>
+<p>$$，全部的案例都會判定為錯誤(False)。$$</p>
 <h4 id="小節論"><a href="#小節論" class="headerlink" title="小節論"></a>小節論</h4><ul>
-<li>$c:EnjoySport : X \rightarrow {  0, 1 }$ 是我們的<strong>學習目標( Target Concept )</strong>。</li>
+<li><p>$c:EnjoySport : X \rightarrow {  0, 1 }$ 是我們的<strong>學習目標( Target Concept )</strong>。</p>
+</li>
 <li><p>六個<strong>環境狀態( Attributes )</strong>：</p>
 <ul>
-<li><p>Sky ( 可能的變數有三種 )
-$${ Sunny, Cloudy, Rainy }$$</p>
+<li><p>Sky ( 可能的變數有三種 )</p>
+<p>$$\{ Sunny, Cloudy, Rainy \}$$</p>
 </li>
-<li><p>Airtamp ( 可能的變數有兩種 )
-$${ Warm, Cold }$$</p>
+<li><p>Airtamp ( 可能的變數有兩種 )</p>
+<p> $$\{ Warm, Cold \}$$</p>
 </li>
-<li><p>Humidity ( 可能的變數有兩種 )
-$${ Normal, High }$$</p>
+<li><p>Humidity ( 可能的變數有兩種 )</p>
+<p>$$\{ Normal, High \}$$</p>
 </li>
-<li><p>Wind ( 可能的變數有兩種 )
-$${ Strong, Light }$$</p>
+<li><p>Wind ( 可能的變數有兩種 )</p>
+<p> $$\{ Strong, Light \}$$</p>
 </li>
-<li><p>Water ( 可能的變數有兩種 )
-$${ Cold, Warm }$$</p>
+<li><p>Water ( 可能的變數有兩種 )</p>
+<p> $$\{ Cold, Warm \}$$</p>
 </li>
-<li><p>Forecast ( 可能的變數有兩種 )
-$${ Same, Change}$$</p>
+<li><p>Forecast ( 可能的變數有兩種 )</p>
+<p> $$\{ Same, Change\}$$</p>
 </li>
 </ul>
 </li>
@@ -551,11 +556,11 @@ $${ Same, Change}$$</p>
 <li>假說( Hypothesis )：$h$</li>
 <li>若今天 $h(x) = 1$ ，稱之 Positive ( True ) Outcome。</li>
 </ul>
-<p>由廣至收斂，定義若 $H_1 \geq_g H_2$，則可以說 $H_1$ 比 $H_2$還要更廣( General )，舉例：
-$${ Sunny, ?, ?, ?, ?, ? } \geq_g { Sunny, ?, ?, Strong, ?, ? } $$</p>
+<p>由廣至收斂，定義若 $H_1 \geq_g H_2$，則可以說 $H_1$ 比 $H_2$還要更廣( General )，舉例：</p>
+<p>$$\{ Sunny, ?, ?, ?, ?, ? \} \geq_g \{ Sunny, ?, ?, Strong, ?, ? \} $$</p>
 <p><img src="\blog\images\GtoSpraph.png" alt="GtoSprap"></p>
 <h2 id="Find-S-Algorithm"><a href="#Find-S-Algorithm" class="headerlink" title="Find S Algorithm"></a>Find S Algorithm</h2><ol>
-<li>將假說 $h$ 初始化為假說空間 $H$ 中的最特殊假說 ${ \phi, \phi, \phi, \phi, \phi, \phi } $</li>
+<li>將假說 $h$ 初始化為假說空間 $H$ 中的最特殊假說 $\{ \phi, \phi, \phi, \phi, \phi, \phi \} $</li>
 <li>對每個<strong>正例</strong> $x$ (  <strong>＜注意＞</strong>我們只使用正例( Positive Outcome )，不用反例！ )<br><ul>
 <li>對 $h$ 的每個環境狀態( Attribute )進行約束
 如果 $x$ 的該環境狀態滿足 $h$ 對應的環境狀態，那麼不做任何處理。
@@ -568,21 +573,21 @@ $${ Sunny, ?, ?, ?, ?, ? } \geq_g { Sunny, ?, ?, Strong, ?, ? } $$</p>
 <p><img src="\blog\images\findsalgorithm.png" alt="findsalgorithm"></p>
 <h2 id="Version-Space"><a href="#Version-Space" class="headerlink" title="Version Space"></a>Version Space</h2><h3 id="Definition-Consistent-Hypotheses-認同假說"><a href="#Definition-Consistent-Hypotheses-認同假說" class="headerlink" title="Definition: Consistent Hypotheses( 認同假說 )"></a>Definition: Consistent Hypotheses( 認同假說 )</h3><p>若有假說 $h$ 以訓練集合所有的案例進行測試，輸出結果和我們的想法一致，就可以聲明假說 $h$ 為認同假說( Consistent Hypotheses )。( 下方為原始定義 )
 A hypothesis $h$ is consistent with a set of training examples $D$ of <strong>target concept</strong> $c$ if and only if $h(x) = c(x)$ for each training example $&lt;x, c(x)&gt;$ in $D$.
-$$ Consistent (h, D) \equiv ( \; \forall &lt;x, c(x ) \in D \;)  h(x) = c(x) $$</p>
+$$ Consistent (h, D) \equiv ( \; \forall &lt;x, c(x ) \in D \;)  h(x) = c(x)) $$</p>
 <h3 id="Definition-Version-Space-候選空間"><a href="#Definition-Version-Space-候選空間" class="headerlink" title="Definition: Version Space ( 候選空間 )"></a>Definition: Version Space ( 候選空間 )</h3><p>候選空間就是對於該測試的資料集，所有的認同假說所組合的空間，因為每個假說都可以符合目前的訓練資料的期望，所以每個假說都等待我們再進一步驗證。( 下方為原始定義 )
 The version space $VS_{H,D}$ , with respect to hypothesis space $H$ and training examples $D$, is the subset of hypotheses from $H$ consistent with all training examples in $D$.</p>
-<p>$$ VS_{H,D} \equiv { h \in H \; | \; Consistent (h, D) } $$</p>
+<p>$$ VS_{H,D} \equiv \{ h \in H \; | \; Consistent (h, D) \} $$</p>
 <p><img src="\blog\images\versionspacegraph.png" alt="versionspacegraph"></p>
 <ul>
 <li>Version space for a &quot;rectangle&quot; hypothesis language in two dimensions. Green pluses are positive examples, and red circles are negative examples. GB is the maximally general positive hypothesis boundary, and SB is the maximally specific positive hypothesis boundary. The intermediate (thin) rectangles represent the hypotheses in the version space.</li>
 </ul>
 <p>Definition: General Boundary
-General boundary $G$ of version space VS_{H,D} : set of most general members</p>
+General boundary $G$ of version space $VS_{H,D}$ : set of most general members</p>
 <p>Definition: Specific Boundary
-Specific boundary $S$ of version space VS_{H,D} : set of most specific members</p>
+Specific boundary $S$ of version space $VS_{H,D}$ : set of most specific members</p>
 <p>Version Space
 Every member of the version space lies between $S$ and $G$</p>
-<p>$$VS_{H,D} \equiv { h \in H \; | \; (\exists s \in  S ) (\exists g \in  G ) (g \geq_g h \; \geq_g s) }    $$</p>
+<p>$$VS_{H,D} \equiv \{ h \in H \; | \; (\exists s \in  S ) (\exists g \in  G ) (g \geq_g h \; \geq_g s) \}    $$</p>
 <p>$$where \geq_g \equiv more \; general \; than \; or \; equal \; to$$</p>
 <h2 id="The-List-Then-Elimination-Algorithm列表消除演算法"><a href="#The-List-Then-Elimination-Algorithm列表消除演算法" class="headerlink" title="The List-Then-Elimination Algorithm列表消除演算法"></a>The <em>List-Then-Elimination</em> Algorithm<br>列表消除演算法</h2><ol>
 <li><p>起始化：
@@ -632,27 +637,27 @@ S $\leftarrow$ 一組在假說空間 $H$ 最嚴苛的環境因素。標記為：
 </ul>
 </li>
 </ol>
-<h3 id="範例-EnjoySport"><a href="#範例-EnjoySport" class="headerlink" title="範例 - $EnjoySport$"></a>範例 - $EnjoySport$</h3><h4 id="起始化"><a href="#起始化" class="headerlink" title="起始化"></a>起始化</h4><p>Specific boundary to:     $S_0 = {(Ø,Ø,Ø,Ø,Ø,Ø)}$
-General boundary to:    $G_0 = {(?,?,?,?,?,?) }$</p>
+<h3 id="範例-EnjoySport"><a href="#範例-EnjoySport" class="headerlink" title="範例 - $EnjoySport$"></a>範例 - $EnjoySport$</h3><h4 id="起始化"><a href="#起始化" class="headerlink" title="起始化"></a>起始化</h4><p>Specific boundary to:     $S_0 = \{(Ø,Ø,Ø,Ø,Ø,Ø)\}$
+General boundary to:    $G_0 = \{(?,?,?,?,?,?) \}$</p>
 <h4 id="1’st-instance-Sunny-Warm-Normal-Strong-Warm-Same-Yes"><a href="#1’st-instance-Sunny-Warm-Normal-Strong-Warm-Same-Yes" class="headerlink" title="1’st instance: (Sunny,Warm,Normal,Strong,Warm,Same) = Yes"></a>1’st instance: (Sunny,Warm,Normal,Strong,Warm,Same) = Yes</h4><p><strong>Positive</strong> example <em>generalizes</em> Specific boundary</p>
-<p>$S_1 = { (Sunny,Warm,Normal,Strong,Warm,Same) }$</p>
-<p>$G_1 = { (?,?,?,?,?,?) }$</p>
+<p>$S_1 = \{ (Sunny,Warm,Normal,Strong,Warm,Same) \}$</p>
+<p>$G_1 = \{ (?,?,?,?,?,?) \}$</p>
 <h4 id="2’nd-instance-Sunny-Warm-High-Strong-Warm-Same-Yes"><a href="#2’nd-instance-Sunny-Warm-High-Strong-Warm-Same-Yes" class="headerlink" title="2’nd instance: (Sunny,Warm,High,Strong,Warm,Same) = Yes"></a>2’nd instance: (Sunny,Warm,High,Strong,Warm,Same) = Yes</h4><p><strong>Positive</strong> example <em>generalizes</em> Specific boundary</p>
-<p>$S_2 = {(Sunny,Warm,?,Strong,Warm,Same) }$</p>
-<p>$G2 = { (?,?,?,?,?,?) }$</p>
+<p>$S_2 = \{(Sunny,Warm,?,Strong,Warm,Same) \}$</p>
+<p>$G2 = \{ (?,?,?,?,?,?) \}$</p>
 <h4 id="3’rd-instance-Rainy-Cold-High-Strong-Warm-Change-No"><a href="#3’rd-instance-Rainy-Cold-High-Strong-Warm-Change-No" class="headerlink" title="3’rd instance: (Rainy,Cold,High,Strong,Warm,Change) = No"></a>3’rd instance: (Rainy,Cold,High,Strong,Warm,Change) = No</h4><p><strong>Negative</strong> example <em>specializes</em> General boundary</p>
-<p>$S_3 = \left{ (Sunny,Warm,?,Strong,Warm,Same) \right}$ </p>
-<p>$G_3 = {    (Sunny,?,?,?,?,?), \quad    O.K.$ <br></p>
+<p>$S_3 = \{ (Sunny,Warm,?,Strong,Warm,Same) \}$ </p>
+<p>$G_3 = \{(Sunny,?,?,?,?,?), \quad    O.K.$ <br></p>
 <p>$(Cloudy,?,?,?,?,?), \quad Not \; more \; general \; than \; S_3$<br></p>
 <p>$(?,Warm,?,?,?,?),    \quad O.K.$<br></p>
 <p>$(?,?,Normal,?,?,?), \quad Not \; more \; general \; than \; S_3$<br></p>
 <p>$(?,?,?,Light,?,?), \quad Not \; more \; general \; than \; S_3$<br></p>
 <p>$(?,?,?,?,Cool,?), \quad Not \; more \; general \; than \; S_3$<br></p>
-<p>$(?,?,?,?,?,Same)} \quad O.K.$<br></p>
-<p>$\Rightarrow G_3 = { (Sunny,?,?,?,?,?), (?,Warm,?,?,?,?), (?,?,?,?,?,Same)}$<br></p>
+<p>$(?,?,?,?,?,Same)\} \quad O.K.$<br></p>
+<p>$\Rightarrow G_3 = \{ (Sunny,?,?,?,?,?), (?,Warm,?,?,?,?), (?,?,?,?,?,Same)\}$<br></p>
 <h4 id="4’th-instance-Sunny-Warm-High-Strong-Cool-Change-Yes"><a href="#4’th-instance-Sunny-Warm-High-Strong-Cool-Change-Yes" class="headerlink" title="4’th instance: (Sunny,Warm,High,Strong,Cool,Change) = Yes"></a>4’th instance: (Sunny,Warm,High,Strong,Cool,Change) = Yes</h4><p><strong>Positive</strong> example <em>generalizes</em> Specific boundary
-$S_4 = { (Sunny,Warm,?,Strong,?,?) }$
-$G_4 = { (Sunny,?,?,?,?,?), (?,Warm,?,?,?,?) }$</p>
+$S_4 = \{ (Sunny,Warm,?,Strong,?,?) \}$
+$G_4 = \{ (Sunny,?,?,?,?,?), (?,Warm,?,?,?,?) \}$</p>
 <p>Final version space is all hypotheses, h such that:
 $$g \geq_ g h \; \geq_g s$$</p>
 <p><img src="\blog\images\candidate-eliminationalgorithm.png" alt="candidate-eliminationalgorithm"></p>
