@@ -100,27 +100,90 @@
 
 
   
-  <meta name="keywords" content="Integration,Partial Integration,Integration By Parts,logarithm," />
+  <meta name="keywords" content="LU分解,LU Decomposition,重點," />
 
 
-<meta name="description" content="分部積分法是種積分的技巧常應用於微積分數學與數值分析之中。它是由微分的乘法定則和微積分基本定理推導而來的。其基本思路是將不易求得結果的積分形式，轉化為等價的但易於求出結果的積分形式。 規則 當 $u = u(x)$ 、 $du = u&amp;#39;(x)dx$ 、 $v = v(x)$ 與 $dv = v&amp;#39;(x)dx$ ， 那分部積分就可以寫為： $$\int_a^b u(x)v&amp;#39;(x">
-<meta name="keywords" content="Integration,Partial Integration,Integration By Parts,logarithm">
+<meta name="description" content="Linear Algebra - 重點分析 - LU分解 LU 分解的外表看似平淡無奇，但它可以用來解線性方程，逆矩陣和計算行列式，堪稱是最具實用價值的矩陣分解式之一。  令  為一個  階矩陣。LU 分解是指將  表示為兩個  階三角矩陣的乘積 ， 其中  是下三角矩陣， 是上三角矩陣，如下例， 。 高斯消去法可以通過一連串的矩陣乘法來實現。每一個基本列運算等同於左乘一個基本矩陣，而對應列取代的">
+<meta name="keywords" content="LU分解,LU Decomposition,重點">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Integration by parts - 分部積分法以及常用的分部積分">
-<meta property="og:url" content="http://WangWilly.github.io/blog/2018/05/01/Integration-by-parts-分部積分法以及常用的分部積分/index.html">
+<meta property="og:title" content="Linear Algebra - 重點分析 - LU分解">
+<meta property="og:url" content="http://WangWilly.github.io/blog/2018/05/07/Linear-Algebra-重點分析-LU分解/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="分部積分法是種積分的技巧常應用於微積分數學與數值分析之中。它是由微分的乘法定則和微積分基本定理推導而來的。其基本思路是將不易求得結果的積分形式，轉化為等價的但易於求出結果的積分形式。 規則 當 $u = u(x)$ 、 $du = u&amp;#39;(x)dx$ 、 $v = v(x)$ 與 $dv = v&amp;#39;(x)dx$ ， 那分部積分就可以寫為： $$\int_a^b u(x)v&amp;#39;(x">
-<meta property="og:updated_time" content="2018-05-01T03:55:37.550Z">
+<meta property="og:description" content="Linear Algebra - 重點分析 - LU分解 LU 分解的外表看似平淡無奇，但它可以用來解線性方程，逆矩陣和計算行列式，堪稱是最具實用價值的矩陣分解式之一。  令  為一個  階矩陣。LU 分解是指將  表示為兩個  階三角矩陣的乘積 ， 其中  是下三角矩陣， 是上三角矩陣，如下例， 。 高斯消去法可以通過一連串的矩陣乘法來實現。每一個基本列運算等同於左乘一個基本矩陣，而對應列取代的">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=A&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=n%5Ctimes+n&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=A&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=n%5Ctimes+n&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=A%3DLU&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=L&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=U&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=%5Cleft%5B%5C%21%5C%21%5Cbegin%7Barray%7D%7Brrc%7D++3%26-1%262%5C%5C++6%26-1%265%5C%5C++-9%267%263++%5Cend%7Barray%7D%5C%21%5C%21%5Cright%5D%3D%5Cleft%5B%5C%21%5C%21%5Cbegin%7Barray%7D%7Brcc%7D++++1%260%260%5C%5C++2%261%260%5C%5C++-3%264%261++%5Cend%7Barray%7D%5C%21%5C%21%5Cright%5D%5Cleft%5B%5C%21%5C%21%5Cbegin%7Barray%7D%7Bcrc%7D++3%26-1%262%5C%5C++0%261%261%5C%5C++0%260%265++%5Cend%7Barray%7D%5C%21%5C%21%5Cright%5D&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=E_%7Bij%7D&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=%28i%2Cj%29&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=-l_%7Bij%7D&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=E_%7B32%7DE_%7B31%7DE_%7B21%7DA%3DU&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=E_%7Bij%7D&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=A%3DE_%7B21%7D%5E%7B-1%7DE_%7B31%7D%5E%7B-1%7DE_%7B32%7D%5E%7B-1%7DU%3DLU&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=A%3D%5Cbegin%7Bbmatrix%7D++0%262%5C%5C++1%263++%5Cend%7Bbmatrix%7D&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=A&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=A%3DLU%3D%5Cbegin%7Bbmatrix%7D++1%260%5C%5C++l_%7B21%7D%261++%5Cend%7Bbmatrix%7D%5Cbegin%7Bbmatrix%7D++u_%7B11%7D%26u_%7B12%7D%5C%5C++0%26u_%7B22%7D++%5Cend%7Bbmatrix%7D&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=u_%7B11%7D%3D0&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=U&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=LU%3DA&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=A&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=LU&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=0&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=%281%2C1%29&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=A&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=0&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=PA%3DLU&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=P&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=%5Cbegin%7Baligned%7D++PA%26%3D%5Cbegin%7Bbmatrix%7D++0%261%5C%5C++1%260++%5Cend%7Bbmatrix%7D%5Cbegin%7Bbmatrix%7D++0%262%5C%5C++1%263++%5Cend%7Bbmatrix%7D%3D%5Cbegin%7Bbmatrix%7D++1%263%5C%5C++0%262++%5Cend%7Bbmatrix%7D%5C%5C++%26%3D%5Cbegin%7Bbmatrix%7D++1%260%5C%5C++0%261++%5Cend%7Bbmatrix%7D%5Cbegin%7Bbmatrix%7D++1%263%5C%5C++0%262++%5Cend%7Bbmatrix%7D%3DLU.%5Cend%7Baligned%7D&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=A%5Cmathbf%7Bx%7D%3D%5Cmathbf%7Bb%7D&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=A&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=A%3DLU&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=A&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=A%5Cmathbf%7Bx%7D%3D%5Cmathbf%7Bb%7D&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=L%28U%5Cmathbf%7Bx%7D%29%3D%5Cmathbf%7Bb%7D&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=%5Cmathbf%7By%7D%3DU%5Cmathbf%7Bx%7D&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=%5Cbegin%7Baligned%7D++L%5Cmathbf%7By%7D%26%3D%5Cmathbf%7Bb%7D%5C%5C++U%5Cmathbf%7Bx%7D%26%3D%5Cmathbf%7By%7D.++%5Cend%7Baligned%7D&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=%5Cmathbf%7By%7D&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=%5Cleft%5B%5C%21%5C%21%5Cbegin%7Barray%7D%7Brcc%7D++++1%260%260%5C%5C++2%261%260%5C%5C++-3%264%261++%5Cend%7Barray%7D%5C%21%5C%21%5Cright%5D%5Cbegin%7Bbmatrix%7D++y_1%5C%5C++y_2%5C%5C++y_3++%5Cend%7Bbmatrix%7D%3D%5Cleft%5B%5C%21%5C%21%5Cbegin%7Barray%7D%7Br%7D++++10%5C%5C++22%5C%5C++-7++%5Cend%7Barray%7D%5C%21%5C%21%5Cright%5D%5CRightarrow%5Cbegin%7Bcases%7D++y_1%3D10%26%5C%5C++y_2%3D-2y_1%2B22%3D2%26%5C%5C++y_3%3D3y_1-4y_2-7%3D15%26++%5Cend%7Bcases%7D&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=%5Cmathbf%7Bx%7D&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=%5Cleft%5B%5C%21%5C%21%5Cbegin%7Barray%7D%7Bcrc%7D++++3%26-1%262%5C%5C++0%261%261%5C%5C++0%260%265++%5Cend%7Barray%7D%5C%21%5C%21%5Cright%5D%5Cbegin%7Bbmatrix%7D++x_1%5C%5C++x_2%5C%5C++x_3++%5Cend%7Bbmatrix%7D%3D%5Cleft%5B%5C%21%5C%21%5Cbegin%7Barray%7D%7Br%7D++++10%5C%5C++2%5C%5C++15++%5Cend%7Barray%7D%5C%21%5C%21%5Cright%5D%5CRightarrow%5Cbegin%7Bcases%7D++x_1%3D%28x_2-2x_3%2B10%29%2F3%3D1%26%5C%5C++x_2%3D-x_3%2B2%3D-1%26%5C%5C++x_3%3D15%2F5%3D3%26++%5Cend%7Bcases%7D&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=n%5Ctimes+n&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=A&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=%5Cfrac%7B1%7D%7B3%7Dn%5E3&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=n&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=n%5E3&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=%5Cfrac%7B1%7D%7B2%7Dn%5E2&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=A%5Cmathbf%7Bx%7D%3D%5Cmathbf%7Bb%7D&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=%5Cbegin%7Bbmatrix%7D++++A%5Cvert%5Cmathbf%7Bb%7D++++%5Cend%7Bbmatrix%7D&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=A%5Cmathbf%7Bx%7D%3D%5Cmathbf%7Bb%7D%5E%7B%5Cprime%7D&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=A%5E%7B-1%7D&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=AX%3DA%5Cbegin%7Bbmatrix%7D++++%5Cmathbf%7Bx%7D_1%26%5Cmathbf%7Bx%7D_2%26%5Cmathbf%7Bx%7D_3++++%5Cend%7Bbmatrix%7D%3DI&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=A%5Cmathbf%7Bx%7D_1%3D%5Cbegin%7Bbmatrix%7D++1%5C%5C++0%5C%5C++0++%5Cend%7Bbmatrix%7D%2C%7E+A%5Cmathbf%7Bx%7D_2%3D%5Cbegin%7Bbmatrix%7D++0%5C%5C++1%5C%5C++0++%5Cend%7Bbmatrix%7D%2C%7E+A%5Cmathbf%7Bx%7D_3%3D%5Cbegin%7Bbmatrix%7D++0%5C%5C++0%5C%5C++1++%5Cend%7Bbmatrix%7D&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=%5Cmathbf%7Bx%7D_i&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=i%3D1%2C2%2C3&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=A%5E%7B-1%7D&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=n%5Ctimes+n&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=%5Cdet+A%3D%5Cdet%28LU%29%3D%28%5Cdet+L%29%28%5Cdet+U%29&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=%5Cmathrm%7Bdet%7DL%3D1&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=%5Cdet+A%3D%5Cdet+U%3D%5Cdisplaystyle%5Cprod_%7Bi%3D1%7D%5Enu_%7Bii%7D&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=A&bg=ffffff&fg=000000&s=0">
+<meta property="og:image" content="https://s0.wp.com/latex.php?latex=U&bg=ffffff&fg=000000&s=0">
+<meta property="og:updated_time" content="2018-05-07T08:07:35.171Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Integration by parts - 分部積分法以及常用的分部積分">
-<meta name="twitter:description" content="分部積分法是種積分的技巧常應用於微積分數學與數值分析之中。它是由微分的乘法定則和微積分基本定理推導而來的。其基本思路是將不易求得結果的積分形式，轉化為等價的但易於求出結果的積分形式。 規則 當 $u = u(x)$ 、 $du = u&amp;#39;(x)dx$ 、 $v = v(x)$ 與 $dv = v&amp;#39;(x)dx$ ， 那分部積分就可以寫為： $$\int_a^b u(x)v&amp;#39;(x">
+<meta name="twitter:title" content="Linear Algebra - 重點分析 - LU分解">
+<meta name="twitter:description" content="Linear Algebra - 重點分析 - LU分解 LU 分解的外表看似平淡無奇，但它可以用來解線性方程，逆矩陣和計算行列式，堪稱是最具實用價值的矩陣分解式之一。  令  為一個  階矩陣。LU 分解是指將  表示為兩個  階三角矩陣的乘積 ， 其中  是下三角矩陣， 是上三角矩陣，如下例， 。 高斯消去法可以通過一連串的矩陣乘法來實現。每一個基本列運算等同於左乘一個基本矩陣，而對應列取代的">
+<meta name="twitter:image" content="https://s0.wp.com/latex.php?latex=A&bg=ffffff&fg=000000&s=0">
 
 
 
 
 
 
-  <link rel="canonical" href="http://WangWilly.github.io/blog/2018/05/01/Integration-by-parts-分部積分法以及常用的分部積分/"/>
+  <link rel="canonical" href="http://WangWilly.github.io/blog/2018/05/07/Linear-Algebra-重點分析-LU分解/"/>
 
 
 
@@ -129,7 +192,7 @@
     sidebar: "",
   };
 </script>
-  <title>Integration by parts - 分部積分法以及常用的分部積分 | WillyWangkaa</title>
+  <title>Linear Algebra - 重點分析 - LU分解 | WillyWangkaa</title>
   
 
 
@@ -309,7 +372,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/blog/blog/2018/05/01/Integration-by-parts-分部積分法以及常用的分部積分/">
+    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/blog/blog/2018/05/07/Linear-Algebra-重點分析-LU分解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Willy Wang">
@@ -326,7 +389,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Integration by parts - 分部積分法以及常用的分部積分</h1>
+          <h1 class="post-title" itemprop="name headline">Linear Algebra - 重點分析 - LU分解</h1>
         
 
         <div class="post-meta">
@@ -338,7 +401,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-01T09:33:00+08:00">2018-05-01</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-07T16:01:00+08:00">2018-05-07</time>
             
 
             
@@ -359,7 +422,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-05-01T11:55:37+08:00">2018-05-01</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2018-05-07T16:07:35+08:00">2018-05-07</time>
             
           </span>
 
@@ -375,7 +438,14 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/blog/categories/Calculus/" itemprop="url" rel="index"><span itemprop="name">Calculus</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/blog/categories/Linear-Algebra/" itemprop="url" rel="index"><span itemprop="name">Linear Algebra</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/blog/categories/Linear-Algebra/重點分析/" itemprop="url" rel="index"><span itemprop="name">重點分析</span></a></span>
 
                 
                 
@@ -390,9 +460,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/blog/2018/05/01/Integration-by-parts-分部積分法以及常用的分部積分/#comments" itemprop="discussionUrl">
+                <a href="/blog/2018/05/07/Linear-Algebra-重點分析-LU分解/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/05/01/Integration-by-parts-分部積分法以及常用的分部積分/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/05/07/Linear-Algebra-重點分析-LU分解/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -420,41 +490,38 @@
       
 
       
-        <p><strong>分部積分法</strong>是種<a href="https://zh.wikipedia.org/wiki/%E7%A9%8D%E5%88%86" target="_blank" rel="noopener">積分</a>的技巧常應用於微積分數學與數值分析之中。它是由<a href="https://zh.wikipedia.org/wiki/%E5%BE%AE%E5%88%86" target="_blank" rel="noopener">微分</a>的<a href="https://zh.wikipedia.org/wiki/%E4%B9%98%E6%B3%95%E5%AE%9A%E5%88%99" target="_blank" rel="noopener">乘法定則</a>和<a href="https://zh.wikipedia.org/wiki/%E5%BE%AE%E7%A7%AF%E5%88%86%E5%9F%BA%E6%9C%AC%E5%AE%9A%E7%90%86" target="_blank" rel="noopener">微積分基本定理</a>推導而來的。其基本思路是將不易求得結果的積分形式，轉化為等價的但易於求出結果的積分形式。</p>
-<h1 id="規則"><a href="#規則" class="headerlink" title="規則"></a>規則</h1><hr>
-<p>當 $u = u(x)$ 、 $du = u&#39;(x)dx$ 、 $v = v(x)$ 與 $dv = v&#39;(x)dx$ ， 那分部積分就可以寫為：</p>
-<p>$$\int_a^b u(x)v&#39;(x) dx = [u(x)v(x)]_a^b - \int_a^b u&#39;(x)v(x)dx$$</p>
-<p>$$\Leftrightarrow u(b)v(b) - u(a)v(a) - \int_a^b u&#39;(x)v(x)dx$$</p>
-<p>或是以更常見的簡寫：</p>
-<p>$$\int u \; dv = uv - \int v \; du$$</p>
-<h1 id="定理"><a href="#定理" class="headerlink" title="定理"></a>定理</h1><hr>
-<p>假設 $u(x)$ 與 $v(x)$ 是兩個連續可導函數 (<a href="https://en.wikipedia.org/wiki/Continuously_differentiable" target="_blank" rel="noopener">continuously differentiable</a> <a href="https://en.wikipedia.org/wiki/Function_(mathematics" target="_blank" rel="noopener">functions</a>)). 由乘法定理 (<a href="https://en.wikipedia.org/wiki/Product_rule" target="_blank" rel="noopener">product rule</a>) 可知(用來布尼茲表示法 <a href="https://en.wikipedia.org/wiki/Leibniz%27s_notation" target="_blank" rel="noopener">Leibniz&#39;s notation</a>)：</p>
-<p>$\frac{d}{dx} ( u(x) \cdot v(x) ) = \frac{d(u(x))}{dx}\cdot v(x) + u(x)\cdot \frac{d(v(x))}{dx}$</p>
-<p>對兩側求不定積分：</p>
-<p>$uv = \int (\frac{d(u(x))}{dx}\cdot v(x) + u(x)\cdot \frac{d(v(x))}{dx})dx$</p>
-<p>$\Leftrightarrow \int d(u(x))\cdot v(x) + \int u(x)\cdot d(v(x))$</p>
-<p>$\Rightarrow \int u \; dv = uv - \int v \; du$</p>
-<h1 id="常用的分部積分"><a href="#常用的分部積分" class="headerlink" title="常用的分部積分"></a>常用的分部積分</h1><hr>
-<h2 id="int-ln-x-dx-x-ln-x-x-C"><a href="#int-ln-x-dx-x-ln-x-x-C" class="headerlink" title="$\int \ln(x) dx = x\ln(x) - x + C$"></a>$\int \ln(x) dx = x\ln(x) - x + C$</h2><p>$\int \ln(x)dx$</p>
-<p>令 $u = \ln(x)$ 、 $dv = dx$ ， 則 $du = \frac{1}{x} dx$ 、 $v = x$</p>
-<p>帶入：</p>
-<p>$\int \ln(x) dx = \ln(x) \cdot x - \int x\cdot \frac{1}{x}dx$</p>
-<p>$\Leftrightarrow \ln(x)\cdot x - \int(1)dx$</p>
-<p>$\Leftrightarrow \ln(x)\cdot x - x + C$</p>
-<h2 id="int-log-x-dx-x-cdot-log-x-frac-x-ln-10-C"><a href="#int-log-x-dx-x-cdot-log-x-frac-x-ln-10-C" class="headerlink" title="$\int \log (x) dx = x\cdot \log (x) - \frac{x}{\ln 10} + C$"></a>$\int \log (x) dx = x\cdot \log (x) - \frac{x}{\ln 10} + C$</h2><p>令 $u = \log (x)$ 、 $dv = dx$ ，</p>
-<p>則 $du= d(\log (x)) \Leftrightarrow d(\frac{\ln x}{\ln 10})$</p>
-<p><strong>＜乘法定理＞：</strong> 上微下不微 + 下微上不微</p>
-<p>$\Leftrightarrow d(ln x)\cdot \frac{1}{\ln 10} + \ln x\cdot d(\ln 10)$</p>
-<p>$\Leftrightarrow \frac{1}{x}\cdot \frac{1}{\ln 10} + \ln x \cdot 0$</p>
-<p>$\Leftrightarrow \frac{1}{x\ln 10}$</p>
-<p>接著 $v = x$ 。</p>
-<p>$\int \log x dx = \log x \cdot x - \int x \cdot \frac{1}{x \ln 10} dx$</p>
-<p>$\Leftrightarrow x\cdot \log x - \int \frac{1}{\ln 10} dx$</p>
-<p>$\Leftrightarrow x\cdot \log x - x\cdot\frac{1}{\ln 10} + C$</p>
+        <h1 id="Linear-Algebra-重點分析-LU分解"><a href="#Linear-Algebra-重點分析-LU分解" class="headerlink" title="Linear Algebra - 重點分析 - LU分解"></a>Linear Algebra - 重點分析 - LU分解</h1><hr>
+<p>LU 分解的外表看似平淡無奇，但它可以用來解線性方程，逆矩陣和計算行列式，堪稱是最具實用價值的矩陣分解式之一。 </p>
+<p>令 <img src="https://s0.wp.com/latex.php?latex=A&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="A"> 為一個 <img src="https://s0.wp.com/latex.php?latex=n%5Ctimes+n&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="n\times n"> 階矩陣。LU 分解是指將 <img src="https://s0.wp.com/latex.php?latex=A&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="A"> 表示為兩個 <img src="https://s0.wp.com/latex.php?latex=n%5Ctimes+n&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="n\times n"> 階三角矩陣的乘積</p>
+<p><img src="https://s0.wp.com/latex.php?latex=A%3DLU&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="A=LU">，</p>
+<p>其中 <img src="https://s0.wp.com/latex.php?latex=L&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="L"> 是下三角矩陣，<img src="https://s0.wp.com/latex.php?latex=U&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="U"> 是上三角矩陣，如下例，</p>
+<p><img src="https://s0.wp.com/latex.php?latex=%5Cleft%5B%5C%21%5C%21%5Cbegin%7Barray%7D%7Brrc%7D++3%26-1%262%5C%5C++6%26-1%265%5C%5C++-9%267%263++%5Cend%7Barray%7D%5C%21%5C%21%5Cright%5D%3D%5Cleft%5B%5C%21%5C%21%5Cbegin%7Barray%7D%7Brcc%7D++++1%260%260%5C%5C++2%261%260%5C%5C++-3%264%261++%5Cend%7Barray%7D%5C%21%5C%21%5Cright%5D%5Cleft%5B%5C%21%5C%21%5Cbegin%7Barray%7D%7Bcrc%7D++3%26-1%262%5C%5C++0%261%261%5C%5C++0%260%265++%5Cend%7Barray%7D%5C%21%5C%21%5Cright%5D&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="\left[\!\!\begin{array}{rrc}  3&amp;-1&amp;2\\  6&amp;-1&amp;5\\  -9&amp;7&amp;3  \end{array}\!\!\right]=\left[\!\!\begin{array}{rcc}    1&amp;0&amp;0\\  2&amp;1&amp;0\\  -3&amp;4&amp;1  \end{array}\!\!\right]\left[\!\!\begin{array}{crc}  3&amp;-1&amp;2\\  0&amp;1&amp;1\\  0&amp;0&amp;5  \end{array}\!\!\right]">。</p>
+<p>高斯消去法可以通過一連串的矩陣乘法來實現。每一個基本列運算等同於左乘一個基本矩陣，而對應列取代的基本矩陣 <img src="https://s0.wp.com/latex.php?latex=E_%7Bij%7D&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="E_{ij}"> 的 <img src="https://s0.wp.com/latex.php?latex=%28i%2Cj%29&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="(i,j)"> 元即為 <img src="https://s0.wp.com/latex.php?latex=-l_%7Bij%7D&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="-l_{ij}">。 </p>
+<p>消去程序可用下列矩陣乘法表示：</p>
+<p><img src="https://s0.wp.com/latex.php?latex=E_%7B32%7DE_%7B31%7DE_%7B21%7DA%3DU&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="E_{32}E_{31}E_{21}A=U">。</p>
+<p>因為基本矩陣 <img src="https://s0.wp.com/latex.php?latex=E_%7Bij%7D&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="E_{ij}"> 都是可逆的，</p>
+<p><img src="https://s0.wp.com/latex.php?latex=A%3DE_%7B21%7D%5E%7B-1%7DE_%7B31%7D%5E%7B-1%7DE_%7B32%7D%5E%7B-1%7DU%3DLU&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="A=E_{21}^{-1}E_{31}^{-1}E_{32}^{-1}U=LU"></p>
+<h1 id="存在性"><a href="#存在性" class="headerlink" title="存在性"></a>存在性</h1><p>然而，並非任何可逆矩陣都具有 LU 分解形式，例如，<img src="https://s0.wp.com/latex.php?latex=A%3D%5Cbegin%7Bbmatrix%7D++0%262%5C%5C++1%263++%5Cend%7Bbmatrix%7D&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="A=\begin{bmatrix}  0&amp;2\\  1&amp;3  \end{bmatrix}">。假若 <img src="https://s0.wp.com/latex.php?latex=A&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="A"> 可以寫為</p>
+<p><img src="https://s0.wp.com/latex.php?latex=A%3DLU%3D%5Cbegin%7Bbmatrix%7D++1%260%5C%5C++l_%7B21%7D%261++%5Cend%7Bbmatrix%7D%5Cbegin%7Bbmatrix%7D++u_%7B11%7D%26u_%7B12%7D%5C%5C++0%26u_%7B22%7D++%5Cend%7Bbmatrix%7D&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="A=LU=\begin{bmatrix}  1&amp;0\\  l_{21}&amp;1  \end{bmatrix}\begin{bmatrix}  u_{11}&amp;u_{12}\\  0&amp;u_{22}  \end{bmatrix}">，</p>
+<p>則必有 <img src="https://s0.wp.com/latex.php?latex=u_%7B11%7D%3D0&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="u_{11}=0">，<img src="https://s0.wp.com/latex.php?latex=U&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="U"> 是不可逆的，這與 <img src="https://s0.wp.com/latex.php?latex=LU%3DA&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="LU=A"> 為可逆矩陣的事實相互矛盾。矩陣 <img src="https://s0.wp.com/latex.php?latex=A&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="A"> 之所以不存在 <img src="https://s0.wp.com/latex.php?latex=LU&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="LU"> 分解的原因在於 <img src="https://s0.wp.com/latex.php?latex=0&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="0"> 占據了 <img src="https://s0.wp.com/latex.php?latex=%281%2C1%29&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="(1,1)"> 元，但軸元必須不為零才能產生乘數。根據這項觀察，即知可逆矩陣 <img src="https://s0.wp.com/latex.php?latex=A&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="A"> 的 LU 分解存在條件是：列運算過程中，<img src="https://s0.wp.com/latex.php?latex=0&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="0"> 不得在軸元位置。萬一碰上零軸元的情況，還是有補救辦法，那就是使用列交換運算設法產生其他非零軸元，不過 LU 分解要修改成 <img src="https://s0.wp.com/latex.php?latex=PA%3DLU&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="PA=LU">，<img src="https://s0.wp.com/latex.php?latex=P&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="P"> 是排列矩陣。例如，</p>
+<p><img src="https://s0.wp.com/latex.php?latex=%5Cbegin%7Baligned%7D++PA%26%3D%5Cbegin%7Bbmatrix%7D++0%261%5C%5C++1%260++%5Cend%7Bbmatrix%7D%5Cbegin%7Bbmatrix%7D++0%262%5C%5C++1%263++%5Cend%7Bbmatrix%7D%3D%5Cbegin%7Bbmatrix%7D++1%263%5C%5C++0%262++%5Cend%7Bbmatrix%7D%5C%5C++%26%3D%5Cbegin%7Bbmatrix%7D++1%260%5C%5C++0%261++%5Cend%7Bbmatrix%7D%5Cbegin%7Bbmatrix%7D++1%263%5C%5C++0%262++%5Cend%7Bbmatrix%7D%3DLU.%5Cend%7Baligned%7D&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="\begin{aligned}  PA&amp;=\begin{bmatrix}  0&amp;1\\  1&amp;0  \end{bmatrix}\begin{bmatrix}  0&amp;2\\  1&amp;3  \end{bmatrix}=\begin{bmatrix}  1&amp;3\\  0&amp;2  \end{bmatrix}\\  &amp;=\begin{bmatrix}  1&amp;0\\  0&amp;1  \end{bmatrix}\begin{bmatrix}  1&amp;3\\  0&amp;2  \end{bmatrix}=LU.\end{aligned}"></p>
+<h1 id="應用"><a href="#應用" class="headerlink" title="應用"></a>應用</h1><hr>
+<p>最後討論 LU 分解的應用。LU 分解不僅僅只是記錄消去過程，它還有一個非常重要的實際用途：LU 分解具備快速求解線性方程 <img src="https://s0.wp.com/latex.php?latex=A%5Cmathbf%7Bx%7D%3D%5Cmathbf%7Bb%7D&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="A\mathbf{x}=\mathbf{b}"> 的良好結構。一旦得到了可逆矩陣 <img src="https://s0.wp.com/latex.php?latex=A&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="A"> 的 LU 分解 <img src="https://s0.wp.com/latex.php?latex=A%3DLU&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="A=LU">，我們大可把 <img src="https://s0.wp.com/latex.php?latex=A&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="A"> 拋棄，將 <img src="https://s0.wp.com/latex.php?latex=A%5Cmathbf%7Bx%7D%3D%5Cmathbf%7Bb%7D&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="A\mathbf{x}=\mathbf{b}"> 改為 <img src="https://s0.wp.com/latex.php?latex=L%28U%5Cmathbf%7Bx%7D%29%3D%5Cmathbf%7Bb%7D&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="L(U\mathbf{x})=\mathbf{b}">，再令 <img src="https://s0.wp.com/latex.php?latex=%5Cmathbf%7By%7D%3DU%5Cmathbf%7Bx%7D&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="\mathbf{y}=U\mathbf{x}">，原線性方程等價於兩組三角形系統：</p>
+<p><img src="https://s0.wp.com/latex.php?latex=%5Cbegin%7Baligned%7D++L%5Cmathbf%7By%7D%26%3D%5Cmathbf%7Bb%7D%5C%5C++U%5Cmathbf%7Bx%7D%26%3D%5Cmathbf%7By%7D.++%5Cend%7Baligned%7D&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="\begin{aligned}  L\mathbf{y}&amp;=\mathbf{b}\\  U\mathbf{x}&amp;=\mathbf{y}.  \end{aligned}"></p>
+<p>接著使用兩次迭代即可得到解。上例中，先以正向迭代解出 <img src="https://s0.wp.com/latex.php?latex=%5Cmathbf%7By%7D&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="\mathbf{y}">，</p>
+<p><img src="https://s0.wp.com/latex.php?latex=%5Cleft%5B%5C%21%5C%21%5Cbegin%7Barray%7D%7Brcc%7D++++1%260%260%5C%5C++2%261%260%5C%5C++-3%264%261++%5Cend%7Barray%7D%5C%21%5C%21%5Cright%5D%5Cbegin%7Bbmatrix%7D++y_1%5C%5C++y_2%5C%5C++y_3++%5Cend%7Bbmatrix%7D%3D%5Cleft%5B%5C%21%5C%21%5Cbegin%7Barray%7D%7Br%7D++++10%5C%5C++22%5C%5C++-7++%5Cend%7Barray%7D%5C%21%5C%21%5Cright%5D%5CRightarrow%5Cbegin%7Bcases%7D++y_1%3D10%26%5C%5C++y_2%3D-2y_1%2B22%3D2%26%5C%5C++y_3%3D3y_1-4y_2-7%3D15%26++%5Cend%7Bcases%7D&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="\left[\!\!\begin{array}{rcc}    1&amp;0&amp;0\\  2&amp;1&amp;0\\  -3&amp;4&amp;1  \end{array}\!\!\right]\begin{bmatrix}  y_1\\  y_2\\  y_3  \end{bmatrix}=\left[\!\!\begin{array}{r}    10\\  22\\  -7  \end{array}\!\!\right]\Rightarrow\begin{cases}  y_1=10&amp;\\  y_2=-2y_1+22=2&amp;\\  y_3=3y_1-4y_2-7=15&amp;  \end{cases}"></p>
+<p>再以反向迭代解出 <img src="https://s0.wp.com/latex.php?latex=%5Cmathbf%7Bx%7D&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="\mathbf{x}">，</p>
+<p><img src="https://s0.wp.com/latex.php?latex=%5Cleft%5B%5C%21%5C%21%5Cbegin%7Barray%7D%7Bcrc%7D++++3%26-1%262%5C%5C++0%261%261%5C%5C++0%260%265++%5Cend%7Barray%7D%5C%21%5C%21%5Cright%5D%5Cbegin%7Bbmatrix%7D++x_1%5C%5C++x_2%5C%5C++x_3++%5Cend%7Bbmatrix%7D%3D%5Cleft%5B%5C%21%5C%21%5Cbegin%7Barray%7D%7Br%7D++++10%5C%5C++2%5C%5C++15++%5Cend%7Barray%7D%5C%21%5C%21%5Cright%5D%5CRightarrow%5Cbegin%7Bcases%7D++x_1%3D%28x_2-2x_3%2B10%29%2F3%3D1%26%5C%5C++x_2%3D-x_3%2B2%3D-1%26%5C%5C++x_3%3D15%2F5%3D3%26++%5Cend%7Bcases%7D&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="\left[\!\!\begin{array}{crc}    3&amp;-1&amp;2\\  0&amp;1&amp;1\\  0&amp;0&amp;5  \end{array}\!\!\right]\begin{bmatrix}  x_1\\  x_2\\  x_3  \end{bmatrix}=\left[\!\!\begin{array}{r}    10\\  2\\  15  \end{array}\!\!\right]\Rightarrow\begin{cases}  x_1=(x_2-2x_3+10)/3=1&amp;\\  x_2=-x_3+2=-1&amp;\\  x_3=15/5=3&amp;  \end{cases}"></p>
+<p>對於 <img src="https://s0.wp.com/latex.php?latex=n%5Ctimes+n&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="n\times n"> 階矩陣 <img src="https://s0.wp.com/latex.php?latex=A&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="A">，LU 分解耗費的乘法運算量大約是 <img src="https://s0.wp.com/latex.php?latex=%5Cfrac%7B1%7D%7B3%7Dn%5E3&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="\frac{1}{3}n^3">[1]，與高斯消去法相同。這個數字其實不算太糟，因為兩個 <img src="https://s0.wp.com/latex.php?latex=n&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="n"> 階方陣相乘就使用了 <img src="https://s0.wp.com/latex.php?latex=n%5E3&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="n^3"> 次運算。另外，正向迭代或反向迭代的運算量都只有 <img src="https://s0.wp.com/latex.php?latex=%5Cfrac%7B1%7D%7B2%7Dn%5E2&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="\frac{1}{2}n^2">，遠比 LU 分解來的少。所以如果只要解出單一線性系統 <img src="https://s0.wp.com/latex.php?latex=A%5Cmathbf%7Bx%7D%3D%5Cmathbf%7Bb%7D&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="A\mathbf{x}=\mathbf{b}">，直接用消去法化簡增廣矩陣 <img src="https://s0.wp.com/latex.php?latex=%5Cbegin%7Bbmatrix%7D++++A%5Cvert%5Cmathbf%7Bb%7D++++%5Cend%7Bbmatrix%7D&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="\begin{bmatrix}    A\vert\mathbf{b}    \end{bmatrix}"> 和 LU 分解的兩段式解法兩者之間並沒有多大差別，但如果稍後還要解多個係數矩陣相同但常數向量改變的系統 <img src="https://s0.wp.com/latex.php?latex=A%5Cmathbf%7Bx%7D%3D%5Cmathbf%7Bb%7D%5E%7B%5Cprime%7D&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="A\mathbf{x}=\mathbf{b}^{\prime}">，LU 分解便能夠派上用場。舉例來說，LU 分解可以用來計算逆矩陣 <img src="https://s0.wp.com/latex.php?latex=A%5E%7B-1%7D&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="A^{-1}">。將矩陣方程 <img src="https://s0.wp.com/latex.php?latex=AX%3DA%5Cbegin%7Bbmatrix%7D++++%5Cmathbf%7Bx%7D_1%26%5Cmathbf%7Bx%7D_2%26%5Cmathbf%7Bx%7D_3++++%5Cend%7Bbmatrix%7D%3DI&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="AX=A\begin{bmatrix}    \mathbf{x}_1&amp;\mathbf{x}_2&amp;\mathbf{x}_3    \end{bmatrix}=I"> 看成三個線性方程：</p>
+<p><img src="https://s0.wp.com/latex.php?latex=A%5Cmathbf%7Bx%7D_1%3D%5Cbegin%7Bbmatrix%7D++1%5C%5C++0%5C%5C++0++%5Cend%7Bbmatrix%7D%2C%7E+A%5Cmathbf%7Bx%7D_2%3D%5Cbegin%7Bbmatrix%7D++0%5C%5C++1%5C%5C++0++%5Cend%7Bbmatrix%7D%2C%7E+A%5Cmathbf%7Bx%7D_3%3D%5Cbegin%7Bbmatrix%7D++0%5C%5C++0%5C%5C++1++%5Cend%7Bbmatrix%7D&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="A\mathbf{x}_1=\begin{bmatrix}  1\\  0\\  0  \end{bmatrix},~ A\mathbf{x}_2=\begin{bmatrix}  0\\  1\\  0  \end{bmatrix},~ A\mathbf{x}_3=\begin{bmatrix}  0\\  0\\  1  \end{bmatrix}">，</p>
+<p>解出的未知向量 <img src="https://s0.wp.com/latex.php?latex=%5Cmathbf%7Bx%7D_i&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="\mathbf{x}_i">，<img src="https://s0.wp.com/latex.php?latex=i%3D1%2C2%2C3&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="i=1,2,3">，就是逆矩陣 <img src="https://s0.wp.com/latex.php?latex=A%5E%7B-1%7D&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="A^{-1}"> 行向量。</p>
+<p>LU 分解還可以用來計算 <img src="https://s0.wp.com/latex.php?latex=n%5Ctimes+n&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="n\times n"> 階行列式。根據矩陣乘積的行列式可乘公式</p>
+<p><img src="https://s0.wp.com/latex.php?latex=%5Cdet+A%3D%5Cdet%28LU%29%3D%28%5Cdet+L%29%28%5Cdet+U%29&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="\det A=\det(LU)=(\det L)(\det U)">，</p>
+<p>三角矩陣的行列式等於主對角元乘積，因此 <img src="https://s0.wp.com/latex.php?latex=%5Cmathrm%7Bdet%7DL%3D1&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="\mathrm{det}L=1">，推論</p>
+<p><img src="https://s0.wp.com/latex.php?latex=%5Cdet+A%3D%5Cdet+U%3D%5Cdisplaystyle%5Cprod_%7Bi%3D1%7D%5Enu_%7Bii%7D&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="\det A=\det U=\displaystyle\prod_{i=1}^nu_{ii}">。</p>
+<p>方陣 <img src="https://s0.wp.com/latex.php?latex=A&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="A"> 的行列式即為消去法所得到的上三角矩陣 <img src="https://s0.wp.com/latex.php?latex=U&amp;bg=ffffff&amp;fg=000000&amp;s=0" alt="U"> 主對角元之積 (關於其他行列式計算方法的介紹，請見“<a href="https://ccjou.wordpress.com/2009/11/24/%e5%8f%a6%e9%a1%9e%e8%a1%8c%e5%88%97%e5%bc%8f%e8%a8%88%e7%ae%97%e6%b3%95-chio-%e6%bc%94%e7%ae%97%e6%b3%95/" target="_blank" rel="noopener">Chiò 演算法──另類行列式計算法</a>”)。</p>
 <h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><hr>
-<p><a href="https://zh.wikipedia.org/wiki/%E5%88%86%E9%83%A8%E7%A9%8D%E5%88%86%E6%B3%95" target="_blank" rel="noopener">Wiki - 分部積分法</a></p>
-<p><a href="http://math2.org/math/integrals/more/ln.htm" target="_blank" rel="noopener">Math2.org Math Tables: <em>Integral ln(x)</em></a></p>
-<p><a href="https://www.emathzone.com/tutorials/calculus/derivative-of-log-x.html" target="_blank" rel="noopener">Derivative of Log X</a></p>
+<p><a href="https://ccjou.wordpress.com/2010/09/01/lu-%E5%88%86%E8%A7%A3/" target="_blank" rel="noopener">LU 分解| 線代啟示錄</a></p>
 
       
     </div>
@@ -479,13 +546,11 @@
       
         <div class="post-tags">
           
-            <a href="/blog/tags/Integration/" rel="tag"># Integration</a>
+            <a href="/blog/tags/LU分解/" rel="tag"># LU分解</a>
           
-            <a href="/blog/tags/Partial-Integration/" rel="tag"># Partial Integration</a>
+            <a href="/blog/tags/LU-Decomposition/" rel="tag"># LU Decomposition</a>
           
-            <a href="/blog/tags/Integration-By-Parts/" rel="tag"># Integration By Parts</a>
-          
-            <a href="/blog/tags/logarithm/" rel="tag"># logarithm</a>
+            <a href="/blog/tags/重點/" rel="tag"># 重點</a>
           
         </div>
       
@@ -498,8 +563,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/2018/04/25/Artificial-Neural-Networks-類神經網路學習/" rel="next" title="Artificial Neural Networks 類神經網路學習">
-                <i class="fa fa-chevron-left"></i> Artificial Neural Networks 類神經網路學習
+              <a href="/blog/2018/05/05/Patent-Claim-專利聲明/" rel="next" title="Patent Claim - 專利聲明">
+                <i class="fa fa-chevron-left"></i> Patent Claim - 專利聲明
               </a>
             
           </div>
@@ -507,10 +572,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/blog/2018/05/04/Technical-Patent-Study-科技專利專題/" rel="prev" title="Technical Patent Study - 科技專利專題">
-                Technical Patent Study - 科技專利專題 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -770,7 +831,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#規則"><span class="nav-number">1.</span> <span class="nav-text">規則</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定理"><span class="nav-number">2.</span> <span class="nav-text">定理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用的分部積分"><span class="nav-number">3.</span> <span class="nav-text">常用的分部積分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#int-ln-x-dx-x-ln-x-x-C"><span class="nav-number">3.1.</span> <span class="nav-text">$\int \ln(x) dx = x\ln(x) - x + C$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#int-log-x-dx-x-cdot-log-x-frac-x-ln-10-C"><span class="nav-number">3.2.</span> <span class="nav-text">$\int \log (x) dx = x\cdot \log (x) - \frac{x}{\ln 10} + C$</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#參考"><span class="nav-number">4.</span> <span class="nav-text">參考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linear-Algebra-重點分析-LU分解"><span class="nav-number">1.</span> <span class="nav-text">Linear Algebra - 重點分析 - LU分解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#存在性"><span class="nav-number">2.</span> <span class="nav-text">存在性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#應用"><span class="nav-number">3.</span> <span class="nav-text">應用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#參考"><span class="nav-number">4.</span> <span class="nav-text">參考</span></a></li></ol></div>
             
 
           </div>
@@ -938,9 +999,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/blog/2018/05/01/Integration-by-parts-分部積分法以及常用的分部積分/';
-        this.page.identifier = '2018/05/01/Integration-by-parts-分部積分法以及常用的分部積分/';
-        this.page.title = 'Integration by parts - 分部積分法以及常用的分部積分';
+        this.page.url = 'http://WangWilly.github.io/blog/2018/05/07/Linear-Algebra-重點分析-LU分解/';
+        this.page.identifier = '2018/05/07/Linear-Algebra-重點分析-LU分解/';
+        this.page.title = 'Linear Algebra - 重點分析 - LU分解';
       };
       function loadComments () {
         var d = document, s = d.createElement('script');
