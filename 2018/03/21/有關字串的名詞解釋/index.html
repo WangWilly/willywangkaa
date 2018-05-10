@@ -103,17 +103,17 @@
   <meta name="keywords" content="String," />
 
 
-<meta name="description" content="字元 (character)： 孤單的一個符號。’7’,’1’, ’ 阿’, ’2’, ’ a’, ’ X’  字元集 (Alphabet)： 由字元組成的集合，通常會用$\sum$表示。  字串 (String)： 由字元集中的字元構成的序列。”7122”  子字串 (Substring)： 字串中的一段連續字元。”71” in ”7122”  子序列 (Subsequence)： 字串中不需">
+<meta name="description" content="字元 (character)：  孤單的一個符號。’7’,’1’, ’ 阿’, ’2’, ’ a’, ’ X’ 2. 字元集 (Alphabet)： 由字元組成的集合，通常會用\(\sum\)表示。 3. 字串 (String)： 由字元集中的字元構成的序列。”7122” 4. 子字串 (Substring)： 字串中的一段連續字元。”71” in ”7122” 5. 子序列 (Su">
 <meta name="keywords" content="String">
 <meta property="og:type" content="article">
 <meta property="og:title" content="有關字串的名詞解釋">
 <meta property="og:url" content="http://WangWilly.github.io/blog/2018/03/21/有關字串的名詞解釋/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="字元 (character)： 孤單的一個符號。’7’,’1’, ’ 阿’, ’2’, ’ a’, ’ X’  字元集 (Alphabet)： 由字元組成的集合，通常會用$\sum$表示。  字串 (String)： 由字元集中的字元構成的序列。”7122”  子字串 (Substring)： 字串中的一段連續字元。”71” in ”7122”  子序列 (Subsequence)： 字串中不需">
+<meta property="og:description" content="字元 (character)：  孤單的一個符號。’7’,’1’, ’ 阿’, ’2’, ’ a’, ’ X’ 2. 字元集 (Alphabet)： 由字元組成的集合，通常會用\(\sum\)表示。 3. 字串 (String)： 由字元集中的字元構成的序列。”7122” 4. 子字串 (Substring)： 字串中的一段連續字元。”71” in ”7122” 5. 子序列 (Su">
 <meta property="og:updated_time" content="2018-04-17T12:39:47.909Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="有關字串的名詞解釋">
-<meta name="twitter:description" content="字元 (character)： 孤單的一個符號。’7’,’1’, ’ 阿’, ’2’, ’ a’, ’ X’  字元集 (Alphabet)： 由字元組成的集合，通常會用$\sum$表示。  字串 (String)： 由字元集中的字元構成的序列。”7122”  子字串 (Substring)： 字串中的一段連續字元。”71” in ”7122”  子序列 (Subsequence)： 字串中不需">
+<meta name="twitter:description" content="字元 (character)：  孤單的一個符號。’7’,’1’, ’ 阿’, ’2’, ’ a’, ’ X’ 2. 字元集 (Alphabet)： 由字元組成的集合，通常會用\(\sum\)表示。 3. 字串 (String)： 由字元集中的字元構成的序列。”7122” 4. 子字串 (Substring)： 字串中的一段連續字元。”71” in ”7122” 5. 子序列 (Su">
 
 
 
@@ -420,59 +420,27 @@
       
 
       
-        <ol>
-<li><p>字元 (character)：</p>
-<p>孤單的一個符號。’7’,’1’, ’ 阿’, ’2’, ’ a’, ’ X’</p>
-</li>
-<li><p>字元集 (Alphabet)：</p>
-<p>由字元組成的集合，通常會用$\sum$表示。</p>
-</li>
-<li><p>字串 (String)：</p>
-<p>由字元集中的字元構成的序列。”7122”</p>
-</li>
-<li><p>子字串 (Substring)：</p>
-<p>字串中的一段連續字元。”71” in ”7122”</p>
-</li>
-<li><p>子序列 (Subsequence)：</p>
-<p>字串中不需連續的一斷字元。”72” in ”7122”</p>
-</li>
-<li><p>前綴 (Prefix)：</p>
-<p>一個子字串包含第一個字元。”7”, ”71”, ”712”, ”7122” in ”7122”，在這裡所有文章我會命名為<strong>前總和</strong>，方便閱讀。</p>
-</li>
-<li><p>後綴 (Suffix)：</p>
-<p>一個子字串包含最後一個字元。”2”, ”22”, ”122”, ”7122” in ”7122”，，在這裡所有文章我會命名為<strong>後總和</strong>，方便閱讀。</p>
-</li>
-<li><p>字典序 (Alphabetical Order)：</p>
-<p>定義字串間的大小。先定義字元間的大小：$$’\,’ &lt; ’a’ &lt; ’b’ &lt; ’c’ &lt; ’d’ &lt; …&lt; ’z’$$通常就是照著 ASCII 碼的編排順序，要注意的是 <em>空字元</em> 比其他字元都小
-接下來從第一個位置一位一位比對，<strong>由左而右比對方小</strong>的就是比較小的<strong>字串</strong>。</p>
-</li>
-<li><p>後綴數組 (Suffix Array)：</p>
-<p>將一個字串的所有後綴<strong>(後總和)</strong> ，照<strong>字典序</strong>排序後，所得的名次陣列。$$Sa[i]: 第i個後綴$$</p>
-<ol>
-<li>排名數組 (Rank Array)：</li>
+        <ol type="1">
+<li>字元 (character)：</li>
 </ol>
-<p>為<strong>後綴數組</strong>的<em>逆數組</em>。$$Ra[i]: 第 i 個後綴是<em>第幾名</em>$$</p>
-</li>
-<li><p>最長共同前綴 (Longest Common Prefix)：</p>
-<p>兩個字串，從第一位一位一位比對，直到不一樣就停止
-$ex:$ <br>
-’712221212’ 和’712222222’ 的LCP(最長共同前綴)：’71222’。</p>
-</li>
-<li><p>lcp(I, J)：</p>
-<p>對於一個字串，他的<strong>第 I 個</strong>後綴和<strong>第 J 個</strong>後綴的 LCP 有多長</p>
-</li>
-<li><p>LCP(I, J)：</p>
-<p>對於一個字串，他的<strong>第 I 名</strong>後綴與<strong>第 J 名</strong>後綴的 LCP 有多長</p>
-</li>
-<li><p>height[i]：</p>
-<p>對於一個字串，LCP(i − 1, i)</p>
-</li>
-<li><p>h[i]：</p>
+<p>孤單的一個符號。’7’,’1’, ’ 阿’, ’2’, ’ a’, ’ X’ 2. 字元集 (Alphabet)：</p>
+<p>由字元組成的集合，通常會用<span class="math inline">\(\sum\)</span>表示。 3. 字串 (String)：</p>
+<p>由字元集中的字元構成的序列。”7122” 4. 子字串 (Substring)：</p>
+<p>字串中的一段連續字元。”71” in ”7122” 5. 子序列 (Subsequence)：</p>
+<p>字串中不需連續的一斷字元。”72” in ”7122” 6. 前綴 (Prefix)：</p>
+<p>一個子字串包含第一個字元。”7”, ”71”, ”712”, ”7122” in ”7122”，在這裡所有文章我會命名為<strong>前總和</strong>，方便閱讀。 7. 後綴 (Suffix)：</p>
+<p>一個子字串包含最後一個字元。”2”, ”22”, ”122”, ”7122” in ”7122”，，在這裡所有文章我會命名為<strong>後總和</strong>，方便閱讀。 8. 字典序 (Alphabetical Order)：</p>
+<p>定義字串間的大小。先定義字元間的大小：<span class="math display">\[’\,’ &lt; ’a’ &lt; ’b’ &lt; ’c’ &lt; ’d’ &lt; …&lt; ’z’\]</span>通常就是照著 ASCII 碼的編排順序，要注意的是 <em>空字元</em> 比其他字元都小 接下來從第一個位置一位一位比對，<strong>由左而右比對方小</strong>的就是比較小的<strong>字串</strong>。 9. 後綴數組 (Suffix Array)：</p>
+<p>將一個字串的所有後綴<strong>(後總和)</strong> ，照<strong>字典序</strong>排序後，所得的名次陣列。<span class="math display">\[Sa[i]: 第i個後綴\]</span> 10. 排名數組 (Rank Array)：</p>
+<p>為<strong>後綴數組</strong>的<em>逆數組</em>。<span class="math display">\[Ra[i]: 第 i 個後綴是*第幾名*\]</span> 11. 最長共同前綴 (Longest Common Prefix)：</p>
+<p>兩個字串，從第一位一位一位比對，直到不一樣就停止 <span class="math inline">\(ex:\)</span> <br> ’712221212’ 和’712222222’ 的LCP(最長共同前綴)：’71222’。 12. lcp(I, J)：</p>
+<p>對於一個字串，他的<strong>第 I 個</strong>後綴和<strong>第 J 個</strong>後綴的 LCP 有多長 13. LCP(I, J)：</p>
+<p>對於一個字串，他的<strong>第 I 名</strong>後綴與<strong>第 J 名</strong>後綴的 LCP 有多長 14. height[i]：</p>
+<p>對於一個字串，LCP(i − 1, i) 15. h[i]：</p>
 <p>對於一個字串，LCP(Ra[i] − 1, Ra[i])</p>
-<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><hr>
+<p># 參考</p>
+<hr>
 <p><a href="http://pisces.ck.tp.edu.tw/~peng/index.php?action=showfile&amp;file=fab7c1879e544bcefffb4b8717f2747436e1c425c" target="_blank" rel="noopener">建國中學 2012 年資訊能力競賽培訓講義 - 08</a></p>
-</li>
-</ol>
 
       
     </div>
@@ -520,8 +488,8 @@ $ex:$ <br>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/blog/2018/03/25/Longest-Palindromic-Substring-Manacher’s-Algorithm/" rel="prev" title="Longest Palindromic Substring (Manacher’s Algorithm)">
-                Longest Palindromic Substring (Manacher’s Algorithm) <i class="fa fa-chevron-right"></i>
+              <a href="/blog/2018/04/18/Decision-Tree-Learning/" rel="prev" title="Decision Tree Learning">
+                Decision Tree Learning <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -581,17 +549,8 @@ $ex:$ <br>
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -639,7 +598,9 @@ $ex:$ <br>
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -724,7 +685,19 @@ $ex:$ <br>
                     
                       
                     
-                    <span class="site-state-item-count">36</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -772,22 +745,6 @@ $ex:$ <br>
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#參考"><span class="nav-number">1.</span> <span class="nav-text">參考</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
