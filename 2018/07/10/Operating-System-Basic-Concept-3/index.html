@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next_cat.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/blog/images/logo_cat.svg?v=6.0.4" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Pisces',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+<meta name="description" content="System Call  It’s a programming interface to the services provides by the OS.  定義：幫助執行中的 user process 與 kernel 之間溝通，當 user peocess 需要OS提供某種服務時，會先以 Trap 通知 OS (由 User mode 轉為 Kernel mode) 並傳入System">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Operating System - Basic Concept 3">
+<meta property="og:url" content="http://WangWilly.github.io/blog/2018/07/10/Operating-System-Basic-Concept-3/index.html">
+<meta property="og:site_name" content="WillyWangkaa">
+<meta property="og:description" content="System Call  It’s a programming interface to the services provides by the OS.  定義：幫助執行中的 user process 與 kernel 之間溝通，當 user peocess 需要OS提供某種服務時，會先以 Trap 通知 OS (由 User mode 轉為 Kernel mode) 並傳入System">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1526605131439.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1526608163203.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1526609224214.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1526610608669.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1526611810996.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1526613108853.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530162737868.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1526613748648.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1526615255622.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1526615230230.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1526804733939.png">
+<meta property="og:updated_time" content="2018-07-10T13:52:54.731Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Operating System - Basic Concept 3">
+<meta name="twitter:description" content="System Call  It’s a programming interface to the services provides by the OS.  定義：幫助執行中的 user process 與 kernel 之間溝通，當 user peocess 需要OS提供某種服務時，會先以 Trap 通知 OS (由 User mode 轉為 Kernel mode) 並傳入System">
+<meta name="twitter:image" content="http://wangwilly.github.io/blog/images/1526605131439.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://WangWilly.github.io/blog/2018/07/10/Operating-System-Basic-Concept-3/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>Operating System - Basic Concept 3 | WillyWangkaa</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WillyWangkaa</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/blog/blog/2018/07/10/Operating-System-Basic-Concept-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Willy Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar_me.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WillyWangkaa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Operating System - Basic Concept 3</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-10T21:44:53+08:00">2018-07-10</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-07-10T21:52:54+08:00">2018-07-10</time>
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/blog/2018/07/10/Operating-System-Basic-Concept-3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/07/10/Operating-System-Basic-Concept-3/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="system-call">System Call</h1>
+<hr>
+<p>It’s a programming interface to the services provides by the OS.</p>
+<ul>
+<li>定義：幫助執行中的 user process 與 kernel 之間溝通，當 user peocess 需要OS提供某種服務時，會先以 Trap 通知 OS (由 User mode 轉為 Kernel mode) 並傳入System call ID (no.) 及所需參數，接著 OS 執行對應的 System call，完成後將服務結果回傳至 User process。</li>
+</ul>
+<figure>
+<img src="\blog\images\1526605131439.png" alt="1526605131439"><figcaption>1526605131439</figcaption>
+</figure>
+<ul>
+<li>種類 (Ref P.3-8 ~ 3-9)
+<ul>
+<li><strong>Process Control</strong>：建立、終止、暫停、恢復執行 process，設定/讀取 process attribute。</li>
+<li><strong>File Management</strong>：建立、讀、寫、開啟、關閉、刪除檔案。</li>
+<li><strong>Device Management</strong>：讀、寫 Device。</li>
+<li><strong>Information of Maintenance：</strong>取得系統日期、時間，取得process屬性。</li>
+<li><strong>Communications：</strong>process之間的通訊，且只針對<strong>Massage Passing</strong>方式提供服務。</li>
+<li>Protection：硬體資源的保護，檔案讀取控制。</li>
+</ul></li>
+<li>System call 的參數(Parameter) 傳遞方式
+<ul>
+<li><strong>暫存器( Register )</strong>：保存參數於暫存器之中傳遞給作業系統。<br>Pros：簡單、存取速度快( 無記憶體存取 )。<br>Cons：不適用於存取大量參數的情況。</li>
+<li><strong>記憶體( Memory )</strong>：以一個區塊( Block, Table )儲存這些參數並將此區塊的起始位址存於一個暫存器之中傳遞給作業系統。<br>Pros：適用於大量參數。<br>Cons：存取速度較慢，且操作較為麻煩。</li>
+<li><strong>系統堆疊( Stack )</strong>：將參數 Push 堆疊之中，作業系統再從堆疊 Pop 取得參數。<br>Pros：也適用大量參數的傳遞，操作也很簡單。<br>Cons：目前無( 可用暫存器或是記憶體實現堆疊 )。</li>
+</ul></li>
+<li><span class="math inline">\(Ex. 20\)</span> (Ref P.3-36)</li>
+</ul>
+<h1 id="作業系統的架構-structure">作業系統的架構( Structure )</h1>
+<hr>
+<ul>
+<li>分類
+<ul>
+<li>Simple</li>
+<li>More complex than simple</li>
+<li><strong>Layered approach</strong></li>
+<li><strong>Microkernel</strong></li>
+<li><strong>Module</strong></li>
+<li>Hybrid</li>
+</ul></li>
+</ul>
+<h2 id="simple">Simple</h2>
+<ul>
+<li>無雙重模式( Duel-mode )</li>
+<li>單工</li>
+<li>無模組化( Module )的設計</li>
+<li>例如：MS-DOS</li>
+</ul>
+<h2 id="more-complex-than-simple">More complex than simple</h2>
+<ul>
+<li>Limited by hard functionality.( 因為當時硬體技術不夠成熟，作業系統受到硬體很大的限制 )</li>
+<li>The original UNIX had limited structuring.</li>
+<li>例如：UNIX</li>
+<li>UNIX 包含兩個分開的部分
+<ul>
+<li>System Programs</li>
+<li>Kernel</li>
+</ul></li>
+<li>Beyond simple but not fully layered.</li>
+</ul>
+<figure>
+<img src="\blog\images\1526608163203.png" alt="1526608163203"><figcaption>1526608163203</figcaption>
+</figure>
+<h2 id="layered-approach">Layered approach</h2>
+<figure>
+<img src="\blog\images\1526609224214.png" alt="1526609224214"><figcaption>1526609224214</figcaption>
+</figure>
+<ul>
+<li>定義：
+<ul>
+<li>採取 Top-down 的方式<strong>切割系統功能/元件</strong>以降低複雜度。</li>
+<li>元件/模組之間呼叫關係<em>分層</em>，即：<strong>上層可以呼叫下層的功能，但下層不得呼叫上層的功能。</strong></li>
+<li>使用由 Button-up 的測試、除錯( 防止下層可以呼叫上層 )。</li>
+<li>層次( Layer )的劃分沒有明確的規定。</li>
+</ul></li>
+<li>Pros
+<ul>
+<li>降低複雜度。</li>
+<li>有助於分工。</li>
+<li>測試、除錯、維護容易。</li>
+</ul></li>
+<li>Cons
+<ul>
+<li>很難精準的劃分層次。例如：<span class="math inline">\(A \rightarrow_{call} B \rightarrow_{call} C\)</span> 但又因為某些原因必須要設計 <span class="math inline">\(C \rightarrow_{call} A\)</span>，最後變成 <span class="math inline">\(A, B, C\)</span> 都在同一層次；解決：將 <span class="math inline">\(C\)</span> 再拆開分成不同層次(難)。</li>
+<li><strong>若層次太多，可能會導致作業系統的效能變差。</strong></li>
+</ul></li>
+</ul>
+<h2 id="microkernel---微核心">＊Microkernel - 微核心</h2>
+<ul>
+<li>由卡內基-美隆大學( CMU )率先提出。
+<ul>
+<li>代表產品：Mach OS</li>
+</ul></li>
+<li>定義：將 Kernel 中一些<strong>不必要的服務移至 User mode 提供服務，以 System program 方式存在</strong>，如次一來可以得到一個比較小的 Kernel 。</li>
+<li>一般而言，微核心提供下列三個最必要的服務：
+<ul>
+<li>Process control</li>
+<li>Memory Management (不包含Virtual memory)</li>
+<li>Process communications (只提供 massage passing 的服務)</li>
+</ul></li>
+</ul>
+<figure>
+<img src="\blog\images\1526610608669.png" alt="1526610608669"><figcaption>1526610608669</figcaption>
+</figure>
+<ul>
+<li>Pros
+<ul>
+<li>Easier to extend a microkernal. ( 因為服務是在User mode，服務的新增或刪除可以不會改到 Kernel 的架構，相對來說更簡單 )</li>
+<li>Easer to port the OS to new archutectures.( 作業系統移植到新的服務平台-cpu不用改太多 )</li>
+<li>More reliable. ( 若有一個服務失效時，對 Kernel 的傷害較小 )</li>
+<li>More secure.</li>
+</ul></li>
+<li>Cons
+<ul>
+<li>效能差，因為存在大量的 User mode 與 Kernel mode 的訊息傳遞。</li>
+</ul></li>
+</ul>
+<p><strong>＜Note＞：</strong>相對於微核心的相反<span class="math inline">\(\rightarrow\)</span><strong>Monolitic kernel</strong>。<br>定義：所有的系統服務皆須在 Kernel 執行。( 商用如：Windows <span class="math inline">\(\Leftrightarrow\)</span> 使用者無法輕易的更改功能 )<br>Pros and Cons 皆與微核心相反。</p>
+<h2 id="module---模組化">Module - 模組化</h2>
+<ul>
+<li>Many OS implement loadable kernel modules. ()</li>
+<li>Use <strong>object-oriented approach</strong>.</li>
+<li>Each core component is <strong>separate</strong>.</li>
+<li>Each talks to the others over known interface.</li>
+<li><strong>Each is loadable as needed within the kernel.</strong> ( 需要該服務的時候再載入到記憶體執行，不需要時就從記憶體移除 )</li>
+<li><strong>Similar to “Layers” but with more flexible.</strong>( 效能更好 )</li>
+<li>例如：Linux, Solaris …</li>
+<li>Pros
+<ul>
+<li>因為與 Kernel 傳輸的距離不長，效能比較好。</li>
+</ul></li>
+</ul>
+<figure>
+<img src="\blog\images\1526611810996.png" alt="1526611810996"><figcaption>1526611810996</figcaption>
+</figure>
+<h2 id="hybrid---混和型">Hybrid - 混和型</h2>
+<ul>
+<li>現在的 OS 很難純粹關屬於某一型。</li>
+<li><span class="math inline">\(Ex.\)</span> Linux and Solaris 是 <strong>Monolitic</strong> 且也是<strong>Moduler for dynamic loading.</strong></li>
+<li><span class="math inline">\(Ex.\)</span> <strong>Windows</strong>大致上是 <strong>Monolitic</strong>，有時真針對不同客戶的需求才會對一些子系統再加入<em>Microkernel</em>。</li>
+<li><span class="math inline">\(Ex.\)</span> <strong>Apple Mac OS Kernel</strong>
+<ul>
+<li><strong>Mach microkernal</strong></li>
+<li>Some of BSD UNIX</li>
+<li>I/O kit</li>
+<li><strong>Dynamic loadable module( kernel extension )</strong></li>
+</ul></li>
+</ul>
+<figure>
+<img src="\blog\images\1526613108853.png" alt="1526613108853"><figcaption>1526613108853</figcaption>
+</figure>
+<p>Aqua：負責 GUI 的顯示。</p>
+<h1 id="vritual-machine">Vritual Machine</h1>
+<hr>
+<figure>
+<img src="\blog\images\1530162737868.png" alt="1530162737868"><figcaption>1530162737868</figcaption>
+</figure>
+<ul>
+<li>定義：利用<strong>軟體技術</strong>模擬出一份與底層硬體一模一樣的功能介面之<strong>抽象化機器( abstract machine )。</strong></li>
+</ul>
+<figure>
+<img src="\blog\images\1526613748648.png" alt="1526613748648"><figcaption>1526613748648</figcaption>
+</figure>
+<ul>
+<li>名詞解釋
+<ul>
+<li>Host：underlying hardware system, OS. ( 原生的硬體與 VMM 都可稱之為 Host )</li>
+<li><strong>VMM ( Virtual Macihine Management or Hypervisor )</strong>：<em>Creates</em> and <em>managing/runs</em> Virtual machine. ( <strong>可以用硬體或是軟體實現</strong> )</li>
+<li>Guest：Process provided with virtual copy of the host.</li>
+</ul></li>
+<li>Abstract hardware of a single computer into several different execution environments.</li>
+<li>Similar to layered approach, but layer creates virtual machine(VM).</li>
+<li>Pros
+<ul>
+<li>為測試<strong>開發中的作業系統之良好的負載平台</strong>，具有：<span class="math inline">\(\;^{[1]}\)</span>其他 user, user process 工作時仍可持續運作不須暫停；<span class="math inline">\(\;^{[2]}\)</span>萬一測試中的作業系統不穩定，就算當機了也不會影響 Host hardware, OS, user procrss 的工作，因為只是相當於一個 user process 失效而已，<strong>不會對 system 有重大危害。</strong></li>
+<li>同一部 Host hardware 上可以在虛擬機中執行多個作業系統，<strong>可節省成本</strong>。</li>
+<li>Consolidation( 資源的彙整、調度 )：在雲端運算環境時，通常會用有限的機器建立為數眾多的虛擬機，可以依虛擬機上的應用程式( Applications )之執行的負擔輕重<strong>調動 Host Machine 資源作為因應的支援。</strong></li>
+<li>較為安全，若被病毒入侵不至於擴散。( 虛擬機之間是獨立的個體 )</li>
+<li>可以 Freeze, Suspend, Running 及 Clone 虛擬機。</li>
+</ul></li>
+</ul>
+<figure>
+<img src="\blog\images\1526615255622.png" alt="1526615255622"><figcaption>1526615255622</figcaption>
+</figure>
+<figure>
+<img src="\blog\images\1526615230230.png" alt="1526615230230"><figcaption>1526615230230</figcaption>
+</figure>
+<h3 id="vmm的實現">VMM的實現</h3>
+<h4 id="主流">主流</h4>
+<p>主要以模擬與底層一模一樣的環境(如 cpu)給作業系統使用，有分成下列三種模擬方式。</p>
+<ul>
+<li><strong>Type 0 Hypervisor</strong> ( Hardware )
+<ul>
+<li><strong>Hardware</strong> - based solutions via firmware. Ex. IBM LPARS and Oracle LDOMs.</li>
+</ul></li>
+<li><strong>Type 1 Hypervisor</strong> ( Kernel mode )
+<ul>
+<li><strong>OS-like software.</strong> Ex. VMware ESX, Joyent SmartOS, <strong>Citrix XenServer</strong>.</li>
+<li>General purpose OS that provide VMM functions( Serveices ). Ex. MicroSoft Window Server with <strong>HyperV</strong>, Redhat Linux with <strong>KVM</strong>.</li>
+</ul></li>
+<li><strong>Type 2 Hypervisor</strong> ( User mode )
+<ul>
+<li><strong>Applications level provides VMM functionally.</strong> Ex. Parallel Desktop, Oracle VirtualBox.</li>
+</ul></li>
+</ul>
+<h4 id="非主流">非主流</h4>
+<p>所實現出來的 VM 不等同於 host 的硬體環境。</p>
+<ul>
+<li><strong>Paravirtualization</strong>
+<ul>
+<li>The <strong>guest OS</strong> need <strong>modify</strong> to work in cooperator with VMM to optimize performance</li>
+<li><strong>Preseents guest with similars but not identical to host hardware.</strong> <br>(指模擬出常用的機器指令，將少用的指令移除以達到 VM最佳化)</li>
+<li><strong>Guest must be modified</strong> to run on paravirtualization hardware.</li>
+</ul></li>
+<li><strong>Application containment</strong> ( 創造一個執行環境 )
+<ul>
+<li><strong>Oralcle Soaris Zones, BSD Jails IBM AIX WPARs.</strong></li>
+</ul></li>
+</ul>
+<figure>
+<img src="\blog\images\1526804733939.png" alt="1526804733939"><figcaption>1526804733939</figcaption>
+</figure>
+<ul>
+<li>Programming - environment virtualization
+<ul>
+<li><strong>VMMs do not virtualize real hardware</strong> but instand create an optimized virtual system.</li>
+<li>Ex. <strong>Java </strong> Virtual Machine (JVM) Microsoft.Net</li>
+<li><strong>＜Note＞：</strong>JVM is a specification (規格) , not a implementation. 其中規範有：<span class="math inline">\(^{[1]}\)</span>Class Loader, <span class="math inline">\(^{[2]}\)</span> Class Verifier, <span class="math inline">\(^{[3]}\)</span> Java Interpreter.</li>
+</ul></li>
+<li>Emulator - 模擬器 ( 不同架構的cpu使用模擬器做轉換 )
+<ul>
+<li>Allow application writtem for one hardware to run on a very different hardware such as <strong>different type of cpu</strong>.</li>
+</ul></li>
+</ul>
+<h1 id="policy-and-mechanism">Policy and Mechanism</h1>
+<hr>
+<ul>
+<li>Policy
+<ul>
+<li>定義：<strong>“What” to be provided&quot;</strong></li>
+<li>Policy 會經常改變。</li>
+</ul></li>
+<li>Mechanism
+<ul>
+<li>定義：<strong>“How” to do that</strong></li>
+<li>「The underlying mechanism」甚少改變或不變。</li>
+</ul></li>
+<li><strong>設計原則</strong>
+<ul>
+<li>Policy and mechanism 最好分開設計，以增進系統的彈性( Flexibility )。</li>
+</ul></li>
+<li>$Ex1. $
+<ul>
+<li>Mechanism：運用 Timer 幫助 cpu protection。</li>
+<li>Policy：Max time Quantum 的大小制定。</li>
+</ul></li>
+<li>$Ex2. $
+<ul>
+<li>Mechanism：cpu 排班採<strong>優先權高低</strong>。</li>
+<li>Policy：<strong>優先權高低的定義</strong>。</li>
+</ul></li>
+</ul>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2018/07/10/Operating-System-Basic-Concept-2/" rel="next" title="Operating System - Basic Concept 2">
+                <i class="fa fa-chevron-left"></i> Operating System - Basic Concept 2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2018/07/10/Operating-System-Deadlock/" rel="prev" title="Operating System - Deadlock">
+                Operating System - Deadlock <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/blog/images/avatar_me.gif"
+                alt="Willy Wang" />
+            
+              <p class="site-author-name" itemprop="name">Willy Wang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/blog/archives/">
+                
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/blog/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/blog/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://typora.io/" title="Typora" target="_blank">Typora</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.geeksforgeeks.org/" title="GeeksforGeeks" target="_blank">GeeksforGeeks</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.codecogs.com/latex/eqneditor.php" title="Online LaTeX Equation Editor" target="_blank">Online LaTeX Equation Editor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://allem40306.github.io/blog/" title="CodingJack" target="_blank">CodingJack</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#system-call"><span class="nav-number">1.</span> <span class="nav-text">System Call</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#作業系統的架構-structure"><span class="nav-number">2.</span> <span class="nav-text">作業系統的架構( Structure )</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#simple"><span class="nav-number">2.1.</span> <span class="nav-text">Simple</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#more-complex-than-simple"><span class="nav-number">2.2.</span> <span class="nav-text">More complex than simple</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#layered-approach"><span class="nav-number">2.3.</span> <span class="nav-text">Layered approach</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#microkernel---微核心"><span class="nav-number">2.4.</span> <span class="nav-text">＊Microkernel - 微核心</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#module---模組化"><span class="nav-number">2.5.</span> <span class="nav-text">Module - 模組化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hybrid---混和型"><span class="nav-number">2.6.</span> <span class="nav-text">Hybrid - 混和型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vritual-machine"><span class="nav-number">3.</span> <span class="nav-text">Vritual Machine</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vmm的實現"><span class="nav-number">3.0.1.</span> <span class="nav-text">VMM的實現</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#主流"><span class="nav-number">3.0.1.1.</span> <span class="nav-text">主流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非主流"><span class="nav-number">3.0.1.2.</span> <span class="nav-text">非主流</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#policy-and-mechanism"><span class="nav-number">4.</span> <span class="nav-text">Policy and Mechanism</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Willy Wang</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=6.0.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://https-wangwilly-github-io-blog.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://WangWilly.github.io/blog/2018/07/10/Operating-System-Basic-Concept-3/';
+        this.page.identifier = '2018/07/10/Operating-System-Basic-Concept-3/';
+        this.page.title = 'Operating System - Basic Concept 3';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-wangwilly-github-io-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/blog/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/blog/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>

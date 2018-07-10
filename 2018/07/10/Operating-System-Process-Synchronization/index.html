@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next_cat.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/blog/images/logo_cat.svg?v=6.0.4" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Pisces',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="Process Synchronization," />
+
+
+<meta name="description" content="Process Synchronization ( Process Communication, Inter Process Communication )   Synchronization  Process 因為「某件事情」的已發生或是未發生( 有多個 process 相互合作的時候 )，導致必須等待該事件完成或發生才得以繼續進行。   Process Communicatio">
+<meta name="keywords" content="Process Synchronization">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Operating System - Process Synchronization">
+<meta property="og:url" content="http://WangWilly.github.io/blog/2018/07/10/Operating-System-Process-Synchronization/index.html">
+<meta property="og:site_name" content="WillyWangkaa">
+<meta property="og:description" content="Process Synchronization ( Process Communication, Inter Process Communication )   Synchronization  Process 因為「某件事情」的已發生或是未發生( 有多個 process 相互合作的時候 )，導致必須等待該事件完成或發生才得以繼續進行。   Process Communicatio">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530175318032.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530176275538.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530176581925.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1531041864596.png">
+<meta property="og:updated_time" content="2018-07-10T15:09:58.260Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Operating System - Process Synchronization">
+<meta name="twitter:description" content="Process Synchronization ( Process Communication, Inter Process Communication )   Synchronization  Process 因為「某件事情」的已發生或是未發生( 有多個 process 相互合作的時候 )，導致必須等待該事件完成或發生才得以繼續進行。   Process Communicatio">
+<meta name="twitter:image" content="http://wangwilly.github.io/blog/images/1530175318032.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://WangWilly.github.io/blog/2018/07/10/Operating-System-Process-Synchronization/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>Operating System - Process Synchronization | WillyWangkaa</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WillyWangkaa</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/blog/blog/2018/07/10/Operating-System-Process-Synchronization/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Willy Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar_me.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WillyWangkaa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Operating System - Process Synchronization</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-10T23:05:00+08:00">2018-07-10</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-07-10T23:09:58+08:00">2018-07-10</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/blog/categories/Operating-System/" itemprop="url" rel="index"><span itemprop="name">Operating System</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/blog/2018/07/10/Operating-System-Process-Synchronization/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/07/10/Operating-System-Process-Synchronization/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="process-synchronization-process-communication-inter-process-communication">Process Synchronization ( Process Communication, Inter Process Communication )</h1>
+<hr>
+<ul>
+<li>Synchronization
+<ul>
+<li>Process 因為「某件事情」的已發生或是未發生( 有多個 process 相互合作的時候 )，導致必須等待該事件完成或發生才得以繼續進行。</li>
+</ul></li>
+</ul>
+<h2 id="process-communication">Process Communication</h2>
+<h3 id="shared-memory">Shared memory</h3>
+<figure>
+<img src="\blog\images\1530175318032.png" alt="1530175318032"><figcaption>1530175318032</figcaption>
+</figure>
+<p>Process 透過對共享變數 ( Shared variables ) 之存 ( Write )、取 ( Read )，達到構通 ( Infomation exchange ) 的目的。</p>
+<ul>
+<li><strong>分析</strong>
+<ol type="1">
+<li>適用於<strong>大量資料( Data, Message )</strong>傳輸的狀況。</li>
+<li>因為<strong>不須 Kernel 的介入干涉</strong>，因此傳輸速度<strong>較快</strong>。</li>
+<li>不適用在分散式系統( distributed system )。</li>
+<li>Kernel 不須提供額外的支援( 最多就只供應共享的記憶體空間 Shared memory space )，<strong>而所有的控制都交付給 Programmer 自行負擔，必須撰寫額外的控制碼防止 Race condition 發生。</strong></li>
+</ol></li>
+</ul>
+<h3 id="message-passing">Message passing</h3>
+<p>Process 雙方要溝通必須要遵循以下步驟</p>
+<ol type="1">
+<li><strong>建立 Communication link。</strong></li>
+<li><strong>訊息可雙向傳輸。</strong></li>
+<li><strong>傳輸完畢，釋放 Communication link。</strong></li>
+</ol>
+<ul>
+<li><strong>分析</strong>
+<ol type="1">
+<li>適用於<strong>少量資料( Data, Message )</strong>傳輸的狀況。</li>
+<li>因為<strong>須要 Kernel 的介入干涉</strong>，因此傳輸速度<strong>較慢</strong>。</li>
+<li><strong>適用在分散式系統( Distributed system )。</strong></li>
+<li>Kernel 必須提供額外的支援( <strong>如：System call of send/receive, Management of communication link, Detection of message lost, 例外狀況的處理</strong> )，而所有的通訊控制都交付給作業系統。</li>
+</ol></li>
+</ul>
+<h2 id="race-condition-problem-in-memory-communication">Race Condition Problem in Memory Communication</h2>
+<p>在利用共享記憶體作為通訊橋梁時，若未對共享變數存取提供<strong>任何互斥存取控制之同步( Synchronization )機制，會因為 Processes 之間的交錯執行而導致前後順序不同，進而造成共享變數的最終結果有所不同，</strong>這種<strong>資料不一致( Data inconsistency )的情型</strong>，稱為 Race condition。</p>
+<ul>
+<li><span class="math inline">\(Ex .\)</span>
+<ul>
+<li>C 為共享變數且初值為 5。</li>
+<li>兩個 Processes <span class="math inline">\(P_i, P_j\)</span>，分別程式碼如下。</li>
+</ul></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//P_i</span></span><br><span class="line">...</span><br><span class="line">C = C + <span class="number">1</span>;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//P_j</span></span><br><span class="line">...</span><br><span class="line">C = C - <span class="number">1</span>;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p><span class="math inline">\(P_i, P_j\)</span> 個執行一次則 <strong>C 的最終值可能是 5 或 4 或 6。</strong></p>
+<ul>
+<li>正常結束( No race condition ) ：5</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// processing flow</span></span><br><span class="line">c = c + <span class="number">1</span> <span class="comment">// P_i</span></span><br><span class="line">c = c - <span class="number">1</span> <span class="comment">// P_j</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//processing flow</span></span><br><span class="line">c = c - <span class="number">1</span> <span class="comment">// P_j</span></span><br><span class="line">c = c + <span class="number">1</span> <span class="comment">// P_i</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Race condition：4</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// assembly processing flow</span></span><br><span class="line"><span class="comment">// P_i</span></span><br><span class="line">load c; <span class="comment">// c == 5</span></span><br><span class="line"><span class="comment">// P_j</span></span><br><span class="line">load c; <span class="comment">// c == 5</span></span><br><span class="line"><span class="comment">// P_i</span></span><br><span class="line">process c = c + <span class="number">1</span>; <span class="comment">// c == 6</span></span><br><span class="line"><span class="comment">// P_j</span></span><br><span class="line">process c = c - <span class="number">1</span>; <span class="comment">// c == 4</span></span><br><span class="line"><span class="comment">// P_i</span></span><br><span class="line">restore to c; <span class="comment">// c == 6</span></span><br><span class="line"><span class="comment">// P_j</span></span><br><span class="line">restore to c; <span class="comment">// c == 4</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Race condition：6</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// assembly processing flow</span></span><br><span class="line"><span class="comment">// P_i</span></span><br><span class="line">load c; <span class="comment">// c == 5</span></span><br><span class="line"><span class="comment">// P_j</span></span><br><span class="line">load c; <span class="comment">// c == 5</span></span><br><span class="line"><span class="comment">// P_i</span></span><br><span class="line">process c = c + <span class="number">1</span>; <span class="comment">// c == 6</span></span><br><span class="line"><span class="comment">// P_j</span></span><br><span class="line">process c = c - <span class="number">1</span>; <span class="comment">// c == 4</span></span><br><span class="line"><span class="comment">// P_j</span></span><br><span class="line">restore to c; <span class="comment">// c == 4</span></span><br><span class="line"><span class="comment">// P_i</span></span><br><span class="line">restore to c; <span class="comment">// c == 6</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><span class="math inline">\(Ex 1.\)</span> x、y 是共享變數，初值各別為 5, 7 ，有兩個 process <span class="math inline">\(P_i, P_j\)</span> 分別程式碼如下。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//P_i</span></span><br><span class="line">...</span><br><span class="line">x = x + y;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//P_j</span></span><br><span class="line">...</span><br><span class="line">y = x * y;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p><span class="math inline">\(P_i, P_j\)</span> 各作一次，求 (x, y) 可能的值？</p>
+<ul>
+<li>(12, 84)</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// processing flow</span></span><br><span class="line">x = x + y;</span><br><span class="line">y = x * y;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>(40, 35)</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// processing flow</span></span><br><span class="line">y = x * y;</span><br><span class="line">x = x + y;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>*** (12, 35)**</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// assembly processing flow</span></span><br><span class="line"><span class="comment">// P_1</span></span><br><span class="line">load x, y; <span class="comment">// x = 5, y = 7</span></span><br><span class="line"><span class="comment">// P_2</span></span><br><span class="line">load x, y; <span class="comment">// x = 5, y = 7</span></span><br><span class="line"><span class="comment">// P_1</span></span><br><span class="line">process x = x + y;</span><br><span class="line">restore to x;</span><br><span class="line"><span class="comment">// P_2</span></span><br><span class="line">process y = x * y;</span><br><span class="line">restore to y;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><span class="math inline">\(Ex 2.\)</span> x 是共享變數<strong>初值等於零</strong> ， i 為<em>區域變數</em>，另外有兩個 process <span class="math inline">\(P_i, P_j\)</span> 分別程式碼如下。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//P_i</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">3</span>; i++ )</span><br><span class="line">    x = x + <span class="number">1</span>;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//P_j</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">3</span>; i++ )</span><br><span class="line">    x = x + <span class="number">1</span>;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p><span class="math inline">\(P_i, P_j\)</span> 各作一次，求 x 可能的值( <strong>可能的最小值、可能的最大值</strong> )？</p>
+<ul>
+<li>先拆解 for loop</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_i</span></span><br><span class="line">x = x + <span class="number">1</span>;</span><br><span class="line">x = x + <span class="number">1</span>;</span><br><span class="line">x = x + <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_j</span></span><br><span class="line">x = x + <span class="number">1</span>;</span><br><span class="line">x = x + <span class="number">1</span>;</span><br><span class="line">x = x + <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>分析若為最小值的狀況：3。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// assembly processing flow</span></span><br><span class="line"><span class="comment">// P_i</span></span><br><span class="line">load x; <span class="comment">// x = 0</span></span><br><span class="line"><span class="comment">// P_j</span></span><br><span class="line">load x; <span class="comment">// x = 0</span></span><br><span class="line"><span class="comment">// P_i</span></span><br><span class="line">x = x + <span class="number">1</span>;</span><br><span class="line">restore x; <span class="comment">// x = 1</span></span><br><span class="line"><span class="comment">// P_j</span></span><br><span class="line">x = x + <span class="number">1</span>;</span><br><span class="line">restore x; <span class="comment">// x = 1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// P_i</span></span><br><span class="line">load x; <span class="comment">// x = 1</span></span><br><span class="line"><span class="comment">// P_j</span></span><br><span class="line">load x; <span class="comment">// x = 1</span></span><br><span class="line"><span class="comment">// P_i</span></span><br><span class="line">x = x + <span class="number">1</span>;</span><br><span class="line">restore x; <span class="comment">// x = 2</span></span><br><span class="line"><span class="comment">// P_j</span></span><br><span class="line">x = x + <span class="number">1</span>;</span><br><span class="line">restore x; <span class="comment">// x = 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// P_i</span></span><br><span class="line">load x; <span class="comment">// x = 2</span></span><br><span class="line"><span class="comment">// P_j</span></span><br><span class="line">load x; <span class="comment">// x = 2</span></span><br><span class="line"><span class="comment">// P_i</span></span><br><span class="line">x = x + <span class="number">1</span>;</span><br><span class="line">restore x; <span class="comment">// x = 3</span></span><br><span class="line"><span class="comment">// P_j</span></span><br><span class="line">x = x + <span class="number">1</span>;</span><br><span class="line">restore x; <span class="comment">// x = 3</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>正常結束：6</li>
+<li><p>所以 x 的值會介於在 3 ～ 6 之間，都是有可能會出現的狀況。</p></li>
+<li><p><span class="math inline">\(Ex 3.\)</span> x 是共享變數<strong>初值等於零</strong> ， i 為<em>區域變數</em>，另外有兩個 process <span class="math inline">\(P_i, P_j\)</span> 分別程式碼如下。</p></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//P_i</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">3</span>; i++ )</span><br><span class="line">    x = x + <span class="number">1</span>;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//P_j</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">3</span>; i++ )</span><br><span class="line">    x = x - <span class="number">1</span>;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p><span class="math inline">\(P_i, P_j\)</span> 各作一次，求 x 可能的值( <strong>可能的最小值、可能的最大值</strong> )？</p>
+<ul>
+<li>先拆解 for loop</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_i</span></span><br><span class="line">x = x + <span class="number">1</span>;</span><br><span class="line">x = x + <span class="number">1</span>;</span><br><span class="line">x = x + <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_j</span></span><br><span class="line">x = x - <span class="number">1</span>;</span><br><span class="line">x = x - <span class="number">1</span>;</span><br><span class="line">x = x - <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>分析若為最小值的狀況：-3。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// assembly processing flow</span></span><br><span class="line"><span class="comment">// P_i</span></span><br><span class="line">load x; <span class="comment">// x = 0</span></span><br><span class="line"><span class="comment">// P_j</span></span><br><span class="line">load x; <span class="comment">// x = 0</span></span><br><span class="line"><span class="comment">// P_i</span></span><br><span class="line">x = x + <span class="number">1</span>;</span><br><span class="line">restore x; <span class="comment">// x = 1</span></span><br><span class="line"><span class="comment">// P_j</span></span><br><span class="line">x = x - <span class="number">1</span>;</span><br><span class="line">restore x; <span class="comment">// x = -1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// P_i</span></span><br><span class="line">load x; <span class="comment">// x = -1</span></span><br><span class="line"><span class="comment">// P_j</span></span><br><span class="line">load x; <span class="comment">// x = -1</span></span><br><span class="line"><span class="comment">// P_i</span></span><br><span class="line">x = x + <span class="number">1</span>;</span><br><span class="line">restore x; <span class="comment">// x = 0</span></span><br><span class="line"><span class="comment">// P_j</span></span><br><span class="line">x = x - <span class="number">1</span>;</span><br><span class="line">restore x; <span class="comment">// x = -2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// P_i</span></span><br><span class="line">load x; <span class="comment">// x = -2</span></span><br><span class="line"><span class="comment">// P_j</span></span><br><span class="line">load x; <span class="comment">// x = -2</span></span><br><span class="line"><span class="comment">// P_i</span></span><br><span class="line">x = x + <span class="number">1</span>;</span><br><span class="line">restore x; <span class="comment">// x = -1</span></span><br><span class="line"><span class="comment">// P_j</span></span><br><span class="line">x = x + <span class="number">1</span>;</span><br><span class="line">restore x; <span class="comment">// x = -3</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>最大值的狀況：3。</li>
+</ul>
+<h3 id="解決-race-condition">解決 Race Condition</h3>
+<h4 id="disable-inrerrput-針對cpu">Disable inrerrput ( 針對CPU )</h4>
+<p>Process 在對共享變數存取之前，<strong>先 Disable interrupt</strong>，等到完成共享變數的存取後，<strong>才 Enable interrupt，</strong>如此一來可以保證 Process 在存取共享變數的期間 <strong>CPU 不會被搶走( Preempted )</strong>，所以這種存取的方法稱為「<strong>Atomically executed (不可分割之執行)</strong>」，所以可以防止 Race condition。</p>
+<ul>
+<li><span class="math inline">\(Ex.\)</span></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//P_i</span></span><br><span class="line">...</span><br><span class="line">disable interrupt</span><br><span class="line">C = C + <span class="number">1</span>;</span><br><span class="line">enable interrupt</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//P_j</span></span><br><span class="line">...</span><br><span class="line">disable interrupt</span><br><span class="line">C = C - <span class="number">1</span>;</span><br><span class="line">enable interrupt</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Pros</li>
+<li>Simple, easy to implementation</li>
+<li><strong>適用於 Uniprocessor system。(單一CPU)</strong></li>
+<li>Cons
+<ul>
+<li><strong>不適合用在 Multiprocessors system 中。因為只 Disable 一顆 CPU 的 Interrupt 功能無法防止 race condition ( 其他的 CPUs 上執行之 Processes 仍可以存取該共享變數 )；但若 Disable 所有 CPU 的 Interrupt 功能，雖然可以防止 Race condition，但是會導致 Multiprocessor 的效能低落( low performance，因為無法「平行執行」 )變得和 Single-processor 的環境差不多。</strong></li>
+<li><strong>風險很高：因為 Disable interrupt 指應為特權指令(風險高，可能阻擋 Kernel 的插斷)，</strong>所以必須信任使用者程式在 Disable interrupt 後，在短時間內會再 Enable interrupt <strong>，不然 CPU 從此再也不會回到 Kernel 管理的狀態 ( 高風險!! )。</strong></li>
+<li><strong>＜Note＞通常「 Disable interrupt 解決方法」不會下放給 User process，通常只存在於作業系統 Kernel 的實踐之中。</strong>( 只有作業系統開發者可以使用 )</li>
+</ul></li>
+</ul>
+<figure>
+<img src="\blog\images\1530176275538.png" alt="1530176275538"><figcaption>1530176275538</figcaption>
+</figure>
+<h4 id="critical-section-design-針對共享資料製作臨界區塊">Critical section design( 針對共享資料製作臨界區塊 )</h4>
+<p>針對「共享變數」的存取進行管制，當 P_i 取得共享變數存取管制，在該 Process 尚未完成之期間，任何其餘 Processes 即便已取得 CPU 的使用權之下，<strong>仍無法存取共享變數</strong>。</p>
+<figure>
+<img src="\blog\images\1530176581925.png" alt="1530176581925"><figcaption>1530176581925</figcaption>
+</figure>
+<ul>
+<li><strong>Critical section</strong>
+<ul>
+<li>Process 中對於共享變數進行存取的敘述集合。</li>
+</ul></li>
+<li><strong>Remainder section</strong>
+<ul>
+<li>Process 中除了 C. S. 之外的區間統稱為 Remainder section。</li>
+</ul></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// Process</span><br><span class="line">repeat</span><br><span class="line">	entery section</span><br><span class="line">		</span><br><span class="line">		critical section</span><br><span class="line">		</span><br><span class="line">    exit section</span><br><span class="line">    </span><br><span class="line">    	remainder section</span><br><span class="line">    	</span><br><span class="line">until falseS</span><br></pre></td></tr></table></figure>
+<p>Critical section 的主要設計，是設計每個 Critical section 的前後 Programmer 需增加的控制碼( <strong>Entery section、Exit section</strong> )。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//P_i</span></span><br><span class="line">...</span><br><span class="line"><span class="comment">// Enter section</span></span><br><span class="line">...</span><br><span class="line">C = C + <span class="number">1</span>;</span><br><span class="line">...</span><br><span class="line"><span class="comment">// Exit section</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Remainder section</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//P_j</span></span><br><span class="line">...</span><br><span class="line"><span class="comment">// Enter section</span></span><br><span class="line">...</span><br><span class="line">C = C - <span class="number">1</span>;</span><br><span class="line">...</span><br><span class="line"><span class="comment">// Exit section</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Remainder section</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h4 id="critical-section-spinlock-busy-wiating-vs.-disable-interrupt">Critical Section ( Spinlock, Busy-wiating ) VS. Disable interrupt</h4>
+<ul>
+<li>Critical Section (Pros)
+<ul>
+<li><strong>適用於多處理器系統( Multiprocessor system )。</strong></li>
+</ul></li>
+<li>Critical Section (Cons)
+<ul>
+<li><strong>設計較為複雜。</strong></li>
+<li><strong>較不適合用在單處理器系統( Uniprocessor system )。</strong></li>
+</ul></li>
+</ul>
+<h3 id="busy-waiting-spinlock-技巧">Busy waiting ( Spinlock ) 技巧</h3>
+<p>透過使用迴圈相關敘述達到<strong>讓 Process 暫時等待該共享變數。</strong></p>
+<ul>
+<li>Cons
+<ul>
+<li><strong>在 Spinlock 等待中的 Porcess 會與其他 Processes 競爭 CPU ，將得到的 CPU time 用在於空轉( spinlock )中</strong>，因此若 Process 要等待很長的時間才能離開迴圈，則這種技巧非常浪費 CPU time。</li>
+</ul></li>
+<li>Pros
+<ul>
+<li><strong>若 Process 在迴圈等待的時間短( 小於「Context switching time」 )，則 Spinlock 非常有用。</strong></li>
+</ul></li>
+</ul>
+<figure>
+<img src="\blog\images\1531041864596.png" alt="1531041864596"><figcaption>1531041864596</figcaption>
+</figure>
+<ul>
+<li>( 恐龍課本 )謬誤：因為 Critical Section 設計當中，「Entery section」中經常使用 Busy-waiting ( spinlock ) 技巧，而課本將 Busy-waiting ( Spinlock ) 與 Critical Section 視為相同，<strong>進而與 Disable interrupt 比較( 應是 Busy waiting 與 Non-busy waiting 來比較 )</strong>。</li>
+</ul>
+<h3 id="non-busy-waiting-技巧">Non-busy waiting 技巧</h3>
+<p>當 Process 因為同步事件( Synchronization event )被長時間卡住，<strong>則可以使用 Block system call 將該 Process 送入 Blocked state，所以不會與其他 Process 競爭 CPU ，直到該事件觸動了，才會喚醒(wake up system call) 該 Process 移至 Ready state</strong>。</p>
+<ul>
+<li>Pros
+<ul>
+<li><strong>等待中的 Process 不會與其他 Process 不會浪費 CPU time。</strong></li>
+</ul></li>
+<li>Cons
+<ul>
+<li><strong>需額外付出「Context switching time」。</strong></li>
+</ul></li>
+</ul>
+<h3 id="critical-section-design">Critical Section Design</h3>
+<ul>
+<li><strong>關鍵性質</strong>
+<ul>
+<li><strong>Mutual exclution：在任何時間點最多只允許一個 Process 進入它的 C.S. ，不可以有多個 Processes 分別進入各自的 C.S.。</strong></li>
+<li>*<strong>Progress：不想進入 C.S. 的 Process ( 在 R.S. 中活動的 Process )，不可阻礙( 不參與「 進入C.S.」的決策 )其他 Processes 進入 C.S.。</strong><br>「安排欲進入 C.S 的 Process」之決策，要在<strong>有限的時間中完成 ( Non-deadlock：不可以無窮等待，使得全部之 Process 皆無法進入 C.S. )。</strong>—全部 Process 都無法進入</li>
+<li><strong>Bounded waiting：</strong>當有 Process 提出「進入 C.S.」之申請，等待核准的時間是有限的( 防止該 Process 出現 Starvation 的情形 )。—單一 Process 一直無法進入<br><strong>若有 n 個 Process 欲進入 C.S. 則每個 Process 最多等待 n-1 次後即可進入 C.S.。</strong></li>
+</ul></li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 20%">
+<col style="width: 39%">
+<col style="width: 14%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th></th>
+<th><strong>著重於</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>高階( 位於函式庫中 )</td>
+<td><strong>Monitor</strong></td>
+<td>同步問題之解決</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>中階( 通常於 System call )</td>
+<td><strong>Semaphore</strong></td>
+<td>同步問題之解決</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>基礎建設( 作業系統核心製作 )</td>
+<td><strong>Software solutions、Hardware instrustions support</strong></td>
+<td>C.S. 設計的正確與否</td>
+<td><strong>Disable interrupt </strong> 也在基礎建設</td>
+</tr>
+</tbody>
+</table>
+<h4 id="software-solutions">Software Solutions</h4>
+<h5 id="兩個-processes-之-critical-section-design">兩個 Processes 之 critical section design</h5>
+<p>有兩個 Process <span class="math inline">\(P_i, P_j\)</span>。</p>
+<h6 id="algorithm-1-fall-權力層面">Algorithm 1 ( Fall )：權力層面</h6>
+<ul>
+<li>共享變數：<strong>Turn：int，值恰為 i 或是 j 值。</strong>
+<ul>
+<li><strong>視為一種權力的象徵，當 turn 值為 i 時 <span class="math inline">\(P_i\)</span> 始得 進入 C.S. 的權力，且只能讓 <span class="math inline">\(P_i\)</span> 下一個進入 C.S. ，反之亦然。</strong></li>
+</ul></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_i</span></span><br><span class="line">Repeat</span><br><span class="line">	<span class="keyword">while</span> ( turn != i ); <span class="comment">// enter</span></span><br><span class="line">	C.S.</span><br><span class="line">    turn = j; <span class="comment">// leave</span></span><br><span class="line">	R.S.</span><br><span class="line">Until False</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_j</span></span><br><span class="line">Repeat</span><br><span class="line">	<span class="keyword">while</span> ( turn != j ); <span class="comment">//enter</span></span><br><span class="line">	C.S.</span><br><span class="line">    turn = i; <span class="comment">//leave</span></span><br><span class="line">	R.S.</span><br><span class="line">Until False</span><br></pre></td></tr></table></figure>
+<p><strong>＜分析＞</strong>：</p>
+<ol type="1">
+<li>Mutual exclution ( OK ) ：<strong>因為 turn 值不會同時為 i 且為 j ，只會為 i 或 j 之其中一個值，所以只有 </strong><span class="math inline">\(P_i\)</span> 或 <span class="math inline">\(P_j\)</span> <strong>一個可進入 C.S. 而不會兩個同時進入。</strong></li>
+<li>Progress ( FALL ) ：假設目前 <span class="math inline">\(P_i\)</span> <strong>在 R.S. ( 且</strong> <span class="math inline">\(P_i\)</span> <strong>不想進入 C.S. )，而目前的 turn = i 且 </strong><span class="math inline">\(P_j\)</span> <strong>欲進入 C.S，但是因為</strong> <span class="math inline">\(P_i\)</span> <strong>仍在 R.S. 無法交付 turn ，所以被</strong> <span class="math inline">\(P_i\)</span> <strong>阻礙進入。</strong></li>
+<li>Bounded waiting ( OK ) ：<strong>證明 <span class="math inline">\(P_i\)</span> 無法連續兩次進入 C.S 之中。</strong>假設目前 turn = i，且<span class="math inline">\(P_i\)</span> 已先早於 <span class="math inline">\(P_j\)</span> 進入 C.S. 使 <span class="math inline">\(P_j\)</span> 開始等待，若 <span class="math inline">\(P_i\)</span> 離開後又想立刻想再次進入，但因為 <span class="math inline">\(P_i\)</span> 離開時會將 turn = j，使得 <span class="math inline">\(P_i\)</span> 無法再度比 <span class="math inline">\(P_j\)</span> 早進入 C.S.，這一次 <span class="math inline">\(P_j\)</span> 必定先進入之 ，<strong>所以 </strong><span class="math inline">\(P_j\)</span> <strong>最多等一次後即可進入。</strong></li>
+</ol>
+<h6 id="algorithm-2-fall-意願層面">Algorithm 2 ( Fall )：意願層面</h6>
+<ul>
+<li>共享變數：flag[ i … j ] of Boolean。( 初值皆為 False )
+<ul>
+<li><span class="math inline">\(flag[i] = \left\{\begin{matrix}True \quad P_i \; 有意願進入 \; C.S.\\ False \quad P_i \; 無意願進入\; C.S. \end{matrix}\right.\)</span></li>
+</ul></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_i</span></span><br><span class="line">Repeat</span><br><span class="line">	flag[i] = <span class="literal">true</span>; <span class="comment">// 表達意願</span></span><br><span class="line">	<span class="keyword">while</span> (flag[j]); <span class="comment">// enter</span></span><br><span class="line">	C.S.</span><br><span class="line">    flag[i] = <span class="literal">false</span>; <span class="comment">// leave</span></span><br><span class="line">Until <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_j</span></span><br><span class="line">Repeat</span><br><span class="line">	flag[j] = <span class="literal">true</span>; <span class="comment">// 表達意願</span></span><br><span class="line">	<span class="keyword">while</span> (flag[i]); <span class="comment">// enter</span></span><br><span class="line">	C.S.</span><br><span class="line">    flag[i] = <span class="literal">false</span>; <span class="comment">// leave</span></span><br><span class="line">Until <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p><strong>＜Note＞</strong></p>
+<ol type="1">
+<li>Progress ( 造成死結 -&gt; Fall )</li>
+<li>Mutual exclusion ( OK )</li>
+<li>Bounded waiting ( OK )</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">flag[i] = <span class="literal">true</span>; <span class="comment">// P_i 表達意願</span></span><br><span class="line">flag[j] = <span class="literal">true</span>; <span class="comment">// P_j表達意願</span></span><br><span class="line">	<span class="keyword">while</span> (flag[j]); <span class="comment">// P_i can't enter</span></span><br><span class="line">	<span class="keyword">while</span> (flag[j]); <span class="comment">// P_j can't enter</span></span><br><span class="line">... <span class="comment">// Progress fall ( Deadlock )</span></span><br></pre></td></tr></table></figure>
+<h6 id="algorithm-3---petersons-algorithm-ok-權力意願層面">Algorithm 3 - Peterson’s Algorithm ( OK )：權力、意願層面</h6>
+<ul>
+<li>共享變數：flag[ i … j ] of Boolean。( 初值皆為 False )
+<ul>
+<li><span class="math inline">\(flag[i] = \left\{\begin{matrix}True \quad P_i \; 有意願進入 \; C.S.\\ False \quad P_i \; 無意願進入\; C.S. \end{matrix}\right.\)</span></li>
+</ul></li>
+<li>共享變數：<strong>Turn：int，值恰為 i 或是 j 值。</strong></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_i</span></span><br><span class="line">Repeat</span><br><span class="line">	flag[i] = <span class="literal">true</span>;                 <span class="comment">// 表達意願</span></span><br><span class="line">	turn = j;                       <span class="comment">// * enter ( 權力先給對方 )</span></span><br><span class="line">	<span class="keyword">while</span> ( flag[j] &amp;&amp; turn == j ); <span class="comment">//   enter</span></span><br><span class="line"><span class="comment">//  turn = i;                       //   enter</span></span><br><span class="line">	C.S.</span><br><span class="line"><span class="comment">//  turn = j;                       // enter ( fall )</span></span><br><span class="line">    flag[i] = <span class="literal">false</span>;                <span class="comment">// leave</span></span><br><span class="line">Until <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_j</span></span><br><span class="line">Repeat</span><br><span class="line">	flag[j] = <span class="literal">true</span>;                 <span class="comment">// 表達意願</span></span><br><span class="line">	turn = i;                       <span class="comment">// *enter</span></span><br><span class="line">	<span class="keyword">while</span> ( flag[i] &amp;&amp; turn == i ); <span class="comment">//  enter</span></span><br><span class="line"><span class="comment">//  turn = i;                       //  enter</span></span><br><span class="line">	C.S.</span><br><span class="line"><span class="comment">//  turn = j;                       // enter ( fall )</span></span><br><span class="line">    flag[j] = <span class="literal">false</span>;                <span class="comment">// leave</span></span><br><span class="line">Until <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Mutual exclusion (OK)：<strong>若 </strong><span class="math inline">\(P_i, P_j\)</span> <strong>皆欲進入 C.S. 代表 </strong><code>flag[i]</code> <strong>與</strong> <code>flag[j]</code> <strong>皆為 True，當雙方皆作到</strong><code>while</code><strong>測試的時候，代表雙方已分別執行過</strong> <code>turn = i</code> <strong>以及</strong> <code>turn = j</code> <strong>的設定，差異點在於可能會交錯執行，但是</strong> <code>turn</code> <strong>必為兩值之其中一者，所以只有P_i, P_j 一個可以進入 C.S。</strong></li>
+<li>Progress (OK)：
+<ul>
+<li>假設 turn 值目前為 i ，且 P_i 不想進入 C.S.，<strong>帶表 flag[i] = false</strong> 若此時 P_j 欲進入 C.S. ，則 P_j 必可通過 while 的關卡進入 C.S. ，所以<strong>P_i 不會阻礙 P_j 進入 C.S.。</strong></li>
+<li><strong>若 P_i, P_j 皆欲進入 C.S 則在有限的時間內必可決定出</strong> <code>turn</code> <strong>值為</strong> <code>i</code> <strong>或為</strong> <code>j</code> <strong>使得 P_i, P_j 可以進入，兩者不會永遠互相等待造成死結。</strong></li>
+</ul></li>
+<li><strong>Bound waiting (OK)：假設 turn 為 i ， P_i 已早於 P_j 進入 C.S. 而 P_j 等待進入中，所以 flag[i] = flag[j] = true，若 P_i 離開 C.S. 後，又想再進入 C.S. ，則 P_i 必定會將</strong> <del>flag[i]=false</del> <strong>turn = j ，使得 P_i 無法再度先早於 P_j 進入 C.S. ，一定是 P_j 進入 C.S. ，所以 P_j 至多等待一次後即可進入 C.S.。</strong></li>
+</ul>
+<p>今有一程式如下，請問該程式是否可以正確執行，或是違反 Cirtial section 中的關鍵性值？<strong>可以正確執行，只是 flag 互相對調而已。</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_i</span></span><br><span class="line">Repeat</span><br><span class="line">	flag[j] = <span class="literal">true</span>;                 <span class="comment">// 表達意願</span></span><br><span class="line">	turn = j;                       <span class="comment">// * enter ( 權力先給對方 )</span></span><br><span class="line">	<span class="keyword">while</span> ( flag[i] &amp;&amp; turn == j ); <span class="comment">//   enter</span></span><br><span class="line">	C.S.</span><br><span class="line">    flag[j] = <span class="literal">false</span>;                <span class="comment">// leave</span></span><br><span class="line">Until <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_j</span></span><br><span class="line">Repeat</span><br><span class="line">	flag[i] = <span class="literal">true</span>;                 <span class="comment">// 表達意願</span></span><br><span class="line">	turn = i;                       <span class="comment">// *enter</span></span><br><span class="line">	<span class="keyword">while</span> ( flag[j] &amp;&amp; turn == i ); <span class="comment">//  enter</span></span><br><span class="line">	C.S.</span><br><span class="line">    flag[i] = <span class="literal">false</span>;                <span class="comment">// leave</span></span><br><span class="line">Until <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p>今有一程式如下，請問該程式是否可以正確執行，或是違反 Cirtial section 中的關鍵性值？<strong>可以正確執行，只是 turn 互相對調而已。</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_i</span></span><br><span class="line">Repeat</span><br><span class="line">	flag[i] = <span class="literal">true</span>;                 <span class="comment">// 表達意願</span></span><br><span class="line">	turn = i;                       <span class="comment">// * enter ( 權力先給對方 )</span></span><br><span class="line">	<span class="keyword">while</span> ( flag[j] &amp;&amp; turn == i ); <span class="comment">//   enter</span></span><br><span class="line">	C.S.</span><br><span class="line">    flag[i] = <span class="literal">false</span>;                <span class="comment">// leave</span></span><br><span class="line">Until <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_j</span></span><br><span class="line">Repeat</span><br><span class="line">	flag[j] = <span class="literal">true</span>;                 <span class="comment">// 表達意願</span></span><br><span class="line">	turn = j;                       <span class="comment">// *enter</span></span><br><span class="line">	<span class="keyword">while</span> ( flag[i] &amp;&amp; turn == j ); <span class="comment">//  enter</span></span><br><span class="line">	C.S.</span><br><span class="line">    flag[j] = <span class="literal">false</span>;                <span class="comment">// leave</span></span><br><span class="line">Until <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p>今有一程式如下，請問該程式是否可以正確執行，或是違反 Cirtial section 中的關鍵性值？<strong>可以正確執行，只是 turn 與 flag 皆互相對調而已。</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_i</span></span><br><span class="line">Repeat</span><br><span class="line">	flag[j] = <span class="literal">true</span>;                 <span class="comment">// 表達意願</span></span><br><span class="line">	turn = i;                       <span class="comment">// * enter ( 權力先給對方 )</span></span><br><span class="line">	<span class="keyword">while</span> ( flag[i] &amp;&amp; turn == i ); <span class="comment">//   enter</span></span><br><span class="line">	C.S.</span><br><span class="line">    flag[j] = <span class="literal">false</span>;                <span class="comment">// leave</span></span><br><span class="line">Until <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_j</span></span><br><span class="line">Repeat</span><br><span class="line">	flag[i] = <span class="literal">true</span>;                 <span class="comment">// 表達意願</span></span><br><span class="line">	turn = j;                       <span class="comment">// *enter</span></span><br><span class="line">	<span class="keyword">while</span> ( flag[j] &amp;&amp; turn == j ); <span class="comment">//  enter</span></span><br><span class="line">	C.S.</span><br><span class="line">    flag[i] = <span class="literal">false</span>;                <span class="comment">// leave</span></span><br><span class="line">Until <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h5 id="n-個-process-之-critical-section-design">N 個 Process 之 Critical Section design</h5>
+<h6 id="bakerys-algorithm-麵包店號碼牌演算法">Bakery’s Algorithm ( 麵包店號碼牌演算法 )</h6>
+<ul>
+<li>核心觀念：
+<ol type="1">
+<li>客人要先取得號碼牌才可以入店內。</li>
+<li>店內一次只能有一個客人進入。</li>
+<li><strong>「號碼牌最小的客人」或「號碼牌相同最小之 ID 最小的客人」，得以優先入內。</strong></li>
+</ol></li>
+<li>共享變數
+<ul>
+<li><strong>choosing: [0 … n-1] fo boolean：初值皆為 false。</strong><br><span class="math inline">\(choose[i] = \left\{\begin{matrix}True \quad P_i \; 正在取得號碼牌中，但尚未取得\\ False \quad P_i \; 已取得號碼牌(init) \end{matrix}\right.\)</span></li>
+<li><strong>number: [0 … n-1] of int：初值為 0。</strong><br><span class="math inline">\(number[i] = \left\{\begin{matrix}0 \quad 代表 \; P_i \;無意願進入\\ &gt;0 \quad P_i \; 有意願進入 \end{matrix}\right.\)</span></li>
+</ul></li>
+<li>MAX(i … j)：從 i … j 挑最大值。</li>
+<li>(a, b) &lt; (c, d)：<strong>代表</strong><br>1. a &lt; c<br>or 2. a==c and b &lt; d</li>
+<li>P_i 之程式碼</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Repeat</span><br><span class="line">	choosing[i] = <span class="literal">true</span>;</span><br><span class="line">	number[i] = Max(number[<span class="number">0</span>], ... , number[n<span class="number">-1</span>]) + <span class="number">1</span> </span><br><span class="line">	choosing[i] = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span>( j = <span class="number">0</span>; j &lt; n; j++ ) &#123;</span><br><span class="line">        <span class="keyword">while</span> (choosing[j]) <span class="keyword">do</span> no-op;  <span class="comment">// 等待P_j 取得號碼牌。</span></span><br><span class="line">        <span class="comment">//比較號碼牌與 Process ID。</span></span><br><span class="line">        <span class="keyword">while</span>(number[j]&gt;<span class="number">0</span> &amp;&amp; (numbeer[j], j) &lt; (number[i], i)) <span class="keyword">do</span> no-op; </span><br><span class="line">    &#125;</span><br><span class="line">    C.S.</span><br><span class="line">    Number[i] = <span class="number">0</span> <span class="comment">// P_i 已無意願</span></span><br><span class="line">    R.S.</span><br><span class="line">util <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Ex1. 為何號碼牌( number[i] )會有兩個以上相同的問題？
+<ul>
+<li>因為在 <code>number[i] = Max(number[0], ... , number[n-1]) + 1</code> 的執行階段時，有可能會被其他 Process 搶斷。</li>
+</ul></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// number[max] = 0</span></span><br><span class="line"><span class="comment">// P_i</span></span><br><span class="line"><span class="comment">// Processiing " choosing[i] = true; ".</span></span><br><span class="line">Load max number[max];         <span class="comment">// number[max] = 0</span></span><br><span class="line">Process max++;</span><br><span class="line"><span class="comment">// P_j preempting</span></span><br><span class="line"><span class="comment">// Processiing " choosing[j] = true; ".</span></span><br><span class="line">Load max number[max];         <span class="comment">// number[max] = 0</span></span><br><span class="line">Process max++;</span><br><span class="line"><span class="comment">// P_i</span></span><br><span class="line">Store to number[i];           <span class="comment">// number[i] = 1</span></span><br><span class="line"><span class="comment">// P_j</span></span><br><span class="line">Store to number[i];           <span class="comment">// number[i] = 1</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Ex2. 證明 Critical section <strong>關鍵性值</strong>。
+<ul>
+<li>Mutual exclusion (OK) ：<br>Case1. <strong>假設號碼牌值皆不同且大於零，則具有最小號碼牌值之 Process 可以優先進入 Critical section，因為最小值必唯一，所以除了該 Process 可以進入其餘等待。</strong><br>Case2. 有多個 Processes 有相同的最小號碼牌，以 Process ID 最小者優先進入 Critical section，因為 Process ID 必唯一最小值也必定唯一，所以除了該 Process 可以進入其餘等待。<br>唯一性確保，互斥確保。</li>
+<li>Process (OK)：<br>1. ( 不想進入但不會控制其他人 )<strong>假設 P_j 不想進入 C.S. 代表 number[j] 為 0 ，若此時 P_i 欲進入 C.S.</strong> 則 <code>while(number[j]&gt;0 &amp;&amp; (numbeer[j], j) &lt; (number[i], i)) do no-op;</code> 不會被 P_j 阻擋住。<br>2. ( 不會造成 deadlock ) 若 P_0 ~ P_n-1 n 個 Processes 皆欲進入 C.S. 會在<strong>有限時間內必決定有一個 Process (號碼牌最小加上 ProcessID 最小)可以順利結束 for loop 進入 C.S.</strong></li>
+<li>Bounded waiting (OK)：<strong>假設 P_0~P_n-1 processes 皆欲進入 C.S. 令 P_i 具有最大的號碼牌等於 K ( nuber[i] = K ) 因此，其他 n-1 Process：P_j ( j!=i )，必定先早於 P_i 進入 C.S.，</strong>若 P_j 離開 C.S 後，又立刻欲進入 C.S，<strong>則 P_j 的再取得號碼牌必定大於 K，所以 P_j 不會再早於 P_i 進入 C.S. 進而可以知道 P_i 最多等待 n-1 次即可進入 C.S.。</strong></li>
+</ul></li>
+<li>Ex3.</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Repeat</span><br><span class="line">	choosing[i] = <span class="literal">true</span>;</span><br><span class="line">	number[i] = Max(number[<span class="number">0</span>], ... , number[n<span class="number">-1</span>]) + <span class="number">1</span> </span><br><span class="line">	choosing[i] = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span>( j = <span class="number">0</span>; j &lt; n; j++ ) &#123;</span><br><span class="line">        ~~<span class="keyword">while</span> (choosing[j]) <span class="keyword">do</span> no-op;~~  <span class="comment">// 移除這行程式碼是否還正確？請解釋。</span></span><br><span class="line">        <span class="keyword">while</span>(number[j]&gt;<span class="number">0</span> &amp;&amp; (numbeer[j], j) &lt; (number[i], i)) <span class="keyword">do</span> no-op; </span><br><span class="line">    &#125;</span><br><span class="line">    C.S.</span><br><span class="line">    Number[i] = <span class="number">0</span>;</span><br><span class="line">    R.S.</span><br><span class="line">util <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>不正確，違反「Mutual exclusion」</li>
+<li>令目前 number[0 … n-1] 所有的值皆為 0 ，今有兩 Process <span class="math inline">\(P_i, P_j \quad where \; i \neq j\)</span> 欲進入 C.S. ，並且假設 Process ID 為 <span class="math inline">\(P_i &lt; P_j\)</span></li>
+<li><strong>小結論</strong>
+<ul>
+<li>此行程式碼存在的目的，是為了讓<strong>所有可能會同一時間拿到號碼牌的 Processes 能公平的取得該號碼牌，不會有的早拿到或是晚拿到該「同一號碼」之號碼牌。</strong></li>
+</ul></li>
+</ul>
+<h4 id="hardware-cpu-intructions-support">Hardware (CPU) Intructions Support</h4>
+<p><strong>程式開發者可以使用硬體預先定義之指立於設計 Critical Section。</strong></p>
+<h5 id="test_and_setbool-lock機器指令">「test_and_set(bool *lock)」機器指令</h5>
+<ul>
+<li>功能：<strong>回傳 Lock 參數值並將 Lock 參數設為 True，且 CPU 保證此指令是不可中斷地執行( Atomically executed )。</strong></li>
+<li></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">test_and_set</span><span class="params">(<span class="keyword">bool</span> *lock)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> return_value = *lock;</span><br><span class="line">    *lock = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">return</span> return_value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="algorithm-1-fall">Algorithm 1 ( Fall )</h6>
+<ul>
+<li>共享變數：
+<ul>
+<li><strong>Lock：bool = False</strong>( Initial value )</li>
+</ul></li>
+<li><span class="math inline">\(P_i\)</span> 之程式碼：</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="keyword">while</span> (test_and_set(&amp;Lock)); <span class="comment">// do nothing</span></span><br><span class="line">    <span class="comment">/* critical section */</span></span><br><span class="line">    Lock = <span class="literal">false</span>;</span><br><span class="line">    <span class="comment">/* remainder section */</span></span><br><span class="line">&#125; <span class="keyword">while</span> (condition == <span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>分析
+<ul>
+<li>Mutual exclusion：OK</li>
+<li>Progress：OK</li>
+<li>Bounded waiting：Fall<br>假設 <span class="math inline">\(P_i\)</span> 以早於 <span class="math inline">\(P_j\)</span> 進入 C.S. ，所以 <span class="math inline">\(P_j\)</span> 進行等待，<strong>當 </strong><span class="math inline">\(P_i\)</span> <strong>離開 C.S. 後又想立即進入 C.S.，而以上述寫法可能會導致 </strong><span class="math inline">\(P_i\)</span> <strong>有可能可以再次早於</strong> <span class="math inline">\(P_j\)</span> <strong>執行 test_and_set 進入 C.S.</strong>，所以 <span class="math inline">\(P_j\)</span> 有可能會面臨「Starvation」。</li>
+</ul></li>
+</ul>
+<h6 id="algorithm-2-pass---fifo">**Algorithm 2 ( Pass ) - FIFO</h6>
+<ul>
+<li>共享變數
+<ul>
+<li><strong>Lock：bool = False</strong> ( Initial value )</li>
+<li><strong>Waiting：[0 … n-1] of bool 初值皆為 False</strong><br><span class="math inline">\(waiting[i] = \left\{\begin{matrix}True \quad P_i \; 有意願進入 \; C.S. ，且正在等待\\ False \quad 初值。P_i \; 不用等待，可以直接進入\; C.S. \end{matrix}\right.\)</span></li>
+</ul></li>
+<li><span class="math inline">\(P_i\)</span> 之程式碼：</li>
+</ul>
+<p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">區域變數：key:<span class="keyword">bool</span>;</span><br><span class="line">         j  :<span class="keyword">int</span>;</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    waiting[i] = <span class="literal">true</span>;</span><br><span class="line">    key = <span class="literal">true</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 假設目前無人在 C.S. 所以第一個執行此指令的 Process 可以直接進入下一步。</span></span><br><span class="line">    <span class="keyword">while</span> (waiting[i] &amp;&amp; key) key = test_and_set(&amp;Lock); </span><br><span class="line">    </span><br><span class="line">    <span class="comment">// **表明 P_i 不用繼續等待，可以進入 C.S.。</span></span><br><span class="line">    waiting[i] = <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/* critical section */</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 找出下一個欲進入 C.S. 之 P_j Process</span></span><br><span class="line">    j = (i + <span class="number">1</span>) % n;</span><br><span class="line">    <span class="comment">// j != i -&gt; 尚未繞完一圈 &amp;&amp; !waiting[j] -&gt; P_j 不想進入 C.S.</span></span><br><span class="line">    <span class="keyword">while</span> ((j != i) &amp;&amp; !waiting[j])</span><br><span class="line">    	j = (j + <span class="number">1</span>) % n;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (j == i)</span><br><span class="line">    	lock = <span class="literal">false</span>;         <span class="comment">// 無 Process 欲進入 C.S.</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    	waiting[j] = <span class="literal">false</span>;   <span class="comment">// 讓 P_j 進入 C.S.</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">/* remainder section */</span></span><br><span class="line">    </span><br><span class="line">&#125; <span class="keyword">while</span> (condition == <span class="literal">true</span>);</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>證明 Critical section 關鍵性值存在：
+<ul>
+<li>Mutual exclusion：OK<br><span class="math inline">\(P_i\)</span> <strong>可進入 C.S. 之條件有兩種可能：</strong><br>Case1：<strong>Key 為 False，代表</strong> P_i 是第一個執行 test_and_set 的 Process ，如此才能將 Key 賦予 False ，<strong>唯一性。</strong><br>Case2：<strong>Waiting[i] = False，因為一開始會先執行</strong> <code>waiting[i] = true;</code> <strong>代表 P_i 在離開</strong> <code>while (waiting[i] &amp;&amp; key) key = test_and_set(&amp;Lock);</code> 前不會將 Waiting[i] 賦予 False ，<strong>只有在 C.S. 的 Process 欲離開 C.S. 後才能將其他 Processes 其中一個 Process 的 Waiting 賦予 False 值，</strong>但是能在 C.S. 之中執行的 Process 唯一，所以也只會讓一個 Process 的 waiting 賦予 False 值，<strong>唯一性( Mutex 成立 )</strong>。</li>
+<li>Progress：OK<br>(1) 若 P_i 不想進入 C.S. 其 Waiting[i] 為 False ，且 P_i 不會與其他 Process 競爭執行 <code>while (waiting[i] &amp;&amp; key) key = test_and_set(&amp;Lock);</code> ，另外，從 C.S. 離開之 Process 不會改變 Waiting[i]，<strong>所以 P_i 不會參與進入 C.S 之決策。</strong><br>(2) 若 n 個 Process 皆想進入 C.S. ，則在有限的時間內( 無死結 )必定會決定出第一個執行 <code>while (waiting[i] &amp;&amp; key) key = test_and_set(&amp;Lock);</code> 者。之後，該選中 Process 從 C.S. 離開後，也會在有限的時間內，讓下一個欲進入 C.S. 的 Process 進入 C.S 。</li>
+<li><strong>Bounded waiting：OK</strong><br>n 個 Process 皆欲進入 C.S. ，<strong>表示 Waiting[0] ~ Waiting[n-1] 皆為 true。</strong><br>令 P_i 是第一個執行 <code>while (waiting[i] &amp;&amp; key) key = test_and_set(&amp;Lock);</code> <strong>者，率先進入 C.S.，當 P_i 離開 C.S. 後會將</strong> <span class="math inline">\(P_{(i+1) \mod n}\)</span> <strong>的 Waiting 賦予 False 值，使</strong> <span class="math inline">\(P_{(i+1) \mod n}\)</span> <strong>進入 C.S.，依此類推 Process 會以</strong> <span class="math inline">\(＜P_i, P_{(i+1) \mod n}, \ldots, P_{(i-1) \mod n}＞\)</span> <strong>的序列 ( FIFO ) 進入 C.S.，所以沒有「Starvation」。</strong></li>
+</ul></li>
+</ul>
+<h5 id="compare_and_swapint-value-int-expected-int-new_value-指令">「compare_and_swap(int *value, int expected, int new_value) 」指令</h5>
+<ul>
+<li><strong>功能：將 value 與 new_value 兩值互換，且 CPU 保證為不可分割之執行( Atomically executed )。</strong></li>
+<li><strong>實現作法 ( 硬體寫死，無法使用高階程式語言實現 )</strong>：</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">compare_and_swap</span><span class="params">(<span class="keyword">int</span> *value, <span class="keyword">int</span> expected, <span class="keyword">int</span> new_value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp = *value;</span><br><span class="line">    <span class="keyword">if</span> (*value == expected)</span><br><span class="line">    	*value = new_value;</span><br><span class="line">    <span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="algorithm-1-fall-1">Algorithm 1 (Fall)</h6>
+<ul>
+<li>共享變數
+<ul>
+<li>Lock：bool = False ( Initial value )</li>
+</ul></li>
+<li><span class="math inline">\(P_i\)</span> 之程式碼：</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">區域變數: key:<span class="keyword">bool</span>;</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="keyword">while</span> (compare_and_swap(&amp;lock, <span class="number">0</span>, <span class="number">1</span>) != <span class="number">0</span>)</span><br><span class="line">    ; <span class="comment">/* do nothing */</span></span><br><span class="line">    <span class="comment">/* critical section */</span></span><br><span class="line">    lock = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">/* remainder section */</span></span><br><span class="line">&#125; <span class="keyword">while</span> (condition == <span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>分析
+<ul>
+<li>Mutual exclusion：OK</li>
+<li>Progress：OK</li>
+<li>Bounded waiting：Fall<br>假設 <span class="math inline">\(P_i\)</span> 以早於 <span class="math inline">\(P_j\)</span> 進入 C.S. ，所以 <span class="math inline">\(P_j\)</span> 進行等待，<strong>當 </strong><span class="math inline">\(P_i\)</span> <strong>離開 C.S. 後又想立即進入 C.S.，而以上述寫法可能會導致 </strong><span class="math inline">\(P_i\)</span> <strong>有可能可以再次早於</strong> <span class="math inline">\(P_j\)</span> <strong>執行 compare_and_swap 進入 C.S.</strong>，所以 <span class="math inline">\(P_j\)</span> 有可能會面臨「Starvation」。</li>
+</ul></li>
+</ul>
+<h6 id="algorithm-2-pass---fifo-1">**Algorithm 2 ( Pass ) - FIFO</h6>
+<ul>
+<li>共享變數
+<ul>
+<li><strong>Lock：bool = False</strong> ( Initial value )</li>
+<li><strong>Waiting：[0 … n-1] of bool 初值皆為 False</strong><br><span class="math inline">\(waiting[i] = \left\{\begin{matrix}True \quad P_i \; 有意願進入 \; C.S. ，且正在等待\\ False \quad 初值。P_i \; 不用等待，可以直接進入\; C.S. \end{matrix}\right.\)</span></li>
+</ul></li>
+<li><span class="math inline">\(P_i\)</span> 之程式碼：</li>
+</ul>
+<p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">區域變數：key:<span class="keyword">bool</span>;</span><br><span class="line">         j  :<span class="keyword">int</span>;</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    waiting[i] = <span class="literal">true</span>;</span><br><span class="line">    key = <span class="literal">true</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 假設目前無人在 C.S. 所以第一個執行此指令的 Process 可以直接進入下一步。</span></span><br><span class="line">    <span class="keyword">while</span> (waiting[i] &amp;&amp; key) key = compare_and_swap(&amp;Lock); </span><br><span class="line">    </span><br><span class="line">    <span class="comment">// **表明 P_i 不用繼續等待，可以進入 C.S.。</span></span><br><span class="line">    waiting[i] = <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/* critical section */</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 找出下一個欲進入 C.S. 之 P_j Process</span></span><br><span class="line">    j = (i + <span class="number">1</span>) % n;</span><br><span class="line">    <span class="comment">// j != i -&gt; 尚未繞完一圈 &amp;&amp; !waiting[j] -&gt; P_j 不想進入 C.S.</span></span><br><span class="line">    <span class="keyword">while</span> ((j != i) &amp;&amp; !waiting[j])</span><br><span class="line">    	j = (j + <span class="number">1</span>) % n;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (j == i)</span><br><span class="line">    	lock = <span class="literal">false</span>;         <span class="comment">// 無 Process 欲進入 C.S.</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    	waiting[j] = <span class="literal">false</span>;   <span class="comment">// 讓 P_j 進入 C.S.</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">/* remainder section */</span></span><br><span class="line">    </span><br><span class="line">&#125; <span class="keyword">while</span> (condition == <span class="literal">true</span>);</span><br></pre></td></tr></table></figure></p>
+<h5 id="問題探討">問題探討</h5>
+<ul>
+<li>Ex1</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    waiting[i] = <span class="literal">true</span>;</span><br><span class="line">    key = <span class="literal">true</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (waiting[i] &amp;&amp; key) key = test_and_set(&amp;Lock);</span><br><span class="line">    </span><br><span class="line">    ~~waiting[i] = <span class="literal">false</span>;~~ <span class="comment">// 若此行刪除將導致什麼後果？</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">/* critical section */</span></span><br><span class="line">    </span><br><span class="line">    j = (i + <span class="number">1</span>) % n;</span><br><span class="line">	<span class="keyword">while</span> ((j != i) &amp;&amp; !waiting[j])</span><br><span class="line">    	j = (j + <span class="number">1</span>) % n;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (j == i)</span><br><span class="line">    	lock = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    	waiting[j] = <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/* remainder section */</span></span><br><span class="line">    </span><br><span class="line">&#125; <span class="keyword">while</span> (condition == <span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+<p>違反 Progress 性質 ( 造成死結 )。</p>
+<h3 id="semaphore-號誌">Semaphore ( 號誌 )</h3>
+<p>令 S 為 <code>Semaphore type</code> 變數，架構在 <code>Integer type</code>。針對 S ，提供兩個「Atomic 運算元」<br><strong>wait(S) ( 或 P(S) ) 與 signal(S) ( 或 V(S) )</strong>。( 因為是「Atomic 運算元」，所以不會有 Race condition。 )</p>
+<ul>
+<li><strong>wait(S)</strong></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(S &lt;= <span class="number">0</span>) ;</span><br><span class="line">S = S - <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>signal(S)</strong></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">S = S + <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>主要功能：「設計 C.S. 」與「解決同步問題」</li>
+<li>使用範例
+<ul>
+<li>共享變數<br><strong>mutex：semaphore = 1 (Initial value)</strong></li>
+<li>程式結構</li>
+</ul></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">repeat</span><br><span class="line">	wait(mutex);</span><br><span class="line">	C.S.</span><br><span class="line">    signal(mutex);</span><br><span class="line">	R.S.</span><br><span class="line">until False</span><br></pre></td></tr></table></figure>
+<p><strong>＜Note＞：semaphore 的初值，有某些意意。</strong><span class="math inline">\(\left\{\begin{matrix}1 \Rightarrow 互斥控制之用途。\\ 0 \Rightarrow 強迫等待之用途。 \end{matrix}\right.\)</span></p>
+<h4 id="解決簡單的同步問題-synchronization-problem">解決簡單的同步問題 ( synchronization problem )</h4>
+<p>Synchronization</p>
+<ul>
+<li>Process 因為「某件事情」的已發生或是未發生( 有多個 process 相互合作的時候 )，導致必須等待該事件完成或發生才得以繼續進行。</li>
+</ul>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/Process-Synchronization/" rel="tag"># Process Synchronization</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2018/07/10/Operating-System-Process-Management-and-Thread-Management/" rel="next" title="Operating System - Process Management and Thread Management">
+                <i class="fa fa-chevron-left"></i> Operating System - Process Management and Thread Management
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/blog/images/avatar_me.gif"
+                alt="Willy Wang" />
+            
+              <p class="site-author-name" itemprop="name">Willy Wang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/blog/archives/">
+                
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/blog/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/blog/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://typora.io/" title="Typora" target="_blank">Typora</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.geeksforgeeks.org/" title="GeeksforGeeks" target="_blank">GeeksforGeeks</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.codecogs.com/latex/eqneditor.php" title="Online LaTeX Equation Editor" target="_blank">Online LaTeX Equation Editor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://allem40306.github.io/blog/" title="CodingJack" target="_blank">CodingJack</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#process-synchronization-process-communication-inter-process-communication"><span class="nav-number">1.</span> <span class="nav-text">Process Synchronization ( Process Communication, Inter Process Communication )</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#process-communication"><span class="nav-number">1.1.</span> <span class="nav-text">Process Communication</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#shared-memory"><span class="nav-number">1.1.1.</span> <span class="nav-text">Shared memory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#message-passing"><span class="nav-number">1.1.2.</span> <span class="nav-text">Message passing</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#race-condition-problem-in-memory-communication"><span class="nav-number">1.2.</span> <span class="nav-text">Race Condition Problem in Memory Communication</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解決-race-condition"><span class="nav-number">1.2.1.</span> <span class="nav-text">解決 Race Condition</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#disable-inrerrput-針對cpu"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">Disable inrerrput ( 針對CPU )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#critical-section-design-針對共享資料製作臨界區塊"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">Critical section design( 針對共享資料製作臨界區塊 )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#critical-section-spinlock-busy-wiating-vs.-disable-interrupt"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">Critical Section ( Spinlock, Busy-wiating ) VS. Disable interrupt</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#busy-waiting-spinlock-技巧"><span class="nav-number">1.2.2.</span> <span class="nav-text">Busy waiting ( Spinlock ) 技巧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#non-busy-waiting-技巧"><span class="nav-number">1.2.3.</span> <span class="nav-text">Non-busy waiting 技巧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#critical-section-design"><span class="nav-number">1.2.4.</span> <span class="nav-text">Critical Section Design</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#software-solutions"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">Software Solutions</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#兩個-processes-之-critical-section-design"><span class="nav-number">1.2.4.1.1.</span> <span class="nav-text">兩個 Processes 之 critical section design</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#algorithm-1-fall-權力層面"><span class="nav-number">1.2.4.1.1.1.</span> <span class="nav-text">Algorithm 1 ( Fall )：權力層面</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#algorithm-2-fall-意願層面"><span class="nav-number">1.2.4.1.1.2.</span> <span class="nav-text">Algorithm 2 ( Fall )：意願層面</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#algorithm-3---petersons-algorithm-ok-權力意願層面"><span class="nav-number">1.2.4.1.1.3.</span> <span class="nav-text">Algorithm 3 - Peterson’s Algorithm ( OK )：權力、意願層面</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#n-個-process-之-critical-section-design"><span class="nav-number">1.2.4.1.2.</span> <span class="nav-text">N 個 Process 之 Critical Section design</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#bakerys-algorithm-麵包店號碼牌演算法"><span class="nav-number">1.2.4.1.2.1.</span> <span class="nav-text">Bakery’s Algorithm ( 麵包店號碼牌演算法 )</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hardware-cpu-intructions-support"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">Hardware (CPU) Intructions Support</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#test_and_setbool-lock機器指令"><span class="nav-number">1.2.4.2.1.</span> <span class="nav-text">「test_and_set(bool *lock)」機器指令</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#algorithm-1-fall"><span class="nav-number">1.2.4.2.1.1.</span> <span class="nav-text">Algorithm 1 ( Fall )</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#algorithm-2-pass---fifo"><span class="nav-number">1.2.4.2.1.2.</span> <span class="nav-text">**Algorithm 2 ( Pass ) - FIFO</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#compare_and_swapint-value-int-expected-int-new_value-指令"><span class="nav-number">1.2.4.2.2.</span> <span class="nav-text">「compare_and_swap(int *value, int expected, int new_value) 」指令</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#algorithm-1-fall-1"><span class="nav-number">1.2.4.2.2.1.</span> <span class="nav-text">Algorithm 1 (Fall)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#algorithm-2-pass---fifo-1"><span class="nav-number">1.2.4.2.2.2.</span> <span class="nav-text">**Algorithm 2 ( Pass ) - FIFO</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#問題探討"><span class="nav-number">1.2.4.2.3.</span> <span class="nav-text">問題探討</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#semaphore-號誌"><span class="nav-number">1.2.5.</span> <span class="nav-text">Semaphore ( 號誌 )</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解決簡單的同步問題-synchronization-problem"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">解決簡單的同步問題 ( synchronization problem )</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Willy Wang</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=6.0.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://https-wangwilly-github-io-blog.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://WangWilly.github.io/blog/2018/07/10/Operating-System-Process-Synchronization/';
+        this.page.identifier = '2018/07/10/Operating-System-Process-Synchronization/';
+        this.page.title = 'Operating System - Process Synchronization';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-wangwilly-github-io-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/blog/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/blog/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>

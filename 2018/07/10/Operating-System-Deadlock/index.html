@@ -1,0 +1,1912 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next_cat.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/blog/images/logo_cat.svg?v=6.0.4" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Pisces',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="Deadlock," />
+
+
+<meta name="description" content="Deadlock  系統中存在一組 processes，彼此形成 循環等待 的情況，造成這些 processes 皆無法往下執行，並降低產量 ( throughput ) 的現象。  1530163891325   死結成立的四個必要條件 ( 所以有一個不成立，則死結必不發生，但是若四個條件全部成立時，死結不一定會發生。 )If there are 4 conditions are">
+<meta name="keywords" content="Deadlock">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Operating System - Deadlock">
+<meta property="og:url" content="http://WangWilly.github.io/blog/2018/07/10/Operating-System-Deadlock/index.html">
+<meta property="og:site_name" content="WillyWangkaa">
+<meta property="og:description" content="Deadlock  系統中存在一組 processes，彼此形成 循環等待 的情況，造成這些 processes 皆無法往下執行，並降低產量 ( throughput ) 的現象。  1530163891325   死結成立的四個必要條件 ( 所以有一個不成立，則死結必不發生，但是若四個條件全部成立時，死結不一定會發生。 )If there are 4 conditions are">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530163891325.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530163425234.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/deadlock.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530164365297.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530164408843.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530164614789.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530164672585.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530166364004.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530166810415.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530166364004.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530168967415.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1528970642055.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1528971381784.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1531184487179.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1531184825933.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1531184487179.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1531184825933.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530172024919.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530172534581.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530172797528.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530172966437.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530173438706.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1531188159444.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1531188115016.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530174622303.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530174725109.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530174756704.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1529287297237.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1529287327536.png">
+<meta property="og:updated_time" content="2018-07-10T14:12:50.213Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Operating System - Deadlock">
+<meta name="twitter:description" content="Deadlock  系統中存在一組 processes，彼此形成 循環等待 的情況，造成這些 processes 皆無法往下執行，並降低產量 ( throughput ) 的現象。  1530163891325   死結成立的四個必要條件 ( 所以有一個不成立，則死結必不發生，但是若四個條件全部成立時，死結不一定會發生。 )If there are 4 conditions are">
+<meta name="twitter:image" content="http://wangwilly.github.io/blog/images/1530163891325.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://WangWilly.github.io/blog/2018/07/10/Operating-System-Deadlock/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>Operating System - Deadlock | WillyWangkaa</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WillyWangkaa</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/blog/blog/2018/07/10/Operating-System-Deadlock/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Willy Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar_me.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WillyWangkaa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Operating System - Deadlock</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-10T21:54:00+08:00">2018-07-10</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-07-10T22:12:50+08:00">2018-07-10</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/blog/categories/Operating-System/" itemprop="url" rel="index"><span itemprop="name">Operating System</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/blog/2018/07/10/Operating-System-Deadlock/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/07/10/Operating-System-Deadlock/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="deadlock">Deadlock</h1>
+<hr>
+<p>系統中存在一組 processes，彼此形成 <em>循環等待</em> 的情況，<strong>造成這些 processes 皆無法往下執行，並降低產量 ( throughput ) 的現象。</strong></p>
+<figure>
+<img src="\blog\images\1530163891325.png" alt="1530163891325"><figcaption>1530163891325</figcaption>
+</figure>
+<ul>
+<li>死結成立的四個必要條件 ( 所以有一個不成立，則死結必不發生，<strong>但是若四個條件全部成立時，死結不一定會發生。</strong> )<br>If there are 4 conditions are true, then the deadlock <strong>will/can</strong> arise. <span class="math inline">\(\rightarrow\)</span> <strong>false/true.</strong>
+<ul>
+<li>Mutual exclusion：<strong>對於 Resource 而言，</strong>具有此性質的 resource ，在<strong>任何時間點最多只允許一個 process 持有/使用</strong>，不可多個 processes 同時持有/使用。<br>$Ex. $ 大多數的資源皆具有此性質。如：CPU, memory, disk, printer…<br>$Counter ; Ex. $ <strong>Read-only file 不具此性質。</strong></li>
+<li>Hold and wait：<strong>Process 持有部分的資源，且又在等待其他 processes 所持有的資源。</strong></li>
+<li>No preemption：<strong>Process 不可以任意剝奪其他 processes 所持有的資源</strong>，必須等待對方釋放資源才有機會取得資源。<br><strong>＜Note＞：</strong>若可 Preemption 則必無 Deadlock 頂多只有 Starvation。</li>
+<li>Circular waiting：<strong>系統中存在一組 Processes 形成循環等待之情況。 </strong></li>
+</ul></li>
+</ul>
+<figure>
+<img src="\blog\images\1530163425234.png" alt="1530163425234"><figcaption>1530163425234</figcaption>
+</figure>
+<p>＜Note＞<br>1. (恐龍版本)Circular waiting 代表 Hold and wait。<br>2. (其他版本)Circular waiting 代表 Mutual exclusion、Hold and wait、No preemption。<br>3. <strong>為何 Single-process 必不會造成 Deadlock ？ 因為 Circular waiting 不存在，所以 Deadlock 不發生。</strong></p>
+<ul>
+<li>交通十字路口 Deadlock
+<ul>
+<li><strong>路口：資源</strong></li>
+<li><strong>車子：Process</strong></li>
+</ul></li>
+</ul>
+<figure>
+<img src="\blog\images\deadlock.png" alt="deadlock"><figcaption>deadlock</figcaption>
+</figure>
+<ul>
+<li>與 Starvation 比較。
+<ul>
+<li>相同之處為都是 <em>資源分配管理機制設計不恰當所導致。</em></li>
+</ul></li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Deadlock</th>
+<th style="text-align: center;">Starvation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">一組 Processes 形成 Circular waiting ，造成這些 Process 皆無法往下執行。</td>
+<td style="text-align: center;">Process 因為長期無法取得完工所需的各式資源，造成遲遲無法完工。</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">不可能有機會完工。</td>
+<td style="text-align: center;">有完工的機會，但是機會渺茫、Indefinited block。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">會連帶造成 Throughput 低落。</td>
+<td style="text-align: center;">與 Throughput 高低無關聯。(其中 SJF、SRTF 效能示好的。)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">一定會在 Non-preemption 的環境下。</td>
+<td style="text-align: center;">容易發生在 Preemption 的環境。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">解決方案：Prevention、Avoidance、Detection and recovery。</td>
+<td style="text-align: center;">使用「Aging」技術解決。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="resource-allcation-graph-r.-a.-g.-資源分配圖">Resource allcation graph ( R. A. G. ) 資源分配圖</h2>
+<p>令 <span class="math inline">\(G= ＜V, E＞\)</span> 為一有向圖，代表 R.A.G.，其中：</p>
+<ul>
+<li>Vertex ( 頂點 )</li>
+<li>Process</li>
+</ul>
+<figure>
+<img src="\blog\images\1530164365297.png" alt="1530164365297"><figcaption>1530164365297</figcaption>
+</figure>
+<ul>
+<li>Resource</li>
+</ul>
+<figure>
+<img src="\blog\images\1530164408843.png" alt="1530164408843"><figcaption>1530164408843</figcaption>
+</figure>
+<p>其中「。」數目代表該項資源的數目。</p>
+<ul>
+<li>Edge ( 邊 )：</li>
+<li>Allocation edge</li>
+</ul>
+<figure>
+<img src="\blog\images\1530164614789.png" alt="1530164614789"><figcaption>1530164614789</figcaption>
+</figure>
+<ul>
+<li>Request edge</li>
+</ul>
+<figure>
+<img src="\blog\images\1530164672585.png" alt="1530164672585"><figcaption>1530164672585</figcaption>
+</figure>
+<ul>
+<li>$Ex. $</li>
+</ul>
+<figure>
+<img src="\blog\images\1530166364004.png" alt="1530166364004"><figcaption>1530166364004</figcaption>
+</figure>
+<h3 id="結論">結論</h3>
+<ul>
+<li><p>No cycle <span class="math inline">\(\rightarrow\)</span> No deadlock。</p></li>
+<li><p><strong>Cycle 不一定有 deadlock。</strong></p></li>
+</ul>
+<figure>
+<img src="\blog\images\1530166810415.png" alt="1530166810415"><figcaption>1530166810415</figcaption>
+</figure>
+<p>此圖雖然有 Cycle，但因為 P3 必可以完工且會釋出一個 R2 Resource，再配置給 P2 使用，所以無死結。</p>
+<figure>
+<img src="\blog\images\1530166364004.png" alt="1530166364004"><figcaption>1530166364004</figcaption>
+</figure>
+<p>因為 P4 必可以完工且會釋出 R3 Resource，再配置給 P3 使用，所以無死結。</p>
+<ul>
+<li><strong>除非每一類型的資源皆為 single-instance ( 單一數量 )，則有 Cycle 必有死結。</strong></li>
+</ul>
+<h2 id="解決-deadlock">解決 Deadlock</h2>
+<p>Prevention、Avoidance</p>
+<ul>
+<li>Pros
+<ul>
+<li><strong>保證系統為 deadlock free。( 不可能進入「Deadlock state」)</strong></li>
+</ul></li>
+<li>Cons
+<ul>
+<li><strong>對資源的使用與限制與取得限制多，所以 Resource utilization 偏低，連帶 throughput 偏低。</strong></li>
+<li><strong>不可能造成 Starvation。</strong></li>
+</ul></li>
+</ul>
+<p>Detection and Recovery</p>
+<ul>
+<li>Pros
+<ul>
+<li><strong>Resource utilization 相對較高， throuput 也較高。</strong></li>
+</ul></li>
+<li>Cons
+<ul>
+<li><strong>System 可能進入 deadlock state。</strong></li>
+<li><strong>Detection and recovery 的成本很高。</strong></li>
+</ul></li>
+</ul>
+<h3 id="deadlock-prevention">Deadlock prevention</h3>
+<p><strong>破除四個必要條件之其中一個，則死結必不發生。</strong></p>
+<ul>
+<li>針對「Mutual exclution」
+<ul>
+<li><strong>因為 Resource 本來就有的性質，以致無法解決「Mutual exclution」帶來的問題。</strong></li>
+</ul></li>
+<li>針對「Hold and wait」
+<ul>
+<li>方法一：作業系統可以決定<strong>除非該 Process 可以一次取得全部所需資源，才允許持有資源，否則不得持有任何資源。</strong></li>
+<li>方法二：<strong>Process 可先持有部分資源，但當該 Process 要申請其他資源時，必須先釋出所持有的資源，才可以提出申請。</strong></li>
+</ul></li>
+<li>針對「No preemptive」
+<ul>
+<li><strong>將該法則改為可強奪( Premptive )，並以優先權作為搶奪基準。</strong>( 但可能會造成 Starvation )</li>
+</ul></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Process</th>
+<th>持有的資源</th>
+<th>欲申請的資源</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>P1</td>
+<td>R1</td>
+<td>R3 ( 可以申請 )</td>
+</tr>
+<tr class="even">
+<td>P2</td>
+<td>R5</td>
+<td>R3 ( 必須先釋出 R5 )</td>
+</tr>
+<tr class="odd">
+<td>P3</td>
+<td>R1、R5</td>
+<td>R3 (必須先釋出 R5 )</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>*針對「Circular waiting」
+<ul>
+<li>「Resource ordering」：<strong>作業系統賦予每一類型資源一個唯一的 Resource ID，再規定 Process 必須按照 Resource ID asending (遞增) 的方式對資源提出申請。</strong></li>
+<li>證明「Resource ordering」：<br>假設在這樣的規定下，系統仍存在一組 Processes 形成 Circular waiting 如下圖，依規定，我們可以推導出資源 ID 大小關係如：<span class="math inline">\(r_0 &lt; r_1 &lt; r_2 \ldots &lt; r_n \quad , r_i \; is \; unique.\)</span>，但又 <span class="math inline">\(r_0 &lt; r_n &lt; r_0\)</span> ，矛盾，所以 Circular waiting 必不存在。</li>
+</ul></li>
+</ul>
+<figure>
+<img src="\blog\images\1530168967415.png" alt="1530168967415"><figcaption>1530168967415</figcaption>
+</figure>
+<h3 id="deadlock-aviodance">Deadlock aviodance</h3>
+<p>當某個 process 提出某些資源申請時，則作業系統必須執行「Banker’s algorithm」以確認<strong>倘若分配給 Process 其申請資源後，系統未來是否處於「Safe state」；若為「Saft state」，則核准申請，否則為「Unsafe state」系統會否決該資源申請，</strong>Process 必須等一段時間後再重新申請資源，系統會再確認當時的狀態是否安全。</p>
+<figure>
+<img src="\blog\images\1528970642055.png" alt="1528970642055"><figcaption>1528970642055</figcaption>
+</figure>
+<p>Deadlock 是 Unsafe 集合的 Subset。</p>
+<h4 id="bankers-algorithm">Banker’s Algorithm</h4>
+<ul>
+<li>資料結構
+<ul>
+<li>n：Process 個數。</li>
+<li>m：Resource 種類數。</li>
+<li><span class="math inline">\(Request_i：[1 \ldots m] \; of \; int \Rightarrow P_i\)</span> 提出的各式資源申請量。</li>
+<li><span class="math inline">\(Allocation：n \times m \; matrix \Rightarrow\)</span> 各個 Process 目前持有的各式資源數量。</li>
+<li><span class="math inline">\(Max：n \times m \; matrix \Rightarrow\)</span> 各 Process 完工所需之各式資源最大數量。</li>
+<li><span class="math inline">\(Need：n \times m matrix = Max - Allocation \Rightarrow\)</span> <strong>各 Process 還需各式資源才能完工。</strong></li>
+<li><span class="math inline">\(Available：[1 \ldots m] \; of \; int = 資源總量 - Allocation\Rightarrow\)</span> <strong>系統目前可用的各式資源數量。</strong></li>
+</ul></li>
+</ul>
+<figure>
+<img src="\blog\images\1528971381784.png" alt="1528971381784"><figcaption>1528971381784</figcaption>
+</figure>
+<ul>
+<li>演算步驟
+<ol type="1">
+<li>確認 <span class="math inline">\(Request_i \leq Need_i\)</span><br><strong>若成立進入第二步，否則因為申請不合理導致終止</strong> <span class="math inline">\(P_i\)</span>。</li>
+<li>確認 <span class="math inline">\(Request_i \leq Available\)</span><br><strong>若成立進入第三步，否則</strong> <span class="math inline">\(P_i\)</span> <strong>一直等待直到資源可以使用時。</strong></li>
+<li>( 演算結果 ) <span class="math inline">\(Allocation_i = Allocation_i + Request_i \quad Need_i = Need_i - Request_i \quad Available = Available - Request_i\)</span></li>
+<li><strong>依照第三步的演算值執行「Safety Algorithm」，若回傳「Saft state」則可以核准該申請，但若回傳「Unsafe state」則核駁該次申請。</strong><br><span class="math inline">\(P_i\)</span> <strong>必須等待一段時間再重新提出申請。</strong></li>
+</ol></li>
+</ul>
+<h4 id="safty-algorithm">Safty algorithm</h4>
+<ul>
+<li>資料結構
+<ul>
+<li>n：Process 個數。</li>
+<li>m：Resource 種類數。</li>
+<li><span class="math inline">\(Request_i：[1 \ldots m] \; of \; int \Rightarrow P_i\)</span> 提出的各式資源申請量。</li>
+<li><span class="math inline">\(Allocation：n \times m \; matrix \Rightarrow\)</span> 各個 Process 目前持有的各式資源數量。</li>
+<li><span class="math inline">\(Max：n \times m \; matrix \Rightarrow\)</span> 各 Process 完工所需之各式資源最大數量。</li>
+<li><span class="math inline">\(Need：n \times m matrix = Max - Allocation \Rightarrow\)</span> <strong>各 Process 還需各式資源才能完工。</strong></li>
+<li><span class="math inline">\(Available：[1 \ldots m] \; of \; int = 資源總量 - Allocation\Rightarrow\)</span> <strong>系統目前可用的各式資源數量。</strong></li>
+<li><span class="math inline">\(Work：[1\ldots m] \; of \; int \Rightarrow\)</span> <strong>代表系統目前可用的資源累積數量。</strong></li>
+<li><span class="math inline">\(Finish：[1\ldots n] \; of \; int\)</span> <br><span class="math inline">\(\Rightarrow \{\begin{matrix}True \quad 代表P_i可完工 \\False \quad 尚未完工 \end{matrix}\)</span></li>
+</ul></li>
+<li>演算步驟
+<ol type="1">
+<li>設定初值<br>$Work = Availabe Finish[i] ; i, 1 i n ; 設定為 ; false $</li>
+<li><strong>試找一個</strong> <span class="math inline">\(P_i\)</span> 滿足：<br><span class="math inline">\(Finish[i] 為 False\)</span><br><span class="math inline">\(Need_i \leq Work\)</span><br>若可以找到進入第三步，否則進入第四步。</li>
+<li><strong>設定</strong><span class="math inline">\(Finish[i] = True \quad Work = Work + Allocation_i\)</span>，<strong>接著進入第二步。</strong></li>
+<li>確認 <span class="math inline">\(Finish\)</span> 陣列，若全部皆為 True 回傳「Safe state」，否則回傳「Unsafe state」。</li>
+</ol></li>
+<li>Safe sequence / Safe stete
+<ul>
+<li><strong>至少可以找出大於一組 「Safe sequence」稱為 Safe state 否則稱為 Unsafe state ，代表作業系統未來依此 Processes 順序可分配各 Process 所需的資源使得大家皆可以順利完工。</strong></li>
+</ul></li>
+</ul>
+<h4 id="實際演練一">實際演練一</h4>
+<ul>
+<li>5 個 Processes：<span class="math inline">\(P_0, \ldots, P_4\)</span></li>
+<li>3 種類型的 Resource：<span class="math inline">\(A, B, C\)</span></li>
+<li>起始資源量：<span class="math inline">\((A, B, C) = (10, 5, 7)\)</span><br>求取 <span class="math inline">\(Need[]\)</span> 與<span class="math inline">\(Available[]\)</span><br><span class="math inline">\(P_1\)</span> 提出 <span class="math inline">\((A, B, C) = (1, 0, 2)\)</span> 之資源申請，請問是否予以核准或是核駁，請說明。</li>
+</ul>
+<figure>
+<img src="\blog\images\1531184487179.png" alt="1531184487179"><figcaption>1531184487179</figcaption>
+</figure>
+<figure>
+<img src="\blog\images\1531184825933.png" alt="1531184825933"><figcaption>1531184825933</figcaption>
+</figure>
+<ul>
+<li><p><strong>Banker’s algorithm</strong></p>
+<ul>
+<li><span class="math inline">\(Request_1 = (1, 0, 2)\)</span></li>
+</ul>
+<ol type="1">
+<li>確認 $ Request_1 (1, 0, 2) Need_1(1, 2, 2)$，OK ( goto step2 )。</li>
+<li>確認 $ Request_1 (1, 0, 2) Available(3, 3, 2)$，OK ( goto step3 )。</li>
+<li>Safty algorithm。</li>
+</ol></li>
+<li><p>Safty algorithm</p>
+<ol type="1">
+<li>Initial value：<span class="math inline">\(Work = Available = ＜2, 3, 0＞\)</span></li>
+<li>因為可以找到一個 Process <span class="math inline">\(P_1\)</span> 供應 Resource 並使之得以完成該工作。<br>滿足：<span class="math inline">\(Finish[1] = False\quad Need_1 \leq Work\)</span>，OK ( goto step3 )。</li>
+<li><strong>設定</strong> <span class="math inline">\(Finish[1] = True \quad Work = Work + Allocation_i\)</span>，<strong>goto step2。</strong><br>…<strong>在 Step2 不斷重複的尋找是否有 <span class="math inline">\(P_i\)</span> 尚未完工且目前資源可以予以完工</strong>…</li>
+<li>最後確認 <span class="math inline">\(Finish[]\)</span> 全皆為 <span class="math inline">\(True\)</span> 後回傳「Safe state」。</li>
+</ol></li>
+<li><p>列出其 Safe sequence</p>
+<ul>
+<li><span class="math inline">\(＜P_1, P_3, P_4, P_0, P_2＞\)</span></li>
+</ul></li>
+</ul>
+<h4 id="實際演練二">實際演練二</h4>
+<ul>
+<li>5 個 Processes：<span class="math inline">\(P_0, \ldots, P_4\)</span></li>
+<li>3 種類型的 Resource：<span class="math inline">\(A, B, C\)</span></li>
+<li>起始資源量：<span class="math inline">\((A, B, C) = (10, 5, 7)\)</span><br>求取 <span class="math inline">\(Need[]\)</span> 與<span class="math inline">\(Available[]\)</span><br><span class="math inline">\(P_4\)</span> 提出 <span class="math inline">\((A, B, C) = (3, 3, 0)\)</span> 之資源申請，請問是否予以核准或是核駁，請說明。</li>
+</ul>
+<figure>
+<img src="\blog\images\1531184487179.png" alt="1531184487179"><figcaption>1531184487179</figcaption>
+</figure>
+<figure>
+<img src="\blog\images\1531184825933.png" alt="1531184825933"><figcaption>1531184825933</figcaption>
+</figure>
+<ul>
+<li>Banker’s algorithm
+<ol type="1">
+<li>確認 $ Request_4 (3, 3, 0) Need_4(4, 3, 1)$，OK ( goto step2 )。</li>
+<li>確認 $ Request_1 (3, 3, 0) Available(3, 3, 2)$，OK ( goto step3 )。</li>
+<li>Safty algorithm。</li>
+</ol></li>
+<li>Safty algorithm
+<ol type="1">
+<li>Initial value：<span class="math inline">\(Work = Available = ＜0, 0, 2＞\)</span></li>
+<li>因為不能找到一個 Process <span class="math inline">\(P_i\)</span> 供應 Resource 並使之得以完成該工作 Fall ( goto step4 )。</li>
+<li>最後確認 <span class="math inline">\(Finish[]\)</span> 非全皆為 <span class="math inline">\(True\)</span> 後回傳「Not safe state」。</li>
+</ol></li>
+</ul>
+<h4 id="bankers-algorithm-的-time-complexity">Banker’s algorithm 的 Time complexity</h4>
+<ul>
+<li>令 n：process 數目、m：resource 種類數。
+<ul>
+<li>Step1 需要 <span class="math inline">\(O(m)\)</span>。(檢查 request 是否大於 need)</li>
+<li>Step2 需要 <span class="math inline">\(O(m)\)</span>。(檢查目前剩下資源是否充足可以給予 request)</li>
+<li>Step3 需要 <span class="math inline">\(O(m)\)</span>。(若可以給予，將原本的 need、allocation、available)</li>
+<li>Safty algorithm 的 time complexity。</li>
+</ul></li>
+<li>Safty algorithm
+<ul>
+<li>初值設定、每次工作需要 <span class="math inline">\(O(m)\)</span>、將所有 processes 確認一遍需要 <span class="math inline">\(O(n)\)</span>。</li>
+<li><strong>最多檢查 </strong><span class="math inline">\(n + (n-1) + (n-2) + \ldots + 1 = \frac{(n+1) \cdot n}{2}\)</span> 個 process 每次檢查 <span class="math inline">\(Need_i \leq work\)</span> 需要 <span class="math inline">\(O(m)\)</span> ，加總起來為 $O(n^2 m) $。</li>
+<li>使用 $ O(n) $ 確認所有 processes 都做完檢查。</li>
+</ul></li>
+</ul>
+<h4 id="single-instance-resource-algorithm">Single-instance resource algorithm</h4>
+<ul>
+<li>可以化簡較為簡易的 avoidance 檢查方法。</li>
+<li>利用 RAG，加上<strong>「Claim edge」使用。</strong></li>
+</ul>
+<figure>
+<img src="\blog\images\1530172024919.png" alt="1530172024919"><figcaption>1530172024919</figcaption>
+</figure>
+<ul>
+<li><p>clam edge (虛線)：代表 <span class="math inline">\(P_i\)</span> <strong>未來</strong>會對 <span class="math inline">\(R_j\)</span> 提出申請。(即為 Max/Need 的意義)</p></li>
+<li><p>演算法 ( 當 <span class="math inline">\(P_i\)</span> 提出 <span class="math inline">\(R_j\)</span> 申請 )</p>
+<ol type="1">
+<li>檢查原本有無該宣告邊之存在，若有進入第二步，否則終止 <span class="math inline">\(P_i\)</span>。</li>
+<li>確認 <span class="math inline">\(R_j\)</span> 是否可供使用，若可以進入第三步，否則 <span class="math inline">\(P_i\)</span> 等待該資源 ( 由 Claim edge 轉為 Request edge )。</li>
+<li><strong>( 演算結果 ) 暫時將宣告邊改為配置邊( Allocation edge )，進入第四步</strong>。</li>
+<li><strong>確認途中是否有 Cycle 存在，若無則為「Safe state (核准)」，若有 cycle 為「Unsafe ( 核駁 )」</strong>。</li>
+</ol></li>
+<li><p><span class="math inline">\(Ex .\)</span></p></li>
+</ul>
+<figure>
+<img src="\blog\images\1530172534581.png" alt="1530172534581"><figcaption>1530172534581</figcaption>
+</figure>
+<ul>
+<li>若<span class="math inline">\(P_1\)</span> 對 <span class="math inline">\(R_2\)</span> 提出申請是否核准？<strong>因為沒有 Cycle 存在，所以 Safe 核准申請。</strong></li>
+</ul>
+<figure>
+<img src="\blog\images\1530172797528.png" alt="1530172797528"><figcaption>1530172797528</figcaption>
+</figure>
+<ul>
+<li>若為 <span class="math inline">\(P_2\)</span> 對 <span class="math inline">\(R_2\)</span> 提出申請是否核准？<strong>因為有 cycle 存在，所以核駁申請。</strong></li>
+</ul>
+<figure>
+<img src="\blog\images\1530172966437.png" alt="1530172966437"><figcaption>1530172966437</figcaption>
+</figure>
+<ul>
+<li><strong>＜Note＞：Deadlock 位於 Unsafe state 的集合之中，也就是說若目前的狀態是 unsafe state 有可能會導致死結，但也有可能不會導致死結。</strong></li>
+</ul>
+<h4 id="theorem-deadlock-free">*＜Theorem＞ Deadlock free</h4>
+<figure>
+<img src="\blog\images\1530173438706.png" alt="1530173438706"><figcaption>1530173438706</figcaption>
+</figure>
+<p>系統若有 n 個 processes、m 個 resources intsance ( 單一種類 )，<strong>且滿足下列條件</strong>：</p>
+<ol type="1">
+<li><span class="math inline">\(1 \leq Max_i \leq m\)</span> ，單一 Process 不得要求超過該種類資源的上限。</li>
+<li><span class="math inline">\(\sum_{i = 1}^n Max_i &lt; n + m \Rightarrow \sum_{i = 1}^n Max_i - n &lt; m\)</span> ，假設目前所有的 processes 都剩下一個資源未取得，而剩下的資源小於 m 代表的意思就是 $ m - (_{i = 1}^n Max_i - n ) 1$，<strong>代表我們還有至少一個以上的資源可以使某些 processes 可以先結束</strong>，接著回收的資源就可以再分配給其他 processes。</li>
+</ol>
+<p>則<strong>系統是不可能會有死結的 ( Deadlock free )</strong>。</p>
+<ul>
+<li><span class="math inline">\(Ex1 .\)</span> 有 6 部印表機現在正被 Process 使用，每個 process 最多需要 2 部印表機才可以完工，則系統最多允許 <strong>幾個</strong> process 執行以確保 Peadlock free ？
+<ul>
+<li>m = 6, <span class="math inline">\(Max_i = 2\)</span>。<br>(1) <span class="math inline">\(1\leq Max_i \leq m \Rightarrow 1\leq 2 \leq 6\)</span>，OK。<br>(2) <span class="math inline">\(\sum_{i = 1}^n Max_i &lt; n+m \Rightarrow 2n &lt; n+6 \Rightarrow n &lt; 6 \Rightarrow\)</span> <strong>最多 5 個 Processes</strong>。</li>
+</ul></li>
+<li>$Ex2 . 有 10 部印表機現在正被 Process 使用，每個 process 最多需要 3 部印表機才可以完工，則系統最多允許 <strong>幾個</strong> process 執行以確保 Peadlock free ？
+<ul>
+<li><span class="math inline">\(Max_i = 3, m = 10\)</span>。<br><span class="math inline">\(3n &lt; n+10, 2n &lt; 10 \Rightarrow n &lt; 5 \Rightarrow\)</span> <span class="math inline">\(最多 4 個 \; Processes。\)</span></li>
+</ul></li>
+<li>Proof<br>假設資源全部配置出去即為 <span class="math inline">\(\sum_{i = 1}^n Allcation_i = m​\)</span>，又 <span class="math inline">\(\sum_{i = 1}^n Need_i = \sum_{i = 1}^n Max_i - \sum_{i = 1}^n Allocation_i \Rightarrow \sum_{i = 1}^n (Max_i) - m \Rightarrow \sum_{i = 1}^n Max_i = \sum_{i = 1}^n Need_i + m​\)</span>。<br>因為依照定理第二點 <span class="math inline">\(\sum_{i = 1}^n Max_i &lt; n+m \Rightarrow \sum_{i = 1}^n Need_i + m &lt; n+m​\)</span><br>，所以 <span class="math inline">\(\sum_{i = 1}^n Need_i &lt; n​\)</span>，<strong><br>此式代表至少有大於等於 1 個process 之 Need_i 為 0 代表 Process_i 可以完工，</strong>且 P_i 至少會釋出超過 1 個 Resource (<strong>因為按照定理第一點可以知道每個 process 只少會占用大於 1 個資源 Max_i 大於等於 1</strong>)，使得剩下的 processes 中又會有大於等於 1 個 processes 可以取得資源並完工。</li>
+</ul>
+<h3 id="deadlock-detection-and-recovery">Deadlock detection and recovery</h3>
+<p>如果放任 Resources 無限制的使用，雖然 Utilization 高，<strong>但是系統有可能進入死結而不自知，所以需要有一個死結偵測的演算法以及解決 ( Recovery ) 死結的方法。</strong></p>
+<h4 id="detection">Detection</h4>
+<ul>
+<li><strong>＜Note＞</strong>
+<ul>
+<li>Avoidance ( Banker’s algorithm ) 含有<strong>未來</strong>的資訊 (Max, Need)。</li>
+<li>Detection 只有<strong>目前的資訊 ( Current infomation )</strong>。</li>
+</ul></li>
+<li>資料結構
+<ul>
+<li>n：Process 個數。</li>
+<li>m：Resource 種類數。</li>
+<li><span class="math inline">\(Allocation：n \times m \; matrix \Rightarrow\)</span> 各個 Process 目前持有的各式資源數量。</li>
+<li><span class="math inline">\(Available：[1 \ldots m] \; of \; int = 資源總量 - Allocation\Rightarrow\)</span> <strong>系統目前可用的各式資源數量。</strong></li>
+<li><span class="math inline">\(Work：[1\ldots m] \; of \; int \Rightarrow\)</span> <strong>代表系統目前可用的資源累積數量。</strong></li>
+<li><span class="math inline">\(Finish：[1\ldots n] \; of \; int\)</span> <br><span class="math inline">\(\Rightarrow \{\begin{matrix}True \quad 代表P_i可完工 \\ False \quad 尚未完工 \end{matrix}\)</span></li>
+<li>*<span class="math inline">\(Request：n \times m \; matrix \Rightarrow\)</span> <strong>各 Process 目前對各式資源提出的申請量。</strong></li>
+</ul></li>
+<li>演算法
+<ol type="1">
+<li>初值設定<br><span class="math inline">\(Work = Available\)</span>，因為目前沒資源的 process 不會導致 deadlock，因為不會有 <strong>hold</strong> <em>and wait</em> 的問題所以<span class="math inline">\(Finish[i] = \{\begin{matrix}True \quad if \; Allocation_i = 0 \\ False \quad if \; Allocation_i \neq 0 \end{matrix}\)</span></li>
+<li>試找一個 <span class="math inline">\(P_i\)</span> 滿足<br><span class="math inline">\(Finish[i] = False \; AND \; Request_i \leq Work\)</span><br>若找到進入第三步，否則進入第四步。</li>
+<li>設定 <span class="math inline">\(Finish[i] = True \quad Work = Work + Allocation_i\)</span>，<strong>回到第二步。</strong></li>
+<li>確認 <span class="math inline">\(Finish\)</span> <strong>陣列，若全部皆為 true，而我們可以得知目前沒有死結的可能。<br>否則我們可以得知目前有死結的存在，而且</strong> <span class="math inline">\(Finish[i] = false\)</span> <strong>的 Process 會陷入該死結之中。</strong></li>
+</ol></li>
+<li><strong>Time complexity</strong>
+<ul>
+<li><span class="math inline">\(O(n^2 \cdot m)\)</span>：<strong>死結偵測一次的時間需求很高，還要再乘上偵測的頻率，所以總體的成本很可觀。</strong></li>
+</ul></li>
+</ul>
+<h4 id="實際演練一-1">實際演練一</h4>
+<figure>
+<img src="\blog\images\1531188159444.png" alt="1531188159444"><figcaption>1531188159444</figcaption>
+</figure>
+<ul>
+<li><ol type="1">
+<li><span class="math inline">\(Work = Available (0, 0, 0)\)</span></li>
+</ol></li>
+<li><ol start="2" type="1">
+<li>可以找到 <span class="math inline">\(P_0\)</span> 予以 Resource 後可完工且 <span class="math inline">\(Finish[0] = False\)</span>，<span class="math inline">\(Request_0 \leq Work\)</span> 前往第三步。</li>
+</ol></li>
+<li><ol start="3" type="1">
+<li>設 <span class="math inline">\(Finish[0] = True\)</span> ，<span class="math inline">\(Work&#39; = Work + (0, 1, 0) = (0, 1, 0)\)</span> 前往第二步。</li>
+</ol></li>
+<li><ol start="2" type="1">
+<li>可以找到 <span class="math inline">\(P_2\)</span> 予以 Resource 後可完工且 <span class="math inline">\(Finish[2] = False\)</span>，<span class="math inline">\(Request_2 \leq Work\)</span> 前往第三步。</li>
+</ol></li>
+<li><ol start="3" type="1">
+<li>設 <span class="math inline">\(Finish[2] = True\)</span> ，<span class="math inline">\(Work = Work + (3, 0, 3) = (3, 1, 3)\)</span> 前往第二步。</li>
+</ol></li>
+<li>在不斷的 (2) <span class="math inline">\(\Leftrightarrow\)</span> (3) 之下，可以再找到 <span class="math inline">\(P_1, P_3, P_4\)</span> 可以完工進入第四步。</li>
+<li><ol start="4" type="1">
+<li>最後確認 <span class="math inline">\(Finish[]\)</span> 全皆為 <span class="math inline">\(True\)</span> 後得知目前「Deadlock free」。</li>
+</ol></li>
+</ul>
+<h4 id="實際演練二-1">實際演練二</h4>
+<figure>
+<img src="\blog\images\1531188115016.png" alt="1531188115016"><figcaption>1531188115016</figcaption>
+</figure>
+<ul>
+<li><span class="math inline">\(Work = Available = (0, 0, 0)\)</span></li>
+<li><ol start="2" type="1">
+<li>可以找到 <span class="math inline">\(P_0\)</span> 予以 Resource 後可完工且 <span class="math inline">\(Finish[0] = False\)</span>，<span class="math inline">\(Request_0 \leq Work\)</span> 前往第三步。</li>
+</ol></li>
+<li><ol start="3" type="1">
+<li>設 <span class="math inline">\(Finish[0] = True\)</span> ，<span class="math inline">\(Work&#39; = Work + (0, 1, 0) = (0, 1, 0)\)</span> 前往第二步。</li>
+</ol></li>
+<li><ol start="2" type="1">
+<li><strong>找不到</strong> <span class="math inline">\(P_i\)</span> <strong>可以利用目前資源完工，進入第四步。</strong></li>
+</ol></li>
+<li><ol start="4" type="1">
+<li>最後確認 <span class="math inline">\(Finish[]\)</span> 非全皆為 <span class="math inline">\(True\)</span> 後<strong>得知目前有「Deadlock」，而在死結內的程序有</strong> <span class="math inline">\(P_1, P_2, P_3, P_4\)</span>。</li>
+</ol></li>
+</ul>
+<h4 id="single-instance-resource-algorithm-1">Single instance resource algorithm</h4>
+<ul>
+<li>令 <span class="math inline">\(G = ＜V, E＞\)</span> 有向圖代表「Wait-for Graph」，其中<br>1. Vertex：<strong>只有 Process 而已，無 Resource 頂點</strong>。<br>2. Edge：Wait-for edge。</li>
+</ul>
+<figure>
+<img src="\blog\images\1530174622303.png" alt="1530174622303"><figcaption>1530174622303</figcaption>
+</figure>
+<ul>
+<li>從 RAG 簡化而成，即為：</li>
+</ul>
+<figure>
+<img src="\blog\images\1530174725109.png" alt="1530174725109"><figcaption>1530174725109</figcaption>
+</figure>
+<figure>
+<img src="\blog\images\1530174756704.png" alt="1530174756704"><figcaption>1530174756704</figcaption>
+</figure>
+<ul>
+<li>較為 Detection 演算法<strong>簡單</strong>
+<ul>
+<li><strong>使用「Wait-for graph」：在「Wait-for graph」中，若有 cycle 存在則目前有死結存在，否則目前無死結存在。</strong></li>
+</ul></li>
+</ul>
+<figure>
+<img src="\blog\images\1529287297237.png" alt="1529287297237"><figcaption>1529287297237</figcaption>
+</figure>
+<ul>
+<li>此「Wait-for Graph」有 Cycle，所以有死結存在。</li>
+</ul>
+<figure>
+<img src="\blog\images\1529287327536.png" alt="1529287327536"><figcaption>1529287327536</figcaption>
+</figure>
+<h4 id="recovery">Recovery</h4>
+<ul>
+<li>Kill processes in the deadlock
+<ul>
+<li><strong>Kill 「all」 processes in the deadlock</strong>：先前的工作成果全部作廢，成本太高。</li>
+<li><strong>Kill process one by one</strong>，刪除一個 process 之後再使用<strong>偵測死結演算法，若死結仍存在，再多刪除一個 process。( 因為這種做法需要：O(loop 刪除次數</strong>$ $<strong>偵測成本 )，時間成本太高不值得 )</strong></li>
+</ul></li>
+<li><strong>Resource preemption (資源剝奪)</strong>
+<ol type="1">
+<li>選擇受害 Process。</li>
+<li>剝奪該 Process 的資源。</li>
+<li><strong>回復該受害 Process 當初未被剝奪資源的狀態。(太困難，成本太高也可能會有 Starvation 的問題)</strong></li>
+</ol></li>
+</ul>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/Deadlock/" rel="tag"># Deadlock</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2018/07/10/Operating-System-Basic-Concept-3/" rel="next" title="Operating System - Basic Concept 3">
+                <i class="fa fa-chevron-left"></i> Operating System - Basic Concept 3
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2018/07/10/Operating-System-Process-Management-and-Thread-Management/" rel="prev" title="Operating System - Process Management and Thread Management">
+                Operating System - Process Management and Thread Management <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/blog/images/avatar_me.gif"
+                alt="Willy Wang" />
+            
+              <p class="site-author-name" itemprop="name">Willy Wang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/blog/archives/">
+                
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/blog/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/blog/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://typora.io/" title="Typora" target="_blank">Typora</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.geeksforgeeks.org/" title="GeeksforGeeks" target="_blank">GeeksforGeeks</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.codecogs.com/latex/eqneditor.php" title="Online LaTeX Equation Editor" target="_blank">Online LaTeX Equation Editor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://allem40306.github.io/blog/" title="CodingJack" target="_blank">CodingJack</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#deadlock"><span class="nav-number">1.</span> <span class="nav-text">Deadlock</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#resource-allcation-graph-r.-a.-g.-資源分配圖"><span class="nav-number">1.1.</span> <span class="nav-text">Resource allcation graph ( R. A. G. ) 資源分配圖</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#結論"><span class="nav-number">1.1.1.</span> <span class="nav-text">結論</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解決-deadlock"><span class="nav-number">1.2.</span> <span class="nav-text">解決 Deadlock</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#deadlock-prevention"><span class="nav-number">1.2.1.</span> <span class="nav-text">Deadlock prevention</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#deadlock-aviodance"><span class="nav-number">1.2.2.</span> <span class="nav-text">Deadlock aviodance</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bankers-algorithm"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">Banker’s Algorithm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#safty-algorithm"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">Safty algorithm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#實際演練一"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">實際演練一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#實際演練二"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">實際演練二</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bankers-algorithm-的-time-complexity"><span class="nav-number">1.2.2.5.</span> <span class="nav-text">Banker’s algorithm 的 Time complexity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#single-instance-resource-algorithm"><span class="nav-number">1.2.2.6.</span> <span class="nav-text">Single-instance resource algorithm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#theorem-deadlock-free"><span class="nav-number">1.2.2.7.</span> <span class="nav-text">*＜Theorem＞ Deadlock free</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#deadlock-detection-and-recovery"><span class="nav-number">1.2.3.</span> <span class="nav-text">Deadlock detection and recovery</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#detection"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">Detection</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#實際演練一-1"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">實際演練一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#實際演練二-1"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">實際演練二</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#single-instance-resource-algorithm-1"><span class="nav-number">1.2.3.4.</span> <span class="nav-text">Single instance resource algorithm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#recovery"><span class="nav-number">1.2.3.5.</span> <span class="nav-text">Recovery</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Willy Wang</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=6.0.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://https-wangwilly-github-io-blog.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://WangWilly.github.io/blog/2018/07/10/Operating-System-Deadlock/';
+        this.page.identifier = '2018/07/10/Operating-System-Deadlock/';
+        this.page.title = 'Operating System - Deadlock';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-wangwilly-github-io-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/blog/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/blog/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>

@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next_cat.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/blog/images/logo_cat.svg?v=6.0.4" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Pisces',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="Basic Concept," />
+
+
+<meta name="description" content="基礎觀念 - Basic Concept (貳)  機器指令 Stage (階段)  1526805202151   IF：Instruction Fetch ID：Instruction Decode FO：Fetch Operands EXE：Execution WM：Write Result to Memory      CPU 會 Memory Acces">
+<meta name="keywords" content="Basic Concept">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Operating System - Basic Concept 2">
+<meta property="og:url" content="http://WangWilly.github.io/blog/2018/07/10/Operating-System-Basic-Concept-2/index.html">
+<meta property="og:site_name" content="WillyWangkaa">
+<meta property="og:description" content="基礎觀念 - Basic Concept (貳)  機器指令 Stage (階段)  1526805202151   IF：Instruction Fetch ID：Instruction Decode FO：Fetch Operands EXE：Execution WM：Write Result to Memory      CPU 會 Memory Acces">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1526805202151.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1526805611478.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1526806092878.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1526806717525.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1526807435082.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1526808564478.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1526808604540.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/1526809058649.png">
+<meta property="og:updated_time" content="2018-07-10T13:43:48.258Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Operating System - Basic Concept 2">
+<meta name="twitter:description" content="基礎觀念 - Basic Concept (貳)  機器指令 Stage (階段)  1526805202151   IF：Instruction Fetch ID：Instruction Decode FO：Fetch Operands EXE：Execution WM：Write Result to Memory      CPU 會 Memory Acces">
+<meta name="twitter:image" content="http://wangwilly.github.io/blog/images/1526805202151.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://WangWilly.github.io/blog/2018/07/10/Operating-System-Basic-Concept-2/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>Operating System - Basic Concept 2 | WillyWangkaa</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WillyWangkaa</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/blog/blog/2018/07/10/Operating-System-Basic-Concept-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Willy Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar_me.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WillyWangkaa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Operating System - Basic Concept 2</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-10T11:20:00+08:00">2018-07-10</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-07-10T21:43:48+08:00">2018-07-10</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/blog/categories/Operating-System/" itemprop="url" rel="index"><span itemprop="name">Operating System</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/blog/2018/07/10/Operating-System-Basic-Concept-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/07/10/Operating-System-Basic-Concept-2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="基礎觀念---basic-concept-貳">基礎觀念 - Basic Concept (貳)</h1>
+<hr>
+<h2 id="機器指令-stage-階段">機器指令 Stage (階段)</h2>
+<figure>
+<img src="\blog\images\1526805202151.png" alt="1526805202151"><figcaption>1526805202151</figcaption>
+</figure>
+<ol type="1">
+<li>IF：Instruction Fetch</li>
+<li>ID：Instruction Decode</li>
+<li>FO：Fetch Operands</li>
+<li>EXE：Execution</li>
+<li>WM：Write Result to Memory</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th>CPU 會 Memory Access</th>
+<th>DMA 要用 Memory</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">IF</td>
+<td>必用</td>
+<td>Conflict</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">ID</td>
+<td>不使用</td>
+<td>OK</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">FO</td>
+<td>可能使用</td>
+<td>OK or conflict</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">EXE</td>
+<td>不使用</td>
+<td>OK</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">WM</td>
+<td>可能使用</td>
+<td>OK or conflict</td>
+</tr>
+</tbody>
+</table>
+<p>(P.3 - 66) (原文書 I/O Subsystem P. 596)</p>
+<ul>
+<li>DMA 之六個步驟：</li>
+</ul>
+<figure>
+<img src="\blog\images\1526805611478.png" alt="1526805611478"><figcaption>1526805611478</figcaption>
+</figure>
+<ul>
+<li>Life cycle of I/O request (via Tnterrupted I/O) (P.3-65) (原文書P.612)</li>
+</ul>
+<figure>
+<img src="\blog\images\1526806092878.png" alt="1526806092878"><figcaption>1526806092878</figcaption>
+</figure>
+<h2 id="blocking-io-and-nonblocking-io">Blocking I/O and Nonblocking I/O</h2>
+<ul>
+<li>Blocking - I/O：Process <strong>suspended</strong> until I/O completed.
+<ul>
+<li>Pros：Easy to use and understand.(撰寫維護簡單，明確的知道什麼user program 需求。)</li>
+<li>Cons：Insufficient for some needs.(當要載入一個大的影片檔，要等到所有的資料載完才feedback給使用者，會導致使用者體驗不好)</li>
+</ul></li>
+</ul>
+<figure>
+<img src="\blog\images\1526806717525.png" alt="Synchronous-I/O 也就是 Blocking I/O"><figcaption>Synchronous-I/O 也就是 Blocking I/O</figcaption>
+</figure>
+<ul>
+<li>Nonblocking I/O：I/O calls return as much as available.(控制權在交付 I/O 的需求後馬上還給user process)
+<ul>
+<li>Eg：user interface, data copy (Buffer I/O).</li>
+<li><strong>Implemented via multithreading.</strong></li>
+<li>Returned quickly with count of bytes read or written.(回傳目前一定的量給 process)</li>
+<li>有多少的 I/O 的資料完成就傳回多少資料。</li>
+</ul></li>
+<li>Asynchronous - I/O (屬於Nonblocking I/O 的一步分)：Process runs while I/O executes.
+<ul>
+<li>Difficult to use.</li>
+<li>I/O subsystem signal process when I/O - completed.</li>
+<li>要完整的將整個 I/O 完成才將資料回傳。</li>
+</ul></li>
+</ul>
+<figure>
+<img src="\blog\images\1526807435082.png" alt="1526807435082"><figcaption>1526807435082</figcaption>
+</figure>
+<h2 id="intruupt-機制與種類">Intruupt 機制與種類</h2>
+<ul>
+<li>當 interrupt 發生，OS之處理如下：
+<ul>
+<li>OS 收到中斷後，若中斷是必須要被立即處理的，則OS會暫停目前的 Process 之執行，且保存其Status and register comtents。</li>
+<li>OS會依據 interupt ID ( No. ) 查詢<strong>Interrupt Vector</strong>確認何種中斷發生，且找出其 ISR 的位置。</li>
+<li>Jump to ISR位置，執行ISR。</li>
+<li>ISR完成後，控制權返回kernel。</li>
+<li>OS 會恢復( resume ) 中斷之前 process 的進行。</li>
+</ul></li>
+</ul>
+<figure>
+<img src="\blog\images\1526808564478.png" alt="1526808564478"><figcaption>1526808564478</figcaption>
+</figure>
+<ul>
+<li><p>interrupt 種類</p>
+<ul>
+<li>分類一 ( 分三種 )</li>
+</ul>
+<ol type="1">
+<li>External interrupt：cpu以外的周邊設備、控制卡…等所引起。<br>例如：I/O completed, I/O - error, machine-check…。</li>
+<li>Internel interrupt：CPU 在執行程式過程中，遭遇重大錯誤而引發。(通常優先權最高)。<br>例如：Divide-by-zero, 執行非法的特權指令 … 。</li>
+<li>Software interrupt：User process在執行之中，若需要OS提供服務時，必須發出此類中斷，目的是<strong>通知OS</strong>執行對應的服務請求。<br>例如：I/O-request …。</li>
+</ol>
+<ul>
+<li>分類二</li>
+</ul>
+<ol type="1">
+<li>Interrupt：<strong>Hardware-generated</strong> change control flow.<br>例如：設備發出 I/O-completed, I/O-error, machine-check…以及Timer(cpu排班、cpu保護的<strong>硬體</strong>)發出的time-out</li>
+<li>Trap：<strong>Software-generated</strong> interrupt.<br>Catch the arithematic error。利如：divide-by-zerp, 執行非法指令, 非法記憶體存取…<br>user process 需要OS提供服務時，也會發trap通知OS。例如：I/O-request。</li>
+</ol>
+<ul>
+<li>分類三：以中斷的優先權高低分類。</li>
+</ul>
+<ol type="1">
+<li>Maskable (可遮罩) interrupt：此類中斷發生後，可被忽略或延後處理，也就是說不一定要馬上處理。<br>例如 Software interrupt (優先權低)</li>
+<li>Non-maskable (不可遮罩) interrput：此類中斷必須立刻處理。<br>例如：internal interrupt (重大錯誤), I/O-error, …。</li>
+</ol></li>
+</ul>
+<h2 id="hardware-resource-protection">Hardware Resource Protection</h2>
+<h3 id="建設基礎的保護">建設基礎的保護</h3>
+<figure>
+<img src="\blog\images\1526808604540.png" alt="1526808604540"><figcaption>1526808604540</figcaption>
+</figure>
+<h4 id="dual-mode-operation---雙重模式">Dual mode operation - 雙重模式</h4>
+<ul>
+<li>定義：作業系統的運作模式只少要可被區分為兩種模式。
+<ul>
+<li>Kernel mode (又稱為 supervisor mode, system mode , privileged mode, monitor mode)：<br>代表此刻是kernel取得系統控制權(i.e. 取得 cpu 執行)，且<strong>允許使用</strong>特權( privileged )指令</li>
+<li>User mode：<br>代表User process取得 cpu 執行，且不允許執行指令。</li>
+</ul></li>
+<li><strong>＜Note＞：</strong>Duel-mode必須要有hardware的支持才可以實現。<br>例如：cpu內會有mode bit用以區分現在的mode為何。</li>
+</ul>
+<h4 id="privileged-intrustions---特權指令">Privileged intrustions - 特權指令</h4>
+<ul>
+<li>定義：任何可能會造成系統重大危害的指令，可設為特權指令。<strong>只可以</strong>在kernel mode下執行，不得在user mode 下執行，一旦在user mode執行會發出<strong>trap 通知OS</strong>，OS通常會終止(terminate)該process。</li>
+<li>包含：
+<ul>
+<li>I/O instruction (for I/Oprotection)</li>
+<li>Clear memory</li>
+<li>關於memory management(保護)所用之Register修改指令(base、limit register)</li>
+<li>Timer設定指令：set, change (for cpu protection)</li>
+<li>Enable, Disable Interrupt指令</li>
+<li>Halt指令</li>
+<li>change user mode to kernel mode指令</li>
+</ul></li>
+<li><span class="math inline">\(Ex.33\)</span> (Ref P.3-42) <br>以下哪些是特權指令？ (1)(3)(4)(5)<br><strong>(1) Set value of Timer</strong><br>(2) Read the clock<br><strong>(3) Clear Memory</strong><br><strong>(4) Turn-off interrupt</strong><br><strong>(5) Switch from user to kernel mode</strong><br></li>
+<li><span class="math inline">\(Ex.34\)</span><br>以下哪些是必要的特權指令，且讓使用者程式能最方便且兼顧安全？ (2)<strong>(3)</strong>(4)<strong>(5)</strong>(7)<br>(1) Change to user mode ＊原本就是user mode，所以使用也沒差。<br><strong>(2) Change to monitor mode</strong><br>※(3) Read from monitor memory<br><strong>(4) Write to monitor memory</strong><br>※(5) Fetch an instruction from monitor memory<br>(6) Turn on timer interrupt ＊本來就開啟，所以再開啟也沒關係。<br><strong>(7) Turn off timer interrupt</strong></li>
+</ul>
+<h3 id="io-protection">I/O Protection</h3>
+<ul>
+<li>目的：由於I/O運作較為繁瑣複雜，為了<strong>降低 user process 操控 I/O之複雜度</strong>及<strong>避免 user process 對 I/O-Device 之不當操作</strong>。</li>
+<li>作法：把所有的I/O指令都設為特權指令，再藉由Duel-mode，一律讓user process委託kernel 執行I/O運作。</li>
+</ul>
+<h3 id="memory-protection">Memory Protection</h3>
+<ul>
+<li>目的：防止user process存取其他 user process 之記憶體空間以及kernel的記憶體空間。(<strong>防止非法的記憶體的存取</strong>)</li>
+<li>作法：(以 contiguous memory allocation 為例)針對每個process , kernel會提供一套Base registers 與 Limit registers。其中Base registers 紀錄 process 在記憶體中的<strong>起始位址</strong>，Limit registers 紀錄 process 在記憶體中的大小。</li>
+</ul>
+<figure>
+<img src="\blog\images\1526809058649.png" alt="1526809058649"><figcaption>1526809058649</figcaption>
+</figure>
+<p><strong>＜Note＞：</strong>其中檢查是否逾越記憶體位置是交由硬體檢查(<strong>MMU</strong>, Memory management unit)。(因為記憶體讀取是很頻繁的，若交由軟體檢查是否逾越則會導致中斷太多而讓效能低落)</p>
+<p><strong>＜Note＞：</strong>Base / Limit register 的設定修改必為<strong>特權指令</strong>。</p>
+<h3 id="cpu-protection">CPU Protection</h3>
+<ul>
+<li>目的：防止user process 無限期/長期佔用 CPU 而不釋放。</li>
+<li>作法：利用硬體 <strong>Timer</strong> 實施保護，同時，OS會規定process使用 cpu time 之最大配額(max time quantum)，當process取得cpu之後time初值即設為max time quantum 值，隨著 process 執行時間增加，timer 值會逐步遞減值到timer 為 0 時會一同發出「Time-out interrupt」以通知 OS 強迫該process 放掉cpu。</li>
+</ul>
+<p><strong>＜Note＞：</strong>Timer 的設定與修改必為<strong>特權指令</strong>。</p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/Basic-Concept/" rel="tag"># Basic Concept</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2018/07/10/Operating-System-Basic-Concept/" rel="next" title="Operating System - Basic Concept 1">
+                <i class="fa fa-chevron-left"></i> Operating System - Basic Concept 1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2018/07/10/Operating-System-Basic-Concept-3/" rel="prev" title="Operating System - Basic Concept 3">
+                Operating System - Basic Concept 3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/blog/images/avatar_me.gif"
+                alt="Willy Wang" />
+            
+              <p class="site-author-name" itemprop="name">Willy Wang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/blog/archives/">
+                
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/blog/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/blog/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://typora.io/" title="Typora" target="_blank">Typora</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.geeksforgeeks.org/" title="GeeksforGeeks" target="_blank">GeeksforGeeks</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.codecogs.com/latex/eqneditor.php" title="Online LaTeX Equation Editor" target="_blank">Online LaTeX Equation Editor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://allem40306.github.io/blog/" title="CodingJack" target="_blank">CodingJack</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基礎觀念---basic-concept-貳"><span class="nav-number">1.</span> <span class="nav-text">基礎觀念 - Basic Concept (貳)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#機器指令-stage-階段"><span class="nav-number">1.1.</span> <span class="nav-text">機器指令 Stage (階段)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#blocking-io-and-nonblocking-io"><span class="nav-number">1.2.</span> <span class="nav-text">Blocking I/O and Nonblocking I/O</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#intruupt-機制與種類"><span class="nav-number">1.3.</span> <span class="nav-text">Intruupt 機制與種類</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hardware-resource-protection"><span class="nav-number">1.4.</span> <span class="nav-text">Hardware Resource Protection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#建設基礎的保護"><span class="nav-number">1.4.1.</span> <span class="nav-text">建設基礎的保護</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dual-mode-operation---雙重模式"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">Dual mode operation - 雙重模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#privileged-intrustions---特權指令"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">Privileged intrustions - 特權指令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#io-protection"><span class="nav-number">1.4.2.</span> <span class="nav-text">I/O Protection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#memory-protection"><span class="nav-number">1.4.3.</span> <span class="nav-text">Memory Protection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cpu-protection"><span class="nav-number">1.4.4.</span> <span class="nav-text">CPU Protection</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Willy Wang</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=6.0.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://https-wangwilly-github-io-blog.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://WangWilly.github.io/blog/2018/07/10/Operating-System-Basic-Concept-2/';
+        this.page.identifier = '2018/07/10/Operating-System-Basic-Concept-2/';
+        this.page.title = 'Operating System - Basic Concept 2';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-wangwilly-github-io-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/blog/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/blog/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>
