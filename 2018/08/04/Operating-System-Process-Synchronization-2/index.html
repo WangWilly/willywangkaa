@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next_cat.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/blog/images/logo_cat.svg?v=6.0.4" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Pisces',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="Process,Synchronization," />
+
+
+<meta name="description" content="Process Synchronization ( Process Communication, Inter Process Communication )  Race Condition Problem in Memory Communication  thesolutionofracecondition  Monitor  thestructofmonitor  monit">
+<meta name="keywords" content="Process,Synchronization">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Operating System - Process Synchronization 2">
+<meta property="og:url" content="http://WangWilly.github.io/blog/2018/08/04/Operating-System-Process-Synchronization-2/index.html">
+<meta property="og:site_name" content="WillyWangkaa">
+<meta property="og:description" content="Process Synchronization ( Process Communication, Inter Process Communication )  Race Condition Problem in Memory Communication  thesolutionofracecondition  Monitor  thestructofmonitor  monit">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/thesolutionofracecondition.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/thestructofmonitor.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/thetypeofmonitor.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/thetypeofmessagepassing.png">
+<meta property="og:image" content="http://wangwilly.github.io/blog/images/linkcapacity.png">
+<meta property="og:updated_time" content="2018-08-04T03:16:10.652Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Operating System - Process Synchronization 2">
+<meta name="twitter:description" content="Process Synchronization ( Process Communication, Inter Process Communication )  Race Condition Problem in Memory Communication  thesolutionofracecondition  Monitor  thestructofmonitor  monit">
+<meta name="twitter:image" content="http://wangwilly.github.io/blog/images/thesolutionofracecondition.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://WangWilly.github.io/blog/2018/08/04/Operating-System-Process-Synchronization-2/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>Operating System - Process Synchronization 2 | WillyWangkaa</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WillyWangkaa</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/blog/blog/2018/08/04/Operating-System-Process-Synchronization-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Willy Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar_me.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WillyWangkaa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Operating System - Process Synchronization 2</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-04T11:09:00+08:00">2018-08-04</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-08-04T11:16:10+08:00">2018-08-04</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/blog/categories/Operating-System/" itemprop="url" rel="index"><span itemprop="name">Operating System</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/blog/2018/08/04/Operating-System-Process-Synchronization-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/08/04/Operating-System-Process-Synchronization-2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="process-synchronization-process-communication-inter-process-communication">Process Synchronization ( Process Communication, Inter Process Communication )</h1>
+<hr>
+<h2 id="race-condition-problem-in-memory-communication">Race Condition Problem in Memory Communication</h2>
+<figure>
+<img src="\blog\images\thesolutionofracecondition.png" alt="thesolutionofracecondition"><figcaption>thesolutionofracecondition</figcaption>
+</figure>
+<h3 id="monitor">Monitor</h3>
+<figure>
+<img src="\blog\images\thestructofmonitor.png" alt="thestructofmonitor"><figcaption>thestructofmonitor</figcaption>
+</figure>
+<p>monitor 是一個用來解決同步問題的高階「資料結構」，是一種 <strong>ADT ( Abstract data type )</strong>。</p>
+<ul>
+<li>組成架構
+<ul>
+<li><strong>共享變數宣告區</strong></li>
+<li><strong>一組 local funtions or procedures</strong></li>
+<li><strong>初始區 ( Initialization area )</strong></li>
+</ul></li>
+<li>語法架構</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">type Monitor-Name = Monitor</span><br><span class="line">var 共享變數宣告</span><br><span class="line">procedure entry fun1-Name</span><br><span class="line">	begin</span><br><span class="line">		BODY;</span><br><span class="line">	end</span><br><span class="line">	</span><br><span class="line">...</span><br><span class="line">procedure entry fun2-Name</span><br><span class="line">	begin</span><br><span class="line">		BODY;</span><br><span class="line">	end</span><br><span class="line">	</span><br><span class="line">begin</span><br><span class="line">	初始區</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Pros
+<ul>
+<li><strong>Monitor 本身已保證互斥( mutual exclusive )，即「任和時間點，最多只允許 1 個 Process 在 Monitor 內進行活動 ( active )」</strong>：在任何時間點，最多只允許 1 個 Process 呼叫 ( calling ) Monitor 的某一個 function or procedure 執行，不可有多個 processes 同時呼叫 Monitor 的 funciton 執行。</li>
+<li>上述的互斥性質，是將<strong>「共享變數區的共享變數」設成只能以 Monitor 的 local function 存取</strong>，而不能直接從 Process 直接存取，<strong>而 Monitor 保障互斥，所以也會不會造成「Race condition」，完全無需再在意額外的演算法以防止 Race condition</strong>，只需專心解決同步問題即可( 在這一點比起 semaphore 好用很多，因為 semaphore 並不會保證 mutex 存取變數還須要演算法以輔助之 )。</li>
+</ul></li>
+<li><strong>Ex. 當我們在解決同步問題時，Semaphore 比起 Monitor 容易使用？</strong>
+<ul>
+<li><strong>False。</strong></li>
+</ul></li>
+</ul>
+<h4 id="condition-資料型別">Condition ( 資料型別 )</h4>
+<p>Condition 型別是用在 Monitor 中，提供給開發者解決同步問題之用。</p>
+<ul>
+<li><strong>Operatior</strong>：令 <span class="math inline">\(x\)</span> 為一 Condition type 變數。
+<ul>
+<li><strong>wait</strong> ( x.wait )：<strong>因為某些同步條件而被卡住時，執行此運作的該 Process 會 Blocked</strong>，並且置入 Monitor 內該資料變數的所屬之等待佇列( Waiting Queue：預設為 FIFO )</li>
+<li><strong>signal</strong> ( x.signal )：<strong>如果先前有 Processes 卡在該變數 ( x ) 的「Waiting queue」中，則此運作會自此「Waiting queue」移走一個 Process 並且恢復 ( Resume ) 其執行，否則無任何作用。</strong></li>
+</ul></li>
+</ul>
+<h4 id="解決-dining-philosophers-problem">解決 Dining-philosophers Problem</h4>
+<ol type="1">
+<li>先定義所需的 Monitor ADT。<br>type Dining-ph = Monitor<br>var state：[0…4] of ｛ think, hungry, eating ｝。</li>
+<li>self：[0…4] of condition</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">procedure entry <span class="title">pickup</span><span class="params">(i:<span class="number">0.</span>.<span class="number">.4</span>)</span></span></span><br><span class="line">    state[i] = hungry</span><br><span class="line">    test(i);</span><br><span class="line">	<span class="keyword">if</span>(state[i] != eating) then</span><br><span class="line">    	self[i].wait              <span class="comment">// 繼續餓著，將該 Process blocked</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">procedure <span class="title">test</span><span class="params">(k:<span class="number">0.</span>.<span class="number">.4</span>)</span></span></span><br><span class="line">    if(state[(k+4)%5]!= eating &amp;&amp;     // 左邊哲學家沒吃飯</span><br><span class="line">           state[k] == hungry &amp;&amp;      <span class="comment">// 由於 putdown 會要讓左右邊的哲學家是否要吃飯，所以必須存在 </span></span><br><span class="line">           state[(k+<span class="number">1</span>)%<span class="number">5</span>] != eating   <span class="comment">// 右邊哲學家沒吃飯</span></span><br><span class="line">           ) then</span><br><span class="line">    	state[k] = eating            <span class="comment">// 改為正在吃飯</span></span><br><span class="line">    	self[k].signal               <span class="comment">// *將自己喚醒</span></span><br></pre></td></tr></table></figure>
+<p><strong>＜Note＞：</strong> <code>state[...]!= eating</code> <strong>為何是測試「是否正在吃飯而不是測試是否飢餓」？</strong><br><strong>因為能呼叫到目前的函式代表該 Process 是正在進行的 ( Active )</strong>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">procedure entry <span class="title">putdown</span><span class="params">(i:<span class="number">0.</span>.<span class="number">.4</span>)</span></span></span><br><span class="line">	state[i] = thinking</span><br><span class="line">	test((i+<span class="number">4</span>)%<span class="number">5</span>)               <span class="comment">// 給左右邊哲學家機會使用</span></span><br><span class="line">	test((i+<span class="number">1</span>)%<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">init()</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</span><br><span class="line">        state[i] = thinking</span><br></pre></td></tr></table></figure>
+<h5 id="使用方式">使用方式</h5>
+<ul>
+<li>共享變數宣告：
+<ul>
+<li>dp：Dining-ph</li>
+</ul></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_i</span></span><br><span class="line">    repeat</span><br><span class="line">        <span class="comment">// hungry</span></span><br><span class="line">        dp.pickup(i);  <span class="comment">// active in monitor</span></span><br><span class="line">        <span class="comment">// eating</span></span><br><span class="line">        dp.putdowm(i); <span class="comment">// active in monitor</span></span><br><span class="line">        <span class="comment">// thinking</span></span><br><span class="line">    until <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h3 id="conditional-monitor">Conditional Monitor</h3>
+<p>Condition 變數所屬的 Waiting queue 一般皆是 FIFO queue ( 甚至 Monitor 的 entry queue 也是 FIFO )，<strong>可是有時候我們會需要「Priority queue」優先移除高優先權的 Process ，恢復執行或讓他進入 Monitor 內進行活動，此時我們就會需要 Conditional monitor。</strong></p>
+<ul>
+<li><strong>Operatior</strong>：令 <span class="math inline">\(x\)</span> 為一 Condition type 變數。
+<ul>
+<li><strong>wait</strong> ( <strong>x.wait(c)</strong> )：c 為此 Process 的 Priority number。</li>
+</ul></li>
+</ul>
+<h4 id="解決互斥問題之應用">解決互斥問題之應用</h4>
+<h5 id="互斥資源配置問題">互斥資源配置問題</h5>
+<ul>
+<li><p>Process ID 越小者優先權越高可以優先取得資源。</p></li>
+<li>定義 Monitor<br>type ResourceAllocator = Monitor<br>var busy：boolean // 代表資源已經配置與否<br>var x：condition // 用以將 Process blocked</li>
+<li>想法
+<ul>
+<li><span class="math inline">\(\left\{\begin{matrix} 非優先權需求 \Rightarrow 寫入\; Monitor \; 的函式定義中處理。 \\ 優先權需求 \Rightarrow 只須告知閱卷人你的\; Monitor \; 是以 \;Priority \; queue\; 實現的。 \end{matrix}\right.\)</span></li>
+<li><span class="math inline">\(此題之分析\left\{\begin{matrix} 非優先權需求 \Rightarrow 互斥資源配置。\\ 優先權需求 \Rightarrow Process \;ID \;之優先權。 \end{matrix}\right.\)</span></li>
+</ul></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">procedure entry <span class="title">Apply</span><span class="params">(pid:<span class="keyword">int</span>)</span></span></span><br><span class="line"><span class="function">    <span class="title">if</span><span class="params">(Busy)</span> then</span></span><br><span class="line">    	x.wait(pid)</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    	Busy = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">procedure entry <span class="title">Release</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	Busy </span>= <span class="literal">false</span></span><br><span class="line">	x.signal</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">init()</span><br><span class="line">	Busy = <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h6 id="使用方式-1">使用方式</h6>
+<ul>
+<li>共享變數
+<ul>
+<li>RA：ResourceAllocator</li>
+<li>Pi ( i 代表 ProcessID )</li>
+</ul></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_i</span></span><br><span class="line">    ...</span><br><span class="line">    RA.Apply(i)</span><br><span class="line">        <span class="comment">// 使用資源</span></span><br><span class="line">    RA.Release()</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>此 Monitor 的</strong> <span class="math inline">\(x\)</span> <strong>condition 變數之 waiting queue 及 monitor 的 entry queue 是 priority queue，且 process ID 越小優先權越高，也優先移出。</strong></li>
+</ul>
+<h5 id="共享檔案問題">共享檔案問題</h5>
+<p>有一個「檔案」可以被多個 Processes 所使用，每一個 Process 有唯一的優先權值( Unique priority number )，存取檔案時必須要： <strong>1. 所有正在存取此檔案的 Process 的優先權值加總必須</strong> <span class="math inline">\(&lt; n\)</span>。 <strong>2. 優先權值小的優先權越高。</strong></p>
+<ul>
+<li>定義 Monitor<br>type FileAccess = Monitor<br>var sum：int<br><span class="math inline">\(x\)</span>：condition</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">procedure entry <span class="title">Access</span><span class="params">(i:priorityNum)</span></span></span><br><span class="line">	while((sum+i) &gt;= h) do x.wait(i)  // !!</span><br><span class="line">    sum += i</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">procedure entry <span class="title">Leave</span><span class="params">(i:priorityNum)</span></span></span><br><span class="line">    sum -= i</span><br><span class="line">    x.signal()</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">init()</span><br><span class="line">	sum = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<h6 id="使用方式-2">使用方式</h6>
+<ul>
+<li>共享變數
+<ul>
+<li>FA：FileAccess</li>
+<li>Pi ( i：process priority number ) 程式</li>
+</ul></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_i</span></span><br><span class="line">    ...</span><br><span class="line">    FA.Access(i)</span><br><span class="line">    <span class="comment">// 使用檔案</span></span><br><span class="line">    FA.Leave(i)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>此 Monitor 的</strong> <span class="math inline">\(x\)</span> <strong>condition 變數之 waiting queue 及 monitor 的 entry queue 是 priority queue，且 process ID 越小優先權越高，也優先移出。</strong></li>
+</ul>
+<h5 id="印表機使用權問題">印表機使用權問題</h5>
+<p>(P.6-72) 有三部 Printer 被 processes 使用且規定 process ID 越小優先權越高。</p>
+<ul>
+<li>定義 Monitor<br>type Allocator = Monitor<br>var p：[0…2] of boolean<br>x：condition</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Acquire</span><span class="params">(i:processID)</span></span></span><br><span class="line"><span class="function">	<span class="title">if</span><span class="params">(p[<span class="number">0</span>] &amp;&amp; p[<span class="number">1</span>] &amp;&amp; p[<span class="number">2</span>])</span></span></span><br><span class="line">		x.wait(i)</span><br><span class="line">	<span class="keyword">if</span>(!p[<span class="number">0</span>])</span><br><span class="line">		tmp = <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(!p[<span class="number">1</span>])</span><br><span class="line">		tmp = <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">		tmp = <span class="number">2</span></span><br><span class="line"></span><br><span class="line">    p[tmp] = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> tmp</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Release</span><span class="params">(y:printerNum)</span></span></span><br><span class="line">    p[y] = false</span><br><span class="line">    x.signal()</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">init()</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++)</span><br><span class="line">        p[i] = <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h6 id="使用方式-3">使用方式</h6>
+<ul>
+<li>共享變數
+<ul>
+<li>RA：Allocator</li>
+<li>Pi (i = Process ID)</li>
+</ul></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_i</span></span><br><span class="line">    ...</span><br><span class="line">    pno: printer number</span><br><span class="line">    pno = PA.Acquire(i)</span><br><span class="line">    <span class="comment">// 使用編號 pno 的印表機</span></span><br><span class="line">    PA.Release(pno)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>此 Monitor 的</strong> <span class="math inline">\(x\)</span> <strong>condition 變數之 waiting queue 及 monitor 的 entry queue 是 priority queue，且 process ID 越小優先權越高，也優先移出。</strong></li>
+</ul>
+<h5 id="使用-monitor-定義-semaphore">使用 Monitor 定義 Semaphore？</h5>
+<ul>
+<li>定義 Monitor
+<ul>
+<li>type semaphore = Monitor<br>var value：int // 號誌值<br><span class="math inline">\(x\)</span>：condition</li>
+</ul></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">procedure entry <span class="title">wait</span><span class="params">()</span></span></span><br><span class="line">	value--</span><br><span class="line">    <span class="keyword">if</span>(value &lt; <span class="number">0</span>) then x.wait()</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">procedure entry <span class="title">signal</span><span class="params">()</span></span></span><br><span class="line">	value++</span><br><span class="line">	x.signal()</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">init()</span><br><span class="line">    value = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h3 id="monitor-的種類-3種">Monitor 的種類 ( 3種 )</h3>
+<ul>
+<li><strong>探討</strong>
+<ul>
+<li>假設 Process Q 目前因為先前有執行了 x.wait ，所以卡在 x condition 變數之 Waiting queue 中，<strong>接著，目前的 Process P 在 Monitor 中進行活動，當 P 執行了 x.signal 後，P 會將 Q 從 Waiting queue 中恢復 ( Resume ) 執行，此時代表 P 與 Q 同時在 Monitor 中進行活動( Active )，但是如此一來會違反 Mutual exclusive，</strong>因此我們要<em>抉擇</em> 讓 P 或 Q 其中一個能夠在 Monitor 中活動。</li>
+</ul></li>
+</ul>
+<figure>
+<img src="\blog\images\thetypeofmonitor.png" alt="thetypeofmonitor"><figcaption>thetypeofmonitor</figcaption>
+</figure>
+<h4 id="type-1---hoare-monitor-效果最好">Type 1 - Hoare Monitor ( 效果最好 )</h4>
+<p><strong>P waits Q until Q completed function or Q is blocked again.</strong></p>
+<ul>
+<li>Pros
+<ul>
+<li>保證 Q 一定可以被恢復執行 ( Resume execution )。</li>
+<li>在不會退出 Monitor 的情況下可以恢復比較多的 Processes ，但是是效果其實與 Type3 的相去不遠。</li>
+</ul></li>
+</ul>
+<h4 id="type-2-效果最差">Type 2 ( 效果最差 )</h4>
+<p>Q waits P until P completed function or P is blocked.</p>
+<ul>
+<li>Cons
+<ul>
+<li><strong>不保證 Q 一定可以被恢復執行</strong>，因為允許 P 繼續往下執行的過程中，P 有可能改變可能讓 Q 可以恢復行為的同步條件值，使得 Q 仍被卡住。</li>
+</ul></li>
+</ul>
+<h4 id="type-3">Type 3</h4>
+<p><strong>P leaves monitor ( 將 P 重新插在 Monitor entry queue 的第一個 ) and let Q resume execution 直到 Q finished or Q is blocked again,</strong> then P reenter Monitor.</p>
+<ul>
+<li>Consurrent C / Consurrent PASCAL 所採用。</li>
+<li><strong>Pros</strong>
+<ul>
+<li><strong>保證 Q 一定可以被立刻恢復執行( Resume execution )。</strong></li>
+</ul></li>
+<li>Cons
+<ul>
+<li>效果不若 <strong>Type1 Monitor，因為在 P 一進一出的期間，頂多只能恢復一個 Q，然而 Type1 可以一次恢復多個 Q。</strong></li>
+</ul></li>
+</ul>
+<h3 id="目前的分類-2種">目前的分類 ( 2種 )</h3>
+<h4 id="signal-and-wait">Signal-and-wait</h4>
+<ul>
+<li>Type1 Hoare Monitor</li>
+<li>Type3 Monitor</li>
+</ul>
+<h4 id="signal-and-continue">Signal-and-continue</h4>
+<ul>
+<li>Type2 Monitor</li>
+</ul>
+<h3 id="實作-monitor">實作 Monitor</h3>
+<ul>
+<li>使用 Semaphore 。</li>
+<li>架構
+<ul>
+<li><strong>保證「互斥」</strong>：最多只能有一個 Process 在 Monitor 中進行活動。</li>
+<li><strong>「Hoare」的設計手法。</strong></li>
+<li><strong>Condition 變數</strong> <span class="math inline">\(x\)</span> <strong>：x.wait()、x.signal。</strong></li>
+</ul></li>
+<li>共享變數
+<ul>
+<li>mutex：semaphore = 1 ( 用以保障函式使用的「互斥控制」)</li>
+<li>next：semaphore = 0 ( 若 P 執行 x.signal，則用來 block P )</li>
+<li>next_count：int = 0 ( 統計 P 的個數 )</li>
+<li>x_sem：semaphore = 0 ( 當 Q 執行 x.wait() ，則用以 block Q )</li>
+<li>x_count：int = 0 ( 統計 Q 的個數 )</li>
+</ul></li>
+<li><strong>控制碼 - 確保互斥</strong>：在 Monitor 的每個<strong>函式</strong>的「body」之<strong>前</strong>及<strong>後</strong>加入一些額外的控制碼。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">procedure entry _monitorfunction()</span><br><span class="line">	wait(mutex)</span><br><span class="line">    </span><br><span class="line">	<span class="comment">// body</span></span><br><span class="line">    </span><br><span class="line">	<span class="keyword">if</span>(next_count &gt; <span class="number">0</span>)      <span class="comment">// 若 P 存在，必先讓 P 恢復執行</span></span><br><span class="line">		signal(next)</span><br><span class="line">	<span class="keyword">else</span>                    <span class="comment">// 若沒有 P 在等待，才讓下一個 Q 進入執行</span></span><br><span class="line">		signal(mutex)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>控制碼 - 「</strong><span class="math inline">\(x\)</span><strong>.wait()」</strong>：</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// x.wait</span></span><br><span class="line">	x_count++                    <span class="comment">// Q 的個數加一</span></span><br><span class="line">	<span class="keyword">if</span>(next_count &gt; <span class="number">0</span>)           <span class="comment">// 將要 blocked 前的準備動作(與上述程式碼相同)</span></span><br><span class="line">		signal(next)</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		signal(mutex)</span><br><span class="line">	wait(x_sem)                  <span class="comment">// Q 將自己 block</span></span><br><span class="line">	x_count--                    <span class="comment">// 當 Q resume 後，將 x_count 減一</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>控制碼 - 「</strong><span class="math inline">\(x\)</span><strong>.signal()」</strong>：</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// x.signal</span></span><br><span class="line">	<span class="keyword">if</span>(x_count &gt; <span class="number">0</span>)     <span class="comment">// 先前若有 Q blocked 才有作用</span></span><br><span class="line">		next_count++</span><br><span class="line">		signal(x_sem)  <span class="comment">// resume Q</span></span><br><span class="line">		wait(next)</span><br><span class="line">		next_count--</span><br></pre></td></tr></table></figure>
+<h4 id="問題與討論">問題與討論</h4>
+<ul>
+<li>證明 <em>Monitor</em> 與 <em>Semaphore</em> 解決同步問題的能力是<strong>一樣的( idemtical; equivalent )</strong>。
+<ul>
+<li><strong>由於 Monitor 與 semaphore 可以「相互實作」</strong>，所以兩者解決「同步問題」的能力是<em>相同的</em>。</li>
+</ul></li>
+<li>當開發者在解決同步問題時，<strong>Monitor 的使用會比起 Semaphore 容易</strong>，因為 Monitor 本身已經保證「互斥」，所以 condition variable 不會有「race condition」的問題，所以只要專心解決「同步問題」即可，<strong>但是當開發者要使用 Semaphore 解決同步問題時還需要關心「Race condition」與「同步條件」的滿足。</strong></li>
+</ul>
+<h2 id="message-passing">Message Passing</h2>
+<table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Direct ( symmtric ) communication</th>
+<th style="text-align: center;">Indirect communication</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>收、送雙方須相互指名對方 ID</strong>，才能建立通訊鏈結。</td>
+<td style="text-align: center;"><strong>雙方透過「Shared mailbox」</strong>才能建立通訊鏈結。</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>通訊鏈結是專屬於溝通的雙方，不得與其他 Processes 共享</strong>。下圖(一)</td>
+<td style="text-align: center;"><strong>可以多 Processes 一起共享。</strong>下圖(二)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">溝通雙方<strong>最多只能一條通訊鏈結(禁止多條通訊鏈結)。</strong>下圖(三)</td>
+<td style="text-align: center;"><strong>溝通雙方可以同時存在多條通訊鏈結，每一條皆須有「Shared mailbox」。</strong>下圖(四)</td>
+</tr>
+</tbody>
+</table>
+<figure>
+<img src="\blog\images\thetypeofmessagepassing.png" alt="thetypeofmessagepassing"><figcaption>thetypeofmessagepassing</figcaption>
+</figure>
+<h3 id="直接通訊-direct-communication">直接通訊 ( Direct Communication )</h3>
+<h4 id="symmetric">Symmetric</h4>
+<p>雙方須「互相指名」對方的 Process ID ，才能建立通訊鏈結 ( Communication link )，<strong>OS 提供 send()、receive() 的 System call。</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_1</span></span><br><span class="line">    ...</span><br><span class="line">    sent(P_2_ID, message)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_2</span></span><br><span class="line">    ...</span><br><span class="line">    receive(P_1_ID, message)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<h4 id="asummetric">Asummetric</h4>
+<p><strong>只有「送出的 Process」需要指名「收受的 Process 之 ID」</strong>，但收受方無須指名送方，即任何 Process 皆可以收下這則訊息。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_1</span></span><br><span class="line">    ...</span><br><span class="line">    send(P_2_ID, message)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_2</span></span><br><span class="line">    ...</span><br><span class="line">    receive(id, message)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<p>當 P_2 收到訊息後，<strong>會將「送出訊息的 Process」之 ID 存在</strong><code>id</code><strong>變數之中。</strong></p>
+<h3 id="間接通訊-indirect-communication">間接通訊 ( Indirect Communication )</h3>
+<p>收、送雙方是透過「Shared mailbox」，才能建立通訊鏈結。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_1</span></span><br><span class="line">    ...</span><br><span class="line">    send(A, message)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_2</span></span><br><span class="line">    ...</span><br><span class="line">    receive(A, message)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<h3 id="用-message-passing-解決-producer-comsumer-problem">用 Message Passing 解決 Producer-comsumer Problem</h3>
+<ul>
+<li>Producer</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Producer</span></span><br><span class="line">    <span class="keyword">while</span>(condition != <span class="literal">false</span>) &#123;</span><br><span class="line">        produce an item in next_tp;</span><br><span class="line">        send(Consumer, next_tp);</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Comsumer</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Consumer</span></span><br><span class="line">    <span class="keyword">while</span>(condition != <span class="literal">false</span>) &#123;</span><br><span class="line">        receive(Producer, next_tp);</span><br><span class="line">        Consumer the item in next_tp</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="同步意義之呈現">「同步」意義之呈現</h3>
+<h4 id="link-capacity">Link capacity</h4>
+<p>假設「收受的 Process」是以：若未收到訊息則<strong>暫停執行，直到收到訊息後才往下執行</strong>；<strong>而對於「傳送的 Process」看待 Link capacity 時，其實針對每條傳輸鏈結裡的「Message queue」</strong>( 用以保存「除了正在傳輸中的訊息以外之其他 <em>送方</em> 訊息」)<strong>之容量</strong>。</p>
+<figure>
+<img src="\blog\images\linkcapacity.png" alt="linkcapacity"><figcaption>linkcapacity</figcaption>
+</figure>
+<ul>
+<li><strong>★ Zero capacity</strong>
+<ul>
+<li>送方直到<strong>收方收到訊息後才能繼續往下執行</strong>，此時雙方的同步模式也稱為<strong>「Rendezvous」</strong>( 法文：約會一次；偶遇 )</li>
+</ul></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_1</span></span><br><span class="line">    ...</span><br><span class="line">    send(P_2_ID, message)</span><br><span class="line">    receive(P_2_ID, <span class="string">"Acknowledge"</span>)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_2</span></span><br><span class="line">    ...</span><br><span class="line">    receiver(P_1_ID, message)</span><br><span class="line">    sned(P_1_ID, <span class="string">"Acknowledge"</span>)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Bounded capacity
+<ul>
+<li>當 Queue 滿了之後，送方會被迫暫停執行。</li>
+</ul></li>
+<li>Unbounded capacity
+<ul>
+<li>送方無須被迫暫停執行。</li>
+</ul></li>
+</ul>
+<h4 id="條指令之組合來表現不同之同步模式">4 條指令之組合來表現不同之「同步模式」</h4>
+<ul>
+<li><strong>Blocking send</strong>
+<ul>
+<li>送出訊息後直到收方收到訊息後才繼續往下執行。(Like zero capacity)</li>
+</ul></li>
+<li><strong>Nonblocking send</strong>
+<ul>
+<li>送出訊息後無須收方確認收到訊息即可繼續往下執行。(Like unbounded capacity)</li>
+</ul></li>
+<li><strong>Blocking receive</strong>
+<ul>
+<li>一定要收到訊息才能繼續往下執行。</li>
+</ul></li>
+<li><strong>Nonblocking receive</strong>
+<ul>
+<li>不一定要確認<strong>訊息的正確性</strong>亦能繼續向下執行。</li>
+</ul></li>
+</ul>
+<h5 id="問題與討論-1">問題與討論</h5>
+<ul>
+<li>Ex1.「Rendezvous」模式</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_1</span></span><br><span class="line">    ...</span><br><span class="line">    Blocking_send(P_2_ID, message)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_2</span></span><br><span class="line">    ...</span><br><span class="line">    Blocking_receive(P_1_ID, message)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Ex2. 假設收方的程式如下，則代表著甚麼含意：</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">   Nonblocking_receive(A, message)</span><br><span class="line">   <span class="keyword">if</span>(message == null) &#123;</span><br><span class="line">       Blocking_receive(B, message)</span><br><span class="line">       Blocking_receive(A, message)</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">else</span> &#123;</span><br><span class="line">	Blocking_receive(B, message)</span><br><span class="line">   &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>選項：</p>
+<ol type="1">
+<li><del>從 A 或 B 收到訊息後，即可往下。</del></li>
+<li>一定要從 A 與 B 收到訊息後且要先 A 後 B，才可以繼續往下執行。</li>
+<li>同上，但 A、B 順序無所謂。</li>
+</ol>
+<p><strong>Ans： (3)</strong></p>
+<h4 id="exception-handling">Exception handling</h4>
+<ol type="1">
+<li>在「Rendezvous」模式之下，若收或送任一方的 Process 以死亡( terminate )，但另一方不知情時，<strong>則另一方會永久停滯 ( <del>Starvation、Deadlock</del> )</strong>：作業系統會以「Exception」的方式刪除另一個 Process。</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_1</span></span><br><span class="line">    ...</span><br><span class="line">    Blocking_send(P_2_ID, message)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_2</span></span><br><span class="line">    ...</span><br><span class="line">    Blocking_receive(P_1_ID, message)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<ol start="2" type="1">
+<li><strong>在直接通訊 ( Direct symmtric communication )下</strong>，若「未通報其他 Process 自己的 ID」且 「New Process 也不知道他人 Process 的 ID」，則<em>無法溝通</em>。</li>
+<li>訊息的傳輸過程之中，有可能會丟失訊息( Lost message ) ，作業系統負責偵測訊息是否已丟失，<strong>若丟失訊息時，作業系統會通知「送方」重送訊息，</strong>偵測丟失訊息的方法類似於「網路概論」中談到的<strong>封包丟失偵測有關 ( Time-out 法則 )</strong>。</li>
+</ol>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/Process/" rel="tag"># Process</a>
+          
+            <a href="/blog/tags/Synchronization/" rel="tag"># Synchronization</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2018/07/10/Operating-System-Process-Synchronization/" rel="next" title="Operating System - Process Synchronization 1">
+                <i class="fa fa-chevron-left"></i> Operating System - Process Synchronization 1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/blog/images/avatar_me.gif"
+                alt="Willy Wang" />
+            
+              <p class="site-author-name" itemprop="name">Willy Wang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/blog/archives/">
+                
+                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/blog/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/blog/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">49</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://typora.io/" title="Typora" target="_blank">Typora</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.geeksforgeeks.org/" title="GeeksforGeeks" target="_blank">GeeksforGeeks</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.codecogs.com/latex/eqneditor.php" title="Online LaTeX Equation Editor" target="_blank">Online LaTeX Equation Editor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://allem40306.github.io/blog/" title="CodingJack" target="_blank">CodingJack</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#process-synchronization-process-communication-inter-process-communication"><span class="nav-number">1.</span> <span class="nav-text">Process Synchronization ( Process Communication, Inter Process Communication )</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#race-condition-problem-in-memory-communication"><span class="nav-number">1.1.</span> <span class="nav-text">Race Condition Problem in Memory Communication</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#monitor"><span class="nav-number">1.1.1.</span> <span class="nav-text">Monitor</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#condition-資料型別"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">Condition ( 資料型別 )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解決-dining-philosophers-problem"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">解決 Dining-philosophers Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#使用方式"><span class="nav-number">1.1.1.2.1.</span> <span class="nav-text">使用方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#conditional-monitor"><span class="nav-number">1.1.2.</span> <span class="nav-text">Conditional Monitor</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解決互斥問題之應用"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">解決互斥問題之應用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#互斥資源配置問題"><span class="nav-number">1.1.2.1.1.</span> <span class="nav-text">互斥資源配置問題</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#使用方式-1"><span class="nav-number">1.1.2.1.1.1.</span> <span class="nav-text">使用方式</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#共享檔案問題"><span class="nav-number">1.1.2.1.2.</span> <span class="nav-text">共享檔案問題</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#使用方式-2"><span class="nav-number">1.1.2.1.2.1.</span> <span class="nav-text">使用方式</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#印表機使用權問題"><span class="nav-number">1.1.2.1.3.</span> <span class="nav-text">印表機使用權問題</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#使用方式-3"><span class="nav-number">1.1.2.1.3.1.</span> <span class="nav-text">使用方式</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用-monitor-定義-semaphore"><span class="nav-number">1.1.2.1.4.</span> <span class="nav-text">使用 Monitor 定義 Semaphore？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#monitor-的種類-3種"><span class="nav-number">1.1.3.</span> <span class="nav-text">Monitor 的種類 ( 3種 )</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#type-1---hoare-monitor-效果最好"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">Type 1 - Hoare Monitor ( 效果最好 )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#type-2-效果最差"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">Type 2 ( 效果最差 )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#type-3"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">Type 3</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目前的分類-2種"><span class="nav-number">1.1.4.</span> <span class="nav-text">目前的分類 ( 2種 )</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#signal-and-wait"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">Signal-and-wait</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#signal-and-continue"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">Signal-and-continue</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#實作-monitor"><span class="nav-number">1.1.5.</span> <span class="nav-text">實作 Monitor</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#問題與討論"><span class="nav-number">1.1.5.1.</span> <span class="nav-text">問題與討論</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#message-passing"><span class="nav-number">1.2.</span> <span class="nav-text">Message Passing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#直接通訊-direct-communication"><span class="nav-number">1.2.1.</span> <span class="nav-text">直接通訊 ( Direct Communication )</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#symmetric"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">Symmetric</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#asummetric"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">Asummetric</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#間接通訊-indirect-communication"><span class="nav-number">1.2.2.</span> <span class="nav-text">間接通訊 ( Indirect Communication )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用-message-passing-解決-producer-comsumer-problem"><span class="nav-number">1.2.3.</span> <span class="nav-text">用 Message Passing 解決 Producer-comsumer Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同步意義之呈現"><span class="nav-number">1.2.4.</span> <span class="nav-text">「同步」意義之呈現</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#link-capacity"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">Link capacity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#條指令之組合來表現不同之同步模式"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">4 條指令之組合來表現不同之「同步模式」</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#問題與討論-1"><span class="nav-number">1.2.4.2.1.</span> <span class="nav-text">問題與討論</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#exception-handling"><span class="nav-number">1.2.4.3.</span> <span class="nav-text">Exception handling</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Willy Wang</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=6.0.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://https-wangwilly-github-io-blog.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://WangWilly.github.io/blog/2018/08/04/Operating-System-Process-Synchronization-2/';
+        this.page.identifier = '2018/08/04/Operating-System-Process-Synchronization-2/';
+        this.page.title = 'Operating System - Process Synchronization 2';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-wangwilly-github-io-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/blog/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/blog/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>
