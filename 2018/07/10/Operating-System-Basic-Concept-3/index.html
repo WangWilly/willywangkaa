@@ -47,21 +47,21 @@
 
 
 
-<link href="/willywangkaa/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/willywangkaa/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/willywangkaa/images/apple-touch-icon-next_cat.png?v=6.0.4">
+<link href="/blog/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/willywangkaa/images/favicon-32x32-next_cat.png?v=6.0.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next_cat.png?v=6.0.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/willywangkaa/images/favicon-16x16-next_cat.png?v=6.0.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next_cat.png?v=6.0.4">
 
 
-  <link rel="mask-icon" href="/willywangkaa/images/logo_cat.svg?v=6.0.4" color="#222">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next_cat.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/blog/images/logo_cat.svg?v=6.0.4" color="#222">
 
 
 
@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/willywangkaa/',
+    root: '/blog/',
     scheme: 'Pisces',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -106,7 +106,7 @@
 <meta name="description" content="System Call  It’s a programming interface to the services provides by the OS.  定義：幫助執行中的 user process 與 kernel 之間溝通，當 user peocess 需要OS提供某種服務時，會先以 Trap 通知 OS (由 User mode 轉為 Kernel mode) 並傳入System">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Operating System - Basic Concept 3">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/07/10/Operating-System-Basic-Concept-3/index.html">
+<meta property="og:url" content="http://WangWilly.github.io/blog/2018/07/10/Operating-System-Basic-Concept-3/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
 <meta property="og:description" content="System Call  It’s a programming interface to the services provides by the OS.  定義：幫助執行中的 user process 與 kernel 之間溝通，當 user peocess 需要OS提供某種服務時，會先以 Trap 通知 OS (由 User mode 轉為 Kernel mode) 並傳入System">
 <meta property="og:image" content="http://wangwilly.github.io/blog/images/1526605131439.png">
@@ -131,7 +131,7 @@
 
 
 
-  <link rel="canonical" href="http://WangWilly.github.io/willywangkaa/2018/07/10/Operating-System-Basic-Concept-3/"/>
+  <link rel="canonical" href="http://WangWilly.github.io/blog/2018/07/10/Operating-System-Basic-Concept-3/"/>
 
 
 
@@ -196,7 +196,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/willywangkaa/"  class="brand" rel="start">
+      <a href="/blog/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">WillyWangkaa</span>
         <span class="logo-line-after"><i></i></span>
@@ -224,25 +224,25 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/willywangkaa/" rel="section">
+          <a href="/blog/" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/willywangkaa/archives/" rel="section">
+          <a href="/blog/archives/" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/willywangkaa/categories/" rel="section">
+          <a href="/blog/categories/" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/willywangkaa/tags/" rel="section">
+          <a href="/blog/tags/" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
@@ -320,12 +320,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/07/10/Operating-System-Basic-Concept-3/">
+    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/blog/blog/2018/07/10/Operating-System-Basic-Concept-3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang">
+      <meta itemprop="name" content="Willy Wang (willywangkaa)">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
+      <meta itemprop="image" content="/blog/images/avatar_me.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -383,7 +383,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/willywangkaa/2018/07/10/Operating-System-Basic-Concept-3/#comments" itemprop="discussionUrl">
+                <a href="/blog/2018/07/10/Operating-System-Basic-Concept-3/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
                         data-disqus-identifier="2018/07/10/Operating-System-Basic-Concept-3/" itemprop="commentCount"></span>
                 </a>
@@ -705,7 +705,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/willywangkaa/2018/07/10/Operating-System-Basic-Concept-2/" rel="next" title="Operating System - Basic Concept 2">
+              <a href="/blog/2018/07/10/Operating-System-Basic-Concept-2/" rel="next" title="Operating System - Basic Concept 2">
                 <i class="fa fa-chevron-left"></i> Operating System - Basic Concept 2
               </a>
             
@@ -715,7 +715,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/willywangkaa/2018/07/10/Operating-System-Deadlock/" rel="prev" title="Operating System - Deadlock">
+              <a href="/blog/2018/07/10/Operating-System-Deadlock/" rel="prev" title="Operating System - Deadlock">
                 Operating System - Deadlock <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -791,10 +791,10 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/willywangkaa/images/avatar_me.gif"
-                alt="Willy Wang" />
+                src="/blog/images/avatar_me.gif"
+                alt="Willy Wang (willywangkaa)" />
             
-              <p class="site-author-name" itemprop="name">Willy Wang</p>
+              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
@@ -803,7 +803,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/willywangkaa/archives/">
+                  <a href="/blog/archives/">
                 
                     <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">posts</span>
@@ -815,7 +815,7 @@
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/willywangkaa/categories/index.html">
+                  <a href="/blog/categories/index.html">
                     
                     
                       
@@ -848,7 +848,7 @@
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/willywangkaa/tags/index.html">
+                  <a href="/blog/tags/index.html">
                     
                     
                       
@@ -1037,7 +1037,7 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Willy Wang</span>
+  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
 
   
 
@@ -1121,54 +1121,54 @@
 
   
   
-    <script type="text/javascript" src="/willywangkaa/lib/jquery/index.js?v=2.1.3"></script>
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
   
 
   
   
-    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.min.js?v=1.2.1"></script>
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
   
 
   
   
-    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   
 
   
   
-    <script type="text/javascript" src="/willywangkaa/lib/reading_progress/reading_progress.js"></script>
+    <script type="text/javascript" src="/blog/lib/reading_progress/reading_progress.js"></script>
   
-
-
-  
-
-
-  <script type="text/javascript" src="/willywangkaa/js/src/utils.js?v=6.0.4"></script>
-
-  <script type="text/javascript" src="/willywangkaa/js/src/motion.js?v=6.0.4"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/willywangkaa/js/src/affix.js?v=6.0.4"></script>
-
-  <script type="text/javascript" src="/willywangkaa/js/src/schemes/pisces.js?v=6.0.4"></script>
-
-
-
-  
-  <script type="text/javascript" src="/willywangkaa/js/src/scrollspy.js?v=6.0.4"></script>
-<script type="text/javascript" src="/willywangkaa/js/src/post-details.js?v=6.0.4"></script>
-
 
 
   
 
 
-  <script type="text/javascript" src="/willywangkaa/js/src/bootstrap.js?v=6.0.4"></script>
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=6.0.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=6.0.4"></script>
 
 
 
@@ -1181,7 +1181,7 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/07/10/Operating-System-Basic-Concept-3/';
+        this.page.url = 'http://WangWilly.github.io/blog/2018/07/10/Operating-System-Basic-Concept-3/';
         this.page.identifier = '2018/07/10/Operating-System-Basic-Concept-3/';
         this.page.title = 'Operating System - Basic Concept 3';
       };
@@ -1233,7 +1233,7 @@
     } else if (/json$/i.test(search_path)) {
       isXml = false;
     }
-    var path = "/willywangkaa/" + search_path;
+    var path = "/blog/" + search_path;
     // monitor main search box;
 
     var onPopupClose = function (e) {
@@ -1596,7 +1596,7 @@
   
   
   
-  <script src="/willywangkaa/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script src="/blog/lib/bookmark/bookmark.min.js?v=1.0"></script>
   <script type="text/javascript">
   
     bookmark.scrollToMark('auto', "#more");
