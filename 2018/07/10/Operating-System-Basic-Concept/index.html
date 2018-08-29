@@ -110,23 +110,23 @@
 <meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/07/10/Operating-System-Basic-Concept/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
 <meta property="og:description" content="基礎觀念 - Basic Concept (壹)  機器種類 - Machine type  Bare Machine(裸機)  只有Hardware Components所組成(eg. CPU, memory, I/O device)，沒有任何輔助使用者 ( User ) 的系統程式 ( System Program )存在。  Extended Machine  以 Bar">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/1529920981306.png">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/1529918563313.png">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530087435637.png">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530087726413.png">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530091014614.png">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530093944139.png">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/ASMP_2.png">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530099598137.png">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/multicore.png">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530103496272.png">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530157733165.png">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530159007395.png">
-<meta property="og:updated_time" content="2018-07-10T15:17:18.793Z">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1529920981306.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1529918563313.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530087435637.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530087726413.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530091014614.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530093944139.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/ASMP_2.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530099598137.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/multicore.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530103496272.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530157733165.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530159007395.png">
+<meta property="og:updated_time" content="2018-08-29T16:44:45.536Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Operating System - Basic Concept 1">
 <meta name="twitter:description" content="基礎觀念 - Basic Concept (壹)  機器種類 - Machine type  Bare Machine(裸機)  只有Hardware Components所組成(eg. CPU, memory, I/O device)，沒有任何輔助使用者 ( User ) 的系統程式 ( System Program )存在。  Extended Machine  以 Bar">
-<meta name="twitter:image" content="http://wangwilly.github.io/blog/images/1529920981306.png">
+<meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/1529920981306.png">
 
 
 
@@ -372,7 +372,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-07-10T23:17:18+08:00">2018-07-10</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2018-08-30T00:44:45+08:00">2018-08-30</time>
             
           </span>
 
@@ -459,7 +459,7 @@
 </ul>
 <h4 id="脫機-off-line-非即時運作-io">脫機 (Off-line 非即時運作 I/O)</h4>
 <figure>
-<img src="\blog\images\1529920981306.png" alt="1529920981306"><figcaption>1529920981306</figcaption>
+<img src="\willywangkaa\images\1529920981306.png" alt="1529920981306"><figcaption>1529920981306</figcaption>
 </figure>
 <p>不及時的將 CPU 演算完的資料給予讀取或是列印，利用專門的外圍控制機，將低速 I/O 設備上的數據傳送到高速磁碟 ( 磁帶 ) 上；或者相反，CPU 直接對於磁帶讀寫，使電腦加快讀取的速度。</p>
 <ul>
@@ -496,7 +496,7 @@
 <h4 id="假脫機-線上同時周邊處理技術-simultaneous-peripheral-operation-on-line-spool">假脫機<br>線上同時周邊處理技術( Simultaneous Peripheral Operation On-Line, SPOOL )</h4>
 <p>又稱為排隊緩存技術。當系統中引入了多道程序技術( Multiprocess )後，完全可以利用其中的一道程序，來模擬脫機輸入時的外圍控制機功能，把低速 I/O 設備上的數據傳送到高速磁碟上；再用另一道程序來模擬脫機( Off-line )輸出時外圍控制機的功能，把數據從磁碟傳送到低速輸出設備上。這樣，便可在主機的直接控制( On-line )下實現脫機輸入、輸出功能。</p>
 <figure>
-<img src="\blog\images\1529918563313.png" alt="1529918563313"><figcaption>1529918563313</figcaption>
+<img src="\willywangkaa\images\1529918563313.png" alt="1529918563313"><figcaption>1529918563313</figcaption>
 </figure>
 <ul>
 <li>外圍操作與 CPU 對數據的處理可以同時進行。</li>
@@ -542,11 +542,11 @@
 <li>Concurrent ( 並行 )：<strong>一個 CPU，多個 Processes 共同使用。</strong></li>
 </ul></li>
 </ul>
-<p>  <img src="\blog\images\1530087435637.png" alt="1530087435637"></p>
+<p>  <img src="\willywangkaa\images\1530087435637.png" alt="1530087435637"></p>
 <ul>
 <li>Parallel ( 平行 )：<strong>多核心 CPU 共同執行多個 Processes。</strong></li>
 </ul>
-<p>  <img src="\blog\images\1530087726413.png" alt="1530087726413"></p>
+<p>  <img src="\willywangkaa\images\1530087726413.png" alt="1530087726413"></p>
 <h3 id="分時系統---time-sharing-system">分時系統 - Time Sharing System</h3>
 <p>It’s a <strong>logical extension of multiprogramming system, the CPU in this kind of system switch highly frequently.</strong></p>
 <ul>
@@ -563,7 +563,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\blog\images\1530091014614.png" alt="1530091014614"><figcaption>1530091014614</figcaption>
+<img src="\willywangkaa\images\1530091014614.png" alt="1530091014614"><figcaption>1530091014614</figcaption>
 </figure>
 <h3 id="分散式系統---distributed-system">分散式系統 - Distributed System</h3>
 <h4 id="多處理器系統---multiprocessors-system-緊密耦合---tightly-coupled">多處理器系統 - Multiprocessors System ( 緊密耦合 - Tightly Coupled )</h4>
@@ -585,7 +585,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\blog\images\1530093944139.png" alt="1530093944139"><figcaption>1530093944139</figcaption>
+<img src="\willywangkaa\images\1530093944139.png" alt="1530093944139"><figcaption>1530093944139</figcaption>
 </figure>
 <h5 id="symmtric-multiprocessor---smp">Symmtric Multiprocessor - SMP</h5>
 <p><strong>每個 Processors 的工作能力是相同的 ( Identical )，並且每個 Processors 皆有對等的權利存取資源。</strong></p>
@@ -602,7 +602,7 @@
 </ul>
 <h5 id="asymmtric-multiprocessor---asmp">Asymmtric Multiprocessor - ASMP</h5>
 <figure>
-<img src="\blog\images\ASMP_2.png" alt="ASMP_2"><figcaption>ASMP_2</figcaption>
+<img src="\willywangkaa\images\ASMP_2.png" alt="ASMP_2"><figcaption>ASMP_2</figcaption>
 </figure>
 <p><strong>每個 Processors 的工作能力不盡相同，通常採取「Master-Slave ( Boss-Employee )」架構。Master Processor 負責工作分派、資源分配與監督 Slave Processor 等管理工作，</strong>其餘的 Slave Processors 負責執行工作。</p>
 <ul>
@@ -625,7 +625,7 @@
 <li>Multiprocessor</li>
 </ul>
 <figure>
-<img src="\blog\images\1530099598137.png" alt="1530099598137"><figcaption>1530099598137</figcaption>
+<img src="\willywangkaa\images\1530099598137.png" alt="1530099598137"><figcaption>1530099598137</figcaption>
 </figure>
 <ul>
 <li>Multicore Processor
@@ -634,7 +634,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\blog\images\multicore.png" alt="multicore"><figcaption>multicore</figcaption>
+<img src="\willywangkaa\images\multicore.png" alt="multicore"><figcaption>multicore</figcaption>
 </figure>
 <h4 id="分散式系統---distributed-system-1">分散式系統 - Distributed System</h4>
 <p>又<strong>稱為「Loosely-Coupled system ( 鬆散耦合系統 )」。</strong></p>
@@ -668,7 +668,7 @@
 <h3 id="即時系統---real-time-system">即時系統 - Real-time System</h3>
 <h4 id="hard-real-time-system">Hard Real-time System</h4>
 <figure>
-<img src="\blog\images\1530103496272.png" alt="1530103496272"><figcaption>1530103496272</figcaption>
+<img src="\willywangkaa\images\1530103496272.png" alt="1530103496272"><figcaption>1530103496272</figcaption>
 </figure>
 <p><strong>This system must ensure the critical task completed on time.</strong></p>
 <p><strong>工作必須要再規定的時間內完成，否則會有重大危害的狀況發生。</strong></p>
@@ -761,7 +761,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\blog\images\1530157733165.png" alt="1530157733165"><figcaption>1530157733165</figcaption>
+<img src="\willywangkaa\images\1530157733165.png" alt="1530157733165"><figcaption>1530157733165</figcaption>
 </figure>
 <h3 id="中斷式-io---interrupted-io">中斷式 I/O - Interrupted I/O</h3>
 <ul>
@@ -793,7 +793,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\blog\images\1530159007395.png" alt="1530159007395"><figcaption>1530159007395</figcaption>
+<img src="\willywangkaa\images\1530159007395.png" alt="1530159007395"><figcaption>1530159007395</figcaption>
 </figure>
 <h3 id="dma-direct-memory-access-io">DMA (Direct Memory Access) I/O</h3>
 <p>DMA-controller 負責 I/O 裝製與記憶體之間的資料傳輸工作，過程中<strong>無須 CPU 5 參與監督，所以讓 CPU 有更多時間用於 Process 執行上。</strong></p>

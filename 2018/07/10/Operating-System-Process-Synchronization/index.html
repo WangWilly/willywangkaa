@@ -110,24 +110,24 @@
 <meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/07/10/Operating-System-Process-Synchronization/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
 <meta property="og:description" content="Process Synchronization ( Process Communication, Inter Process Communication )   Synchronization  Process 因為「某件事情」的已發生或是未發生( 有多個 process 相互合作的時候 )，導致必須等待該事件完成或發生才得以繼續進行。   Process Communicatio">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530175318032.png">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530176275538.png">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/1530176581925.png">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/1531041864596.png">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/producercomsumerproblem.png">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/circulerqueue.png">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/readerwiterproblem.png">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/firstreaderwiterproblem.png">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/secondreaderwriterproblem.png">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/secondreaderwriterproblem_2.png">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/dining_philosophersproblem.png">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/thedinningphilosopherproblem2.png">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/thedinningpholosopherproblem3.png">
-<meta property="og:updated_time" content="2018-08-04T03:33:15.597Z">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530175318032.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530176275538.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530176581925.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1531041864596.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/producercomsumerproblem.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/circulerqueue.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/readerwiterproblem.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/firstreaderwiterproblem.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/secondreaderwriterproblem.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/secondreaderwriterproblem_2.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/dining_philosophersproblem.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/thedinningphilosopherproblem2.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/thedinningpholosopherproblem3.png">
+<meta property="og:updated_time" content="2018-08-29T16:44:45.582Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Operating System - Process Synchronization 1">
 <meta name="twitter:description" content="Process Synchronization ( Process Communication, Inter Process Communication )   Synchronization  Process 因為「某件事情」的已發生或是未發生( 有多個 process 相互合作的時候 )，導致必須等待該事件完成或發生才得以繼續進行。   Process Communicatio">
-<meta name="twitter:image" content="http://wangwilly.github.io/blog/images/1530175318032.png">
+<meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/1530175318032.png">
 
 
 
@@ -373,7 +373,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-08-04T11:33:15+08:00">2018-08-04</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2018-08-30T00:44:45+08:00">2018-08-30</time>
             
           </span>
 
@@ -445,7 +445,7 @@
 <h2 id="process-communication">Process Communication</h2>
 <h3 id="shared-memory">Shared memory</h3>
 <figure>
-<img src="\blog\images\1530175318032.png" alt="1530175318032"><figcaption>1530175318032</figcaption>
+<img src="\willywangkaa\images\1530175318032.png" alt="1530175318032"><figcaption>1530175318032</figcaption>
 </figure>
 <p>Process 透過對共享變數 ( Shared variables ) 之存 ( Write )、取 ( Read )，達到構通 ( Infomation exchange ) 的目的。</p>
 <ul>
@@ -571,12 +571,12 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\blog\images\1530176275538.png" alt="1530176275538"><figcaption>1530176275538</figcaption>
+<img src="\willywangkaa\images\1530176275538.png" alt="1530176275538"><figcaption>1530176275538</figcaption>
 </figure>
 <h4 id="critical-section-design-針對共享資料製作臨界區塊">Critical section design( 針對共享資料製作臨界區塊 )</h4>
 <p>針對「共享變數」的存取進行管制，當 P_i 取得共享變數存取管制，在該 Process 尚未完成之期間，任何其餘 Processes 即便已取得 CPU 的使用權之下，<strong>仍無法存取共享變數</strong>。</p>
 <figure>
-<img src="\blog\images\1530176581925.png" alt="1530176581925"><figcaption>1530176581925</figcaption>
+<img src="\willywangkaa\images\1530176581925.png" alt="1530176581925"><figcaption>1530176581925</figcaption>
 </figure>
 <ul>
 <li><strong>Critical section</strong>
@@ -617,7 +617,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\blog\images\1531041864596.png" alt="1531041864596"><figcaption>1531041864596</figcaption>
+<img src="\willywangkaa\images\1531041864596.png" alt="1531041864596"><figcaption>1531041864596</figcaption>
 </figure>
 <ul>
 <li>( 恐龍課本 )謬誤：因為 Critical Section 設計當中，「Entery section」中經常使用 Busy-waiting ( spinlock ) 技巧，而課本將 Busy-waiting ( Spinlock ) 與 Critical Section 視為相同，<strong>進而與 Disable interrupt 比較( 應是 Busy waiting 與 Non-busy waiting 來比較 )</strong>。</li>
@@ -973,7 +973,7 @@
 </ul>
 <h4 id="producer-consumer-problem-生產者消費者問題">Producer Consumer Problem ( 生產者消費者問題 )</h4>
 <figure>
-<img src="\blog\images\producercomsumerproblem.png" alt="producercomsumerproblem"><figcaption>producercomsumerproblem</figcaption>
+<img src="\willywangkaa\images\producercomsumerproblem.png" alt="producercomsumerproblem"><figcaption>producercomsumerproblem</figcaption>
 </figure>
 <ul>
 <li>Producer：這種 Processes 專門產生資料，以供其他 Processes 使用。</li>
@@ -1001,7 +1001,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// consumer</span></span><br><span class="line"><span class="keyword">while</span>(condition == <span class="literal">true</span>) &#123;</span><br><span class="line">    ...</span><br><span class="line">	<span class="keyword">while</span>(in == out) ;</span><br><span class="line">    assign Buffer[out] to <span class="string">"I"</span>;</span><br><span class="line">    out = (out + <span class="number">1</span>) % n;</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">// using "I" item</span></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h6 id="algorithm2fall">Algorithm2(fall)</h6>
 <figure>
-<img src="\blog\images\circulerqueue.png" alt="circulerqueue"><figcaption>circulerqueue</figcaption>
+<img src="\willywangkaa\images\circulerqueue.png" alt="circulerqueue"><figcaption>circulerqueue</figcaption>
 </figure>
 <p>若使用「Algorithm1」的算法，在上圖所表示的狀態中，算法會判斷為 Buffer 已滿 (<code>(in + 1) % n == out</code>)，無法再加入，所以導致最多只能用 n-1 個 Buffer。</p>
 <ul>
@@ -1040,7 +1040,7 @@
 </ul>
 <h4 id="reader-writer-problem">Reader Writer Problem</h4>
 <figure>
-<img src="\blog\images\readerwiterproblem.png" alt="readerwiterproblem"><figcaption>readerwiterproblem</figcaption>
+<img src="\willywangkaa\images\readerwiterproblem.png" alt="readerwiterproblem"><figcaption>readerwiterproblem</figcaption>
 </figure>
 <ul>
 <li>☆<strong>問題重點</strong>
@@ -1051,7 +1051,7 @@
 </ul>
 <h5 id="first-reader-writer-problem">First reader writer problem</h5>
 <figure>
-<img src="\blog\images\firstreaderwiterproblem.png" alt="firstreaderwiterproblem"><figcaption>firstreaderwiterproblem</figcaption>
+<img src="\willywangkaa\images\firstreaderwiterproblem.png" alt="firstreaderwiterproblem"><figcaption>firstreaderwiterproblem</figcaption>
 </figure>
 <p>對於 Reader 有利，而對於 Writer 不利所以可能導致 Writer 「Starvation」。</p>
 <ul>
@@ -1082,7 +1082,7 @@
 </ul>
 <h5 id="second-reader-writer-problem">Second reader writer problem</h5>
 <figure>
-<img src="\blog\images\secondreaderwriterproblem.png" alt="secondreaderwriterproblem"><figcaption>secondreaderwriterproblem</figcaption>
+<img src="\willywangkaa\images\secondreaderwriterproblem.png" alt="secondreaderwriterproblem"><figcaption>secondreaderwriterproblem</figcaption>
 </figure>
 <p>對於 Writer 有利，而對於 Reader 不利所以可能導致 Reader 「Starvation」。</p>
 <p><strong>只要 Writer 離開，發現尚有 Writers 也在等待佇列，則優先讓 Writer 對資料進行寫入，所以可能會導致 Reader Starvation。</strong></p>
@@ -1137,11 +1137,11 @@
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// customer: 注意! customer 並沒有需要 loop 持剪髮的需求。</span></span><br><span class="line">wait(mutex);</span><br><span class="line">    <span class="keyword">if</span>(waiting &lt; n) &#123;</span><br><span class="line">		waiting++;</span><br><span class="line">		signal(customer); <span class="comment">// 叫醒/通知 Barber。</span></span><br><span class="line">signal(mutex);</span><br><span class="line">		wait(barber);		</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">signal(mutex);    </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <figure>
-<img src="\blog\images\secondreaderwriterproblem_2.png" alt="secondreaderwriterproblem_2"><figcaption>secondreaderwriterproblem_2</figcaption>
+<img src="\willywangkaa\images\secondreaderwriterproblem_2.png" alt="secondreaderwriterproblem_2"><figcaption>secondreaderwriterproblem_2</figcaption>
 </figure>
 <h4 id="the-dining-philosophers-problem-哲學家用餐問題">The Dining-philosophers Problem (哲學家用餐問題)</h4>
 <figure>
-<img src="\blog\images\dining_philosophersproblem.png" alt="dining_philosophersproblem"><figcaption>dining_philosophersproblem</figcaption>
+<img src="\willywangkaa\images\dining_philosophersproblem.png" alt="dining_philosophersproblem"><figcaption>dining_philosophersproblem</figcaption>
 </figure>
 <p><strong>倆倆之間有一隻筷子，哲學家若感到飢餓，必須要能夠同時取得左右兩根筷子才能用餐。用完餐後放下左右兩根筷子，進行思考模式。</strong></p>
 <p><strong>＜Note＞</strong></p>
@@ -1150,7 +1150,7 @@
 <li>西餐，一定為偶數個哲學家，因為為吃飯需要<strong>一副刀叉</strong>。</li>
 </ol>
 <figure>
-<img src="\blog\images\thedinningphilosopherproblem2.png" alt="thedinningphilosopherproblem2"><figcaption>thedinningphilosopherproblem2</figcaption>
+<img src="\willywangkaa\images\thedinningphilosopherproblem2.png" alt="thedinningphilosopherproblem2"><figcaption>thedinningphilosopherproblem2</figcaption>
 </figure>
 <ul>
 <li>共享變數
@@ -1163,7 +1163,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// philosopher</span></span><br><span class="line"><span class="keyword">while</span>(condition==<span class="literal">false</span>) &#123;</span><br><span class="line">    <span class="comment">// need processing...</span></span><br><span class="line">    wait(chopstick[i]);</span><br><span class="line">        wait(chopstick[(i+<span class="number">1</span>)%<span class="number">5</span>]);</span><br><span class="line">        	<span class="comment">// processing</span></span><br><span class="line">    signal(chopstick[i]);</span><br><span class="line">    	signal(chopstick[(i+<span class="number">1</span>)%<span class="number">5</span>]);</span><br><span class="line">    <span class="comment">// thinking</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在上述程式碼中，若每位哲學家都依序先取得左筷，之後每位哲學家在取得右筷時，會直接形成「Circular waiting」，所以這程式很有可能會造成「Deadlock」。</p>
 <figure>
-<img src="\blog\images\thedinningpholosopherproblem3.png" alt="thedinningpholosopherproblem3"><figcaption>thedinningpholosopherproblem3</figcaption>
+<img src="\willywangkaa\images\thedinningpholosopherproblem3.png" alt="thedinningpholosopherproblem3"><figcaption>thedinningpholosopherproblem3</figcaption>
 </figure>
 <h5 id="解法一">解法一</h5>
 <ul>

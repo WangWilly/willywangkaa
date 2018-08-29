@@ -110,16 +110,16 @@
 <meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/08/04/Operating-System-Process-Synchronization-2/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
 <meta property="og:description" content="Process Synchronization ( Process Communication, Inter Process Communication )  Race Condition Problem in Memory Communication  thesolutionofracecondition  Monitor  thestructofmonitor  monit">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/thesolutionofracecondition.png">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/thestructofmonitor.png">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/thetypeofmonitor.png">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/thetypeofmessagepassing.png">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/linkcapacity.png">
-<meta property="og:updated_time" content="2018-08-04T03:16:10.652Z">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/thesolutionofracecondition.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/thestructofmonitor.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/thetypeofmonitor.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/thetypeofmessagepassing.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/linkcapacity.png">
+<meta property="og:updated_time" content="2018-08-29T16:44:45.589Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Operating System - Process Synchronization 2">
 <meta name="twitter:description" content="Process Synchronization ( Process Communication, Inter Process Communication )  Race Condition Problem in Memory Communication  thesolutionofracecondition  Monitor  thestructofmonitor  monit">
-<meta name="twitter:image" content="http://wangwilly.github.io/blog/images/thesolutionofracecondition.png">
+<meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/thesolutionofracecondition.png">
 
 
 
@@ -365,7 +365,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-08-04T11:16:10+08:00">2018-08-04</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2018-08-30T00:44:45+08:00">2018-08-30</time>
             
           </span>
 
@@ -430,11 +430,11 @@
 <hr>
 <h2 id="race-condition-problem-in-memory-communication">Race Condition Problem in Memory Communication</h2>
 <figure>
-<img src="\blog\images\thesolutionofracecondition.png" alt="thesolutionofracecondition"><figcaption>thesolutionofracecondition</figcaption>
+<img src="\willywangkaa\images\thesolutionofracecondition.png" alt="thesolutionofracecondition"><figcaption>thesolutionofracecondition</figcaption>
 </figure>
 <h3 id="monitor">Monitor</h3>
 <figure>
-<img src="\blog\images\thestructofmonitor.png" alt="thestructofmonitor"><figcaption>thestructofmonitor</figcaption>
+<img src="\willywangkaa\images\thestructofmonitor.png" alt="thestructofmonitor"><figcaption>thestructofmonitor</figcaption>
 </figure>
 <p>monitor 是一個用來解決同步問題的高階「資料結構」，是一種 <strong>ADT ( Abstract data type )</strong>。</p>
 <ul>
@@ -577,7 +577,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\blog\images\thetypeofmonitor.png" alt="thetypeofmonitor"><figcaption>thetypeofmonitor</figcaption>
+<img src="\willywangkaa\images\thetypeofmonitor.png" alt="thetypeofmonitor"><figcaption>thetypeofmonitor</figcaption>
 </figure>
 <h4 id="type-1---hoare-monitor-效果最好">Type 1 - Hoare Monitor ( 效果最好 )</h4>
 <p><strong>P waits Q until Q completed function or Q is blocked again.</strong></p>
@@ -683,7 +683,7 @@
 </tbody>
 </table>
 <figure>
-<img src="\blog\images\thetypeofmessagepassing.png" alt="thetypeofmessagepassing"><figcaption>thetypeofmessagepassing</figcaption>
+<img src="\willywangkaa\images\thetypeofmessagepassing.png" alt="thetypeofmessagepassing"><figcaption>thetypeofmessagepassing</figcaption>
 </figure>
 <h3 id="直接通訊-direct-communication">直接通訊 ( Direct Communication )</h3>
 <h4 id="symmetric">Symmetric</h4>
@@ -712,7 +712,7 @@
 <h4 id="link-capacity">Link capacity</h4>
 <p>假設「收受的 Process」是以：若未收到訊息則<strong>暫停執行，直到收到訊息後才往下執行</strong>；<strong>而對於「傳送的 Process」看待 Link capacity 時，其實針對每條傳輸鏈結裡的「Message queue」</strong>( 用以保存「除了正在傳輸中的訊息以外之其他 <em>送方</em> 訊息」)<strong>之容量</strong>。</p>
 <figure>
-<img src="\blog\images\linkcapacity.png" alt="linkcapacity"><figcaption>linkcapacity</figcaption>
+<img src="\willywangkaa\images\linkcapacity.png" alt="linkcapacity"><figcaption>linkcapacity</figcaption>
 </figure>
 <ul>
 <li><strong>★ Zero capacity</strong>

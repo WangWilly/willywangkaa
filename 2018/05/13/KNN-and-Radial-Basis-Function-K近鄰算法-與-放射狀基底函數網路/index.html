@@ -110,16 +110,16 @@
 <meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/05/13/KNN-and-Radial-Basis-Function-K近鄰算法-與-放射狀基底函數網路/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
 <meta property="og:description" content="前言機器學習分兩大類  Eager alogorithm(積極) 性質  將歷史資料做了很多分析與篩選( Munge )等預處理。 因為訓練出的假說很明確( Explicit )，所以自然判斷也比起 Lazy 方法更迅速。  \(Ex.\)  Artifitial neural network Decision tree  Lazy algorithm(被動) 性質">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/knearestneighbor.png">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/voronoidiagram.png">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/knearestneighbor2.png">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/voronoidiagram2.png">
-<meta property="og:image" content="http://wangwilly.github.io/blog/images/radialbasisfunction.png">
-<meta property="og:updated_time" content="2018-05-13T13:05:53.309Z">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/knearestneighbor.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/voronoidiagram.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/knearestneighbor2.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/voronoidiagram2.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/radialbasisfunction.png">
+<meta property="og:updated_time" content="2018-08-29T16:44:45.528Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="KNN and Radial Basis Function - K近鄰算法 與 放射狀基底函數網路">
 <meta name="twitter:description" content="前言機器學習分兩大類  Eager alogorithm(積極) 性質  將歷史資料做了很多分析與篩選( Munge )等預處理。 因為訓練出的假說很明確( Explicit )，所以自然判斷也比起 Lazy 方法更迅速。  \(Ex.\)  Artifitial neural network Decision tree  Lazy algorithm(被動) 性質">
-<meta name="twitter:image" content="http://wangwilly.github.io/blog/images/knearestneighbor.png">
+<meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/knearestneighbor.png">
 
 
 
@@ -365,7 +365,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-05-13T21:05:53+08:00">2018-05-13</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2018-08-30T00:44:45+08:00">2018-08-30</time>
             
           </span>
 
@@ -478,13 +478,13 @@
 <li>K-Nearest Neighbor</li>
 </ul>
 <figure>
-<img src="\blog\images\knearestneighbor.png" alt="knearestneighbor"><figcaption>knearestneighbor</figcaption>
+<img src="\willywangkaa\images\knearestneighbor.png" alt="knearestneighbor"><figcaption>knearestneighbor</figcaption>
 </figure>
 <ul>
 <li>Voronoi Diagram (K= 1)</li>
 </ul>
 <figure>
-<img src="\blog\images\voronoidiagram.png" alt="voronoidiagram"><figcaption>voronoidiagram</figcaption>
+<img src="\willywangkaa\images\voronoidiagram.png" alt="voronoidiagram"><figcaption>voronoidiagram</figcaption>
 </figure>
 <h2 id="nearest-neighbor---最近鄰法">Nearest neighbor - 最近鄰法</h2>
 <ul>
@@ -513,7 +513,7 @@
 <li>給定一個要判斷的案例 <span class="math inline">\(x_q\)</span> 。
 <ul>
 <li>欲找到 <span class="math inline">\(k\)</span> 個與 <span class="math inline">\(x_q\)</span> 靠最近的 <span class="math inline">\(x_i\)</span> 。( 利用 <span class="math inline">\(d(x_i, x_q)\)</span> 判斷距離 )</li>
-<li>選出 <span class="math inline">\(k\)</span> 個案例之中出現比較多次的結果作為 <span class="math inline">\(x_q\)</span> 的結果。( 當這份資料的結果是由離散的資料組成採用此方法 )    - 以下圖舉例 <br> <img src="\blog\images\knearestneighbor2.png" alt="knearestneighbor2"><br><span class="math inline">\(k = 1\)</span> ，判定 <span class="math inline">\(x_q\)</span> 為正向輸出。<br><span class="math inline">\(k = 5\)</span> ，判定 <span class="math inline">\(x_q\)</span> 為負向輸出。</li>
+<li>選出 <span class="math inline">\(k\)</span> 個案例之中出現比較多次的結果作為 <span class="math inline">\(x_q\)</span> 的結果。( 當這份資料的結果是由離散的資料組成採用此方法 )    - 以下圖舉例 <br> <img src="\willywangkaa\images\knearestneighbor2.png" alt="knearestneighbor2"><br><span class="math inline">\(k = 1\)</span> ，判定 <span class="math inline">\(x_q\)</span> 為正向輸出。<br><span class="math inline">\(k = 5\)</span> ，判定 <span class="math inline">\(x_q\)</span> 為負向輸出。</li>
 <li>當資料的結果為連續的時數值時，我們判定 <span class="math inline">\(x_q\)</span> 的輸出為 <span class="math inline">\(k\)</span> 個鄰居的平均值。</li>
 </ul></li>
 </ul>
@@ -528,7 +528,7 @@
 <li>1-NN：<span class="math inline">\(H\)</span> = Voronoi Diagram</li>
 </ul>
 <figure>
-<img src="\blog\images\voronoidiagram2.png" alt="voronoidiagram2"><figcaption>voronoidiagram2</figcaption>
+<img src="\willywangkaa\images\voronoidiagram2.png" alt="voronoidiagram2"><figcaption>voronoidiagram2</figcaption>
 </figure>
 <h2 id="距離權重近鄰法-distance---weighted-knn">距離權重近鄰法 Distance - Weighted <span class="math inline">\(K\)</span>NN</h2>
 <ul>
@@ -543,7 +543,7 @@
 <li>Shepard’s Method ：將整個案例空間所有的 <span class="math inline">\(x_i\)</span> 都納入考量。</li>
 </ul></li>
 </ul>
-<h2 id="curse-of-dimensionality---維度災難-閱讀更多">Curse of Dimensionality - 維度災難 (<a href="https://blog.csdn.net/ztf312/article/details/50894224" target="_blank" rel="noopener">閱讀更多</a>)</h2>
+<h2 id="curse-of-dimensionality---維度災難-閱讀更多">Curse of Dimensionality - 維度災難 (<a href="https://willywangkaa.csdn.net/ztf312/article/details/50894224" target="_blank" rel="noopener">閱讀更多</a>)</h2>
 <p>想像一個案例可以用20個環境變因( Attribute )所解釋，但是只有其中兩個變因是實際有影響的，若變因的維度太高可能會讓不重要的因素導致整個空間裡的案例之間的距離變得更稀疏，進而干擾我們最終呈現的「想法」。</p>
 <h3 id="解決方法計算兩個案例之間的距離時對每個變因進行加權">解決方法：計算兩個案例之間的距離時對每個變因進行加權</h3>
 <p>這樣的方法相當於按比例縮放歐式空間中的坐標軸，先決定哪些環境邊因對我們的訓練比較重要(Try and error)，縮短對應到相關不大之變因的坐標軸，拉長對應於相關較大之變因之座標軸。每個座標軸的伸縮量可以透過交叉驗證的方法自動決定。</p>
@@ -625,7 +625,7 @@
 <p>將所有的區域逼近組合成全域型地逼近目標函數 <span class="math inline">\(f\)</span>，通常用於影像、訊號分析。</p>
 <p><strong>＜Note＞：</strong>這種網路模型是完全不相干於「Artificial Neural Network - 類神經網路」，相較起來比較與「距離加權回歸」相近，但是以積極的( Eager )的方式而不是以被動的( Lazy )的方式實現。</p>
 <figure>
-<img src="\blog\images\radialbasisfunction.png" alt="radialbasisfunction"><figcaption>radialbasisfunction</figcaption>
+<img src="\willywangkaa\images\radialbasisfunction.png" alt="radialbasisfunction"><figcaption>radialbasisfunction</figcaption>
 </figure>
 <p><span class="math display">\[
 \hat{f}(x)  = w_0 + \sum_{u  = 1}^k w_u \times K_u (d(x_u, x))
@@ -655,8 +655,8 @@ K_u (d(x_u, x)) = e^{-\frac{1}{2 \times {\delta_u}^2} d^2(x_u, x)}
 <p><a href="https://www.quora.com/What-is-the-difference-between-eager-learning-and-lazy-learning#" target="_blank" rel="noopener">Quora - What is the difference between eager learning and lazy learning?</a></p>
 <p><a href="https://zh.wikipedia.org/wiki/%E6%B2%83%E7%BD%97%E8%AF%BA%E4%BC%8A%E5%9B%BE" target="_blank" rel="noopener">沃羅諾伊圖</a></p>
 <p><a href="https://zhuanlan.zhihu.com/p/22717928" target="_blank" rel="noopener">K近邻算法(kNN) - 知乎专栏</a></p>
-<p><a href="https://blog.csdn.net/ztf312/article/details/50894224" target="_blank" rel="noopener">机器学习：维度灾难问题- CSDN博客</a></p>
-<p><a href="https://blog.csdn.net/jmydream/article/details/8764869" target="_blank" rel="noopener">残差residual VS 误差 error</a></p>
+<p><a href="https://willywangkaa.csdn.net/ztf312/article/details/50894224" target="_blank" rel="noopener">机器学习：维度灾难问题- CSDN博客</a></p>
+<p><a href="https://willywangkaa.csdn.net/jmydream/article/details/8764869" target="_blank" rel="noopener">残差residual VS 误差 error</a></p>
 <p><a href="http://www.ycc.idv.tw/YCNote/post/36" target="_blank" rel="noopener">機器學習技法學習筆記(7)：Radial Basis Function Network與Matrix Factorization</a></p>
 <p><a href="https://zh.wikipedia.org/zh-tw/%E5%BE%84%E5%90%91%E5%9F%BA%E5%87%BD%E6%95%B0%E7%BD%91%E7%BB%9C" target="_blank" rel="noopener">放射狀基底函數網路- 維基百科，自由的百科全書 - Wikipedia</a></p>
 
