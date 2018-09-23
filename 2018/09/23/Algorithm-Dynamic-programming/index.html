@@ -1,0 +1,2068 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-tw,en,default">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/willywangkaa/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/willywangkaa/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/willywangkaa/images/apple-touch-icon-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/willywangkaa/images/favicon-32x32-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/willywangkaa/images/favicon-16x16-next_cat.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/willywangkaa/images/logo_cat.svg?v=6.0.4" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/willywangkaa/',
+    scheme: 'Pisces',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+<meta name="description" content="Dynamic programming 將已計算的結果記錄在表格中的技巧，目的是為了要避免重複計算相同子問題，以「Button up」的方式實踐。  為何要使用這種方法，以費氏數列程式開始討論。  \[ F_n = \left\{\begin{matrix} 0 &amp;amp; , if \; n = 0\\ 1 &amp;amp; , if \; n = 1\\ F_{n-1} + F_{">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Algorithm - Dynamic programming">
+<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/09/23/Algorithm-Dynamic-programming/index.html">
+<meta property="og:site_name" content="WillyWangkaa">
+<meta property="og:description" content="Dynamic programming 將已計算的結果記錄在表格中的技巧，目的是為了要避免重複計算相同子問題，以「Button up」的方式實踐。  為何要使用這種方法，以費氏數列程式開始討論。  \[ F_n = \left\{\begin{matrix} 0 &amp;amp; , if \; n = 0\\ 1 &amp;amp; , if \; n = 1\\ F_{n-1} + F_{">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/overlappingsubproblem.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/fibonassidp.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/observedp.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/shortestpathproblem_subproblem.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/longestpathproblem.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/kpdp.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/KPstatesearchtree.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/matrixchaindp.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/martixchainproblem_2.png">
+<meta property="og:updated_time" content="2018-09-23T02:55:21.369Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Algorithm - Dynamic programming">
+<meta name="twitter:description" content="Dynamic programming 將已計算的結果記錄在表格中的技巧，目的是為了要避免重複計算相同子問題，以「Button up」的方式實踐。  為何要使用這種方法，以費氏數列程式開始討論。  \[ F_n = \left\{\begin{matrix} 0 &amp;amp; , if \; n = 0\\ 1 &amp;amp; , if \; n = 1\\ F_{n-1} + F_{">
+<meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/overlappingsubproblem.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://WangWilly.github.io/willywangkaa/2018/09/23/Algorithm-Dynamic-programming/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>Algorithm - Dynamic programming | WillyWangkaa</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/willywangkaa/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WillyWangkaa</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Live more like human</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/willywangkaa/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/willywangkaa/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/willywangkaa/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/willywangkaa/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/09/23/Algorithm-Dynamic-programming/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WillyWangkaa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Algorithm - Dynamic programming</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-23T10:46:21+08:00">2018-09-23</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-09-23T10:55:21+08:00">2018-09-23</time>
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/willywangkaa/2018/09/23/Algorithm-Dynamic-programming/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/09/23/Algorithm-Dynamic-programming/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="dynamic-programming">Dynamic programming</h1>
+<p>將已<strong>計算的結果</strong>記錄在<strong>表格中</strong>的技巧，目的是為了要避免<strong>重複計算相同子問題</strong>，以<strong>「Button up」</strong>的方式實踐。</p>
+<ul>
+<li>為何要使用這種方法，以<strong>費氏數列程式</strong>開始討論。</li>
+</ul>
+<p><span class="math display">\[
+F_n = \left\{\begin{matrix}
+0 &amp; , if \; n = 0\\
+1 &amp; , if \; n = 1\\
+F_{n-1} + F_{n-2} &amp; , if \; n \geq 2   
+\end{matrix}\right.
+\]</span> 欲求出 <span class="math inline">\(F_5\)</span> ，以遞迴程式執行，會造成「Overlapping subproblem」，如下圖 <span class="math inline">\(F_2\)</span> 重複計算了 3 次，<span class="math inline">\(F_3\)</span> 重複計算 2 次。</p>
+<figure>
+<img src="\willywangkaa\images\overlappingsubproblem.png" alt="overlappingsubproblem"><figcaption>overlappingsubproblem</figcaption>
+</figure>
+<p>使用動態表格執行之，可以省去很多不必要的重複計算，如下圖。</p>
+<figure>
+<img src="\willywangkaa\images\fibonassidp.png" alt="fibonassidp"><figcaption>fibonassidp</figcaption>
+</figure>
+<ul>
+<li>構思動態規劃題目的流程
+<ul>
+<li>Optimal substructure：一個<strong>母問題的最佳解</strong>如何由<strong>其子問題的最佳</strong>解構成。</li>
+</ul></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\observedp.png" alt="observedp"><figcaption>observedp</figcaption>
+</figure>
+<h2 id="shortest-path-problem">Shortest path problem</h2>
+<ul>
+<li><strong>Optimal substructure</strong></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\shortestpathproblem_subproblem.png" alt="shortestpathproblem_subproblem"><figcaption>shortestpathproblem_subproblem</figcaption>
+</figure>
+<blockquote>
+<p>(98 交大資工) 問 longest path problem 有無 optimal substructure。</p>
+<p>無，所以不可以使用動態規劃解此問題。</p>
+<figure>
+<img src="\willywangkaa\images\longestpathproblem.png" alt="longestpathproblem"><figcaption>longestpathproblem</figcaption>
+</figure>
+<p><strong>但是</strong>如果此圖加上「Acyclic」、「Direct」等條件限制之後，可以用動態規劃解「longest path problem」。</p>
+</blockquote>
+<blockquote>
+<p>通常要在各種條件之下都可以使用<strong>動態規劃解此問題</strong>，才可以<strong>宣稱此問題可以使用動態規劃解</strong>。</p>
+</blockquote>
+<ul>
+<li>Ex (99 交大)
+<ul>
+<li>下列何者<strong>正確</strong>？
+<ul>
+<li>（a）Dynamic programming always provides polynominal time algorithm.</li>
+<li>（b）Huffman coding for compresion is a typical dynamic programming algorithm.</li>
+<li>（c）Dynamic programming use the table to design the algorithm.</li>
+<li>（d）Optimal is a important element in the dynamic programming.</li>
+<li>（e）<strong>Single source all shortest path problem</strong> has optimal substructure.</li>
+</ul></li>
+<li>Ans
+<ul>
+<li>（a）：false。反例為 Subset-sum problem (暴力法：<span class="math inline">\(O(2^n)、動態規劃法：\)</span><span class="math inline">\(O(n2^{\frac n2})\)</span>)</li>
+<li>（b）：false。為典型的 Greedy algorithm。</li>
+<li><strong>（c）</strong></li>
+<li><strong>（d）</strong></li>
+<li><strong>（e）</strong></li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="knapsack-problem">Knapsack problem</h2>
+<h3 id="fractional-knapsack-problem">Fractional knapsack problem</h3>
+<blockquote>
+<ol type="1">
+<li>此方法僅限於物品重量為正整數時</li>
+<li>0/1 KP 為 NP - Completed 問題</li>
+</ol>
+</blockquote>
+<ul>
+<li>Input：
+<ul>
+<li>n 個物件
+<ul>
+<li>第 i 個重量為 <span class="math inline">\(w_i\)</span> ，價值為 <span class="math inline">\(v_i\)</span>。</li>
+</ul></li>
+<li>背包最大負重
+<ul>
+<li><span class="math inline">\(W\)</span></li>
+</ul></li>
+</ul></li>
+<li>Output：
+<ul>
+<li>最大的獲利值</li>
+</ul></li>
+<li>限制條件：
+<ul>
+<li>取得物品的總重量 <span class="math inline">\(\leq\)</span> W</li>
+<li>可取物品的<strong>部分</strong></li>
+</ul></li>
+<li>想法
+<ul>
+<li><strong>Greedy</strong>：從目前 <span class="math inline">\(\frac{v_i}{w_i}\)</span> 最高的物品開始拿取，直到物品取完，或是取得物品負重已達 W。</li>
+</ul></li>
+<li>Time Complexity
+<ul>
+<li><span class="math inline">\(\Theta(n\log n)\)</span></li>
+</ul></li>
+<li>Ex ( W = 5 )</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Item</th>
+<th><span class="math inline">\(v_i\)</span></th>
+<th><span class="math inline">\(w_i\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>10</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>6</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>12</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[
+\frac{v_2}{w_2} = 6 \geq \frac{v_1}{w_1} = 5 \geq \frac{v_3}{w_3} = 4
+\]</span></p>
+<ol type="1">
+<li>取物品 2，取該物品之 1 單位重量，背包剩餘空間 4 單位重量，獲利 6 單位價值。</li>
+<li>取物品 1，取物品之 2 單位重量，背包剩餘空間 2 單位重量，獲利 16 單位價值。</li>
+<li>取物品 3，取物品之 2 單位重量，背包剩餘空間 0 單位重量，<strong>獲利 24 單位價值</strong>。</li>
+</ol>
+<figure>
+<img src="\willywangkaa\images\kpdp.png" alt="kpdp"><figcaption>kpdp</figcaption>
+</figure>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>10</td>
+<td>10</td>
+<td>10</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>0</td>
+<td>6</td>
+<td>10</td>
+<td>16</td>
+<td>16</td>
+<td>16</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>0</td>
+<td>6</td>
+<td>10</td>
+<td>16</td>
+<td>18</td>
+<td><strong>22</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Ex ( 98 交大 ) P.3-66 ex10
+<ul>
+<li>Maximize <span class="math inline">\(\sum_{i = 1}^n v_ix_i \; subject\; to \sum_{i = 1}^n w_ix_i \leq W, 0 \leq x_i \leq 1\)</span></li>
+<li>Greedy choise property ( <span class="math inline">\(\frac{v_1}{w_1} \geq \frac{v_2}{w_2} \geq\ldots\)</span> )</li>
+<li>最佳解的 <span class="math inline">\(x_1\)</span> 需取多少。</li>
+</ul></li>
+</ul>
+<p><span class="math display">\[
+x_n = \left\{\begin{matrix}
+1 &amp; , if \; w_1 \leq W \\
+\frac{W}{w_1} &amp; , if \; w1 &gt; W \\   
+\end{matrix}\right.
+\]</span></p>
+<h3 id="knapsack-problem-1">0-1 Knapsack problem</h3>
+<ul>
+<li>Input：
+<ul>
+<li>n 個物件
+<ul>
+<li>第 i 個重量為 <span class="math inline">\(w_i\)</span> ，價值為 <span class="math inline">\(v_i\)</span>。</li>
+</ul></li>
+<li>背包最大負重
+<ul>
+<li><span class="math inline">\(W\)</span></li>
+</ul></li>
+</ul></li>
+<li><p>Output：</p>
+<ul>
+<li>最大的獲利值</li>
+</ul></li>
+<li>限制條件：
+<ul>
+<li>取得物品的總重量 <span class="math inline">\(\leq\)</span> W</li>
+<li>只能取物品的<strong>整體</strong></li>
+</ul></li>
+<li><p>想法</p>
+<ul>
+<li><p>無法使用 Greedy method 解決</p></li>
+<li><p><strong>使用動態規劃解決，物品的重量必為正整數</strong></p>
+<ul>
+<li>遞迴結構：(令 <span class="math inline">\(C[i][k]\)</span> 在負重 k 之下考慮物品 1 … i 之最大獲利</li>
+</ul>
+<p><span class="math display">\[
+C[i][k] = \left\{\begin{matrix}
+0 &amp; , if \;i = 0\;OR\; k = 0 \\
+max(C[i-1][k-w_i]+v_i, C[i-1][k] )&amp; , if \; w_i \leq k \\
+C[i-1][k] &amp; , if \; w_i &gt; k \\
+\end{matrix}\right.
+\]</span></p></li>
+</ul></li>
+<li><p>Algorithm ( Bottom up )</p></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">for k &lt;- 0 to w</span><br><span class="line">	c[0, k] &lt;- 0</span><br><span class="line">for i &lt;- 1 to n</span><br><span class="line">&#123;</span><br><span class="line">    c[i, 0] &lt;- 0</span><br><span class="line">    for k &lt;- 1 to w</span><br><span class="line">    &#123;</span><br><span class="line">        if k &lt; w_i</span><br><span class="line">        	c[i, k] &lt;- c[i-1, k]</span><br><span class="line">        else</span><br><span class="line">        	c[i, k] &lt;- max(c[i-1, k], c[i-1, k-w_i]+v_i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Time complexity
+<ul>
+<li><span class="math inline">\(\Theta( nW )\)</span> <strong>Pseudo-polynominal</strong></li>
+</ul></li>
+<li>Space complexity
+<ul>
+<li><span class="math inline">\(\Theta( nW )\)</span></li>
+</ul></li>
+</ul>
+<h3 id="branch-and-bound-解-0-1-knapsack-problem">Branch and bound 解 0-1 Knapsack problem</h3>
+<blockquote>
+<ul>
+<li>對於一個 NP-Completed 問題來說，可以使用「Branch and bound」來解決</li>
+<li>「Branch and bound」演算法中，<strong>「Bounding function」</strong>的設計會是影響整體效能最大的關鍵 ( 收斂快慢 )。</li>
+<li>Time complexity：O( 葉節點個數 )
+<ul>
+<li>葉節點個數取決問題本身。
+<ul>
+<li>組合性問題：<span class="math inline">\(2^n\)</span></li>
+<li>排列性問題：<span class="math inline">\(n!\)</span></li>
+</ul></li>
+</ul></li>
+</ul>
+</blockquote>
+<ul>
+<li><p>將球最佳解的過程視為在一個「State space tree」中尋找最好的節點。</p></li>
+<li>實務上，通常是設計一 個<strong>「Bounding function」</strong>以估計目前狀態可到最佳解的可能性。
+<ul>
+<li>建構「State space tree」時，每次都先<strong>展開「Bounding function」的節點。( Branch )</strong></li>
+<li>在每次展開的過程中，都可以得到一個<strong>目前最佳解 (葉節點)，接著，之後不展開「Bounding function 值</strong> <span class="math inline">\(\leq\)</span> <strong>目前最佳解」</strong>的內部節點。<strong>( Bound )</strong></li>
+</ul></li>
+<li>以 Branch and bound 解 0-1 Knapsack problem
+<ul>
+<li>每個節點須紀錄
+<ul>
+<li><strong>目前的獲利</strong></li>
+<li><strong>目前的負重</strong></li>
+<li><strong>「Bounding function」算出的值</strong></li>
+</ul></li>
+</ul></li>
+</ul>
+<ol type="1">
+<li>為了計算「Bounding funciton」括號中要估計「Fractional knapsack」的未來最大值，需要將物品依照 <span class="math inline">\(\frac{v_i}{w_i}\)</span> 排序。</li>
+</ol>
+<p><span class="math inline">\(w = 4\)</span></p>
+<table>
+<thead>
+<tr class="header">
+<th>Item</th>
+<th><span class="math inline">\(v_i\)</span></th>
+<th><span class="math inline">\(w_i\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>6</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>10</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>12</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[
+\frac{v_2}{w_2} = 6 \geq \frac{v_1}{w_1} = 5 \geq \frac{v_3}{w_3} = 4
+\]</span></p>
+<ol start="2" type="1">
+<li><strong>設計「Bounding function」。(括號部分就是用來估計以目前節點拓展，獲利的上限)</strong></li>
+</ol>
+<p><span class="math display">\[
+Bounding \;funciotn(目前的節點)\\
+= 在「目前的節點」上可得的獲利 + \\
+(將背包剩餘的重量以「Fractional \;knapsack \;problem」拿取剩下的物品的獲利)
+\]</span></p>
+<figure>
+<img src="\willywangkaa\images\KPstatesearchtree.png" alt="KPstatesearchtree"><figcaption>KPstatesearchtree</figcaption>
+</figure>
+<ol start="3" type="1">
+<li>拓展節點
+<ol type="1">
+<li>展開 <strong>Root</strong></li>
+<li>因為該節點「Bounding function」最大，所以展開 <strong>A</strong></li>
+<li>展開節點 <strong>C</strong></li>
+<li><strong>E</strong> 節點因為超重所以為「Infeasiable solution」</li>
+<li><strong>F</strong> 為一可能解，使 <span class="math inline">\(Max = 16\)</span></li>
+<li>因為節點 <strong>D</strong> 在樹中較深處，先展開之</li>
+<li><strong>G</strong> 與 <strong>H</strong> 均為一解，設 <span class="math inline">\(Max = 18\)</span></li>
+<li>因為節點 <strong>B</strong> 的「Bounding function」<span class="math inline">\(\leq\)</span> <strong>Max</strong>，不展開該節點</li>
+</ol></li>
+<li>Ans：18 ( 取<strong>物品一</strong>與<strong>物品三</strong> )</li>
+</ol>
+<h2 id="longest-common-subsequence">Longest Common Subsequence</h2>
+<ul>
+<li>Sequence
+<ul>
+<li>X = ＜a, b, c, a＞</li>
+</ul></li>
+<li>Subsequence
+<ul>
+<li>＜a, c＞ 為 X 的「Subsequence」</li>
+</ul></li>
+<li>Prefix ( 前綴 )
+<ul>
+<li><span class="math inline">\(X_3 = ＜a, b, c＞\)</span></li>
+</ul></li>
+<li>Common subsequence
+<ul>
+<li>Y = ＜a, c, b, c＞</li>
+<li>則＜a, c＞為 X 與 Y 的「Common subsequence」</li>
+</ul></li>
+<li>Longest common subsequence
+<ul>
+<li>＜a, b, c＞ 為 X 與 Y 的「LCS」</li>
+</ul></li>
+</ul>
+<blockquote>
+<p>「LCS」不一定唯一</p>
+</blockquote>
+<ul>
+<li>遞迴結構
+<ul>
+<li>令 <span class="math inline">\(c[i , j]\)</span> 為 <span class="math inline">\(LCS(X_i, Y_j)\)</span> 的長，則：</li>
+</ul></li>
+</ul>
+<p><span class="math display">\[
+c[i, j] = \left\{\begin{matrix}
+0 &amp; , if \;i = 0\;OR\; j = 0 &amp; \\
+c[i-1, j-1] + 1 &amp; , if \; X[i] = Y[j] &amp; \\
+max(c[i-1, j], c[i, j-1])&amp; , if \; X[i] \ne Y[j] \; &amp; （該兩個字絕對不會同時出現在LCS）
+\end{matrix}\right.
+\]</span></p>
+<ul>
+<li>演算法 ( Bottom-up )</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">for j &lt;- 0 to n</span><br><span class="line">	c[0, j] &lt;- 0</span><br><span class="line">for i &lt;- 0 to m</span><br><span class="line">	c[i, 0] &lt;- 0</span><br><span class="line">for i &lt;- 1 to m</span><br><span class="line">	for j &lt;- 1 to n</span><br><span class="line">	&#123;</span><br><span class="line">        if(X[i] = Y[i])</span><br><span class="line">        	c[i, j] = c[i-1, j-1] + 1</span><br><span class="line">        else</span><br><span class="line">        	c[i, j] = max(c[i-1, j], c[i, j-1])</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Time complexity
+<ul>
+<li><span class="math inline">\(\Theta(mn)\)</span></li>
+</ul></li>
+<li>Space complexity
+<ul>
+<li><span class="math inline">\(\Theta(mn)\)</span></li>
+</ul></li>
+<li>Ex
+<ul>
+<li>X = ＜a, b, a, c＞</li>
+<li>Y = ＜a, b, c, a＞</li>
+<li>求「LCS」</li>
+</ul></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">-</th>
+<th style="text-align: center;">-</th>
+<th style="text-align: center;">-</th>
+<th style="text-align: center;">“a”</th>
+<th style="text-align: center;">“b”</th>
+<th style="text-align: center;">“a”</th>
+<th style="text-align: center;">“c”</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>-</strong></td>
+<td style="text-align: center;"><strong>-</strong></td>
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: center;"><strong>3</strong></td>
+<td style="text-align: center;"><strong>4</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>-</strong></td>
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>“a”</strong></td>
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1（↖）</td>
+<td style="text-align: center;">1（←）</td>
+<td style="text-align: center;">1（↖）</td>
+<td style="text-align: center;">1（←）</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>“b”</strong></td>
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1（↑）</td>
+<td style="text-align: center;">2（↖）</td>
+<td style="text-align: center;">2（←）</td>
+<td style="text-align: center;">2（←）</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>“c”</strong></td>
+<td style="text-align: center;"><strong>3</strong></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1（↑）</td>
+<td style="text-align: center;">2（↑）</td>
+<td style="text-align: center;">2（←）</td>
+<td style="text-align: center;">3（↖）</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>“a”</strong></td>
+<td style="text-align: center;"><strong>4</strong></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1（↖）</td>
+<td style="text-align: center;">2（↑）</td>
+<td style="text-align: center;">3（↖）</td>
+<td style="text-align: center;">3（←）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="longest-increasing-subsequence">Longest Increasing Subsequence</h3>
+<ul>
+<li>Ex
+<ul>
+<li>X = ＜5, 1, 3, 2, 4＞</li>
+<li>LIS(X) = ＜1, 2, 4＞</li>
+</ul></li>
+<li>演算法
+<ol type="1">
+<li>Y &lt;- sort(X)</li>
+<li>LCS(X, Y)</li>
+</ol></li>
+<li>Time complexity
+<ul>
+<li><span class="math inline">\(\Theta(n^2)\)</span>
+<ul>
+<li>排序：<span class="math inline">\(\Theta(n\lg n)\)</span></li>
+<li>LCS：<span class="math inline">\(\Theta(n^2)\)</span></li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="longest-common-substring">Longest Common Substring</h3>
+<ul>
+<li>Ex
+<ul>
+<li>X = ＜a, b, a, c＞</li>
+<li>Y = ＜a, b, c, a＞</li>
+<li><strong>Output：＜a, b＞</strong></li>
+</ul></li>
+</ul>
+<p><span class="math display">\[
+c[i, j] = \left\{\begin{matrix}
+0 &amp; , if \;i = 0\;OR\; j = 0 &amp; \\
+c[i-1, j-1] + 1 &amp; , if \; X[i] = Y[j] &amp; \\
+0&amp; , if \; X[i] \ne Y[j] \; &amp; （該兩個字絕對不會同時出現在LCS）
+\end{matrix}\right.
+\]</span></p>
+<h2 id="matrix-chain-multiplication">Matrix Chain Multiplication</h2>
+<ul>
+<li>Input：
+<ul>
+<li><strong>n</strong> 個矩陣的<strong>大小 P[0 … n]</strong> ( 其中<span class="math inline">\(A_i\)</span> 的大小為 <span class="math inline">\(P_{i-1}\times P_i\)</span> )</li>
+</ul></li>
+<li>Output：
+<ul>
+<li>算出 <span class="math inline">\(A_1 \times A_2 \times \ldots \times A_n\)</span> 所需最少的<strong>純量乘法數</strong></li>
+</ul></li>
+</ul>
+<blockquote>
+<p>n 個矩陣的「Matrix chain」有 <span class="math inline">\(C_{n-1} = \frac{1}{(n-1)+1}\binom{2(n-1)}{(n-1)}\)</span> 相異種乘法可能，所以列出所有乘法順序需要<strong>指數時間</strong>。</p>
+</blockquote>
+<ul>
+<li>Ex. 給定三個矩陣的大小如下
+<ul>
+<li><span class="math inline">\(A_1：10 \times 100\)</span></li>
+<li><span class="math inline">\(A_2：100 \times 5\)</span></li>
+<li><span class="math inline">\(A_3：5 \times 50\)</span></li>
+<li>求算出 <span class="math inline">\(A_1 \times A_2 \times A_3\)</span> 所需最少的純量乘法數。</li>
+</ul></li>
+</ul>
+<blockquote>
+<p>若每一個矩陣均為相同大小的「方陣」，改變乘法的順序無法影響所需的純量乘法數，只能使用<strong>「Strassen’s algorithm」以加速。</strong></p>
+</blockquote>
+<ul>
+<li>遞迴結構
+<ul>
+<li>令 m[i, j] 為算出 <span class="math inline">\(A_i \times \ldots \times A_j\)</span> 所需最少乘法數</li>
+</ul></li>
+</ul>
+<p><span class="math display">\[
+m[i, j] = \left\{\begin{matrix}
+0 &amp; , if \;i \geq j\\
+MIN_{i\leq k \leq j-1}(m[i, k] + m[k+1, j] + P_i\times P_k \times P_j) &amp; , if \; i &lt; j
+\end{matrix}\right.
+\]</span></p>
+<ul>
+<li>演算法</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">for i &lt;- 1 to n (「Matrix chain」長度為一)</span><br><span class="line">	m[i, i] &lt;- 0</span><br><span class="line">for l &lt;- 2 to n (「Matrix chain」長度為二以上)</span><br><span class="line">	for i &lt;- 1 to n-l+1 (起點)</span><br><span class="line">		&#123;</span><br><span class="line">            j &lt;- i+l-1 (終點)</span><br><span class="line">            m[i, j] &lt;- infinity</span><br><span class="line">            for k &lt;- i to j-1</span><br><span class="line">            &#123;</span><br><span class="line">            	tmp &lt;- m[i, k] + m[k+1, j] + P_i-1 * P_k * P_j</span><br><span class="line">                if tmp &lt; m[i, j]</span><br><span class="line">                	m[i, j] &lt;- tmp  (純量乘法數)</span><br><span class="line">                	s[i, j] &lt;- k    (切點)</span><br><span class="line">            &#125;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Time complexity
+<ul>
+<li><span class="math inline">\(\Theta(n^3)\)</span>：<span class="math inline">\(\sum_{l=2}^n \sum_{i = 1}^{n-l+1}\sum_{k = i}^{i+l-2} 1\)</span></li>
+</ul></li>
+<li>Space complexity
+<ul>
+<li><span class="math inline">\(\Theta(n^2)\)</span></li>
+</ul></li>
+<li>Ex
+<ul>
+<li><span class="math inline">\(A_1：3 \times 3\)</span></li>
+<li><span class="math inline">\(A_2：3 \times 7\)</span></li>
+<li><span class="math inline">\(A_3：7 \times 2\)</span></li>
+<li><span class="math inline">\(A_4：2 \times 9\)</span></li>
+<li><span class="math inline">\(A_5：9 \times 4\)</span></li>
+<li>算出 <span class="math inline">\(A_1 \times A_2 \times \ldots \times A_5\)</span> 最少的乘法數。</li>
+</ul></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\matrixchaindp.png" alt="matrixchaindp"><figcaption>matrixchaindp</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\martixchainproblem_2.png" alt="martixchainproblem_2"><figcaption>martixchainproblem_2</figcaption>
+</figure>
+<table>
+<thead>
+<tr class="header">
+<th>m (乘法數)</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td>63（←）</td>
+<td>60（←）</td>
+<td>114（↓）</td>
+<td><strong>156</strong>（↓）</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td></td>
+<td>0</td>
+<td>42（←）</td>
+<td>96（↓）</td>
+<td>138（↓）</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td></td>
+<td></td>
+<td>0</td>
+<td>126（←）</td>
+<td>128（←）</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+<td>72（←）</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>s (切點)</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td></td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td></td>
+<td></td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p>最少乘法數：156</p>
+<p>最佳乘法順序：<span class="math inline">\((A_1\times (A_2 \times A_3)) \times (A_4 \times A_5)\)</span></p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/willywangkaa/2018/09/11/Principle-of-inclusion-and-exclusion-排容原理/" rel="next" title="Principle of inclusion and exclusion - 排容原理">
+                <i class="fa fa-chevron-left"></i> Principle of inclusion and exclusion - 排容原理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/willywangkaa/images/avatar_me.gif"
+                alt="Willy Wang (willywangkaa)" />
+            
+              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
+              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/willywangkaa/archives/">
+                
+                    <span class="site-state-item-count">35</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/willywangkaa/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/willywangkaa/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">58</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://typora.io/" title="Typora" target="_blank">Typora</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.geeksforgeeks.org/" title="GeeksforGeeks" target="_blank">GeeksforGeeks</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.codecogs.com/latex/eqneditor.php" title="Online LaTeX Equation Editor" target="_blank">Online LaTeX Equation Editor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://allem40306.github.io/blog/" title="CodingJack" target="_blank">CodingJack</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#dynamic-programming"><span class="nav-number">1.</span> <span class="nav-text">Dynamic programming</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#shortest-path-problem"><span class="nav-number">1.1.</span> <span class="nav-text">Shortest path problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#knapsack-problem"><span class="nav-number">1.2.</span> <span class="nav-text">Knapsack problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fractional-knapsack-problem"><span class="nav-number">1.2.1.</span> <span class="nav-text">Fractional knapsack problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#knapsack-problem-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">0-1 Knapsack problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#branch-and-bound-解-0-1-knapsack-problem"><span class="nav-number">1.2.3.</span> <span class="nav-text">Branch and bound 解 0-1 Knapsack problem</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#longest-common-subsequence"><span class="nav-number">1.3.</span> <span class="nav-text">Longest Common Subsequence</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#longest-increasing-subsequence"><span class="nav-number">1.3.1.</span> <span class="nav-text">Longest Increasing Subsequence</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#longest-common-substring"><span class="nav-number">1.3.2.</span> <span class="nav-text">Longest Common Substring</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matrix-chain-multiplication"><span class="nav-number">1.4.</span> <span class="nav-text">Matrix Chain Multiplication</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/willywangkaa/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/affix.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/willywangkaa/js/src/schemes/pisces.js?v=6.0.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/willywangkaa/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/willywangkaa/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://https-wangwilly-github-io-blog.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/09/23/Algorithm-Dynamic-programming/';
+        this.page.identifier = '2018/09/23/Algorithm-Dynamic-programming/';
+        this.page.title = 'Algorithm - Dynamic programming';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-wangwilly-github-io-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/willywangkaa/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/willywangkaa/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>
