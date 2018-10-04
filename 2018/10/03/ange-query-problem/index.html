@@ -103,23 +103,23 @@
   <meta name="keywords" content="Sequence,Tree,Sparse table," />
 
 
-<meta name="description" content="Segement tree 用來存放紀錄在特定區間內 ( segement, interval )。  Pros  可以動態的更新欲求數組之元素。 數組區間的查詢  區間求和值 區間最大值 區間最小值 區間異或值 ( Exclusive or；XOR )   Cons  無法刪除數值    線段樹無法新增節點，只能更新節點的數值並保持區間的最大最小值仍保持正">
+<meta name="description" content="Segement tree 用來存放紀錄在特定區間內 ( segement, interval ) 的資訊。  Pros  可以動態的更新欲求數組之元素。 數組區間的查詢  區間求和值 區間最大值 區間最小值 區間異或值 ( Exclusive or；XOR )   Cons  無法刪除數值    線段樹無法新增節點，只能更新節點的數值並保持區間的最大最小值">
 <meta name="keywords" content="Sequence,Tree,Sparse table">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Range query problem">
 <meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/10/03/ange-query-problem/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="Segement tree 用來存放紀錄在特定區間內 ( segement, interval )。  Pros  可以動態的更新欲求數組之元素。 數組區間的查詢  區間求和值 區間最大值 區間最小值 區間異或值 ( Exclusive or；XOR )   Cons  無法刪除數值    線段樹無法新增節點，只能更新節點的數值並保持區間的最大最小值仍保持正">
+<meta property="og:description" content="Segement tree 用來存放紀錄在特定區間內 ( segement, interval ) 的資訊。  Pros  可以動態的更新欲求數組之元素。 數組區間的查詢  區間求和值 區間最大值 區間最小值 區間異或值 ( Exclusive or；XOR )   Cons  無法刪除數值    線段樹無法新增節點，只能更新節點的數值並保持區間的最大最小值">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/STree_1.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/STree_2.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/STable_1.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/STable_2.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/STable_3.png">
-<meta property="og:updated_time" content="2018-10-03T12:49:32.783Z">
+<meta property="og:updated_time" content="2018-10-04T11:01:54.342Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Range query problem">
-<meta name="twitter:description" content="Segement tree 用來存放紀錄在特定區間內 ( segement, interval )。  Pros  可以動態的更新欲求數組之元素。 數組區間的查詢  區間求和值 區間最大值 區間最小值 區間異或值 ( Exclusive or；XOR )   Cons  無法刪除數值    線段樹無法新增節點，只能更新節點的數值並保持區間的最大最小值仍保持正">
+<meta name="twitter:description" content="Segement tree 用來存放紀錄在特定區間內 ( segement, interval ) 的資訊。  Pros  可以動態的更新欲求數組之元素。 數組區間的查詢  區間求和值 區間最大值 區間最小值 區間異或值 ( Exclusive or；XOR )   Cons  無法刪除數值    線段樹無法新增節點，只能更新節點的數值並保持區間的最大最小值">
 <meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/STree_1.png">
 
 
@@ -366,7 +366,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-10-03T20:49:32+08:00">2018-10-03</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2018-10-04T19:01:54+08:00">2018-10-04</time>
             
           </span>
 
@@ -428,7 +428,7 @@
 
       
         <h1 id="segement-tree">Segement tree</h1>
-<p>用來存放紀錄在特定區間內 ( segement, interval )。</p>
+<p>用來存放紀錄在特定區間內 ( segement, interval ) 的資訊。</p>
 <ul>
 <li>Pros
 <ul>
@@ -554,7 +554,7 @@
 <ul>
 <li>程式碼 (c++)</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000000</span>; <span class="comment">//No. of elements</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> logN = <span class="built_in">ceil</span>(<span class="built_in">log</span>(N));</span><br><span class="line"><span class="comment">//const int logN = N;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> value[N];</span><br><span class="line"><span class="keyword">int</span> cnt[logN][N]; <span class="comment">//cnt[i][j]: RMQ index</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">construct_ST</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">//Initialization</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;N; ++i)</span><br><span class="line">		cnt[<span class="number">0</span>][i] = i;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 2^i - 1 &lt; N &lt;=&gt; i &lt; ceil(log(N))</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; (<span class="number">1</span>&lt;&lt;i)<span class="number">-1</span> &lt; N; i++)</span><br><span class="line">        <span class="comment">// j + (2^i-1) &lt; N ; buttom-up 建立</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>; j+(<span class="number">1</span>&lt;&lt;i)<span class="number">-1</span> &lt; N; j++) &#123;</span><br><span class="line">			<span class="keyword">int</span> L = cnt[i<span class="number">-1</span>][j];</span><br><span class="line">			<span class="keyword">int</span> R = cnt[i<span class="number">-1</span>][j+(<span class="number">1</span>&lt;&lt;(i<span class="number">-1</span>))];</span><br><span class="line">			cnt[i][j] = (value[L] &lt;= value[R])? L : R;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000000</span>; <span class="comment">//No. of elements</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> logN = <span class="built_in">ceil</span>(<span class="built_in">log</span>(N));</span><br><span class="line"><span class="comment">//const int logN = sizeof(unsigned int) - __builtin_clz((unsigned int)dist) - 1;;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> value[N];</span><br><span class="line"><span class="keyword">int</span> cnt[logN][N]; <span class="comment">//cnt[i][j]: RMQ index</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">construct_ST</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">//Initialization</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;N; ++i)</span><br><span class="line">		cnt[<span class="number">0</span>][i] = i;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 2^i - 1 &lt; N &lt;=&gt; i &lt; ceil(log(N))</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; (<span class="number">1</span>&lt;&lt;i)<span class="number">-1</span> &lt; N; i++)</span><br><span class="line">        <span class="comment">// j + (2^i-1) &lt; N ; buttom-up 建立</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>; j+(<span class="number">1</span>&lt;&lt;i)<span class="number">-1</span> &lt; N; j++) &#123;</span><br><span class="line">			<span class="keyword">int</span> L = cnt[i<span class="number">-1</span>][j];</span><br><span class="line">			<span class="keyword">int</span> R = cnt[i<span class="number">-1</span>][j+(<span class="number">1</span>&lt;&lt;(i<span class="number">-1</span>))];</span><br><span class="line">			cnt[i][j] = (value[L] &lt;= value[R])? L : R;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>時間複雜度
 <ul>
