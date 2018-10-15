@@ -124,7 +124,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/dining_philosophersproblem.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/thedinningphilosopherproblem2.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/thedinningpholosopherproblem3.png">
-<meta property="og:updated_time" content="2018-09-28T12:52:44.988Z">
+<meta property="og:updated_time" content="2018-10-04T11:22:26.487Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Operating System - Process Synchronization 1">
 <meta name="twitter:description" content="Process Synchronization ( Process Communication, Inter Process Communication )   Synchronization  Process 因為「某件事情」的已發生或是未發生( 有多個 process 相互合作的時候 )，導致必須等待該事件完成或發生才得以繼續進行。   Process Communicatio">
@@ -374,7 +374,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-09-28T20:52:44+08:00">2018-09-28</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2018-10-04T19:22:26+08:00">2018-10-04</time>
             
           </span>
 
@@ -1085,9 +1085,9 @@
 <ul>
 <li>共享變數
 <ul>
-<li>wrt：semaphore = 1<br>提供 Read/Write 與 Write/Write 的互斥控制，<strong>這種控制將會不利於 Writer 的寫入</strong>。</li>
-<li>readcnt：int = 0<br><strong>紀錄目前的 Reader 個數。</strong><span class="math inline">\(\left\{\begin{matrix}多一位 \; Reader \Rightarrow readcnt = readcnt + 1。\\少一位 \; Reader \Rightarrow readcnt = readcnt -1。 \end{matrix}\right. \Rightarrow 需使用互斥控制。\)</span></li>
-<li><strong>mutex：semaphore = 1</strong> <br>對 readcnt 作「互斥控制」，防止 Race condition。</li>
+<li>wrt：semaphore = 1 提供 Read/Write 與 Write/Write 的互斥控制，<strong>這種控制將會不利於 Writer 的寫入</strong>。</li>
+<li>readcnt：int = 0 <strong>紀錄目前的 Reader 個數。</strong> <span class="math inline">\(\left\{\begin{matrix}多一位 \; Reader \Rightarrow readcnt = readcnt + 1。\\少一位 \; Reader \Rightarrow readcnt = readcnt -1。 \end{matrix}\right. \Rightarrow 需使用互斥控制。\)</span></li>
+<li><strong>mutex：semaphore = 1</strong> 對 readcnt 作「互斥控制」，防止 Race condition。</li>
 </ul></li>
 <li>Reader 程式</li>
 </ul>
@@ -1154,16 +1154,16 @@
 <ul>
 <li><strong>customer：semaphore = 0</strong><br><strong>用來處理客人與理髮師的同步問題。有客人才被喚醒工作，若無則繼續睡覺。</strong></li>
 <li><strong>barber：semaphore = 0</strong><br><strong>用來處理客人與理髮師的同步問題。若理髮師忙碌等待並睡覺，反之進行理髮。</strong></li>
-<li>waiting：int = 0<br>目前座在等待區的人數。<span class="math inline">\(\left\{\begin{matrix}客人入店 \; \Rightarrow waiting++ \\理髮師開始處理下一為客人 \Rightarrow waiting-- \end{matrix}\right.\)</span></li>
+<li>waiting：int = 0 目前座在等待區的人數。 <span class="math inline">\(\left\{\begin{matrix}客人入店 \; \Rightarrow waiting++ \\理髮師開始處理下一為客人 \Rightarrow waiting-- \end{matrix}\right.\)</span></li>
 <li>mutex：semaphore = 1<br><strong>對 waiting 變數做互斥處理，以免 Race condition。</strong></li>
 </ul></li>
 <li>Barber 程式</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// barber</span></span><br><span class="line"><span class="keyword">while</span>(conditon == <span class="literal">false</span>) &#123;</span><br><span class="line">    wait(customer);          <span class="comment">// 目前沒有客人，Barber 睡覺去。</span></span><br><span class="line">    	wait(mutex);</span><br><span class="line">    		waiting--;</span><br><span class="line">    		signal(barber); <span class="comment">// 叫醒客人。</span></span><br><span class="line">    	signal(mutex);</span><br><span class="line">    	<span class="comment">// processing cutting hair</span></span><br><span class="line">    	<span class="comment">// signal(barber);  // worng code</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// barber</span></span><br><span class="line"><span class="keyword">while</span>(conditon == <span class="literal">false</span>) &#123;</span><br><span class="line">	wait(customer);          <span class="comment">// 目前沒有客人，Barber 睡覺去。</span></span><br><span class="line">		wait(mutex);</span><br><span class="line">			waiting--;</span><br><span class="line">			signal(barber); <span class="comment">// 叫醒客人。</span></span><br><span class="line">		signal(mutex);</span><br><span class="line">		<span class="comment">// processing cutting hair</span></span><br><span class="line">		<span class="comment">// signal(barber);  // worng code</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>Costomer 程式</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// customer: 注意! customer 並沒有需要 loop 持剪髮的需求。</span></span><br><span class="line">wait(mutex);</span><br><span class="line">    <span class="keyword">if</span>(waiting &lt; n) &#123;</span><br><span class="line">		waiting++;</span><br><span class="line">		signal(customer); <span class="comment">// 叫醒/通知 Barber。</span></span><br><span class="line">signal(mutex);</span><br><span class="line">		wait(barber);		</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">signal(mutex);    </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// customer: 注意! customer 並沒有需要 loop 剪髮的需求。</span></span><br><span class="line">wait(mutex);</span><br><span class="line">	<span class="keyword">if</span>(waiting &lt; n) &#123;</span><br><span class="line">		waiting++;</span><br><span class="line">		signal(customer); <span class="comment">// 叫醒/通知 Barber。</span></span><br><span class="line">signal(mutex);</span><br><span class="line">		wait(barber);		</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">signal(mutex);    </span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 <figure>
 <img src="\willywangkaa\images\secondreaderwriterproblem_2.png" alt="secondreaderwriterproblem_2"><figcaption>secondreaderwriterproblem_2</figcaption>
 </figure>
@@ -1492,7 +1492,7 @@
                 
                   <a href="/willywangkaa/archives/">
                 
-                    <span class="site-state-item-count">36</span>
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1660,7 +1660,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">61</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">66</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

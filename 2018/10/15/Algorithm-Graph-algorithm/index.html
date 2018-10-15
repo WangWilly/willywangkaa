@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-tw,en,default">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/willywangkaa/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/willywangkaa/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/willywangkaa/images/apple-touch-icon-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/willywangkaa/images/favicon-32x32-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/willywangkaa/images/favicon-16x16-next_cat.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/willywangkaa/images/logo_cat.svg?v=6.0.4" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/willywangkaa/',
+    scheme: 'Pisces',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="Graph," />
+
+
+<meta name="description" content="Graph algorithm Depth first search  所需變數：考慮圖中一點 u  color(u)：目前 u 節點的狀態  White：初始值，尚未訪查過 Gray：已被訪查過，但未訪查完其子節點 Black：已經訪查完其子節點  d(u)：發現時間點( Discover time )，即為第一次被訪查的時間點 f(u)：完結時間點( Finish ti">
+<meta name="keywords" content="Graph">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Algorithm - Graph algorithm">
+<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/10/15/Algorithm-Graph-algorithm/index.html">
+<meta property="og:site_name" content="WillyWangkaa">
+<meta property="og:description" content="Graph algorithm Depth first search  所需變數：考慮圖中一點 u  color(u)：目前 u 節點的狀態  White：初始值，尚未訪查過 Gray：已被訪查過，但未訪查完其子節點 Black：已經訪查完其子節點  d(u)：發現時間點( Discover time )，即為第一次被訪查的時間點 f(u)：完結時間點( Finish ti">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/forwardedge.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/crossedge.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/minimumspainingtree_1.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/minimumspainingtree_2.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/minimumspainingtree_3.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/flownetwork.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/escapeproblem.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/escapeproblem_sol.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/escapeproblem_solconti.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/vertexcover.png">
+<meta property="og:updated_time" content="2018-10-15T10:22:44.842Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Algorithm - Graph algorithm">
+<meta name="twitter:description" content="Graph algorithm Depth first search  所需變數：考慮圖中一點 u  color(u)：目前 u 節點的狀態  White：初始值，尚未訪查過 Gray：已被訪查過，但未訪查完其子節點 Black：已經訪查完其子節點  d(u)：發現時間點( Discover time )，即為第一次被訪查的時間點 f(u)：完結時間點( Finish ti">
+<meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/forwardedge.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://WangWilly.github.io/willywangkaa/2018/10/15/Algorithm-Graph-algorithm/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>Algorithm - Graph algorithm | WillyWangkaa</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/willywangkaa/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WillyWangkaa</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Live more like human</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/willywangkaa/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/willywangkaa/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/willywangkaa/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/willywangkaa/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/10/15/Algorithm-Graph-algorithm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WillyWangkaa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Algorithm - Graph algorithm</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-15T16:51:00+08:00">2018-10-15</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-10-15T18:22:44+08:00">2018-10-15</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/willywangkaa/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/willywangkaa/2018/10/15/Algorithm-Graph-algorithm/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/10/15/Algorithm-Graph-algorithm/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="graph-algorithm">Graph algorithm</h1>
+<h2 id="depth-first-search">Depth first search</h2>
+<ul>
+<li>所需變數：考慮圖中一點 u
+<ul>
+<li>color(u)：目前 u 節點的狀態
+<ul>
+<li>White：初始值，尚未訪查過</li>
+<li>Gray：已被訪查過，但未訪查完其子節點</li>
+<li>Black：已經訪查完其子節點</li>
+</ul></li>
+<li>d(u)：發現時間點( Discover time )，即為第一次被訪查的時間點</li>
+<li>f(u)：完結時間點( Finish time )，即為訪查完其子節點的時間點</li>
+</ul></li>
+<li>演算法 (P.4-6)
+<ul>
+<li><strong>DFS(G)</strong>：自 G 中任一點開始做 DFS
+<ul>
+<li>dfs_visit(u)：訪查 u 節點</li>
+</ul></li>
+</ul></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">DFS(G)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// initialize</span></span><br><span class="line">	foreach u in G.V          <span class="comment">// G 的點集合</span></span><br><span class="line">		color(u) &lt;- white</span><br><span class="line">	time &lt;- <span class="number">0</span>                 <span class="comment">// 紀錄目前的時間</span></span><br><span class="line"></span><br><span class="line">	foreach u in G.V</span><br><span class="line">		<span class="keyword">if</span>(color(u) == white) <span class="comment">// 找到一個尚未被訪查過的節點</span></span><br><span class="line">			dfs_visit(u)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dfs_visit(u)</span><br><span class="line">&#123;</span><br><span class="line">	color(u) &lt;- gray</span><br><span class="line">	d(u) &lt;- ++time</span><br><span class="line"></span><br><span class="line">	<span class="function">foreach v in <span class="title">adj</span><span class="params">(u)</span></span></span><br><span class="line"><span class="function">		<span class="title">if</span><span class="params">(color(v)</span> </span>== white)</span><br><span class="line">			dfs_visit(v)</span><br><span class="line"></span><br><span class="line">	color(u) &lt;- black</span><br><span class="line">	time++</span><br><span class="line">	f(u) &lt;- time</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Time complexity
+<ul>
+<li><span class="math inline">\(\Theta(\vert V\vert+\vert E\vert)\)</span> ：點數加上邊數</li>
+</ul></li>
+</ul>
+<blockquote>
+<p><strong>將整個圖的所有點與邊訪查一次。</strong></p>
+</blockquote>
+<h3 id="應用">應用</h3>
+<h4 id="dfs-tree---edge">DFS tree - Edge</h4>
+<p>深度優先搜尋時，可以將圖中的邊分成四類：</p>
+<ol type="1">
+<li><strong>Tree edge</strong>：u 透過 (u, v) 邊以訪查 v 節點。</li>
+</ol>
+<blockquote>
+<ul>
+<li>可在訪查的過程表示為一個「DFS tree」。</li>
+</ul>
+</blockquote>
+<ol start="2" type="1">
+<li><strong>Back edge</strong>：不為「Tree edge」，而在「DFS tree」上由<strong>子孫節點至祖先節點</strong>的邊。</li>
+</ol>
+<blockquote>
+<ul>
+<li><strong>自旋邊( Self loop )亦為「Back edge」</strong>。</li>
+</ul>
+</blockquote>
+<ol start="3" type="1">
+<li><strong>Forward edge</strong>：不為「Tree edge」，而在「DFS tree」上由<strong>祖先節點至子孫節點</strong>的邊。</li>
+<li><strong>Cross edge</strong>：無祖孫關係的邊。</li>
+</ol>
+<p>在實現中，通常在做 DFS 時就會直接以<strong>節點的狀態</strong>判斷邊的種類。</p>
+<ol type="1">
+<li><strong>Tree edge</strong></li>
+</ol>
+<p><span class="math display">\[
+u_{灰} \rightarrow_{Tree–edge} v_{白}
+\]</span></p>
+<ol start="2" type="1">
+<li><strong>Back edge</strong></li>
+</ol>
+<p><span class="math display">\[
+u_{灰} \rightarrow_{Back–edge} v_{灰}
+\]</span></p>
+<ol start="3" type="1">
+<li><strong>Forward edge</strong></li>
+</ol>
+<p><span class="math display">\[
+u_{灰} \rightarrow_{Forward–edge} ｛v_{黑} \;＆＆ \; d(u)&lt;d(v) ｝
+\]</span></p>
+<figure>
+<img src="\willywangkaa\images\forwardedge.png" alt="forwardedge"><figcaption>forwardedge</figcaption>
+</figure>
+<ol start="4" type="1">
+<li><strong>Cross edge</strong></li>
+</ol>
+<p><span class="math display">\[
+u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
+\]</span></p>
+<figure>
+<img src="\willywangkaa\images\crossedge.png" alt="crossedge"><figcaption>crossedge</figcaption>
+</figure>
+<ul>
+<li>Ex (96 年台大資工)</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">DFS(G)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// initialize</span></span><br><span class="line">	foreach u in G.V          <span class="comment">// G 的點集合</span></span><br><span class="line">		color(u) &lt;- white</span><br><span class="line">		edge(u) &lt;- Null       <span class="comment">// DFS tree 初始化邊( 雙向邊 )</span></span><br><span class="line">	time &lt;- <span class="number">0</span>                 <span class="comment">// 紀錄目前的時間</span></span><br><span class="line"></span><br><span class="line">	foreach u in G.V</span><br><span class="line">		<span class="keyword">if</span>(color(u) == white) <span class="comment">// 找到一個尚未被訪查過的節點</span></span><br><span class="line">			dfs_visit(u)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dfs_visit(u)</span><br><span class="line">&#123;</span><br><span class="line">	color(u) &lt;- gray</span><br><span class="line">	d(u) &lt;- ++time</span><br><span class="line"></span><br><span class="line">	<span class="function">foreach v in <span class="title">adj</span><span class="params">(u)</span></span></span><br><span class="line"><span class="function">		<span class="title">if</span><span class="params">(color(v)</span> </span>== white)</span><br><span class="line">			edge(v) &lt;- u                     <span class="comment">// 相連節點設為 u</span></span><br><span class="line">            edge(v).attribute &lt;- tree</span><br><span class="line">			dfs_visit(v)</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(color(v) == gray)</span><br><span class="line">			edge(v) &lt;- u                     <span class="comment">// 相連節點設為 u</span></span><br><span class="line">            parent(v).attribute &lt;- back</span><br><span class="line">			dfs_visit(v)</span><br><span class="line">		<span class="keyword">else</span>                                 <span class="comment">// 黑節點</span></span><br><span class="line">			edge(v) &lt;- u                     <span class="comment">// 相連節點設為 u</span></span><br><span class="line">			<span class="keyword">if</span>(d(u) &gt; d(v))                  <span class="comment">// 無祖孫關係</span></span><br><span class="line">				edge(v).attribute &lt;- cross</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(d(u) &lt; d(v))             <span class="comment">// 有祖孫關係</span></span><br><span class="line">				edge(v).attribute &lt;- forward</span><br><span class="line">			dfs_visit(v)</span><br><span class="line">	color(u) &lt;- black</span><br><span class="line">	time++</span><br><span class="line">	f(u) &lt;- time</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="dfs-tree---acyclic">DFS tree - Acyclic</h4>
+<blockquote>
+<p><strong>存在「Back edge」時，代表有迴圈產生。</strong></p>
+</blockquote>
+<ul>
+<li>演算法 ( 94台大 ) ( 99台大資工 )</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Acyclic(G)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// initialize</span></span><br><span class="line">	foreach u in G.V          <span class="comment">// G 的點集合</span></span><br><span class="line">		color(u) &lt;- white</span><br><span class="line">	time &lt;- <span class="number">0</span>                 <span class="comment">// 紀錄目前的時間</span></span><br><span class="line"></span><br><span class="line">	foreach u in G.V</span><br><span class="line">		<span class="keyword">if</span>(color(u) == white) <span class="comment">// 找到一個尚未被訪查過的節點</span></span><br><span class="line">			dfs_visit(u)</span><br><span class="line">	<span class="keyword">return</span> acyclic</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dfs_visit(u)</span><br><span class="line">&#123;</span><br><span class="line">	color(u) &lt;- gray</span><br><span class="line">	d(u) &lt;- ++time</span><br><span class="line"></span><br><span class="line">	foreach v in adj(u)</span><br><span class="line">		<span class="keyword">if</span>(color(v) == white)</span><br><span class="line">			dfs_visit(v)</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(color(v) == gray) <span class="comment">// back-edge is found</span></span><br><span class="line">			<span class="keyword">return</span> G is cyclic</span><br><span class="line"></span><br><span class="line">	color(u) &lt;- black</span><br><span class="line">	time++</span><br><span class="line">	f(u) &lt;- time</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Time complexity
+<ul>
+<li><strong>有向圖</strong> (94 台大)
+<ul>
+<li><span class="math inline">\(\Theta(V+E)\)</span></li>
+</ul></li>
+<li><strong>無向圖</strong> (99 台大)
+<ul>
+<li><span class="math inline">\(\Theta(V)\)</span></li>
+</ul></li>
+</ul></li>
+</ul>
+<blockquote>
+<p><strong>在無向圖中，因為鴿籠原理，最多只要檢查 V 個邊即可知道此圖是否為「Cyclic」。( 且如果邊的數量大於點的數量也根據鴿籠原理，此圖必含有迴圈 )</strong> <span class="math inline">\(\therefore \Theta(V+V) = \Theta(V)\)</span></p>
+<p><strong>另外，在無向圖中只有</strong></p>
+<ul>
+<li><strong>Tree edge</strong></li>
+<li><strong>Back edge</strong></li>
+</ul>
+</blockquote>
+<blockquote>
+<p>但是，在<strong>有向圖</strong>則不能以上述判斷。</p>
+<ul>
+<li>Ex
+<ul>
+<li>兩個節點：A、B</li>
+<li>五條邊皆從 A 節點至 B 節點</li>
+<li><strong>此圖不包含「Cycle」</strong></li>
+</ul></li>
+</ul>
+</blockquote>
+<h2 id="minimum-spainning-tree">Minimum spainning tree</h2>
+<h3 id="問題探討">問題探討</h3>
+<ul>
+<li>假設 (u, v) 為 G 中「權重 ( weight )」最小的邊，則 (u, v) 必在 G 的某一個「最小生成樹」中。</li>
+</ul>
+<p>( <strong>反證法</strong> )</p>
+<p><img src="\willywangkaa\images\minimumspainingtree_1.png" alt="minimumspainingtree_1"> <span class="math display">\[
+假設 \;\forall T \in MST \;of \;G \quad edge\;(u, v) \notin T.E \\
+將 \;(u, v)\; 加至 \; T \; ，會使\;T \;會產生一個 \;cycle \; C \\
+令 \;e\; 為\;C\;中除了 \;(u, v)\; 之外權重最大的邊 \\
+將 \;e\; 自\;C\;移除，使 \;C\; 會形成一個新的生成樹 \;T&#39; \\
+且 \;weight(T&#39;) \leq weight(T)\; 產生了一個更小的生成樹，\\
+所以一開始假設的生成樹並非為最小生成樹。(矛盾)
+\]</span></p>
+<blockquote>
+<p>上述情況會有兩種矛盾的現象產生</p>
+<ul>
+<li>當 <span class="math inline">\(Weight(T&#39;)&lt;Weight(T)\)</span> 時，代表原本的生成樹不為最小生成樹。</li>
+<li>當 <span class="math inline">\(Weight(T&#39;) = Weight(T)\)</span> 時，代表該最小生成樹的集合中，必有一個樹包含 (u, v) 邊。</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>定義：「Cycle」由三條邊組成的迴路。</p>
+</blockquote>
+<ul>
+<li>☆ 假設 (u, v) 為 G 中「權重 ( weight )」<strong>第二小</strong>的邊，則 (u, v) 必在 G 的某一個「最小生成樹」中。</li>
+</ul>
+<p>( <strong>反證法</strong> )</p>
+<blockquote>
+<p>前提為該圖 G 各個權重不相等否則反例如下：</p>
+<p><img src="\willywangkaa\images\minimumspainingtree_2.png" alt="minimumspainingtree_2"> <span class="math display">\[
+假設 \;\forall T \in MST \;of \;G \quad edge\;(u, v) \notin T.E \\
+將 \;(u, v)\; 加至 \; T \; ，會使\;T \;會產生一個 \;cycle \; C \\
+\because 一個「Cycle」一定由三個邊組成 \\
+\therefore C \;中必有一個邊 \;e \;，其權重&quot;大於等於&quot; (u, v) 的權重 ....(*) \\
+將 \;e\; 自\;C\;移除，使 \;C\; 會形成一個新的生成樹 \;T&#39; \\
+且 \;weight(T&#39;) \leq weight(T)\; 產生了一個更小的生成樹，\\
+所以一開始假設的生成樹並非為最小生成樹。(矛盾)
+\]</span></p>
+</blockquote>
+<blockquote>
+<p>G 中<strong>權重第三小</strong>的邊不一定存在於 G 的某一個「最小生成樹」中</p>
+<ul>
+<li>Counter example</li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\minimumspainingtree_3.png" alt="minimumspainingtree_3"><figcaption>minimumspainingtree_3</figcaption>
+</figure>
+</blockquote>
+<h4 id="kruskals-algorithm-的正確性">Kruskal’s algorithm 的正確性</h4>
+<ul>
+<li>概念
+<ul>
+<li>T：使用 Kruskal 找出的生成樹</li>
+<li>T’：真正的最小生成樹</li>
+</ul></li>
+</ul>
+<ol type="1">
+<li>若 <span class="math inline">\(T = T&#39;\)</span> ，得證。</li>
+<li>若 <span class="math inline">\(T \ne T&#39;\)</span> ，T 必有邊不包含在 T’ 之中，所以在 T.E - T’.E ( 差集合 ) 中挑一個權重最小的邊 e。</li>
+</ol>
+<p>將 e 加入 T’ 後，會形成一個 Cycle 「C」， <strong>在 {C.V - e} 中任取一邊 e’ 必會大於等於 e，</strong> <strong>因為如果該邊比較小，在 Kruskal 執行時必優先選擇 e’</strong> ( 然而如此一來導致矛盾所以不可能發生 )， 最後我們可以造一個生成樹 T’’ = ( G.V, <strong>(T’.E - {e’})</strong> <span class="math inline">\(\cup\)</span> {e} )， 且 <span class="math inline">\(Weight(T&#39;&#39;) \leq weight(T&#39;)\)</span> ；</p>
+<p>重複上述步驟 <span class="math inline">\(T&#39; \xrightarrow{用\;T\;有而\;T&#39;\;沒有的邊做替換} T&#39;&#39; \xrightarrow{用\;T\;有而\;T&#39;&#39;\;沒有的邊做替換} ... \rightarrow T\)</span> ， 並且其過程中生成樹的權重不會增加，所以可以證明 <span class="math inline">\(weight(T&#39;) = weight(T)\)</span>， 所以 T 是最小生成樹。</p>
+<h2 id="flow-network">Flow network</h2>
+<p>一個<strong>有向圖</strong> G = (V, E) 滿足</p>
+<ol type="1">
+<li>只含有唯一一個 <strong>in-degree = 0</strong> 的點 S ( Source )</li>
+<li>只含有唯一一個 <strong>out-degree = 0</strong> 的點 T ( Sink )</li>
+<li>對於 G.E 中每個邊 e ，定義一個<strong>容量</strong> c(e) ≧ 0</li>
+</ol>
+<p>另外，定義一個<strong>流量</strong>的函數：f(e)，滿足</p>
+<ol type="1">
+<li>對每個點而言，<strong>流入水量等於流出水量。</strong></li>
+<li>對每個邊而言，<strong>0 ≦ f(e) ≦ c(e)</strong></li>
+</ol>
+<h3 id="max-flow-problem">Max flow problem</h3>
+<ul>
+<li>Input
+<ul>
+<li>一個「Flow network」 G = (V, E)</li>
+</ul></li>
+<li>Output
+<ul>
+<li>此網路的最大流量，也就是源頭最大能流出多少水量</li>
+</ul></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\flownetwork.png" alt="flownetwork"><figcaption>flownetwork</figcaption>
+</figure>
+<h4 id="ford-fulkerson-algorithm">Ford-Fulkerson algorithm</h4>
+<ol type="1">
+<li>使用<strong>「Residual network」</strong>表示法</li>
+<li>自 s → t 找一條路徑 P，令 a 為 P 上最小的權重
+<ul>
+<li><span class="math inline">\(\overrightarrow{P}\)</span> 上的每一邊 ← 權重 <strong>- a</strong></li>
+<li><span class="math inline">\(\overleftarrow{P}\)</span> 上的每一邊 ← 權重 <strong>+ a</strong></li>
+<li>重複此操作直到找不到最小的權重 a 可以做上述動作。</li>
+</ul></li>
+<li>將最後指向 S 的邊之權重和輸出</li>
+</ol>
+<ul>
+<li>Time complexity
+<ul>
+<li><span class="math inline">\(O(|f^＊|\cdot E)\)</span>
+<ul>
+<li><span class="math inline">\(|f^＊|\)</span> 為最大流量的值</li>
+<li><strong>效能差</strong></li>
+</ul></li>
+</ul></li>
+</ul>
+<blockquote>
+<p><strong>如果每次在第二個步驟找到的最小流量 a 為 1，那勢必要重複</strong> <span class="math inline">\(|f^＊|\)</span> <strong>來找到最後的答案。</strong></p>
+</blockquote>
+<blockquote>
+<p>可以利用「已經求取完最大流量」的 Residual network 得到「原本流量網路」的 Minimum cut。</p>
+<ul>
+<li>Minimum cut：有 (S, T) 兩個子圖，滿足
+<ul>
+<li>S <span class="math inline">\(\cup\)</span> T = V 且 S <span class="math inline">\(\cap\)</span> T = <span class="math inline">\(\phi\)</span></li>
+<li>從子圖 S 連至子圖 T 之所有邊的權重和為所有「Cut」中最小</li>
+</ul></li>
+</ul>
+<p>在求完最大流量的「Residual network」中，令</p>
+<ul>
+<li>S：｛自 S 可以到達的節點｝</li>
+<li>T：｛自 T 可以到達的節點｝</li>
+</ul>
+<p>則 (S, T) 是原本「Flow network」的「Minimum cut」</p>
+</blockquote>
+<h4 id="edmond-karp-algorithm">Edmond-Karp algorithm</h4>
+<ol type="1">
+<li>使用<strong>「Residual network」</strong>表示法</li>
+<li>自 s 做 <strong>Breadth first search</strong> ，<strong>當找到 t 時建立一條 s → t 路徑 P，令 a 為 P 上最小的權重</strong>
+<ul>
+<li><span class="math inline">\(\overrightarrow{P}\)</span> 上的每一邊 ← 權重 <strong>- a</strong></li>
+<li><span class="math inline">\(\overleftarrow{P}\)</span> 上的每一邊 ← 權重 <strong>+ a</strong></li>
+<li>重複此操作直到找不到最小的權重 a 可以做上述動作。</li>
+</ul></li>
+<li>將最後指向 S 的邊之權重和輸出</li>
+</ol>
+<ul>
+<li>Time complexity
+<ul>
+<li><span class="math inline">\(O(VE^2)\)</span>：<strong>只和網路的大小有關</strong></li>
+</ul></li>
+</ul>
+<p>Example (P.4-80 ex20)</p>
+<p><strong>Escape problem</strong></p>
+<figure>
+<img src="\willywangkaa\images\escapeproblem.png" alt="escapeproblem"><figcaption>escapeproblem</figcaption>
+</figure>
+<p>將問題轉換成「邊與點均有 <strong>Capacity</strong> 的最大流量問題」 ( 將問題「Reduce」至「Flow network」中解決 )</p>
+<figure>
+<img src="\willywangkaa\images\escapeproblem_sol.png" alt="escapeproblem_sol"><figcaption>escapeproblem_sol</figcaption>
+</figure>
+<p>給定一個「Escape problem」的格子圖 ( Grid；有 m 個<strong>起點</strong>與 4n - 4 個<strong>出口</strong> )</p>
+<p>建立「Flow network」G = ( V, E )：</p>
+<ol type="1">
+<li>建立一個「Source」節點 S 並與逃生問題中的<strong>起點</strong> ( 藍色節點 ) 相接。</li>
+<li>建立一個「Sink」節點 T 並與逃生問題中的<strong>邊界點</strong> ( 黃色區塊 ) 的點相接。</li>
+<li>「Grid」上的每一條無向邊 ( u, v ) ，在 G 中建立相對應的有向邊 ( u, v ) 與 ( v, u )。</li>
+<li>將每一個節點與邊的流量接設定為 1。</li>
+</ol>
+<p>若在 G 中能找到最大流量為 m，則亦可以在「Grid」中找到一個逃生的方法。</p>
+<blockquote>
+<p>點與邊均有「Capacity」 的流量網路可以用傳統的流量網路實現。</p>
+<figure>
+<img src="\willywangkaa\images\escapeproblem_solconti.png" alt="escapeproblem_solconti"><figcaption>escapeproblem_solconti</figcaption>
+</figure>
+</blockquote>
+<h2 id="其它問題">其它問題</h2>
+<ul>
+<li>問題的要求即使有小變化，可能使其難度改變很大
+<ul>
+<li>Shortest path problem (Polynominal)與 Longest path problem (Non-deterministic polynominal)</li>
+<li>Minimum cut (Polyniminal) 與 Maximum Cut (Non-deterministic polynominal)</li>
+<li>Euler circuit (P) 與 Hamiltan Cycle (NP-Complete)</li>
+</ul></li>
+<li>同一個問題，若給的環境不同，難度亦可能相差很多</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Graph</th>
+<th>Tree</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Longest path problem</td>
+<td>NPC</td>
+<td>Linear time (P4-66 ex6)</td>
+</tr>
+<tr class="even">
+<td><strong>Minimum vertex cover</strong></td>
+<td>NPC</td>
+<td>Linear time (P)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Vertex cover：會和圖上所有邊相連的一個<strong>點集合</strong></p>
+<p>下圖的「Vertex cover」為｛b, d, f｝</p>
+<figure>
+<img src="\willywangkaa\images\vertexcover.png" alt="vertexcover"><figcaption>vertexcover</figcaption>
+</figure>
+</blockquote>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/willywangkaa/tags/Graph/" rel="tag"># Graph</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/willywangkaa/2018/10/03/ange-query-problem/" rel="next" title="Range query problem">
+                <i class="fa fa-chevron-left"></i> Range query problem
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/willywangkaa/2018/10/15/Algorithm-Computational-geometry/" rel="prev" title="Algorithm - Computational geometry">
+                Algorithm - Computational geometry <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/willywangkaa/images/avatar_me.gif"
+                alt="Willy Wang (willywangkaa)" />
+            
+              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
+              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/willywangkaa/archives/">
+                
+                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/willywangkaa/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/willywangkaa/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">66</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://typora.io/" title="Typora" target="_blank">Typora</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.geeksforgeeks.org/" title="GeeksforGeeks" target="_blank">GeeksforGeeks</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.codecogs.com/latex/eqneditor.php" title="Online LaTeX Equation Editor" target="_blank">Online LaTeX Equation Editor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://allem40306.github.io/blog/" title="CodingJack" target="_blank">CodingJack</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#graph-algorithm"><span class="nav-number">1.</span> <span class="nav-text">Graph algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#depth-first-search"><span class="nav-number">1.1.</span> <span class="nav-text">Depth first search</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#應用"><span class="nav-number">1.1.1.</span> <span class="nav-text">應用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dfs-tree---edge"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">DFS tree - Edge</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dfs-tree---acyclic"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">DFS tree - Acyclic</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#minimum-spainning-tree"><span class="nav-number">1.2.</span> <span class="nav-text">Minimum spainning tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#問題探討"><span class="nav-number">1.2.1.</span> <span class="nav-text">問題探討</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#kruskals-algorithm-的正確性"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">Kruskal’s algorithm 的正確性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flow-network"><span class="nav-number">1.3.</span> <span class="nav-text">Flow network</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#max-flow-problem"><span class="nav-number">1.3.1.</span> <span class="nav-text">Max flow problem</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ford-fulkerson-algorithm"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">Ford-Fulkerson algorithm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#edmond-karp-algorithm"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">Edmond-Karp algorithm</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它問題"><span class="nav-number">1.4.</span> <span class="nav-text">其它問題</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/willywangkaa/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/affix.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/willywangkaa/js/src/schemes/pisces.js?v=6.0.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/willywangkaa/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/willywangkaa/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://https-wangwilly-github-io-blog.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/10/15/Algorithm-Graph-algorithm/';
+        this.page.identifier = '2018/10/15/Algorithm-Graph-algorithm/';
+        this.page.title = 'Algorithm - Graph algorithm';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-wangwilly-github-io-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/willywangkaa/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/willywangkaa/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>

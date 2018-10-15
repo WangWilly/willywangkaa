@@ -1,0 +1,1734 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-tw,en,default">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/willywangkaa/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/willywangkaa/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/willywangkaa/images/apple-touch-icon-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/willywangkaa/images/favicon-32x32-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/willywangkaa/images/favicon-16x16-next_cat.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/willywangkaa/images/logo_cat.svg?v=6.0.4" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/willywangkaa/',
+    scheme: 'Pisces',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="Computational geometry," />
+
+
+<meta name="description" content="Computational geometry The rank of a node  rankofnode   Dominate and rank  \(P_1 = (x_1, y_1)\) dominates \(P_2 = (x_2, y_2)\)：\(x_1 &amp;gt; x_2\) and \(y_1 \geq y_2\) Rank (\(P_1\))：The number">
+<meta name="keywords" content="Computational geometry">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Algorithm - Computational geometry">
+<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/10/15/Algorithm-Computational-geometry/index.html">
+<meta property="og:site_name" content="WillyWangkaa">
+<meta property="og:description" content="Computational geometry The rank of a node  rankofnode   Dominate and rank  \(P_1 = (x_1, y_1)\) dominates \(P_2 = (x_2, y_2)\)：\(x_1 &amp;gt; x_2\) and \(y_1 \geq y_2\) Rank (\(P_1\))：The number">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/rankofnode.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/rankcomputation.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/maximalpoint.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/maximalpointalgorithm.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/closestpairalgorithm.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/closestpointnote_1.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/closestpointnote.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/convexhull_1.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/convexhull_2.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/convexhull_3.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/convexhull_4.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/convexhull_5.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/convexhull_6.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/farthestpair_1.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/farthestpair_2.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/farthestpair_3.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/farthestpair_4.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/farthestpair_6.png">
+<meta property="og:updated_time" content="2018-10-15T10:38:43.684Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Algorithm - Computational geometry">
+<meta name="twitter:description" content="Computational geometry The rank of a node  rankofnode   Dominate and rank  \(P_1 = (x_1, y_1)\) dominates \(P_2 = (x_2, y_2)\)：\(x_1 &amp;gt; x_2\) and \(y_1 \geq y_2\) Rank (\(P_1\))：The number">
+<meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/rankofnode.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://WangWilly.github.io/willywangkaa/2018/10/15/Algorithm-Computational-geometry/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>Algorithm - Computational geometry | WillyWangkaa</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/willywangkaa/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WillyWangkaa</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Live more like human</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/willywangkaa/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/willywangkaa/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/willywangkaa/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/willywangkaa/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/10/15/Algorithm-Computational-geometry/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WillyWangkaa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Algorithm - Computational geometry</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-15T18:24:00+08:00">2018-10-15</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-10-15T18:38:43+08:00">2018-10-15</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/willywangkaa/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/willywangkaa/2018/10/15/Algorithm-Computational-geometry/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/10/15/Algorithm-Computational-geometry/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="computational-geometry">Computational geometry</h1>
+<h2 id="the-rank-of-a-node">The rank of a node</h2>
+<figure>
+<img src="\willywangkaa\images\rankofnode.png" alt="rankofnode"><figcaption>rankofnode</figcaption>
+</figure>
+<ul>
+<li>Dominate and rank
+<ul>
+<li><span class="math inline">\(P_1 = (x_1, y_1)\)</span> dominates <span class="math inline">\(P_2 = (x_2, y_2)\)</span>：<span class="math inline">\(x_1 &gt; x_2\)</span> and <span class="math inline">\(y_1 \geq y_2\)</span></li>
+<li>Rank (<span class="math inline">\(P_1\)</span>)：The number of node that <span class="math inline">\(P_1\)</span> dominated</li>
+</ul></li>
+<li>Input
+<ul>
+<li>2-D 平面上的點集合 S</li>
+</ul></li>
+<li>Output
+<ul>
+<li>每個底的「Rank」</li>
+</ul></li>
+<li>Native approach
+<ul>
+<li>對任意點檢查其它有幾個點可以「Dominate」</li>
+<li>Time complexity：<span class="math inline">\(\Theta(n^2)\)</span></li>
+</ul></li>
+</ul>
+<h3 id="divide-and-conquer">Divide and conquer</h3>
+<figure>
+<img src="\willywangkaa\images\rankcomputation.png" alt="rankcomputation"><figcaption>rankcomputation</figcaption>
+</figure>
+<ol type="1">
+<li>先令 m 是集合 S 中每個元素之 x 座標的<strong>中位數 ( median )</strong>，將 S 分成：
+<ul>
+<li><span class="math inline">\(S_L\)</span>：S 集合中 x 座標小於 m 之元素</li>
+<li><span class="math inline">\(S_R\)</span>：S 集合中 x 座標大於 m 之元素</li>
+</ul></li>
+<li>將 <span class="math inline">\(S_L\)</span> 和 <span class="math inline">\(S_R\)</span> 中每個點的「Rank」求出 ( 遞迴 )
+<ul>
+<li><strong>終止條件</strong>：若平面上只有一點，則設其「Rank」為零</li>
+</ul></li>
+<li>對於每個在 <span class="math inline">\(S_R\)</span> 中的點 P 修正其 Rank
+<ul>
+<li>Rank(P) = Rank(P) + 「在 <span class="math inline">\(S_L\)</span> 中 y 座標比 P 小的點個數」</li>
+</ul></li>
+<li>回傳 <span class="math inline">\(S_L\)</span> 中點之 Rank 加 <span class="math inline">\(S_R\)</span> 中所有點之 Rank</li>
+</ol>
+<ul>
+<li>Time complexity
+<ul>
+<li>Step1：<span class="math inline">\(\Theta(n)\)</span></li>
+<li>Step2：<span class="math inline">\(2T(\frac n2)\)</span></li>
+<li>Step3：<span class="math inline">\(\Theta(n)\)</span></li>
+<li><span class="math inline">\(T(n) = 2T(\frac n2) + \Theta(n) = \Theta(n\log n)\)</span></li>
+</ul></li>
+</ul>
+<h2 id="maximal-points">Maximal points</h2>
+<figure>
+<img src="\willywangkaa\images\maximalpoint.png" alt="maximalpoint"><figcaption>maximalpoint</figcaption>
+</figure>
+<p>「沒有被任何點 dominate」的點稱為 Maximal point</p>
+<figure>
+<img src="\willywangkaa\images\maximalpointalgorithm.png" alt="maximalpointalgorithm"><figcaption>maximalpointalgorithm</figcaption>
+</figure>
+<ol type="1">
+<li>先令 m 是集合 S 中每個元素之 x 座標的中位數 ( median )，將 S 分成：
+<ul>
+<li><span class="math inline">\(S_L\)</span>：S 集合中 x 座標小於 m 之元素</li>
+<li><span class="math inline">\(S_R\)</span>：S 集合中 x 座標大於 m 之元素</li>
+</ul></li>
+<li>將 <span class="math inline">\(S_L\)</span> 和 <span class="math inline">\(S_R\)</span> 中每個點的「Maximal point」求出 ( 遞迴 )
+<ul>
+<li><strong>終止條件</strong>：若平面上只有一點，則此點即為 Maximal point</li>
+</ul></li>
+<li>將所有在 <span class="math inline">\(S_L\)</span> 和 <span class="math inline">\(S_R\)</span> 中的「Maximal point」投影到 L 上。並且依照其 Y 值由大到小用線性搜尋的方式找出每一個在 <span class="math inline">\(S_L\)</span> 中的「Maximal point」且其 y 座標比某個 <span class="math inline">\(S_R\)</span> 中的「Maximal point」的 y 座標小者，將其捨去</li>
+<li>回傳 <span class="math inline">\(S_R\)</span> 中「Maximal point」與 <span class="math inline">\(S_L\)</span>中剩下的「Maximal point」</li>
+</ol>
+<ul>
+<li>Time complexity
+<ul>
+<li>Step1：<span class="math inline">\(\Theta(n)\)</span></li>
+<li>Step2：<span class="math inline">\(2T(\frac n2)\)</span></li>
+<li>Step3：<span class="math inline">\(\Theta(n)\)</span></li>
+<li><span class="math inline">\(T(n) = 2T(\frac n2) + \Theta(n) = \Theta(n\log n)\)</span></li>
+</ul></li>
+</ul>
+<h2 id="closest-pairs">Closest pairs</h2>
+<p>2-D 平面上的點集合 S，找 S 中距離最小的距離</p>
+<ul>
+<li>概念
+<ul>
+<li>計算「有可能Closest pair」兩點的距離，<strong>不計算完全不可能的兩點之距離</strong></li>
+</ul></li>
+</ul>
+<h3 id="divide-and-conquer-1">Divide and conquer</h3>
+<ol type="1">
+<li>先令 m 是集合 S 中每個元素之 x 座標的中位數 ( median )，將 S 分成：
+<ul>
+<li><span class="math inline">\(S_L\)</span>：S 集合中 x 座標小於 m 之元素</li>
+<li><span class="math inline">\(S_R\)</span>：S 集合中 x 座標大於 m 之元素</li>
+</ul></li>
+<li>將 <span class="math inline">\(S_L\)</span> 和 <span class="math inline">\(S_R\)</span> 中的 Closest pair 的距離 <span class="math inline">\(d_L\)</span>, <span class="math inline">\(d_R\)</span> 求出 (遞迴)
+<ul>
+<li><strong>終止條件</strong>：若平面上只有一點，則「Closest pair」的距離為無限大。</li>
+</ul></li>
+</ol>
+<figure>
+<img src="\willywangkaa\images\closestpairalgorithm.png" alt="closestpairalgorithm"><figcaption>closestpairalgorithm</figcaption>
+</figure>
+<ol start="3" type="1">
+<li><p>令 d = <span class="math inline">\(min(d_L, d_R)\)</span> (不跨 <span class="math inline">\(S_L、S_R\)</span>) （1）對於在 <span class="math inline">\(S_L\)</span> 中且 <strong>x 座標在 m-d ~ m 中的所有點</strong> p = <span class="math inline">\((x_p, y_p)\)</span> （2）與在 <span class="math inline">\(S_R\)</span> 中且 <strong>x 座標在 m ~ m+d、y 座標在</strong> <span class="math inline">\(y_p -d\)</span> ~ <span class="math inline">\(y_p + d\)</span> <strong>的所有點</strong> g 計算 <span class="math inline">\(min_p\)</span> = min( dist(p, q)<span class="math inline">\(\forall q \in S_R\)</span>) （3）最後令 d’ = min( <span class="math inline">\(min_p, \forall p \in S_L\)</span> )</p></li>
+<li><p>回傳 min(d, d’)</p></li>
+</ol>
+<ul>
+<li>Time complexity
+<ul>
+<li>Step1：<span class="math inline">\(\Theta(n)\)</span></li>
+<li>Step2：<span class="math inline">\(2T(\frac n2)\)</span></li>
+<li>Step3：<span class="math inline">\(\frac n2 \times \Theta(1) = \Theta(n)\)</span></li>
+<li><span class="math inline">\(T(n) = 2T(\frac n2) + \Theta(n) = \Theta(n\log n)\)</span></li>
+</ul></li>
+</ul>
+<blockquote>
+<ul>
+<li>Step3 <strong>根據鴿籠原理</strong></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\closestpointnote_1.png" alt="closestpointnote_1"><figcaption>closestpointnote_1</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\closestpointnote.png" alt="closestpointnote"><figcaption>closestpointnote</figcaption>
+</figure>
+</blockquote>
+<h2 id="convex-hull">Convex hull</h2>
+<p>算出 2D 平面上所有點的最小凸多邊形。</p>
+<ul>
+<li>名詞
+<ul>
+<li>順時針：Clockwise ；Right-turn</li>
+<li>逆時針：Counterclockwise；Left-turn</li>
+</ul></li>
+</ul>
+<h3 id="naive-algorithm">Naive Algorithm</h3>
+<ol type="1">
+<li><p>令目前平面上 x 座標最小的點為 P ( 必定在凸包上 )</p></li>
+<li>P 與平面上每一點算出向量</li>
+<li><p>取其與 x 軸夾角最大的點 V</p></li>
+<li><p><strong>旋轉平面使 V 的 x 座標最小化（使 (P,V) 垂直）成為 P’，重複第一步</strong></p></li>
+</ol>
+<ul>
+<li><p>直到回到最一開始的 P 為止</p></li>
+<li>演示
+<ul>
+<li>左：P</li>
+<li>次：V</li>
+</ul></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\convexhull_1.png" alt="convexhull_1"><figcaption>convexhull_1</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\convexhull_2.png" alt="convexhull_2"><figcaption>convexhull_2</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\convexhull_3.png" alt="convexhull_3"><figcaption>convexhull_3</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\convexhull_4.png" alt="convexhull_4"><figcaption>convexhull_4</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\convexhull_5.png" alt="convexhull_5"><figcaption>convexhull_5</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\convexhull_6.png" alt="convexhull_6"><figcaption>convexhull_6</figcaption>
+</figure>
+<ul>
+<li>Time complexity
+<ul>
+<li>若有 n 點必須重複上述動作 n 遍，其中每一遍需要：
+<ul>
+<li>Step1 算出與其餘點的所有向量：<span class="math inline">\(O(n)\)</span></li>
+<li>Step2 找出與 x 軸夾角最大的 V 點：<span class="math inline">\(O(n)\)</span></li>
+<li>Step3 旋轉平面：<span class="math inline">\(O(n)\)</span></li>
+</ul></li>
+<li><span class="math inline">\(\Rightarrow O(n^2)\)</span></li>
+</ul></li>
+</ul>
+<h3 id="graham-scan">Graham scan</h3>
+<ol type="1">
+<li><p>找出點 <span class="math inline">\(p_0\)</span> ：2D 平面上做有點中 y 座標最小者 ( 若有多個最小點取其中最左者 )</p></li>
+<li><p>找出有序集 <span class="math inline">\(＜P_1, P_2, \ldots, P_n＞\)</span>：依照從 <span class="math inline">\(P_0\)</span> 對每個點取向量之<strong>角度</strong>由小到大排列</p>
+<ul>
+<li>若兩個以上的點角度相同，則保留離 <span class="math inline">\(p_0\)</span> 最近的點</li>
+</ul></li>
+<li><p>建構一個空的「堆疊( Stack )」 <span class="math inline">\(S\)</span> ( <strong>最後凸包的接點</strong> )</p>
+<ul>
+<li>建構完後 <strong>push(</strong><span class="math inline">\(p_0, S\)</span><strong>)、push(</strong><span class="math inline">\(p_1, S\)</span><strong>)、push(</strong><span class="math inline">\(p_2, S\)</span><strong>)</strong></li>
+</ul></li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 4. (第四步)</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">3</span>; i &lt;= n; i++) &#123;</span><br><span class="line">	a = second(S);</span><br><span class="line">	b = top(S);</span><br><span class="line">	<span class="keyword">while</span>(cross_product(<span class="built_in">vector</span>(p_i, a), <span class="built_in">vector</span>(p_i, b)) != <span class="string">"left_turn"</span>) &#123;</span><br><span class="line">		pop(S);</span><br><span class="line">	&#125;</span><br><span class="line">	push(p_i, S);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>外積 ( Cross porduct )</li>
+</ul>
+<p>給定兩向量 <span class="math inline">\(\vec{p_1} = (x_1, y_1), \vec{p_2} = (x_2, y_2)\)</span></p>
+<p>其外積為 <span class="math inline">\(\vec{p_1} \times \vec{p_2} = det \begin{bmatrix}x_1 &amp; x_2\\ y_1 &amp; y_2 \end{bmatrix}\)</span></p>
+<p><span class="math inline">\(\vec{p_1} \times \vec{p_2} &gt; 0\)</span>：稱 <span class="math inline">\(\vec{p_1}\)</span> 往 <span class="math inline">\(\vec{p_2}\)</span> 為「Right turn」</p>
+<p><span class="math inline">\(\vec{p_1} \times \vec{p_2} &lt; 0\)</span>：稱 <span class="math inline">\(\vec{p_1}\)</span> 往 <span class="math inline">\(\vec{p_2}\)</span> 為「Left turn」</p>
+</blockquote>
+<ul>
+<li>Time complexity
+<ul>
+<li>Step1：<span class="math inline">\(\Theta(n)\)</span></li>
+<li>Step2：<span class="math inline">\(\Theta(n\lg n)\)</span></li>
+<li>Step3：<span class="math inline">\(\Theta(1)\)</span></li>
+<li><strong>Step4</strong>：<span class="math inline">\(\Theta(n)\)</span>
+<ul>
+<li>每一個點一定會被「push stack」一次</li>
+<li>而最多會被「pop stack 」 一次，且再也不會重新「push stack」</li>
+<li>所以對於 stack 來說「push」會做 n 次，「pop」最多 n 次，所以最多 2n 次</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4 id="應用">應用</h4>
+<ul>
+<li>(92 台大) 在 2-D 空間中給定點集合 <span class="math inline">\(S = ｛(x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)｝\)</span> 一判斷是否有三點為共線 ( collinear )，使用一個 <span class="math inline">\(O(n^2 \log n)\)</span> 演算法解之</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">collinear</span> <span class="params">(G)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		<span class="built_in">set</span> A = &#123;&#125;;</span><br><span class="line">        <span class="comment">// O(n)</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n ; j++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(j != i) &#123;</span><br><span class="line">				vector_2D tmp = vec(S[i], S[j]);</span><br><span class="line">				push(tmp, A);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		sort(A); <span class="comment">// 以斜率排序 O(nlogn)</span></span><br><span class="line">		</span><br><span class="line">        <span class="comment">// O(n)</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n ; j++) &#123;</span><br><span class="line">			<span class="keyword">if</span>( slope(A[j]) == slope(A[j+<span class="number">1</span>]) )</span><br><span class="line">				<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>(97 台大)找到 farthest pair
+<ul>
+<li>2D 平面上最遠的兩點必為在 Convex hull 上的某兩點</li>
+</ul></li>
+</ul>
+<p>最遠的兩點必定「互相排斥」，意思是說通過該兩點的兩條平行線會使的其他所有點都在這個之內 ( 紅點、綠點；紅點、黃點 )</p>
+<figure>
+<img src="\willywangkaa\images\farthestpair_1.png" alt="farthestpair_1"><figcaption>farthestpair_1</figcaption>
+</figure>
+<ul>
+<li>如何找到「凸包上面哪個點會和哪個點<strong>互相排斥</strong>」？</li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\farthestpair_2.png" alt="farthestpair_2"><figcaption>farthestpair_2</figcaption>
+</figure>
+<p>在該點 ( 紅點 ) 兩鄰邊 ( 黃邊、綠邊 ) 之「最遠點」之間( <strong>黃點與綠點之間的藍點</strong> )<strong>的所有點都有可以與紅點互相排斥</strong></p>
+<figure>
+<img src="\willywangkaa\images\farthestpair_3.png" alt="farthestpair_3"><figcaption>farthestpair_3</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\farthestpair_4.png" alt="farthestpair_4"><figcaption>farthestpair_4</figcaption>
+</figure>
+<blockquote>
+<p>如何求邊的最遠點？</p>
+<ul>
+<li>名詞
+<ul>
+<li>「Bitonic sequence」：在碰到「Bitonic point」之前的序列「單調上升」；之後「單調下降」</li>
+</ul></li>
+</ul>
+<p>( 假設要幫黃邊找最遠點<strong>黃點</strong> ) 將除了黃邊上之外的點對黃邊做<em>點到邊的距離</em>並且依序記錄成一個「Bitonic sequence」，接著在該序列中找到中找「Bitonic point」( 也就是我們要找的最遠點黃點 )</p>
+<ul>
+<li>Time complexity
+<ul>
+<li>在「Bitonic sequence」找「Bitonic point」其實只要使用「Binary search」<span class="math inline">\(O(\log n)\)</span> 即可
+<ul>
+<li><span class="math inline">\(finBT(arr, L, R)\xrightarrow{mid = \frac{L + R}{2}}\left\{\begin{matrix} mid, if \; arr[mid-1] &lt; arr[mid] \; ＆ \; arr[mid] &gt; arr[mid+1] \\findBT(arr, mid+1, R), if\;arr[mid] &lt; arr[mid+1] \\findBT(arr, L, mid), if\;arr[mid] &gt; arr[mid+1]\end{matrix}\right.\)</span></li>
+</ul></li>
+</ul></li>
+<li>相鄰兩頂點共用 <span class="math inline">\(O(1)\)</span> 個「排斥點」( 下圖<strong>綠邊</strong>上的藍點與紅點有共同「排斥點」<strong>綠點</strong>；有可能不只一個 )</li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\farthestpair_6.png" alt="farthestpair_6"><figcaption>farthestpair_6</figcaption>
+</figure>
+</blockquote>
+<p>演算法 (假設平面上有 n 個點)</p>
+<ol type="1">
+<li>使用「Graham scan algorithm」將<strong>有 m 個頂點的凸包</strong>找出</li>
+<li>在使用「Find bitonic point algorithm」將每邊的<strong>最遠點</strong>找出</li>
+<li>使用最遠點將凸包上的頂點<strong>分成 m 片段</strong></li>
+<li>使用凸包片段列出 <span class="math inline">\(O(m)\)</span> 對「互相排斥」的點並找出最遠的一個</li>
+<li>使用 <span class="math inline">\(O(m)\)</span> 線性找出最遠的一組</li>
+</ol>
+<p>Time complexity</p>
+<p>Step1 <span class="math inline">\(O(n\log n)\)</span></p>
+<p>Step2 <span class="math inline">\(O(n\log n)\)</span></p>
+<p>加總 <span class="math inline">\(O(n\log n)\)</span></p>
+<ul>
+<li>(100 政大) 判斷多邊形是 Convex 或 Concase
+<ul>
+<li>使用 Graham scan 判斷連續三點是否形成凹角即可</li>
+</ul></li>
+</ul>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/willywangkaa/tags/Computational-geometry/" rel="tag"># Computational geometry</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/willywangkaa/2018/10/15/Algorithm-Graph-algorithm/" rel="next" title="Algorithm - Graph algorithm">
+                <i class="fa fa-chevron-left"></i> Algorithm - Graph algorithm
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/willywangkaa/2018/10/15/Algorithm-NP-completeness/" rel="prev" title="Algorithm - NP-completeness">
+                Algorithm - NP-completeness <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/willywangkaa/images/avatar_me.gif"
+                alt="Willy Wang (willywangkaa)" />
+            
+              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
+              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/willywangkaa/archives/">
+                
+                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/willywangkaa/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/willywangkaa/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">66</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://typora.io/" title="Typora" target="_blank">Typora</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.geeksforgeeks.org/" title="GeeksforGeeks" target="_blank">GeeksforGeeks</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.codecogs.com/latex/eqneditor.php" title="Online LaTeX Equation Editor" target="_blank">Online LaTeX Equation Editor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://allem40306.github.io/blog/" title="CodingJack" target="_blank">CodingJack</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#computational-geometry"><span class="nav-number">1.</span> <span class="nav-text">Computational geometry</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#the-rank-of-a-node"><span class="nav-number">1.1.</span> <span class="nav-text">The rank of a node</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#divide-and-conquer"><span class="nav-number">1.1.1.</span> <span class="nav-text">Divide and conquer</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maximal-points"><span class="nav-number">1.2.</span> <span class="nav-text">Maximal points</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#closest-pairs"><span class="nav-number">1.3.</span> <span class="nav-text">Closest pairs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#divide-and-conquer-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">Divide and conquer</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#convex-hull"><span class="nav-number">1.4.</span> <span class="nav-text">Convex hull</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#naive-algorithm"><span class="nav-number">1.4.1.</span> <span class="nav-text">Naive Algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#graham-scan"><span class="nav-number">1.4.2.</span> <span class="nav-text">Graham scan</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#應用"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">應用</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/willywangkaa/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/affix.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/willywangkaa/js/src/schemes/pisces.js?v=6.0.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/willywangkaa/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/willywangkaa/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://https-wangwilly-github-io-blog.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/10/15/Algorithm-Computational-geometry/';
+        this.page.identifier = '2018/10/15/Algorithm-Computational-geometry/';
+        this.page.title = 'Algorithm - Computational geometry';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-wangwilly-github-io-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/willywangkaa/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/willywangkaa/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>

@@ -1,0 +1,1679 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-tw,en,default">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/willywangkaa/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/willywangkaa/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/willywangkaa/images/apple-touch-icon-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/willywangkaa/images/favicon-32x32-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/willywangkaa/images/favicon-16x16-next_cat.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/willywangkaa/images/logo_cat.svg?v=6.0.4" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/willywangkaa/',
+    scheme: 'Pisces',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="NP-Complete,Reduce," />
+
+
+<meta name="description" content="基本概念  目的  將問題依照難度做分類 如何定義 A 問題比 B 問題難？ 如何分類？ 分幾類？   Decision problem 答案只有 Yse/No 的問題  Ex  一個圖中有無「Hamiltonian cycle」？   每一個最佳化問題 ( Optimization problem ) 均可用參數化的方式化成一對應的「Decision prob">
+<meta name="keywords" content="NP-Complete,Reduce">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Algorithm - NP-completeness">
+<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/10/15/Algorithm-NP-completeness/index.html">
+<meta property="og:site_name" content="WillyWangkaa">
+<meta property="og:description" content="基本概念  目的  將問題依照難度做分類 如何定義 A 問題比 B 問題難？ 如何分類？ 分幾類？   Decision problem 答案只有 Yse/No 的問題  Ex  一個圖中有無「Hamiltonian cycle」？   每一個最佳化問題 ( Optimization problem ) 均可用參數化的方式化成一對應的「Decision prob">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/decisionproblem.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/reduce_1.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/reduce_2.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/nprelation.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/longestpathproblem_NPC.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/TSP_NPC.png">
+<meta property="og:updated_time" content="2018-10-15T10:44:37.750Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Algorithm - NP-completeness">
+<meta name="twitter:description" content="基本概念  目的  將問題依照難度做分類 如何定義 A 問題比 B 問題難？ 如何分類？ 分幾類？   Decision problem 答案只有 Yse/No 的問題  Ex  一個圖中有無「Hamiltonian cycle」？   每一個最佳化問題 ( Optimization problem ) 均可用參數化的方式化成一對應的「Decision prob">
+<meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/decisionproblem.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://WangWilly.github.io/willywangkaa/2018/10/15/Algorithm-NP-completeness/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>Algorithm - NP-completeness | WillyWangkaa</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/willywangkaa/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WillyWangkaa</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Live more like human</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/willywangkaa/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/willywangkaa/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/willywangkaa/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/willywangkaa/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/10/15/Algorithm-NP-completeness/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WillyWangkaa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Algorithm - NP-completeness</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-15T18:41:00+08:00">2018-10-15</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-10-15T18:44:37+08:00">2018-10-15</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/willywangkaa/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/willywangkaa/2018/10/15/Algorithm-NP-completeness/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/10/15/Algorithm-NP-completeness/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="基本概念">基本概念</h1>
+<ul>
+<li>目的
+<ul>
+<li>將問題依照<strong>難度</strong>做分類</li>
+<li><strong>如何定義 A 問題比 B 問題難？</strong></li>
+<li><strong>如何分類？</strong></li>
+<li><strong>分幾類？</strong></li>
+</ul></li>
+</ul>
+<h2 id="decision-problem">Decision problem</h2>
+<p>答案只有 <strong>Yse/No</strong> 的問題</p>
+<ul>
+<li>Ex
+<ul>
+<li>一個圖中<strong>有無</strong>「Hamiltonian cycle」？</li>
+</ul></li>
+</ul>
+<p>每一個<strong>最佳化問題 ( Optimization problem )</strong> 均可用<strong>參數化</strong>的方式化成一<strong>對應的「Decision problem」</strong></p>
+<ul>
+<li>Ex
+<ul>
+<li>KP-optimal problem：給定一背包負重 W 以及 n 個物件，問<strong>最大的獲利是多少</strong>？</li>
+<li>KP-decision problem：給定一背包負重 W 以及 n 個物件與一個<strong>整數 k</strong>，問<strong>獲利是否可大於 k</strong>？</li>
+</ul></li>
+</ul>
+<blockquote>
+<p>當輸出只有 0 或 1 時，稱之為「Language」</p>
+</blockquote>
+<ul>
+<li>為何要化成「Decision problem」？
+<ul>
+<li>將原本問題的輸出 ( Output ) <strong>一致化</strong>，轉換成只有「Yes (1)/No (0)」的輸出方便比較<strong>原問題是否相同</strong></li>
+<li>利用每個<strong>「Decision problem」</strong>互相比較難度</li>
+</ul></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\decisionproblem.png" alt="decisionproblem"><figcaption>decisionproblem</figcaption>
+</figure>
+<h2 id="reduce">Reduce</h2>
+<blockquote>
+<p>當 A 可以「Polynominal time reduce」至 B，記做，<span class="math inline">\(A \leq_P B\)</span></p>
+</blockquote>
+<ul>
+<li>令 A、B 為兩個問題，當 A 可以「Polynominal time reduce」至 B，則滿足：
+<ol type="1">
+<li>存在一個函數 f ：A 的<strong>輸入(input)</strong> → B 的<strong>輸入(input)</strong>；Transformation</li>
+<li>f 為<strong>「Polynominal time computable」；多項式時間</strong></li>
+<li>對於任何一個 A 的輸入 x <span class="math inline">\(A(x) = Yes \Leftrightarrow B(f(x)) = Yes\)</span></li>
+</ol></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\reduce_1.png" alt="reduce_1"><figcaption>reduce_1</figcaption>
+</figure>
+<ul>
+<li>若 <span class="math inline">\(A \leq_P B\)</span> 代表可以用<strong>解決 B 問題的演算法</strong>，來實作<strong>解決 A 問題的演算法</strong></li>
+<li>若 <span class="math inline">\(A \leq_P B\)</span> 代表<strong>A 問題的難度小於 B 問題的難度 ( B 至少比 A 難 )</strong>
+<ul>
+<li>若 B 問題可以解決同時代表 A 問題也可以被解決</li>
+</ul></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\reduce_2.png" alt="reduce_2"><figcaption>reduce_2</figcaption>
+</figure>
+<h1 id="pnpnp-hardnp-complete">P、NP、NP-hard、NP-complete</h1>
+<blockquote>
+<ul>
+<li>「Deterministic algorithm」
+<ul>
+<li>使用該演算法碰到子問題時，只會有一種解答，不會有多種解答。(有限狀態機)</li>
+</ul></li>
+</ul>
+</blockquote>
+<ul>
+<li>P 問題集合
+<ul>
+<li>問題皆有一個「Deterministic algorithm」可以在「Polynominal time」中<strong>解決( Solve )</strong>。</li>
+</ul></li>
+</ul>
+<p>Ex：「排序問題」<span class="math inline">\(\in\)</span> P；存在一個演算法 ( Quick sort ) 可以在 <span class="math inline">\(\Theta(n\lg n)\)</span> 中解決</p>
+<blockquote>
+<ul>
+<li><p><strong>NP 非「Non-polynomial time」</strong></p></li>
+<li><p><strong>P</strong> <span class="math inline">\(\subset\)</span> <strong>NP</strong></p></li>
+</ul>
+</blockquote>
+<ul>
+<li><strong>NP 問題集合</strong>
+<ul>
+<li>問題皆有一個「Non-deterministic algorithm」可以在「Polynominal time」中解決。</li>
+<li>給一個<strong>可能的解</strong>，若可以在「Polynominal time」中<strong>判斷( Verify )</strong>是否為該問題的解，則此問題屬於 NP 集合。</li>
+</ul></li>
+<li>NP-hard 問題集合
+<ul>
+<li><span class="math inline">\(\forall Q \in NP, Q \leq_P A \Leftrightarrow A \in NP–hard\)</span></li>
+</ul></li>
+</ul>
+<blockquote>
+<p>在 NP 集合中的問題均有演算法可以解決，所以<strong>在 NPC 集合即為「有可用演算法解的最難問題」</strong></p>
+</blockquote>
+<blockquote>
+<p>NPC 集合的問題在<strong>「Worst case」</strong>下沒有<strong>「Polynominal time」</strong>的演算法可解決 (<strong>至少都要「Exponential time」</strong>)</p>
+<ul>
+<li>非「Any case」</li>
+<li><strong>有「演算法」可以解</strong></li>
+</ul>
+</blockquote>
+<ul>
+<li>NP-complete 問題集合
+<ul>
+<li><span class="math inline">\(A \in NP–complete \Leftrightarrow A \in NP \;且\; A \in NP–hard\)</span></li>
+</ul></li>
+</ul>
+<h2 id="集合關係">集合關係</h2>
+<figure>
+<img src="\willywangkaa\images\nprelation.png" alt="nprelation"><figcaption>nprelation</figcaption>
+</figure>
+<ul>
+<li>Ex ( true or false )
+<ul>
+<li><span class="math inline">\(P \supset NP\)</span>；True</li>
+<li><span class="math inline">\(P \supset NP\)</span>；Unknown</li>
+<li><span class="math inline">\(P = NP\)</span>；Unknown</li>
+<li><span class="math inline">\(P \neq NP\)</span>；Unknown</li>
+</ul></li>
+<li>有一個在 NPC 集合的問題之「Worst case」若可被「Polynominal time」的演算法解決
+<ul>
+<li><span class="math inline">\(\Leftrightarrow P = NP\)</span></li>
+</ul></li>
+</ul>
+<h1 id="證明問題是否為-np-complete">證明問題是否為 NP-complete</h1>
+<p>令 A 為一問題，欲證明 <span class="math inline">\(A \in NPC\)</span></p>
+<ol type="1">
+<li>證明 <span class="math inline">\(A \in NP\)</span></li>
+<li>任找一個 <span class="math inline">\(B \in NPC\)</span>，證明 <span class="math inline">\(B \leq_P A\)</span>
+<ul>
+<li><span class="math inline">\(\Leftrightarrow\)</span> <strong>證明</strong> <span class="math inline">\(A \in NP–hard\)</span></li>
+</ul></li>
+</ol>
+<ul>
+<li>(94 交大) ( True or False )
+<ul>
+<li>已知 Clique 問題屬於 NPC 集合，Vertex-cover 問題屬於 NP 集合，欲證明 Vertex-cover 屬於 NPC 集合，則將 Vertex-cover <span class="math inline">\(\leq_P\)</span> Clique 即可；False。</li>
+</ul></li>
+<li>(99 政大)
+<ul>
+<li>欲證明 A 問題屬於 NPC 集合，則將一個 B 屬於 NPC 「Reduce」到 A 即可；False。</li>
+</ul></li>
+</ul>
+<blockquote>
+<ul>
+<li>不知道 A 是否屬於 NP 集合，否則 A 有可能為 NP-hard 集合 (無演算法可以解)。</li>
+</ul>
+</blockquote>
+<h2 id="sat-problem">SAT problem</h2>
+<p><strong>第一個 NP-complete 問題</strong></p>
+<p>給定一個「Conjection normal form」<span class="math inline">\(F\)</span> ，問<strong>有無</strong>一組「Assignment」可使 <span class="math inline">\(F\)</span> 輸出為 True。</p>
+<blockquote>
+<p>令 <span class="math inline">\(F = (x_1 \or \bar{x_2} \or \bar{x_3}) \and (\bar{x_1} \or x_3) \and (x_2 \or \bar{x_3})\)</span></p>
+<p>當給定 <span class="math inline">\(x_1 = true、x_2 = true、x_3 = true\)</span> ，<span class="math inline">\(F\)</span> 的輸出也為 True， 所以 <span class="math inline">\(F\)</span> 在 SAT problem 的輸入，則其解為 True。</p>
+</blockquote>
+<blockquote>
+<p>該問題使用了一個「Non-deterministic algorithm」解決。</p>
+</blockquote>
+<h2 id="常見的證明流程">常見的證明流程</h2>
+<p><span class="math display">\[
+「SAT」 \leq_P 「3-SAT」 \leq_P 「Clique」 \leq_P 「Vertex–cover」\\
+\leq_P Hamilton \; cycle \leq_P \left\{\begin{matrix}
+Hamilton \; path\leq_P Longest \; path \\ 
+Traveling \; salesman \; prblem
+\end{matrix}\right.
+\]</span></p>
+<h3 id="證明-longest-path-problem-屬於-npc-集合">證明 Longest path problem 屬於 NPC 集合</h3>
+<blockquote>
+<p>給定一個圖 G = (V, E) 與 <strong>k</strong>，問 G 中<strong>有無</strong>長度大於 <strong>k</strong> 的「Simple path」。</p>
+</blockquote>
+<ol type="1">
+<li>Claim：Longest path problem 屬於 NP
+<ol type="1">
+<li>(<strong>給定可能的解</strong>) 給定一組 Longest path 的輸入 (G, k) 與任意一條「Simple path」<span class="math inline">\(P\)</span></li>
+<li>(<strong>在「Polynominal time」內可以確認其解</strong>) 則可以在「Polynominal time」中判斷 P 是否為 G 中長度大於等於 k 的「Simple path」</li>
+<li>所以「Longest path problem」屬於 NP 集合。</li>
+</ol></li>
+</ol>
+<blockquote>
+<p>給定 <span class="math inline">\(P = ＜u_1, u_2, \ldots, u_m＞\)</span> 為一條「Path」</p>
+<ol type="1">
+<li>確認 m 是否大於等於 k+1 ？
+<ul>
+<li><span class="math inline">\(\Theta(1)\)</span></li>
+</ul></li>
+<li>確認 <span class="math inline">\((u_i, u_{i+1}) \in E\)</span> ？
+<ul>
+<li>若 G 使用「Adjacency matrix」儲存，若要判斷一邊是否屬於 E ；<span class="math inline">\(\Theta(1)\)</span></li>
+</ul></li>
+</ol>
+</blockquote>
+<ol start="2" type="1">
+<li>Claim：Hamilton path <span class="math inline">\(\leq_P\)</span> Longest path
+<ol type="1">
+<li>給定一個 Hamilton path problem 的輸入：G = (V, E)， 定義一個函數 f ：G → (G, k = |V|-1)，則 (G, |V|-1) 為 Longest path problem 的輸入</li>
+<li>f 顯然為「Polynominal time computable」</li>
+<li>G 有 Hamilton path <span class="math inline">\(\Leftrightarrow\)</span> G 有長度大於等於 |V|-1 的「Simple path」 G 有 Hamilton path <span class="math inline">\(P\)</span> ，即：
+<ul>
+<li><span class="math inline">\(\Leftrightarrow P\)</span> 必過 G 中每一點恰一次，且 <span class="math inline">\(P\)</span> 為「Simple path」</li>
+<li><span class="math inline">\(\Leftrightarrow P\)</span> 為 G 中長度大於等於 |V|- 1 的「Simple path」</li>
+</ul></li>
+</ol></li>
+</ol>
+<figure>
+<img src="\willywangkaa\images\longestpathproblem_NPC.png" alt="longestpathproblem_NPC"><figcaption>longestpathproblem_NPC</figcaption>
+</figure>
+<h3 id="證明-traveling-salesman-problem-屬於-npc-集合">證明 Traveling salesman problem 屬於 NPC 集合</h3>
+<blockquote>
+<p>給定一個無向、有權重的<strong>完全圖</strong> G = (V, E) 與 <strong>k</strong> ，問 G 中有無總權重<strong>小於等於 k</strong> 的「Hamilton cycle」？</p>
+</blockquote>
+<ol type="1">
+<li>Claim：Traveling salesman problem 屬於 NP
+<ol type="1">
+<li>(<strong>給定可能的解</strong>) 給定一個無向、有權重的<strong>完全圖</strong> G = (V, E) 與 <strong>k</strong>，與一個 G 上的一個 Hamilton cycle <span class="math inline">\(C\)</span></li>
+<li>(<strong>在「Polynominal time」內可以確認其解</strong>) 則可以在「Polynominal time」中驗證 <span class="math inline">\(C\)</span> 的權重和是否<strong>小於等於 k</strong> ，所以 TSP 問題屬於 NP 集合</li>
+</ol></li>
+<li>Claim：Hamilton cycle problem <span class="math inline">\(\leq_P\)</span> Traveling salesman problem
+<ol type="1">
+<li><strong>給定一個 Hamilton 的輸入：G = (V, E)，定義一個 f：G → (G’, k = |V|)，</strong> <strong>其中 G’ 的定義如下：G’ = (V, E’)，</strong> <span class="math inline">\(\left\{\begin{matrix} (u, v) \in E&#39;, weight(u, v) = 1, if \;(u, v)\in E \\ (u, v) \in E&#39;, weight(u, v) = 2, if \;(u, v)\notin E \end{matrix}\right.\)</span></li>
+<li>f 顯然為「Polynominal time computable」</li>
+<li><strong>G 有 Hamilton cycle</strong> <span class="math inline">\(\Leftrightarrow\)</span> <strong>G’ 有一「Hamilton cycle」且其總權重 ≦ |V|</strong></li>
+</ol></li>
+</ol>
+<figure>
+<img src="\willywangkaa\images\TSP_NPC.png" alt="TSP_NPC"><figcaption>TSP_NPC</figcaption>
+</figure>
+<blockquote>
+<p>(<span class="math inline">\(\Rightarrow\)</span>)</p>
+<p>G 若有一個「Hamilton cycle」<span class="math inline">\(C\)</span></p>
+<p><span class="math inline">\(\because (u, v) \in E&#39;, weight(u, v) = 1, if \;(u, v)\in E\)</span></p>
+<p><span class="math inline">\(\Rightarrow\)</span> G’ 必也有一個相對應的「Hamilton cycle」<span class="math inline">\(C&#39;\)</span> 其權重總和 ≦ |V|</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>)</p>
+<p>G’ 若有「Hamilton cycle」<span class="math inline">\(C\)</span> 且權重總和 ≦ |V|</p>
+<p><span class="math inline">\(\because (u, v) \in E&#39;, weight(u, v) = 2, if \;(u, v)\notin E\)</span></p>
+<p><span class="math inline">\(\Rightarrow C\)</span> 上的每一邊在 G’ 的權重必為 1</p>
+<p><span class="math inline">\(\because (u, v) \in E&#39;, weight(u, v) = 1, if \;(u, v)\in E\)</span></p>
+<p><span class="math inline">\(\Rightarrow C\)</span> 通過 G 每節點一次</p>
+<p><span class="math inline">\(\Rightarrow C\)</span> 為一個在 G 中的「Hamilton cycle」</p>
+</blockquote>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/willywangkaa/tags/NP-Complete/" rel="tag"># NP-Complete</a>
+          
+            <a href="/willywangkaa/tags/Reduce/" rel="tag"># Reduce</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/willywangkaa/2018/10/15/Algorithm-Computational-geometry/" rel="next" title="Algorithm - Computational geometry">
+                <i class="fa fa-chevron-left"></i> Algorithm - Computational geometry
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/willywangkaa/2018/10/15/Algorithm-Approximation-algorithm/" rel="prev" title="Algorithm - Approximation algorithm">
+                Algorithm - Approximation algorithm <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/willywangkaa/images/avatar_me.gif"
+                alt="Willy Wang (willywangkaa)" />
+            
+              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
+              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/willywangkaa/archives/">
+                
+                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/willywangkaa/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/willywangkaa/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">66</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://typora.io/" title="Typora" target="_blank">Typora</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.geeksforgeeks.org/" title="GeeksforGeeks" target="_blank">GeeksforGeeks</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.codecogs.com/latex/eqneditor.php" title="Online LaTeX Equation Editor" target="_blank">Online LaTeX Equation Editor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://allem40306.github.io/blog/" title="CodingJack" target="_blank">CodingJack</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本概念"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#decision-problem"><span class="nav-number">1.1.</span> <span class="nav-text">Decision problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reduce"><span class="nav-number">1.2.</span> <span class="nav-text">Reduce</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pnpnp-hardnp-complete"><span class="nav-number">2.</span> <span class="nav-text">P、NP、NP-hard、NP-complete</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#集合關係"><span class="nav-number">2.1.</span> <span class="nav-text">集合關係</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#證明問題是否為-np-complete"><span class="nav-number">3.</span> <span class="nav-text">證明問題是否為 NP-complete</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sat-problem"><span class="nav-number">3.1.</span> <span class="nav-text">SAT problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常見的證明流程"><span class="nav-number">3.2.</span> <span class="nav-text">常見的證明流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#證明-longest-path-problem-屬於-npc-集合"><span class="nav-number">3.2.1.</span> <span class="nav-text">證明 Longest path problem 屬於 NPC 集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#證明-traveling-salesman-problem-屬於-npc-集合"><span class="nav-number">3.2.2.</span> <span class="nav-text">證明 Traveling salesman problem 屬於 NPC 集合</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/willywangkaa/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/affix.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/willywangkaa/js/src/schemes/pisces.js?v=6.0.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/willywangkaa/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/willywangkaa/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://https-wangwilly-github-io-blog.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/10/15/Algorithm-NP-completeness/';
+        this.page.identifier = '2018/10/15/Algorithm-NP-completeness/';
+        this.page.title = 'Algorithm - NP-completeness';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-wangwilly-github-io-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/willywangkaa/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/willywangkaa/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>
