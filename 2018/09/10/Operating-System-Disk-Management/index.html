@@ -143,7 +143,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/RAID.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/RAID01.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/RAID10.png">
-<meta property="og:updated_time" content="2018-09-10T10:18:45.566Z">
+<meta property="og:updated_time" content="2018-10-16T12:49:57.128Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Operating System - Disk Management">
 <meta name="twitter:description" content="Disk management Disk system  disksystem   硬碟系統由多片「Disk」( 磁片 ) 組成  每片磁片通常雙面都可存取資料。 每一面劃分為多個同心圓軌道，稱為「Track」( 磁軌 )。 每條「Track」由多個「Sector」( 磁區 ) 組成。 不同面之相同「Track no.」組成之集合叫做「Cyclinder」( 磁柱 )。">
@@ -393,7 +393,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-09-10T18:18:45+08:00">2018-09-10</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2018-10-16T20:49:57+08:00">2018-10-16</time>
             
           </span>
 
@@ -620,7 +620,7 @@ Avg. Latency \;( rotation ) \;time = \frac12 \times \frac{1}{7200} \;MPR = \frac
 <li>Block size = 10 kB</li>
 <li>檔案大小 = 44 kB</li>
 <li>所以配置 5 block</li>
-<li><span class="math inline">\(內部碎裂 = 5\times 16 - 44 = 6\;kB\)</span></li>
+<li>內部碎裂 = (5 × 16) - 44 = 6 kB</li>
 </ul></li>
 </ul></li>
 <li><strong>檔案不易動態擴充</strong></li>
@@ -645,7 +645,7 @@ Avg. Latency \;( rotation ) \;time = \frac12 \times \frac{1}{7200} \;MPR = \frac
 <ul>
 <li><strong>Pros</strong>
 <ul>
-<li><strong>會有外部碎裂的問題</strong></li>
+<li><strong>無外部碎裂的問題</strong></li>
 <li><strong>檔案容易動態擴充</strong></li>
 <li><strong>建檔之前必不須事先宣告大小</strong></li>
 </ul></li>
@@ -663,11 +663,11 @@ Avg. Latency \;( rotation ) \;time = \frac12 \times \frac{1}{7200} \;MPR = \frac
 </figure>
 <p><strong>「Allocates block」之間的鍊結資訊存在於「作業系統記憶體區塊」中的一個表格稱為 FAT</strong>，並非存於磁碟中。</p>
 <ul>
-<li>Pros
+<li><strong>Pros</strong>
 <ul>
 <li>讓「Link allocation」在作「Random access」時能加速
 <ul>
-<li>因為可在記憶體中的 FAT 快速 ( 不用 I/O ) 找到第 i 個 Block 的編號，接著再到磁碟存取該 Block 即可。( <strong>不用在磁碟中追蹤該鍊結的資訊</strong> )</li>
+<li>因為可使用存在於記憶體中的「FAT」快速 ( 不用 I/O ) 找到第 i 個 Block 的編號，接著再到磁碟存取該 Block 即可。( <strong>不用在磁碟中追蹤該鍊結的資訊</strong> )</li>
 </ul></li>
 </ul></li>
 </ul>
@@ -684,9 +684,9 @@ Avg. Latency \;( rotation ) \;time = \frac12 \times \frac{1}{7200} \;MPR = \frac
 <li>Pros
 <ul>
 <li><strong>不會有外部碎裂問題</strong></li>
-<li><strong>支援「有效率的 Random access</strong>」與 sequential access</li>
+<li><strong>支援「有效率的 Random access」</strong>與 Sequential access</li>
 <li>檔案大小容易動態擴充</li>
-<li>建檔之前無須是先宣告大小</li>
+<li>建檔之前無須事先宣告大小</li>
 </ul></li>
 <li>Cons
 <ul>
@@ -770,11 +770,6 @@ max \;file \;size = ( 12 + 2^{12} + 2^{12^2} + 2^{12^3} ) block \\
 <li>檔案大小為 8000 block</li>
 <li>假設 i-node 已經在記憶體之中，則要存取此檔案的第 6000 data block 需要幾次 I/O？</li>
 </ul></li>
-<li>Ex ( 正常的 i-node 定義沿用 )
-<ul>
-<li>檔案大小為 8000 block</li>
-<li>假設 i-node 已經在記憶體之中，則要存取此檔案的第 6000 data block 需要幾次 I/O？</li>
-</ul></li>
 </ul>
 <p><span class="math display">\[
 6000 - 12 = 5988 \\
@@ -833,14 +828,14 @@ max \;file \;size = ( 12 + 2^{12} + 2^{12^2} + 2^{12^3} ) block \\
 <ul>
 <li><strong>不公平，有可能會 Starvation</strong></li>
 </ul></li>
-<li><p>Ex</p></li>
-<li><ul>
+<li>Ex
+<ul>
 <li>磁碟有 200 軌，編號：0~199，<strong>磁頭目前停在第 53 軌</strong>，方才服務完第 60 軌，現在「Disk queue」中有上圖磁軌請求。</li>
 <li>求磁軌移動總數</li>
 </ul></li>
 </ul>
 <p><span class="math display">\[
-  |67 - 53| + |14 - 67| + |183 - 14| = 236 \; 軌
+|67 - 53| + |14 - 67| + |183 - 14| = 236 \; 軌
 \]</span></p>
 <h3 id="scan">Scan</h3>
 <figure>
@@ -868,8 +863,8 @@ max \;file \;size = ( 12 + 2^{12} + 2^{12^2} + 2^{12^3} ) block \\
 <img src="\willywangkaa\images\SCANdemo3.png" alt="SCANdemo3"><figcaption>SCANdemo3</figcaption>
 </figure>
 <ul>
-<li>Ex</li>
-<li><ul>
+<li>Ex
+<ul>
 <li>磁碟有 200 軌，編號：0~199，<strong>磁頭目前停在第 53 軌</strong>，<strong>方才服務完第 60 軌</strong>，現在「Disk queue」中有上圖磁軌請求。</li>
 <li>求磁軌移動總數</li>
 </ul></li>
@@ -901,8 +896,8 @@ OR \\
 <h4 id="look">Look</h4>
 <p>磁頭服務完該方向的最後一個「磁軌請求」後，<strong>即可折返提供回程服務。</strong></p>
 <ul>
-<li>Ex</li>
-<li><ul>
+<li>Ex
+<ul>
 <li>磁碟有 200 軌，編號：0~199，<strong>磁頭目前停在第 53 軌</strong>，<strong>方才服務完第 60 軌</strong>，現在「Disk queue」中有上圖磁軌請求。</li>
 <li>求磁軌移動總數</li>
 </ul></li>
@@ -920,8 +915,8 @@ OR \\
 <p><strong>需要將磁軌回程的移動量列入計算。</strong></p>
 </blockquote>
 <ul>
-<li>Ex</li>
-<li><ul>
+<li>Ex
+<ul>
 <li>磁碟有 200 軌，編號：0~199，<strong>磁頭目前停在第 53 軌</strong>，現在「Disk queue」中有上圖磁軌請求。</li>
 <li>求磁軌移動總數</li>
 </ul></li>
@@ -1388,7 +1383,7 @@ OR \\
                 
                   <a href="/willywangkaa/archives/">
                 
-                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-count">41</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1421,7 +1416,9 @@ OR \\
                     
                       
                     
-                    <span class="site-state-item-count">10</span>
+                      
+                    
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1566,7 +1563,11 @@ OR \\
                     
                       
                     
-                    <span class="site-state-item-count">66</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">68</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

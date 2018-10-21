@@ -103,18 +103,18 @@
   <meta name="keywords" content="Time Complexity," />
 
 
-<meta name="description" content="Time complexity  重點  Asymptotic notation 考點著重  定義 特性 證明題、選擇題  Time complexity 的比較  定義法 極值法 ( limit )：以大資料的手法比較演算法的優劣。 對數法 ( log )：當該算法的等級差距大時方便判斷與解釋。  計算題要點 ( 離散數學 )  \(H _n = \Theta">
+<meta name="description" content="Time complexity  重點  Asymptotic notation 考點著重  定義 特性 證明題、選擇題  Time complexity 的比較  定義法 極值法 ( limit )：以大資料的手法比較演算法的優劣 對數法 ( log )：當該算法的等級差距大時方便判斷與解釋  計算題要點 ( 離散數學 )  \(H _n = \Theta(\">
 <meta name="keywords" content="Time Complexity">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Algorithm - Time Complexity">
 <meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/08/28/Algorithm-Time-Complexity/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="Time complexity  重點  Asymptotic notation 考點著重  定義 特性 證明題、選擇題  Time complexity 的比較  定義法 極值法 ( limit )：以大資料的手法比較演算法的優劣。 對數法 ( log )：當該算法的等級差距大時方便判斷與解釋。  計算題要點 ( 離散數學 )  \(H _n = \Theta">
+<meta property="og:description" content="Time complexity  重點  Asymptotic notation 考點著重  定義 特性 證明題、選擇題  Time complexity 的比較  定義法 極值法 ( limit )：以大資料的手法比較演算法的優劣 對數法 ( log )：當該算法的等級差距大時方便判斷與解釋  計算題要點 ( 離散數學 )  \(H _n = \Theta(\">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-08-28T14:15:41.031Z">
+<meta property="og:updated_time" content="2018-10-21T04:36:08.535Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithm - Time Complexity">
-<meta name="twitter:description" content="Time complexity  重點  Asymptotic notation 考點著重  定義 特性 證明題、選擇題  Time complexity 的比較  定義法 極值法 ( limit )：以大資料的手法比較演算法的優劣。 對數法 ( log )：當該算法的等級差距大時方便判斷與解釋。  計算題要點 ( 離散數學 )  \(H _n = \Theta">
+<meta name="twitter:description" content="Time complexity  重點  Asymptotic notation 考點著重  定義 特性 證明題、選擇題  Time complexity 的比較  定義法 極值法 ( limit )：以大資料的手法比較演算法的優劣 對數法 ( log )：當該算法的等級差距大時方便判斷與解釋  計算題要點 ( 離散數學 )  \(H _n = \Theta(\">
 
 
 
@@ -360,7 +360,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-08-28T22:15:41+08:00">2018-08-28</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2018-10-21T12:36:08+08:00">2018-10-21</time>
             
           </span>
 
@@ -434,8 +434,8 @@
 <li>Time complexity 的比較
 <ul>
 <li>定義法</li>
-<li>極值法 ( limit )：以大資料的手法比較演算法的優劣。</li>
-<li>對數法 ( log )：當該算法的等級差距大時方便判斷與解釋。</li>
+<li>極值法 ( limit )：以大資料的手法比較演算法的優劣</li>
+<li>對數法 ( log )：當該算法的等級差距大時方便判斷與解釋</li>
 </ul></li>
 <li>計算題要點 ( 離散數學 )
 <ul>
@@ -446,31 +446,31 @@
 </ul></li>
 </ul>
 <h2 id="asymptotic-notation">Asymptotic notation</h2>
-<p>當輸入資料變大時，程式執行的時間以何種趨勢成長。</p>
+<p>當輸入資料變大時，程式執行的時間以何種趨勢成長</p>
 <h3 id="符號定義">符號定義</h3>
 <ul>
 <li><span class="math inline">\(f(n) = O(g(n))\)</span>
 <ul>
 <li><span class="math inline">\(\exists C, n_0 &gt; 0 , \ni f(n) \leq C \times g(n) , n \geq n_0\)</span></li>
-<li>稱 <span class="math inline">\(g(n)\)</span> 為 <span class="math inline">\(f(n)\)</span> 的 Asymptotic upper bound。</li>
-<li>f(n) 的 Order 會<strong>小於</strong> g(n) 的 Order。</li>
+<li>稱 <span class="math inline">\(g(n)\)</span> 為 <span class="math inline">\(f(n)\)</span> 的 Asymptotic upper bound</li>
+<li>f(n) 的 Order 會<strong>小於</strong> g(n) 的 Order</li>
 </ul></li>
 <li>$f(n) = (g(n)) $
 <ul>
 <li><span class="math inline">\(\exists C , n_0 &gt; 0 \ni f(n) \geq C \times g(n) , n \geq n_0\)</span></li>
-<li>稱 <span class="math inline">\(g(n)\)</span> 為 <span class="math inline">\(f(n)\)</span> 的 Asymptotic lower bound。</li>
-<li>f(n) 的 Order 會<strong>大於</strong> g(n) 的 Order。</li>
+<li>稱 <span class="math inline">\(g(n)\)</span> 為 <span class="math inline">\(f(n)\)</span> 的 Asymptotic lower bound</li>
+<li>f(n) 的 Order 會<strong>大於</strong> g(n) 的 Order</li>
 </ul></li>
 <li>$f(n) = (g(n)) $
 <ul>
 <li><span class="math inline">\(\exists C_1 , C_2, n_0 &gt; 0 \ni C_1 \times g(n) \leq f(n) \leq C_2 \times g(n) , n \geq n_0\)</span></li>
-<li>稱 <span class="math inline">\(g(n)\)</span> 為 <span class="math inline">\(f(n)\)</span> 的 Asymptotic tight bound。</li>
-<li>f(n) 的 Order 會<strong>等於</strong> g(n) 的 Order。</li>
+<li>稱 <span class="math inline">\(g(n)\)</span> 為 <span class="math inline">\(f(n)\)</span> 的 Asymptotic tight bound</li>
+<li>f(n) 的 Order 會<strong>等於</strong> g(n) 的 Order</li>
 </ul></li>
 <li>$f(n) = o (g(n)) $
 <ul>
-<li>以比較 Order 的上面來看，是<strong>絕對小於</strong>的意義。</li>
-<li>用極值法的方式方便解釋。</li>
+<li>以比較 Order 的上面來看，是<strong>絕對小於</strong>的意義</li>
+<li>用極值法的方式方便解釋</li>
 <li>Ex：true or false
 <ul>
 <li><span class="math inline">\(n = o(2n)\)</span>：false</li>
@@ -481,7 +481,7 @@
 </ul></li>
 <li><span class="math inline">\(f(n) = \omega(g(n))\)</span>
 <ul>
-<li>以比較 Order 的上面來看，是<strong>絕對大於</strong>的意義。</li>
+<li>以比較 Order 的上面來看，是<strong>絕對大於</strong>的意義</li>
 <li>用極值法的方式方便解釋。
 <ul>
 <li><span class="math inline">\(2n = \omega(n)\)</span>：false</li>
@@ -499,11 +499,11 @@
 <ul>
 <li>Q
 <ul>
-<li>寫出 2 個在 <span class="math inline">\(O(n^3)\)</span> 中但不在 <span class="math inline">\(o(n^3)\)</span> 的函數。</li>
+<li>寫出 2 個在 <span class="math inline">\(O(n^3)\)</span> 中但不在 <span class="math inline">\(o(n^3)\)</span> 的函數</li>
 </ul></li>
 <li>A
 <ul>
-<li>題目亦等於在問舉出兩個函數在 <span class="math inline">\(\Theta(n^3)\)</span> 的函數，所以 <span class="math inline">\(f(n) = n^3、2n^3\)</span>。</li>
+<li>題目亦等於在問舉出兩個函數在 <span class="math inline">\(\Theta(n^3)\)</span> 的函數 ，所以 <span class="math inline">\(f(n) = n^3、2n^3\)</span></li>
 </ul></li>
 </ul></li>
 <li>考古題 ( 100 交大 )
@@ -512,8 +512,8 @@
 <ul>
 <li>NCTU：<span class="math inline">\(\Theta(n)\)</span>、CS：<span class="math inline">\(\Omega(n)\)</span> 下列何者正確？
 <ul>
-<li>（a） NCTU 總是比 CS 快。</li>
-<li>（b） 當 n <span class="math inline">\(\geq\)</span> 1000000000000 時 NCTU 比 CS 快。</li>
+<li>（a） NCTU 總是比 CS 快</li>
+<li>（b） 當 n <span class="math inline">\(\geq\)</span> 1000000000000 時 NCTU 比 CS 快</li>
 <li>（c） 兩者執行時間相同</li>
 <li>（d） 稱 CS 的複雜度為 <span class="math inline">\(\Theta(n)\)</span></li>
 <li>（e） 以上皆非</li>
@@ -576,19 +576,21 @@
 </tbody>
 </table>
 <blockquote>
-<p><strong>＜Note＞</strong></p>
-</blockquote>
 <ul>
-<li>Ex (98 交大資工)  - Q 請寫出此式 <span class="math inline">\(O(n^2) + \Theta(n^2)\)</span> 最適合的等級。<br>(理解： <span class="math inline">\(\exists f(n) \in O(n^2) , \exists g(n) \in \Theta(n^2) \quad f(n) + g(n) \in ？\)</span>)
-<ul>
-<li>A <span class="math inline">\(\Theta(n^2)\)</span></li>
-</ul></li>
-<li>Ex (100 中央)</li>
-<li>Prove or disprove：<span class="math inline">\(f(n) + g(n) = \Theta(\;max｛f(n), g(n)｝)\)</span></li>
-<li>Proof：(以定義證明) - <span class="math inline">\(\exists C_1 = 1, C_2 = 2, n_0 = 1\ni n \geq n_0, C_1(\;max｛f(n), g(n)｝) \leq f(n) + g(n) \leq C_2(\;max｛f(n), g(n)｝)\)</span></li>
+<li>Ex (98 交大資工)</li>
 </ul>
+<p>寫出 <span class="math inline">\(O(n^2) + \Theta(n^2)\)</span> 最適合的等級 (理解： <span class="math inline">\(\exists f(n) \in O(n^2) , \exists g(n) \in \Theta(n^2) \quad f(n) + g(n) \in ？\)</span>) <span class="math display">\[
+O(n^2) + \Theta(n^2) = \Theta(n^2)
+\]</span></p>
+</blockquote>
 <blockquote>
-
+<ul>
+<li>Ex (100 中央)</li>
+</ul>
+<p>Prove or disprove：<span class="math inline">\(f(n) + g(n) = \Theta(\;max｛f(n), g(n)｝)\)</span></p>
+<p>Proof：(以定義證明) <span class="math display">\[
+\exists C_1 = 1, C_2 = 2, n_0 = 1 \\ \ni n \geq n_0, C_1(\;max｛f(n), g(n)｝) \leq f(n) + g(n) \leq C_2(\;max｛f(n), g(n)｝)
+\]</span></p>
 </blockquote>
 <ul>
 <li><span class="math inline">\(f(n) = O(g(n)) 且 f(n) = \Omega (g(n)) \Leftrightarrow f(n) = \Theta(g(n))\)</span>
@@ -598,31 +600,29 @@
 <li>Q <span class="math inline">\(\sum_{i = 0}^n i^5 = \Theta(n^a), a = ？\)</span></li>
 <li>A
 <ol type="1">
-<li>Prove：<span class="math inline">\(\sum_{i = 0}^n = O(n^6)\)</span> <br></li>
-<li>Prove：<span class="math inline">\(\sum_{i = 0}^n = \Omega(n^6)\)</span> <br></li>
+<li>Prove：<span class="math inline">\(\sum_{i = 0}^n = O(n^6)\)</span></li>
+<li>Prove：<span class="math inline">\(\sum_{i = 0}^n = \Omega(n^6)\)</span></li>
 </ol></li>
 </ul></li>
 </ul></li>
 </ul>
 <h3 id="函數比較等級">函數比較等級</h3>
+<blockquote>
 <ul>
-<li><strong>＜Note＞ L’Hôpital’s rule 的使用</strong>
+<li><strong>L’Hôpital’s rule 的使用</strong>
 <ul>
-<li>若 <span class="math inline">\(\lim_{n\rightarrow\infty}\frac{f(n)}{g(n)}\)</span> 是<strong>不定型 (相除為 0 或 無限大)</strong>，則該函數等於 <span class="math inline">\(\lim_{n\rightarrow\infty}\frac{f&#39;(n)}{g&#39;(n)}\)</span> 。</li>
+<li>若 <span class="math inline">\(\lim_{n\rightarrow\infty}\frac{f(n)}{g(n)}\)</span> 是<strong>不定型 (相除為 0 或 無限大)</strong>，則該函數等於 <span class="math inline">\(\lim_{n\rightarrow\infty}\frac{f&#39;(n)}{g&#39;(n)}\)</span></li>
 </ul></li>
-<li><strong>＜Note＞</strong>
+<li><p><span class="math inline">\((\ln x)&#39; = \frac{1}{x}\)</span></p></li>
+<li>log n 的底只要是<strong>常數</strong>其<strong>等級均相同</strong>。
 <ul>
-<li><span class="math inline">\((\ln x)&#39; = \frac{1}{x}\)</span></li>
-</ul></li>
-<li><strong>＜Note＞</strong>
-<ul>
-<li>log n 的底只要是<strong>常數</strong>其<strong>等級均相同</strong>。</li>
 <li>Ex
 <ul>
 <li><span class="math inline">\(\ln n, \lg n, \log n, \log_{100}n\)</span>等級均相等</li>
 </ul></li>
 </ul></li>
 </ul>
+</blockquote>
 <h4 id="定義法">定義法</h4>
 <ul>
 <li>適用時機
@@ -708,7 +708,7 @@
 <li>定義
 <ul>
 <li><span class="math inline">\(\log(f(n)) = o, \omega(\log(g(n))) \Rightarrow f(n) = o, \omega (g(n))\)</span></li>
-<li>而 <span class="math inline">\(\log(f(n)) = \Theta(\log(g(n)))\)</span> 則<strong>無法判斷等級</strong>，因為等級過於相同，取對數後無法判斷，要使用別的方法。</li>
+<li>而 <span class="math inline">\(\log(f(n)) = \Theta(\log(g(n)))\)</span> 則<strong>無法判斷等級</strong>，因為等級過於相同 ，取對數後無法判斷，要使用別的方法。</li>
 </ul></li>
 <li>Ex
 <ul>
@@ -718,8 +718,7 @@
 <li><p>Ex (98 交大)</p>
 <ul>
 <li>Prove：(log n)! 不是 Polyniminally bounded ( = O(<span class="math inline">\(n^k\)</span>))。</li>
-<li><p>＜分析＞ 若 f(n) 是 Polyniminally bounded，則 <span class="math inline">\(\exists k \in R \ni f(n) = O(n^k)\)</span>；<span class="math inline">\(\log f = O(\log n^k) = O(\log n)\)</span> ，若為 Polyniminally bounded 則等級小於 log n。</p></li>
-<li><p><span class="math inline">\(\log((\log n)!) = \Theta(\log n (\log\log n))\)</span> 其等級大於 log n 也就是 <span class="math inline">\(\log(\log n)! = \omega(\log n)\)</span>，Q.E.D.。</p></li>
+<li>＜分析＞ 若 f(n) 是 Polyniminally bounded，則 <span class="math inline">\(\exists k \in R \ni f(n) = O(n^k)\)</span>； <span class="math inline">\(\log f = O(\log n^k) = O(\log n)\)</span> ，若為 Polyniminally bounded 則等級小於 log n <span class="math inline">\(\log((\log n)!) = \Theta(\log n (\log\log n))\)</span> 其等級大於 log n 也就是 <span class="math inline">\(\log(\log n)! = \omega(\log n)\)</span></li>
 </ul></li>
 </ul>
 <h2 id="複雜度計算">複雜度計算</h2>
@@ -730,7 +729,7 @@
 <ul>
 <li><span class="math inline">\(T(n) = 1 + ...+n = \frac{n(1+n)}{2} = \frac{n^2+n}{2} = \Theta(n^2)\)</span></li>
 </ul></li>
-<li>並不是所有函數都有 close form。</li>
+<li>並不是所有函數都有 Close form。</li>
 </ul>
 <h4 id="使用-upper-bound-與-lower-bound-的夾擊">使用 Upper bound 與 Lower bound 的夾擊</h4>
 <ul>
@@ -739,15 +738,11 @@
 <li>Ex <span class="math inline">\(T(n) = \sum_{i=1}^n i^5 = \Theta(n^a)\)</span>，求 a = ？</li>
 <li>先證明 <span class="math inline">\(T(n) = \sum_{i=1}^n i^5 = O(n^6)\)</span>、再證明<span class="math inline">\(T(n) = \sum_{i=1}^n i^5 = \Omega(n^a)\)</span> 即可。</li>
 </ul></li>
-<li>調和級數( <span class="math inline">\(\mathbb{H}_n = 1 + \frac{1}{2} + \frac{1}{3} + ... +\frac{1}{n}= \Theta(\lg n)\)</span> )必須使用夾擊法，因為調和級數沒有 Close form。
+<li>調和級數( <span class="math inline">\(\mathbb{H}_n = 1 + \frac{1}{2} + \frac{1}{3} + ... +\frac{1}{n}= \Theta(\lg n)\)</span> )因為調和級數沒有 Close form，必須使用<strong>夾擠法</strong>
 <ul>
-<li><span class="math inline">\(\because \mathbb{H}_n - 1 = \sum_{i = 1}^n \frac{1}{i} - 1 \leq \int_1^n \frac{1}{n} dx = (\lg n - \lg 1) = \lg n\)</span></li>
-<li><span class="math inline">\(\therefore \mathbb{H}_n \leq \ln n + 1 \leq 2 \times \ln n \Rightarrow \exists C = 2, n_0 \geq 3 \ni n \geq n_0 , \mathbb{H}_n \leq C \times \lg n \Rightarrow \mathbb{H}_n = O(\lg n)\)</span></li>
-<li><span class="math inline">\(\because \mathbb{H}_n = \sum_{i = 1}^n \frac{1}{n} \geq \int_1^n \frac{1}{n} dx = \ln n\)</span></li>
-<li><span class="math inline">\(\therefore \mathbb{H}_n \geq \ln n \Rightarrow \exists C = 1, n_0 \geq 1 \ni n \geq n_0 , \mathbb{H}_n \geq C \times \lg n \Rightarrow \mathbb{H}_n = \Omega(\lg n)\)</span></li>
-<li><span class="math inline">\(\Rightarrow \mathbb{H}_n = \Theta(\lg n)\)</span></li>
+<li><span class="math inline">\(\because \mathbb{H}_n - 1 = \sum_{i = 1}^n \frac{1}{i} - 1 \leq \int_1^n \frac{1}{n} dx = (\lg n - \lg 1) = \lg n \\ \therefore \mathbb{H}_n \leq \ln n + 1 \leq 2 \times \ln n \Rightarrow \exists C = 2, n_0 \geq 3 \ni n \geq n_0 , \\ \mathbb{H}_n \leq C \times \lg n \\ \Rightarrow \mathbb{H}_n = O(\lg n) \\ \because \mathbb{H}_n = \sum_{i = 1}^n \frac{1}{n} \geq \int_1^n \frac{1}{n} dx = \ln n \\ \therefore \mathbb{H}_n \geq \ln n \Rightarrow \exists C = 1, n_0 \geq 1 \ni n \geq n_0 , \mathbb{H}_n \geq C \times \lg n \\ \Rightarrow \mathbb{H}_n = \Omega(\lg n) \\ \Rightarrow \mathbb{H}_n = \Theta(\lg n)\)</span></li>
 </ul></li>
-<li><strong>＜Note＞ 收斂(Converge)的級數</strong>
+<li><p><strong>＜Note＞ 收斂(Converge)的級數</strong></p>
 <ul>
 <li><span class="math inline">\(T(n) = 1^a + \frac{1}{2^a} + \frac{1}{3^a} + \ldots = \sum_{i = 1}^n \frac{1}{i^a} = \frac{\pi^2}{6}, for\; some\; a = 2, 3 ...\)</span></li>
 <li><span class="math inline">\(\Rightarrow T(n) = \Theta(1)\)</span></li>
@@ -764,8 +759,8 @@
 </ul></li>
 <li>Prove <span class="math inline">\(\log(n!) = \Omega(n\lg n)\)</span> ( 離散筆記本 P.118 )
 <ul>
-<li><span class="math inline">\(\log n! = \log ( \Pi_{i = 1}^n i ) = \sum_{i = 1}^n \log i \geq \sum_{i = 1}^{ceil(\frac{n}{2})} \log ceil( \frac{n}{2}) \geq \frac{n}{2} \log \frac{n}{2} = \frac{n}{2} (\log n - \log 2)\approx \frac{1}{2}n\log n\)</span></li>
-<li><span class="math inline">\(\therefore \exists C = \frac{1}{2}, n_0 = 1 \ni n\geq n_0, \log n \geq \frac{1}{2}n \log n \Rightarrow \log n! = \Omega(n\lg n)\)</span></li>
+<li><span class="math inline">\(\log n! = \log ( \Pi_{i = 1}^n i ) \\ = \sum_{i = 1}^n \log i \geq \sum_{i = 1}^{ceil(\frac{n}{2})} \log ceil( \frac{n}{2}) \geq \frac{n}{2} \log \frac{n}{2} \\ = \frac{n}{2} (\log n - \log 2)\approx \frac{1}{2}n\log n\)</span></li>
+<li><span class="math inline">\(\therefore \exists C = \frac{1}{2}, n_0 = 1 \\ \ni n\geq n_0, \log n \geq \frac{1}{2}n \log n \Rightarrow \log n! = \Omega(n\lg n)\)</span></li>
 </ul></li>
 <li><span class="math inline">\(\therefore \log n! = \Theta(n\lg n)\)</span></li>
 </ol></li>
@@ -773,8 +768,7 @@
 <li><strong>Ex (96 台大資工)</strong>
 <ul>
 <li><span class="math inline">\(T(n) = \sum_{k = 1}^n k^2(\log k)^3 = \Theta(n^d(\log n)^e)\)</span>，d = ？、e = ？</li>
-<li>＜想法＞：拆開 <br><span class="math inline">\(1^2(\log 1)^3 + 2^2(\log 2)^3 + ... +n^2(\log n)^3 \Rightarrow_{\leq} 1^2(\log n)^3 + 2^2(\log n)^3 + ... +n^2(\log n)^3\)</span></li>
-<li>提出 <span class="math inline">\((\log n)^3 \times \sum_{i = 1}^n i^2 = O(n^3(\log n)^3)\)</span> 所以 d = 3, e = 3。</li>
+<li>＜想法＞：拆開 <span class="math inline">\(1^2(\log 1)^3 + 2^2(\log 2)^3 + ... +n^2(\log n)^3 \Rightarrow_{\leq} 1^2(\log n)^3 + 2^2(\log n)^3 + ... +n^2(\log n)^3\)</span> 提出 <span class="math inline">\((\log n)^3 \times \sum_{i = 1}^n i^2 = O(n^3(\log n)^3)\)</span> 所以 d = 3, e = 3</li>
 </ul></li>
 <li><span class="math inline">\((\log_an)^b = o(n^k), k &gt; 0\)</span>
 <ul>
@@ -782,13 +776,13 @@
 <li><strong>Ex (96 輔大資工)</strong>
 <ul>
 <li>Prove <span class="math inline">\((\log n)^3 = O(n^\frac{1}{16})\)</span></li>
-<li>(函數<strong>型態複雜</strong>不適合使用定義證明，這裡採取<strong>極值法</strong>) <br><span class="math inline">\(\lim_{n\rightarrow\infty} \frac{(\log n)^3}{n^{\frac{1}{16}}} =_{同取微分} \lim_{n\rightarrow\infty} \frac{\frac{3}{n (\ln 10)^3}\cdot (\ln n)^2}{\frac{1}{16}\cdot n^{\frac{-15}{16}}} =_{整理} Constant\cdot \lim_{n\rightarrow\infty}\frac{(\ln n)^2}{n^{\frac{1}{16}}} =\ldots\)</span> <br><span class="math inline">\(\Rightarrow_{趨近於, n \rightarrow \infty} 0\)</span><br><span class="math inline">\(\Rightarrow (\log n)^3 = o(n^\frac{1}{16}) \Rightarrow_{?} (\log n)^3 = O(n^\frac{1}{16})\)</span></li>
+<li>(函數<strong>型態複雜</strong>不適合使用定義證明，這裡採取<strong>極值法</strong>) <span class="math inline">\(\lim_{n\rightarrow\infty} \frac{(\log n)^3}{n^{\frac{1}{16}}} \\ =_{同取微分} \lim_{n\rightarrow\infty} \frac{\frac{3}{n (\ln 10)^3}\cdot (\ln n)^2}{\frac{1}{16}\cdot n^{\frac{-15}{16}}} \\ =_{整理} Constant\cdot \lim_{n\rightarrow\infty}\frac{(\ln n)^2}{n^{\frac{1}{16}}} =\ldots \\ \Rightarrow_{趨近於, n \rightarrow \infty} 0 \\ \Rightarrow (\log n)^3 = o(n^\frac{1}{16}) \Rightarrow_{?} (\log n)^3 = O(n^\frac{1}{16})\)</span></li>
 </ul></li>
 </ul></li>
 <li><strong>Ex</strong> 比較 <span class="math inline">\(n^{1 + \epsilon}\)</span> 與 <span class="math inline">\(\frac{n^2}{\log n}\)</span> 的等級，其中 <span class="math inline">\(0&lt;\epsilon &lt; 1\)</span>。
 <ul>
-<li>＜猜測＞：<strong>後者。</strong></li>
-<li>＜分析＞：<span class="math inline">\(n^{1+\epsilon} = n^{2-\delta}, 0&lt;\delta&lt;1 \Rightarrow \frac{n^2}{n^\delta}\)</span><br>$n = o(n^) $ <br><span class="math inline">\(\therefore n^{1 + \epsilon} = O(\frac{n^2}{\log n})\)</span></li>
+<li>＜猜測＞：<strong>後者比較大</strong></li>
+<li>＜分析＞：<span class="math inline">\(n^{1+\epsilon} = n^{2-\delta}, 0&lt;\delta&lt;1 \Rightarrow \frac{n^2}{n^\delta} \\ \because \log n = o(n^\delta) \\ \therefore n^{1 + \epsilon} = O(\frac{n^2}{\log n})\)</span></li>
 </ul></li>
 </ul>
 
@@ -928,7 +922,7 @@
                 
                   <a href="/willywangkaa/archives/">
                 
-                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-count">41</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -961,7 +955,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">10</span>
+                      
+                    
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1106,7 +1102,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">66</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">68</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

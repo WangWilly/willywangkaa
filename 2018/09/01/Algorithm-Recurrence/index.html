@@ -113,7 +113,7 @@
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/tree_1.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/tree_2.png">
-<meta property="og:updated_time" content="2018-08-31T17:51:25.671Z">
+<meta property="og:updated_time" content="2018-10-21T04:59:20.512Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithm - Recurrence">
 <meta name="twitter:description" content="Recurrence Substutution method  Concept  以經驗猜測一個邊界(bound)。 假設子問題符合此邊界，證明母問題也符合此邊界。  適用時機  題目比分重。 單向；單邊：只需要證明 \(O, \Omega\) 單向，不必證明 \(\Theta\) 。 題目要求。   經典範例  Ex  \(T(n) = 2 T(floor(">
@@ -363,7 +363,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-09-01T01:51:25+08:00">2018-09-01</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2018-10-21T12:59:20+08:00">2018-10-21</time>
             
           </span>
 
@@ -479,16 +479,17 @@
 <ul>
 <li><span class="math inline">\(r &lt; 1\)</span>
 <ul>
-<li>Ex ( 94 成大資工 )
+<li><p>Ex ( 94 成大資工 )</p>
 <ul>
 <li><span class="math inline">\(T(n) = T(\frac n2) + T(\frac n4) + T(\frac n8) + n\)</span>，求 <span class="math inline">\(\Theta\)</span></li>
 </ul></li>
 <li>Sol
 <ul>
 <li><span class="math inline">\(r = \frac n 2 + \frac n 4 + \frac n 8 = \frac 7 8 &lt; 1\)</span></li>
-<li>建立遞迴樹<br><span class="math inline">\(T(n) = n + \frac 78 n +\frac{49}{64}n + \ldots + C_l\)</span> (等比級數)</li>
-<li><strong>求取其邊界 (夾擊法)</strong><br>求上邊界：<span class="math inline">\(T(n) = n + \frac 78 n +\frac{49}{64}n + \ldots + C_l \leq n + \frac 78 n +\frac{49}{64}n + \ldots\)</span> (有限等比級數小於無限等比級數)<br><span class="math inline">\(\Rightarrow \frac{n}{1 - \frac 7 8} = 8 n \Rightarrow T(n) = O(n)\)</span><br><br>求下邊界：<span class="math inline">\(T(n) = n + \frac 78 n +\frac{49}{64}n + \ldots + C_l \geq n \Rightarrow T(n) = \Omega(n)\)</span></li>
-<li><span class="math inline">\(\Rightarrow T(n) = \Theta(n)\)</span></li>
+<li>建立遞迴樹 <span class="math inline">\(T(n) = n + \frac 78 n +\frac{49}{64}n + \ldots + C_l\)</span> (等比級數)</li>
+<li><p><strong>求取其邊界 (夾擠法)</strong> 求上邊界：<span class="math inline">\(T(n) = n + \frac 78 n +\frac{49}{64}n + \ldots + C_l \leq n + \frac 78 n +\frac{49}{64}n + \ldots + (\frac 78)^h\)</span> <strong>(有限等比級數小於無限等比級數)</strong> <span class="math inline">\(\Rightarrow \frac{n}{1 - \frac 7 8} = 8 n \Rightarrow T(n) = O(n)\)</span></p>
+求下邊界：<span class="math inline">\(T(n) = n + \frac 78 n +\frac{49}{64}n + \ldots + C_l \geq n \Rightarrow T(n) = \Omega(n)\)</span></li>
+<li><p><span class="math inline">\(\Rightarrow T(n) = \Theta(n)\)</span></p></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -505,8 +506,8 @@
 <li>Sol
 <ul>
 <li><span class="math inline">\(r = \frac 13+\frac{2}{3} = 1\)</span></li>
-<li>建立遞迴樹<br><span class="math inline">\(T(n) = n+n+n+\ldots+C_l\)</span></li>
-<li>求取其邊界<br>求上邊界：因為<span class="math inline">\((\frac23)^k*n= 1 \Rightarrow k = \log_{\frac32}n \Rightarrow 高度 = k + 1\)</span> ，所以 <span class="math inline">\(T(n) = n+n+n+\ldots+C_l \leq n \cdot \log_{\frac32}n+1\)</span><br><span class="math inline">\(\Rightarrow T(n) = O(n\log n)\)</span><br><br>求下邊界：<span class="math inline">\(T(n) = n+n+n+\ldots+C_l \geq n \cdot \log_3n + 1\)</span><br><span class="math inline">\(\Rightarrow T(n) = \Omega(n\log n)\)</span></li>
+<li>建立遞迴樹 <span class="math inline">\(T(n) = n+n+n+\ldots+C_l\)</span></li>
+<li>求取其邊界 求上邊界：因為<span class="math inline">\((\frac23)^k*n= 1 \Rightarrow k = \log_{\frac32}n \Rightarrow 高度 = k + 1\)</span> ，所以<span class="math inline">\(T(n) = n+n+n+\ldots+C_l \leq n \cdot \log_{\frac32}n+1\)</span> <span class="math inline">\(\Rightarrow T(n) = O(n\log n)\)</span> br&gt;求下邊界：<span class="math inline">\(T(n) = n+n+n+\ldots+C_l \geq n \cdot \log_3n + 1\)</span> <span class="math inline">\(\Rightarrow T(n) = \Omega(n\log n)\)</span></li>
 <li><span class="math inline">\(\Rightarrow T(n) = \Theta(n\lg n)\)</span></li>
 </ul></li>
 </ul></li>
@@ -782,7 +783,7 @@ c_0 = 5 = C_0 - 3 \\
                 
                   <a href="/willywangkaa/archives/">
                 
-                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-count">41</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -815,7 +816,9 @@ c_0 = 5 = C_0 - 3 \\
                     
                       
                     
-                    <span class="site-state-item-count">10</span>
+                      
+                    
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -960,7 +963,11 @@ c_0 = 5 = C_0 - 3 \\
                     
                       
                     
-                    <span class="site-state-item-count">66</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">68</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://WangWilly.github.io/willywangkaa/2018/09/01/Algorithm-Recurrence/</loc>
+    
+    <lastmod>2018-10-21T04:59:20.512Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://WangWilly.github.io/willywangkaa/2018/08/28/Algorithm-Time-Complexity/</loc>
+    
+    <lastmod>2018-10-21T04:36:08.535Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://WangWilly.github.io/willywangkaa/2018/09/10/Operating-System-Disk-Management/</loc>
+    
+    <lastmod>2018-10-16T12:49:57.128Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://WangWilly.github.io/willywangkaa/2018/10/15/Algorithm-%E7%89%B9%E6%AE%8A%E6%99%82%E9%96%93%E5%87%BD%E6%95%B8/</loc>
+    
+    <lastmod>2018-10-15T12:52:10.016Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://WangWilly.github.io/willywangkaa/2018/10/15/Algorithm-Approximation-algorithm/</loc>
     
     <lastmod>2018-10-15T10:49:20.936Z</lastmod>
@@ -72,23 +100,9 @@
   </url>
   
   <url>
-    <loc>http://WangWilly.github.io/willywangkaa/2018/09/10/Operating-System-Disk-Management/</loc>
-    
-    <lastmod>2018-09-10T10:18:45.566Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://WangWilly.github.io/willywangkaa/2018/09/10/Operating-System-File-Management/</loc>
     
     <lastmod>2018-09-10T10:17:09.168Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://WangWilly.github.io/willywangkaa/2018/09/01/Algorithm-Recurrence/</loc>
-    
-    <lastmod>2018-08-31T17:51:25.671Z</lastmod>
     
   </url>
   
@@ -208,13 +222,6 @@
     <loc>http://WangWilly.github.io/willywangkaa/2018/04/25/Artificial-Neural-Networks-%E9%A1%9E%E7%A5%9E%E7%B6%93%E7%B6%B2%E8%B7%AF%E5%AD%B8%E7%BF%92/</loc>
     
     <lastmod>2018-08-29T16:44:45.508Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://WangWilly.github.io/willywangkaa/2018/08/28/Algorithm-Time-Complexity/</loc>
-    
-    <lastmod>2018-08-28T14:15:41.031Z</lastmod>
     
   </url>
   
