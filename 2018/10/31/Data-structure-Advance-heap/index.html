@@ -1,0 +1,2081 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-tw,en,default">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/willywangkaa/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/willywangkaa/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/willywangkaa/images/apple-touch-icon-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/willywangkaa/images/favicon-32x32-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/willywangkaa/images/favicon-16x16-next_cat.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/willywangkaa/images/logo_cat.svg?v=6.0.4" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/willywangkaa/',
+    scheme: 'Pisces',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="Heap," />
+
+
+<meta name="description" content="Binary heap Build heap Top down 依序插入所有資料逐步建立「Heap」  Time complexity for heap insertion：log n   Time complexity 若要建立一個 n 筆資料之「Heap」  \(\sum_{i = 1}^n \log i = \log(n!) = n\log n\) \(\Theta(n">
+<meta name="keywords" content="Heap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Data structure - Advance heap">
+<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/10/31/Data-structure-Advance-heap/index.html">
+<meta property="og:site_name" content="WillyWangkaa">
+<meta property="og:description" content="Binary heap Build heap Top down 依序插入所有資料逐步建立「Heap」  Time complexity for heap insertion：log n   Time complexity 若要建立一個 n 筆資料之「Heap」  \(\sum_{i = 1}^n \log i = \log(n!) = n\log n\) \(\Theta(n">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/buildheap.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/buildheap_2.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/minmaxheap.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/delminmaxheap_1.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/delminmaxheap_2.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/delminmaxheap_3.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/delminmaxheap_4.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/delminmaxheap_5.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/delminmaxheap_6.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/delminmaxheap_7.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/delminmaxheap_8.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/delminmaxheap_9.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/delminmaxheap_10.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/delminmaxheap_11.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/delminmaxheap_12.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/delminmaxheap_1.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/delminmaxheap_13.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/delminmaxheap_14.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/delminmaxheap_15.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/deapnodemap.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/deap.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/deldeap_1.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/deldeap_2.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/deldeap_3.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/deldeap_4.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/deldeap_5.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/SMMH.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/SMMH_2.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/delSMMH_1.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/delSMMH_2.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/delSMMH_3.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/delSMMH_4.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/delSMMH_5.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/delSMMH_6.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/leftisttreemerge_1.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/leftisttreemerge_2.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/leftisttreemerge_3.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/leftistheapmerge_1.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/leftistheapmerge_2.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/insertbinominalheap_1.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/insertbinominalheap_2.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/insertbinominalheap_3.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/datastructurebinominalheap.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/delfibonacciheap.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/delfibonacciheap_2.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/delfibonacciheap.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/decreasekeyfibonacciheap_1.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/decreasekeyfibonacciheap_2.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/decreasekeyinbinaryheap.png">
+<meta property="og:updated_time" content="2018-10-31T06:01:39.858Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Data structure - Advance heap">
+<meta name="twitter:description" content="Binary heap Build heap Top down 依序插入所有資料逐步建立「Heap」  Time complexity for heap insertion：log n   Time complexity 若要建立一個 n 筆資料之「Heap」  \(\sum_{i = 1}^n \log i = \log(n!) = n\log n\) \(\Theta(n">
+<meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/buildheap.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://WangWilly.github.io/willywangkaa/2018/10/31/Data-structure-Advance-heap/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>Data structure - Advance heap | WillyWangkaa</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/willywangkaa/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WillyWangkaa</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Live more like human</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/willywangkaa/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/willywangkaa/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/willywangkaa/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/willywangkaa/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/10/31/Data-structure-Advance-heap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WillyWangkaa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Data structure - Advance heap</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-31T13:37:00+08:00">2018-10-31</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-10-31T14:01:39+08:00">2018-10-31</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/willywangkaa/categories/Data-structure/" itemprop="url" rel="index"><span itemprop="name">Data structure</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/willywangkaa/2018/10/31/Data-structure-Advance-heap/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/10/31/Data-structure-Advance-heap/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="binary-heap">Binary heap</h1>
+<h2 id="build-heap">Build heap</h2>
+<h3 id="top-down">Top down</h3>
+<p>依序插入所有資料逐步建立「Heap」</p>
+<blockquote>
+<p>Time complexity for heap insertion：log n</p>
+</blockquote>
+<ul>
+<li>Time complexity 若要建立一個 n 筆資料之「Heap」
+<ul>
+<li><span class="math inline">\(\sum_{i = 1}^n \log i = \log(n!) = n\log n\)</span></li>
+<li><span class="math inline">\(\Theta(n\log n)\)</span></li>
+</ul></li>
+</ul>
+<h3 id="buttum-up">Buttum up</h3>
+<ol type="1">
+<li><strong>將 n 個輸入資料先以「Complete binary tree」( 陣列 ) 放置好</strong></li>
+<li>從最後一個父節點 (A[i]) 開始，往回執行 ( A[i-1], A[i-2] … ) 對各個父節點，調整子樹成為「Heap」，直到 A[1] 為止</li>
+</ol>
+<figure>
+<img src="\willywangkaa\images\buildheap.png" alt="buildheap"><figcaption>buildheap</figcaption>
+</figure>
+<h4 id="time-complexity">Time complexity</h4>
+<blockquote>
+<p>因為是一個「Complete binary tree」( 完全二元樹 )，所以樹高為 <span class="math inline">\(\lceil \log (n+1) \rceil\)</span></p>
+</blockquote>
+<p>討論</p>
+<figure>
+<img src="\willywangkaa\images\buildheap_2.png" alt="buildheap_2"><figcaption>buildheap_2</figcaption>
+</figure>
+<p>若父節點位於「Level i」調整其子樹成為「Heap」之最大成本為 <strong>K-i</strong></p>
+<p>而第 i 層最多有 <span class="math inline">\(2^{i-1}\)</span> 個子樹需要調整，則最大總成本為 <span class="math inline">\(\sum_{i=1}^k 2^{i-1}\times (K-i) = \sum_{i=1}^{k-1} 2^{i-1}\times (K-i)\)</span></p>
+<p><span class="math display">\[
+S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-1}\cdot (k-k) \\
+= 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot 1 ...........(1)\\
+\Rightarrow 2S = 2^1 \cdot (k-1) + 2^2 \cdot (k-2) + \ldots + 2^{k-1} \cdot 1.........(2) \\
+2S-S = -2^0\cdot(k-1) + 2 + 2^2 + \ldots + 2^{k-2} + 2^{k-1} \\
+\Rightarrow S = -(k-1) + 2\cdot(\frac{2^{k-1}-1}{2-1}) = -k+1+2^k - 2 = 2^k-k-1 \\ = 2^{\lg n} - \lg n -1 = n - \lg n-1 \\
+\Rightarrow \Theta(n)
+\]</span></p>
+<ul>
+<li>Algorithm ( Heapify )</li>
+</ul>
+<p>Max-heap</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// tree: Array[1..n]</span></span><br><span class="line"><span class="comment">// n   : 元素個數</span></span><br><span class="line"><span class="comment">// i   : 節點編號 (調整以 i 為樹根之子樹)</span></span><br><span class="line">Heapify(tree, i, n) &#123;</span><br><span class="line">    x = tree[i];</span><br><span class="line">    j = <span class="number">2</span> * i                     <span class="comment">//左子</span></span><br><span class="line">    <span class="keyword">while</span>(j &lt;= n) &#123;</span><br><span class="line">        <span class="keyword">if</span>(j &lt; n)                 <span class="comment">// 具有右子</span></span><br><span class="line">            <span class="keyword">if</span>(tree[j]&lt;tree[j+<span class="number">1</span>])</span><br><span class="line">                j = j+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(x &gt;= tree[j])          <span class="comment">// 已經為 heap</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            tree[j/<span class="number">2</span>] = tree[j];</span><br><span class="line">            j = <span class="number">2</span> * j;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    tree[j/<span class="number">2</span>] = x;                <span class="comment">// 將資料 x 置於正確位置</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Build</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Build(tree, n) &#123;</span><br><span class="line">    <span class="keyword">for</span>(i = n/<span class="number">2</span>; i&gt;= <span class="number">1</span>; i--) &#123;     <span class="comment">// i = n/2 為最後一個父節點</span></span><br><span class="line">        Heapify(tree, i, n);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Example ( Delete max )</p>
+<ul>
+<li>Time complexity：O(log n)</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ...</span></span><br><span class="line">x = tree[<span class="number">1</span>];</span><br><span class="line">tree[<span class="number">1</span>] = tree[n];</span><br><span class="line">n--;</span><br><span class="line">heapify(tree, <span class="number">1</span>, n);</span><br></pre></td></tr></table></figure>
+<p>Example ( Merge heap )</p>
+<ul>
+<li>Time complexity：O(n)</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// H1:[1..n]</span></span><br><span class="line"><span class="comment">// H2:[1..m]</span></span><br><span class="line"></span><br><span class="line">Heap H3[<span class="number">1.</span>.m+n];</span><br><span class="line">copy(H3[<span class="number">1.</span>.n], H1);   <span class="comment">// O(n)</span></span><br><span class="line">copy(H3[n+<span class="number">1.</span>.m], H2); <span class="comment">// O(n)</span></span><br><span class="line"></span><br><span class="line">Build(H3, m+n);       <span class="comment">// O(n)</span></span><br></pre></td></tr></table></figure>
+<h1 id="double-ended-priority-queue">Double ended priority queue</h1>
+<ul>
+<li>時間複雜度特性
+<ul>
+<li>Insert：O(log n)</li>
+<li>Del_min：O(log n)</li>
+<li>Del_max：O(log n)</li>
+</ul></li>
+</ul>
+<h2 id="min-max-heap">Min-max heap</h2>
+<p>Complete tree</p>
+<ul>
+<li>每層由「Min-level」與「Max-level」交互合併</li>
+<li>樹根位於「Min-level」</li>
+<li>Min-level
+<ul>
+<li>位於此層之節點在該子樹中有「最小值」</li>
+</ul></li>
+<li>Max-level
+<ul>
+<li>位於此層之節點在該子樹中有「最大值」</li>
+</ul></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\minmaxheap.png" alt="minmaxheap"><figcaption>minmaxheap</figcaption>
+</figure>
+<blockquote>
+<p>Minimum value = 樹根節點</p>
+<p>Maximum value = max｛樹根節點之左右子節點｝</p>
+</blockquote>
+<h3 id="insert-node-in-min-max-heap">Insert node in min-max heap</h3>
+<p>步驟：</p>
+<ol type="1">
+<li>x 先置於最後一個節點之下一個位置 ( n = Min-max heap.size + 1 )</li>
+<li>令 p 為「 x 的父節點」</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// case1 "p": 位於「Min-level」</span></span><br><span class="line"><span class="keyword">if</span>(x &lt; H[p]) &#123;</span><br><span class="line">    H[n] = H[p];       <span class="comment">// 父節點下移</span></span><br><span class="line">    <span class="comment">// verifyMin( binary_heap, position, value )</span></span><br><span class="line">    verifyMin(H, p, x);   <span class="comment">// 往祖父點測試有無違反「Min-level」性質</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    verifyMax(H, n, x);   <span class="comment">// 往祖父點測試有無違反「Max-level」性質</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// case2 "p": 位於「Max-level」</span></span><br><span class="line"><span class="keyword">if</span>(x &gt; H[p]) &#123;</span><br><span class="line">    H[n] = H[p];       <span class="comment">// 父節點下移</span></span><br><span class="line">    <span class="comment">// verifyMax( binary_heap, position, value )</span></span><br><span class="line">    verifyMax(H, p, x);   <span class="comment">// 往祖父點測試有無違反「Max-level」性質</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    verifyMin(H, n, x);   <span class="comment">// 往祖父點測試有無違反「Min-level」性質</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Time complexity
+<ul>
+<li>Step 1：O(1)</li>
+<li>Step 2：O(1) + O(<span class="math inline">\(\frac{\lg n}{2}\)</span>) (Verify) = O(lg n)</li>
+</ul></li>
+</ul>
+<h3 id="delete-min-in-min-max-heap">Delete-min in min-max heap</h3>
+<p>步驟：</p>
+<ol type="1">
+<li>移出樹根資料</li>
+<li>將最後一節點先暫存於 x 後刪除</li>
+<li><strong>x 插入樹根</strong></li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// H: Heap</span></span><br><span class="line"><span class="comment">// n: Heap 大小</span></span><br><span class="line"><span class="comment">// r: 目前子樹樹根編號</span></span><br><span class="line"><span class="comment">// x: 重新插入值</span></span><br><span class="line">Del_reinsert(H, n, r, x) &#123;</span><br><span class="line">    <span class="comment">// case 1</span></span><br><span class="line">    <span class="keyword">if</span>(r*<span class="number">2</span> &gt; n) &#123;                                   <span class="comment">// 檢查子樹樹根有無左子節點，若無則無子節點</span></span><br><span class="line">        H[r] = x;</span><br><span class="line">    <span class="comment">// case 2</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (n*<span class="number">4</span> &gt; n) &#123;                           <span class="comment">// 樹根無孫節點，所以此樹最小值可能落在樹根之子節點中</span></span><br><span class="line">        <span class="keyword">int</span> k = r*<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(H[k] &gt; H[k+<span class="number">1</span>])</span><br><span class="line">            k++;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(x &lt; H[k]) &#123;                              <span class="comment">// 此樹最小值在子樹樹根子節點中</span></span><br><span class="line">            H[r] = x;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            H[r] = H[k];</span><br><span class="line">            H[k] = r;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="comment">// case 3</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> k;</span><br><span class="line">        <span class="keyword">int</span> j = r*<span class="number">4</span>;</span><br><span class="line">        <span class="keyword">int</span> min = oo;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = j; i &lt;= j+<span class="number">4</span> &amp;&amp; i&lt;= n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(H[i] &lt; min) &#123;</span><br><span class="line">                k = i;</span><br><span class="line">                min = H[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> p = k/<span class="number">2</span>;                                 <span class="comment">// p 為 k 之父節點</span></span><br><span class="line">        <span class="comment">// k 必位於「Min-level」</span></span><br><span class="line">        <span class="keyword">if</span>(H[k] &lt; x) &#123;                               <span class="comment">// 此樹最小值在子樹樹根孫節點中</span></span><br><span class="line">            H[r] = H[k];</span><br><span class="line">            <span class="keyword">if</span>(x &gt; H[p]) Swap(x, H[p]);              <span class="comment">// !!</span></span><br><span class="line">            Del_reinsert(H, n, k, x);                <span class="comment">// "x"插入原本 k 所在之位置</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            H[r] = x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Del_min (H, n) &#123;</span><br><span class="line">    swap(H[<span class="number">1</span>], H[n]);</span><br><span class="line">    re = H[n];</span><br><span class="line">    n--;</span><br><span class="line">	Del_reinsert(H, n, <span class="number">1</span>, H[<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Example (Delete 3 times)</p>
+<figure>
+<img src="\willywangkaa\images\delminmaxheap_1.png" alt="delminmaxheap_1"><figcaption>delminmaxheap_1</figcaption>
+</figure>
+<ul>
+<li>1 st deletion</li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\delminmaxheap_2.png" alt="delminmaxheap_2"><figcaption>delminmaxheap_2</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\delminmaxheap_3.png" alt="delminmaxheap_3"><figcaption>delminmaxheap_3</figcaption>
+</figure>
+<p><strong>Seep 3</strong> ↓</p>
+<figure>
+<img src="\willywangkaa\images\delminmaxheap_4.png" alt="delminmaxheap_4"><figcaption>delminmaxheap_4</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\delminmaxheap_5.png" alt="delminmaxheap_5"><figcaption>delminmaxheap_5</figcaption>
+</figure>
+<ul>
+<li>2nd delition</li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\delminmaxheap_6.png" alt="delminmaxheap_6"><figcaption>delminmaxheap_6</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\delminmaxheap_7.png" alt="delminmaxheap_7"><figcaption>delminmaxheap_7</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\delminmaxheap_8.png" alt="delminmaxheap_8"><figcaption>delminmaxheap_8</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\delminmaxheap_9.png" alt="delminmaxheap_9"><figcaption>delminmaxheap_9</figcaption>
+</figure>
+<ul>
+<li>3rd delietion</li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\delminmaxheap_10.png" alt="delminmaxheap_10"><figcaption>delminmaxheap_10</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\delminmaxheap_11.png" alt="delminmaxheap_11"><figcaption>delminmaxheap_11</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\delminmaxheap_12.png" alt="delminmaxheap_12"><figcaption>delminmaxheap_12</figcaption>
+</figure>
+<h4 id="delete-max">Delete-max</h4>
+<figure>
+<img src="\willywangkaa\images\delminmaxheap_1.png" alt="delminmaxheap_1"><figcaption>delminmaxheap_1</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\delminmaxheap_13.png" alt="delminmaxheap_13"><figcaption>delminmaxheap_13</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\delminmaxheap_14.png" alt="delminmaxheap_14"><figcaption>delminmaxheap_14</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\delminmaxheap_15.png" alt="delminmaxheap_15"><figcaption>delminmaxheap_15</figcaption>
+</figure>
+<h2 id="double-ended-heap-deap">Double-ended heap (DEAP)</h2>
+<p>Complete binary tree</p>
+<ul>
+<li>樹根不賦值</li>
+<li>樹根左子樹為「Min heap」</li>
+<li>樹根右子樹為「Max heap」</li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\deapnodemap.png" alt="deapnodemap"><figcaption>deapnodemap</figcaption>
+</figure>
+<ul>
+<li><strong>「Min heap」與「Max heap」對應編號</strong>
+<ul>
+<li>令 i 為在「Min-heap」中某一節點之<strong>編號</strong>，則 j 為「i 在 Max-heap 中對應」之節點編號</li>
+<li><span class="math inline">\(j = i + 上一層之最多節點數量 \\ = i + 2^{(目前節點之「Level」-1)-1} \\ = i + 2^{\lceil\lg (i+1)\rceil-2}\)</span></li>
+<li>如果該節點 j 不存在 ( j &gt; n )，則 j = <span class="math inline">\([\frac i2 ]\)</span></li>
+</ul></li>
+</ul>
+<h3 id="insert-data-in-deap">Insert data in deap</h3>
+<p>步驟：</p>
+<ol type="1">
+<li>x 先置於最後一個節點之下一個位置 ( n = Deap.size + 1 )</li>
+<li>檢查</li>
+</ol>
+<p>（1）若 x 目前位於「Min-heap」( 位置假設為 i )，則 j 為 x 在「Max-heap」對應之節點編號</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(x &gt; deap[j]) &#123;</span><br><span class="line">    deap[i] = deap[j];</span><br><span class="line">    <span class="comment">//max_heap_insert(陣列, 陣列位置, 資料);</span></span><br><span class="line">    max_heap_insert(deap, j, x);          <span class="comment">// 將 x 與該父節點比較並調整</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">//min_heap_insert(陣列, 陣列位置, 資料);</span></span><br><span class="line">    min_heap_insert(deap, i, x);          <span class="comment">// 將 x 與該父節點比較並調整</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>（2）若 x 目前位於「Max-heap」( 位置假設為 j )，則 i 為 x 在「Min-heap」對應之節點編號</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(x &lt; deap[i]) &#123;</span><br><span class="line">    deap[i] = deap[j];</span><br><span class="line">    <span class="comment">//min_heap_insert(陣列, 陣列位置, 資料);</span></span><br><span class="line">    min_heap_insert(deap, i, x);          <span class="comment">// 將 x 與該父節點比較並調整</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">//max_heap_insert(陣列, 陣列位置, 資料);</span></span><br><span class="line">    max_heap_insert(deap, j, x);          <span class="comment">// 將 x 與該父節點比較並調整</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="delete-data-in-deap">Delete data in deap</h3>
+<p>步驟：</p>
+<ol type="1">
+<li>將左子樹樹根資料移出</li>
+<li>將最後一節點刪除並該資料先由 x 暫存</li>
+<li>左子樹樹根之空缺，由其左右子節點中最小遞補之，由上而下直到某「葉節點」產生空缺</li>
+<li>對該空缺作「Insert data in deap」</li>
+</ol>
+<figure>
+<img src="\willywangkaa\images\deap.png" alt="deap"><figcaption>deap</figcaption>
+</figure>
+<p>Example</p>
+<figure>
+<img src="\willywangkaa\images\deldeap_1.png" alt="deldeap_1"><figcaption>deldeap_1</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\deldeap_2.png" alt="deldeap_2"><figcaption>deldeap_2</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\deldeap_3.png" alt="deldeap_3"><figcaption>deldeap_3</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\deldeap_4.png" alt="deldeap_4"><figcaption>deldeap_4</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\deldeap_5.png" alt="deldeap_5"><figcaption>deldeap_5</figcaption>
+</figure>
+<h2 id="symmetric-min-max-heap-smmh">Symmetric min-max heap (SMMH)</h2>
+<p>Complete binary tree</p>
+<ul>
+<li>樹根不賦值</li>
+<li>條件一 ( <span class="math inline">\(P_1\)</span> )：左兄弟 ≦ 右兄弟</li>
+<li><strong>條件二</strong> ( <span class="math inline">\(P_2\)</span> )<strong>：若該節點 x 有祖父節點則「祖父節點之左子節點鍵值」 ≦ x</strong></li>
+<li><strong>條件三</strong> ( <span class="math inline">\(P_3\)</span> <strong>)：若該節點 x 有祖父節點則「祖父節點之右子節點鍵值」 ≧ x </strong></li>
+</ul>
+<p>針對下方全部綠色節點，全部鍵值都比 2 大，都比 80 小</p>
+<figure>
+<img src="\willywangkaa\images\SMMH.png" alt="SMMH"><figcaption>SMMH</figcaption>
+</figure>
+<blockquote>
+<p>由上方性質可以反映出</p>
+<p>「以節點邊號 i 為樹根之子樹中，其子孫最小值為左子節點，其子孫最大值為右子節點」</p>
+</blockquote>
+<h3 id="insert-data-in-smmh">Insert data in SMMH</h3>
+<p>步驟：</p>
+<ol type="1">
+<li>x 先置於最後一個節點之下一個位置 ( n = SMMH.size + 1 )</li>
+<li><strong>檢查「條件一」是否滿足，若違反「左右兄弟節點互換」</strong></li>
+<li><strong>檢查「條件二」、「條件三」是否滿足，若違反其中一者則調整之</strong></li>
+</ol>
+<h3 id="delete-min-in-smmh">Delete min in SMMH</h3>
+<p>步驟：</p>
+<ol type="1">
+<li>移出左子樹根之資料</li>
+<li><strong>刪除最後一個節點並將值暫存於 x</strong></li>
+<li><strong>x 暫置於左子樹根之空缺</strong></li>
+<li><strong>檢查「條件一」是否滿足，若違反「左右兄弟節點互換」</strong></li>
+<li><strong>檢查「條件二」是否滿足，若違反則調整之</strong></li>
+<li>重複步驟四、五直到完全符合條件</li>
+</ol>
+<p>Example</p>
+<figure>
+<img src="\willywangkaa\images\SMMH_2.png" alt="SMMH_2"><figcaption>SMMH_2</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\delSMMH_1.png" alt="delSMMH_1"><figcaption>delSMMH_1</figcaption>
+</figure>
+<p>在藍色中選出一個最小值</p>
+<figure>
+<img src="\willywangkaa\images\delSMMH_2.png" alt="delSMMH_2"><figcaption>delSMMH_2</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\delSMMH_3.png" alt="delSMMH_3"><figcaption>delSMMH_3</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\delSMMH_4.png" alt="delSMMH_4"><figcaption>delSMMH_4</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\delSMMH_5.png" alt="delSMMH_5"><figcaption>delSMMH_5</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\delSMMH_6.png" alt="delSMMH_6"><figcaption>delSMMH_6</figcaption>
+</figure>
+<h1 id="leftist-heap">Leftist heap</h1>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">Min-heap</th>
+<th style="text-align: center;">Leftist heap</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Insert data</td>
+<td style="text-align: center;">O(log n)</td>
+<td style="text-align: center;">O(log n)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Delete min</td>
+<td style="text-align: center;">O(log n)</td>
+<td style="text-align: center;">O(log n)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Merge heap</td>
+<td style="text-align: center;">O(n)：build heap</td>
+<td style="text-align: center;">O(log n)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="leftist-tree-minimum-leftist-tree">Leftist tree (Minimum leftist tree)</h2>
+<ul>
+<li>Shortest：到任一個外部節點之最短路徑長</li>
+</ul>
+<p>令 x 為「Extended binary tree」中某個節點，則</p>
+<p>Shortest(x) = <span class="math inline">\(\left\{\begin{matrix} 0 &amp;, x 為「外部節點」 \\ 1 + min｛Shortest(x\rightarrow Lchild), Shortest(x\rightarrow Rchild)｝ &amp; , 其他 \end{matrix}\right.\)</span></p>
+<ul>
+<li>Leftist tree
+<ul>
+<li>針對任何一個內部節點 x，其 Shortest(x→Lchild) ≧ Shortest(x→Rchild)</li>
+</ul></li>
+</ul>
+<h2 id="leftist-heap-1">Leftist heap</h2>
+<p>本身也為一棵「Leftist tree」且為一棵「Min-tree」( 父節點值 ≦ 子節點值 )</p>
+<h3 id="merge-leftist-heap-h_1-h_2">Merge leftist heap (<span class="math inline">\(H_1, H_2\)</span>)</h3>
+<p>步驟：</p>
+<ol type="1">
+<li>比較 <span class="math inline">\(H_1\)</span> 與 <span class="math inline">\(H_2\)</span> 之根節點值，找出最小值。( 假設 <span class="math inline">\(H_1\)</span> 之根節點比較小 )</li>
+<li><strong>以</strong> <span class="math inline">\(H_1\)</span> <strong>之根節點作為新樹之根節點，該新樹保留</strong> <span class="math inline">\(H_1\)</span> <strong>之左子樹</strong></li>
+<li>Merge( <span class="math inline">\(H_1\)</span> 之右子樹, <span class="math inline">\(H_2\)</span> ) <strong>成為新樹之右子樹</strong> (遞迴)</li>
+<li>檢查所有節點是否符合「Leftist tree」之性質，若不滿足則作「Swap」</li>
+</ol>
+<p>Example</p>
+<figure>
+<img src="\willywangkaa\images\leftisttreemerge_1.png" alt="leftisttreemerge_1"><figcaption>leftisttreemerge_1</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\leftisttreemerge_2.png" alt="leftisttreemerge_2"><figcaption>leftisttreemerge_2</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\leftisttreemerge_3.png" alt="leftisttreemerge_3"><figcaption>leftisttreemerge_3</figcaption>
+</figure>
+<h3 id="delete-min-in-leftist-heap">Delete-min in leftist heap</h3>
+<p>步驟：</p>
+<ol type="1">
+<li>刪除根節點並輸出，斷開鏈結後得兩子樹 <span class="math inline">\(H_1, H_2\)</span></li>
+<li>Merge(<span class="math inline">\(H_1, H_2\)</span>)</li>
+</ol>
+<h3 id="insert-data-in-leftist-heap">Insert data in leftist heap</h3>
+<p>步驟：</p>
+<ol type="1">
+<li>插入節點自成為一個「Leftist heap」<span class="math inline">\(H_2\)</span>，令被插入之「Leftist heap」為 <span class="math inline">\(H_1\)</span></li>
+<li>Merge(<span class="math inline">\(H_1, H_2\)</span>)</li>
+</ol>
+<h1 id="binominal-heap">Binominal heap</h1>
+<h2 id="binominal-tree">Binominal tree</h2>
+<blockquote>
+<p><strong>令樹高從 0 開始</strong></p>
+</blockquote>
+<ul>
+<li>高度為 0 的「Binominal tree」記為 <span class="math inline">\(B_0\)</span>，只有樹根一個節點</li>
+<li>高度為 k 的「Binaminal tree」 記為 <span class="math inline">\(B_k\)</span>，由兩棵 <span class="math inline">\(B_{k-1}\)</span> 組成 (任挑其中一點作為樹根)</li>
+</ul>
+<blockquote>
+<ol type="1">
+<li><span class="math inline">\(B_k\)</span> 中「i-th level」之節點為 <span class="math inline">\(\binom{k}{i}\)</span></li>
+<li><span class="math inline">\(B_k\)</span> 之節點總數為 <span class="math inline">\(2^k\)</span></li>
+</ol>
+</blockquote>
+<h2 id="binominal-heap-1">Binominal heap</h2>
+<p>是由 ≧ 0 棵「Binominal tree」所組成之集合 ( 森林 ) 且每棵樹也為「Min-tree」</p>
+<blockquote>
+<p>「Binominal heap」有 13 筆資料( 節點 )，則由 3 個「Binomal tree」組成</p>
+<ul>
+<li>若總結點數量 n = <span class="math inline">\(2^k\)</span>
+<ul>
+<li>「Binominal heap」只有一棵「Binominal tree」</li>
+</ul></li>
+<li>若總結點數量 n = <span class="math inline">\(2^k-1\)</span>
+<ul>
+<li>有 k 棵「Binominal tree」</li>
+</ul></li>
+<li>k = lg ( n+1 )</li>
+</ul>
+</blockquote>
+<h3 id="merge-binominal-heap">Merge binominal heap</h3>
+<p>步驟：</p>
+<ol type="1">
+<li>將具有相同高度之「Binominal tree」合併成一棵新的「Binominal tree」</li>
+<li>合併直到此<strong>集合中無相同高度之「Binominal 」</strong></li>
+</ol>
+<figure>
+<img src="\willywangkaa\images\leftistheapmerge_1.png" alt="leftistheapmerge_1"><figcaption>leftistheapmerge_1</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\leftistheapmerge_2.png" alt="leftistheapmerge_2"><figcaption>leftistheapmerge_2</figcaption>
+</figure>
+<blockquote>
+<ol type="1">
+<li>合併兩棵樹花費 O(1)，最多大約 lg n 棵樹合併 ( O(lg n) )</li>
+<li>上述之合併方法稱為「勤勞合併」( Hard-working merge )</li>
+<li><strong>另一種合併方法為「偷懶合併」( Lazy merge )</strong>
+<ul>
+<li><strong>相同高度不合併，純粹串接在同一集合中( O(1) )</strong></li>
+</ul></li>
+</ol>
+</blockquote>
+<h3 id="delete-min-in-binominal-heap">Delete-min in binominal heap</h3>
+<p>步驟：</p>
+<ol type="1">
+<li>從各個樹根找出最小值，令存在最小值數根之樹為 T，其餘樹之集合稱為 <span class="math inline">\(H_1\)</span> (Binominal heap)</li>
+<li>刪 T 的樹根會生成子樹，稱之為 <span class="math inline">\(H_2\)</span></li>
+<li>Merge(<span class="math inline">\(H_1, H_2\)</span>)</li>
+</ol>
+<blockquote>
+<ol type="1">
+<li>在所有樹根找最小值，因為最多才 lg (n+1) 棵樹，所以尋找最小值只需 O( log n ) 即可</li>
+<li>在作「Delete-min」時，必採取「勤勞合併」</li>
+</ol>
+</blockquote>
+<h3 id="insert-data-in-binominal-heap-h_1">Insert data in binominal heap (<span class="math inline">\(H_1\)</span>)</h3>
+<p>步驟：</p>
+<ol type="1">
+<li>插入之資料 x，自己成為一個「Binominal heap」( <span class="math inline">\(H_2\)</span> )</li>
+<li>Merge( <span class="math inline">\(H_1, H_2\)</span> )</li>
+</ol>
+<p>Example (<strong>Amotize 計算</strong>) 給 1, 2, 3, 4, 5, 6, 7 以建立「Binominal heap」</p>
+<figure>
+<img src="\willywangkaa\images\insertbinominalheap_1.png" alt="insertbinominalheap_1"><figcaption>insertbinominalheap_1</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\insertbinominalheap_2.png" alt="insertbinominalheap_2"><figcaption>insertbinominalheap_2</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\insertbinominalheap_3.png" alt="insertbinominalheap_3"><figcaption>insertbinominalheap_3</figcaption>
+</figure>
+<blockquote>
+<ul>
+<li>大部分插入的時間為 O( 1 )</li>
+<li>少部分插入的時間為 O( lg n )
+<ul>
+<li>當 n = <span class="math inline">\(2^k -1\)</span> 增加一個節點變成 <span class="math inline">\(2^k\)</span>，有 k 棵樹要合併成一棵</li>
+</ul></li>
+<li>Amotized cost：O( 1 )</li>
+</ul>
+</blockquote>
+<h2 id="binominal-heap-不同版本">Binominal heap ( 不同版本 )</h2>
+<figure>
+<img src="\willywangkaa\images\datastructurebinominalheap.png" alt="datastructurebinominalheap"><figcaption>datastructurebinominalheap</figcaption>
+</figure>
+<ul>
+<li>著重於「Data structure」之表示</li>
+</ul>
+<h1 id="fibonacci-heap">Fibonacci heap</h1>
+<blockquote>
+<p>[Corman] Fibonacci heap 也是用上述相同的資料結構</p>
+</blockquote>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Fibonacci heap</th>
+<th style="text-align: center;">Algorithm wiss版本</th>
+<th style="text-align: center;">Data structure 版本</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Insert data</td>
+<td style="text-align: center;"><strong>O(1)：Amotized</strong></td>
+<td style="text-align: center;"><strong>O(1)：Amotized</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Delete min</td>
+<td style="text-align: center;">O( log n )：採<strong>勤勞合併</strong></td>
+<td style="text-align: center;">O( log n )：採<strong>勤勞合併</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Merge</td>
+<td style="text-align: center;">O( log n )：採<strong>勤勞合併</strong></td>
+<td style="text-align: center;">O( 1 )：<strong>採偷懶合併</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Find-min</td>
+<td style="text-align: center;">O( log n )：有 log n 個樹根</td>
+<td style="text-align: center;">O( 1 )：採用「Min」指標</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fibonacci-heap---data-structure">Fibonacci heap - Data structure</h2>
+<p>為「Extended binominal heap」亦為「Binominal heap」之「Supperset」；除了「Binominal heap」之「Insert data」、「Merge」、「Delete min」，另外有：</p>
+<ol type="1">
+<li><strong>Delete x (任意刪除資料)：O( log n ) 考慮刪除資料恰為「Min-data」</strong></li>
+<li><strong>Decrease key of a node (減少某點之鍵值)：O(1) 採用「Amotized cost」</strong>
+<ul>
+<li>應用於圖論中，<strong>如「Minimum spanning tree」之「Kruskal、Prim 演算法」</strong></li>
+</ul></li>
+</ol>
+<h3 id="delete-x-in-fibonacci-heap">Delete x in fibonacci heap</h3>
+<figure>
+<img src="\willywangkaa\images\delfibonacciheap.png" alt="delfibonacciheap"><figcaption>delfibonacciheap</figcaption>
+</figure>
+<p>Example 刪除節點 12</p>
+<p>刪除該節點後，其兩棵子樹獨立，成為樹根之間之「Sibling」，<strong>並且遇到相同高度「Binominal tree」時不合併 ( 偷懶合併法 )</strong></p>
+<figure>
+<img src="\willywangkaa\images\delfibonacciheap_2.png" alt="delfibonacciheap_2"><figcaption>delfibonacciheap_2</figcaption>
+</figure>
+<h3 id="decrease-key-in-fibonacci-heap">Decrease key in fibonacci heap</h3>
+<figure>
+<img src="\willywangkaa\images\delfibonacciheap.png" alt="delfibonacciheap"><figcaption>delfibonacciheap</figcaption>
+</figure>
+<ul>
+<li>針對節點（1）減少 1：<strong>（1）→（0），其餘不動</strong>
+<ul>
+<li>O( 1 )</li>
+</ul></li>
+<li>針對節點（3）減少 1：<strong>（3）→（2），其餘不動</strong>
+<ul>
+<li><strong>O( 1 )</strong></li>
+</ul></li>
+<li>針對節點（3）減少 3：<strong>（3）→（0），其餘不動</strong>
+<ul>
+<li><strong>需要改變「Min」指標 O( 2 )</strong></li>
+</ul></li>
+<li>針對節點（15）減少 1：（15）→（14）
+<ul>
+<li>（14）&gt; （12）：不用更動 O( 1 )</li>
+</ul></li>
+<li><strong>針對節點（15）減少 4：（15）→（11）</strong>
+<ul>
+<li>（11）&lt; （12）：<strong>該子樹獨立 O( 1 )</strong>，成為樹根之間之「Sibling」並檢查是否比「Min」還小</li>
+</ul></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\decreasekeyfibonacciheap_1.png" alt="decreasekeyfibonacciheap_1"><figcaption>decreasekeyfibonacciheap_1</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\decreasekeyfibonacciheap_2.png" alt="decreasekeyfibonacciheap_2"><figcaption>decreasekeyfibonacciheap_2</figcaption>
+</figure>
+<blockquote>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Operation</th>
+<th style="text-align: center;">Binary heap (worst cast)</th>
+<th style="text-align: center;">Fibonacci heap (amotized)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Make empty heap</td>
+<td style="text-align: center;"><span class="math inline">\(\Theta(1)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\Theta(1)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Insert x</td>
+<td style="text-align: center;"><span class="math inline">\(\Theta(\log n)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\Theta(1)\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Extract min</td>
+<td style="text-align: center;"><span class="math inline">\(\Theta(\log n)\)</span></td>
+<td style="text-align: center;"><strong>O( n )</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Union (Merge)</td>
+<td style="text-align: center;"><span class="math inline">\(\Theta(n)\)</span>：Build heap</td>
+<td style="text-align: center;"><span class="math inline">\(\Theta(1)\)</span>：<strong>偷懶合併</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Decrease key</td>
+<td style="text-align: center;"><span class="math inline">\(\Theta(\log n)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\Theta(1)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Delete x</td>
+<td style="text-align: center;"><span class="math inline">\(\Theta(\log n)\)</span>：視為子 heap 中 Del-min</td>
+<td style="text-align: center;"><strong>O(log n)</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Find min</td>
+<td style="text-align: center;"><span class="math inline">\(\Theta(1)\)</span>：樹根</td>
+<td style="text-align: center;"><span class="math inline">\(\Theta(1)\)</span>：採「Min pointer」</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Decrease key in binary heap ( <span class="math inline">\(\Theta(\log n)\)</span> )</li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\decreasekeyinbinaryheap.png" alt="decreasekeyinbinaryheap"><figcaption>decreasekeyinbinaryheap</figcaption>
+</figure>
+</blockquote>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/willywangkaa/tags/Heap/" rel="tag"># Heap</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/willywangkaa/2018/10/28/Data-structure-Advance-binary-search-tree/" rel="next" title="Data structure - Advance binary search tree">
+                <i class="fa fa-chevron-left"></i> Data structure - Advance binary search tree
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/willywangkaa/images/avatar_me.gif"
+                alt="Willy Wang (willywangkaa)" />
+            
+              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
+              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/willywangkaa/archives/">
+                
+                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/willywangkaa/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/willywangkaa/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">72</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://typora.io/" title="Typora" target="_blank">Typora</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.geeksforgeeks.org/" title="GeeksforGeeks" target="_blank">GeeksforGeeks</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.codecogs.com/latex/eqneditor.php" title="Online LaTeX Equation Editor" target="_blank">Online LaTeX Equation Editor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://allem40306.github.io/blog/" title="CodingJack" target="_blank">CodingJack</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#binary-heap"><span class="nav-number">1.</span> <span class="nav-text">Binary heap</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#build-heap"><span class="nav-number">1.1.</span> <span class="nav-text">Build heap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#top-down"><span class="nav-number">1.1.1.</span> <span class="nav-text">Top down</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#buttum-up"><span class="nav-number">1.1.2.</span> <span class="nav-text">Buttum up</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#time-complexity"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">Time complexity</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#double-ended-priority-queue"><span class="nav-number">2.</span> <span class="nav-text">Double ended priority queue</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#min-max-heap"><span class="nav-number">2.1.</span> <span class="nav-text">Min-max heap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#insert-node-in-min-max-heap"><span class="nav-number">2.1.1.</span> <span class="nav-text">Insert node in min-max heap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete-min-in-min-max-heap"><span class="nav-number">2.1.2.</span> <span class="nav-text">Delete-min in min-max heap</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#delete-max"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">Delete-max</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#double-ended-heap-deap"><span class="nav-number">2.2.</span> <span class="nav-text">Double-ended heap (DEAP)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#insert-data-in-deap"><span class="nav-number">2.2.1.</span> <span class="nav-text">Insert data in deap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete-data-in-deap"><span class="nav-number">2.2.2.</span> <span class="nav-text">Delete data in deap</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#symmetric-min-max-heap-smmh"><span class="nav-number">2.3.</span> <span class="nav-text">Symmetric min-max heap (SMMH)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#insert-data-in-smmh"><span class="nav-number">2.3.1.</span> <span class="nav-text">Insert data in SMMH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete-min-in-smmh"><span class="nav-number">2.3.2.</span> <span class="nav-text">Delete min in SMMH</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leftist-heap"><span class="nav-number">3.</span> <span class="nav-text">Leftist heap</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#leftist-tree-minimum-leftist-tree"><span class="nav-number">3.1.</span> <span class="nav-text">Leftist tree (Minimum leftist tree)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#leftist-heap-1"><span class="nav-number">3.2.</span> <span class="nav-text">Leftist heap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#merge-leftist-heap-h_1-h_2"><span class="nav-number">3.2.1.</span> <span class="nav-text">Merge leftist heap (\(H_1, H_2\))</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete-min-in-leftist-heap"><span class="nav-number">3.2.2.</span> <span class="nav-text">Delete-min in leftist heap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#insert-data-in-leftist-heap"><span class="nav-number">3.2.3.</span> <span class="nav-text">Insert data in leftist heap</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#binominal-heap"><span class="nav-number">4.</span> <span class="nav-text">Binominal heap</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#binominal-tree"><span class="nav-number">4.1.</span> <span class="nav-text">Binominal tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#binominal-heap-1"><span class="nav-number">4.2.</span> <span class="nav-text">Binominal heap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#merge-binominal-heap"><span class="nav-number">4.2.1.</span> <span class="nav-text">Merge binominal heap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete-min-in-binominal-heap"><span class="nav-number">4.2.2.</span> <span class="nav-text">Delete-min in binominal heap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#insert-data-in-binominal-heap-h_1"><span class="nav-number">4.2.3.</span> <span class="nav-text">Insert data in binominal heap (\(H_1\))</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#binominal-heap-不同版本"><span class="nav-number">4.3.</span> <span class="nav-text">Binominal heap ( 不同版本 )</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#fibonacci-heap"><span class="nav-number">5.</span> <span class="nav-text">Fibonacci heap</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#fibonacci-heap---data-structure"><span class="nav-number">5.1.</span> <span class="nav-text">Fibonacci heap - Data structure</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#delete-x-in-fibonacci-heap"><span class="nav-number">5.1.1.</span> <span class="nav-text">Delete x in fibonacci heap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#decrease-key-in-fibonacci-heap"><span class="nav-number">5.1.2.</span> <span class="nav-text">Decrease key in fibonacci heap</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/willywangkaa/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/affix.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/willywangkaa/js/src/schemes/pisces.js?v=6.0.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/willywangkaa/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/willywangkaa/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://https-wangwilly-github-io-blog.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/10/31/Data-structure-Advance-heap/';
+        this.page.identifier = '2018/10/31/Data-structure-Advance-heap/';
+        this.page.title = 'Data structure - Advance heap';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-wangwilly-github-io-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/willywangkaa/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/willywangkaa/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>
