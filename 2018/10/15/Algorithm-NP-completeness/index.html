@@ -117,7 +117,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/nprelation.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/longestpathproblem_NPC.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/TSP_NPC.png">
-<meta property="og:updated_time" content="2018-10-15T10:44:37.750Z">
+<meta property="og:updated_time" content="2018-11-01T16:58:55.667Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithm - NP-completeness">
 <meta name="twitter:description" content="基本概念  目的  將問題依照難度做分類 如何定義 A 問題比 B 問題難？ 如何分類？ 分幾類？   Decision problem 答案只有 Yse/No 的問題  Ex  一個圖中有無「Hamiltonian cycle」？   每一個最佳化問題 ( Optimization problem ) 均可用參數化的方式化成一對應的「Decision prob">
@@ -367,7 +367,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-10-15T18:44:37+08:00">2018-10-15</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2018-11-02T00:58:55+08:00">2018-11-02</time>
             
           </span>
 
@@ -586,7 +586,7 @@
 <p><strong>第一個 NP-complete 問題</strong></p>
 <p>給定一個「Conjection normal form」<span class="math inline">\(F\)</span> ，問<strong>有無</strong>一組「Assignment」可使 <span class="math inline">\(F\)</span> 輸出為 True。</p>
 <blockquote>
-<p>令 <span class="math inline">\(F = (x_1 \or \bar{x_2} \or \bar{x_3}) \and (\bar{x_1} \or x_3) \and (x_2 \or \bar{x_3})\)</span></p>
+<p>令 <span class="math inline">\(F = (x_1 \vee \bar{x_2} \vee \bar{x_3}) \wedge (\bar{x_1} \vee x_3) \wedge (x_2 \vee \bar{x_3})\)</span></p>
 <p>當給定 <span class="math inline">\(x_1 = true、x_2 = true、x_3 = true\)</span> ，<span class="math inline">\(F\)</span> 的輸出也為 True， 所以 <span class="math inline">\(F\)</span> 在 SAT problem 的輸入，則其解為 True。</p>
 </blockquote>
 <blockquote>
@@ -824,10 +824,6 @@ Traveling \; salesman \; prblem
                 <div class="site-state-item site-state-categories">
                   <a href="/willywangkaa/categories/index.html">
                     
-                    
-                      
-                    
-                      
                     
                       
                     
