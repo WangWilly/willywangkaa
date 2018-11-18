@@ -106,7 +106,7 @@
 <meta name="description" content="coding, computer relate">
 <meta property="og:type" content="website">
 <meta property="og:title" content="WillyWangkaa">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/categories/Data-structure/index.html">
+<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/categories/Data-Structure/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
 <meta property="og:description" content="coding, computer relate">
 <meta property="og:locale" content="zh-tw">
@@ -119,7 +119,7 @@
 
 
 
-  <link rel="canonical" href="http://WangWilly.github.io/willywangkaa/categories/Data-structure/"/>
+  <link rel="canonical" href="http://WangWilly.github.io/willywangkaa/categories/Data-Structure/"/>
 
 
 
@@ -128,7 +128,7 @@
     sidebar: "",
   };
 </script>
-  <title>Category: Data structure | WillyWangkaa</title>
+  <title>Category: Data Structure | WillyWangkaa</title>
   
 
 
@@ -297,7 +297,7 @@
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h1>Data structure<small>Category</small>
+        <h1>Data Structure<small>Category</small>
         </h1>
       </div>
 
@@ -309,37 +309,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/willywangkaa/2018/10/31/Data-structure-Advance-heap/" itemprop="url">
+            <a class="post-title-link" href="/willywangkaa/2018/11/17/Data-structure-Search-and-sort/" itemprop="url">
               
-                <span itemprop="name">Data structure - Advance heap</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-31T13:37:00+08:00"
-              content="2018-10-31" >
-          10-31
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/willywangkaa/2018/10/28/Data-structure-Advance-binary-search-tree/" itemprop="url">
-              
-                <span itemprop="name">Data structure - Advance binary search tree</span>
+                <span itemprop="name">Data structure - Search and sort</span>
               
             </a>
         
@@ -347,65 +319,9 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-28T20:28:00+08:00"
-              content="2018-10-28" >
-          10-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/willywangkaa/2018/10/28/Data-structure-Tree/" itemprop="url">
-              
-                <span itemprop="name">Data structure - Tree</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-28T20:11:00+08:00"
-              content="2018-10-28" >
-          10-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/willywangkaa/2018/10/21/Algorithm-Recursive-time-function/" itemprop="url">
-              
-                <span itemprop="name">Algorithm - Recursive time function</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-21T13:12:00+08:00"
-              content="2018-10-21" >
-          10-21
+              datetime="2018-11-17T19:47:00+08:00"
+              content="2018-11-17" >
+          11-17
         </time>
       </div>
 
@@ -467,7 +383,7 @@
                 
                   <a href="/willywangkaa/archives/">
                 
-                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -502,7 +418,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
+                      
+                    
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -659,7 +577,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">72</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">74</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1204,6 +1126,112 @@
     $('.popup').click(function(e){
       e.stopPropagation();
     });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/willywangkaa/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.loadBookmark();
+  
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>
+ });
     $(document).on('keyup', function (event) {
       var shouldDismissSearchPopup = event.which === 27 &&
         $('.search-popup').is(':visible');
