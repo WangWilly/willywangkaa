@@ -119,7 +119,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/KPstatesearchtree.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/matrixchaindp.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/martixchainproblem_2.png">
-<meta property="og:updated_time" content="2018-09-23T02:55:21.372Z">
+<meta property="og:updated_time" content="2018-11-19T09:56:18.707Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithm - Dynamic programming">
 <meta name="twitter:description" content="Dynamic programming 將已計算的結果記錄在表格中的技巧，目的是為了要避免重複計算相同子問題，以「Button up」的方式實踐。  為何要使用這種方法，以費氏數列程式開始討論。  \[ F_n = \left\{\begin{matrix} 0 &amp;amp; , if \; n = 0\\ 1 &amp;amp; , if \; n = 1\\ F_{n-1} + F_{">
@@ -369,7 +369,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-09-23T10:55:21+08:00">2018-09-23</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2018-11-19T17:56:18+08:00">2018-11-19</time>
             
           </span>
 
@@ -926,6 +926,10 @@ c[i-1, j-1] + 1 &amp; , if \; X[i] = Y[j] &amp; \\
 0&amp; , if \; X[i] \ne Y[j] \; &amp; （該兩個字絕對不會同時出現在LCS）
 \end{matrix}\right.
 \]</span></p>
+<ul>
+<li>Algorithm</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// X[1...n]</span><br><span class="line">// Y[1...m]</span><br><span class="line">lcstring = &#123;&#125;</span><br><span class="line">length = 0</span><br><span class="line">// initialize</span><br><span class="line">for i &lt;- 0 to n</span><br><span class="line">    c[0, i] &lt;- 0</span><br><span class="line">for i &lt;- 0 to m</span><br><span class="line">    c[i, 0] &lt;- 0</span><br><span class="line"></span><br><span class="line">for i &lt;- 1 to m</span><br><span class="line">    for j &lt;- 1 to n &#123;</span><br><span class="line">        if(X[i] != Y[i])</span><br><span class="line">            c[i, j] = 0</span><br><span class="line">        else &#123;</span><br><span class="line">            c[i, j] = c[i-1, j-1] + 1</span><br><span class="line">            if(length &lt; c[i, j]) &#123;</span><br><span class="line">                length = c[i, j]</span><br><span class="line">                lcstring = X[(i-length+1)...i]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <h2 id="matrix-chain-multiplication">Matrix Chain Multiplication</h2>
 <ul>
 <li>Input：
@@ -1221,7 +1225,7 @@ MIN_{i\leq k \leq j-1}(m[i, k] + m[k+1, j] + P_i\times P_k \times P_j) &amp; , i
                 
                   <a href="/willywangkaa/archives/">
                 
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
