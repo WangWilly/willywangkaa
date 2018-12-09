@@ -140,7 +140,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530174756704.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1529287297237.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1529287327536.png">
-<meta property="og:updated_time" content="2018-08-29T16:44:45.560Z">
+<meta property="og:updated_time" content="2018-12-04T08:56:57.950Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Operating System - Deadlock">
 <meta name="twitter:description" content="Deadlock  系統中存在一組 processes，彼此形成 循環等待 的情況，造成這些 processes 皆無法往下執行，並降低產量 ( throughput ) 的現象。  1530163891325   死結成立的四個必要條件 ( 所以有一個不成立，則死結必不發生，但是若四個條件全部成立時，死結不一定會發生。 )If there are 4 conditions are">
@@ -390,7 +390,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-08-30T00:44:45+08:00">2018-08-30</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2018-12-04T16:56:57+08:00">2018-12-04</time>
             
           </span>
 
@@ -826,7 +826,7 @@
 <p>系統若有 n 個 processes、m 個 resources intsance ( 單一種類 )，<strong>且滿足下列條件</strong>：</p>
 <ol type="1">
 <li><span class="math inline">\(1 \leq Max_i \leq m\)</span> ，單一 Process 不得要求超過該種類資源的上限。</li>
-<li><span class="math inline">\(\sum_{i = 1}^n Max_i &lt; n + m \Rightarrow \sum_{i = 1}^n Max_i - n &lt; m\)</span> ，假設目前所有的 processes 都剩下一個資源未取得，而剩下的資源小於 m 代表的意思就是 $ m - (_{i = 1}^n Max_i - n ) 1$，<strong>代表我們還有至少一個以上的資源可以使某些 processes 可以先結束</strong>，接著回收的資源就可以再分配給其他 processes。</li>
+<li><span class="math inline">\(\sum_{i = 1}^n Max_i &lt; n + m \Rightarrow \sum_{i = 1}^n Max_i - n &lt; m\)</span> ，假設目前所有的 processes 都剩下一個資源未取得，而剩下的資源小於 m 代表的意思就是 $ m - （_{i = 1}^n (Max_i - n) ）1$，<strong>代表我們還有至少一個以上的資源可以使某些 processes 可以先結束</strong>，接著回收的資源就可以再分配給其他 processes。</li>
 </ol>
 <p>則<strong>系統是不可能會有死結的 ( Deadlock free )</strong>。</p>
 <ul>

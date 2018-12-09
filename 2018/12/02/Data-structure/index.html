@@ -127,6 +127,11 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543737721578.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543738191981.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543739868201.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/johnsonalgorithm_1.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/johnsonalgorithm_2.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/johnsonalgorithm_3.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/johnsonalgorithm_4.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/johnsonalgorithm_5.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543740383474.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543740792975.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543741711989.png">
@@ -142,7 +147,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543748935456.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543749321235.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543749964256.png">
-<meta property="og:updated_time" content="2018-12-02T11:46:21.956Z">
+<meta property="og:updated_time" content="2018-12-09T09:42:53.769Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Data structure - Graph">
 <meta name="twitter:description" content="The structure of graph [Note] Adjacency list 有一圖 G = (V, E), |V| = n, |E| = e，需要 n 條相鄰串列（vertex[1…n] : pointer）來表達，其中 vertex[i] 代表頂點 i 的相鄰串列，紀錄所有與頂點 i 相鄰的頂點編號  以「相鄰串列」表示無向圖時，因為 邊(i,j) = 邊(j,i)（一條邊">
@@ -392,7 +397,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-12-02T19:46:21+08:00">2018-12-02</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2018-12-09T17:42:53+08:00">2018-12-09</time>
             
           </span>
 
@@ -1035,6 +1040,107 @@
 <li>Algorithm</li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Cost[1..n, 1..n]: 邊的權重集合</span></span><br><span class="line"><span class="comment">// n: 頂點數</span></span><br><span class="line"><span class="comment">// A[1..n,1..n]: A^k[1..n,1..n]</span></span><br><span class="line">FloydWarshell(Cost, n, A) &#123;</span><br><span class="line">    <span class="comment">// Initialization</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++) </span><br><span class="line">            A[i,j] = Cost[i,j];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 求取 A^1, A^2, A^3, ..., A^n</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= n; k++) &#123;              <span class="comment">// ↑</span></span><br><span class="line">        tmpA[<span class="number">1.</span>.n,<span class="number">1.</span>.n];                       <span class="comment">// ︳</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)            <span class="comment">// ︳</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)        <span class="comment">//  O(|V|^3)</span></span><br><span class="line">                <span class="keyword">if</span>(A[i,j]&gt;A[i,k]+A[k,j])       <span class="comment">// ︳</span></span><br><span class="line">                    tmpA[i,j] = A[i,k]+A[k,j]; <span class="comment">// ︳</span></span><br><span class="line">        copy(tmpA, A);                         <span class="comment">// ︳</span></span><br><span class="line">    &#125;                                          <span class="comment">// ↓</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="johnsons-algorithm">Johnson’s algorithm</h2>
+<p>All pair shortest path problem for <strong>sparse graph</strong></p>
+<blockquote>
+<ol type="1">
+<li>一個 n 個頂點的<strong>無負邊有向圖</strong>上，可以在每個點上做一次「Dijkstra’s algorithm」以求出「All pair shortest path」
+<ul>
+<li>時間複雜度（All pair shortest path）
+<ul>
+<li>[DS 版本：鄰接矩陣] |V| × O(<span class="math inline">\(|V|^2\)</span>) = O(<span class="math inline">\(|V|^3\)</span>)</li>
+<li>[Algorithm 版本：鄰接串列] |V|×O(|E|log|V|)（Binary heap）；<strong>|V|×O(|V|log|V|+|E|)（Fibonacci heap）</strong></li>
+</ul></li>
+</ul></li>
+<li>一個 n 個頂點的<strong>有負邊有向圖</strong>上，可以在每個點上做一次「Bellman-Ford’s algorithm」以求出「All pair shortest path」
+<ul>
+<li>時間複雜度（All pair shortest path）
+<ul>
+<li><strong>|V|×O(|V|×|E|)</strong> = |V|×O(|<span class="math inline">\(V^3\)</span>|) = O(|<span class="math inline">\(V^4\)</span>|)</li>
+</ul></li>
+</ul></li>
+</ol>
+<p>「Johnson’s algorithm」藉由融合「Bellman-Ford’s algorithm」可以<strong>對負邊進行運算的優點</strong>，與「Dijkstra’s algorithm」在<strong>邊數很少時可以讓複雜度降低的優點</strong>，所以在「Sparse graph」計算「All pair shortest path」時，可以因為邊數少而降低時間複雜度，又不因負邊而無法計算正確的數值</p>
+<ul>
+<li>演算法概念
+<ul>
+<li><strong>以「Bellman-Ford’s algorithm」解決負邊問題</strong></li>
+<li><strong>使用「Dijkstra’s algorithm」計算無負邊圖的「Shortest path」</strong></li>
+</ul></li>
+</ul>
+</blockquote>
+<p>給定一圖 G = ＜V,E＞</p>
+<p>步驟：</p>
+<ol type="1">
+<li>加入一個新的頂點 s 與 G 上的每個點連接成為新的圖 G’ = ＜V’, E’＞，且每條新增的邊之權重為 0</li>
+<li>對 s 頂點執行「Bellman-ford’s algorithm」（Single source shortest path）
+<ul>
+<li><strong>令 s 到其他 G 上的頂點 v 之「Shortest path」為 h(v)</strong></li>
+</ul></li>
+<li>對 G’ 上每個邊進行「重設權重」（Reweight）
+<ul>
+<li><span class="math inline">\(\hat{w}(u,v) = w(u,v) + h(u)-h(v)\)</span></li>
+</ul></li>
+<li>將 G’ 上 s 點與連接的邊移除，保留「重設權重」的邊，對剩下的每個頂點做「Dijkstra’s algorithm」</li>
+</ol>
+<p>時間複雜度：（等價於對每個頂點做「Dijkstra’s algorithm」，只是需要前置處理）</p>
+<ul>
+<li>$O(|V|) + O(|V||E|) + O(|E|) + |V|O(|V||V|+|E|) = O(|V|^2|V|+|V||E|) $</li>
+<li>（新增|V|條邊）+（修正負邊）+（重設權重）+（對每個頂點做「Dijkstra’s algorithm」）</li>
+</ul>
+<p><strong>Example（證明「Johnson’s algorithm」對邊的修正必不會產生負邊）</strong></p>
+<ul>
+<li>考慮一個「強連通有向圖」G = ＜V,E＞，並且圖上<strong>存在負邊</strong>但無負環路</li>
+<li>假設 c(u,v) 表示 u 到 v 頂點的權重</li>
+<li><p>假設 d(u,v) 表示 u 到 v 頂點的最小權重</p></li>
+<li><p>證明 c(w,v) + d(u,w) - d(u,v) ≧ 0，對於圖上任意三個相異頂點</p></li>
+</ul>
+<p>令 u 到 v 頂點的「Shortest path」為 d(u,v) ，所以<strong>任何其他從 u 到 v 頂點的路徑必 ≧ d(u,v)</strong>，且 d(u,w)+c(w,v) 亦為一個從 u 到 v 頂點的路徑，所以：</p>
+<p><span class="math inline">\(d(u,w) + c(w,v) \geq d(u,v) \Rightarrow c(w,v) + d(u,w) - d(u,v) \geq 0\)</span></p>
+<figure>
+<img src="\willywangkaa\images\johnsonalgorithm_1.png" alt="johnsonalgorithm_1"><figcaption>johnsonalgorithm_1</figcaption>
+</figure>
+<p><strong>Example（證明「重設權重」的圖 G’，其計算的「All pair shortest path」與圖 G 計算相等）</strong></p>
+<ul>
+<li>考慮一個「強連通有向圖」G = ＜V,E＞，並且圖上<strong>存在負邊</strong>但無負環路</li>
+<li>假設 c(u,v) 表示 u 到 v 頂點的權重</li>
+<li><p>假設 d(u,v) 表示 u 到 v 頂點的最小權重</p></li>
+<li><p>新增一頂點 s 並對各個頂點連接且權重為 0，將每個邊以 c(u,v) + d(s,u) - d(s,v)（c(u,v)+h(u)-h(v)）的數值重設權重後成為 G’，證明其「Shortest path」在 G 上亦成立</p></li>
+</ul>
+<p>考慮 P = ＜<span class="math inline">\(u = v_0, v_1, \ldots, v = v_k\)</span>＞ 為一條從 u 到 v 的一條路徑</p>
+<p>令 <span class="math inline">\(\hat{w}(u,v) = c(u, v)+d(s,u) - d(s,v)\)</span>，則該路徑的權重總和為：</p>
+<p><span class="math inline">\(\hat{w}(P) = \sum_{i = 1}^k \hat{w}(v_{i-1}, v_i)\)</span></p>
+<p>將重設的權重值代入：</p>
+<p><span class="math inline">\(\Rightarrow \sum_{i = 1}^k [c(v_{i-1},v_i)+d(s,v_{i-1}) - d(s, v_i)] = \sum_{i = 1}^k [c(v_{i-1},v_i)+h(v_{i-1}) - h(v_i)]\)</span></p>
+<p>展開相消：</p>
+<p><span class="math inline">\(\Rightarrow (\sum_{i=1}^kc(v_{i-1}, v_i)) + h(v_0) - h(v_k) = w(P)+h(v_0)-h(v_k)\\ \Rightarrow \hat{w}(P) = w(P)+h(v_0)-h(v_k)\)</span></p>
+<p>因為 <span class="math inline">\(h(v_0)\)</span> 與 h(<span class="math inline">\(v_1\)</span>) 為<strong>固定值</strong>，所以當 <span class="math inline">\(\hat{w}(P)\)</span> 愈小時，<strong>等價於</strong> <span class="math inline">\(w(P)\)</span> 也隨之愈小，且不會因為路徑長短而讓修正的邊影響答案（見下例）</p>
+<p><strong>Example（失敗的「Reweight」方法）</strong></p>
+<ol type="1">
+<li>給定一圖 G = ＜V,E＞，而 P 為一條從 s 到 t 頂點的「Shortest path」，假設將 G 上的<strong>每條邊的權重減一</strong>成為 G’，請問是否 P 路徑仍為 s 到 t 在 G’ 中的「Shortest path」？</li>
+<li>給定一圖 G = ＜V,E＞，而 P 為一條從 s 到 t 頂點的「Shortest path」，假設將 G 上的<strong>每條邊的權重改為</strong> <span class="math inline">\(\hat{w}(u,v) = w(u, v) - w^＊\)</span> 成為 G’，請問是否 P 路徑仍為 s 到 t 在 G’ 中的「Shortest path」？
+<ul>
+<li><span class="math inline">\(w^＊ = min_{(u,v)\in G.E}｛w(u, v)｝\)</span></li>
+</ul></li>
+</ol>
+<p>（1）否，因為<strong>若路徑越長，權重扣除的越多</strong>：</p>
+<p>從 u 到 v 頂點的原始「Shortest path」為 ＜u, v＞</p>
+<figure>
+<img src="\willywangkaa\images\johnsonalgorithm_2.png" alt="johnsonalgorithm_2"><figcaption>johnsonalgorithm_2</figcaption>
+</figure>
+<p>因為路徑 ＜u,x,y,v＞ 比路徑 ＜u,v＞ 還要長，所以扣除的權重也越多（每條邊的權重扣 1），所以使 ＜u,x,y,v＞ 成為 u 到 v 的新「Shortest path」</p>
+<figure>
+<img src="\willywangkaa\images\johnsonalgorithm_3.png" alt="johnsonalgorithm_3"><figcaption>johnsonalgorithm_3</figcaption>
+</figure>
+<p>（2）否，概念與上題一致：</p>
+<p>從 u 到 v 頂點的原始「Shortest path」為 ＜u, x, y, v＞</p>
+<figure>
+<img src="\willywangkaa\images\johnsonalgorithm_4.png" alt="johnsonalgorithm_4"><figcaption>johnsonalgorithm_4</figcaption>
+</figure>
+<p>因為路徑 ＜u,x,y,v＞ 比路徑 ＜u,v＞ 還要長，所以扣除的權重也越多（每條邊的權重扣 -5；應該說增加權重），所以使 ＜u,v＞ 成為 u 到 v 的新「Shortest path」</p>
+<figure>
+<img src="\willywangkaa\images\johnsonalgorithm_5.png" alt="johnsonalgorithm_5"><figcaption>johnsonalgorithm_5</figcaption>
+</figure>
 <h1 id="activity-on-vertex-network-and-topological-sort">Activity on vertex network and topological sort</h1>
 <p>令 G = ＜V,E＞ 為有向圖，若為一個「Activity on vertex network」，則：</p>
 <ol type="1">
@@ -1869,7 +1975,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#the-structure-of-graph"><span class="nav-number">1.</span> <span class="nav-text">The structure of graph</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#note-adjacency-list"><span class="nav-number">1.1.</span> <span class="nav-text">[Note] Adjacency list</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相鄰串列與相鄰陣列比較表"><span class="nav-number">1.2.</span> <span class="nav-text">相鄰串列與相鄰陣列比較表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#adjacency-multilist相鄰多元串列"><span class="nav-number">1.3.</span> <span class="nav-text">Adjacency multilist（相鄰多元串列）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#index-array"><span class="nav-number">1.4.</span> <span class="nav-text">Index array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#incident-matrix-離散數學"><span class="nav-number">1.5.</span> <span class="nav-text">Incident matrix （離散數學）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#圖的追蹤"><span class="nav-number">2.</span> <span class="nav-text">圖的追蹤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ds-書籍版本"><span class="nav-number">2.1.</span> <span class="nav-text">DS 書籍版本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#depth-first-search"><span class="nav-number">2.1.1.</span> <span class="nav-text">Depth first search</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#breath-first-search"><span class="nav-number">2.1.2.</span> <span class="nav-text">Breath first search</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#algorithm-書籍版本"><span class="nav-number">2.2.</span> <span class="nav-text">Algorithm 書籍版本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#depth-first-search-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">Depth first search</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#有向圖"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">有向圖</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#breath-first-search-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">Breath first search</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#追蹤的應用"><span class="nav-number">2.3.</span> <span class="nav-text">追蹤的應用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spanning-tree"><span class="nav-number">3.</span> <span class="nav-text">Spanning tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#minimum-spanning-tree"><span class="nav-number">3.1.</span> <span class="nav-text">Minimum spanning tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#kruskals-algorithm-algorithm-書上版本"><span class="nav-number">3.1.1.</span> <span class="nav-text">Kruskal’s algorithm [Algorithm 書上版本]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prims-algorithm-ds-書上版本"><span class="nav-number">3.1.2.</span> <span class="nav-text">Prim’s algorithm [DS 書上版本]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sollins-algorithm"><span class="nav-number">3.1.3.</span> <span class="nav-text">Sollin’s algorithm</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#shortest-path-problem"><span class="nav-number">4.</span> <span class="nav-text">Shortest path problem</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dijkstras-algorithm-ds-書上版本"><span class="nav-number">4.1.</span> <span class="nav-text">Dijkstra’s algorithm [DS 書上版本]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bellman-ford-algorithm"><span class="nav-number">4.2.</span> <span class="nav-text">Bellman-Ford algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#floyd-warshell-algorithm"><span class="nav-number">4.3.</span> <span class="nav-text">Floyd-Warshell algorithm</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#activity-on-vertex-network-and-topological-sort"><span class="nav-number">5.</span> <span class="nav-text">Activity on vertex network and topological sort</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#activity-on-edge-network-critical-path-and-critical-task"><span class="nav-number">6.</span> <span class="nav-text">Activity on edge network, critical path and critical task</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#articulation-point"><span class="nav-number">7.</span> <span class="nav-text">Articulation point</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#biconnected-graph"><span class="nav-number">7.1.</span> <span class="nav-text">Biconnected graph</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#the-structure-of-graph"><span class="nav-number">1.</span> <span class="nav-text">The structure of graph</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#note-adjacency-list"><span class="nav-number">1.1.</span> <span class="nav-text">[Note] Adjacency list</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相鄰串列與相鄰陣列比較表"><span class="nav-number">1.2.</span> <span class="nav-text">相鄰串列與相鄰陣列比較表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#adjacency-multilist相鄰多元串列"><span class="nav-number">1.3.</span> <span class="nav-text">Adjacency multilist（相鄰多元串列）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#index-array"><span class="nav-number">1.4.</span> <span class="nav-text">Index array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#incident-matrix-離散數學"><span class="nav-number">1.5.</span> <span class="nav-text">Incident matrix （離散數學）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#圖的追蹤"><span class="nav-number">2.</span> <span class="nav-text">圖的追蹤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ds-書籍版本"><span class="nav-number">2.1.</span> <span class="nav-text">DS 書籍版本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#depth-first-search"><span class="nav-number">2.1.1.</span> <span class="nav-text">Depth first search</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#breath-first-search"><span class="nav-number">2.1.2.</span> <span class="nav-text">Breath first search</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#algorithm-書籍版本"><span class="nav-number">2.2.</span> <span class="nav-text">Algorithm 書籍版本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#depth-first-search-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">Depth first search</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#有向圖"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">有向圖</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#breath-first-search-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">Breath first search</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#追蹤的應用"><span class="nav-number">2.3.</span> <span class="nav-text">追蹤的應用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spanning-tree"><span class="nav-number">3.</span> <span class="nav-text">Spanning tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#minimum-spanning-tree"><span class="nav-number">3.1.</span> <span class="nav-text">Minimum spanning tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#kruskals-algorithm-algorithm-書上版本"><span class="nav-number">3.1.1.</span> <span class="nav-text">Kruskal’s algorithm [Algorithm 書上版本]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prims-algorithm-ds-書上版本"><span class="nav-number">3.1.2.</span> <span class="nav-text">Prim’s algorithm [DS 書上版本]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sollins-algorithm"><span class="nav-number">3.1.3.</span> <span class="nav-text">Sollin’s algorithm</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#shortest-path-problem"><span class="nav-number">4.</span> <span class="nav-text">Shortest path problem</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dijkstras-algorithm-ds-書上版本"><span class="nav-number">4.1.</span> <span class="nav-text">Dijkstra’s algorithm [DS 書上版本]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bellman-ford-algorithm"><span class="nav-number">4.2.</span> <span class="nav-text">Bellman-Ford algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#floyd-warshell-algorithm"><span class="nav-number">4.3.</span> <span class="nav-text">Floyd-Warshell algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#johnsons-algorithm"><span class="nav-number">4.4.</span> <span class="nav-text">Johnson’s algorithm</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#activity-on-vertex-network-and-topological-sort"><span class="nav-number">5.</span> <span class="nav-text">Activity on vertex network and topological sort</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#activity-on-edge-network-critical-path-and-critical-task"><span class="nav-number">6.</span> <span class="nav-text">Activity on edge network, critical path and critical task</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#articulation-point"><span class="nav-number">7.</span> <span class="nav-text">Articulation point</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#biconnected-graph"><span class="nav-number">7.1.</span> <span class="nav-text">Biconnected graph</span></a></li></ol></li></ol></div>
             
 
           </div>
