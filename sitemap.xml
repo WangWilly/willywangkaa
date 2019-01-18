@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://WangWilly.github.io/willywangkaa/2019/01/18/Algorithm-Minimum-edit-cost-problem/</loc>
+    
+    <lastmod>2019-01-18T08:19:01.327Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://WangWilly.github.io/willywangkaa/2018/10/28/Data-structure-Advance-binary-search-tree/</loc>
+    
+    <lastmod>2019-01-13T12:38:34.708Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://WangWilly.github.io/willywangkaa/2018/10/15/Algorithm-Graph-algorithm/</loc>
+    
+    <lastmod>2018-12-10T03:34:54.155Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://WangWilly.github.io/willywangkaa/2018/12/02/Data-structure/</loc>
     
     <lastmod>2018-12-09T09:42:53.769Z</lastmod>
@@ -65,13 +86,6 @@
   </url>
   
   <url>
-    <loc>http://WangWilly.github.io/willywangkaa/2018/10/28/Data-structure-Advance-binary-search-tree/</loc>
-    
-    <lastmod>2018-11-01T02:55:51.855Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://WangWilly.github.io/willywangkaa/2018/10/31/Data-structure-Advance-heap/</loc>
     
     <lastmod>2018-10-31T06:01:39.858Z</lastmod>
@@ -117,13 +131,6 @@
     <loc>http://WangWilly.github.io/willywangkaa/2018/10/15/Algorithm-Computational-geometry/</loc>
     
     <lastmod>2018-10-15T10:38:43.684Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://WangWilly.github.io/willywangkaa/2018/10/15/Algorithm-Graph-algorithm/</loc>
-    
-    <lastmod>2018-10-15T10:22:44.842Z</lastmod>
     
   </url>
   

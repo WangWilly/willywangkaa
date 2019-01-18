@@ -121,7 +121,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/escapeproblem_sol.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/escapeproblem_solconti.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/vertexcover.png">
-<meta property="og:updated_time" content="2018-10-15T10:22:44.842Z">
+<meta property="og:updated_time" content="2018-12-10T03:34:54.155Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithm - Graph algorithm">
 <meta name="twitter:description" content="Graph algorithm Depth first search  所需變數：考慮圖中一點 u  color(u)：目前 u 節點的狀態  White：初始值，尚未訪查過 Gray：已被訪查過，但未訪查完其子節點 Black：已經訪查完其子節點  d(u)：發現時間點( Discover time )，即為第一次被訪查的時間點 f(u)：完結時間點( Finish ti">
@@ -371,7 +371,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-10-15T18:22:44+08:00">2018-10-15</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2018-12-10T11:34:54+08:00">2018-12-10</time>
             
           </span>
 
@@ -708,6 +708,21 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 <li><span class="math inline">\(O(VE^2)\)</span>：<strong>只和網路的大小有關</strong></li>
 </ul></li>
 </ul>
+<p>時間複雜度證明：</p>
+<ol type="1">
+<li>證明<strong>最短增廣路徑</strong>（Argument path）的長度「非遞減」（利用反證法）
+<ul>
+<li>設 <span class="math inline">\(\delta_f (s, x)\)</span> 為源點 s 到 x 增廣前在 <span class="math inline">\(G_f\)</span> 中的最短路，令 v 頂點是在<strong>某次增廣後</strong> <span class="math inline">\(\delta_{f&#39;} (s, v)\)</span> 長度變小的頂點（$G_{f’} $ 中的最短路徑）
+<ul>
+<li>設 <span class="math inline">\(\delta_{f&#39;} (s, x)\)</span> 表示源點到 x 增廣後在 <span class="math inline">\(G_{f&#39;}\)</span> 中的最短路徑</li>
+<li>所以上述可以寫為 <span class="math inline">\(\delta_{f&#39;}(s,v) &lt; \delta_f (s,v)\)</span></li>
+</ul></li>
+<li>令 u 頂點為 v 增廣後在 <span class="math inline">\(G_{f&#39;}\)</span> 最短路徑中的前一個節點
+<ul>
+<li>上述可以表示成 <span class="math inline">\(\delta_{f&#39;}(s,v)\)</span></li>
+</ul></li>
+</ul></li>
+</ol>
 <p>Example (P.4-80 ex20)</p>
 <p><strong>Escape problem</strong></p>
 <figure>
@@ -907,7 +922,7 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
                 
                   <a href="/willywangkaa/archives/">
                 
-                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-count">49</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1105,7 +1120,9 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
                     
                       
                     
-                    <span class="site-state-item-count">74</span>
+                      
+                    
+                    <span class="site-state-item-count">75</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1187,7 +1204,7 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
