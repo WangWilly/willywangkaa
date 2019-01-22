@@ -129,6 +129,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/mwaybtree_deletion_5.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/rbtree.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/Rbrotation.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/theheightofrbtree.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/2-nodetorbtree.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/3-nodetotbtree.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/4-nodetorbtree.png">
@@ -136,7 +137,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/OBST_1.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/OBST_2.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/OBST_3.png">
-<meta property="og:updated_time" content="2019-01-13T12:38:34.708Z">
+<meta property="og:updated_time" content="2019-01-22T06:27:28.686Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Data structure - Advance binary search tree">
 <meta name="twitter:description" content="AVL tree Height balance binary search tree  性質  \(|H_L - H_R| \leq 1\)，\(H_L、H_R\) 為樹根節點左右子樹之高度 左右子樹亦為「AVL tree」    Example (True or False)  若「Binary search tree」之樹根節點左右子樹皆為「AVL tree」則整棵樹為">
@@ -386,7 +387,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-01-13T20:38:34+08:00">2019-01-13</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-01-22T14:27:28+08:00">2019-01-22</time>
             
           </span>
 
@@ -782,6 +783,57 @@
 </blockquote>
 <h2 id="delete-x-in-rb-tree">Delete x in RB-tree</h2>
 <p>目前不討論</p>
+<h2 id="the-height-of-rb-tree">The height of RB-tree</h2>
+<ul>
+<li><p>假設原始紅黑樹為 T</p></li>
+<li>假設對於每個<strong>頂點 x</strong>
+<ul>
+<li>其頂點至葉節點之每個路徑的黑色節點數量為 BH(x) （Black node height）</li>
+<li>其樹高為 H(x)</li>
+</ul></li>
+</ul>
+<blockquote>
+<p>其中 H(x)、BH(x) 定義如下：</p>
+<figure>
+<img src="\willywangkaa\images\theheightofrbtree.png" alt="theheightofrbtree"><figcaption>theheightofrbtree</figcaption>
+</figure>
+</blockquote>
+<ul>
+<li><strong>＜證明＞</strong>任何以 x 頂點為根的子樹 T’，其內部節點（在原本 T 的內部節點）至少有 <span class="math inline">\(2^{BH(x)}-1\)</span></li>
+</ul>
+<p>（對 H(x) 做數學歸納法推導）</p>
+<ol type="1">
+<li><p>當 H(x) 為 0 時，則可以知道其為 <strong>Nil 節點</strong>，則<strong>以該節點為子樹 T’</strong>必無存在<strong>內部節點</strong>（T 的內部節點）</p>
+<ul>
+<li>因為 BH(x) = 0，則 <span class="math inline">\(2^0-1 = 1-1 = 0\)</span>，無內部節點</li>
+</ul></li>
+<li><p>考慮一個節點 x<strong>（黑節點）</strong>，其樹高為 H(x) = k &gt; 0，則該點為 <strong>T 的一個內部節點</strong></p>
+<ul>
+<li>討論其節點的「兩個子節點」y
+<ul>
+<li>節點 y 至每個葉節點的黑色節點數量為<span class="math inline">\(\left\{\begin{matrix} BH(x),\;若\; y \;為紅色節點 \\ BH(x)-1,\;若\; y \;為黑色節點 \end{matrix}\right.\)</span></li>
+</ul></li>
+<li><strong>假設其「兩個子節點」 成立</strong>，則 y 到葉節點包含 T 的內部節點至少有 <span class="math inline">\(2^{BH(x)-1}-1\)</span></li>
+<li>考慮以 x 節點為子樹 T’ ，其包含 T 的內部節點至少有
+<ul>
+<li>（左子點包含 T 的內部節點）+（右子點包含 T 的內部節點）+（x 本身就為 T 的內部節點）</li>
+<li><span class="math inline">\((2^{BH(x)-1}-1)+(2^{BH(x)-1}-1)+1 = 2^{BH(x)}-1\)</span>，<strong>命題得證</strong></li>
+</ul></li>
+</ul></li>
+</ol>
+<ul>
+<li><strong>＜證明＞</strong>一棵含有 n 個<strong>內部節點</strong>的紅黑樹 T 其樹高最多只有 <span class="math inline">\(2\cdot\lg(n+1)\)</span>
+<ul>
+<li>假設 H 為 T 的樹高</li>
+<li>根據紅黑樹的性質「紅色節點不能與另一個紅節點相連」
+<ul>
+<li>從根節點至葉節點（<strong>不包括根節點</strong>）的任何一條簡單路徑，至少有一半的節點為黑節點</li>
+</ul></li>
+<li>所以從根節點至葉節點的 <span class="math inline">\(BH \geq \frac{H}{2}\)</span></li>
+<li>再根據上述定理，<span class="math inline">\(n \geq 2^{BH}-1 \geq 2^{\frac{H}{2}}-1\)</span></li>
+<li>則 <span class="math inline">\(2^\frac{H}{2} \leq n+1 \Rightarrow \frac{H}{2} \leq \lg(n+1) \Rightarrow H \leq 2\lg(n+1)\)</span></li>
+</ul></li>
+</ul>
 <h1 id="red-black-tree-不同定義">Red black tree ( 不同定義 )</h1>
 <p>為一棵被「2-3-4 tree」所對應之「Binary search tree」</p>
 <ol type="1">
@@ -1085,7 +1137,7 @@ C_{i, j} = 1\cdot p_k + C_{i, k-1} + C_{k+1, j} + w_{i, k-1} + w_{k+1, j} \\
                 
                   <a href="/willywangkaa/archives/">
                 
-                    <span class="site-state-item-count">49</span>
+                    <span class="site-state-item-count">50</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1285,7 +1337,9 @@ C_{i, j} = 1\cdot p_k + C_{i, k-1} + C_{k+1, j} + w_{i, k-1} + w_{k+1, j} \\
                     
                       
                     
-                    <span class="site-state-item-count">75</span>
+                      
+                    
+                    <span class="site-state-item-count">76</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1347,7 +1401,7 @@ C_{i, j} = 1\cdot p_k + C_{i, k-1} + C_{k+1, j} + w_{i, k-1} + w_{k+1, j} \\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#avl-tree"><span class="nav-number">1.</span> <span class="nav-text">AVL tree</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#m-way-search-tree"><span class="nav-number">2.</span> <span class="nav-text">M-way search tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#b-tree-of-order-m-balance"><span class="nav-number">2.1.</span> <span class="nav-text">B-tree of order m (Balance)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#b-tree-of-order-3"><span class="nav-number">2.1.1.</span> <span class="nav-text">B tree of order 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b-tree-of-order-4"><span class="nav-number">2.1.2.</span> <span class="nav-text">B tree of order 4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#insert-data-in-b-tree"><span class="nav-number">2.2.</span> <span class="nav-text">Insert data in B-tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete-data-in-b-tree"><span class="nav-number">2.3.</span> <span class="nav-text">Delete data in B-tree</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#red-black-tree"><span class="nav-number">3.</span> <span class="nav-text">Red black tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#insert-x-in-rb-tree-top-down"><span class="nav-number">3.1.</span> <span class="nav-text">Insert x in RB-tree (Top-down)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete-x-in-rb-tree"><span class="nav-number">3.2.</span> <span class="nav-text">Delete x in RB-tree</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#red-black-tree-不同定義"><span class="nav-number">4.</span> <span class="nav-text">Red black tree ( 不同定義 )</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#optimal-binary-search-tree-obst"><span class="nav-number">5.</span> <span class="nav-text">Optimal binary search tree (OBST)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#建立-obst"><span class="nav-number">5.1.</span> <span class="nav-text">建立 OBST</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#遞迴推導"><span class="nav-number">5.1.1.</span> <span class="nav-text">遞迴推導</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊題型"><span class="nav-number">5.2.</span> <span class="nav-text">特殊題型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#splay-tree"><span class="nav-number">6.</span> <span class="nav-text">Splay tree</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#avl-tree"><span class="nav-number">1.</span> <span class="nav-text">AVL tree</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#m-way-search-tree"><span class="nav-number">2.</span> <span class="nav-text">M-way search tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#b-tree-of-order-m-balance"><span class="nav-number">2.1.</span> <span class="nav-text">B-tree of order m (Balance)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#b-tree-of-order-3"><span class="nav-number">2.1.1.</span> <span class="nav-text">B tree of order 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b-tree-of-order-4"><span class="nav-number">2.1.2.</span> <span class="nav-text">B tree of order 4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#insert-data-in-b-tree"><span class="nav-number">2.2.</span> <span class="nav-text">Insert data in B-tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete-data-in-b-tree"><span class="nav-number">2.3.</span> <span class="nav-text">Delete data in B-tree</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#red-black-tree"><span class="nav-number">3.</span> <span class="nav-text">Red black tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#insert-x-in-rb-tree-top-down"><span class="nav-number">3.1.</span> <span class="nav-text">Insert x in RB-tree (Top-down)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete-x-in-rb-tree"><span class="nav-number">3.2.</span> <span class="nav-text">Delete x in RB-tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-height-of-rb-tree"><span class="nav-number">3.3.</span> <span class="nav-text">The height of RB-tree</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#red-black-tree-不同定義"><span class="nav-number">4.</span> <span class="nav-text">Red black tree ( 不同定義 )</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#optimal-binary-search-tree-obst"><span class="nav-number">5.</span> <span class="nav-text">Optimal binary search tree (OBST)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#建立-obst"><span class="nav-number">5.1.</span> <span class="nav-text">建立 OBST</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#遞迴推導"><span class="nav-number">5.1.1.</span> <span class="nav-text">遞迴推導</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊題型"><span class="nav-number">5.2.</span> <span class="nav-text">特殊題型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#splay-tree"><span class="nav-number">6.</span> <span class="nav-text">Splay tree</span></a></li></ol></div>
             
 
           </div>
