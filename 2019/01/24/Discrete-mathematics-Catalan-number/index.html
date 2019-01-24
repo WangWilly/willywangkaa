@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-tw,en,default">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/willywangkaa/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/willywangkaa/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/willywangkaa/images/apple-touch-icon-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/willywangkaa/images/favicon-32x32-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/willywangkaa/images/favicon-16x16-next_cat.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/willywangkaa/images/logo_cat.svg?v=6.0.4" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/willywangkaa/',
+    scheme: 'Pisces',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="Catalan Number," />
+
+
+<meta name="description" content="Discrete mathematics - Catalan number  給定兩個生成函數：  \(A(x) = \sum_{n = 0}^\infty a_nx^n\) \(B(x) = \sum_{n = 0}^\infty b_nx^n\)  則：  \(A(x)\pm B(x) = \sum_{n = 0}^\infty(a_n+b_n)x^n\) \(\begin">
+<meta name="keywords" content="Catalan Number">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Discrete mathematics - Catalan number">
+<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2019/01/24/Discrete-mathematics-Catalan-number/index.html">
+<meta property="og:site_name" content="WillyWangkaa">
+<meta property="og:description" content="Discrete mathematics - Catalan number  給定兩個生成函數：  \(A(x) = \sum_{n = 0}^\infty a_nx^n\) \(B(x) = \sum_{n = 0}^\infty b_nx^n\)  則：  \(A(x)\pm B(x) = \sum_{n = 0}^\infty(a_n+b_n)x^n\) \(\begin">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1548332494667.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1548332797656.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1548319123283.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1548319440435.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1548319549796.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1548320935256.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1548330759722.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1548331206829.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1548332141506.png">
+<meta property="og:updated_time" content="2019-01-24T12:37:38.461Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Discrete mathematics - Catalan number">
+<meta name="twitter:description" content="Discrete mathematics - Catalan number  給定兩個生成函數：  \(A(x) = \sum_{n = 0}^\infty a_nx^n\) \(B(x) = \sum_{n = 0}^\infty b_nx^n\)  則：  \(A(x)\pm B(x) = \sum_{n = 0}^\infty(a_n+b_n)x^n\) \(\begin">
+<meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/1548332494667.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://WangWilly.github.io/willywangkaa/2019/01/24/Discrete-mathematics-Catalan-number/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>Discrete mathematics - Catalan number | WillyWangkaa</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/willywangkaa/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WillyWangkaa</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Live more like human</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/willywangkaa/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/willywangkaa/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/willywangkaa/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/willywangkaa/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2019/01/24/Discrete-mathematics-Catalan-number/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WillyWangkaa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Discrete mathematics - Catalan number</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-24T20:29:00+08:00">2019-01-24</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-01-24T20:37:38+08:00">2019-01-24</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/willywangkaa/categories/Discrete-Mathematics/" itemprop="url" rel="index"><span itemprop="name">Discrete Mathematics</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/willywangkaa/2019/01/24/Discrete-mathematics-Catalan-number/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/01/24/Discrete-mathematics-Catalan-number/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="discrete-mathematics---catalan-number">Discrete mathematics - Catalan number</h1>
+<blockquote>
+<p>給定兩個生成函數：</p>
+<ul>
+<li><span class="math inline">\(A(x) = \sum_{n = 0}^\infty a_nx^n\)</span></li>
+<li><span class="math inline">\(B(x) = \sum_{n = 0}^\infty b_nx^n\)</span></li>
+</ul>
+<p>則：</p>
+<ul>
+<li><span class="math inline">\(A(x)\pm B(x) = \sum_{n = 0}^\infty(a_n+b_n)x^n\)</span></li>
+<li><span class="math inline">\(\begin{aligned} A(x) \times B(x) = (a_0+a_1x+a_2x^2+\ldots)\times(b_0+b_1x+b_2x^2+\ldots) \\ \Rightarrow (a_0b_0) + (a_0b_1+a_1b_0)x + (a_2b_0+a_1b_1+a_0b_2)x^2+\ldots \end{aligned}\)</span></li>
+</ul>
+</blockquote>
+<p>定義</p>
+<ul>
+<li><span class="math inline">\(c_n = a_n \otimes b_n = a_0b_n+a_1b_{n-1}+\ldots+a_nb_0\)</span>
+<ul>
+<li><span class="math inline">\(a_n、b_n\)</span> 為兩個遞迴函數</li>
+</ul></li>
+<li>稱 <span class="math inline">\(c_n\)</span> 為 <span class="math inline">\(a_n、b_n\)</span> 的「Convalution」
+<ul>
+<li><span class="math inline">\(c_n = a_n \otimes b_n \Rightarrow C(x) = A(x)\times B(x)\)</span></li>
+<li><span class="math inline">\(c_n = a_n \otimes a_n \Rightarrow C(x) = A(x)\times A(x) = A(x)^2\)</span></li>
+</ul></li>
+</ul>
+<h2 id="生成函數推導">「生成函數」推導</h2>
+<p>令 Catalan number 等於 <span class="math display">\[
+\left\{\begin{matrix} a_n = a_0a_{n-1} + a_1a_{n-2} + \ldots + a_{n-1}a_0 , n\geq 1 \\ a_0 = 1, a_1 = a_0a_0  = 1 \end{matrix}\right.
+\]</span> 以「生成函數」求此遞迴函數的顯式</p>
+<ol type="1">
+<li><p>令 <span class="math inline">\(A(x) = \sum_{n = 0}^\infty a_n x^n\)</span></p>
+<ul>
+<li><p>因為由上式可以知道此遞迴<strong>從 n ≧ 1開始有意義</strong></p></li>
+<li><span class="math inline">\(\sum_{n = 0}^\infty a_n x^n - a_0 = \sum_{n = 1}^\infty(a_0a_{n-1}+a_1a_{n-2}+\ldots +a_{n-1}a_0)x^n\)</span>
+<ul>
+<li><span class="math inline">\(\sum_{n = 1}^\infty(a_0a_{n-1}+a_1a_{n-2}+\ldots +a_{n-1}a_0)x^n \\ \Rightarrow x\cdot \sum_{n = 1}^\infty(a_0a_{n-1}+a_1a_{n-2}+\ldots +a_{n-1}a_0)x^{n-1} = x\cdot A(x)^2\)</span></li>
+</ul></li>
+<li><span class="math inline">\(A(x) - a_0 = x\cdot A(x)^2 \\ \Rightarrow xA(x)^2- A(x) +1 = 0\)</span></li>
+</ul></li>
+<li><p><span class="math inline">\(A(x) = \frac{1\pm \sqrt{1-4x}}{2x}\)</span></p>
+<ul>
+<li><span class="math inline">\((1-4x)^\frac12 = \sum_{r = 0}^\infty \binom{\frac12}{r}(-4x)^r\)</span>
+<ul>
+<li><span class="math inline">\(\sum_{r = 0}^\infty \binom{\frac12}{r}(-4x)^r = \sum_{n = 0}^\infty \frac{\frac12(\frac12 -1)\ldots (\frac12-r+1)}{r!}(-1)^r4^rx^r\)</span></li>
+<li><span class="math inline">\(\Rightarrow \sum_{r = 0}^\infty \frac{\frac12(-\frac12)(-\frac32)\ldots (-\frac{2r-3}{2})}{r!}(-1)^r4^rx^r\)</span></li>
+<li><span class="math inline">\(\Rightarrow \sum_{r = 0}^\infty (-1)^{r-1}(\frac12)^r\frac{1(1)(3)\ldots (2r-3)}{r!}(-1)^r4^rx^r\)</span></li>
+<li><span class="math inline">\(\Rightarrow -\sum_{r = 0}^\infty \frac{(1)(3)\ldots (2r-3)}{r!}2^rx^r\)</span></li>
+<li><span class="math inline">\(\Rightarrow \sum_{r = 0}^\infty \frac{(1)(2)(3)\ldots (2r-3)(2r-2)(2r-1)(2r)}{r!\cdot2^r\cdot r!\cdot(2r-1)}2^rx^r\)</span></li>
+<li><span class="math inline">\(\Rightarrow -\sum_{r = 0}^\infty \frac{(2r)!}{r!\cdot r! (2r-1)}x^r\)</span></li>
+<li><span class="math inline">\(\Rightarrow -\sum_{r = 0}^\infty \frac{1}{2r-1}\binom{2r}{r} x^r\)</span></li>
+</ul></li>
+</ul></li>
+<li>因為 A(x) 會有兩個解，但是因為欲求之解不可能有負數情形，所以<strong>取其正解</strong></li>
+</ol>
+<ul>
+<li><span class="math inline">\(A(x) = \frac{1-\sqrt{1-4x}}{2x} = \frac{1+\sum_{r = 0}^\infty \frac{1}{2r-1}\binom{2r}{r} x^r }{2x}\)</span>
+<ul>
+<li><span class="math inline">\(\Rightarrow \frac12 \sum_{r = 1}^\infty \frac1{2r-1}\binom{2r}{r}x^{r-1}\)</span>，取 <span class="math inline">\(x^n\)</span> 的係數</li>
+<li>則 r = n+1，<span class="math inline">\(\Rightarrow \frac12 \cdot \frac1{2(n+1)-1} \binom{2(n+1)}{(n+1)}x^n\)</span></li>
+<li><span class="math inline">\(\Rightarrow a_n = \frac{1}{2(2n+1)}\cdot\frac{(2n+2)\times(2n+1)}{(n+1)\times(n+1)}\cdot\binom{2n}{n} = \frac1{n+1}\binom{2n}{n}\)</span></li>
+</ul></li>
+</ul>
+<ol start="4" type="1">
+<li>Catalan number 為 <span class="math inline">\(\frac1{n+1}\binom{2n}{n}\)</span></li>
+</ol>
+<p>Example</p>
+<p>求取 n 個節點的「Binary ordered tree」個數？</p>
+<figure>
+<img src="\willywangkaa\images\1548332494667.png" alt="1548332494667"><figcaption>1548332494667</figcaption>
+</figure>
+<p>，k ≧ 0</p>
+<p><span class="math inline">\(\Rightarrow\left\{\begin{matrix} a_n = a_0a_{n-1} + a_1a_{n-2} + \ldots + a_{n-1}a_0 , n\geq 1 \\ a_0 = 1 \end{matrix}\right. \\ \Rightarrow a_n = c_n = \frac{1}{n+1}\binom{2n}{n}\)</span></p>
+<blockquote>
+<p>變形</p>
+<ul>
+<li><span class="math inline">\(\left\{\begin{matrix} a_n = a_0a_{n-1} + a_1a_{n-2} + \ldots + a_{n-1}a_0 , n\geq 1 \\ a_0 = 1 \end{matrix}\right.​\)</span>
+<ul>
+<li><span class="math inline">\(a_n = c_n = \frac{1}{n+1}\binom{2n}{n}\)</span></li>
+</ul></li>
+<li><span class="math inline">\(\left\{\begin{matrix} a_n = a_1a_{n-1} + a_2a_{n-2} + \ldots + a_{n-1}a_1 , n\geq 1 \\ a_1 = 1 \end{matrix}\right.\)</span>
+<ul>
+<li><span class="math inline">\(a_n = c_{n-1} = \frac{1}{n}\binom{2(n-1)}{n-1}\)</span></li>
+</ul></li>
+<li><span class="math inline">\(\left\{\begin{matrix} a_n = a_2a_{n-1} + a_3a_{n-2} + \ldots + a_{n-1}a_2 , n\geq 1 \\ a_2 = 1 \end{matrix}\right.\)</span>
+<ul>
+<li><span class="math inline">\(a_n = c_{n-2} = \frac{1}{n+1}\binom{2(n-2)}{n-2}\)</span></li>
+</ul></li>
+</ul>
+<p>Example</p>
+<p>n 個變數 <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> 之合法的括號數有幾個？</p>
+<figure>
+<img src="\willywangkaa\images\1548332797656.png" alt="1548332797656"><figcaption>1548332797656</figcaption>
+</figure>
+<p>，k ≧ 1</p>
+<p><span class="math inline">\(\left\{\begin{matrix} a_n = a_1a_{n-1} + a_2a_{n-2} + \ldots + a_{n-1}a_1 , n\geq 1 \\ a_1 = 1 \end{matrix}\right. \Rightarrow c_{n-1} = \frac{1}{n}\binom{2(n-1)}{n-1}\)</span></p>
+</blockquote>
+<h2 id="組合證明推導">「組合證明」推導</h2>
+<h3 id="前導">前導</h3>
+<p>令 Catalan number 等於 <span class="math display">\[
+\left\{\begin{matrix} a_n = a_0a_{n-1} + a_1a_{n-2} + \ldots + a_{n-1}a_0 , n\geq 1 \\ a_0 = 1, a_1 = a_0a_0  = 1 \end{matrix}\right.
+\]</span> 則我們可以將此遞迴視為一個<strong>「合法路徑問題」</strong></p>
+<ul>
+<li>在一個二維空間下，從原點 (0, 0) 只能走下面兩種步伐至 (m, n)
+<ul>
+<li>步伐 R：(x, y) → (x+1, y)</li>
+<li>步伐 U：(x, y) → (x, y+1)</li>
+</ul></li>
+<li>並且在路徑中，不能發生 U 大於 R 的情形
+<ul>
+<li>違法：(0,0)→R→R→U→U<strong>→U</strong>→R→…→(m,n)</li>
+</ul></li>
+<li>首先我們先將問題簡化成「Catalan number」可以解釋的問題，再來推廣
+<ul>
+<li>在一個二維空間下，從原點 (0, 0) 只能走下面兩種步伐至 <strong>(n, n)</strong>
+<ul>
+<li>步伐 R：(x, y) → (x+1, y)</li>
+<li>步伐 U：(x, y) → (x, y+1)</li>
+</ul></li>
+<li>並且在路徑中，不能發生 U 大於 R 的情形</li>
+</ul></li>
+</ul>
+<blockquote>
+<p>討論</p>
+<ul>
+<li>若問題再進一步簡化成「自點(0, 0) 只能以規定的兩種步伐至 <strong>(0, 0)</strong>」
+<ul>
+<li>令該方法數為 <span class="math inline">\(a_0\)</span>，並且其方法數視為 1</li>
+</ul></li>
+<li>而當問題為「自點(0, 0) 只能以規定的兩種步伐至 <strong>(1, 1)</strong>」時
+<ul>
+<li>只有唯一種方法，就是 (0,0)→R→U→(1,1)</li>
+<li>而我們更可以進一步將此看成
+<ul>
+<li><span class="math inline">\(a_1\)</span> = 「自(0,0)至(0,0)的方法數」×（唯一的走法：…→R→U→…）×「自(1,1)至(1,1)的方法數」</li>
+<li><span class="math inline">\(a_1 = a_0\times1\times a_0 = a_0a_0\)</span></li>
+</ul></li>
+</ul></li>
+</ul>
+</blockquote>
+<p>所以，在一個二維空間下，從原點 (0, 0) 只能以規定兩種步伐至 <strong>(n, n)</strong>的方法數為</p>
+<ul>
+<li><span class="math inline">\(a_n = a_0a_{n-1} + a_1a_{n-2} + \ldots + a_{n-1}a_0\)</span>，為以下方法數組成
+<ul>
+<li>(「自(0,0)至(0,0)的方法數」×（唯一的走法：…→R→U→…）×「自(1,1)至(n,n)的方法數」) +</li>
+<li>(「自(0,0)至(1,1)的方法數」×（唯一的走法：…→R→U→…）×「自(2,2)至(n,n)的方法數」) +</li>
+<li>….</li>
+<li>(「自(0,0)至(n-1,n-1)的方法數」×（唯一的走法：…→R→U→…）×「自(n,n)至(n,n)的方法數」)</li>
+</ul></li>
+</ul>
+<blockquote>
+<p>由上方討論可以得知<strong>簡化的「合法路徑問題」</strong>與 <strong>n 個節點的「Binary ordered tree」個數問題</strong>等價</p>
+</blockquote>
+<h3 id="組合證明">組合證明</h3>
+<p>一樣是上述的<strong>簡化的「合法路徑問題」</strong>，由下圖來討論</p>
+<figure>
+<img src="\willywangkaa\images\1548319123283.png" alt="1548319123283"><figcaption>1548319123283</figcaption>
+</figure>
+<p>自 (0, 0) 至 (16, 16) 且不得超過<strong>中間雙線的部分（可觸及）</strong></p>
+<p>合法示意圖：</p>
+<figure>
+<img src="\willywangkaa\images\1548319440435.png" alt="1548319440435"><figcaption>1548319440435</figcaption>
+</figure>
+<p>非法示意圖：</p>
+<figure>
+<img src="\willywangkaa\images\1548319549796.png" alt="1548319549796"><figcaption>1548319549796</figcaption>
+</figure>
+<blockquote>
+<p>每個違法的路徑，必定會和下方紅色雙斜線接觸</p>
+<figure>
+<img src="\willywangkaa\images\1548320935256.png" alt="1548320935256"><figcaption>1548320935256</figcaption>
+</figure>
+<p>將<strong>「開始違法的座標」之後的路徑</strong>對紅色雙斜線做對稱化，則最後到達的座標必定在 (15,17)，而這種轉換有幾個特性：</p>
+<ul>
+<li>1-1 對應</li>
+<li>可逆
+<ul>
+<li>若再一次對稱回來，必定會對應到一個<strong>違法的路徑</strong>自(0,0)至(16,16)</li>
+</ul></li>
+</ul>
+<p>所以自(0,0)至(15,17)的每種路徑，皆會對應到一個違法路徑</p>
+<ul>
+<li>合法路徑方法數
+<ul>
+<li><span class="math inline">\(\binom{32}{16} - \binom{32}{15} = \frac{1}{16+1}\binom{2\cdot16}{16}\)</span> 為「Catalan number」</li>
+</ul></li>
+</ul>
+</blockquote>
+<ul>
+<li>所以從(0, 0)至(n, n)的「合法路徑為」
+<ul>
+<li><span class="math inline">\(\binom{2n}{n}-\binom{2n}{n-1}\)</span></li>
+</ul></li>
+</ul>
+<p>Example</p>
+<p>有一場選舉，兩個候選人 A、B，假設知道 A 的票數一定比 B 多，假設 A 的總得票數為 p ，B 的總得票數為 q，請問有幾種開票的方法可保證每個當下 A 的得票數會大於 B 當下的得票數？</p>
+<blockquote>
+<p>分析</p>
+<p>有別於上面的題目，此處 A 每個當下的得票數絕對會比 B 每個當下的得票數還多</p>
+<ul>
+<li><strong>不合法</strong>的開票方法：A→A→B<strong>→B</strong>→…</li>
+</ul>
+</blockquote>
+<figure>
+<img src="\willywangkaa\images\1548330759722.png" alt="1548330759722"><figcaption>1548330759722</figcaption>
+</figure>
+<p>假設 A 得到 15 票，B 得到 11 票，則上圖中綠色為合法的開票方法，紅色虛線為不合法的開票方法，但是這樣討論之下，綠色的開票方法在尚未開票時其實也觸碰了紅色雙斜線，然而為何還是正確的開票方法，因為我們在尚未開票時不討論誰贏的比較多，所以我們可以將起點平移到 (1, 0) 處，代表第一章開出來的票一定是 A 得到，且亦不牴觸我們方才的假設</p>
+<figure>
+<img src="\willywangkaa\images\1548331206829.png" alt="1548331206829"><figcaption>1548331206829</figcaption>
+</figure>
+<p>則<strong>每個非法路徑</strong>會唯一對應到「自 (1,0) 至 (11,15) 的開票方法」</p>
+<figure>
+<img src="\willywangkaa\images\1548332141506.png" alt="1548332141506"><figcaption>1548332141506</figcaption>
+</figure>
+<ul>
+<li>合法的開票方法為
+<ul>
+<li><span class="math inline">\(\binom{(15-1)+11}{15-1} - \binom{(11-1)+15}{11-1} = \binom{25}{14}-\binom{25}{10} = 1188640\)</span></li>
+</ul></li>
+<li>原本的問題之<strong>合法開票數</strong>為
+<ul>
+<li><span class="math inline">\(\binom{(p-1)+q}{p-1} - \binom{(q-1)+p}{q-1}\)</span></li>
+</ul></li>
+</ul>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/willywangkaa/tags/Catalan-Number/" rel="tag"># Catalan Number</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/willywangkaa/2019/01/22/Linear-algebra-Vandermonde-matrix/" rel="next" title="Linear algebra - Vandermonde matrix">
+                <i class="fa fa-chevron-left"></i> Linear algebra - Vandermonde matrix
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/willywangkaa/images/avatar_me.gif"
+                alt="Willy Wang (willywangkaa)" />
+            
+              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
+              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/willywangkaa/archives/">
+                
+                    <span class="site-state-item-count">51</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/willywangkaa/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/willywangkaa/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">77</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://typora.io/" title="Typora" target="_blank">Typora</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.geeksforgeeks.org/" title="GeeksforGeeks" target="_blank">GeeksforGeeks</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.codecogs.com/latex/eqneditor.php" title="Online LaTeX Equation Editor" target="_blank">Online LaTeX Equation Editor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://allem40306.github.io/blog/" title="CodingJack" target="_blank">CodingJack</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#discrete-mathematics---catalan-number"><span class="nav-number">1.</span> <span class="nav-text">Discrete mathematics - Catalan number</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#生成函數推導"><span class="nav-number">1.1.</span> <span class="nav-text">「生成函數」推導</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#組合證明推導"><span class="nav-number">1.2.</span> <span class="nav-text">「組合證明」推導</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#前導"><span class="nav-number">1.2.1.</span> <span class="nav-text">前導</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#組合證明"><span class="nav-number">1.2.2.</span> <span class="nav-text">組合證明</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/willywangkaa/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/affix.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/willywangkaa/js/src/schemes/pisces.js?v=6.0.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/willywangkaa/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/willywangkaa/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://https-wangwilly-github-io-blog.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://WangWilly.github.io/willywangkaa/2019/01/24/Discrete-mathematics-Catalan-number/';
+        this.page.identifier = '2019/01/24/Discrete-mathematics-Catalan-number/';
+        this.page.title = 'Discrete mathematics - Catalan number';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-wangwilly-github-io-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/willywangkaa/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/willywangkaa/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>
