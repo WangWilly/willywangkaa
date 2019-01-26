@@ -100,28 +100,28 @@
 
 
   
-  <meta name="keywords" content="Algorithm,排容原理," />
+  <meta name="keywords" content="Time complexity," />
 
 
-<meta name="description" content="Principle of inclusion and exclusion - 排容原理 假設 \(U\) 為與集合，其中 \(|U| = N\)，令 \(a_1, a_2, ..., a_n\) 為 n 個性質，其中這些性質直接定義在 \(U\) 上且 \(N(a_i)\) 表示 \(U\) 中滿足性質 \(a_i\) 的元素個數。  定義  \(N(\bar{a_i})\) 表示 \(">
-<meta name="keywords" content="Algorithm,排容原理">
+<meta name="description" content="Pseudo polynomial time complexity 如果一個演算法的傳統時間複雜度位於多項式時間，而標準時間複雜度不在多項式時間 則我們稱這個演算法位於偽多項式時間，以下探討  多項式時間複雜度是甚麼？ \(O(n^k), k \;is\; constant\)  Selection sort  \(O(n^2)\)，為「Polynomial time」  T">
+<meta name="keywords" content="Time complexity">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Principle of inclusion and exclusion - 排容原理">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/09/11/Principle-of-inclusion-and-exclusion-排容原理/index.html">
+<meta property="og:title" content="Algorithm - Pseudo polynomial time complexity">
+<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2019/01/26/Algorithm-Pseudo-polynomial-time-complexity/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="Principle of inclusion and exclusion - 排容原理 假設 \(U\) 為與集合，其中 \(|U| = N\)，令 \(a_1, a_2, ..., a_n\) 為 n 個性質，其中這些性質直接定義在 \(U\) 上且 \(N(a_i)\) 表示 \(U\) 中滿足性質 \(a_i\) 的元素個數。  定義  \(N(\bar{a_i})\) 表示 \(">
+<meta property="og:description" content="Pseudo polynomial time complexity 如果一個演算法的傳統時間複雜度位於多項式時間，而標準時間複雜度不在多項式時間 則我們稱這個演算法位於偽多項式時間，以下探討  多項式時間複雜度是甚麼？ \(O(n^k), k \;is\; constant\)  Selection sort  \(O(n^2)\)，為「Polynomial time」  T">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-09-11T02:53:13.072Z">
+<meta property="og:updated_time" content="2019-01-26T12:29:08.101Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Principle of inclusion and exclusion - 排容原理">
-<meta name="twitter:description" content="Principle of inclusion and exclusion - 排容原理 假設 \(U\) 為與集合，其中 \(|U| = N\)，令 \(a_1, a_2, ..., a_n\) 為 n 個性質，其中這些性質直接定義在 \(U\) 上且 \(N(a_i)\) 表示 \(U\) 中滿足性質 \(a_i\) 的元素個數。  定義  \(N(\bar{a_i})\) 表示 \(">
+<meta name="twitter:title" content="Algorithm - Pseudo polynomial time complexity">
+<meta name="twitter:description" content="Pseudo polynomial time complexity 如果一個演算法的傳統時間複雜度位於多項式時間，而標準時間複雜度不在多項式時間 則我們稱這個演算法位於偽多項式時間，以下探討  多項式時間複雜度是甚麼？ \(O(n^k), k \;is\; constant\)  Selection sort  \(O(n^2)\)，為「Polynomial time」  T">
 
 
 
 
 
 
-  <link rel="canonical" href="http://WangWilly.github.io/willywangkaa/2018/09/11/Principle-of-inclusion-and-exclusion-排容原理/"/>
+  <link rel="canonical" href="http://WangWilly.github.io/willywangkaa/2019/01/26/Algorithm-Pseudo-polynomial-time-complexity/"/>
 
 
 
@@ -130,7 +130,7 @@
     sidebar: "",
   };
 </script>
-  <title>Principle of inclusion and exclusion - 排容原理 | WillyWangkaa</title>
+  <title>Algorithm - Pseudo polynomial time complexity | WillyWangkaa</title>
   
 
 
@@ -310,7 +310,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/09/11/Principle-of-inclusion-and-exclusion-排容原理/">
+    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2019/01/26/Algorithm-Pseudo-polynomial-time-complexity/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Willy Wang (willywangkaa)">
@@ -327,7 +327,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Principle of inclusion and exclusion - 排容原理</h1>
+          <h1 class="post-title" itemprop="name headline">Algorithm - Pseudo polynomial time complexity</h1>
         
 
         <div class="post-meta">
@@ -339,7 +339,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-11T10:51:00+08:00">2018-09-11</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-26T20:28:00+08:00">2019-01-26</time>
             
 
             
@@ -360,7 +360,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-09-11T10:53:13+08:00">2018-09-11</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-01-26T20:29:08+08:00">2019-01-26</time>
             
           </span>
 
@@ -376,7 +376,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/willywangkaa/categories/Discrete-Mathematics/" itemprop="url" rel="index"><span itemprop="name">Discrete Mathematics</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/willywangkaa/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a></span>
 
                 
                 
@@ -391,9 +391,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/willywangkaa/2018/09/11/Principle-of-inclusion-and-exclusion-排容原理/#comments" itemprop="discussionUrl">
+                <a href="/willywangkaa/2019/01/26/Algorithm-Pseudo-polynomial-time-complexity/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/09/11/Principle-of-inclusion-and-exclusion-排容原理/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2019/01/26/Algorithm-Pseudo-polynomial-time-complexity/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -421,182 +421,126 @@
       
 
       
-        <h1 id="principle-of-inclusion-and-exclusion---排容原理">Principle of inclusion and exclusion - 排容原理</h1>
-<p>假設 <span class="math inline">\(U\)</span> 為與集合，其中 <span class="math inline">\(|U| = N\)</span>，令 <span class="math inline">\(a_1, a_2, ..., a_n\)</span> 為 n 個性質，其中這些性質直接定義在 <span class="math inline">\(U\)</span> 上且 <span class="math inline">\(N(a_i)\)</span> 表示 <span class="math inline">\(U\)</span> 中滿足性質 <span class="math inline">\(a_i\)</span> 的元素個數。</p>
+        <h1 id="pseudo-polynomial-time-complexity">Pseudo polynomial time complexity</h1>
+<p>如果一個演算法的<strong>傳統時間複雜度</strong>位於多項式時間，而<strong>標準時間複雜度</strong>不在多項式時間</p>
+<p>則我們稱這個演算法位於<strong>偽多項式時間</strong>，以下探討</p>
+<blockquote>
+<p><strong>多項式時間複雜度是甚麼？</strong></p>
+<p><span class="math inline">\(O(n^k), k \;is\; constant\)</span></p>
 <ul>
-<li>定義
+<li>Selection sort
 <ul>
-<li><span class="math inline">\(N(\bar{a_i})\)</span> 表示 <span class="math inline">\(U\)</span> 中不滿族性質 <span class="math inline">\(a_i\)</span> 的元素個數。</li>
-<li><span class="math inline">\(N(a_ia_j)\)</span> 表示 <span class="math inline">\(U\)</span> 中同時滿足性質 <span class="math inline">\(a_i\)</span> 與 <span class="math inline">\(a_j\)</span> 的元素個數。</li>
-<li><span class="math inline">\(N(\bar{a_i}\bar{a_j})\)</span> 表示 <span class="math inline">\(U\)</span> 中同時滿足性質 <span class="math inline">\(a_i\)</span> 與 <span class="math inline">\(a_j\)</span> 的元素個數。</li>
+<li><span class="math inline">\(O(n^2)\)</span>，為「Polynomial time」</li>
 </ul></li>
-</ul>
-<h2 id="lemma-1">Lemma 1</h2>
-<p>若有一數 <span class="math inline">\(n\)</span> 有正因數解，該組解必有一正因數「小於等於」<span class="math inline">\(\sqrt{n}\)</span>。</p>
-<h3 id="proof">Proof</h3>
-<p>若兩正因數都大於 <span class="math inline">\(\sqrt{n}\)</span> ，相乘後不可能為 <span class="math inline">\(n\)</span></p>
-<h2 id="ex-97-清大">Ex ( 97 清大 )</h2>
-<p>1 ~ 100 中質數有幾個？</p>
-<h3 id="sol">Sol</h3>
-<p><span class="math display">\[
-\because \sqrt{100} = 10 \therefore Consider: 2, 3, 5, 7\\
-\begin{matrix}
-令 &amp; \; U \; 表示 2 到 100 的所有數所成集合，則 \; N = |U| = 99 \\
- &amp; a_1 表示 U 中大於 2 且為 2 的倍數的性質 \\
- &amp; a_2 表示 U 中大於 3 且為 3 的倍數的性質 \\
- &amp; a_3 表示 U 中大於 5 且為 5 的倍數的性質 \\
- &amp; a_4 表示 U 中大於 7 且為 7 的倍數的性質
-\end{matrix} \\
-欲求: N(\bar{a_1}\bar{a_2}\bar{a_3}\bar{a_4})\\
-\Rightarrow 100 - (\lfloor\frac{100}{2}\rfloor + \lfloor\frac{100}{3}\rfloor+ \lfloor\frac{100}{5}\rfloor+ \lfloor\frac{100}{7}\rfloor) + \\
-(\lfloor\frac{100}{6}\rfloor + \lfloor\frac{100}{15}\rfloor+ \lfloor\frac{100}{35}\rfloor+ \lfloor\frac{100}{10}\rfloor + \lfloor\frac{100}{14}\rfloor + \lfloor\frac{100}{21}\rfloor) - \\
-(\lfloor\frac{100}{30}\rfloor + \lfloor\frac{100}{70}\rfloor+\lfloor\frac{100}{105}\rfloor + \lfloor\frac{100}{42}\rfloor) + \lfloor\frac{100}{350}\rfloor\\
-= 22 -1 + 4  = 25
-\]</span></p>
-<h2 id="ex-97-台大-尤拉公式說明">Ex ( 97 台大 ) 尤拉公式說明</h2>
-<p><span class="math inline">\(n = P_1^{e_1}\times P_2^{e_2}\times P_3^{e_3}, P_i \;is \;prime , e_i &gt; 0\quad Prove: \Phi(n) = n\times(1 - \frac1{P_1}) \times (1 - \frac1{P_2}) \times (1 - \frac1{P_3})\)</span></p>
-<h3 id="proof-1">Proof</h3>
-<p><span class="math display">\[
-U = ｛1, ..., n｝, a_1 = ｛1 &lt; x &lt; n \;\vert\; P_1|x ｝, a_2 = ｛1 &lt; x &lt; n \;\vert\; P_2|x ｝, a_3 = ｛1 &lt; x &lt; n \;\vert\; P_3|x ｝\\
-求 \; N(\bar{a_1}\bar{a_2}\bar{a_3}) \\
-\Rightarrow n - (\frac{n}{P_1}+\frac{n}{P_2}+\frac{n}{P_3}) + (\frac{n}{P_1P_2} + \frac{n}{P_2P_3} + \frac{n}{P_1P_3}) - \frac{n}{P_1P_2P_3} \\
- = n \times (1-(\frac{1}{P_1}+\frac{1}{P_2}+\frac{1}{P_3}) + (\frac{1}{P_1P_2} + \frac{1}{P_2P_3} + \frac{1}{P_1P_3}) - \frac{1}{P_1P_2P_3}) \\
-  = n\times(1 - \frac1{P_1}) \times (1 - \frac1{P_2}) \times (1 - \frac1{P_3})
-\]</span></p>
-<h2 id="theorem">Theorem</h2>
-<blockquote>
-<p>m 個<strong>相異物</strong>放置 n 個<strong>相異箱子「不允許」</strong>空箱的方法數。</p>
-</blockquote>
-<p><span class="math inline">\(|A| = m, |B| = n, m\geq n \Rightarrow onto(m, n) = \sum_{i = 0}^n(-1)^i\binom{n}{i}(n-i)^m\)</span> ( 由 A 集合至 B 集合的<strong>映成函數</strong>個數 )</p>
-<blockquote>
-<p>箱子不得為「空」，採用<strong>排容原理</strong>。</p>
-</blockquote>
-<h3 id="proof-2">Proof</h3>
-<p><span class="math display">\[
-onto(m, n) = n^m - \binom{n}{1}(n-1)^m + \binom{n}{2}(n-2)^m - ... + (-1)^{n-1}\binom{n}{n-1}(1)^m + (-1)^{n}\binom{n}{n}(0)^m\\
- = \sum_{i = 0}^n(-1)^i\binom{n}{i}(n-i)^m
-\]</span></p>
-<h2 id="stirling-number-of-the-second-kind">Stirling number of the second kind</h2>
-<blockquote>
-<p>＜Note＞ 分堆</p>
-<p>m 個<strong>相異物</strong>放置於 n 個<strong>相同箱子「不允許空箱」</strong>的方法數，也就是將「映成函數個數」扣除重複計算到相同箱子的個數</p>
-</blockquote>
+<li>Travel salesman problem
 <ul>
-<li>假設 <span class="math inline">\(m, n\)</span> 為兩個整數，其中 <span class="math inline">\(m \geq n \geq 1\)</span>，定義</li>
-</ul>
-<p><span class="math display">\[
-S(m, n) = \frac{onto(m, n)}{n!} = \frac{\sum_{i = 0}^n(-1)^i\binom{n}{i}(n-i)^m}{n!}
-\]</span></p>
-<p>稱為第二種 Stirling 數，有時記作 <span class="math inline">\(\begin{Bmatrix} m \\ n \end{Bmatrix}\)</span> ，另外為了方便起見，當 <span class="math inline">\(m &lt; n\)</span> 時，定義 <span class="math inline">\(S(m, n) = 0\)</span></p>
-<blockquote>
-<p>＜Note＞</p>
-<p>m 個<strong>相異物</strong>放置於 n 個<strong>相同箱子「允許空箱」</strong>的方法數 <span class="math display">\[
-= S(m, n) + S(m, n-1)+S(m, n-2)+\ldots+S(m, 2)+S(m, 1)
-\]</span></p>
-</blockquote>
-<h2 id="theorem---第二種-stirling-數的遞迴結構">Theorem - 第二種 Stirling 數的遞迴結構</h2>
-<blockquote>
-<p>可用在演算法的使用上，通常以「Dynamic programming」的方式撰寫。</p>
-</blockquote>
-<p><span class="math display">\[
-S(m+1, n) = S(m, n-1)+S(m, n)
-\]</span></p>
-<blockquote>
-<ul>
-<li>Dynamic programming ( 直向軸為 m，橫向軸為 n )</li>
-</ul>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th style="text-align: center;">1</th>
-<th style="text-align: center;">2</th>
-<th style="text-align: center;">3</th>
-<th style="text-align: center;">4</th>
-<th style="text-align: center;">5</th>
-<th style="text-align: center;">6</th>
-<th style="text-align: center;">7</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td style="text-align: center;">S(1, 1) = 1</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td style="text-align: center;">S(2, 1) = 1</td>
-<td style="text-align: center;">S(2, 2) = 1</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td style="text-align: center;">S(3, 1) = 1</td>
-<td style="text-align: center;">S(3, 2) = 3</td>
-<td style="text-align: center;">S(3, 3) = 1</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td style="text-align: center;">S(4, 1) = 1</td>
-<td style="text-align: center;">S(4, 2) = 7</td>
-<td style="text-align: center;">S(4, 3) = 6</td>
-<td style="text-align: center;">S(4, 4) = 1</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td style="text-align: center;">S(5, 1) = 1</td>
-<td style="text-align: center;">S(5, 2) = 15</td>
-<td style="text-align: center;">S(5, 3) = 25</td>
-<td style="text-align: center;">S(5, 4) = 10</td>
-<td style="text-align: center;">S(5, 5) = 1</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td style="text-align: center;">S(6, 1) = 1</td>
-<td style="text-align: center;">S(6, 2) = 31</td>
-<td style="text-align: center;">S(6, 3) = 90</td>
-<td style="text-align: center;">S(6, 4) = 65</td>
-<td style="text-align: center;">S(6, 5) = 15</td>
-<td style="text-align: center;">S(6, 6) = 1</td>
-<td style="text-align: center;">-</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>使用方法
-<ul>
-<li>欲求 <span class="math inline">\(onto(6, 3) + onto(6, 4)\)</span></li>
-<li>查表加上轉換後：<span class="math inline">\(90\times 3! +65\times 4!\)</span></li>
+<li>Brutal force：<span class="math inline">\(O(n\cdot n!)\)</span>，為「Non polynomial time」</li>
 </ul></li>
 </ul>
 </blockquote>
-<h3 id="proof-組合證法">Proof ( 組合證法 )</h3>
+<p>通常認為輸入變數 n 代表<strong>數據規模</strong></p>
 <ul>
-<li>S(m+1, n)：m+1 個相異物<strong>分成 n 堆</strong>，固定一物 A
+<li>Selection sort
 <ul>
-<li>A 為邊緣人<span class="math inline">\(\Rightarrow S(m, n-1)\)</span></li>
-<li>A 有孤單病，所以在 n 堆中挑一堆進入 <span class="math inline">\(\Rightarrow S(m, n)\times n\)</span></li>
+<li>n 代表欲排序的數據組元素個數</li>
+</ul></li>
+<li>Travel salesman problem
+<ul>
+<li>n 表示圖中節點的數量</li>
 </ul></li>
 </ul>
+<p>但是上述的數據規模，為直觀的定義<strong>並不夠嚴謹</strong>，所以需要<strong>標準化輸入的數據規模</strong></p>
+<ul>
+<li>輸入的數據規模
+<ul>
+<li>保存輸入數據<strong>所需的 Bit 位數</strong></li>
+</ul></li>
+<li>針對<strong>排序</strong>的輸入
+<ul>
+<li>n 個「32-bit 整數」數組</li>
+<li>其數據規模為 32×n，n 為數組中的元素個數</li>
+</ul></li>
+<li>針對<strong>圖論</strong>的輸入
+<ul>
+<li>n 個點、m 個邊</li>
+<li>其數據規模為 <span class="math inline">\(\Omega(n+m)\)</span></li>
+</ul></li>
+</ul>
+<blockquote>
+<p>「Polynomial time complexity」的標準定義：</p>
+<ul>
+<li>在輸入<strong>數據規模為 x</strong> 的清況下，存在一個演算法能在 <span class="math inline">\(O(x^k)\)</span> （k 為一<strong>常數</strong>）的時間複雜度能解決問題</li>
+</ul>
+<p>所以，再來討論剛才的時間複雜度</p>
+<ul>
+<li>Selection sort
+<ul>
+<li>輸入
+<ul>
+<li>n 個「32-bit 整數」數組</li>
+<li>其數據規模為 32×n，n 為數組中的元素個數</li>
+</ul></li>
+<li>時間複雜度
+<ul>
+<li><span class="math inline">\(x = 32n\)</span></li>
+<li>傳統的時間複雜度為 <span class="math inline">\(O(n^2)\)</span></li>
+<li>則 <span class="math inline">\(n = \frac{1}{32}x \Rightarrow O(\frac{1}{1024}x^2) = O(x^2)\)</span>，為「Polynomial time complexity」</li>
+</ul></li>
+</ul></li>
+<li>Depth first search
+<ul>
+<li>輸入
+<ul>
+<li>n 個點、m 個邊</li>
+<li>其數據規模為 <span class="math inline">\(\Omega(n+m)\)</span></li>
+</ul></li>
+<li>時間複雜度
+<ul>
+<li>$x = (n+m) $</li>
+<li>傳統的時間複雜度為 <span class="math inline">\(O(n+m)\)</span></li>
+<li>則 <span class="math inline">\(O(x)\)</span>，為「Polynomial time complexity」</li>
+</ul></li>
+</ul></li>
+</ul>
+</blockquote>
+<p>接著，對「質數演算法」進行討論：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isPrime</span><span class="params">(n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; n<span class="number">-1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(n%i = <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>質數演算法
+<ul>
+<li>輸入
+<ul>
+<li>這種輸入規模會隨著 n 的大小而改變
+<ul>
+<li><span class="math inline">\(x = \lg n\)</span></li>
+</ul></li>
+<li>與排序的規模相比排序的 n 為元素多寡，但是每個元素皆為 32-bit 或是其他<strong>固定大小</strong>的整數範圍
+<ul>
+<li>（排序的輸入規模）<span class="math inline">\(x = c \cdot n\)</span>，<strong>c 必為一常數</strong></li>
+</ul></li>
+</ul></li>
+<li>時間複雜度
+<ul>
+<li><span class="math inline">\(x = \lg n\)</span></li>
+<li>傳統的時間複雜度為 <span class="math inline">\(O(n)\)</span></li>
+<li>則 <span class="math inline">\(n = 2^x \Rightarrow O(2^x)\)</span> ，為「Non-polynomial time complexity」</li>
+</ul></li>
+</ul></li>
+</ul>
+<blockquote>
+<p>進一步體會</p>
+<ul>
+<li>一個二進位數（<strong>1010 1011</strong>）
+<ul>
+<li>其「質數演算法」的<strong>真實複雜度</strong>為 <span class="math inline">\(2^8\)</span></li>
+</ul></li>
+<li>另一個二進位數（<strong>1 1010 1011</strong>）
+<ul>
+<li>其「質數演算法」的<strong>真實複雜度</strong>為 <span class="math inline">\(2^9\)</span></li>
+</ul></li>
+</ul>
+<p>可以發現僅增加一個 bit 就會使的演算法的運行時間倍增</p>
+</blockquote>
 
       
     </div>
@@ -621,9 +565,7 @@ S(m+1, n) = S(m, n-1)+S(m, n)
       
         <div class="post-tags">
           
-            <a href="/willywangkaa/tags/Algorithm/" rel="tag"># Algorithm</a>
-          
-            <a href="/willywangkaa/tags/排容原理/" rel="tag"># 排容原理</a>
+            <a href="/willywangkaa/tags/Time-complexity/" rel="tag"># Time complexity</a>
           
         </div>
       
@@ -636,8 +578,8 @@ S(m+1, n) = S(m, n-1)+S(m, n)
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/willywangkaa/2018/09/10/Operating-System-File-Management/" rel="next" title="Operating System - File Management">
-                <i class="fa fa-chevron-left"></i> Operating System - File Management
+              <a href="/willywangkaa/2019/01/24/Discrete-mathematics-Catalan-number/" rel="next" title="Discrete mathematics - Catalan number">
+                <i class="fa fa-chevron-left"></i> Discrete mathematics - Catalan number
               </a>
             
           </div>
@@ -645,10 +587,6 @@ S(m+1, n) = S(m, n-1)+S(m, n)
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/willywangkaa/2018/09/23/Algorithm-Dynamic-programming/" rel="prev" title="Algorithm - Dynamic programming">
-                Algorithm - Dynamic programming <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -1002,7 +940,7 @@ S(m+1, n) = S(m, n-1)+S(m, n)
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#principle-of-inclusion-and-exclusion---排容原理"><span class="nav-number">1.</span> <span class="nav-text">Principle of inclusion and exclusion - 排容原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#lemma-1"><span class="nav-number">1.1.</span> <span class="nav-text">Lemma 1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#proof"><span class="nav-number">1.1.1.</span> <span class="nav-text">Proof</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ex-97-清大"><span class="nav-number">1.2.</span> <span class="nav-text">Ex ( 97 清大 )</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sol"><span class="nav-number">1.2.1.</span> <span class="nav-text">Sol</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ex-97-台大-尤拉公式說明"><span class="nav-number">1.3.</span> <span class="nav-text">Ex ( 97 台大 ) 尤拉公式說明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#proof-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">Proof</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#theorem"><span class="nav-number">1.4.</span> <span class="nav-text">Theorem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#proof-2"><span class="nav-number">1.4.1.</span> <span class="nav-text">Proof</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stirling-number-of-the-second-kind"><span class="nav-number">1.5.</span> <span class="nav-text">Stirling number of the second kind</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#theorem---第二種-stirling-數的遞迴結構"><span class="nav-number">1.6.</span> <span class="nav-text">Theorem - 第二種 Stirling 數的遞迴結構</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#proof-組合證法"><span class="nav-number">1.6.1.</span> <span class="nav-text">Proof ( 組合證法 )</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#pseudo-polynomial-time-complexity"><span class="nav-number">1.</span> <span class="nav-text">Pseudo polynomial time complexity</span></a></li></ol></div>
             
 
           </div>
@@ -1170,9 +1108,9 @@ S(m+1, n) = S(m, n-1)+S(m, n)
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/09/11/Principle-of-inclusion-and-exclusion-排容原理/';
-        this.page.identifier = '2018/09/11/Principle-of-inclusion-and-exclusion-排容原理/';
-        this.page.title = 'Principle of inclusion and exclusion - 排容原理';
+        this.page.url = 'http://WangWilly.github.io/willywangkaa/2019/01/26/Algorithm-Pseudo-polynomial-time-complexity/';
+        this.page.identifier = '2019/01/26/Algorithm-Pseudo-polynomial-time-complexity/';
+        this.page.title = 'Algorithm - Pseudo polynomial time complexity';
       };
       function loadComments () {
         var d = document, s = d.createElement('script');
