@@ -119,7 +119,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1526808564478.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1526808604540.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1526809058649.png">
-<meta property="og:updated_time" content="2018-08-29T16:44:45.543Z">
+<meta property="og:updated_time" content="2019-01-27T05:49:03.356Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Operating System - Basic Concept 2">
 <meta name="twitter:description" content="基礎觀念 - Basic Concept (貳)  機器指令 Stage (階段)  1526805202151   IF：Instruction Fetch ID：Instruction Decode FO：Fetch Operands EXE：Execution WM：Write Result to Memory      CPU 會 Memory Acces">
@@ -369,7 +369,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-08-30T00:44:45+08:00">2018-08-30</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-01-27T13:49:03+08:00">2019-01-27</time>
             
           </span>
 
@@ -492,12 +492,23 @@
 <figure>
 <img src="\willywangkaa\images\1526806092878.png" alt="1526806092878"><figcaption>1526806092878</figcaption>
 </figure>
+<blockquote>
+<p>提升 I/O 效率</p>
+<ol type="1">
+<li><strong>減少執行 I/O 時所觸發的「Context switch」</strong>（<span class="math inline">\(B^+—tree\)</span>）</li>
+<li>當程序（Process）要與裝置溝通時，減少資料對 RAM 存取的次數</li>
+<li>在大量資料轉移、智慧控制器的運作、「Polling」執行時，盡量使用「Busy waiting」的方式解決短小的「I/O 等待」，減少觸發「Interrupt」的次數</li>
+<li>增加 DMA 使用率，盡可能<strong>避免使用 CPU 來完成簡單資料的複製工作</strong></li>
+<li>讓某些簡單程序可以藉由裝置裡的處理器來執行，使得這些<strong>運算能與 CPU 並行</strong></li>
+<li>使 CPU、RAM控制子系統、I/O 裝置效能平衡，因為任何一個步驟發生錯誤很可能會<strong>導致系統的「停滯」（Idle）</strong></li>
+</ol>
+</blockquote>
 <h2 id="blocking-io-and-nonblocking-io">Blocking I/O and Nonblocking I/O</h2>
 <ul>
 <li>Blocking - I/O：Process <strong>suspended</strong> until I/O completed.
 <ul>
-<li>Pros：Easy to use and understand.(撰寫維護簡單，明確的知道什麼user program 需求。)</li>
-<li>Cons：Insufficient for some needs.(當要載入一個大的影片檔，要等到所有的資料載完才feedback給使用者，會導致使用者體驗不好)</li>
+<li>Pros：Easy to use and understand.（撰寫維護簡單，明確的知道什麼user program 需求）</li>
+<li>Cons：Insufficient for some needs.（當要載入一個大的影片檔，如要等到所有的資料載完才反饋給使用者，會導致使用者體驗不好）</li>
 </ul></li>
 </ul>
 <figure>
@@ -760,10 +771,6 @@
                 <div class="site-state-item site-state-categories">
                   <a href="/willywangkaa/categories/index.html">
                     
-                    
-                      
-                    
-                      
                     
                       
                     
