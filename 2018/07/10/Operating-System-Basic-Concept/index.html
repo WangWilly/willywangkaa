@@ -103,13 +103,13 @@
   <meta name="keywords" content="Basic Concept," />
 
 
-<meta name="description" content="基礎觀念 - Basic Concept (壹)  機器種類 - Machine type  Bare Machine(裸機)  只有Hardware Components所組成(eg. CPU, memory, I/O device)，沒有任何輔助使用者 ( User ) 的系統程式 ( System Program )存在。  Extended Machine  以 Bar">
+<meta name="description" content="基礎觀念 - Basic Concept (壹)  機器種類 - Machine type  Bare Machine（裸機）  只有「Hardware Components」所組成（CPU、memory、I/O device），沒有任何輔助使用者（ User ）的系統程式（System Program）存在  Extended Machine  以「Bare Machine」">
 <meta name="keywords" content="Basic Concept">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Operating System - Basic Concept 1">
 <meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/07/10/Operating-System-Basic-Concept/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="基礎觀念 - Basic Concept (壹)  機器種類 - Machine type  Bare Machine(裸機)  只有Hardware Components所組成(eg. CPU, memory, I/O device)，沒有任何輔助使用者 ( User ) 的系統程式 ( System Program )存在。  Extended Machine  以 Bar">
+<meta property="og:description" content="基礎觀念 - Basic Concept (壹)  機器種類 - Machine type  Bare Machine（裸機）  只有「Hardware Components」所組成（CPU、memory、I/O device），沒有任何輔助使用者（ User ）的系統程式（System Program）存在  Extended Machine  以「Bare Machine」">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1529920981306.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1529918563313.png">
@@ -123,10 +123,10 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530103496272.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530157733165.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530159007395.png">
-<meta property="og:updated_time" content="2018-08-29T16:44:45.536Z">
+<meta property="og:updated_time" content="2019-01-27T09:16:43.069Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Operating System - Basic Concept 1">
-<meta name="twitter:description" content="基礎觀念 - Basic Concept (壹)  機器種類 - Machine type  Bare Machine(裸機)  只有Hardware Components所組成(eg. CPU, memory, I/O device)，沒有任何輔助使用者 ( User ) 的系統程式 ( System Program )存在。  Extended Machine  以 Bar">
+<meta name="twitter:description" content="基礎觀念 - Basic Concept (壹)  機器種類 - Machine type  Bare Machine（裸機）  只有「Hardware Components」所組成（CPU、memory、I/O device），沒有任何輔助使用者（ User ）的系統程式（System Program）存在  Extended Machine  以「Bare Machine」">
 <meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/1529920981306.png">
 
 
@@ -373,7 +373,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-08-30T00:44:45+08:00">2018-08-30</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-01-27T17:16:43+08:00">2019-01-27</time>
             
           </span>
 
@@ -438,48 +438,54 @@
 <hr>
 <h2 id="機器種類---machine-type">機器種類 - Machine type</h2>
 <ul>
-<li>Bare Machine(裸機)
+<li>Bare Machine（裸機）
 <ul>
-<li>只有Hardware Components所組成(eg. CPU, memory, I/O device)，沒有任何輔助使用者 ( User ) 的系統程式 ( System Program )存在。</li>
+<li>只有「Hardware Components」所組成（CPU、memory、I/O device），<strong>沒有任何輔助使用者（ User ）的系統程式（System Program）存在</strong></li>
 </ul></li>
 <li>Extended Machine
 <ul>
-<li>以 Bare Machine 為底加上輔助使用者的系統程式 - System Programs (eg. OS, Compiler, DBMS…)，即構成延伸機器。</li>
+<li>以「Bare Machine」為底加上輔助使用者的系統程式－System Programs（OS、Compiler、Database management system…）</li>
 </ul></li>
 </ul>
-<h3 id="cpu-的等待時間-idle-time">CPU 的等待時間( Idle time )</h3>
+<h3 id="cpu-的等待時間idle-time">CPU 的等待時間（Idle time）</h3>
 <ul>
-<li>人類手動操作對於 CPU time 太慢。
+<li>人類手動操作相對於「CPU cycle time」太慢
 <ul>
-<li>以「Automatic Job Sequence」的軟體<strong>常駐於</strong>在早期的電腦上，利用少量的記憶體執行<strong>非常駐於的電腦上的軟體</strong>，類似於現今的作業系統，稱之為「Resident Monitor」。</li>
+<li>以「Automatic Job Sequence」的軟體<strong>常駐於</strong>在早期的電腦上，利用少量的記憶體執行<strong>非常駐於的電腦上的軟體</strong>，類似於現今的作業系統，<strong>稱之為「Resident Monitor」</strong></li>
 </ul></li>
-<li>I/O 裝置的工作速度遠比 CPU 的工作速度還慢，CPU 針對某些工作必須等待 I/O 工作完成後才能繼續執行，所以造成 CPU 等待時間 ( idle time ) 太久。
+<li>I/O 裝置的工作速度遠比 CPU 的工作速度還慢，<strong>CPU 針對某些工作必須等待 I/O 工作完成後才能繼續執行，所以造成 CPU 等待時間（idle time）太久</strong>
 <ul>
-<li>以較快速的裝置介入 CPU 與 I/O 裝置之間作為緩衝。</li>
+<li>以<strong>較快速的裝置介入 CPU 與 I/O 裝置之間作為緩衝</strong></li>
 </ul></li>
 </ul>
 <h4 id="脫機-off-line-非即時運作-io">脫機 (Off-line 非即時運作 I/O)</h4>
 <figure>
 <img src="\willywangkaa\images\1529920981306.png" alt="1529920981306"><figcaption>1529920981306</figcaption>
 </figure>
-<p>不及時的將 CPU 演算完的資料給予讀取或是列印，利用專門的外圍控制機，將低速 I/O 設備上的數據傳送到高速磁碟 ( 磁帶 ) 上；或者相反，CPU 直接對於磁帶讀寫，使電腦加快讀取的速度。</p>
+<p>不即時的將 CPU 演算完的資料給予讀取或是列印，<strong>利用專門的外圍控制機，將低速 I/O 設備上的數據傳送到高速磁碟（磁帶）上；或者相反，CPU 直接對於磁帶讀寫，使電腦加快讀取的速度</strong></p>
 <ul>
-<li>以磁帶機緩解讀卡機( Input )與印表機( Output )造成過慢的等待( idle )：電腦中間以磁帶機的方式加速與讀卡機與印表機的溝通( 讀卡機與印表機不直接由 CPU 直接操作 )。</li>
+<li><strong>以磁帶機緩解讀卡機（Input）與印表機（Output）造成過慢的等待（Idle）</strong>
+<ul>
+<li>電腦中間以磁帶機的方式加速與讀卡機與印表機的溝通（讀卡機與印表機不直接由 CPU 直接操作）</li>
+</ul></li>
 <li>磁帶機實作
 <ul>
-<li>以專用的 I/O 裝置對於磁帶讀寫。( CPU 直接控制 )</li>
-<li>以一個小型的子電腦對於磁帶讀寫，習慣稱之為衛星機( salellite processing )，主要負責磁帶拷貝的工作，CPU 不直接參與磁帶機的讀寫運作。</li>
+<li>以專用的 I/O 裝置對於磁帶讀寫（CPU 直接控制）</li>
+<li>以一個小型的子電腦對於磁帶讀寫，習慣稱之為衛星機（Satellite processing），主要負責磁帶拷貝的工作，<strong>CPU 不直接參與磁帶機的讀寫運作</strong></li>
 </ul></li>
 <li>Pros
 <ul>
-<li>CPU 不受到讀卡機或是印表機的速度限制( CPU 受到磁碟機的速度限制 )。</li>
-<li>已寫好的程式不必更動，只要把原本直接交付給裝置執行的指令存入磁帶中再給該裝置執行。</li>
-<li>裝置獨立性( Device Independent )：泛指同一程式可以在不同的 I/O 裝置上執行的能力。</li>
+<li>CPU 不<strong>受到讀卡機或是印表機的速度限制</strong>（CPU 受到磁碟機的速度限制）</li>
+<li>已寫好的程式不必更動，只要把原本直接交付給裝置執行的指令存入磁帶中再給該裝置執行</li>
+<li>裝置獨立性（Device Independent）
+<ul>
+<li><strong>泛指同一程式可以在不同的 I/O 裝置上執行的能力</strong></li>
+</ul></li>
 </ul></li>
 <li>Cons
 <ul>
-<li>因為要先讓電腦先將指令載入至磁帶，再交由該機器執行，導致設定時間需求長。</li>
-<li>磁帶只能以循序讀取( Sequential Acess )的方式讀寫。</li>
+<li>因為要先讓電腦先將指令載入至磁帶，再交由該機器執行，導致設定時間需求長</li>
+<li>磁帶只能以循序讀取（Sequential Access）的方式讀寫</li>
 </ul></li>
 </ul>
 <h4 id="緩衝區-buffering">緩衝區 ( Buffering )</h4>
@@ -494,71 +500,110 @@
 <li>因為需要大量的 CPU 計算，速度受限於 CPU 的處理速度。</li>
 </ul></li>
 </ul>
-<h4 id="假脫機-線上同時周邊處理技術-simultaneous-peripheral-operation-on-line-spool">假脫機<br>線上同時周邊處理技術( Simultaneous Peripheral Operation On-Line, SPOOL )</h4>
-<p>又稱為排隊緩存技術。當系統中引入了多道程序技術( Multiprocess )後，完全可以利用其中的一道程序，來模擬脫機輸入時的外圍控制機功能，把低速 I/O 設備上的數據傳送到高速磁碟上；再用另一道程序來模擬脫機( Off-line )輸出時外圍控制機的功能，把數據從磁碟傳送到低速輸出設備上。這樣，便可在主機的直接控制( On-line )下實現脫機輸入、輸出功能。</p>
+<h4 id="假脫機線上同時周邊處理技術-simultaneous-peripheral-operation-on-line-spool">假脫機－線上同時周邊處理技術( Simultaneous Peripheral Operation On-Line, SPOOL )</h4>
+<p>又稱為「排隊緩存技術」；當系統中引入了多程序技術（Multiprocess）後，完全可以利用其中的一道程序，<strong>來模擬脫機輸入時的外圍控制機功能</strong>，把低速 I/O 設備上的數據傳送到高速磁碟上；<strong>再用另一道程序來模擬脫機（Off-line）輸出時外圍控制機的功能</strong>，把數據從磁碟傳送到低速輸出設備上。這樣，便可在主機的直接控制（On-line）下實現脫機輸入、輸出功能</p>
 <figure>
 <img src="\willywangkaa\images\1529918563313.png" alt="1529918563313"><figcaption>1529918563313</figcaption>
 </figure>
 <ul>
-<li>外圍操作與 CPU 對數據的處理可以同時進行。</li>
-<li>SPOOL 的需求
+<li>外圍操作與 CPU 對數據的處理可以<strong>同時進行</strong></li>
+<li>「SPOOL」的需求
 <ul>
-<li>建立在具有多程序( Multiprocess )功能的作業系統。</li>
-<li>高速隨機外存。( 磁碟存儲技術 )</li>
+<li>建立在具有多程序（Multiprocess）功能的作業系統</li>
+<li><strong>高速隨機外存</strong>（磁碟存儲技術）</li>
 </ul></li>
 <li>組成
 <ul>
-<li>井：在磁碟上開闢的兩個大存儲空間。<br>輸入井：模擬脫機輸入時的磁碟設備，用於暫存I/O 設備輸入的數據。<br>輸出井：模擬脫機輸出時的磁碟，用於暫存用戶程序的輸出數據。</li>
-<li>緩衝區：為了緩解 CPU 和磁碟之間速度不匹配的矛盾，在內存( RAM )中要開闢兩個緩衝區。<br>輸入緩衝區：暫存由輸入設備送來的數據，一旦緩衝區要滿出來了，再傳送到輸入井。<br>輸出緩衝區：暫存從輸出井送來的數據，往後再傳送給輸出設備。</li>
-<li>「輸入程序 <span class="math inline">\(SP_i\)</span> 」 和「輸出程序 <span class="math inline">\(SP_o\)</span>」。這裡利用兩個進程來模擬脫機 I/O 時的外圍控制機。<br>「程序 <span class="math inline">\(SP_i\)</span>」：模擬脫機輸入時的外圍控制機，將用戶要求的數據從輸入機通過輸入緩衝區再送到輸入井，當CPU 需要輸入數據時，直接從輸入井讀入內存。<br>「程序 <span class="math inline">\(SP_o\)</span>」模擬脫機輸出時的外圍控制機，把用戶要求輸出的數據先從內存送到輸出井，待輸出設備空閒時，再將輸出井中的數據經過輸出緩衝區送到輸出設備上。</li>
-</ul></li>
-<li>達到共享 I/O 裝置的目的。
+<li>井：<strong>在磁碟上開闢的兩個大存儲空間</strong>
 <ul>
-<li>印表機( 獨占設備 )：當用戶進程請求列印輸出時，SPOOLing系統同意為它列印輸出，但並不真正立即把印表機分配給該用戶進程，而只為它做兩件事：<br>1. 由「輸出程序」在輸出井中為之<strong>申請一個空閒磁碟塊區</strong>，並將要列印的數據送入其中。<br>2. 「輸出程序」再為用戶程序<strong>申請一張空白的用戶請求列印表，並將用戶的列印要求填入其中，再將該表掛到請求列印隊列上</strong>。<br><strong>如果還有進程要求列印輸出，系統仍可接受該請求，</strong>也同樣為該進程做上述兩件事。如果印表機空閒，輸出進程將從請求列印隊列的隊首取出一張請求列印表，根據表中的要求將要列印的數據，從輸出井傳送到內存緩衝區，再由印表機進行列印。列印完後，輸出進程再查看請求列印隊列中是否還有等待列印的請求表。若有，又取出隊列中的第一張表，並根據其中的要求進行列印，如此下去，直至請求列印隊列為空，輸出進程才將自己阻塞( Blocked )起來。僅當下次再有列印請求時，輸出進程才被喚醒( Wake up )。</li>
+<li>輸入井：模擬脫機輸入時的磁碟設備，<strong>用於暫存 I/O 設備輸入的數據</strong></li>
+<li>輸出井：模擬脫機輸出時的磁碟，<strong>用於暫存用戶程序的輸出數據</strong></li>
+</ul></li>
+<li>緩衝區：為了緩解 CPU 和磁碟之間速度不匹配的矛盾，<strong>在內存（RAM）中要開闢兩個緩衝區</strong>
+<ul>
+<li>輸入緩衝區：<strong>暫存由輸入設備送來的數據，一旦緩衝區要滿出來了，再傳送到輸入井</strong></li>
+<li>輸出緩衝區：暫存要送往輸出井送來的數據，往後再傳送給輸出設備</li>
+</ul></li>
+<li>「輸入程序 <span class="math inline">\(SP_i\)</span> 」 和「輸出程序 <span class="math inline">\(SP_o\)</span>」，利用兩個程序來模擬脫機 I/O 時的外圍控制機
+<ul>
+<li>「程序 <span class="math inline">\(SP_i\)</span>」：模擬脫機輸入時的外圍控制機，將用戶要求的數據從輸入機通過輸入緩衝區再送到輸入井，當CPU 需要輸入數據時，直接從輸入井讀入內存</li>
+<li>「程序 <span class="math inline">\(SP_o\)</span>」模擬脫機輸出時的外圍控制機，把用戶要求輸出的數據先從內存送到輸出井，待輸出設備空閒時，再將輸出井中的數據經過輸出緩衝區送到輸出設備上。</li>
+</ul></li>
+</ul></li>
+<li><strong>達到共享 I/O 裝置的目的</strong>
+<ul>
+<li>印表機（獨占設備）：當用戶進程請求列印輸出時，「SPOOLing 系統」<strong>同意為它列印輸出，但並不真正立即把印表機分配給該用戶進程，而只為它做兩件事：</strong>
+<ul>
+<li>（1） 由「輸出程序」在輸出井中為之<strong>申請一個空閒磁碟塊區</strong>，並將要列印的數據送入其中</li>
+<li>（2） 「輸出程序」再為用戶程序<strong>申請一張空白的用戶請求列印表，並將用戶的列印要求填入其中，再將該表掛到請求列印隊列上</strong></li>
+<li>（3）<strong>如果還有進程要求列印輸出，系統仍可接受該請求，</strong>也同樣為該進程做上述兩件事</li>
+<li>（4）如果印表機空閒，輸出進程將從請求列印隊列的隊首取出一張請求列印表，根據表中的要求將要列印的數據，從輸出井傳送到內存緩衝區，再由印表機進行列印</li>
+<li>（5）列印後，輸出進程再查看請求列印隊列中是否還有等待列印的請求表。若有，又取出隊列中的第一張表，並根據其中的要求進行列印</li>
+<li>（6）直至請求列印隊列為空，輸出進程才將自己阻塞( Blocked )，僅當下次再有列印請求時，輸出進程才被喚醒( Wake up )</li>
+</ul></li>
 </ul></li>
 <li>Pros
 <ul>
-<li><strong>提高 I/O 的速度</strong>：從對低速 I/O 設備進行操作，<strong>演變為對輸入井或輸出井中數據的存取，如同脫機輸入輸出一樣</strong>，提高了I/O 速度，緩解了 CPU 與 I/O 設備之間速度不匹配的矛盾。</li>
-<li><strong>將獨占設備視為為共享設備</strong>：SPOOLing 系統中，實際上並<strong>沒為任何進程分配設備</strong>，而只是在輸入井或輸出井中為進程分配一個存儲區和建立一張I/O 請求表。</li>
-<li><strong>實現了虛擬設備功能</strong>：宏觀上，雖然是多個程序在同時使用一台獨占設備，而對於每一個程序會認為自己獨占了一個設備( 邏輯上的設備 )。SPOOLing 系統<strong>實現了將獨占設備變換為若干台對應的邏輯設備的功能。</strong></li>
+<li><strong>提高 I/O 的速度</strong>
+<ul>
+<li>從對低速 I/O 設備進行操作，<strong>演變為對輸入井或輸出井中數據的存取，如同脫機輸入輸出一樣</strong>，提高了 I/O 使用率，<strong>緩解了 CPU 與 I/O 設備之間速度不匹配的矛盾</strong></li>
+</ul></li>
+<li><strong>將獨占設備視為為共享設備</strong>
+<ul>
+<li>「SPOOLing 系統」中，<strong>實際上並沒為任何進程分配設備，而只是在輸入井或輸出井中為進程分配一個存儲區和建立一張「I/O 請求表」</strong></li>
+</ul></li>
+<li><strong>實現了虛擬設備功能</strong>
+<ul>
+<li>宏觀上，雖然是多個程序在同時使用一台獨占設備，而對於每一個程序會認為自己獨占了一個設備（ 邏輯上的設備）</li>
+<li>「SPOOLing 系統」<strong>實現了將獨占設備變換為若干台對應的邏輯設備的功能</strong></li>
+</ul></li>
 </ul></li>
 </ul>
-<p><strong>＜Note＞：</strong>Spool 與 Buffer 的差異性。</p>
+<blockquote>
+<p>Spool 與 Buffer 的差異性</p>
 <ul>
-<li>Spool 允許有程序在執行 CPU 運算時，可以有其他的程序的 I/O 運算同時進行( overlay execution )</li>
-<li>Buffer 允許有程序執行 CPU 運算時同時運算( overlay execution )該程序的 I/O 運算。</li>
+<li>Spool 允許有程序在執行 CPU 運算時，<strong>可以有其他的程序的 I/O 運算同時進行（Overlay execution）</strong></li>
+<li>Buffer 允許有<strong>程序執行 CPU 運算時同時運算（Overlay execution）該程序的 I/O 運算</strong></li>
 </ul>
+</blockquote>
 <h2 id="系統種類---system-type">系統種類 - System Type</h2>
 <h3 id="多元程序系統---multiprogramming-system">多元程序系統 - Multiprogramming System</h3>
-<p><strong>允許系統 ( 或在記憶體 ) 中存在多個 Process ( 處理程序 ) 同時執行</strong>。透過 CPU Scheduling 技術，當某個 Process 取得 CPU 執行時，若因為某些事件發生 ( 如：Wait for I/O completed 、Resource Not Available… ) 而無法往下執行時，作業系統可將 CPU 切換給其他 Process 使用，則CPU在各個 Processes 切換，可以使 CPU 總是為忙碌的狀態( Busy )。</p>
+<p><strong>允許系統 ( 或在記憶體 ) 中存在多個 Process ( 處理程序 ) 同時執行</strong>；透過 CPU Scheduling 技術，當某個 Process 取得 CPU 執行時，若因為某些事件發生（如：Wait for I/O completed 、Resource Not Available…）而無法往下執行時，作業系統可將 CPU 切換給其他 Process 使用，則 CPU 在各個 Processes 切換，可以使 CPU 的使用率提升</p>
 <ul>
-<li><p>主要用於避免 CPU 的空等( idle )，提高 CPU 效能( Utilization )。</p></li>
-<li>Multiprogramming Degree：
+<li><p>主要用於避免 CPU 的空等（Idle），提高 CPU 效能（Utilization）</p></li>
+<li>Multiprogramming Degree
 <ul>
-<li><strong>系統中存在執行的 Process 個數。</strong></li>
-<li>通常 Multiprogramming Degree 越高，且非為 Thrashing 狀態，則 CPU 效能越高。</li>
-</ul></li>
-<li>多個 Process 同時執行的方法：
-<ul>
-<li>Concurrent ( 並行 )：<strong>一個 CPU，多個 Processes 共同使用。</strong></li>
+<li><strong>系統中存在執行的 Process 個數</strong></li>
+<li>通常 Multiprogramming Degree 越高，<strong>且非為 Thrashing 狀態</strong>，則 CPU 效能越高</li>
 </ul></li>
 </ul>
-<p>  <img src="\willywangkaa\images\1530087435637.png" alt="1530087435637"></p>
+<p>多個 Process 同時執行的方法：</p>
 <ul>
-<li>Parallel ( 平行 )：<strong>多核心 CPU 共同執行多個 Processes。</strong></li>
+<li>Concurrent ( 並行 )：<strong>一個 CPU，多個 Processes 共同使用</strong></li>
 </ul>
-<p>  <img src="\willywangkaa\images\1530087726413.png" alt="1530087726413"></p>
+<figure>
+<img src="\willywangkaa\images\1530087435637.png" alt="1530087435637"><figcaption>1530087435637</figcaption>
+</figure>
+<ul>
+<li>Parallel ( 平行 )：<strong>多核心 CPU 共同執行多個 Processes</strong></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\1530087726413.png" alt="1530087726413"><figcaption>1530087726413</figcaption>
+</figure>
 <h3 id="分時系統---time-sharing-system">分時系統 - Time Sharing System</h3>
 <p>It’s a <strong>logical extension of multiprogramming system, the CPU in this kind of system switch highly frequently.</strong></p>
 <ul>
-<li><p>Multiprogramming 的一種，又可以稱為「Multitasking」。<br><strong>＜Note＞：與 Multiprogramming 的差異在於 CPU 切換的頻率極高。</strong></p></li>
-<li><strong>排班使用「RR(Round-Robin) 法則」</strong>：作業系統規定一個 CPU Time Quantum ( 區段 )，<strong>若 Process 在取得CPU後，未能於區段內完成工作，則必須被迫放棄CPU，等待下一次輪迴。</strong>
+<li>Multiprogramming 的一種，又可以稱為「Multitasking」
 <ul>
-<li><strong>通常 Quantum 時間很短。( 小於 1 秒 )</strong></li>
-<li>對每個使用者 ( 程序 ) 是公平的。</li>
+<li><strong>與 Multiprogramming 的差異在於 CPU 切換的頻率極高</strong></li>
 </ul></li>
-<li>適用在User Interactive System ( 互動式作業系統 ) 或 Response Time ( 反應時間 )要求較短的系統。</li>
-<li>透過 Resource Sharing 技術 (如：CPU資源 - CPU scheduling、記憶體資源 - Memory sharing、I/O 裝置資源 - Spooling )，使得每個使用者 ( 程序 ) 皆認為享有專屬的資源。
+<li><strong>排班使用「RR(Round-Robin) 法則」</strong>：作業系統規定一個 CPU Time Quantum，<strong>若 Process 在取得CPU後，未能於區段內完成工作，則必須被迫放棄CPU，等待下一次輪迴</strong>
+<ul>
+<li><strong>通常 Quantum 時間很短</strong></li>
+<li>對每個使用者 ( 程序 ) 是公平的</li>
+</ul></li>
+<li>適用在「User Interactive System」（互動式作業系統 ）或「Response Time」（反應時間）要求較短的系統</li>
+<li>透過「Resource Sharing 技術」（CPU資源 - CPU scheduling、記憶體資源 - Memory sharing、I/O 裝置資源 - Spooling )，<strong>使得每個使用者 ( 程序 ) 皆認為享有專屬的資源</strong>
 <ul>
 <li><strong>Virtual Memory 技術，擴展邏輯的記憶體空間 ( Virtual Memory Space )。</strong></li>
 </ul></li>
@@ -744,7 +789,7 @@
 </table>
 <h2 id="io-運作方式">I/O 運作方式</h2>
 <h3 id="詢問式-io---polling-io">詢問式 I/O - Polling I/O</h3>
-<p>又稱為 Busy-waitting I/O or programmed I/O 。</p>
+<p>又稱為 Busy-waiting I/O、programmed I/O 。</p>
 <ul>
 <li>操作流程
 <ol type="1">
@@ -768,8 +813,8 @@
 <ul>
 <li>操作流程
 <ol type="1">
-<li>User process 發出 I/O 要求給作業系統。</li>
-<li>作業系統收到請求後，( 有可能 )會暫停目前此 process 的執行，並執行對應的 System calls。</li>
+<li>User process 發出 I/O 要求給作業系統</li>
+<li>作業系統收到請求後，<strong>( 有可能 )</strong>會暫停目前此 process 的執行，並執行對應的 System calls。</li>
 <li>Kernel 的「 I/O 子系統 ( subsystem )」會將該請求傳給「裝置驅動程式 ( Device driver )」。</li>
 <li>裝置驅動程式依照此請求設定對應的「 I/O 指令參數( Commands )」給予「裝置控制器 ( Device Controller )」。</li>
 <li>裝置控制器起動，監督 I/O 設備的運作進行，</li>
@@ -1218,7 +1263,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基礎觀念---basic-concept-壹"><span class="nav-number">1.</span> <span class="nav-text">基礎觀念 - Basic Concept (壹)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#機器種類---machine-type"><span class="nav-number">1.1.</span> <span class="nav-text">機器種類 - Machine type</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cpu-的等待時間-idle-time"><span class="nav-number">1.1.1.</span> <span class="nav-text">CPU 的等待時間( Idle time )</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#脫機-off-line-非即時運作-io"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">脫機 (Off-line 非即時運作 I/O)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#緩衝區-buffering"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">緩衝區 ( Buffering )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#假脫機-線上同時周邊處理技術-simultaneous-peripheral-operation-on-line-spool"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">假脫機線上同時周邊處理技術( Simultaneous Peripheral Operation On-Line, SPOOL )</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系統種類---system-type"><span class="nav-number">1.2.</span> <span class="nav-text">系統種類 - System Type</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多元程序系統---multiprogramming-system"><span class="nav-number">1.2.1.</span> <span class="nav-text">多元程序系統 - Multiprogramming System</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分時系統---time-sharing-system"><span class="nav-number">1.2.2.</span> <span class="nav-text">分時系統 - Time Sharing System</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分散式系統---distributed-system"><span class="nav-number">1.2.3.</span> <span class="nav-text">分散式系統 - Distributed System</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多處理器系統---multiprocessors-system-緊密耦合---tightly-coupled"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">多處理器系統 - Multiprocessors System ( 緊密耦合 - Tightly Coupled )</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#symmtric-multiprocessor---smp"><span class="nav-number">1.2.3.1.1.</span> <span class="nav-text">Symmtric Multiprocessor - SMP</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#asymmtric-multiprocessor---asmp"><span class="nav-number">1.2.3.1.2.</span> <span class="nav-text">Asymmtric Multiprocessor - ASMP</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#multiprocessor-v.s-multicore-processor"><span class="nav-number">1.2.3.1.3.</span> <span class="nav-text">「Multiprocessor」 V.S 「Multicore Processor」</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分散式系統---distributed-system-1"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">分散式系統 - Distributed System</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#即時系統---real-time-system"><span class="nav-number">1.2.4.</span> <span class="nav-text">即時系統 - Real-time System</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#hard-real-time-system"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">Hard Real-time System</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#soft-real-time-system"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">Soft Real-time System</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#批次系統---batch-system"><span class="nav-number">1.2.5.</span> <span class="nav-text">批次系統 - Batch system</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#掌上型系統---hand-held-system"><span class="nav-number">1.2.6.</span> <span class="nav-text">掌上型系統 - Hand Held System</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#io-運作方式"><span class="nav-number">1.3.</span> <span class="nav-text">I/O 運作方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#詢問式-io---polling-io"><span class="nav-number">1.3.1.</span> <span class="nav-text">詢問式 I/O - Polling I/O</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中斷式-io---interrupted-io"><span class="nav-number">1.3.2.</span> <span class="nav-text">中斷式 I/O - Interrupted I/O</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dma-direct-memory-access-io"><span class="nav-number">1.3.3.</span> <span class="nav-text">DMA (Direct Memory Access) I/O</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#參考"><span class="nav-number">2.</span> <span class="nav-text">參考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基礎觀念---basic-concept-壹"><span class="nav-number">1.</span> <span class="nav-text">基礎觀念 - Basic Concept (壹)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#機器種類---machine-type"><span class="nav-number">1.1.</span> <span class="nav-text">機器種類 - Machine type</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cpu-的等待時間idle-time"><span class="nav-number">1.1.1.</span> <span class="nav-text">CPU 的等待時間（Idle time）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#脫機-off-line-非即時運作-io"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">脫機 (Off-line 非即時運作 I/O)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#緩衝區-buffering"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">緩衝區 ( Buffering )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#假脫機線上同時周邊處理技術-simultaneous-peripheral-operation-on-line-spool"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">假脫機－線上同時周邊處理技術( Simultaneous Peripheral Operation On-Line, SPOOL )</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系統種類---system-type"><span class="nav-number">1.2.</span> <span class="nav-text">系統種類 - System Type</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多元程序系統---multiprogramming-system"><span class="nav-number">1.2.1.</span> <span class="nav-text">多元程序系統 - Multiprogramming System</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分時系統---time-sharing-system"><span class="nav-number">1.2.2.</span> <span class="nav-text">分時系統 - Time Sharing System</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分散式系統---distributed-system"><span class="nav-number">1.2.3.</span> <span class="nav-text">分散式系統 - Distributed System</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多處理器系統---multiprocessors-system-緊密耦合---tightly-coupled"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">多處理器系統 - Multiprocessors System ( 緊密耦合 - Tightly Coupled )</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#symmtric-multiprocessor---smp"><span class="nav-number">1.2.3.1.1.</span> <span class="nav-text">Symmtric Multiprocessor - SMP</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#asymmtric-multiprocessor---asmp"><span class="nav-number">1.2.3.1.2.</span> <span class="nav-text">Asymmtric Multiprocessor - ASMP</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#multiprocessor-v.s-multicore-processor"><span class="nav-number">1.2.3.1.3.</span> <span class="nav-text">「Multiprocessor」 V.S 「Multicore Processor」</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分散式系統---distributed-system-1"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">分散式系統 - Distributed System</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#即時系統---real-time-system"><span class="nav-number">1.2.4.</span> <span class="nav-text">即時系統 - Real-time System</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#hard-real-time-system"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">Hard Real-time System</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#soft-real-time-system"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">Soft Real-time System</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#批次系統---batch-system"><span class="nav-number">1.2.5.</span> <span class="nav-text">批次系統 - Batch system</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#掌上型系統---hand-held-system"><span class="nav-number">1.2.6.</span> <span class="nav-text">掌上型系統 - Hand Held System</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#io-運作方式"><span class="nav-number">1.3.</span> <span class="nav-text">I/O 運作方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#詢問式-io---polling-io"><span class="nav-number">1.3.1.</span> <span class="nav-text">詢問式 I/O - Polling I/O</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中斷式-io---interrupted-io"><span class="nav-number">1.3.2.</span> <span class="nav-text">中斷式 I/O - Interrupted I/O</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dma-direct-memory-access-io"><span class="nav-number">1.3.3.</span> <span class="nav-text">DMA (Direct Memory Access) I/O</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#參考"><span class="nav-number">2.</span> <span class="nav-text">參考</span></a></li></ol></div>
             
 
           </div>
