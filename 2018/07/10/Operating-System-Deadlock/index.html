@@ -140,7 +140,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530174756704.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1529287297237.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1529287327536.png">
-<meta property="og:updated_time" content="2018-12-04T08:56:57.950Z">
+<meta property="og:updated_time" content="2019-01-28T10:47:41.451Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Operating System - Deadlock">
 <meta name="twitter:description" content="Deadlock  系統中存在一組 processes，彼此形成 循環等待 的情況，造成這些 processes 皆無法往下執行，並降低產量 ( throughput ) 的現象。  1530163891325   死結成立的四個必要條件 ( 所以有一個不成立，則死結必不發生，但是若四個條件全部成立時，死結不一定會發生。 )If there are 4 conditions are">
@@ -390,7 +390,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-12-04T16:56:57+08:00">2018-12-04</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-01-28T18:47:41+08:00">2019-01-28</time>
             
           </span>
 
@@ -838,8 +838,14 @@
 <ul>
 <li><span class="math inline">\(Max_i = 3, m = 10\)</span>。<br><span class="math inline">\(3n &lt; n+10, 2n &lt; 10 \Rightarrow n &lt; 5 \Rightarrow\)</span> <span class="math inline">\(最多 4 個 \; Processes。\)</span></li>
 </ul></li>
-<li>Proof<br>假設資源全部配置出去即為 <span class="math inline">\(\sum_{i = 1}^n Allcation_i = m​\)</span>，又 <span class="math inline">\(\sum_{i = 1}^n Need_i = \sum_{i = 1}^n Max_i - \sum_{i = 1}^n Allocation_i \Rightarrow \sum_{i = 1}^n (Max_i) - m \Rightarrow \sum_{i = 1}^n Max_i = \sum_{i = 1}^n Need_i + m​\)</span>。<br>因為依照定理第二點 <span class="math inline">\(\sum_{i = 1}^n Max_i &lt; n+m \Rightarrow \sum_{i = 1}^n Need_i + m &lt; n+m​\)</span><br>，所以 <span class="math inline">\(\sum_{i = 1}^n Need_i &lt; n​\)</span>，<strong><br>此式代表至少有大於等於 1 個process 之 Need_i 為 0 代表 Process_i 可以完工，</strong>且 P_i 至少會釋出超過 1 個 Resource (<strong>因為按照定理第一點可以知道每個 process 只少會占用大於 1 個資源 Max_i 大於等於 1</strong>)，使得剩下的 processes 中又會有大於等於 1 個 processes 可以取得資源並完工。</li>
+<li>Proof<br>假設資源全部配置出去即為 <span class="math inline">\(\sum_{i = 1}^n Allcation_i = m\)</span>，又 <span class="math inline">\(\sum_{i = 1}^n Need_i = \sum_{i = 1}^n Max_i - \sum_{i = 1}^n Allocation_i \Rightarrow \sum_{i = 1}^n (Max_i) - m \Rightarrow \sum_{i = 1}^n Max_i = \sum_{i = 1}^n Need_i + m\)</span>。<br>因為依照定理第二點 <span class="math inline">\(\sum_{i = 1}^n Max_i &lt; n+m \Rightarrow \sum_{i = 1}^n Need_i + m &lt; n+m\)</span><br>，所以 <span class="math inline">\(\sum_{i = 1}^n Need_i &lt; n\)</span>，<strong><br>此式代表至少有大於等於 1 個process 之 Need_i 為 0 代表 Process_i 可以完工，</strong>且 P_i 至少會釋出超過 1 個 Resource (<strong>因為按照定理第一點可以知道每個 process 只少會占用大於 1 個資源 Max_i 大於等於 1</strong>)，使得剩下的 processes 中又會有大於等於 1 個 processes 可以取得資源並完工。</li>
 </ul>
+<blockquote>
+<p>Example（106 清華大學資工計算機系統）</p>
+<p>Consider a system consisting of m resources of the same type that are shared by n processes, each of which needs at most k resources. What is the minimum number of <strong>instances of resources</strong> to guarantee that the system is deadlock free?</p>
+<p>假設每個「Resource」有 x 個「Instance」，則：</p>
+<p><span class="math inline">\(n\times (k-1) &lt; x \times m \Rightarrow x &gt; \frac{n\times(k-1)}{m} \\ \Rightarrow x \geq \lceil\frac{n\times(k-1)}{m}\rceil+1\)</span></p>
+</blockquote>
 <h3 id="deadlock-detection-and-recovery">Deadlock detection and recovery</h3>
 <p>如果放任 Resources 無限制的使用，雖然 Utilization 高，<strong>但是系統有可能進入死結而不自知，所以需要有一個死結偵測的演算法以及解決 ( Recovery ) 死結的方法。</strong></p>
 <h4 id="detection">Detection</h4>

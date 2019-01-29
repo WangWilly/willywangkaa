@@ -162,7 +162,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1542106445237.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1542447949542.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1542448961965.png">
-<meta property="og:updated_time" content="2019-01-26T12:24:21.749Z">
+<meta property="og:updated_time" content="2019-01-28T06:58:31.070Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Data structure - Search and sort">
 <meta name="twitter:description" content="Binary search Example n 筆資料作「Binary search」最多比較次數？ \(\lceil \lg (n+1) \rceil\)   200 筆資料：最多 8 次的搜尋 1024 筆資料：最多 11 次的搜尋   Example  n 筆資料作「Binary search」  其「Worst case」為 O(log n)  n 筆資料以">
@@ -412,7 +412,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-01-26T20:24:21+08:00">2019-01-26</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-01-28T14:58:31+08:00">2019-01-28</time>
             
           </span>
 
@@ -1104,6 +1104,54 @@
 <li>「Run」的長度：順串中的資料量</li>
 </ul></li>
 </ul>
+<blockquote>
+<p>計算機科學家 <a href="https://zh.wikipedia.org/w/index.php?title=%E5%90%89%E5%A7%86%C2%B7%E6%A0%BC%E9%9B%B7&amp;action=edit&amp;redlink=1" target="_blank" rel="noopener">吉姆·格雷</a> 的 <a href="http://sortbenchmark.org/" target="_blank" rel="noopener">Sort Benchmark</a> 網站用不同的硬體、軟體環境測試了實現方法不同的多種外排序算法的效率。效率較高的算法具有以下的特徵：</p>
+<ul>
+<li><strong>並行計算</strong>
+<ul>
+<li>用多個磁碟驅動器<strong>並行處理數據</strong>，可以加速順序磁碟讀寫</li>
+<li>在<strong>計算機上使用多執行緒</strong>，可在多核心的計算機上得到優化</li>
+<li>使用異步輸入輸出，可以<strong>同時排序和歸併，同時讀寫</strong></li>
+<li>使用多台計算機用高速網絡連接，分擔計算任務</li>
+</ul></li>
+<li><strong>提高硬體速度</strong>
+<ul>
+<li><strong>增大內存，減小磁碟讀寫次數，減小歸併次數</strong></li>
+<li>使用快速的外存設備，比如15000 RPM的硬碟或固態硬碟</li>
+<li>使用性能更優良個各種設備，比如使用多核心 CPU 和延遲時間更短的內存</li>
+</ul></li>
+<li><strong>提高軟體速度</strong>
+<ul>
+<li>對於某些特殊數據，在第一階段的排序中使用<a href="https://zh.wikipedia.org/wiki/%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F" target="_blank" rel="noopener">基數排序</a></li>
+<li>壓縮輸入輸出文件和臨時文件</li>
+</ul></li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><p>外歸併排序法並不是唯一的「External sort」，另外有<strong>「外分配排序」</strong>，其原理類似於內排序中的<a href="https://zh.wikipedia.org/wiki/%E6%A1%B6%E6%8E%92%E5%BA%8F" target="_blank" rel="noopener">桶排序（Bucket sort）</a></p></li>
+<li><p>「Merge sort」和「Bucket sort」之間存在數學上的某種對偶性</p></li>
+</ul>
+<p>Example（106 清華大學資工基礎計算機科學第 6 題）</p>
+<ul>
+<li>簡述
+<ul>
+<li>比較兩個「External sort」分別的特性，並且個別適合什麼類型的資料型態
+<ul>
+<li>Merge sort</li>
+<li>Bucket sort</li>
+</ul></li>
+</ul></li>
+<li>Merge sort
+<ul>
+<li>因為其特性，適合大量資料的排序，可以將資料從「Second storage」中取得資料存於 RAM 中，再進行排序，歸併後再輸出至「Second storage」</li>
+</ul></li>
+<li>Bucket sort
+<ul>
+<li>與「Merge sort」一樣，經過調整的演算法可以作為「外分配排序」，同樣可以處理大量資料，但還有包含另一個性質，若資料位數很大時，或是基底很小時，也建議採用「MSD radix sort」</li>
+</ul></li>
+</ul>
+</blockquote>
 <h3 id="iterative-merge-sort-two-way-merge">Iterative merge sort (Two way merge)</h3>
 <p>Example</p>
 <figure>
@@ -1423,6 +1471,10 @@
 <li>以各個純小數之小數後第一位值有序的插入「Bucket」中</li>
 <li>由小到大合併所有「Bucket」</li>
 </ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Pseudo code</span></span><br><span class="line">Array bucket-sort(<span class="built_in">array</span>, n) &#123;</span><br><span class="line">    Array buckets[n];</span><br><span class="line">    <span class="keyword">for</span> i = <span class="number">0</span> to (length(<span class="built_in">array</span>)<span class="number">-1</span>) &#123;</span><br><span class="line">        buckets[msbits(<span class="built_in">array</span>[i], k)].insert(<span class="built_in">array</span>[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i = <span class="number">0</span> to n - <span class="number">1</span> </span><br><span class="line">        next-sort(buckets[i]);</span><br><span class="line">    <span class="keyword">return</span> concatenation(buckets[<span class="number">0</span>], ..., buckets[n<span class="number">-1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在實作裡，可用每個桶內部用連結串列表示，在資料入桶的同時<strong>插入排序</strong>，然後把各個桶中的資料合併</p>
+</blockquote>
 <p>Example</p>
 <p>排序：179、208、306、93、859、984、55、9、271、33</p>
 <figure>

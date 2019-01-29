@@ -130,7 +130,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/localittmodel.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/workingset.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/copyonwrite.png">
-<meta property="og:updated_time" content="2018-09-10T10:19:09.369Z">
+<meta property="og:updated_time" content="2019-01-28T10:38:06.433Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Operating System - Virtual Memory">
 <meta name="twitter:description" content="Virtual memory  Pros  允許 Process 大小超過實體記憶體可用空間大小時，Process 仍可以正確執行，主要是作業系統要解決之議題，開發者無須擔心。     Additional pros  RAM 的利用度 ( Utilization ) 高 儘可能地提高系統的多工度 ( Multiprogramming degree )，亦也提高 CPU 的">
@@ -380,7 +380,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-09-10T18:19:09+08:00">2018-09-10</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-01-28T18:38:06+08:00">2019-01-28</time>
             
           </span>
 
@@ -1152,6 +1152,13 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 <p>(6)：<strong>因為 Page fault process time 可以降低</strong>；<strong>(7)</strong>；<strong>(8)</strong></p>
 <p><strong>(never)</strong></p>
 <p>(1)；(3)；(5)；<strong>(10)：更差</strong></p>
+<ul>
+<li>Example（106清華大學資工計算機系統）
+<ul>
+<li>Is it possible for a process to have two working sets, one representing data and another representing code? Explain your answer.</li>
+</ul></li>
+</ul>
+<p>「Working set」是由多個<strong>正在執行的</strong>「Virtual memory page」組成，<strong>且並不包含不用執行的「Page」</strong>，所以不可能有兩個「Working set」分別記錄「Data」與「Code」</p>
 <h6 id="locality-model">☆Locality model</h6>
 <blockquote>
 <figure>
