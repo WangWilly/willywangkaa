@@ -119,7 +119,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1526808564478.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1526808604540.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1526809058649.png">
-<meta property="og:updated_time" content="2019-01-27T08:30:46.619Z">
+<meta property="og:updated_time" content="2019-01-29T05:53:09.818Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Operating System - Basic Concept 2">
 <meta name="twitter:description" content="基礎觀念 - Basic Concept (貳)  機器指令 Stage (階段)  1526805202151   IF：Instruction Fetch ID：Instruction Decode FO：Fetch Operands EXE：Execution WM：Write Result to Memory      CPU 會 Memory Acces">
@@ -369,7 +369,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-01-27T16:30:46+08:00">2019-01-27</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-01-29T13:53:09+08:00">2019-01-29</time>
             
           </span>
 
@@ -486,8 +486,28 @@
 <figure>
 <img src="\willywangkaa\images\1526805611478.png" alt="1526805611478"><figcaption>1526805611478</figcaption>
 </figure>
+<ol type="1">
+<li><strong>驅動程序（CPU）</strong>
+<ol type="1">
+<li>作業系統中的「裝置驅動程序」<strong>提出要求</strong>，欲將存於硬碟的資料傳輸至 RAM，並指定地址位在 x 的「Buffer」</li>
+<li>「裝置驅動程序」接著<strong>命令「硬碟控制器」（Disk controller）</strong>傳輸 C Byte 到指定的位置</li>
+</ol></li>
+<li><strong>硬碟控制器（Disk）</strong>
+<ol type="1">
+<li><strong>對「DMA 控制器」作初始化設定</strong></li>
+<li>「硬碟控制器」使用「PCI bus」將每個位元組資料傳輸給「DMA 控制器」
 <ul>
-<li>Life cycle of I/O request (via Tnterrupted I/O) (P.3-65) (原文書P.612)</li>
+<li><strong>原先不使用「DMA 控制器」的情況下，要將資料交給 CPU 再傳輸到 RAM 中</strong></li>
+</ul></li>
+</ol></li>
+<li><strong>DMA 控制器</strong>
+<ol type="1">
+<li>在接受自「硬碟控制器」傳來的資料後，將資料<strong>以「CPU memory bus」傳送到指定 RAM 中的位置 x</strong>；接著將 x 值遞增，C 值遞減直到成為 0</li>
+<li>傳輸完成後，<strong>「DMA 控制器」觸發「Interrupt」以通知 CPU 中的驅動程序</strong></li>
+</ol></li>
+</ol>
+<ul>
+<li>Life cycle of I/O request (via Interrupted I/O) (P.3-65) (原文書P.612)</li>
 </ul>
 <figure>
 <img src="\willywangkaa\images\1526806092878.png" alt="1526806092878"><figcaption>1526806092878</figcaption>
@@ -867,7 +887,7 @@
                 
                   <a href="/willywangkaa/archives/">
                 
-                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-count">53</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1067,7 +1087,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">77</span>
+                      
+                    
+                    <span class="site-state-item-count">78</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

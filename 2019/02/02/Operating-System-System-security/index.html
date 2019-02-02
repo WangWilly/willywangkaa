@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-tw,en,default">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/willywangkaa/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/willywangkaa/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/willywangkaa/images/apple-touch-icon-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/willywangkaa/images/favicon-32x32-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/willywangkaa/images/favicon-16x16-next_cat.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/willywangkaa/images/logo_cat.svg?v=6.0.4" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/willywangkaa/',
+    scheme: 'Pisces',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="Security," />
+
+
+<meta name="description" content="System security  提供「安全功能」與「安全服務」 針對各種常用作業系統，進行相關配置，以正確對付、防禦各種入侵 保證網路作業系統提供的網路服務得到安全配置  病毒（Virus） 藉由用存取控制（Access control）的機制來保護資訊的安全，防止非法使用者的入侵與蓄意破壞  特徵  A fragment of code embedded in a leg">
+<meta name="keywords" content="Security">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Operating System - System security">
+<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2019/02/02/Operating-System-System-security/index.html">
+<meta property="og:site_name" content="WillyWangkaa">
+<meta property="og:description" content="System security  提供「安全功能」與「安全服務」 針對各種常用作業系統，進行相關配置，以正確對付、防禦各種入侵 保證網路作業系統提供的網路服務得到安全配置  病毒（Virus） 藉由用存取控制（Access control）的機制來保護資訊的安全，防止非法使用者的入侵與蓄意破壞  特徵  A fragment of code embedded in a leg">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/MAC.png">
+<meta property="og:updated_time" content="2019-02-02T10:23:36.464Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Operating System - System security">
+<meta name="twitter:description" content="System security  提供「安全功能」與「安全服務」 針對各種常用作業系統，進行相關配置，以正確對付、防禦各種入侵 保證網路作業系統提供的網路服務得到安全配置  病毒（Virus） 藉由用存取控制（Access control）的機制來保護資訊的安全，防止非法使用者的入侵與蓄意破壞  特徵  A fragment of code embedded in a leg">
+<meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/MAC.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://WangWilly.github.io/willywangkaa/2019/02/02/Operating-System-System-security/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>Operating System - System security | WillyWangkaa</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/willywangkaa/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WillyWangkaa</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Live more like human</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/willywangkaa/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/willywangkaa/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/willywangkaa/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/willywangkaa/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2019/02/02/Operating-System-System-security/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WillyWangkaa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Operating System - System security</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-02T18:21:00+08:00">2019-02-02</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-02T18:23:36+08:00">2019-02-02</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/willywangkaa/categories/Operating-System/" itemprop="url" rel="index"><span itemprop="name">Operating System</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/willywangkaa/2019/02/02/Operating-System-System-security/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/02/02/Operating-System-System-security/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="system-security">System security</h1>
+<ul>
+<li>提供「安全功能」與「安全服務」</li>
+<li>針對各種常用作業系統，進行相關配置，以正確對付、防禦各種入侵</li>
+<li>保證網路作業系統提供的網路服務得到安全配置</li>
+</ul>
+<h2 id="病毒virus">病毒（Virus）</h2>
+<p>藉由用存取控制（Access control）的機制來保護資訊的安全，防止非法使用者的入侵與蓄意破壞</p>
+<ul>
+<li>特徵
+<ul>
+<li>A fragment of code embedded in a legitimate program</li>
+<li>依附在別的程式上</li>
+<li>會自行複製、感染、傳播、發作</li>
+<li>「UNIX」與「Multiuser」作業系統不易受到病毒影響，因為「可執行檔」的寫入被系統保護</li>
+</ul></li>
+</ul>
+<ol type="1">
+<li><p>啟動磁區病毒</p>
+<ul>
+<li>早期的病毒類型，感染開機磁片中「Boot」程式或硬碟分割表以取得控制權限</li>
+</ul></li>
+<li><p>檔案型病毒</p>
+<ul>
+<li>寄生於執行檔後，會再自主感染其他執行檔
+<ul>
+<li>「常駐型」：會常駐在記憶體中，當其他程式執行時會進一步執行感染動作</li>
+<li>「非常駐型」：感染磁碟機中找出尚未被感染的程式加以感染</li>
+</ul></li>
+</ul></li>
+<li><p>巨集病毒</p>
+<ul>
+<li>裡用軟體本身提供的巨集功能設計出的病毒
+<ul>
+<li>Microsoft word 的 VBA 巨集</li>
+</ul></li>
+</ul></li>
+<li><p>電腦蠕蟲</p>
+<ul>
+<li><p>A process that use spawn mechanism（孕育機制） to duplicate itself</p></li>
+<li>不須依附在別的程式內</li>
+<li>可能不用使用者操作也會自我複製執行</li>
+<li>未必破壞被感染的系統</li>
+<li>執行垃圾程式碼以發動「分散式阻斷服務攻擊」（DDos）
+<ul>
+<li>採用垃圾郵件、漏洞傳播，如：<strong>莫里斯蠕蟲</strong></li>
+</ul></li>
+</ul></li>
+<li><p>特洛伊木馬</p>
+<ul>
+<li><p>A code segment that misuses its environment</p></li>
+<li>病毒依附在一般程式碼</li>
+<li>滿足特定條件後便將使用者資料傳出，未達條件不進行任何動作</li>
+<li><p>「Spyware」：常伴隨著商業軟體，施行網頁綁架與廣告騷擾</p></li>
+</ul></li>
+<li><p>Autorun病毒</p>
+<ul>
+<li>利用 USB 當作媒介，會自動執行程式侵入電腦</li>
+</ul></li>
+<li><p>千面人病毒</p>
+<ul>
+<li>每繁殖一次會以不同病毒碼傳染到別處，每一個中毒的檔案所含的病毒程式碼皆不同</li>
+</ul></li>
+</ol>
+<h2 id="攻擊手段">攻擊手段</h2>
+<ol type="1">
+<li>Dumpster diving
+<ul>
+<li>攻擊者翻找目標系統文件、檔案、垃圾資料與殘存資訊，試圖找到密碼與其他有用的資訊</li>
+</ul></li>
+<li>Trap door
+<ul>
+<li>The designer of a program or system might leave a hole in the software that only is capable of use</li>
+<li>隱藏在程式中的秘密功能</li>
+</ul></li>
+<li>Logic bomb
+<ul>
+<li>A program that initiates a security incident only under certain circumstances</li>
+<li>難以查出問題所在</li>
+<li>正常情況不發生，當發生特定條件時會發生錯誤</li>
+</ul></li>
+<li>Stack overflow / Buffer overflow
+<ul>
+<li>Attacker sends more data than the program expected</li>
+<li>溢位（Overflow）後將原本「Stack」中的「Return address」改成惡意程式的位置</li>
+<li>避免方法
+<ul>
+<li>Use static code analysis to look for memory writes that go beyond array boundaries</li>
+<li>Randomize the base address of program libraries/stack in the memory</li>
+<li>使用安全的函數（strcpy()→strncpy()）</li>
+<li>使用高階程式語言
+<ul>
+<li>Java、Python</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Port scanning
+<ul>
+<li>Is not a attacker but rather a means for a cracker to detect a system’s vulnerabilities to attacker</li>
+<li>首先搜尋<strong>目標網路</strong>上所有可以接觸到的主機，然後查出主機上開啟了哪些通訊埠，並且進一步偵測出目標主機上所執行的作業系統類型及版本（OS fingerprinting），最後刺探出目標主機上正在執行或待命的網路服務與目標主機的 IP 位址之間的關係</li>
+<li>Port scanning （通訊埠端口掃描）
+<ul>
+<li>駭客<strong>會傳送一連串的特殊訊息去測試此主機上有執行哪些網路服務</strong>，如 HTTP 使用 Port 80，透過「Port Scanning」<strong>得知哪些通訊埠是開啟的</strong>，讓駭客知道主機上目前所執行的網路服務類型</li>
+</ul></li>
+<li>Network Scanning（網路架構掃描）
+<ul>
+<li>若能得知目標網路內有哪些主機是可以接觸到、啟動（active）的，<strong>能夠縮小攻擊範圍並知道哪些主機可以成為被攻擊目標</strong></li>
+</ul></li>
+<li>Vulnerability Scanning（弱點掃描）
+<ul>
+<li>偵測及發現目標網路內被掃描的<strong>主機上所存在的弱點與漏洞</strong>，以便未來進行入侵攻擊</li>
+</ul></li>
+</ul></li>
+<li>Denial of service（Dos）
+<ul>
+<li>Dos attacks are aimed not at gaining information or stealing resources but rather at disrupting legitimate use of a system or facility</li>
+<li>DDos
+<ul>
+<li>利用多台殭屍系統（Zombies）<strong>同時對目標伺服器發出大量請求以癱瘓服務</strong></li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="symmetric-encryption-and-asymmetric-encryption">Symmetric encryption and asymmetric encryption</h1>
+<h2 id="symmetric-encryption">Symmetric encryption</h2>
+<p>Same key is used to encrypt and to decrypt</p>
+<h3 id="data-encrypt-standarddes">Data encrypt standard（DES）</h3>
+<ul>
+<li><strong>64 bit block cypher</strong>
+<ul>
+<li>每次加密操作只處理 64-bit 資料，稱為「Block」</li>
+</ul></li>
+<li><strong>56 bit key length</strong></li>
+</ul>
+<p><strong>Triple DES</strong></p>
+<ul>
+<li>C：Cypher；密文</li>
+<li>M：Plaintext；明文</li>
+<li>使用「金鑰包」包含三個 DES 金鑰 <span class="math inline">\(K_1、K_2、K_3\)</span> 均為 56-bits
+<ul>
+<li>加密：使用 <span class="math inline">\(K_1\)</span> 的金鑰進行 DES 加密，在用 <span class="math inline">\(K_2\)</span> 的金鑰<strong>進行 DES「解密」</strong>，最後使用 <span class="math inline">\(K_3\)</span> 進行 DES 加密，『<span class="math inline">\(C = E_{K_3}(D_{K_2}(E_{K_1}(M)))\)</span>』</li>
+<li>解密：使用 <span class="math inline">\(K_3\)</span> 的金鑰進行 DES 解密，在用 <span class="math inline">\(K_2\)</span> 的金鑰<strong>進行 DES「加密」</strong>，最後使用 <span class="math inline">\(K_1\)</span> 進行 DES 解密，『<span class="math inline">\(M = D_{K_1}(E_{K_2}(D_{K_1}(C)))\)</span>』</li>
+</ul></li>
+<li>金鑰選項（<span class="math inline">\(K_1、K_2、K_3\)</span>）
+<ul>
+<li>金鑰選項1：三個金鑰獨立
+<ul>
+<li>強度最高，擁有 3×56 = 168 個獨立金鑰位元（Bit）</li>
+</ul></li>
+<li><strong>金鑰選項2</strong>：<span class="math inline">\(K_1、K_2\)</span> 獨立、<span class="math inline">\(K_3 = K_1\)</span>
+<ul>
+<li>安全性稍低，<strong>擁有 2×56 = 112 個獨立金鑰位元（Bit），但可以防禦「<a href="https://zh.wikipedia.org/wiki/%E4%B8%AD%E9%80%94%E7%9B%B8%E9%81%87%E6%94%BB%E6%93%8A" target="_blank" rel="noopener">中途相遇攻擊</a>」</strong></li>
+</ul></li>
+<li>金鑰選項3：<span class="math inline">\(K_1 = K_2 = K_3\)</span>
+<ul>
+<li>等同於普通 DES（因為會互相抵銷），擁有 56 個獨立金鑰位元（Bit）</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="advanced-encryption-standardaes">Advanced encryption standard（AES）</h3>
+<p>在<a href="https://zh.wikipedia.org/wiki/%E5%AF%86%E7%A0%81%E5%AD%A6" target="_blank" rel="noopener">密碼學</a>中又稱「Rijndael加密法」，是<a href="https://zh.wikipedia.org/wiki/%E7%BE%8E%E5%9B%BD%E8%81%94%E9%82%A6%E6%94%BF%E5%BA%9C" target="_blank" rel="noopener">美國聯邦政府</a>採用的一種<a href="https://zh.wikipedia.org/wiki/%E5%8D%80%E5%A1%8A%E5%8A%A0%E5%AF%86" target="_blank" rel="noopener">區段加密</a>標準，用來替代原先的<a href="https://zh.wikipedia.org/wiki/DES" target="_blank" rel="noopener">DES</a></p>
+<blockquote>
+<p>嚴格地說，AES 和 Rijndael 加密法並不完全一樣（雖然在實際應用中兩者可以互換），因為Rijndael加密法可以支援更大範圍的區段和金鑰長度</p>
+<ul>
+<li><strong>AES 的區段（Block cypher）長度固定為128-bit</strong></li>
+<li><strong>金鑰長度（Key length）則可以是 128、192、256-bit</strong></li>
+</ul>
+<p>而Rijndael使用的金鑰和區段長度均可以是128、192、256-bit</p>
+<p>加密過程中使用的金鑰是由「<a href="https://zh.wikipedia.org/wiki/Rijndael%E5%AF%86%E9%92%A5%E7%94%9F%E6%88%90%E6%96%B9%E6%A1%88" target="_blank" rel="noopener">Rijndael金鑰生成法</a>」產生</p>
+</blockquote>
+<p><strong>RSA 比 DES 和其它對稱演算法要慢得多</strong>；實際上「傳送方」會使用<strong>一種對稱演算法來加密他的資訊</strong>，然後用 RSA 來加密他的比較短的對稱密碼，然後將用 RSA 加密的對稱密碼和用對稱演算法加密的訊息送給「接收方」</p>
+<ul>
+<li>C：Cypher；密文</li>
+<li><p>M：Plaintext；明文</p></li>
+<li><span class="math inline">\(K_{as}\)</span>：AES 金鑰</li>
+<li><span class="math inline">\(K_{bs}、K_{bp}\)</span>：RSA 私鑰與公鑰（<strong>接收方</strong>）</li>
+<li>加密
+<ul>
+<li>利用「AES 金鑰」對明文（M）加密</li>
+<li>再使用「RSA 公鑰」對「AES 金鑰」加密</li>
+<li>將上述兩者一併傳給接收方</li>
+<li><span class="math inline">\(\Rightarrow E_{K_{as}}(M)｜E_{K_{bp}}(K_{as})\)</span></li>
+</ul></li>
+<li>解密
+<ul>
+<li>用「RSA 私鑰」解密出「AES 金鑰」</li>
+<li>再使用「AES 金鑰」解密出明文</li>
+<li>爾後雙方傳遞資料只需使用「AES 金鑰」加密明文即可</li>
+<li><span class="math inline">\(\Rightarrow D_{K_{bs}}(E_{K_{bp}}(K_{as})) = K_{as} \\ D_{K_{as}}(E_{K_{as}}(M)) = M\)</span></li>
+</ul></li>
+</ul>
+<h3 id="rivest-cypher-4rc4">Rivest cypher 4（RC4）</h3>
+<p>是密鑰長度可變的一種「<a href="https://zh.wikipedia.org/wiki/%E6%B5%81%E5%8A%A0%E5%AF%86" target="_blank" rel="noopener">串流流加密</a>算法」，也屬於<a href="https://zh.wikipedia.org/wiki/%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86" target="_blank" rel="noopener">對稱加密算法</a>，RC4 是<a href="https://zh.wikipedia.org/wiki/%E6%9C%89%E7%B7%9A%E7%AD%89%E6%95%88%E5%8A%A0%E5%AF%86" target="_blank" rel="noopener">有線等效加密</a>（WEP）中採用的加密算法，也曾經是「<a href="https://zh.wikipedia.org/wiki/%E4%BC%A0%E8%BE%93%E5%B1%82%E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener">Transport layer security（TLS）</a>」可採用的算法之一</p>
+<ul>
+<li><p>RC4 由<a href="https://zh.wikipedia.org/wiki/%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%95%B0" target="_blank" rel="noopener">偽隨機數</a>生成器（Pseudo-random bit generator）和異或運算（XOR）組成</p></li>
+<li>RC4的密鑰長度可變
+<ul>
+<li>40 ~ 2048 bit</li>
+</ul></li>
+<li>RC4一個字節一個字節（Byte）地加解密</li>
+<li>給定一個密鑰，偽隨機數生成器接受密鑰並產生一個「<a href="https://zh.wikipedia.org/wiki/S%E7%9B%92" target="_blank" rel="noopener">S盒</a>」
+<ul>
+<li>S盒用來加密數據，而且在加密過程中S盒會變化</li>
+</ul></li>
+<li><p>快速但是安全性低</p></li>
+</ul>
+<h2 id="asymmetric-encryption">Asymmetric encryption</h2>
+<h3 id="rivestshamiradlemanrsa">Rivest–Shamir–Adleman（RSA）</h3>
+<ol type="1">
+<li>「接收方」生成一對公鑰、私鑰
+<ol type="1">
+<li>找出兩個極大質數 p、q
+<ul>
+<li><strong>計算 N = p×q</strong></li>
+<li>同時算得 <span class="math inline">\(r = \phi (N) = (p-1)\times(q-1)\)</span></li>
+</ul></li>
+<li><strong>求出整數 e</strong>其滿足 <code>gcd(e,r) = 1</code> 且 e &lt; r</li>
+<li><strong>求出整數 d</strong>其滿足 <code>e﹡d ≡ 1 (mod r)</code>
+<ul>
+<li><span class="math inline">\(e\cdot d-1 = k\cdot r, k \in Z\)</span></li>
+</ul></li>
+<li>最後得到公鑰：(N, e)、私鑰：(N, d)</li>
+</ol></li>
+<li>「接收方」公開其公鑰給欲傳遞訊息的「傳遞方」</li>
+<li>「傳遞方」使用公鑰將明文加密
+<ol type="1">
+<li>將明文（M）轉換成一整數（m）
+<ul>
+<li>f：M→m</li>
+</ul></li>
+<li><span class="math inline">\(C \equiv m^e (\mod N)\)</span>，C 為密文</li>
+</ol></li>
+<li>「傳遞方」將密文傳送給「接收方」使用<strong>私鑰將其密文解密</strong>
+<ol type="1">
+<li><span class="math inline">\(m \equiv C^d (\mod N)\)</span></li>
+<li>將整數（m）轉換明文（M）
+<ul>
+<li>f’：m→M</li>
+</ul></li>
+</ol></li>
+</ol>
+<blockquote>
+<ul>
+<li>由尤拉公式可以得知
+<ul>
+<li>模反元素必存在
+<ul>
+<li><span class="math inline">\(a\times?\equiv1(\mod n)\\ \Rightarrow a\times a^{\phi(n)-1} = a^{\phi(n)} \equiv 1(\mod n)\)</span></li>
+</ul></li>
+</ul></li>
+<li>私鑰解密證明（<span class="math inline">\(C^d \equiv M(\mod n)\)</span>）
+<ul>
+<li>根據加密原則 <span class="math inline">\(M^e \equiv C (\mod n)\)</span>
+<ul>
+<li>則 $C = M^e - kn, k Z $</li>
+</ul></li>
+<li>將 C 帶入解密規則
+<ul>
+<li><span class="math inline">\((M^e - kn)^d \equiv M(\mod n), k \in Z \\ \Rightarrow (M^e)^d \equiv M(\mod n)\)</span></li>
+<li>因為 <span class="math inline">\(e \cdot d \equiv 1(\mod \phi(n))\)</span> ，則 <span class="math inline">\(e\cdot d = h\phi(n)+1, h\in Z\)</span></li>
+<li>則 <span class="math inline">\(M^{h\phi(n)+1} \equiv M (\mod n)\)</span></li>
+</ul></li>
+</ul></li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>Authentication</strong></p>
+<p>Constraining the set of potential sender of a message and is also useful for proving that a message has not been modified</p>
+<p><strong>Message authentication code（MAC）</strong></p>
+<p>特定演算法後產生的一小段資訊附加在原始訊息後傳送，以確認「某段訊息的完整性」與「傳送者的身分驗證」</p>
+<figure>
+<img src="\willywangkaa\images\MAC.png" alt="MAC"><figcaption>MAC</figcaption>
+</figure>
+<ul>
+<li>資訊鑑別碼（MAC）不能提供對資訊的保密，若要同時實現保密認證，同時需要對資訊進行加密</li>
+</ul>
+<p><strong>以 RSA 為一個訊息署名</strong></p>
+<ol type="1">
+<li>「傳送者」為<strong>原始訊息計算一個雜湊值（Message digest）</strong>
+<ul>
+<li>用<strong>「傳送者」的私鑰「加密」這個雜湊值即為一個「署名文」</strong></li>
+<li>將原始訊息與「署名文」一併傳給「接收方」</li>
+<li>這個訊息只有用「傳送者」的公鑰才能解密</li>
+</ul></li>
+<li>「接收者」獲得「署名文」後使用「傳送者」的公鑰「解密」得到雜湊值
+<ul>
+<li><strong>將雜湊值與「接受者」自己為這個訊息計算的雜湊值比較</strong>
+<ul>
+<li>假如兩者相符，則此訊息在傳播路徑上沒有被篡改過</li>
+</ul></li>
+</ul></li>
+</ol>
+</blockquote>
+<h4 id="第三方攻擊">第三方攻擊</h4>
+<p>和其它加密過程一樣，對RSA來說分配公鑰的過程是非常重要的，分配公鑰的過程必須能夠抵擋中間人攻擊</p>
+<ol type="1">
+<li>「竊聽者」交給 A 一個公鑰使 A 相信這是 B 的公鑰，則「竊聽者」可以截下 A 傳遞給 B 的資訊</li>
+<li>「竊聽者」亦將自己的公鑰傳給 B 使 B 以為這是 A 的公鑰，則「竊聽者」可以將所有 B 遞移給 A 的訊息截下來，將這個訊息用自己的私鑰解密，然後將這個訊息再用 A 的公鑰加密後傳給 A</li>
+</ol>
+<blockquote>
+<p>理論上 A 和 B 都不會發現訊息被竊聽，所以今天一般用<a href="https://zh.wikipedia.org/wiki/%E5%85%AC%E9%96%8B%E9%87%91%E9%91%B0%E5%9F%BA%E7%A4%8E%E5%BB%BA%E8%A8%AD" target="_blank" rel="noopener">可靠的第三方機構簽發憑證</a>來防止這樣的攻擊</p>
+</blockquote>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/willywangkaa/tags/Security/" rel="tag"># Security</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/willywangkaa/2019/01/26/Algorithm-Pseudo-polynomial-time-complexity/" rel="next" title="Algorithm - Pseudo polynomial time complexity">
+                <i class="fa fa-chevron-left"></i> Algorithm - Pseudo polynomial time complexity
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/willywangkaa/images/avatar_me.gif"
+                alt="Willy Wang (willywangkaa)" />
+            
+              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
+              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/willywangkaa/archives/">
+                
+                    <span class="site-state-item-count">53</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/willywangkaa/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/willywangkaa/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">78</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://typora.io/" title="Typora" target="_blank">Typora</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.geeksforgeeks.org/" title="GeeksforGeeks" target="_blank">GeeksforGeeks</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.codecogs.com/latex/eqneditor.php" title="Online LaTeX Equation Editor" target="_blank">Online LaTeX Equation Editor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://allem40306.github.io/blog/" title="CodingJack" target="_blank">CodingJack</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#system-security"><span class="nav-number">1.</span> <span class="nav-text">System security</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#病毒virus"><span class="nav-number">1.1.</span> <span class="nav-text">病毒（Virus）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#攻擊手段"><span class="nav-number">1.2.</span> <span class="nav-text">攻擊手段</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#symmetric-encryption-and-asymmetric-encryption"><span class="nav-number">2.</span> <span class="nav-text">Symmetric encryption and asymmetric encryption</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#symmetric-encryption"><span class="nav-number">2.1.</span> <span class="nav-text">Symmetric encryption</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#data-encrypt-standarddes"><span class="nav-number">2.1.1.</span> <span class="nav-text">Data encrypt standard（DES）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#advanced-encryption-standardaes"><span class="nav-number">2.1.2.</span> <span class="nav-text">Advanced encryption standard（AES）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rivest-cypher-4rc4"><span class="nav-number">2.1.3.</span> <span class="nav-text">Rivest cypher 4（RC4）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#asymmetric-encryption"><span class="nav-number">2.2.</span> <span class="nav-text">Asymmetric encryption</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#rivestshamiradlemanrsa"><span class="nav-number">2.2.1.</span> <span class="nav-text">Rivest–Shamir–Adleman（RSA）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第三方攻擊"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">第三方攻擊</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/willywangkaa/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/affix.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/willywangkaa/js/src/schemes/pisces.js?v=6.0.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/willywangkaa/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/willywangkaa/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://https-wangwilly-github-io-blog.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://WangWilly.github.io/willywangkaa/2019/02/02/Operating-System-System-security/';
+        this.page.identifier = '2019/02/02/Operating-System-System-security/';
+        this.page.title = 'Operating System - System security';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-wangwilly-github-io-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/willywangkaa/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/willywangkaa/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>
