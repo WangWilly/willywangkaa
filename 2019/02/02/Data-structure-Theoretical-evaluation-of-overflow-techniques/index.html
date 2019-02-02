@@ -100,26 +100,28 @@
 
 
   
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Hash," />
 
 
-<meta name="description" content="coding, computer relate">
-<meta property="og:type" content="website">
-<meta property="og:title" content="WillyWangkaa">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/tags/Mark-Down/index.html">
+<meta name="description" content="Data structure - Theoretical evaluation of overflow techniques（未完成） The basic of hashing 資料儲存機制，當資料 x 要在此結構存取時，需經過「Hashing function」求出「Hashing address」（H(x)），再以「Hashing address」視為此資料在此結構的定位點  「Has">
+<meta name="keywords" content="Hash">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Data structure - Theoretical evaluation of overflow techniques">
+<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2019/02/02/Data-structure-Theoretical-evaluation-of-overflow-techniques/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="coding, computer relate">
+<meta property="og:description" content="Data structure - Theoretical evaluation of overflow techniques（未完成） The basic of hashing 資料儲存機制，當資料 x 要在此結構存取時，需經過「Hashing function」求出「Hashing address」（H(x)），再以「Hashing address」視為此資料在此結構的定位點  「Has">
 <meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2019-02-02T12:18:58.751Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WillyWangkaa">
-<meta name="twitter:description" content="coding, computer relate">
+<meta name="twitter:title" content="Data structure - Theoretical evaluation of overflow techniques">
+<meta name="twitter:description" content="Data structure - Theoretical evaluation of overflow techniques（未完成） The basic of hashing 資料儲存機制，當資料 x 要在此結構存取時，需經過「Hashing function」求出「Hashing address」（H(x)），再以「Hashing address」視為此資料在此結構的定位點  「Has">
 
 
 
 
 
 
-  <link rel="canonical" href="http://WangWilly.github.io/willywangkaa/tags/Mark-Down/"/>
+  <link rel="canonical" href="http://WangWilly.github.io/willywangkaa/2019/02/02/Data-structure-Theoretical-evaluation-of-overflow-techniques/"/>
 
 
 
@@ -128,7 +130,7 @@
     sidebar: "",
   };
 </script>
-  <title>Tag: Mark Down | WillyWangkaa</title>
+  <title>Data structure - Theoretical evaluation of overflow techniques | WillyWangkaa</title>
   
 
 
@@ -175,7 +177,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -290,58 +292,412 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Mark Down<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2019/02/02/Data-structure-Theoretical-evaluation-of-overflow-techniques/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WillyWangkaa">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/willywangkaa/2018/03/06/第一篇測試發文/" itemprop="url">
-              
-                <span itemprop="name">第一篇測試發文</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Data structure - Theoretical evaluation of overflow techniques</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-06T17:14:00+08:00"
-              content="2018-03-06" >
-          03-06
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-02T20:18:00+08:00">2019-02-02</time>
+            
 
-    </header>
-  </article>
+            
+            
+              
+                
+              
+            
 
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-02T20:18:58+08:00">2019-02-02</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/willywangkaa/categories/Test/" itemprop="url" rel="index"><span itemprop="name">Test</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/willywangkaa/2019/02/02/Data-structure-Theoretical-evaluation-of-overflow-techniques/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/02/02/Data-structure-Theoretical-evaluation-of-overflow-techniques/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="data-structure---theoretical-evaluation-of-overflow-techniques未完成">Data structure - Theoretical evaluation of overflow techniques（未完成）</h1>
+<h2 id="the-basic-of-hashing">The basic of hashing</h2>
+<p>資料儲存機制，當資料 x 要在此結構存取時，需經過「Hashing function」求出「Hashing address」（H(x)），再以「Hashing address」視為此資料在此結構的定位點</p>
+<ul>
+<li>「Hash table」
+<ul>
+<li>「Bucket」
+<ul>
+<li>定位點</li>
+</ul></li>
+<li>「Slot」
+<ul>
+<li>每個定位點中有多少存儲空間</li>
+</ul></li>
+<li>「Hash table size」
+<ul>
+<li>「Bucket」×「Slot」</li>
+</ul></li>
+</ul></li>
+<li>「Identifier」：識別字；資料區分的編碼
+<ul>
+<li>「Identifier density」
+<ul>
+<li>T：「Identifier」總數</li>
+<li>n：「Identifier」<strong>目前正在使用中（目前在「Hash table」中被保存）</strong>的數量</li>
+<li>B×S：「Hash table」大小</li>
+<li>「Identifier density」 = <span class="math inline">\(\frac{n}{T}\)</span></li>
+</ul></li>
+<li>「Loading density」
+<ul>
+<li>T：「Identifier」總數</li>
+<li>n：「Identifier」<strong>目前正在使用中（目前在「Hash table」中被保存）</strong>的數量</li>
+<li>B×S：「Hash table」大小</li>
+<li>「Loading density」 = <span class="math inline">\(\frac{n}{b\times s}\)</span> （通常以 <span class="math inline">\(\alpha\)</span> 表示）</li>
+</ul></li>
+</ul></li>
+<li><strong>「Collision」</strong>
+<ul>
+<li>出現兩個不同的資料 X、Y，<strong>經過「Hashing function」計算後，得到相同的「Hashing address」</strong></li>
+</ul></li>
+<li><strong>「Overflow」</strong>
+<ul>
+<li>當「Collision」發生並<strong>且該「Bucket」無「Slot」可儲存</strong></li>
+</ul></li>
+</ul>
+<blockquote>
+<p>發生「Collision」不一定會造成「Overflow」，但是當每個「Bucket」由一個「Slot」所組成，則發生「Collision」等價於「Overflow」</p>
+</blockquote>
+<h3 id="analysis-of-linear-probing">Analysis of linear probing</h3>
+<p>又稱為「Open addressing mode」，當 H(x) 發生「Overflow」，則探測 H(x)+1、H(x)+2 …H(x)-1，直到找到尚有空間之「Bucket」或是「Hash table」額滿為止</p>
+<blockquote>
+<p>缺點</p>
+<ul>
+<li>容易形成群聚（Clustering）現象，這將會增加未來搜尋資料的探測次數</li>
+<li>插入與尋找的探測成本取決於「群聚鍊大小」</li>
+<li>平均的「群聚鍊大小」為 <span class="math inline">\(\frac{n}{m}\)</span>
+<ul>
+<li><strong>識別字容易雜湊到群長聚鍊較長的位置</strong></li>
+<li><strong>最差的狀態就是所有識別字都雜湊到同一個群聚鍊</strong></li>
+</ul></li>
+</ul>
+</blockquote>
+<ul>
+<li>每次探測
+<ul>
+<li>遇到碰撞的機率：<span class="math inline">\(\alpha\)</span> （Loading factor）</li>
+<li>遇到可用空間的機率：<span class="math inline">\(1-\alpha\)</span></li>
+</ul></li>
+<li>探測過程中
+<ul>
+<li><strong>恰兩次</strong>探測找到可用空間的機率
+<ul>
+<li><span class="math inline">\(\alpha \times(1-\alpha)\)</span></li>
+</ul></li>
+<li><strong>恰 K 次</strong>探測找到可用空間的機率
+<ul>
+<li><span class="math inline">\(\alpha^{k-1}(1-\alpha)\)</span></li>
+</ul></li>
+</ul></li>
+</ul>
+<blockquote>
+<p>n：「Identifier」<strong>目前正在使用中（目前在「Hash table」中被保存）</strong>的數量</p>
+<p>m：可使用空間量</p>
+<ul>
+<li>假設一個「Hash table」T，則 T[0]（Bucket）為空的機率
+<ul>
+<li>減去「被占用的機率」</li>
+<li><span class="math inline">\(1 - \frac nm\)</span></li>
+<li>此機率亦為任何一個「Bucket」為空的機率</li>
+</ul></li>
+<li>假設 T[0]、T[k+1] 皆為空，且 T[1]…T[k] 皆被占用，則機率
+<ul>
+<li>恰 k 個識別字被雜湊到 T[0]…T[k]
+<ul>
+<li>T[0] 在假設中仍為空</li>
+<li>機率 $ = (被占用的機率)^k(未使用的機率) \ = (m)^k(1-k{k+1})$</li>
+</ul></li>
+<li>恰 n-k 個識別字會被雜湊到 T[k+1]…T[m-1]
+<ul>
+<li>T[k+1] 在假設中仍為空</li>
+<li>機率 $ = (被占用的機率)^{n-k}(未使用的機率)$</li>
+</ul></li>
+</ul></li>
+</ul>
+</blockquote>
+<ul>
+<li>探測失敗
+<ul>
+<li><span class="math inline">\(\frac 12 (1+\frac 1{(1-\alpha)^2}) = \frac 12(1+2\alpha+3\alpha^2+ 4\alpha^3+\ldots)\)</span></li>
+</ul></li>
+<li>搜尋成功
+<ul>
+<li><span class="math inline">\(\frac 12(1+\frac 1{1-\alpha}) = 1+\frac 12(\alpha+\alpha^2+\alpha^3+\alpha^4+\ldots)\)</span></li>
+</ul></li>
+</ul>
+<h3 id="analysis-of-quadratic-probing">Analysis of quadratic probing</h3>
+<blockquote>
+<p>「Uniform probing」模型</p>
+<p>由 W.W.Peterson 於1957年提出</p>
+<ul>
+<li>假設所有的「Identifier」（Key）以非常平均的方式分布於「Hashing table」
+<ul>
+<li>假設「Hashing table」的大小為 m</li>
+<li>「Identifier」占用的大小為 n</li>
+<li>所以有 <span class="math inline">\(\binom{m}{n}\)</span> 種可能的佔用方式</li>
+</ul></li>
+<li><strong>忽略「Primary clustering」與「Secondary clustering」的影響</strong>
+<ul>
+<li>初次探測（First prob）與碰撞（Collision）之後的探測皆假設為<strong>「隨機探測」</strong></li>
+<li>每次的探測各自為<strong>獨立事件（Independent event）</strong></li>
+</ul></li>
+</ul>
+</blockquote>
+<ul>
+<li>每次探測
+<ul>
+<li>遇到碰撞的機率：<span class="math inline">\(\alpha\)</span> （Loading factor）</li>
+<li>遇到可用空間的機率：<span class="math inline">\(1-\alpha\)</span></li>
+</ul></li>
+<li>探測過程中
+<ul>
+<li><strong>恰兩次</strong>探測找到可用空間的機率
+<ul>
+<li><span class="math inline">\(\alpha \times(1-\alpha)\)</span></li>
+</ul></li>
+<li><strong>恰 K 次</strong>探測找到可用空間的機率
+<ul>
+<li><span class="math inline">\(\alpha^{k-1}(1-\alpha)\)</span></li>
+</ul></li>
+</ul></li>
+<li><strong>探測失敗</strong>（<span class="math inline">\(U(\alpha)\)</span>）
+<ul>
+<li><strong>觀點一</strong>
+<ul>
+<li>探測失敗的機率等價於自「恰 1 次探測失敗的機率」累加至「<strong>恰無限次探測失敗的機率</strong>」</li>
+<li><span class="math inline">\(U(\alpha) = \sum_{K = 1}^\infty \binom K1\alpha^{K-1}(1-\alpha) = \sum_{K = 1}^\infty K\cdot\alpha^{K-1}(1-\alpha)\)</span></li>
+<li>利用生成函數 <span class="math inline">\(\Rightarrow (1-\alpha)(\sum_{K = 1}^\infty K\cdot \alpha^{K-1}) = (1-\alpha)\frac{1}{(1-\alpha)^2} = \frac{1}{1-\alpha}\)</span></li>
+</ul></li>
+<li><strong>觀點二</strong>
+<ul>
+<li>累加所有「<strong>探測失敗的機率</strong>」</li>
+<li><span class="math inline">\(U(\alpha) = 1 + \alpha + \alpha^2 + \alpha^3 + \ldots = \frac{1}{1-\alpha}\)</span></li>
+</ul></li>
+</ul></li>
+<li><strong>探測成功</strong>（<span class="math inline">\(S(\alpha)\)</span>）
+<ul>
+<li><strong>插入第 k+1 個資料最多需要探測</strong> <span class="math inline">\(\frac{1}{1-\frac{j}{m}}\)</span></li>
+<li>插入 n 筆資料探測成功的<strong>平均次數</strong>為
+<ul>
+<li><span class="math inline">\(S(\alpha) = \frac{1}{n}\sum_{k = 0}^{n-1}\frac{1}{1-\frac km} = \frac{m}{n}\sum_{k = 0}^{n-1}\frac{1}{m-k}\\ \Rightarrow \frac{1}{\alpha}(\sum_{k = 1}^m\frac 1k - \sum_{k = 1}^{m-n}\frac 1k)\\ \Rightarrow \frac 1\alpha (H_m - H_{m-n}) \\ \leq \frac{1}{\alpha}(\ln m - \ln(m-n)) \\ = \frac1\alpha (\ln\frac{m}{m-n}) = \frac 1\alpha(\ln\frac1{1-\alpha})\)</span></li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="analysis-of-chaining">Analysis of chaining</h3>
+<ul>
+<li>每個串列
+<ul>
+<li>預期大小：<span class="math inline">\(\alpha\)</span> （Loading factor）</li>
+</ul></li>
+<li>探測失敗（<span class="math inline">\(U(\alpha)\)</span>）
+<ul>
+<li>等價於預期串列大小</li>
+<li><span class="math inline">\(U(\alpha) = \alpha\)</span></li>
+</ul></li>
+<li>探測成功
+<ul>
+<li>當第 n 個識別字要插入到「Hash table」時
+<ul>
+<li>每個串列的預期大小為 <span class="math inline">\(\frac{n-1}{m}\)</span></li>
+</ul></li>
+<li></li>
+</ul></li>
+</ul>
 
       
     </div>
 
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/willywangkaa/tags/Hash/" rel="tag"># Hash</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/willywangkaa/2019/02/02/Operating-System-System-security/" rel="next" title="Operating System - System security">
+                <i class="fa fa-chevron-left"></i> Operating System - System security
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -362,8 +718,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -639,6 +1004,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#data-structure---theoretical-evaluation-of-overflow-techniques未完成"><span class="nav-number">1.</span> <span class="nav-text">Data structure - Theoretical evaluation of overflow techniques（未完成）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#the-basic-of-hashing"><span class="nav-number">1.1.</span> <span class="nav-text">The basic of hashing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#analysis-of-linear-probing"><span class="nav-number">1.1.1.</span> <span class="nav-text">Analysis of linear probing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#analysis-of-quadratic-probing"><span class="nav-number">1.1.2.</span> <span class="nav-text">Analysis of quadratic probing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#analysis-of-chaining"><span class="nav-number">1.1.3.</span> <span class="nav-text">Analysis of chaining</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -779,6 +1160,10 @@
 
 
   
+  <script type="text/javascript" src="/willywangkaa/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/willywangkaa/js/src/post-details.js?v=6.0.4"></script>
+
+
 
   
 
@@ -793,6 +1178,23 @@
     <script id="dsq-count-scr" src="https://https-wangwilly-github-io-blog.disqus.com/count.js" async></script>
   
 
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://WangWilly.github.io/willywangkaa/2019/02/02/Data-structure-Theoretical-evaluation-of-overflow-techniques/';
+        this.page.identifier = '2019/02/02/Data-structure-Theoretical-evaluation-of-overflow-techniques/';
+        this.page.title = 'Data structure - Theoretical evaluation of overflow techniques';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-wangwilly-github-io-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
   
 
 
@@ -1212,7 +1614,7 @@
   <script src="/willywangkaa/lib/bookmark/bookmark.min.js?v=1.0"></script>
   <script type="text/javascript">
   
-    bookmark.loadBookmark();
+    bookmark.scrollToMark('auto', "#more");
   
   </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">

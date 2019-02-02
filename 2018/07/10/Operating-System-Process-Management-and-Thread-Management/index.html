@@ -176,7 +176,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530179630741.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530179857612.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530180057880.png">
-<meta property="og:updated_time" content="2019-01-28T10:05:33.858Z">
+<meta property="og:updated_time" content="2019-02-02T12:17:21.530Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Operating System - Process Management and Thread Management">
 <meta name="twitter:description" content="Process   定義：A program in execution.  Process 建立後，主要組成有：\(^{[1]}\)Process NO.(ID), \(^{[2]}\)Process state, \(^{[3]}\)Process menory space：Code section, Data section。 Programming Counter (PC)：下一">
@@ -426,7 +426,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-01-28T18:05:33+08:00">2019-01-28</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-02T20:17:21+08:00">2019-02-02</time>
             
           </span>
 
@@ -1482,6 +1482,21 @@
 <li><em>RR</em> <span class="math inline">\(\subset\)</span> <em>MFQs</em></li>
 </ul></li>
 </ul>
+<blockquote>
+<ul>
+<li>Consider a <strong>preemptive priority scheduling algorithm</strong> based on dynamically changing priorities
+<ul>
+<li><strong>Larger priority numbers imply higher priority</strong></li>
+<li>When a process is waiting for the CPU (<strong>In the ready queue, but not running</strong>), its priority changes <strong>at a rate α</strong></li>
+<li><strong>When it is running</strong>, its priority changes <strong>at a rate β</strong></li>
+<li>All processes are given a priority of 0 when they enter the ready queue</li>
+</ul></li>
+</ul>
+<p><strong>What is the algorithm that results from β &gt; α &gt; 0 ?</strong></p>
+<p>因為 β 的值比 α 還高，所以隨著該程序不斷在 CPU 執行，其<strong>優先權提升的變化度</strong>會比在「Ready queue」的程序還高，這使得「Ready queue」中的程序其優先權不可能大到可以插斷 CPU 正在執行的程序，所以為「FCFS排班演算法」</p>
+<p><strong>What is the algorithm that results from α &lt; β &lt; 0?</strong></p>
+<p>因為「Ready queue」的程序，其<strong>遞減變化度</strong> α 會比在 CPU 執行的程序的<strong>遞減變化度</strong> β 還高，新加入的優先權為零，而<strong>「Ready queue」的程序</strong>與<strong>正在 CPU 執行的程序</strong>優先權總是隨著時間遞減，所以新加入的程序永遠可以插斷目前執行的程序，且因為在 CPU 執行的程序遞減程度較緩，所已不可能被「Ready queue」中的程序插斷，所以為「LIFO排班演算法」</p>
+</blockquote>
 <h3 id="補充-cpu-utilization-計算">(補充) CPU utilization 計算</h3>
 <ul>
 <li><p>Modern 版</p>
@@ -2274,7 +2289,7 @@
                 
                   <a href="/willywangkaa/archives/">
                 
-                    <span class="site-state-item-count">53</span>
+                    <span class="site-state-item-count">54</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2476,7 +2491,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">78</span>
+                      
+                    
+                    <span class="site-state-item-count">79</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
