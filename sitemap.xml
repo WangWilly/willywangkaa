@@ -2,6 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://WangWilly.github.io/willywangkaa/2018/10/31/Data-structure-Advance-heap/</loc>
+    
+    <lastmod>2019-02-03T12:56:52.692Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://WangWilly.github.io/willywangkaa/2018/10/28/Data-structure-Tree/</loc>
+    
+    <lastmod>2019-02-03T11:20:42.932Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://WangWilly.github.io/willywangkaa/2018/12/02/Data-structure/</loc>
+    
+    <lastmod>2019-02-03T08:10:45.796Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://WangWilly.github.io/willywangkaa/2018/09/23/Algorithm-Dynamic-programming/</loc>
+    
+    <lastmod>2019-02-03T08:06:39.520Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://WangWilly.github.io/willywangkaa/2018/10/15/Algorithm-NP-completeness/</loc>
+    
+    <lastmod>2019-02-03T07:55:31.709Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://WangWilly.github.io/willywangkaa/2019/02/02/Data-structure-Theoretical-evaluation-of-overflow-techniques/</loc>
     
     <lastmod>2019-02-02T12:18:58.751Z</lastmod>
@@ -107,27 +142,6 @@
   </url>
   
   <url>
-    <loc>http://WangWilly.github.io/willywangkaa/2018/10/28/Data-structure-Tree/</loc>
-    
-    <lastmod>2019-01-26T12:25:17.276Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://WangWilly.github.io/willywangkaa/2018/10/31/Data-structure-Advance-heap/</loc>
-    
-    <lastmod>2019-01-26T12:24:40.772Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://WangWilly.github.io/willywangkaa/2018/12/02/Data-structure/</loc>
-    
-    <lastmod>2019-01-26T12:24:01.098Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://WangWilly.github.io/willywangkaa/2019/01/24/Discrete-mathematics-Catalan-number/</loc>
     
     <lastmod>2019-01-24T12:37:38.461Z</lastmod>
@@ -149,23 +163,9 @@
   </url>
   
   <url>
-    <loc>http://WangWilly.github.io/willywangkaa/2018/09/23/Algorithm-Dynamic-programming/</loc>
-    
-    <lastmod>2018-11-19T09:56:18.707Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://WangWilly.github.io/willywangkaa/2018/09/10/Operating-System-Disk-Management/</loc>
     
     <lastmod>2018-11-06T12:31:41.494Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://WangWilly.github.io/willywangkaa/2018/10/15/Algorithm-NP-completeness/</loc>
-    
-    <lastmod>2018-11-01T16:58:55.667Z</lastmod>
     
   </url>
   

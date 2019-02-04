@@ -147,7 +147,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543748935456.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543749321235.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543749964256.png">
-<meta property="og:updated_time" content="2019-01-26T12:24:01.098Z">
+<meta property="og:updated_time" content="2019-02-03T08:10:45.796Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Data structure - Graph">
 <meta name="twitter:description" content="The structure of graph [Note] Adjacency list 有一圖 G = (V, E), |V| = n, |E| = e，需要 n 條相鄰串列（vertex[1…n] : pointer）來表達，其中 vertex[i] 代表頂點 i 的相鄰串列，紀錄所有與頂點 i 相鄰的頂點編號  以「相鄰串列」表示無向圖時，因為 邊(i,j) = 邊(j,i)（一條邊">
@@ -397,7 +397,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-01-26T20:24:01+08:00">2019-01-26</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-03T16:10:45+08:00">2019-02-03</time>
             
           </span>
 
@@ -1085,7 +1085,7 @@
 </ol>
 <p>時間複雜度：（等價於對每個頂點做「Dijkstra’s algorithm」，只是需要前置處理）</p>
 <ul>
-<li>$O(|V|) + O(|V||E|) + O(|E|) + |V|O(|V||V|+|E|) = O(|V|^2|V|+|V||E|) $</li>
+<li>$O(|V|) + O(|V||E|) + O(|E|) + |V|O(|V| |V|+|E|) = O(|V|^2 |V|+|V||E|) $</li>
 <li>（新增|V|條邊）+（修正負邊）+（重設權重）+（對每個頂點做「Dijkstra’s algorithm」）</li>
 </ul>
 <p><strong>Example（證明「Johnson’s algorithm」對邊的修正必不會產生負邊）</strong></p>

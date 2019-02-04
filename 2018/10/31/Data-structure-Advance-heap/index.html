@@ -160,7 +160,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/decreasekeyfibonacciheap_1.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/decreasekeyfibonacciheap_2.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/decreasekeyinbinaryheap.png">
-<meta property="og:updated_time" content="2019-01-26T12:24:40.772Z">
+<meta property="og:updated_time" content="2019-02-03T12:56:52.692Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Data structure - Advance heap">
 <meta name="twitter:description" content="Binary heap Build heap Top down 依序插入所有資料逐步建立「Heap」  Time complexity for heap insertion：log n   Time complexity 若要建立一個 n 筆資料之「Heap」  \(\sum_{i = 1}^n \log i = \log(n!) = n\log n\) \(\Theta(n">
@@ -410,7 +410,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-01-26T20:24:40+08:00">2019-01-26</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-03T20:56:52+08:00">2019-02-03</time>
             
           </span>
 
@@ -881,7 +881,7 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 <h3 id="delete-min-in-binominal-heap">Delete-min in binominal heap</h3>
 <p>步驟：</p>
 <ol type="1">
-<li>從各個樹根找出最小值，令存在最小值數根之樹為 T，其餘樹之集合稱為 <span class="math inline">\(H_1\)</span> (Binominal heap)</li>
+<li>從各個樹根找出最小值，令存在最小值數根之樹為 T，其餘樹之集合稱為 <span class="math inline">\(H_1\)</span> （Binominal heap）</li>
 <li>刪 T 的樹根會生成子樹，稱之為 <span class="math inline">\(H_2\)</span></li>
 <li>Merge(<span class="math inline">\(H_1, H_2\)</span>)</li>
 </ol>
@@ -1032,7 +1032,7 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 <tr class="odd">
 <td style="text-align: center;">Extract min</td>
 <td style="text-align: center;"><span class="math inline">\(\Theta(\log n)\)</span></td>
-<td style="text-align: center;"><strong>O( n )</strong></td>
+<td style="text-align: center;"><strong>O( log n )</strong></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Union (Merge)</td>
@@ -1062,6 +1062,183 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 <figure>
 <img src="\willywangkaa\images\decreasekeyinbinaryheap.png" alt="decreasekeyinbinaryheap"><figcaption>decreasekeyinbinaryheap</figcaption>
 </figure>
+</blockquote>
+<blockquote>
+<p>（參考：<a href="https://www.ptt.cc/bbs/Grad-ProbAsk/M.1549085126.A.609.html" target="_blank" rel="noopener">Re: ［理工］ 106交大資演9 - 看板Grad-ProbAsk - 批踢踢實業坊</a>）</p>
+<ul>
+<li>「Fibonacci Heap」
+<ul>
+<li>DS 與 Algorithm 版實作一樣</li>
+<li><strong>「Worst case time/amortized time」皆一致</strong></li>
+</ul></li>
+<li>「Binomial Heap」
+<ul>
+<li>DS 和 Algorithm 對於 Merge/Insert 的實作不一樣
+<ul>
+<li>DS 版本直接串接<strong>（Lazy Merge）</strong></li>
+<li>Algorithm 版每次「Insert/Merge」要保證「Binomial Heap」中沒有同 Order 的 「Binomial Tree」<strong>（Hard-working merge）</strong></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>時間複雜度整理</p>
+<table>
+<colgroup>
+<col style="width: 16%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 7%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Binomial (Algorithm)</th>
+<th>Binomial (Algorithm)</th>
+<th>Lazy-Binomial (DS)</th>
+<th>Lazy-Binomial (DS)</th>
+<th>Fibonacci</th>
+<th>Fibonacci</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Operation</strong></td>
+<td>Worst</td>
+<td>Amortized</td>
+<td>Worst</td>
+<td>Amortized</td>
+<td>Worst</td>
+<td>Amortized</td>
+</tr>
+<tr class="even">
+<td>Make <strong>empty heap</strong></td>
+<td>Θ(1)</td>
+<td>Θ(1)</td>
+<td>Θ(1)</td>
+<td>Θ(1)</td>
+<td>Θ(1)</td>
+<td>Θ(1)</td>
+</tr>
+<tr class="odd">
+<td>Insert x</td>
+<td>Θ(lg n)</td>
+<td>Θ(1)</td>
+<td>Θ(1)</td>
+<td>Θ(1)</td>
+<td>Θ(1)</td>
+<td>Θ(1)</td>
+</tr>
+<tr class="even">
+<td>Minimum</td>
+<td>Θ(1)</td>
+<td>Θ(1)</td>
+<td>Θ(1)</td>
+<td>Θ(1)</td>
+<td>Θ(1)</td>
+<td>Θ(1)</td>
+</tr>
+<tr class="odd">
+<td>Extract-min</td>
+<td>Θ(lg n)</td>
+<td>Θ(lg n)</td>
+<td>Θ(lg n)</td>
+<td>Θ(lg n)</td>
+<td>Θ(lg n)</td>
+<td>Θ(lg n)</td>
+</tr>
+<tr class="even">
+<td>Union (Merge)</td>
+<td>Θ(lg n)</td>
+<td>Θ(1)</td>
+<td>Θ(1)</td>
+<td>Θ(1)</td>
+<td>Θ(1)</td>
+<td>Θ(1)</td>
+</tr>
+<tr class="odd">
+<td>Decrease key</td>
+<td>Θ(lg n)</td>
+<td><strong>O(lg n)</strong></td>
+<td>Θ(lg n)</td>
+<td><strong>O(lg n)</strong></td>
+<td>Θ(n)</td>
+<td>Θ(1)</td>
+</tr>
+<tr class="even">
+<td>Find min</td>
+<td>Θ(lg n)</td>
+<td>Θ(lg n)</td>
+<td>Θ(lg n)</td>
+<td>Θ(lg n)</td>
+<td>Θ(n)</td>
+<td>Θ(lg n)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>「Minimum」
+<ul>
+<li>假設一個指標指向「Minimum element」
+<ul>
+<li>進行其他操作時<strong>指標必須進行相對應的更新</strong>
+<ul>
+<li><strong>「Minimum」可以在 Θ(1) 完成</strong></li>
+</ul></li>
+</ul></li>
+<li>「Fibonacci Heap」一般都會維護這個指標</li>
+<li><strong>當「Binomial Heap」不維護這個指標時</strong>
+<ul>
+<li><strong>「Minimum」之「Worst/amortized」為 Θ(lg n)</strong></li>
+</ul></li>
+</ul></li>
+<li>「Extract-min」
+<ul>
+<li>課本上一般證明為 O(lg n)
+<ul>
+<li>但是不可能為 O(lg n)，因為如此一來只要靠 Insert/Extract-min 就可得到 O(n lg n) 排序
+<ul>
+<li>無論「Worst」或是「Amortized」都必須是 Θ(lg n)</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>「Delete」
+<ul>
+<li>依靠「Decrease-key」與「Extract-min」實作
+<ul>
+<li>時間複雜度為 Θ(「Decrease-key」+「Extract-min」)</li>
+</ul></li>
+</ul></li>
+<li>「Fibonacci heap」的「Decrease-key」
+<ul>
+<li><strong>「Worst case」： Θ(n)</strong>
+<ul>
+<li>可藉由一連串 Insert/Decrease-key/Delete 建構出一個「Fibonacci <strong>tree</strong>」並退化成一個串列，<strong>其全部的節點都已被標記（標記節點；用來標示一個非根節點已失去一個子節點，則不得再奪其子節點，可能需要進行其他特別操作）</strong></li>
+<li>對<strong>葉節點</strong>作 Decrease-key 時，必須要把所有串列上的點都「Cut」（分離成為一個獨立的「Fibonacci <strong>tree</strong>」），需要 Θ(n)</li>
+</ul></li>
+</ul></li>
+<li>「Binomial heap」的「Insert/Union」
+<ul>
+<li>「Amortized time」：O(1)</li>
+<li>http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.420.43
+<ul>
+<li>第六小節的第一段最後提到參考文獻</li>
+</ul></li>
+<li>https://link.springer.com/chapter/10.1007%2F3-540-57568-5_242
+<ul>
+<li>Double-ended binomial queues, by C. M. Khoong and H. W. Leong</li>
+</ul></li>
+</ul></li>
+<li>「Binomial heap」的「Decrease-key」
+<ul>
+<li><strong>「Amortized time」：O(lg n)</strong></li>
+<li>找不到下限證明<strong>無法聲明其時間複雜度為 Θ(lg n)</strong>
+<ul>
+<li>（猜測應該很多人都研究過，沒有辦法證明「Amortized time」為 O(lg n)，所以設計「Fibonacci Heap」）</li>
+</ul></li>
+</ul></li>
+</ul>
 </blockquote>
 
       

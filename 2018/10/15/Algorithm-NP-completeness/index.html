@@ -117,7 +117,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/nprelation.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/longestpathproblem_NPC.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/TSP_NPC.png">
-<meta property="og:updated_time" content="2018-11-01T16:58:55.667Z">
+<meta property="og:updated_time" content="2019-02-03T07:55:31.709Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithm - NP-completeness">
 <meta name="twitter:description" content="基本概念  目的  將問題依照難度做分類 如何定義 A 問題比 B 問題難？ 如何分類？ 分幾類？   Decision problem 答案只有 Yse/No 的問題  Ex  一個圖中有無「Hamiltonian cycle」？   每一個最佳化問題 ( Optimization problem ) 均可用參數化的方式化成一對應的「Decision prob">
@@ -367,7 +367,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-11-02T00:58:55+08:00">2018-11-02</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-03T15:55:31+08:00">2019-02-03</time>
             
           </span>
 
@@ -672,6 +672,61 @@ Traveling \; salesman \; prblem
 <p><span class="math inline">\(\because (u, v) \in E&#39;, weight(u, v) = 1, if \;(u, v)\in E\)</span></p>
 <p><span class="math inline">\(\Rightarrow C\)</span> 通過 G 每節點一次</p>
 <p><span class="math inline">\(\Rightarrow C\)</span> 為一個在 G 中的「Hamilton cycle」</p>
+</blockquote>
+<h1 id="補充例題">補充例題</h1>
+<p>Example（107交通大學資料結構與演算法）</p>
+<ul>
+<li>A Hamiltonian path of a graph G is a path that visits each node in G exactly once</li>
+<li>Suppose that there is an <span class="math inline">\(O(n^7)\)</span>-time algorithm that decides HamP(G) for any n-node graph G
+<ul>
+<li>HamP(G)</li>
+<li>Input：an undirected graph G</li>
+<li>Output：“Yes”, if G has a Hamiltonian path; “No”, otherwise</li>
+</ul></li>
+<li>Give an <span class="math inline">\(O(n^7)\)</span>-time algorithm that decides HamEx(G, x) for any n-node graph G, and prove the correctness of your algorithm</li>
+<li>Note that your algorithm must have running time <span class="math inline">\(O(n^7)\)</span></li>
+<li>No partial credit will be given if your algorithm runs asymptotically slowr
+<ul>
+<li>HamEx(G, x)</li>
+<li>Input：an undirected graph G, and a node x in G</li>
+<li>Output：“Yes”, if G has a Hamiltonian path from node u to v so that u≠x and v≠x; “No”, otherwise</li>
+</ul></li>
+</ul>
+<p>（參考：<a href="https://www.ptt.cc/bbs/Grad-ProbAsk/M.1548560644.A.EB0.html" target="_blank" rel="noopener">Re: ［理工］ 107 交大資演10 - 看板Grad-ProbAsk - 批踢踢實業坊</a>）</p>
+<blockquote>
+<p>令 G’ = (V’, E’)，其中</p>
+<ul>
+<li>V’ = V ∪ {s, t, s’, t’}
+<ul>
+<li>|V’| = O(|V|)</li>
+</ul></li>
+<li>E’ = E ∪ {(s, s’), (t, t’)} ∪ {(s’, y) | for all y != x)} ∪ {(z, t’) | for all z != x)}</li>
+</ul>
+<p><strong>證明HamEx(G, x) = “Yes” iff HamP(G’) = “Yes”</strong></p>
+<ul>
+<li>If HamEx(G, x) = “Yes”, then HamP(G’) = “Yes”
+<ul>
+<li>G 中的「Hamiltonian path」頭尾不為 x</li>
+<li>因為 s’ 與 G 中所有不是 x 的點相連且 t’ 跟 G 中所有不是 x 的點相連</li>
+<li>則 ( s, s’ ,HP in G, t’, t ) 必是一條 G’ 上的「Hamiltonian path」</li>
+</ul></li>
+<li>If HamP(G’) = “Yes”, then HamEx(G, x) = “Yes”
+<ul>
+<li>令 HP 為 G’ 中的「Hamiltonian path」</li>
+<li>因為 s 和 t 在 G’ 中的 Degree 只有 1
+<ul>
+<li><strong>G’ 中的「Hamiltonian path」頭尾必為 s 和 t</strong></li>
+</ul></li>
+<li>s 和 t 只分別跟 s’ 和 t’ 相連
+<ul>
+<li>「Hamiltonian path」在 G’ 中必為 ( s, s’, HP in G, t’, t )</li>
+</ul></li>
+<li>s’ 和 t’ 都不與 x 相連
+<ul>
+<li><strong>在 G 中的「Hamiltonian path」頭尾必不為 x</strong></li>
+</ul></li>
+</ul></li>
+</ul>
 </blockquote>
 
       
@@ -1078,7 +1133,7 @@ Traveling \; salesman \; prblem
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本概念"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#decision-problem"><span class="nav-number">1.1.</span> <span class="nav-text">Decision problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reduce"><span class="nav-number">1.2.</span> <span class="nav-text">Reduce</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pnpnp-hardnp-complete"><span class="nav-number">2.</span> <span class="nav-text">P、NP、NP-hard、NP-complete</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#集合關係"><span class="nav-number">2.1.</span> <span class="nav-text">集合關係</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#證明問題是否為-np-complete"><span class="nav-number">3.</span> <span class="nav-text">證明問題是否為 NP-complete</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sat-problem"><span class="nav-number">3.1.</span> <span class="nav-text">SAT problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常見的證明流程"><span class="nav-number">3.2.</span> <span class="nav-text">常見的證明流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#證明-longest-path-problem-屬於-npc-集合"><span class="nav-number">3.2.1.</span> <span class="nav-text">證明 Longest path problem 屬於 NPC 集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#證明-traveling-salesman-problem-屬於-npc-集合"><span class="nav-number">3.2.2.</span> <span class="nav-text">證明 Traveling salesman problem 屬於 NPC 集合</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本概念"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#decision-problem"><span class="nav-number">1.1.</span> <span class="nav-text">Decision problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reduce"><span class="nav-number">1.2.</span> <span class="nav-text">Reduce</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pnpnp-hardnp-complete"><span class="nav-number">2.</span> <span class="nav-text">P、NP、NP-hard、NP-complete</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#集合關係"><span class="nav-number">2.1.</span> <span class="nav-text">集合關係</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#證明問題是否為-np-complete"><span class="nav-number">3.</span> <span class="nav-text">證明問題是否為 NP-complete</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sat-problem"><span class="nav-number">3.1.</span> <span class="nav-text">SAT problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常見的證明流程"><span class="nav-number">3.2.</span> <span class="nav-text">常見的證明流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#證明-longest-path-problem-屬於-npc-集合"><span class="nav-number">3.2.1.</span> <span class="nav-text">證明 Longest path problem 屬於 NPC 集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#證明-traveling-salesman-problem-屬於-npc-集合"><span class="nav-number">3.2.2.</span> <span class="nav-text">證明 Traveling salesman problem 屬於 NPC 集合</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#補充例題"><span class="nav-number">4.</span> <span class="nav-text">補充例題</span></a></li></ol></div>
             
 
           </div>

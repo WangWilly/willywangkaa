@@ -119,7 +119,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/KPstatesearchtree.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/matrixchaindp.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/martixchainproblem_2.png">
-<meta property="og:updated_time" content="2018-11-19T09:56:18.707Z">
+<meta property="og:updated_time" content="2019-02-03T08:06:39.520Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithm - Dynamic programming">
 <meta name="twitter:description" content="Dynamic programming 將已計算的結果記錄在表格中的技巧，目的是為了要避免重複計算相同子問題，以「Button up」的方式實踐。  為何要使用這種方法，以費氏數列程式開始討論。  \[ F_n = \left\{\begin{matrix} 0 &amp;amp; , if \; n = 0\\ 1 &amp;amp; , if \; n = 1\\ F_{n-1} + F_{">
@@ -369,7 +369,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-11-19T17:56:18+08:00">2018-11-19</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-03T16:06:39+08:00">2019-02-03</time>
             
           </span>
 
@@ -1094,6 +1094,26 @@ MIN_{i\leq k \leq j-1}(m[i, k] + m[k+1, j] + P_i\times P_k \times P_j) &amp; , i
 </table>
 <p>最少乘法數：156</p>
 <p>最佳乘法順序：<span class="math inline">\((A_1\times (A_2 \times A_3)) \times (A_4 \times A_5)\)</span></p>
+<h1 id="補充例題">補充例題</h1>
+<p>Example（107交通大學資料結構與演算法）</p>
+<ul>
+<li>We define the maximum subarray of an array A to be the nonempty, contiguous subarray of A whose value have the largest sum</li>
+<li>Fill in the blank (a), (b) in the following c++ function so that it returns value are placed in A[1], A[2], …, A[n-1]</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxSubarray</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;n; ++i) &#123;</span><br><span class="line">        A[i] += A[i<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> ans = A[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;n; ++i) &#123;</span><br><span class="line">        ans = max(ans,  (a)  );</span><br><span class="line">        k = min(k,      (b)  );</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>考慮一個「Maximum subarray」為 A[x…y]</p>
+<ul>
+<li>A[x…y] = A[1…y] - A[1…x]</li>
+<li>若欲使 A[x…y] 最大化
+<ul>
+<li>A[1…y] 必為最大</li>
+<li>A[1…x] 必為最小</li>
+</ul></li>
+</ul>
+<p>(a)：<code>A[i]-k</code></p>
+<p>(b)：<code>A[i]</code></p>
+</blockquote>
 
       
     </div>
@@ -1491,7 +1511,7 @@ MIN_{i\leq k \leq j-1}(m[i, k] + m[k+1, j] + P_i\times P_k \times P_j) &amp; , i
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#dynamic-programming"><span class="nav-number">1.</span> <span class="nav-text">Dynamic programming</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#shortest-path-problem"><span class="nav-number">1.1.</span> <span class="nav-text">Shortest path problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#knapsack-problem"><span class="nav-number">1.2.</span> <span class="nav-text">Knapsack problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fractional-knapsack-problem"><span class="nav-number">1.2.1.</span> <span class="nav-text">Fractional knapsack problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#knapsack-problem-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">0-1 Knapsack problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#branch-and-bound-解-0-1-knapsack-problem"><span class="nav-number">1.2.3.</span> <span class="nav-text">Branch and bound 解 0-1 Knapsack problem</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#longest-common-subsequence"><span class="nav-number">1.3.</span> <span class="nav-text">Longest Common Subsequence</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#longest-increasing-subsequence"><span class="nav-number">1.3.1.</span> <span class="nav-text">Longest Increasing Subsequence</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#longest-common-substring"><span class="nav-number">1.3.2.</span> <span class="nav-text">Longest Common Substring</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matrix-chain-multiplication"><span class="nav-number">1.4.</span> <span class="nav-text">Matrix Chain Multiplication</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#dynamic-programming"><span class="nav-number">1.</span> <span class="nav-text">Dynamic programming</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#shortest-path-problem"><span class="nav-number">1.1.</span> <span class="nav-text">Shortest path problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#knapsack-problem"><span class="nav-number">1.2.</span> <span class="nav-text">Knapsack problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fractional-knapsack-problem"><span class="nav-number">1.2.1.</span> <span class="nav-text">Fractional knapsack problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#knapsack-problem-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">0-1 Knapsack problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#branch-and-bound-解-0-1-knapsack-problem"><span class="nav-number">1.2.3.</span> <span class="nav-text">Branch and bound 解 0-1 Knapsack problem</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#longest-common-subsequence"><span class="nav-number">1.3.</span> <span class="nav-text">Longest Common Subsequence</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#longest-increasing-subsequence"><span class="nav-number">1.3.1.</span> <span class="nav-text">Longest Increasing Subsequence</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#longest-common-substring"><span class="nav-number">1.3.2.</span> <span class="nav-text">Longest Common Substring</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matrix-chain-multiplication"><span class="nav-number">1.4.</span> <span class="nav-text">Matrix Chain Multiplication</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#補充例題"><span class="nav-number">2.</span> <span class="nav-text">補充例題</span></a></li></ol></div>
             
 
           </div>
