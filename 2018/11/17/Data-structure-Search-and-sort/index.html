@@ -162,7 +162,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1542106445237.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1542447949542.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1542448961965.png">
-<meta property="og:updated_time" content="2019-01-28T06:58:31.070Z">
+<meta property="og:updated_time" content="2019-02-04T08:13:15.577Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Data structure - Search and sort">
 <meta name="twitter:description" content="Binary search Example n 筆資料作「Binary search」最多比較次數？ \(\lceil \lg (n+1) \rceil\)   200 筆資料：最多 8 次的搜尋 1024 筆資料：最多 11 次的搜尋   Example  n 筆資料作「Binary search」  其「Worst case」為 O(log n)  n 筆資料以">
@@ -412,7 +412,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-01-28T14:58:31+08:00">2019-01-28</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-04T16:13:15+08:00">2019-02-04</time>
             
           </span>
 
@@ -857,7 +857,7 @@
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 排序陣列 A[l] ~ A[u]</span></span><br><span class="line">Qsort(A[], l, u) &#123;</span><br><span class="line">    <span class="comment">// Partition</span></span><br><span class="line">    <span class="keyword">if</span>(l &lt; u) &#123;</span><br><span class="line">        i = l;</span><br><span class="line">        j = u+<span class="number">1</span>;</span><br><span class="line">        p = A[l];</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            <span class="keyword">do</span> &#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125; <span class="keyword">while</span>(A[i] &lt; p);</span><br><span class="line">        </span><br><span class="line">            <span class="keyword">do</span> &#123;</span><br><span class="line">                j--;</span><br><span class="line">            &#125; <span class="keyword">while</span>(A[j] &gt; p);</span><br><span class="line">        </span><br><span class="line">            <span class="keyword">if</span>( i &lt;= j ) &#123;</span><br><span class="line">                swap(A[i], A[j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">while</span>(i &lt;= j);</span><br><span class="line">        swap(A[l], A[j]);</span><br><span class="line">        </span><br><span class="line">        Qsort(A[], l, j<span class="number">-1</span>);</span><br><span class="line">        Qsort(A[], j+<span class="number">1</span>, l);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Example</p>
-<p>排序：5*, 5, 5, 5, 5</p>
+<p>排序：<span class="math inline">\(5^＊, 5, 5, 5, 5\)</span></p>
 <figure>
 <img src="\willywangkaa\images\1541218724819.png" alt="1541218724819"><figcaption>1541218724819</figcaption>
 </figure>
@@ -873,14 +873,27 @@
 </ul></li>
 <li><strong>Avg. case：O( n log n ) (下圖二)</strong>
 <ul>
-<li><span class="math inline">\(T(n) = c\cdot n + \frac 1n\cdot \sum_{s = 1}^n (T(s) + T(n-s))\)</span>：<strong>Partition time + 全部狀況之平均</strong></li>
-<li><span class="math inline">\(\Rightarrow nT(n) = c \cdot n^2 + \sum_{s = 1}^n(T(s) + T(n-s))\\ \Rightarrow nT(n) = [(T(1)+T(n-1)) + (T(2)+T(n-2)) + \ldots + (T(n)+ T(0))] + cn^2 \\ = 2 \cdot[T(1)+T(2)+\ldots+T(n-1)] + T(n) + cn^2 ......(1) \\ (n-1) 代入\; (1) \; \\ \Rightarrow (n-1)T(n-1) = 2\cdot[T(1)+ T(2)+\ldots+T(n-2)]+T(n-1)+c\cdot(n-1)^2 ......(2) \\ (1) - (2) \Rightarrow nT(n) - (n-1)T(n-1) = 2T(n-1)+T(n)-T(n-1)+c\cdot(n^2 - (n-1)^2) \\ \Rightarrow nT(n) - nT(n-1) + T(n-1) = T(n-1) + T(n) + c(n^2-(n-1)^2) \\ \Rightarrow (n-1)T(n) = nT(n-1) + c(n^2- (n-1)^2) \\ \Rightarrow \frac{T(n)}{n} = \frac{T(n-1)}{n-1} + c (\frac{2n-1}{n(n-1)}) \Rightarrow \frac{T(n)}{n} = \frac{T(n-1)}{n-1} + c (\frac 1n + \frac{1}{n-1}) \\ \Rightarrow \frac{T(n)}{n} = c(\frac 1n+\frac 1{n-1} + \ldots+\frac 12) + c (\frac 1{n-1} + \frac 1{n-2} + \ldots + \frac 11) \\ \frac{T(n)}{n} = c(H_n -1) + c(H_n + \frac 1n) \\ \Rightarrow T(n) = 2 c\cdot n \cdot H_n - cn -c \\ = 2\cdot c \cdot n \log n - cn -c = O(n\log n)\)</span></li>
-<li>上述之遞迴時間表示式<strong>忽略了「Partition」後右邊還會少一筆資料</strong>(下圖二) 所以該表示應該為 <span class="math inline">\(T(n) = \frac 1n \sum_{s = 0}^{n-1}(T(s) + T(n-1-s)) + c\cdot n\)</span></li>
+<li><span class="math inline">\(T(n) = c\cdot n + \frac 1n\cdot \sum_{s = 1}^n (T(s) + T(n-s))\)</span>
+<ul>
+<li><strong>Partition time + 全部狀況之平均</strong></li>
+</ul></li>
+<li><strong>（1）</strong>$nT(n) = c n^2 + _{s = 1}^n(T(s) + T(n-s))\ = [(T(1)+T(n-1)) + (T(2)+T(n-2)) + + (T(n)+ T(0))] + cn^2 \ = 2 [T(1)+T(2)++T(n-1)] + T(n) + cn^2 $</li>
+<li><strong>以 (n-1) 代入式（1）成為式（2） </strong></li>
+<li><strong>（2）</strong>$(n-1)T(n-1) = 2[T(1)+ T(2)++T(n-2)]+T(n-1)+c(n-1)^2 $</li>
+<li><strong>式（1）— 式（2）</strong></li>
+<li><span class="math inline">\(\Rightarrow nT(n) - (n-1)T(n-1) = 2T(n-1)+T(n)-T(n-1)+c(n^2 - (n-1)^2) \\ \Rightarrow nT(n) - nT(n-1) + T(n-1) = T(n-1) + T(n) + c(n^2-(n-1)^2) \\ \Rightarrow (n-1)T(n) = nT(n-1) + c(n^2- (n-1)^2) \\ \Rightarrow \frac{T(n)}{n} = \frac{T(n-1)}{n-1} + c (\frac{2n-1}{n(n-1)}) \Rightarrow \frac{T(n)}{n} = \frac{T(n-1)}{n-1} + c (\frac 1n + \frac{1}{n-1}) \\ \Rightarrow \frac{T(n)}{n} = c(\frac 1n+\frac 1{n-1} + \ldots+\frac 12) + c (\frac 1{n-1} + \frac 1{n-2} + \ldots + \frac 11) \\ \Rightarrow\frac{T(n)}{n} = c(H_n -1) + c(H_n + \frac 1n) \\ \Rightarrow T(n) = 2 c\cdot n \cdot H_n - cn -c \\ = 2\cdot c \cdot n \log n - cn -c = O(n\log n)\)</span></li>
+<li>上述遞迴時間表示式<strong>忽略執行「Partition」後，右邊會多少一筆資料</strong>（下圖二）
+<ul>
+<li>完整表示應該為 <span class="math inline">\(T(n) = \frac 1n \sum_{s = 0}^{n-1}(T(s) + T(n-1-s)) + c\cdot n\)</span></li>
+</ul></li>
 </ul></li>
 <li><strong>Worst case：O(</strong> <span class="math inline">\(n^2\)</span> <strong>) (下圖三)</strong>
 <ul>
-<li>當 pivot 恰為最小最大值時，作「Partittion」不會使「Devide and conquer」的優點顯現，所以當<strong>整體資料為「由小到大」或「由大到小」時會有「Worst case」</strong></li>
+<li><strong>當 Pivot 恰為最小最大值時</strong>，作「Partition」不會使「Divide and conquer」的優點顯現
+<ul>
+<li><strong>整體資料為「由小到大」或「由大到小」時會發生「Worst case」</strong></li>
 <li><span class="math inline">\(T(n) = O(n) + T(n-1) \\ = T(1) + (2 + 3 + \ldots + n) \cdot c \\ = c \cdot \frac{(n+2)(n-1)}{2} = O(n^2)\)</span></li>
+</ul></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -899,29 +912,29 @@
 <blockquote>
 <p>如何避免「Worst case」發生？</p>
 <p>避免 Pivot 為最小值或最大值</p>
-<p>Randomized quicksort</p>
+<p><strong>Randomized quicksort</strong></p>
 <ul>
 <li>亂數挑一個數作為 Pivot</li>
-<li><strong>還是有可能發生「Worst case」( 無法完全解決問題 )</strong></li>
+<li><strong>仍有可能發生「Worst case」( 無法完全解決問題 )</strong></li>
 </ul>
-<p>Middle of three (下圖)</p>
+<p><strong>Middle of three</strong> （下圖）</p>
 <ul>
 <li>做法
 <ol type="1">
 <li><span class="math inline">\(M = \frac {L+U}{2}\)</span></li>
-<li>比較 A[L], A[M], A[U] 找出三者中之中間值，以此<strong>中間值</strong>與 A[l] 交換</li>
-<li>選擇 A[L] 作為 Pivot (中間值) ，作「Quicksort partition」</li>
+<li>比較 A[L], A[M], A[U] 找出三者中之中間值，以<strong>此中間值與 A[l] 交換</strong></li>
+<li>選擇 A[L] 作為 Pivot（中間值），作「Quicksort partition」</li>
 </ol></li>
 <li>可以解決「Worst case」問題</li>
 </ul>
 <figure>
 <img src="\willywangkaa\images\1541766823939.png" alt="1541766823939"><figcaption>1541766823939</figcaption>
 </figure>
-<p>Median of medians</p>
-<p>＜下方細述＞</p>
+<p><strong>Median of medians</strong></p>
+<p><strong>＜下方細述＞</strong></p>
 </blockquote>
 <ul>
-<li>Space complexity ( 遞迴所需的「Stack space」 )
+<li><strong>Space complexity（遞迴所需的「Stack space」）</strong>
 <ul>
 <li>Best case (下圖一)：O( log n )</li>
 <li>Worst case (下圖二)：O( n )</li>
@@ -935,7 +948,7 @@
 <img src="\willywangkaa\images\1541816965630.png" alt="1541816965630"><figcaption>1541816965630</figcaption>
 </figure>
 <p>圖二</p>
-<h3 id="quicksort2-algotithm書中版本">Quicksort2 ( 「Algotithm」書中版本 )</h3>
+<h3 id="quicksort2-algorithm書中版本">Quicksort2 ( 「Algorithm」書中版本 )</h3>
 <p>Example</p>
 <p>2 8 7 1 3 5 6 4 之第一次「Partition」</p>
 <figure>
@@ -946,7 +959,7 @@
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Quicksort(A[], p, r) &#123;               <span class="comment">// 排序 A[p] ~ A[r]</span></span><br><span class="line">    <span class="keyword">if</span>(p &lt; r) &#123;</span><br><span class="line">        q = Partition(A[], p, r);    <span class="comment">// 見下圖一</span></span><br><span class="line">        Quicksort(A[], p, q<span class="number">-1</span>);</span><br><span class="line">        Quicksort(A[], q+<span class="number">1</span>, r);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Partition(A[], p, r) &#123;</span><br><span class="line">    pivot = A[r];</span><br><span class="line">    i = p<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>(l = p; i &lt;= r<span class="number">-1</span>; j++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(A[j] &lt;= pivot) &#123;</span><br><span class="line">            i++;</span><br><span class="line">            swap(A[i], A[j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    swap(A[i+<span class="number">1</span>], A[r]);</span><br><span class="line">    <span class="keyword">return</span> i+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Example</p>
-<p>the output of quicksort pass1</p>
+<p>The output of quicksort pass1</p>
 <ul>
 <li>1 2 3 4 5</li>
 </ul>
@@ -960,16 +973,20 @@
 <img src="\willywangkaa\images\1541927780299.png" alt="1541927780299"><figcaption>1541927780299</figcaption>
 </figure>
 <ul>
-<li><strong>5 5 5 5 5* ( 在「Quicksort 2」演算的情況下會是「Worst case」（O(</strong><span class="math inline">\(n^2\)</span><strong>)），但是在「Quicksort 1」演算的情況下會是「Best case」 )</strong></li>
+<li><span class="math inline">\(5 \;5 \;5 \;5 \;5^＊\)</span>
+<ul>
+<li><strong>在「Quicksort 2」演算情況下會是「Worst case」</strong>（O(<strong><span class="math inline">\(n^2\)</span></strong>)）</li>
+<li><strong>在「Quicksort 1」演算情況下會是「Best case」</strong></li>
+</ul></li>
 </ul>
 <figure>
 <img src="\willywangkaa\images\1541928492844.png" alt="1541928492844"><figcaption>1541928492844</figcaption>
 </figure>
 <blockquote>
-<p>如何改善上述問題？</p>
+<p><strong>改善上述問題</strong></p>
 <ol type="1">
-<li>在「Partition」前先檢查該陣列是否相同：O( n )</li>
-<li>改採用「 Hoare partition」：Best case O( n log n )</li>
+<li>在「Partition」執行前<strong>檢查該陣列中元素是否相同</strong>：O( n )</li>
+<li>改採用「 Hoare partition」：「Best case」O( n log n )</li>
 </ol>
 </blockquote>
 <h3 id="問題與討論selection-problem">問題與討論—Selection problem</h3>
@@ -985,22 +1002,51 @@
 </ol></li>
 <li>改良解法
 <ol type="1">
-<li>A[1] 與 A[2] <strong>比較一次</strong>知道兩數大小，令兩者之大數為 m 、小數為 n</li>
-<li>針對後面 n-2 筆資料以<strong>遞迴</strong>找出<strong>最大值</strong>與<strong>最小值</strong>，並且令 n-2 筆資料的最大值為 x、最小值為 y</li>
-<li>m 與 x <strong>比較一次</strong>找出最大值；n 與 y <strong>比較一次</strong>找出最小值
+<li><strong>A[1] 與 A[2] 比較一次知道兩數大小</strong>
 <ul>
-<li>總<strong>比較</strong>次數：<span class="math inline">\(T(0) = T(1) = 0, T(2) = 1 \\T(n) = T(n-2) + 3 \\ = T(n-4) + 6 \\= T(n-6) + 9 \\\vdots = T(0) + 3 \cdot \frac n2 &lt; 2n-3\)</span></li>
-<li>稍微在比較上可以減少比較次數</li>
+<li>令兩者之大數為 m 、小數為 n</li>
 </ul></li>
-</ol></li>
+<li>針對<strong>後面 n-2 筆資料以遞迴找出最大值與最小值</strong>（A[3]、A[4]、A[n-4]）
+<ul>
+<li>令 n-2 筆資料的最大值為 x、最小值為 y</li>
+</ul></li>
+<li>『m 與 x <strong>比較一次</strong>找出最大值』、『n 與 y <strong>比較一次</strong>找出最小值』</li>
+</ol>
+<ul>
+<li>初值
+<ul>
+<li>T(0) = T(1) = 0</li>
+<li>T(2) = 1</li>
+</ul></li>
+<li>總<strong>比較</strong>次數
+<ul>
+<li>T(n) = T(n-2) +（<strong>A[i] 與 A[i+1] 比較一次</strong> + <strong>m 與 x 比較</strong> + <strong>n 與 y 比較一次</strong>）</li>
+<li><span class="math inline">\(T(n) = T(n-2) + 3 \\ = T(n-4) + 6 \\= T(n-6) + 9 \\ \vdots \\= T(0) + 3 \cdot \frac n2 &lt; 2n-3\)</span></li>
+</ul></li>
+<li><strong>稍微減少比較次數</strong></li>
+</ul></li>
 </ul>
 <h3 id="問題與討論select-i-th-item-among-n-unsorted-data-array">問題與討論—Select i-th item among n unsorted data array</h3>
-<p>問題概要：在未排序的陣列中找到第 i 小的資料</p>
+<p><strong>在未排序的陣列中找到第 i 小的資料</strong></p>
 <blockquote>
-<p><strong>想法</strong>：以學過的算法中，若不知道其值域則只能使用「Quick sort」等算法來求取資料各個大小的資訊（O(nlogn)），倘若知道資料範圍，可以「Radix sort」等算法求取資料的大小資訊（O(n)）</p>
-<p><strong>如果要以「Comparsion based」來解決這個問題有無更快的算法？</strong></p>
+<p>學過的演算法中：</p>
+<ul>
+<li>不知道其值域
+<ul>
+<li>以「Quick sort」等算法求取資料各個大小的資訊</li>
+<li><strong>O(n log n)</strong></li>
+</ul></li>
+<li>知道資料範圍
+<ul>
+<li>以「Radix sort」等算法求取資料的大小資訊</li>
+<li><strong>O(n)</strong></li>
+</ul></li>
+</ul>
+<p><strong>如果以「Comparison based」來解決這個問題有無更快的算法？</strong></p>
+<ul>
+<li><strong>利用「Quick sort」中的「Partition」為此算法基底</strong></li>
+</ul>
 </blockquote>
-<p><strong>利用「Quick sort」中的「Partition」為此算法基底</strong></p>
 <ul>
 <li>Algorithm</li>
 </ul>
@@ -1009,62 +1055,101 @@
 <ul>
 <li>Best case：<strong>Pivot 的定位恰將資料切為兩等分</strong>
 <ul>
-<li><span class="math inline">\(T(n) = T(\frac n2) + cn \\ = c(n + \frac n2 + \frac n4 + \ldots+1) = \Theta(n)\)</span> （對左半或是右半作「selection」+ 「Partition」）</li>
+<li>對左半或是右半作「Selection」+ 「Partition」</li>
+<li><span class="math inline">\(T(n) = T(\frac n2) + cn \\ = c(n + \frac n2 + \frac n4 + \ldots+1) = \Theta(n)\)</span></li>
 </ul></li>
-<li>Avg. case
+<li>Average case
 <ul>
 <li><span class="math inline">\(T(n) = \frac 1n\sum_{s = 0}^{n-1} T(s)+ cn = O(n)\)</span></li>
 </ul></li>
 <li>Worst case
 <ul>
-<li>當 pivot 恰為最大或是最小值</li>
+<li><strong>當 Pivot 恰為最大或是最小值</strong></li>
 <li><span class="math inline">\(T(n) = T(n-1) + cn\\ = n + (n-1) + (n-2) + \dots + 1 = O(n^2)\)</span></li>
-<li><strong>解決：採取「Median of medians」選擇 pivot ，將 worst case 弭平為 O(n)</strong></li>
+<li><strong>解決辦法</strong>
+<ul>
+<li><strong>採取「Median of medians」選擇 Pivot ，將 Worst case 弭平為 O(n)</strong></li>
+</ul></li>
 </ul></li>
 </ul>
 <h4 id="selection-with-median-of-medians">Selection with median of medians</h4>
 <figure>
 <img src="\willywangkaa\images\1542449916157.png" alt="1542449916157"><figcaption>1542449916157</figcaption>
 </figure>
-<p>步驟：</p>
+<p>步驟</p>
 <ol type="1">
 <li>先將 n 筆資料分成 <span class="math inline">\(\lceil \frac n5 \rceil\)</span> 個群組，每個群組有<strong>五筆資料</strong>（可能有一群組不足 5 筆資料）
 <ul>
-<li>時間複雜度：O(n)</li>
-</ul></li>
-<li>針對每個群組各自排序（Eg. Insertion sort）
+<li>時間複雜度
 <ul>
-<li>時間複雜度：每個群組最多花費 O(25) 次比較，共有 <span class="math inline">\(\lceil \frac n5 \rceil\)</span> 個群組，所以總共需 O(n)</li>
+<li>O(n)</li>
 </ul></li>
-<li>每個已排序群組中第三個資料為該群組之中間值，針對 <span class="math inline">\(\lceil \frac n5 \rceil\)</span> 個群組的中間值，作「Select」，找出這些中間值中的中間值即為<strong>「Median of medians」</strong>
+</ul></li>
+<li>針對每個群組各自排序（如：Insertion sort）
 <ul>
-<li>時間複雜度：遞迴呼叫「Select」函式，在中間值中找第 <span class="math inline">\(\frac{\lceil\frac{n}{5}\rceil}{2}\)</span> 小的中間值；需要 <span class="math inline">\(T(\lceil\frac n5\rceil)\)</span></li>
+<li>時間複雜度
+<ul>
+<li>每個群組最多花費 O(25) 次比較</li>
+<li>共有 <span class="math inline">\(\lceil \frac n5 \rceil\)</span> 個群組</li>
+<li>總共需 O(n)</li>
+</ul></li>
+</ul></li>
+<li><p>每個已排序群組中<strong>第三個資料為該群組之中間值</strong></p>
+<ul>
+<li>對 <span class="math inline">\(\lceil \frac n5 \rceil\)</span> 個群組的中間值作「Selection with median」
+<ul>
+<li><strong>這些中間值中的中間值即為「Median of medians」</strong></li>
+</ul></li>
+<li>時間複雜度
+<ul>
+<li>遞迴呼叫「Selection with median」函式</li>
+<li>在中間值中找第 <span class="math inline">\(\frac{\lceil\frac{n}{5}\rceil}{2}\)</span> 小的中間值
+<ul>
+<li><span class="math inline">\(T(\lceil\frac n5\rceil)\)</span></li>
+</ul></li>
+</ul></li>
 </ul></li>
 <li>以「Median of medians」作為「Pivot」進行「Partition」
 <ul>
-<li>時間複雜度：O(n)</li>
+<li>時間複雜度
+<ul>
+<li>O(n)</li>
+</ul></li>
 </ul></li>
 <li>繼續尋找 i 大小的值
 <ul>
-<li>時間複雜度：O(s)，取決於「Median of medians」作為「Pivot」將資料切割之程度</li>
+<li>時間複雜度
+<ul>
+<li><strong>取決於「Median of medians」作為「Pivot」將資料切割之程度</strong></li>
+</ul></li>
 </ul></li>
 </ol>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">k = q-p+<span class="number">1</span>;</span><br><span class="line"><span class="keyword">if</span> (i == k) &#123;</span><br><span class="line">    <span class="keyword">return</span> A&#123;q];</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (i &lt; k) &#123;</span><br><span class="line">    Select(A, p, q<span class="number">-1</span>, i);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    Select(A, q+<span class="number">1</span>, r, i-k);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
 <ul>
-<li><p>(下圖)扣除「Pivot」所在的群組以及不滿五筆資料之群組，<strong>約有一半的群中組必有 3 筆資料</strong> ≧ 「Pivot」</p>
+<li>扣除「Pivot」所在的群組以及不滿五筆資料之群組
 <ul>
+<li><strong>約有一半的群中組必有 3 筆資料</strong> ≧「Pivot」</li>
 <li><p>比「Pivot」大的資料個數 $(12 n5-2) 3 =  -6 $</p></li>
-<li><p>相反的會有 <span class="math inline">\(\lceil \frac{7n}{10}\rceil +6\)</span> 筆資料 ≦ 「Pivot」</p></li>
+<li><p>相反的會有 <span class="math inline">\(\lceil \frac{7n}{10}\rceil +6\)</span> 筆資料 ≦「Pivot」</p></li>
 </ul></li>
 </ul>
 <figure>
 <img src="\willywangkaa\images\1542450245855.png" alt="1542450245855"><figcaption>1542450245855</figcaption>
 </figure>
+</blockquote>
 <ul>
 <li>Time comlexity
 <ul>
-<li>(下圖)在資料比較多的地方作「Select」以代表最糟糕的情況，所以在 <span class="math inline">\(\lceil \frac{7n}{10}\rceil +6\)</span> 中遞迴找出目標值，所以第五步的遞迴最壞需要 <span class="math inline">\(T(\lceil \frac{7n}{10}\rceil + 6)\)</span></li>
-<li><span class="math inline">\(T(n) = T(\lceil\frac n5\rceil) + T(\lceil \frac{7n}{10}\rceil+6)+O(n) \\ = T(\frac 15n)+ T(\frac 7{10}n) + cn = O(n)\)</span> ( 以樹狀結構解決 )</li>
+<li>（下圖）最糟糕的情況
+<ul>
+<li><strong>在資料比較多的地方作「Select」</strong></li>
+<li>在 <span class="math inline">\(\lceil \frac{7n}{10}\rceil +6\)</span> 中遞迴找出目標值
+<ul>
+<li>第五步的遞迴最壞需要 <span class="math inline">\(T(\lceil \frac{7n}{10}\rceil + 6)\)</span></li>
+</ul></li>
+</ul></li>
+<li><span class="math inline">\(T(n) = T(\lceil\frac n5\rceil) + T(\lceil \frac{7n}{10}\rceil+6)+O(n) \\ = T(\frac 15n)+ T(\frac 7{10}n) + cn = O(n)\)</span>（以樹狀結構解此遞迴）</li>
 </ul></li>
 </ul>
 <figure>
@@ -1072,10 +1157,13 @@
 </figure>
 <blockquote>
 <ul>
-<li>(下圖)如果以 7 筆資料為一群組
+<li>（下圖）如果以<strong>七筆資料為一群組</strong>
 <ul>
-<li>至少有 <span class="math inline">\((\frac 12\cdot\lceil\frac n7\rceil -2)\cdot 4\)</span> 筆資料 ≧ 「Pivot」</li>
-<li>即 <span class="math inline">\(\frac{2n}{7}-8\)</span> 筆 ≧ 「Pivot」，則 <span class="math inline">\(\lceil \frac {5n}{7}\rceil+8\)</span> 筆 ≦ 「Pivot」</li>
+<li>至少有 <span class="math inline">\((\frac 12\cdot\lceil\frac n7\rceil -2)\cdot 4\)</span> 筆資料 ≧「Pivot」
+<ul>
+<li><span class="math inline">\(\frac{2n}{7}-8\)</span> 筆 ≧「Pivot」</li>
+<li><span class="math inline">\(\lceil \frac {5n}{7}\rceil+8\)</span> 筆 ≦「Pivot」</li>
+</ul></li>
 <li><span class="math inline">\(T(n) = O(n) + O(n) + T(\lceil\frac n7\rceil) +O(n) + T(\lceil \frac{5n}{7}\rceil+8) \\ = T(\frac n7)+ T(\frac 57n)+cn = O(n)\)</span></li>
 </ul></li>
 </ul>
@@ -1083,10 +1171,13 @@
 <img src="\willywangkaa\images\1542450561714.png" alt="1542450561714"><figcaption>1542450561714</figcaption>
 </figure>
 <ul>
-<li>(下圖)如果以 3 筆資料為一群組
+<li>（下圖）如果以<strong>三筆資料為一群組</strong>
 <ul>
-<li>至少有 <span class="math inline">\((\frac 12\cdot\lceil\frac n3\rceil -2)\cdot 2\)</span> 筆資料 ≧ 「Pivot」</li>
-<li>即 <span class="math inline">\(\frac{n}{3}-4\)</span> 筆 ≧ 「Pivot」，則 <span class="math inline">\(\lceil \frac {2n}{3}\rceil+4\)</span> 筆 ≦ 「Pivot」</li>
+<li>至少有 <span class="math inline">\((\frac 12\cdot\lceil\frac n3\rceil -2)\cdot 2\)</span> 筆資料 ≧ 「Pivot」
+<ul>
+<li><span class="math inline">\(\frac{n}{3}-4\)</span> 筆 ≧「Pivot」</li>
+<li><span class="math inline">\(\lceil \frac {2n}{3}\rceil+4\)</span> 筆 ≦「Pivot」</li>
+</ul></li>
 <li><span class="math inline">\(T(n) = O(n) + O(n) + T(\lceil\frac n3\rceil) +O(n) + T(\lceil \frac{2n}{3}\rceil+4) \\ = T(\frac n3)+ T(\frac 23n)+cn = O(n\log n)\)</span></li>
 </ul></li>
 </ul>
@@ -1152,13 +1243,13 @@
 </ul></li>
 </ul>
 </blockquote>
-<h3 id="iterative-merge-sort-two-way-merge">Iterative merge sort (Two way merge)</h3>
+<h3 id="iterative-merge-sorttwo-way-merge">Iterative merge sort（Two way merge）</h3>
 <p>Example</p>
 <figure>
 <img src="\willywangkaa\images\1542088579919.png" alt="1542088579919"><figcaption>1542088579919</figcaption>
 </figure>
 <ul>
-<li>Algorithm ( Merge 2 runs )</li>
+<li>Algorithm（Merge 2 runs）</li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A[l....m]: 子陣列「順串一」</span></span><br><span class="line"><span class="comment">// A[m+1..n]: 子陣列「順串二」</span></span><br><span class="line">Merge(A[], l, m, n) &#123;</span><br><span class="line">    <span class="keyword">int</span> p = l, q = m+<span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> tmp[n-l+<span class="number">1</span>];   <span class="comment">// 暫存陣列 [1..(n-l+1)]</span></span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 當 run1 與 run2 皆未掃描完</span></span><br><span class="line">    <span class="keyword">while</span>(p &lt;= m &amp;&amp; q &lt;= n) &#123;</span><br><span class="line">        <span class="keyword">if</span>(A[p] &lt;= A[q]) &#123;</span><br><span class="line">            tmp[i++] = A[p++];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            tmp[i++] = A[q++];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// run1 未掃描完</span></span><br><span class="line">    <span class="keyword">while</span>(p &lt;= m) &#123;</span><br><span class="line">        tmp[i++] = A[p++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// run2 未掃描完</span></span><br><span class="line">    <span class="keyword">while</span>(q &lt;= n) &#123;</span><br><span class="line">        tmp[i++] = A[q++];</span><br><span class="line">    &#125;</span><br><span class="line">    copy(A[l..n], tmp[<span class="number">1.</span>.(n-l+<span class="number">1</span>)]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
@@ -1166,13 +1257,17 @@
 <ul>
 <li>「順串一」的長度為 m、「順串二」的長度為 n，合併兩順串：
 <ul>
-<li><span class="math inline">\(\left\{\begin{matrix}最少比較次數： &amp; m \;or \;n\\ 最多比較次數 (有一方先掃描完)： &amp; m+n-1\end{matrix}\right.\)</span></li>
+<li><span class="math inline">\(\left\{\begin{matrix}最少比較次數： &amp; m \;or \;n\\ 最多比較次數（有一方先掃描完）：&amp; m+n-1\end{matrix}\right.\)</span></li>
 </ul></li>
-<li>(下圖一) 所以假設整體要排序的資料總量為 n ，合併一次所有的順串需 O(n)
+<li>（下圖一）所以假設整體要排序的資料總量為 n ，合併一次所有的順串需 O(n)
 <ul>
 <li>n 筆資料作「2-way merge sort」</li>
-<li>(下圖二) 可以看成一棵「Completed binary search tree」</li>
-<li><span class="math inline">\(\because 「Merge」回合數 = 樹高 -1 \\ \Rightarrow 2^{k-1} = n \Rightarrow k = \lceil \lg n\rceil +1 \\ \Rightarrow 「Merge」回合數 = \lceil \lg n\rceil \\ \because 每個回合作「Merge」需\; O(n) \; \\ \therefore 總共的時間複雜度為\; O(n \log n)\)</span></li>
+<li>（下圖二）可以看成一棵「Completed binary search tree」</li>
+<li>因為<strong>「Merge」回合數 = 樹高 - 1</strong>
+<ul>
+<li><span class="math inline">\(\Rightarrow 2^{k-1} = n \Rightarrow k = \lceil \lg n\rceil +1\)</span></li>
+<li><span class="math inline">\(\Rightarrow 「Merge」回合數 = \lceil \lg n\rceil \\ \because 每個回合作「Merge」需\; O(n) \; \\ \therefore 總共的時間複雜度為\; O(n \log n)\)</span></li>
+</ul></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -1184,11 +1279,11 @@
 <img src="\willywangkaa\images\1542089353231.png" alt="1542089353231"><figcaption>1542089353231</figcaption>
 </figure>
 <p>圖二</p>
-<h3 id="recursive-merge-sort-two-way-merge">Recursive merge sort (Two way merge)</h3>
+<h3 id="recursive-merge-sorttwo-way-merge">Recursive merge sort（Two way merge）</h3>
 <p>採用「Devide and conquer」的技巧</p>
 <p>步驟：</p>
 <ol type="1">
-<li><p>一律切割成兩等分之「子串列」( Sublist )</p>
+<li><p>一律切割成兩等分之「子串列」（Sublist）</p>
 <ul>
 <li>O( 1 )</li>
 </ul></li>
@@ -1202,7 +1297,11 @@
 </ul></li>
 </ol>
 <blockquote>
-<p>與「Quicksort」相比，「Mergesort」把時間（O(n)）花在合併的階段，而「Quicksort」則是把時間（O(n)）花在作分割</p>
+<p>「Quicksort」相比</p>
+<ul>
+<li>「Mergesort」把時間（O(n)）<strong>花在合併的階段</strong></li>
+<li>「Quicksort」把時間（O(n)）<strong>花在分割階段</strong></li>
+</ul>
 </blockquote>
 <figure>
 <img src="\willywangkaa\images\1542090860348.png" alt="1542090860348"><figcaption>1542090860348</figcaption>
@@ -1223,7 +1322,11 @@
 <ul>
 <li>O( n )
 <ul>
-<li>在作「Merge」的時候為了要暫存合併的結果，所以空間占用大小等於資料量（n），空間需求高</li>
+<li>在作「Merge」的時候為了<strong>暫存合併的結果</strong>
+<ul>
+<li>空間占用大小等於資料量（n）</li>
+<li>空間需求高</li>
+</ul></li>
 </ul></li>
 </ul></li>
 <li><strong>Stable</strong>
@@ -1238,9 +1341,24 @@
 <figure>
 <img src="\willywangkaa\images\1542091456582.png" alt="1542091456582"><figcaption>1542091456582</figcaption>
 </figure>
-<p>上圖每次要對 k 個順串作合併時，如果資料總量為 n ，而<strong>每次從 k 個順串中找到最小的值必須花 k-1 次比較</strong>，並且最多要<strong>歷經 n-1 個回合</strong>，<strong>所以作一次「k-way merge」之時間複雜度為 O( n × k )</strong></p>
+<ul>
+<li>每次要對 k 個順串作合併時
+<ul>
+<li>資料總量為 n</li>
+<li><strong>每次從 k 個順串中找到最小的值必須花 k-1 次比較</strong></li>
+<li>最多要<strong>歷經 n-1 個回合</strong></li>
+<li><strong>作一次「k-way merge」之時間複雜度為 O(n×k)</strong></li>
+</ul></li>
+</ul>
 <blockquote>
-<p>為了減少比較的次數，所以以此資料結構輔佐，有兩個資料，「Winner tree」與「Loser tree」，通常在實現上，多採用「Loser tree」</p>
+<p>減少比較的次數</p>
+<ul>
+<li>以資料結構輔佐
+<ul>
+<li>「Winner tree」、「Loser tree」</li>
+</ul></li>
+<li>在實現上多採用「Loser tree」</li>
+</ul>
 </blockquote>
 <h4 id="winner-tree">Winner tree</h4>
 <p>Example</p>
@@ -1260,18 +1378,35 @@
 <figure>
 <img src="\willywangkaa\images\1542092514867.png" alt="1542092514867"><figcaption>1542092514867</figcaption>
 </figure>
-<p>( 重複動作直到「新順串」建立完 )</p>
+<p>（重複動作直到「新順串」建立完）</p>
 <ul>
-<li>Time complexity (假設為「k-way merge」、總資料數為 n)
+<li>Time complexity（假設為「k-way merge」、總資料數為 n）
 <ul>
 <li>建立「Winner tree」：O( k )
 <ul>
-<li>分別從 k 個順串中複製出<strong>最小值</strong>作為「Winner tree」的葉節點：O( k )</li>
-<li>在「Winner tree」中的葉節點，以 k-1 次的比較找出最小值節點作為「根節點」：O( k )</li>
+<li>分別從 k 個順串中複製出<strong>最小值</strong>作為「Winner tree」的葉節點
+<ul>
+<li>O( k )</li>
+</ul></li>
+<li>在「Winner tree」中的葉節點，以 k-1 次的比較找出最小值節點作為「根節點」
+<ul>
+<li>O( k )</li>
+</ul></li>
 </ul></li>
 <li>輸出「根節點」至「新順串」中，被輸出的順串之下一筆資料遞補，重複 n-1 回合：O( n×log k )
 <ul>
-<li>決定根節點 ( 最小值 )，假設 l 為葉節點數量，則目前的「Winner tree」之 l = k = 8，樹高 h 為 <span class="math inline">\(O(\lceil\log l\rceil+1)\)</span> ，所以決定根節點需要歷經 <span class="math inline">\(O(h-1) \equiv O(\lceil\lg(l)\rceil+1-1)\)</span>：<span class="math inline">\(O(\log k)\)</span></li>
+<li>決定根節點（最小值）
+<ul>
+<li>假設 <span class="math inline">\(l\)</span> 為葉節點數量
+<ul>
+<li>「Winner tree」之葉節點為<span class="math inline">\(l = k = 8\)</span></li>
+<li>「Winner tree」樹高 h 為 <span class="math inline">\(O(\lceil\log l\rceil+1)\)</span></li>
+</ul></li>
+<li>決定根節點需要歷經 <span class="math inline">\(O(h-1) \equiv O(\lceil\lg(l)\rceil+1-1)\)</span>
+<ul>
+<li><span class="math inline">\(O(\log k)\)</span></li>
+</ul></li>
+</ul></li>
 <li>輸出根節點：O( 1 )</li>
 <li>被輸出之順串下一筆資料遞補：O( 1 )</li>
 </ul></li>
@@ -1290,17 +1425,28 @@
 <figure>
 <img src="\willywangkaa\images\1542093996385.png" alt="1542093996385"><figcaption>1542093996385</figcaption>
 </figure>
-<p>( 執行直到「新順串」建立完成 )</p>
-<p>Time complexity (假設為「k-way merge」、總資料數為 n)</p>
+<p>（執行直到「新順串」建立完成）</p>
+<p>Time complexity （假設為「k-way merge」、總資料數為 n）</p>
 <ul>
 <li>建立「Loser tree」：O( k )
 <ul>
-<li>分別從 k 個順串中複製出<strong>最小值</strong>作為「Loser tree」的葉節點：O( k )</li>
+<li>分別從 k 個順串中複製出<strong>最小值</strong>作為「Loser tree」的「葉節點」：O( k )</li>
 <li>在「Loser tree」中的葉節點，以 k-1 次的比較找出最小值節點作為「根節點」：O( k )</li>
 </ul></li>
 <li>輸出「根節點」至「新順串」中，被輸出的順串之下一筆資料遞補，重複 n-1 回合：O( n×log k )
 <ul>
-<li>決定根節點 ( 最小值 )，假設 l 為葉節點數量，則目前的「Loser tree」之 l = k = 8，樹高 h 為 <span class="math inline">\(O(\lceil\log l\rceil+1)\)</span> ，所以決定根節點需要歷經 <span class="math inline">\(O(h-1) \equiv O(\lceil\lg(l)\rceil+1-1)\)</span>：<span class="math inline">\(O(\log k)\)</span></li>
+<li>決定根節點（最小值）
+<ul>
+<li>假設 <span class="math inline">\(l\)</span> 為葉節點數量
+<ul>
+<li>「Winner tree」之葉節點為<span class="math inline">\(l = k = 8\)</span></li>
+<li>「Winner tree」樹高 h 為 <span class="math inline">\(O(\lceil\log l\rceil+1)\)</span></li>
+</ul></li>
+<li>決定根節點需要歷經 <span class="math inline">\(O(h-1) \equiv O(\lceil\lg(l)\rceil+1-1)\)</span>
+<ul>
+<li><span class="math inline">\(O(\log k)\)</span></li>
+</ul></li>
+</ul></li>
 <li>輸出根節點：O( 1 )</li>
 <li>被輸出之順串下一筆資料遞補：O( 1 )</li>
 </ul></li>
@@ -1310,20 +1456,61 @@
 </ul></li>
 </ul>
 <blockquote>
-<p>在執行「External merge sort」時，假設欲排序資料為 n ，其中「K-way merging on m runs」的時候，在使用「Selection tree」的情況下，其時間複雜度為 O( n lg m )</p>
+<ul>
+<li>「External merge sort」
+<ul>
+<li>排序資料：n
+<ul>
+<li>「K-way merging on m runs」</li>
+</ul></li>
+<li>使用「Selection tree」其時間複雜度
+<ul>
+<li>O( n lg m )</li>
+</ul></li>
+</ul></li>
+</ul>
 <figure>
 <img src="\willywangkaa\images\1542095449837.png" alt="1542095449837"><figcaption>1542095449837</figcaption>
 </figure>
-<p>首先，為了分析假設 m 個順串被 k-way 分成了<strong>兩堆</strong>，由上面的「Selection tree」知道每次作「k-way merge」之時間複雜度為 <span class="math inline">\(O( \frac n2 \times \lg k )\)</span>，又因為有兩堆所以總共一次「Merge」需要 O( n lg k )，所以推廣後無論分幾堆作「Merge」之時間複雜度為 O( n lg k )</p>
-<p>因為 <span class="math inline">\(回合數 = 樹高 - 1\)</span> (見下圖)，在「Sorting」時需要執行 <span class="math inline">\(\lceil log_km \rceil\)</span> 回合</p>
+<ul>
+<li>假設 m 個順串被 k-way 分成了<strong>兩堆</strong>
+<ul>
+<li>由「Selection tree」得知
+<ul>
+<li>作「k-way merge」之時間複雜度
+<ul>
+<li><span class="math inline">\(O( \frac n2 \times \lg k )\)</span></li>
+</ul></li>
+</ul></li>
+<li>因為有兩堆所以「Merge」總共需要
+<ul>
+<li>O( n lg k )</li>
+</ul></li>
+<li>推廣後無論分幾堆作「Merge」之時間複雜度
+<ul>
+<li><strong>O( n lg k )</strong></li>
+</ul></li>
+</ul></li>
+</ul>
+<p><strong>因為『回合數 = 樹高 - 1』（見下圖），在「Sorting」時需要執行</strong> <span class="math inline">\(\lceil log_km \rceil\)</span> <strong>回合</strong></p>
 <figure>
 <img src="\willywangkaa\images\1542097917874.png" alt="1542097917874"><figcaption>1542097917874</figcaption>
 </figure>
 <ul>
 <li>Time complexity
 <ul>
-<li>由樹來看 Degree = k，Leaf = m <span class="math inline">\(\Rightarrow k^{h-1} = m \\ \Rightarrow h = \lceil\log_k m\rceil +1\\ 回合數 = h -1 = O(\log_k m)\)</span></li>
-<li>總共時間複雜度 <span class="math inline">\(O((n \cdot \lg k) \times \log_k m) \\ = O(n \cdot \frac{\log k}{\log 2}\cdot\frac{\log m}{\log k})\\ = O(n\cdot\lg m)\)</span></li>
+<li>以樹的觀點
+<ul>
+<li>Degree = k</li>
+<li>Number of leaves = m
+<ul>
+<li><span class="math inline">\(\Rightarrow k^{h-1} = m \\ \Rightarrow h = \lceil\log_k m\rceil +1\\ 回合數 = h -1 = O(\log_k m)\)</span></li>
+</ul></li>
+</ul></li>
+<li>總共時間複雜度
+<ul>
+<li><span class="math inline">\(O((n \cdot \lg k) \times \log_k m) \\ = O(n \cdot \frac{\log k}{\log 2}\cdot\frac{\log m}{\log k})\\ = O(n\cdot\lg m)\)</span></li>
+</ul></li>
 </ul></li>
 </ul>
 </blockquote>
@@ -1334,7 +1521,8 @@
 <ul>
 <li>Time complexity：O(n)</li>
 </ul></li>
-<li>執行「Del-max」並將取出資料放置於陣列最後端資料被移除處 ( 見「Binary heap」之刪除節點 )，重複動作 n-1 回合</li>
+<li>執行「Del-max」並將取出資料放置於陣列最後端資料被移除處（見「Binary heap」之刪除節點）</li>
+<li>動作（2）重複 n-1 回合</li>
 </ol>
 <p>Example</p>
 <p>排序：5 3 8 2 6 9 1 4 10 7</p>
@@ -1350,7 +1538,7 @@
 <figure>
 <img src="\willywangkaa\images\1542105935299.png" alt="1542105935299"><figcaption>1542105935299</figcaption>
 </figure>
-<p>(重複動作)</p>
+<p>（重複動作）</p>
 <figure>
 <img src="\willywangkaa\images\1542106039971.png" alt="1542106039971"><figcaption>1542106039971</figcaption>
 </figure>
@@ -1381,9 +1569,8 @@
 <li><strong>Unstable</strong></li>
 </ul>
 <h1 id="linear-time-sorting-method">Linear time sorting method</h1>
-<p><strong>不採用「Comparsion based」技巧之排序手法</strong></p>
+<p><strong>不採用「Comparison based」技巧之排序手法</strong></p>
 <blockquote>
-<p>注意！</p>
 <p>在探討線性時間複雜度之排序技術前，要知道這類排序都要有一個前提，<strong>資料值域必須有範圍限制</strong>，才能將排序降低為線性時間</p>
 <ul>
 <li>Example：當排序資料只有 0 與 1 兩種類型資料時，最快的排序方法
@@ -1419,21 +1606,30 @@
 </tr>
 </tbody>
 </table>
-<h3 id="lsd-radix-sort-least-significant-digital">LSD radix sort (Least significant digital)</h3>
+<h3 id="lsd-radix-sortleast-significant-digital">LSD radix sort（Least significant digital）</h3>
 <p>步驟：</p>
 <ol type="1">
-<li>令 r 為基底( Base ) ，準備 r 個「Bucket」編號為 0 ~ (r-1)</li>
+<li>令 r 為基底（Base）
+<ul>
+<li>準備 r 個「Bucket」編號為 0 ~ (r-1)</li>
+</ul></li>
 <li>令 d 為「Input data」<strong>中所有值以 r 為基底之最大位數個數</strong>：O( n )
 <ul>
 <li><strong>之後在執行排序時只需要 d 回合即可完成</strong></li>
 </ul></li>
 <li>由最低位元至最高位元執行：
 <ol type="1">
-<li>分派 ( Distribution )：依各個資料之該位元分派到對應的「Bucket」</li>
-<li>合併 ( Merge )：將所有「Bucket」由小到大（0 ~ (r-1)）合併</li>
+<li>分派（Distribution）
+<ul>
+<li>依各個資料之該位元分派到對應的「Bucket」</li>
+</ul></li>
+<li>合併（Merge）
+<ul>
+<li>將所有「Bucket」由小到大（0 ~ (r-1)）合併</li>
+</ul></li>
 </ol></li>
 </ol>
-<p>Example ( 基底為 10；十進位 )</p>
+<p>Example（基底為 10；十進位）</p>
 <p>排序：329、457、657、839、436、720、355</p>
 <figure>
 <img src="\willywangkaa\images\1542447949542.png" alt="1542447949542"><figcaption>1542447949542</figcaption>
@@ -1453,18 +1649,28 @@
 </ul></li>
 <li>Stable</li>
 </ul>
-<h3 id="msd-radix-sort-most-significant-digital">MSD radix sort (Most significant digital)</h3>
+<h3 id="msd-radix-sortmost-significant-digital">MSD radix sort（Most significant digital）</h3>
 <p>步驟：</p>
 <ol type="1">
-<li>令 r 為基底( Base ) ，準備 r 個「Bucket」編號為 0 ~ (r-1)</li>
+<li>令 r 為基底（Base） ，準備 r 個「Bucket」編號為 0 ~ (r-1)</li>
 <li>依照「最高位元」的數值分派資料至「Bucket」中</li>
 <li>每個「Bucket」內各自排序</li>
 <li>由小到大合併所有「Bucket」</li>
 </ol>
 <blockquote>
-<p>與「LSD radix sort」最大的區別，「MSD radix sort」只會作「分派」與「合併」各一次，所以若資料位數很大時，或是基底很小時，建議採用「MSD radix sort」</p>
+<p>「LSD radix sort」最大的區別</p>
+<ul>
+<li>「MSD radix sort」
+<ul>
+<li>作「分派」與「合併」各一次</li>
+<li>若「資料位數很大」或「基底很小」時
+<ul>
+<li>建議採用「MSD radix sort」</li>
+</ul></li>
+</ul></li>
+</ul>
 </blockquote>
-<h4 id="bucket-sort-algorithm-書上版本">Bucket sort ( Algorithm 書上版本 )</h4>
+<h4 id="bucket-sortalgorithm-書上版本">Bucket sort（Algorithm 書上版本）</h4>
 <p>步驟：</p>
 <ol type="1">
 <li>將資料轉化成「純小數」</li>
@@ -1501,13 +1707,31 @@
 <blockquote>
 <p>探討為何 <code>O(k)+O(n)+O(k)+O(n)</code> 為線性時間複雜度</p>
 <ul>
-<li>觀點一</li>
-</ul>
-<p>若鍵值值域之範圍變化是 O(n) 的，注意！此處的 O(n) 為資料範圍，所以也就是說「Input array」中每一個元素在資料範圍中<strong>均勻分布</strong>；以此觀點來看時間複雜度就為 <strong>O(n+k) =&gt; O(n+O(n)) =&gt; O(n)</strong></p>
+<li>觀點一
 <ul>
-<li>觀點二</li>
+<li>若鍵值值域之範圍變化是 O(n)
+<ul>
+<li>此處的 O(n) 為資料範圍
+<ul>
+<li><strong>意旨「Input array」中每一個元素在資料範圍中均勻分布</strong></li>
+</ul></li>
+<li>此觀點來看時間複雜度為
+<ul>
+<li><strong>O(n+k) =&gt; O(n+O(n)) =&gt; O(n)</strong></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>觀點二
+<ul>
+<li>若「Input array」之值域受到限制
+<ul>
+<li>k 可以視為一個常數
+<ul>
+<li>O(n+k) = O(n)</li>
+</ul></li>
+</ul></li>
+</ul></li>
 </ul>
-<p>若「Input array」之值域受到限制，則 k 可以視為一個常數，所以 O(n+k) = O(n)</p>
 </blockquote>
 <ul>
 <li>Space complexity
@@ -1518,18 +1742,50 @@
 </ul>
 <h3 id="counting-sort-問題與探討">Counting sort 問題與探討</h3>
 <p>延續上面探討時間複雜度之觀點一，已知「Counting sort」之時間複雜度為 O(n+k)，若<strong>資料範圍</strong> k 為線性等級 O(k) ，則整理排序時間複雜度為 O(n)</p>
-<p>倘若<strong>資料範圍</strong> k 為平方等級 O(<span class="math inline">\(n^2\)</span>) （<strong>也就是說「Input array」中的元素在資料範圍超出原本「Counting sort」可執行排序的資料範圍</strong>），則必須探討其時間複雜度之變化 O(n + O(<span class="math inline">\(n^2\)</span>))</p>
-<p>Example ( 用例子解釋 )</p>
-<p>有一「Counting sort」只能對值域 0 ~ 9 的資料集合<strong>（O(n)）</strong>作排序，那麼該「Counting sort」要如何對一個值域為 0 ~ 99 <strong>（O(</strong><span class="math inline">\(n^2\)</span><strong>)）</strong>的資料集合作排序</p>
+<ul>
+<li>倘若<strong>資料範圍</strong> k 為平方等級 O(<span class="math inline">\(n^2\)</span>)
+<ul>
+<li><strong>意旨「Input array」中的元素在資料範圍超出原本「Counting sort」可執行排序的資料範圍</strong></li>
+</ul></li>
+<li>必須探討其時間複雜度之變化 O(n + O(<span class="math inline">\(n^2\)</span>))</li>
+</ul>
+<p>Example（用例子解釋）</p>
+<ul>
+<li>一「Counting sort」只能對值域 0 ~ 9 的資料集合<strong>（O(n)）</strong>作排序
+<ul>
+<li>要如何對一個值域為 0 ~ 99 <strong>（O(</strong><span class="math inline">\(n^2\)</span><strong>)）</strong>的資料集合作排序？</li>
+</ul></li>
+</ul>
 <p>以<strong>「基數排序法」的想法為基礎</strong>，則可以在兩回合中將排序完成</p>
 <ol type="1">
-<li>對每個鍵值作「mod n」（n 為「Countign sort」能夠排序的範圍亦可以想為「基底」）取其作為排序鍵值，對每個資料以新排序鍵值作「Counting sort」，而結果會等同於以「Radix sort」作第一回合後合併之狀態
+<li><p>對每個鍵值作「mod n」</p>
 <ul>
-<li>因為值域介於 0 ~ (n-1) 之間，所以第一回合使用「Counting sort」的排序時間複雜度為 O(n)</li>
+<li>n 為「Counting sort」能夠排序的範圍，亦可以視為「基底」</li>
+<li>取其作為排序鍵值，對每個資料以新排序鍵值作「Counting sort」
+<ul>
+<li>將結果以類似<strong>「『Radix sort』每回合最後之合併動作」</strong>收尾</li>
 </ul></li>
-<li>以第一回合之「Output array」作為「Input array」，對每個鍵值作「÷ n」再作「mod n」取其作為排序鍵值，並對每個資料以新排序鍵值作「Countint sort」，而結果會等同於以「Radix sort」作第二回合後合併之狀態
+<li>因為值域介於 0 ~ (n-1) 之間
 <ul>
-<li>若要採用「基數排序法」作為基底，每回合的排序必須是「Stable」才能正確排序，而在這個情況下使用的「Counting sort」亦為「Stable」，所以排序執行得以成功，並且第二回合之時間複雜度一樣為 O(n)</li>
+<li>第一回合使用「Counting sort」的排序時間複雜度為 O(n)</li>
+</ul></li>
+</ul></li>
+<li><p>以第一回合之「Output array」作為「Input array」</p>
+<ul>
+<li>對每個鍵值作「÷ n」再作「mod n」取其作為排序鍵值</li>
+<li>對每個資料以新排序鍵值作「Counting sort」
+<ul>
+<li>將結果以類似「『Radix sort』每回合最後之合併動作」收尾</li>
+</ul></li>
+<li>採用「基數排序法」作為基礎
+<ul>
+<li>每回合的排序必須是「Stable」才能正確排序
+<ul>
+<li>「Counting sort」為「Stable」</li>
+<li>排序執行成功，</li>
+</ul></li>
+<li>第二回合之時間複雜度為 O(n)</li>
+</ul></li>
 </ul></li>
 </ol>
 <ul>
@@ -1951,7 +2207,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#binary-search"><span class="nav-number">1.</span> <span class="nav-text">Binary search</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#internal-sort-and-external-sort"><span class="nav-number">2.</span> <span class="nav-text">Internal sort and external sort</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#internal-sort"><span class="nav-number">2.1.</span> <span class="nav-text">Internal sort</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#external-sort"><span class="nav-number">2.2.</span> <span class="nav-text">External sort</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#排序性質比較表"><span class="nav-number">3.</span> <span class="nav-text">排序性質比較表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#初等排序"><span class="nav-number">4.</span> <span class="nav-text">初等排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#insertion-sort"><span class="nav-number">4.1.</span> <span class="nav-text">Insertion sort</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#selection-sort"><span class="nav-number">4.2.</span> <span class="nav-text">Selection sort</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bubble-sort"><span class="nav-number">4.3.</span> <span class="nav-text">☆Bubble sort</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#版本一"><span class="nav-number">4.3.1.</span> <span class="nav-text">版本一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#版本二"><span class="nav-number">4.3.2.</span> <span class="nav-text">版本二</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#weiss-版本-shell-sort"><span class="nav-number">4.4.</span> <span class="nav-text">[Weiss 版本] Shell sort</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#高等排序"><span class="nav-number">5.</span> <span class="nav-text">高等排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#comparesion-based-comparsion-and-swap-sort-研究與探討"><span class="nav-number">5.1.</span> <span class="nav-text">Comparesion based ( Comparsion and swap ) sort 研究與探討</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#quick-sort"><span class="nav-number">5.2.</span> <span class="nav-text">Quick sort</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#quicksort1-hoare-partition"><span class="nav-number">5.2.1.</span> <span class="nav-text">Quicksort1 ( Hoare partition )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#quicksort2-algotithm書中版本"><span class="nav-number">5.2.2.</span> <span class="nav-text">Quicksort2 ( 「Algotithm」書中版本 )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#問題與討論selection-problem"><span class="nav-number">5.2.3.</span> <span class="nav-text">問題與討論—Selection problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#問題與討論select-i-th-item-among-n-unsorted-data-array"><span class="nav-number">5.2.4.</span> <span class="nav-text">問題與討論—Select i-th item among n unsorted data array</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#selection-with-median-of-medians"><span class="nav-number">5.2.4.1.</span> <span class="nav-text">Selection with median of medians</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#merge-sort"><span class="nav-number">5.3.</span> <span class="nav-text">Merge sort</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#iterative-merge-sort-two-way-merge"><span class="nav-number">5.3.1.</span> <span class="nav-text">Iterative merge sort (Two way merge)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#recursive-merge-sort-two-way-merge"><span class="nav-number">5.3.2.</span> <span class="nav-text">Recursive merge sort (Two way merge)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#輔助結構-selection-tree"><span class="nav-number">5.3.3.</span> <span class="nav-text">[輔助結構] Selection tree</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#winner-tree"><span class="nav-number">5.3.3.1.</span> <span class="nav-text">Winner tree</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#loser-tree"><span class="nav-number">5.3.3.2.</span> <span class="nav-text">Loser tree</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#heap-sort"><span class="nav-number">5.4.</span> <span class="nav-text">Heap sort</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linear-time-sorting-method"><span class="nav-number">6.</span> <span class="nav-text">Linear time sorting method</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#radix-sort-基數排序法-data-structure-書上版本"><span class="nav-number">6.1.</span> <span class="nav-text">Radix sort 基數排序法 ( Data structure 書上版本 )</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#lsd-radix-sort-least-significant-digital"><span class="nav-number">6.1.1.</span> <span class="nav-text">LSD radix sort (Least significant digital)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#msd-radix-sort-most-significant-digital"><span class="nav-number">6.1.2.</span> <span class="nav-text">MSD radix sort (Most significant digital)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bucket-sort-algorithm-書上版本"><span class="nav-number">6.1.2.1.</span> <span class="nav-text">Bucket sort ( Algorithm 書上版本 )</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#counting-sort"><span class="nav-number">6.2.</span> <span class="nav-text">Counting sort</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#counting-sort-問題與探討"><span class="nav-number">6.2.1.</span> <span class="nav-text">Counting sort 問題與探討</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#binary-search"><span class="nav-number">1.</span> <span class="nav-text">Binary search</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#internal-sort-and-external-sort"><span class="nav-number">2.</span> <span class="nav-text">Internal sort and external sort</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#internal-sort"><span class="nav-number">2.1.</span> <span class="nav-text">Internal sort</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#external-sort"><span class="nav-number">2.2.</span> <span class="nav-text">External sort</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#排序性質比較表"><span class="nav-number">3.</span> <span class="nav-text">排序性質比較表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#初等排序"><span class="nav-number">4.</span> <span class="nav-text">初等排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#insertion-sort"><span class="nav-number">4.1.</span> <span class="nav-text">Insertion sort</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#selection-sort"><span class="nav-number">4.2.</span> <span class="nav-text">Selection sort</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bubble-sort"><span class="nav-number">4.3.</span> <span class="nav-text">☆Bubble sort</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#版本一"><span class="nav-number">4.3.1.</span> <span class="nav-text">版本一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#版本二"><span class="nav-number">4.3.2.</span> <span class="nav-text">版本二</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#weiss-版本-shell-sort"><span class="nav-number">4.4.</span> <span class="nav-text">[Weiss 版本] Shell sort</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#高等排序"><span class="nav-number">5.</span> <span class="nav-text">高等排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#comparesion-based-comparsion-and-swap-sort-研究與探討"><span class="nav-number">5.1.</span> <span class="nav-text">Comparesion based ( Comparsion and swap ) sort 研究與探討</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#quick-sort"><span class="nav-number">5.2.</span> <span class="nav-text">Quick sort</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#quicksort1-hoare-partition"><span class="nav-number">5.2.1.</span> <span class="nav-text">Quicksort1 ( Hoare partition )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#quicksort2-algorithm書中版本"><span class="nav-number">5.2.2.</span> <span class="nav-text">Quicksort2 ( 「Algorithm」書中版本 )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#問題與討論selection-problem"><span class="nav-number">5.2.3.</span> <span class="nav-text">問題與討論—Selection problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#問題與討論select-i-th-item-among-n-unsorted-data-array"><span class="nav-number">5.2.4.</span> <span class="nav-text">問題與討論—Select i-th item among n unsorted data array</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#selection-with-median-of-medians"><span class="nav-number">5.2.4.1.</span> <span class="nav-text">Selection with median of medians</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#merge-sort"><span class="nav-number">5.3.</span> <span class="nav-text">Merge sort</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#iterative-merge-sorttwo-way-merge"><span class="nav-number">5.3.1.</span> <span class="nav-text">Iterative merge sort（Two way merge）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#recursive-merge-sorttwo-way-merge"><span class="nav-number">5.3.2.</span> <span class="nav-text">Recursive merge sort（Two way merge）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#輔助結構-selection-tree"><span class="nav-number">5.3.3.</span> <span class="nav-text">[輔助結構] Selection tree</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#winner-tree"><span class="nav-number">5.3.3.1.</span> <span class="nav-text">Winner tree</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#loser-tree"><span class="nav-number">5.3.3.2.</span> <span class="nav-text">Loser tree</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#heap-sort"><span class="nav-number">5.4.</span> <span class="nav-text">Heap sort</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linear-time-sorting-method"><span class="nav-number">6.</span> <span class="nav-text">Linear time sorting method</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#radix-sort-基數排序法-data-structure-書上版本"><span class="nav-number">6.1.</span> <span class="nav-text">Radix sort 基數排序法 ( Data structure 書上版本 )</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#lsd-radix-sortleast-significant-digital"><span class="nav-number">6.1.1.</span> <span class="nav-text">LSD radix sort（Least significant digital）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#msd-radix-sortmost-significant-digital"><span class="nav-number">6.1.2.</span> <span class="nav-text">MSD radix sort（Most significant digital）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bucket-sortalgorithm-書上版本"><span class="nav-number">6.1.2.1.</span> <span class="nav-text">Bucket sort（Algorithm 書上版本）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#counting-sort"><span class="nav-number">6.2.</span> <span class="nav-text">Counting sort</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#counting-sort-問題與探討"><span class="nav-number">6.2.1.</span> <span class="nav-text">Counting sort 問題與探討</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
