@@ -103,20 +103,21 @@
   <meta name="keywords" content="Recurrence,Ackermann," />
 
 
-<meta name="description" content="Recurrence Substutution method  Concept  以經驗猜測一個邊界(bound)。 假設子問題符合此邊界，證明母問題也符合此邊界。  適用時機  題目比分重。 單向；單邊：只需要證明 \(O, \Omega\) 單向，不必證明 \(\Theta\) 。 題目要求。   經典範例  Ex  \(T(n) = 2 T(floor(">
+<meta name="description" content="Recurrence  ＜外傳＞  某些問題隨輸入資料大小成指數成長是無法避免的  雖然「Divide-and-conquer」無法獲致良好的執行效率但仍可採用  河內塔問題  每呼叫一次就需搬動圓盤一次  當圓盤的個數 n 為 64 總共需要搬動圓盤 \(2^{64}-1\) 次 演算法的複雜度等級是 \(O(2^n)\)  河內塔問題圓盤搬動次序與 n 成指數關">
 <meta name="keywords" content="Recurrence,Ackermann">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Algorithm - Recurrence">
 <meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/09/01/Algorithm-Recurrence/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="Recurrence Substutution method  Concept  以經驗猜測一個邊界(bound)。 假設子問題符合此邊界，證明母問題也符合此邊界。  適用時機  題目比分重。 單向；單邊：只需要證明 \(O, \Omega\) 單向，不必證明 \(\Theta\) 。 題目要求。   經典範例  Ex  \(T(n) = 2 T(floor(">
+<meta property="og:description" content="Recurrence  ＜外傳＞  某些問題隨輸入資料大小成指數成長是無法避免的  雖然「Divide-and-conquer」無法獲致良好的執行效率但仍可採用  河內塔問題  每呼叫一次就需搬動圓盤一次  當圓盤的個數 n 為 64 總共需要搬動圓盤 \(2^{64}-1\) 次 演算法的複雜度等級是 \(O(2^n)\)  河內塔問題圓盤搬動次序與 n 成指數關">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/tree_1.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/tree_2.png">
-<meta property="og:updated_time" content="2018-10-21T04:59:20.512Z">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549349573405.png">
+<meta property="og:updated_time" content="2019-02-05T10:09:32.058Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithm - Recurrence">
-<meta name="twitter:description" content="Recurrence Substutution method  Concept  以經驗猜測一個邊界(bound)。 假設子問題符合此邊界，證明母問題也符合此邊界。  適用時機  題目比分重。 單向；單邊：只需要證明 \(O, \Omega\) 單向，不必證明 \(\Theta\) 。 題目要求。   經典範例  Ex  \(T(n) = 2 T(floor(">
+<meta name="twitter:description" content="Recurrence  ＜外傳＞  某些問題隨輸入資料大小成指數成長是無法避免的  雖然「Divide-and-conquer」無法獲致良好的執行效率但仍可採用  河內塔問題  每呼叫一次就需搬動圓盤一次  當圓盤的個數 n 為 64 總共需要搬動圓盤 \(2^{64}-1\) 次 演算法的複雜度等級是 \(O(2^n)\)  河內塔問題圓盤搬動次序與 n 成指數關">
 <meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/tree_1.png">
 
 
@@ -363,7 +364,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-10-21T12:59:20+08:00">2018-10-21</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-05T18:09:32+08:00">2019-02-05</time>
             
           </span>
 
@@ -425,7 +426,30 @@
 
       
         <h1 id="recurrence">Recurrence</h1>
-<h2 id="substutution-method">Substutution method</h2>
+<blockquote>
+<p><strong>＜外傳＞</strong></p>
+<ul>
+<li>某些問題隨輸入資料大小成指數成長是無法避免的
+<ul>
+<li>雖然「Divide-and-conquer」無法獲致良好的執行效率但仍可採用</li>
+</ul></li>
+<li>河內塔問題
+<ul>
+<li>每呼叫一次就需搬動圓盤一次
+<ul>
+<li>當圓盤的個數 n 為 64</li>
+<li>總共需要搬動圓盤 <span class="math inline">\(2^{64}-1\)</span> 次</li>
+<li>演算法的複雜度等級是 <span class="math inline">\(O(2^n)\)</span></li>
+</ul></li>
+<li>河內塔問題<strong>圓盤搬動次序與 n 成指數關係</strong></li>
+<li>經過証明，上述河內塔問題的演算法
+<ul>
+<li>為該問題的限制下<strong>最佳的演算法</strong></li>
+</ul></li>
+</ul></li>
+</ul>
+</blockquote>
+<h2 id="substitution-method">Substitution method</h2>
 <ul>
 <li><p>Concept</p>
 <ol type="1">
@@ -440,20 +464,20 @@
 </ul></li>
 </ul>
 <h3 id="經典範例">經典範例</h3>
-<ul>
-<li>Ex
-<ul>
-<li><span class="math inline">\(T(n) = 2 T(floor(\frac n2))+n\)</span>，問<span class="math inline">\(T(n) = O(？)\)</span>，單向證明</li>
-<li>(substution method) 猜：<span class="math inline">\(T(n) = (n \lg n)\)</span></li>
-<li>＜想法＞已知<span class="math inline">\(g(n) = 2 g(\frac n2)+n = O(n\lg n)\)</span></li>
-<li>欲證<span class="math inline">\(T(n) = O(n \lg n)\)</span>，即證明<span class="math inline">\(\exists C, n_0&gt;0 \ni n \geq n_0, T(n) \leq C \cdot n\lg n\)</span>；<br>假設<strong>子問題</strong> <span class="math inline">\(T(floor(n)) \leq C \cdot floor(\frac n2)\lg floor(\frac n 2)\)</span> 成立；<br>考慮(consider)：<span class="math inline">\(T(n) = 2\cdot T(floor(\frac n2))+n \leq 2 \cdot C \cdot floor(\frac n2)\lg floor(\frac n2)+n\)</span><br><span class="math inline">\(\Rightarrow T(n) = 2\cdot T(floor(\frac n2))+n \leq 2 \cdot C \cdot \frac n2\lg \frac n2+n\)</span><br><span class="math inline">\(\Rightarrow T(n) = 2\cdot T(floor(\frac n2))+n \leq C \cdot n(\lg n - \lg2)+n = C \cdot n\lg n + (1 - C)n\)</span><br><strong>取</strong> <span class="math inline">\(C \geq 2, T(n) = 2\cdot T(floor(\frac n2))+n \leq C \cdot n \lg n\)</span><br><span class="math inline">\(\therefore T(n) = O(n\lg n)\)</span></li>
-</ul></li>
-<li>Ex (97成大資工) (10%)
-<ul>
-<li>解 <span class="math inline">\(T(n) = 2T(\lfloor \sqrt n \rfloor)+\lg n\)</span>, 用 O 表示。( 比分重、單邊、<span class="math inline">\(\lfloor\rfloor\)</span> )<br>考慮使用 substution method 而不使用疊代法。</li>
-<li><span class="math inline">\(\lg n \lg \lg n\)</span></li>
-</ul></li>
-</ul>
+<p>Example - <span class="math inline">\(T(n) = 2 T(\lfloor\frac n2\rfloor)+n\)</span>，<span class="math inline">\(T(n) = O(？)\)</span></p>
+<p>（Substitution method）猜：<span class="math inline">\(T(n) = O(n \lg n)\)</span></p>
+<blockquote>
+<p>已知 <span class="math inline">\(g(n) = 2 g(\frac n2)+n = O(n\lg n)\)</span></p>
+</blockquote>
+<p>欲證 <span class="math inline">\(T(n) = O(n \lg n)\)</span>，即證明 <span class="math inline">\(\exists C, n_0&gt;0 \ni n \geq n_0, T(n) \leq C \cdot n\lg n\)</span></p>
+<p>假設<strong>子問題</strong> <span class="math inline">\(T(n) \leq C \cdot \lfloor\frac n2\rfloor\lg \lfloor\frac n 2\rfloor\)</span> 成立</p>
+<p>考慮 <span class="math inline">\(T(n) = 2\cdot T(\lfloor\frac n2\rfloor)+n \leq 2 \cdot C \cdot \lfloor\frac n2\rfloor\lg \lfloor\frac n2\rfloor+n\)</span></p>
+<p><span class="math inline">\(\Rightarrow T(n) = 2\cdot T(\lfloor\frac n2\rfloor)+n \leq 2 \cdot C \cdot \frac n2\lg \frac n2+n\)</span></p>
+<p><span class="math inline">\(\Rightarrow T(n) = 2\cdot T(\lfloor\frac n2\rfloor)+n \leq C \cdot n(\lg n - \lg2)+n = C \cdot n\lg n + (1 - C)n\)</span></p>
+<p>取 <span class="math inline">\(C \geq 2, T(n) = 2\cdot T(\lfloor\frac n2\rfloor)+n \leq C \cdot n \lg n\)</span></p>
+<p><span class="math inline">\(\therefore T(n) = O(n\lg n)\)</span></p>
+<p>Example（97成大資工） - 解 <span class="math inline">\(T(n) = 2T(\lfloor \sqrt n \rfloor)+\lg n\)</span>, 用 O 表示 - （比分重、單邊、<span class="math inline">\(\lfloor\rfloor\)</span>） - 考慮使用「Substitution method」而不使用疊代法</p>
+<p><span class="math inline">\(\lg n \lg \lg n\)</span></p>
 <h2 id="recurrence-tree">Recurrence tree</h2>
 <ul>
 <li>名詞解釋
@@ -578,7 +602,7 @@ A(m , n) &amp; = &amp; A(m-1, A(m, n-1)) &amp; (3)
 \end{matrix}\right.
 \]</span></p>
 <ul>
-<li>求取 <span class="math inline">\(A(1, n)\)</span> 的通解。</li>
+<li>求取 <span class="math inline">\(A(1, n)\)</span> 的通解</li>
 </ul>
 <p><span class="math display">\[
 \begin{matrix}
@@ -592,7 +616,7 @@ A(m , n) &amp; = &amp; A(m-1, A(m, n-1)) &amp; (3)
 <p><span class="math display">\[
 a_0  =  A(1, 0) = A(0, 1) = 2
 \]</span></p>
-<p>所以，</p>
+<p>所以</p>
 <p><span class="math display">\[
 \begin{matrix}
 a_n &amp; = &amp; a_{n-1} + 1 \\
@@ -604,7 +628,7 @@ a_n &amp; = &amp; a_{n-1} + 1 \\
 \end{matrix}
 \]</span></p>
 <ul>
-<li>求取 <span class="math inline">\(A(2, n)\)</span> 的通解。</li>
+<li>求取 <span class="math inline">\(A(2, n)\)</span> 的通解</li>
 </ul>
 <p><span class="math display">\[
 \begin{matrix}
@@ -622,7 +646,7 @@ a_n &amp; = &amp; a_{n-1} + 1 \\
 \end{matrix}
 \]</span></p>
 <ul>
-<li>求取 <span class="math inline">\(A(3, n)\)</span> 的通解。</li>
+<li>求取 <span class="math inline">\(A(3, n)\)</span> 的通解</li>
 </ul>
 <p><span class="math display">\[
 \begin{matrix}
@@ -644,6 +668,160 @@ c_0 = 5 = C_0 - 3 \\
 \therefore c_n = 2^{n+3} - 3, \forall n \geq 0
 \end{matrix}
 \]</span></p>
+<h2 id="strassen-演算法分治矩陣乘法">Strassen 演算法（分治矩陣乘法）</h2>
+<p>長久以來人們普遍認為矩陣乘法定義本身即為最佳的算法，這個迷思直到1969年才被施特拉森打破──他提出了一個更快捷的分治（Divide-and-conquer）矩陣乘法，為 Strassen 演算法</p>
+<ul>
+<li>給定兩個方陣 A、B
+<ul>
+<li>其大小均為 n×n
+<ul>
+<li>n = 2k</li>
+</ul></li>
+<li>若 n 非 2 的冪次方
+<ul>
+<li>可將 A 和 B 擴充為 <span class="math inline">\(\begin{bmatrix} A&amp;0\\ 0&amp;I \end{bmatrix}\)</span> 和 <span class="math inline">\(\begin{bmatrix} B&amp;0\\ 0&amp;I \end{bmatrix}\)</span></li>
+</ul></li>
+</ul></li>
+</ul>
+<blockquote>
+<p>考慮 2×2 階<strong>分塊矩陣乘法</strong></p>
+<p><span class="math inline">\(\begin{bmatrix} C_{11}&amp;C_{12}\\ C_{21}&amp;C_{22} \end{bmatrix}=\begin{bmatrix} A_{11}&amp;A_{12}\\ A_{21}&amp;A_{22} \end{bmatrix}\begin{bmatrix} B_{11}&amp;B_{12}\\ B_{21}&amp;B_{22} \end{bmatrix}\)</span></p>
+<ul>
+<li>傳統矩陣乘法
+<ul>
+<li><span class="math inline">\(C_{ij}=A_{i1}B_{1j}+A_{i2}B_{2j}\)</span></li>
+</ul></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\1549349573405.png" alt="1549349573405"><figcaption>1549349573405</figcaption>
+</figure>
+<p><span class="math inline">\(C_{11} = A_{11}B_{11} + A_{12}B_{21} \\ C_{12} = A_{11}B_{12} + A_{12}B_{22} \\ C_{21} = A_{21}B_{11} + A_{22}B_{21} \\ C_{22} = A_{21}B_{12} + A_{22}B_{22}\)</span></p>
+<ul>
+<li>遞迴式為：<span class="math inline">\(T(n) = 8T(\frac n2) + cn^2\)</span>
+<ul>
+<li>8 個分塊矩陣乘法</li>
+<li>4 個分塊矩陣加法</li>
+<li><span class="math inline">\(cn^2\Rightarrow 3\times2^2\)</span></li>
+</ul></li>
+<li>「Master theorem」
+<ul>
+<li><span class="math inline">\(T(n) = \Theta(n^3)\)</span></li>
+</ul></li>
+</ul>
+</blockquote>
+<ul>
+<li>Strassen 演算法</li>
+</ul>
+<p><span class="math inline">\(\begin{aligned} P_1&amp;=(A_{11}+A_{22})(B_{11}+B_{22})\\ P_2&amp;=(A_{21}+A_{22})B_{11}\\ P_3&amp;=A_{11}(B_{12}-B_{22})\\ P_4&amp;=A_{22}(B_{21}-B_{11})\\ P_5&amp;=(A_{11}+A_{12})B_{22}\\ P_6&amp;=(A_{21}-A_{11})(B_{11}+B_{12})\\ P_7&amp;=(A_{12}-A_{22})(B_{21}+B_{22})\\ C_{11}&amp;=P_1+P_4-P_5+P_7\\ C_{12}&amp;=P_3+P_5\\ C_{21}&amp;=P_2+P_4\\ C_{22}&amp;=P_1+P_3-P_2+P_6 \end{aligned}\)</span></p>
+<ul>
+<li>遞迴式為：<span class="math inline">\(T(n) = 7T(\frac n2) + cn^2\)</span>
+<ul>
+<li>7 個分塊矩陣乘法</li>
+<li>18 個分塊矩陣加法</li>
+</ul></li>
+<li>「Master theorem」
+<ul>
+<li><span class="math inline">\(T(n) = \Theta(n^{\log_27}) \approx \Theta(n^{2.807})\)</span></li>
+</ul></li>
+</ul>
+<blockquote>
+<ul>
+<li>根據 2000 年的硬體架構
+<ul>
+<li>矩陣尺寸必須超過1000，Strassen 演算法才可能擊敗經過高度優化的傳統算法</li>
+<li>即便矩陣尺寸增大至 10000 相較於傳統算法
+<ul>
+<li>Strassen 演算法所能提昇的運算效率依然十分有限（約小於10%）</li>
+</ul></li>
+</ul></li>
+</ul>
+</blockquote>
+<h3 id="算法推導">算法推導</h3>
+<ul>
+<li>考慮 2×2 階矩陣 <span class="math inline">\(\begin{bmatrix} w&amp;x\\ y&amp;z \end{bmatrix}=\begin{bmatrix} a&amp;b\\ c&amp;d \end{bmatrix}\begin{bmatrix} p&amp;q\\ r&amp;s \end{bmatrix}\)</span>
+<ul>
+<li>乘開後 <span class="math inline">\(\begin{aligned} w&amp;=ap+br\\ y&amp;=cp+dr\\ x&amp;=aq+bs\\ z&amp;=cq+ds \end{aligned}\)</span></li>
+<li>將四個式子合併成矩陣表達式 <span class="math inline">\(\begin{bmatrix} w\\ y\\ x\\ z \end{bmatrix}=\begin{bmatrix} a&amp;b&amp;0&amp;0\\ c&amp;d&amp;0&amp;0\\ 0&amp;0&amp;a&amp;b\\ 0&amp;0&amp;c&amp;d \end{bmatrix}\begin{bmatrix} p\\ r\\ q\\ s \end{bmatrix}\)</span></li>
+</ul></li>
+<li>欲將 4×4 階的矩陣分解成數個矩陣之和以減少乘法運算
+<ul>
+<li><strong>分解出來的矩陣至多僅含4個非零元，且所有非零元都位於一 2×2 階子陣</strong></li>
+<li>如：<span class="math inline">\(\begin{bmatrix} \ast&amp;\ast&amp;0&amp;0\\ \ast&amp;\ast&amp;0&amp;0\\ 0&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;0 \end{bmatrix} 、\begin{bmatrix} 0&amp;0&amp;0&amp;0\\ \ast&amp;0&amp;\ast&amp;0\\ 0&amp;0&amp;0&amp;0\\ \ast&amp;0&amp;\ast&amp;0 \end{bmatrix}、\begin{bmatrix} \ast&amp;0&amp;0&amp;\ast\\ 0&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;0\\ \ast&amp;0&amp;0&amp;\ast \end{bmatrix}\)</span></li>
+</ul></li>
+</ul>
+<blockquote>
+<p>考慮三種分解型態</p>
+<ul>
+<li><strong>型態 I</strong>
+<ul>
+<li>子陣有相同的元</li>
+<li>需要一個乘法運算</li>
+<li><span class="math inline">\(\begin{bmatrix} a&amp;a\\ a&amp;a \end{bmatrix}\begin{bmatrix} u\\ v \end{bmatrix}=\begin{bmatrix} a(u+v)\\ a(u+v) \end{bmatrix}\)</span></li>
+</ul></li>
+<li><strong>型態 II</strong>
+<ul>
+<li>子陣的元有相同的絕對值</li>
+<li><strong>兩行或兩列不同號</strong></li>
+<li>需要1個乘法運算</li>
+<li><span class="math inline">\(\begin{bmatrix} a&amp;-a\\ a&amp;-a \end{bmatrix}\begin{bmatrix} u\\ v \end{bmatrix}=\begin{bmatrix} a(u-v)\\ a(u-v) \end{bmatrix}\)</span></li>
+</ul></li>
+<li><strong>型態 III</strong>
+<ul>
+<li>子陣為上或下三角矩陣</li>
+<li>（非零）非主對角元等於兩主對角元之差</li>
+<li><strong>需要2個乘法運算</strong></li>
+<li><span class="math inline">\(\begin{bmatrix} a&amp;0\\ a-b&amp;b \end{bmatrix}\begin{bmatrix} u\\ v \end{bmatrix}=\begin{bmatrix} au\\ au+b(v-u) \end{bmatrix}\)</span>
+<ul>
+<li>可分解為兩個退化的<strong>型態 I</strong>和<strong>型態 II</strong>（退化是指存在零行或零列）</li>
+<li><span class="math inline">\(\begin{bmatrix} a&amp;0\\ a-b&amp;b \end{bmatrix}=\begin{bmatrix} a&amp;0\\ a&amp;0 \end{bmatrix}+\begin{bmatrix} 0&amp;0\\ -b&amp;-b \end{bmatrix}\)</span></li>
+</ul></li>
+</ul></li>
+</ul>
+</blockquote>
+<p>分解矩陣製造<strong>型態 I</strong>和<strong>型態 II</strong></p>
+<ol type="1">
+<li><p><span class="math inline">\(\begin{bmatrix} a&amp;b&amp;0&amp;0\\ c&amp;d&amp;0&amp;0\\ 0&amp;0&amp;a&amp;b\\ 0&amp;0&amp;c&amp;d \end{bmatrix}=\begin{bmatrix} -d&amp;d&amp;0&amp;0\\ -d&amp;d&amp;0&amp;0\\ 0&amp;0&amp;a&amp;-a\\ 0&amp;0&amp;a&amp;-a \end{bmatrix}+\begin{bmatrix} a+d&amp;b-d&amp;0&amp;0\\ c+d&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;a+b\\ 0&amp;0&amp;c-a&amp;a+d \end{bmatrix}\)</span></p>
+<ul>
+<li>等號右邊的第一個矩陣
+<ul>
+<li><span class="math inline">\(\begin{bmatrix} -d&amp;d&amp;0&amp;0\\ -d&amp;d&amp;0&amp;0\\ 0&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;0 \end{bmatrix}+\begin{bmatrix} 0&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;0\\ 0&amp;0&amp;a&amp;-a\\ 0&amp;0&amp;a&amp;-a \end{bmatrix}\)</span></li>
+</ul></li>
+</ul></li>
+<li><p>令 <span class="math inline">\(M_1\)</span> 表示上式等號<strong>右邊的第二個矩陣</strong></p>
+<ul>
+<li>觀察發現 $(M_1)<em>{11}=(M_1)</em>{44}=a+d $</li>
+<li><span class="math inline">\(M_1=\begin{bmatrix} a+d&amp;0&amp;0&amp;a+d\\ 0&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;0\\ a+d&amp;0&amp;0&amp;a+d \end{bmatrix}+\begin{bmatrix} 0&amp;b-d&amp;0&amp;-(a+d)\\ c+d&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;a+b\\ -(a+d)&amp;0&amp;c-a&amp;0 \end{bmatrix}\)</span></li>
+</ul></li>
+<li><p>令 <span class="math inline">\(M_2\)</span> 表示上式等號<strong>右邊的第二個矩陣</strong></p>
+<ul>
+<li><p>觀察發現 <span class="math inline">\(M_2\)</span> 可分解成兩個<strong>型態 III</strong></p></li>
+<li><span class="math inline">\(M_2=\begin{bmatrix} 0&amp;0&amp;0&amp;0\\ c+d&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;0\\ (c-a)-(c+d)&amp;0&amp;c-a&amp;0 \end{bmatrix}+\begin{bmatrix} 0&amp;b-d&amp;0&amp;(b-d)-(a+b)\\ 0&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;a+b\\ 0&amp;0&amp;0&amp;0 \end{bmatrix}\)</span></li>
+<li>等號右邊的第一個矩陣
+<ul>
+<li><span class="math inline">\(\begin{bmatrix} 0&amp;0&amp;0&amp;0\\ c+d&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;0\\ -(c+d)&amp;0&amp;0&amp;0 \end{bmatrix}+\begin{bmatrix} 0&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;0\\ c-a&amp;0&amp;c-a&amp;0 \end{bmatrix}\)</span></li>
+</ul></li>
+<li>等號右邊的第二個矩陣
+<ul>
+<li><span class="math inline">\(\begin{bmatrix} 0&amp;b-d&amp;0&amp;b-d\\ 0&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;0 \end{bmatrix}+\begin{bmatrix} 0&amp;0&amp;0&amp;0-(a+b)\\ 0&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;a+b\\ 0&amp;0&amp;0&amp;0 \end{bmatrix}\)</span></li>
+</ul></li>
+</ul></li>
+<li><p>整理所有的分解矩陣，<strong>按照「Strassen 演算法」給定的排序</strong></p>
+<ul>
+<li><span class="math inline">\(\begin{aligned} \begin{bmatrix} a&amp;b&amp;0&amp;0\\ c&amp;d&amp;0&amp;0\\ 0&amp;0&amp;a&amp;b\\ 0&amp;0&amp;c&amp;d \end{bmatrix}&amp;=\begin{bmatrix} a+d&amp;0&amp;0&amp;a+d\\ 0&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;0\\ a+d&amp;0&amp;0&amp;a+d \end{bmatrix}+\begin{bmatrix} 0&amp;0&amp;0&amp;0\\ c+d&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;0\\ -(c+d)&amp;0&amp;0&amp;0 \end{bmatrix}\\ &amp;+\begin{bmatrix} 0&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;0\\ 0&amp;0&amp;a&amp;-a\\ 0&amp;0&amp;a&amp;-a \end{bmatrix}+\begin{bmatrix} -d&amp;d&amp;0&amp;0\\ -d&amp;d&amp;0&amp;0\\ 0&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;0 \end{bmatrix}\\ &amp;+\begin{bmatrix} 0&amp;0&amp;0&amp;-(a+b)\\ 0&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;a+b\\ 0&amp;0&amp;0&amp;0 \end{bmatrix}+\begin{bmatrix} 0&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;0\\ c-a&amp;0&amp;c-a&amp;0 \end{bmatrix}\\ &amp;+\begin{bmatrix} 0&amp;b-d&amp;0&amp;b-d\\ 0&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;0 \end{bmatrix} \end{aligned}\)</span></li>
+<li>可以表示為「行列展開」的矩陣乘法</li>
+<li><span class="math inline">\(\displaystyle\begin{aligned} \begin{bmatrix} a&amp;b&amp;0&amp;0\\ c&amp;d&amp;0&amp;0\\ 0&amp;0&amp;a&amp;b\\ 0&amp;0&amp;c&amp;d \end{bmatrix}&amp;=\begin{bmatrix} 1\\ 0\\ 0\\ 1 \end{bmatrix}(a+d)\begin{bmatrix} 1&amp;0&amp;0&amp;1 \end{bmatrix}+\begin{bmatrix} 0\\ 1\\ 0\\ -1 \end{bmatrix}(c+d)\begin{bmatrix} 1&amp;0&amp;0&amp;0 \end{bmatrix}\\ &amp;+\begin{bmatrix} 0\\ 0\\ 1\\ 1 \end{bmatrix}(a)\begin{bmatrix} 0&amp;0&amp;1&amp;-1 \end{bmatrix}+\begin{bmatrix} 1\\ 1\\ 0\\ 0 \end{bmatrix}(d)\begin{bmatrix} -1&amp;1&amp;0&amp;0 \end{bmatrix}\\ &amp;+\begin{bmatrix} -1\\ 0\\ 1\\ 0 \end{bmatrix}(a+b)\begin{bmatrix} 0&amp;0&amp;0&amp;1 \end{bmatrix}+\begin{bmatrix} 0\\ 0\\ 0\\ 1 \end{bmatrix}(c-a)\begin{bmatrix} 1&amp;0&amp;1&amp;0 \end{bmatrix}\\ &amp;+\begin{bmatrix} 1\\ 0\\ 0\\ 0 \end{bmatrix}(b-d)\begin{bmatrix} 0&amp;1&amp;0&amp;1 \end{bmatrix} \end{aligned}\)</span></li>
+</ul></li>
+</ol>
+<ul>
+<li><span class="math inline">\(\begin{bmatrix} a&amp;b&amp;0&amp;0\\ c&amp;d&amp;0&amp;0\\ 0&amp;0&amp;a&amp;b\\ 0&amp;0&amp;c&amp;d \end{bmatrix}\)</span> 乘上<span class="math inline">\(\begin{bmatrix} p\\ r\\ q\\ s \end{bmatrix}\)</span>
+<ul>
+<li><span class="math inline">\(\begin{aligned} \begin{bmatrix} w\\ y\\ x\\ z \end{bmatrix}&amp;=\begin{bmatrix} 1\\ 0\\ 0\\ 1 \end{bmatrix}(a+d)(p+s)+\begin{bmatrix} 0\\ 1\\ 0\\ -1 \end{bmatrix}(c+d)(p)\\ &amp;+\begin{bmatrix} 0\\ 0\\ 1\\ 1 \end{bmatrix}(a)(q-s)+\begin{bmatrix} 1\\ 1\\ 0\\ 0 \end{bmatrix}(d)(-p+r)\\ &amp;+\begin{bmatrix} -1\\ 0\\ 1\\ 0 \end{bmatrix}(a+b)(s)+\begin{bmatrix} 0\\ 0\\ 0\\ 1 \end{bmatrix}(c-a)(p+q)\\ &amp;+\begin{bmatrix} 1\\ 0\\ 0\\ 0 \end{bmatrix}(b-d)(r+s) \end{aligned}\)</span></li>
+<li><span class="math inline">\(\begin{bmatrix} a&amp; b&amp; c&amp; d \end{bmatrix}\)</span> 代 <span class="math inline">\(\begin{bmatrix} A_{11}&amp; A_{12}&amp; A_{21}&amp; A_{22} \end{bmatrix}\)</span></li>
+<li><span class="math inline">\(\begin{bmatrix} p&amp; q&amp; r&amp; s \end{bmatrix}\)</span> 代 <span class="math inline">\(\begin{bmatrix} B_{11}&amp; B_{12}&amp; B_{21}&amp; B_{22} \end{bmatrix}\)</span></li>
+<li><span class="math inline">\(\begin{bmatrix} w&amp; x&amp; y&amp; z \end{bmatrix}\)</span> 代 <span class="math inline">\(\begin{bmatrix} C_{11}&amp; C_{12}&amp; C_{21}&amp; C_{22} \end{bmatrix}\)</span></li>
+<li>即為「Strassen 演算法」</li>
+</ul></li>
+</ul>
 
       
     </div>
@@ -1049,7 +1227,7 @@ c_0 = 5 = C_0 - 3 \\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#recurrence"><span class="nav-number">1.</span> <span class="nav-text">Recurrence</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#substutution-method"><span class="nav-number">1.1.</span> <span class="nav-text">Substutution method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#經典範例"><span class="nav-number">1.1.1.</span> <span class="nav-text">經典範例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#recurrence-tree"><span class="nav-number">1.2.</span> <span class="nav-text">Recurrence tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#經典範例-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">經典範例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#master-theorem"><span class="nav-number">1.3.</span> <span class="nav-text">Master theorem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#經典例題"><span class="nav-number">1.3.1.</span> <span class="nav-text">經典例題</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#進階遞迴問題"><span class="nav-number">2.</span> <span class="nav-text">進階遞迴問題</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ackermanns-function"><span class="nav-number">2.1.</span> <span class="nav-text">Ackermann’s function</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#recurrence"><span class="nav-number">1.</span> <span class="nav-text">Recurrence</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#substitution-method"><span class="nav-number">1.1.</span> <span class="nav-text">Substitution method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#經典範例"><span class="nav-number">1.1.1.</span> <span class="nav-text">經典範例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#recurrence-tree"><span class="nav-number">1.2.</span> <span class="nav-text">Recurrence tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#經典範例-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">經典範例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#master-theorem"><span class="nav-number">1.3.</span> <span class="nav-text">Master theorem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#經典例題"><span class="nav-number">1.3.1.</span> <span class="nav-text">經典例題</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#進階遞迴問題"><span class="nav-number">2.</span> <span class="nav-text">進階遞迴問題</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ackermanns-function"><span class="nav-number">2.1.</span> <span class="nav-text">Ackermann’s function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#strassen-演算法分治矩陣乘法"><span class="nav-number">2.2.</span> <span class="nav-text">Strassen 演算法（分治矩陣乘法）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法推導"><span class="nav-number">2.2.1.</span> <span class="nav-text">算法推導</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
