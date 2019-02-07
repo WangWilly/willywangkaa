@@ -1,0 +1,1874 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-tw,en,default">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/willywangkaa/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/willywangkaa/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/willywangkaa/images/apple-touch-icon-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/willywangkaa/images/favicon-32x32-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/willywangkaa/images/favicon-16x16-next_cat.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/willywangkaa/images/logo_cat.svg?v=6.0.4" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/willywangkaa/',
+    scheme: 'Pisces',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="String matching," />
+
+
+<meta name="description" content="Algorithm - String matching 給兩個字串 T 和 P，找出 T 當中是否有一段字串正好是 P，並且找出其位置  字串搜尋當中，通常將兩字串的象徵符號取做 T 和 P  T 意指 Text P 意指 Pattern  可以想作是從長篇文字 T 之中搜索小段文字 P   若 P 在平移 s 個單位後（T [s+1 … s+m] = P [1 … m]，0">
+<meta name="keywords" content="String matching">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Algorithm - String matching">
+<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2019/02/07/Algorithm-String-matching/index.html">
+<meta property="og:site_name" content="WillyWangkaa">
+<meta property="og:description" content="Algorithm - String matching 給兩個字串 T 和 P，找出 T 當中是否有一段字串正好是 P，並且找出其位置  字串搜尋當中，通常將兩字串的象徵符號取做 T 和 P  T 意指 Text P 意指 Pattern  可以想作是從長篇文字 T 之中搜索小段文字 P   若 P 在平移 s 個單位後（T [s+1 … s+m] = P [1 … m]，0">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549517694185.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549518031466.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549518053082.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549518063746.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549518076863.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549521217587.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549522985570.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549523718157.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549523787809.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549524105095.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549524327132.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549524493648.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549524903137.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549529928795.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549530552160.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549530722575.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549534207507.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549535284950.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549535607960.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549541112414.png">
+<meta property="og:updated_time" content="2019-02-07T12:26:33.937Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Algorithm - String matching">
+<meta name="twitter:description" content="Algorithm - String matching 給兩個字串 T 和 P，找出 T 當中是否有一段字串正好是 P，並且找出其位置  字串搜尋當中，通常將兩字串的象徵符號取做 T 和 P  T 意指 Text P 意指 Pattern  可以想作是從長篇文字 T 之中搜索小段文字 P   若 P 在平移 s 個單位後（T [s+1 … s+m] = P [1 … m]，0">
+<meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/1549517694185.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://WangWilly.github.io/willywangkaa/2019/02/07/Algorithm-String-matching/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>Algorithm - String matching | WillyWangkaa</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/willywangkaa/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WillyWangkaa</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Live more like human</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/willywangkaa/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/willywangkaa/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/willywangkaa/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/willywangkaa/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2019/02/07/Algorithm-String-matching/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WillyWangkaa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Algorithm - String matching</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-07T20:25:00+08:00">2019-02-07</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-07T20:26:33+08:00">2019-02-07</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/willywangkaa/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/willywangkaa/2019/02/07/Algorithm-String-matching/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/02/07/Algorithm-String-matching/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="algorithm---string-matching">Algorithm - String matching</h1>
+<p>給兩個字串 T 和 P，找出 T 當中是否有一段字串正好是 P，並且找出其位置</p>
+<blockquote>
+<p>字串搜尋當中，通常將兩字串的象徵符號取做 T 和 P</p>
+<ul>
+<li>T 意指 Text</li>
+<li>P 意指 Pattern</li>
+</ul>
+<p>可以想作是從長篇文字 T 之中搜索小段文字 P</p>
+</blockquote>
+<ul>
+<li>若 P 在平移 s 個單位後（<strong>T [s+1 … s+m] = P [1 … m]</strong>，0 ≦ s ≦ n-m）
+<ul>
+<li>可以在 T 中該片段被找到
+<ul>
+<li>稱為「合法平移」（Valid shift）</li>
+</ul></li>
+<li>無法在 T 中該片段被找到
+<ul>
+<li>稱為「非法平移」（Invalid shift）</li>
+</ul></li>
+</ul></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\1549517694185.png" alt="1549517694185"><figcaption>1549517694185</figcaption>
+</figure>
+<table>
+<thead>
+<tr class="header">
+<th>Algorithm</th>
+<th>Preprocessing time</th>
+<th>Matching time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Native</td>
+<td>0</td>
+<td>O( (∣T∣-∣P∣+1) ×∣P∣)</td>
+</tr>
+<tr class="even">
+<td>Rabin-Karp</td>
+<td>θ(∣P∣)</td>
+<td>O( (∣T∣-∣P∣+1) ×∣P∣)</td>
+</tr>
+<tr class="odd">
+<td>Morris-Pratt Automaton</td>
+<td>O(∣P∣×∣Σ∣)</td>
+<td>θ(∣T∣)</td>
+</tr>
+<tr class="even">
+<td>Knuth-Morris-Pratt</td>
+<td>θ(∣P∣)</td>
+<td>θ(∣T∣)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="naive-string-matching窮舉法">Naive string matching（窮舉法）</h2>
+<p>最直覺的算法</p>
+<ol type="1">
+<li>挪動 P 以對準 T 的各個位置</li>
+<li>逐一比對字元、判斷是否相等</li>
+</ol>
+<p>Example</p>
+<figure>
+<img src="\willywangkaa\images\1549518031466.png" alt="1549518031466"><figcaption>1549518031466</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\1549518053082.png" alt="1549518053082"><figcaption>1549518053082</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\1549518063746.png" alt="1549518063746"><figcaption>1549518063746</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\1549518076863.png" alt="1549518076863"><figcaption>1549518076863</figcaption>
+</figure>
+<ul>
+<li>Algorithm</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Nativestrinmatcher</span><span class="params">(<span class="built_in">string</span> T,<span class="built_in">string</span> P)</span> </span>&#123;</span><br><span class="line">    n = T.length();</span><br><span class="line">    m = P.length();</span><br><span class="line">    <span class="keyword">for</span> s = <span class="number">0</span> to n-m &#123;</span><br><span class="line">        <span class="keyword">if</span>(P[<span class="number">1.</span>.m] == T[s+<span class="number">1.</span>.s+m])</span><br><span class="line">            print(<span class="string">"Pattern occurs with shift"</span>+ s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>時間複雜度
+<ul>
+<li>O( (|T|-|P|+1)×|P| )
+<ul>
+<li><strong>O( |T||P| )</strong></li>
+</ul></li>
+</ul></li>
+<li>空間複雜度
+<ul>
+<li>O(1)</li>
+</ul></li>
+</ul>
+<h2 id="rabin-karp-演算法">Rabin-Karp 演算法</h2>
+<p>由 Michael O. Rabin 及 Richard M. Karp 在 1987 年發展利用<strong>雜湊作字串判斷</strong>，帶有數學味道的演算法</p>
+<ul>
+<li>一個長度為 m 的模板字串 P
+<ul>
+<li>視為一個 d 進制（d = ∣Σ∣）的數字 p</li>
+<li>令 <span class="math inline">\(t_s\)</span> 為 T[s+1…s+m] 轉換後的結果</li>
+</ul></li>
+<li>問題轉換成「是否存在一個 k(0 ≤ k ≤ n − m)，使得 <span class="math inline">\(p = t_k\)</span>」</li>
+</ul>
+<blockquote>
+<p>p = ∣Σ∣(P[m-1]+(∣Σ∣(P[m-2]+… (∣Σ∣(P[2]+∣Σ∣P[1]) …))) + P[m]</p>
+<p><span class="math inline">\(\Rightarrow p = ｜Σ｜^{m-1}P[1]+｜Σ｜^{m-2}P[2]+\ldots+｜Σ｜^{0}P[m]\)</span></p>
+<p><span class="math inline">\(t_{s+1} = ｜Σ｜(t_s - ｜Σ｜^{m-1}T[s+1])+T[s+m+1]\)</span></p>
+</blockquote>
+<p>Example</p>
+<p>Σ = ｛0, 1, …, 9｝，d = ∣Σ∣ = 10</p>
+<ul>
+<li>Pattern P[1…m]
+<ul>
+<li>p 為對應的十進位數字</li>
+</ul></li>
+<li>Text T[1…n]
+<ul>
+<li><span class="math inline">\(t_s\)</span> 為<strong>長度為 m 子字串</strong>（T[s+1…s+m]，s = 0, 1, …, n-m）中對應的十進位數字</li>
+</ul></li>
+<li>字串 ［3 1 4 1 5 2］
+<ul>
+<li>轉換後為 314,152</li>
+</ul></li>
+</ul>
+<blockquote>
+<p><span class="math inline">\(t_{s+1}\)</span> 與 <span class="math inline">\(t_s\)</span> 的關係</p>
+<p><span class="math inline">\(t_{s+1} = 10(t_s - 10^{m-1}T[s+1])+T[s+m+1]\)</span></p>
+<p>所以，上述表示為</p>
+<p>T = ［3 1 4 1 5 2］、m = 5、d = 10</p>
+<p><span class="math inline">\(t_s = t_0 = 31,415\)</span></p>
+<p><span class="math inline">\(\Rightarrow t_{s+1} = t_1 = 10(31,415-10^{5-1}\cdot3)+2 = 14,152\)</span></p>
+</blockquote>
+<blockquote>
+<ul>
+<li>因為 p 以及 <span class="math inline">\(t_k\)</span> <strong>可能非常大</strong>
+<ul>
+<li>因此比較時間不能視為常數</li>
+</ul></li>
+<li>通常將其 mod 一個大質數 q
+<ul>
+<li>因為如此當 <span class="math inline">\(p = t_k\)</span> 時，不一定匹配成功，須再作進一步驗證
+<ul>
+<li>Spurious hit（假性命中）
+<ul>
+<li><span class="math inline">\(p = t_k\)</span> 但 P[1…m] <strong>≠</strong> T[s+1…s+m]</li>
+</ul></li>
+<li>Valid hit（完全命中）
+<ul>
+<li><span class="math inline">\(p = t_k\)</span> 與 P[1…m] <strong>=</strong> T[s+1…s+m]</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</blockquote>
+<p>Example</p>
+<ul>
+<li>P[1…5] = 31,415
+<ul>
+<li>p = <strong>31,415 mod 13</strong> = 7</li>
+</ul></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\1549521217587.png" alt="1549521217587"><figcaption>1549521217587</figcaption>
+</figure>
+<ul>
+<li>Algorithm</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Rabinkarpmatcher</span> <span class="params">(T,P,d,q)</span> </span>&#123;</span><br><span class="line">    n = T.length();</span><br><span class="line">    m = T.length();</span><br><span class="line">    h = <span class="built_in">pow</span>(d,m<span class="number">-1</span>) % q;</span><br><span class="line">    t[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    p = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Preprocessing</span></span><br><span class="line">    <span class="keyword">for</span> i = <span class="number">1</span> to m &#123;</span><br><span class="line">        p = (d*p + P[i]) % q;</span><br><span class="line">        t[<span class="number">0</span>] = (d*t_0 + T[i]) % q;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Matching</span></span><br><span class="line">    <span class="keyword">for</span> s = <span class="number">0</span> to n-m &#123;</span><br><span class="line">        <span class="keyword">if</span>(p == t[s])&#123;</span><br><span class="line">            <span class="keyword">if</span>(P[<span class="number">1.</span>.m] == T[s+<span class="number">1.</span>.s+m])&#123;</span><br><span class="line">                print(<span class="string">"Pattern occurs with shift"</span>+ s);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// Next substring</span></span><br><span class="line">        <span class="keyword">if</span>(s &lt; n-m)&#123;</span><br><span class="line">            t[s+<span class="number">1</span>] = (d*(t[s]-T[s+<span class="number">1</span>]*h)+T[s+m+<span class="number">1</span>]) % q;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>時間複雜度
+<ul>
+<li>預處理
+<ul>
+<li>θ (∣P∣)</li>
+</ul></li>
+<li>比對程序
+<ul>
+<li><strong>O( (∣T∣-∣P∣+1)×∣P∣ )</strong></li>
+<li>發生在「Worst case」情況</li>
+<li>在多數比對次數少、q 大於 m 的情況為線性複雜度</li>
+</ul></li>
+</ul></li>
+<li>空間複雜度
+<ul>
+<li>O(1)</li>
+</ul></li>
+</ul>
+<h2 id="knuth-morris-pratt-演算法">Knuth-Morris-Pratt 演算法</h2>
+<p>由 Donald Knuth、Vaughan Pratt、J. H. Morris 三人於西元 1977 年共同聯合發表，<strong>最差情況為 O(n) 的字串匹配演算法</strong></p>
+<blockquote>
+<p><strong>觀察暴力演算法</strong></p>
+<ul>
+<li>存在不必要的工作
+<ul>
+<li>從左往右一一比對字元，一旦發現字元不同，將 P 往右挪動一位</li>
+<li>往右挪動 P 之前，當下比對成功的字串片段，可以不必花時間在上面</li>
+</ul></li>
+</ul>
+<p>Example</p>
+<ul>
+<li>T = [aabzabzabcz]</li>
+<li>P = [abzabc]</li>
+</ul>
+<p>（從左往右一一比對字元，一旦發現字元不同，將 P 往右挪動一位）</p>
+<figure>
+<img src="\willywangkaa\images\1549522985570.png" alt="1549522985570"><figcaption>1549522985570</figcaption>
+</figure>
+<p>（在往右挪動 P 之前，當下比對成功的字串片段「abzab」可以加以利用）</p>
+<figure>
+<img src="\willywangkaa\images\1549523718157.png" alt="1549523718157"><figcaption>1549523718157</figcaption>
+</figure>
+<p>（繼續往右挪動 P，挪動一個位置、挪動兩個位置、…）</p>
+<figure>
+<img src="\willywangkaa\images\1549523787809.png" alt="1549523787809"><figcaption>1549523787809</figcaption>
+</figure>
+<p>觀察上述行為</p>
+<ul>
+<li>挪動一個位置
+<ul>
+<li>比較『abzab 的<strong>後四個字元</strong>』與『abzab 的<strong>前四個字元</strong>』</li>
+</ul></li>
+<li>挪動兩個位置
+<ul>
+<li>比較『abzab 的<strong>後三個字元</strong>』與『abzab 的<strong>前三個字元</strong>』</li>
+</ul></li>
+<li>因此若預先知道『 abzab 之「次長相同前綴後綴」是 ab』
+<ul>
+<li><strong>可大幅挪動 P</strong>
+<ul>
+<li>從「V」處繼續向右一一比對字元</li>
+<li>每當比對失敗，就從當前比對成功的字串片段，取其「次長的相同前綴後綴」大幅挪動 P</li>
+</ul></li>
+</ul></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\1549524105095.png" alt="1549524105095"><figcaption>1549524105095</figcaption>
+</figure>
+<p><strong>「相同前綴後綴」</strong>（Prefix-suffix）</p>
+<figure>
+<img src="\willywangkaa\images\1549524327132.png" alt="1549524327132"><figcaption>1549524327132</figcaption>
+</figure>
+<p><strong>「次長相同前綴後綴」</strong></p>
+<ul>
+<li>一個字串的「最長相同前綴後綴」為<strong>原字串</strong></li>
+<li>「最短相同前綴後綴」為<strong>空字串</strong></li>
+<li>「次長相同前綴後綴」就是第二長的「相同前綴後綴」</li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\1549524493648.png" alt="1549524493648"><figcaption>1549524493648</figcaption>
+</figure>
+<p>窮舉法的過程當中，<strong>當前比對成功的字串片段是 P 的前綴</strong></p>
+<ul>
+<li>因為無法預測是 P 的哪個前綴
+<ul>
+<li>所以<strong>預先計算 P 每個前綴的「次長的相同前綴後綴」</strong></li>
+<li>衍生出了「Failure function」</li>
+</ul></li>
+</ul>
+</blockquote>
+<p>步驟</p>
+<ol type="1">
+<li>預先計算 P 的每種前綴的「次長相同前綴後綴」
+<ul>
+<li>意旨算出 P 的「Failure function」</li>
+</ul></li>
+<li>從左往右依序比對字元
+<ul>
+<li>比對成功時
+<ul>
+<li>繼續比對下個字元</li>
+</ul></li>
+<li>比對失敗時
+<ul>
+<li>從比對成功的<strong>字串片段取其「次長的相同前綴後綴」以大幅挪動 P</strong></li>
+</ul></li>
+<li>當全部比對成功搜尋到 P 時
+<ul>
+<li><strong>取 P「次長的相同前綴後綴」以大幅挪動 P</strong></li>
+</ul></li>
+</ul></li>
+</ol>
+<ul>
+<li>Algorithm</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// pattern[0..m]</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GetFailureFunction</span><span class="params">(<span class="built_in">string</span> pattern)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> k = <span class="number">1</span> to pattern.size &#123;</span><br><span class="line">        i = failure[k<span class="number">-1</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>( pattern[k] != pattern[i+<span class="number">1</span>]   <span class="comment">// P[k] != P[ F[...F[k-1]]+1 ]</span></span><br><span class="line">              &amp;&amp; i&gt;=<span class="number">0</span> )&#123;                    <span class="comment">// P[ F[...F[k-1]] ] 仍存在『次長的相同前綴後綴』</span></span><br><span class="line">            i = failure[i];                 <span class="comment">// 以 F[...F[k-1]] 繼續尋找</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(pattern[k] == pattern[i+<span class="number">1</span>])&#123;     <span class="comment">// P[k] == P[ F[...F[k-1]]+1 ]</span></span><br><span class="line">            failure[k] = i+<span class="number">1</span>;               <span class="comment">// F[k] = F[...F[k-1]]+1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Morris_Pratt</span><span class="params">(<span class="built_in">string</span> T, <span class="built_in">string</span> P)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> P.size &gt; T.size</span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">    GetFailureFunction(P);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 進行字串搜尋，時間複雜度：O(T)</span></span><br><span class="line">    <span class="keyword">for</span> k = <span class="number">1</span> to T.size &#123;</span><br><span class="line">        s = <span class="number">-1</span>;                                      <span class="comment">// 目前 P 字元比對已成功的位置</span></span><br><span class="line">        <span class="comment">// 比對 P 的下一個尚未比對位置（s+1）</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 若 T[k] != P[s+1]，尋找大幅挪動的步伐數</span></span><br><span class="line">        <span class="comment">// 在 P 中找出 P[1..s] == T[k-s..k] 以大幅挪動 P</span></span><br><span class="line">        <span class="keyword">while</span> ( P[s+<span class="number">1</span>] != T[k]                       <span class="comment">// T[k] != P[ F[...F[k-1]]+1 ]</span></span><br><span class="line">              &amp;&amp; s &gt;= <span class="number">0</span> ) &#123;                          <span class="comment">// P[ F[...F[k-1]] ] 仍存在『次長的相同前綴後綴』</span></span><br><span class="line">            s = failure[s];                          <span class="comment">// 以 F[...F[k-1]] 繼續尋找</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// T[k] 與 P[s+1] 比對成功</span></span><br><span class="line">        <span class="keyword">if</span> (P[s+<span class="number">1</span>] == T[k]) &#123;                         </span><br><span class="line">            s++;                                     <span class="comment">// P 字元比對已成功的位置後移一位 </span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (s == P.size<span class="number">-1</span>) &#123;                        <span class="comment">// P 字元比對已成功的位置已移完</span></span><br><span class="line">            print( <span class="string">" P出現的位置"</span> + (s-P.size+<span class="number">1</span>) );</span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">            s = failure[s];                         <span class="comment">// 如果字串結尾不是'\0'的時候，就必須挪動 P</span></span><br><span class="line">                                                    <span class="comment">// 如果字串結尾是'\0'的時候，就能省略這一行</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="時間複雜度分析均攤分析">時間複雜度分析（均攤分析）</h3>
+<p>以「Multipop stack」概念作均攤分析，以<strong>字元兩兩比對總次數</strong>作為時間複雜度</p>
+<p>（1）進行字串搜尋的過程中</p>
+<ul>
+<li>「Stack」S 的元素
+<ul>
+<li>當下比對成功的字串片段 S
+<ul>
+<li><strong>一開始 S 長度是零</strong></li>
+</ul></li>
+</ul></li>
+<li><strong>若字元比對成功</strong>
+<ul>
+<li>S 增加一字元，<strong>視為「Push stack」</strong></li>
+</ul></li>
+<li><strong>若字元比對失敗</strong>
+<ul>
+<li>大幅挪動 P，S 只剩下「次長的相同前綴後綴」，<strong>視為「Multipop」</strong></li>
+<li>實際上 S 瞬間大幅變短只需要 O(1) ，時間複雜度遠比「Multipop」小</li>
+</ul></li>
+</ul>
+<ol type="1">
+<li><p>最多有 T 個字元放入 S（S 增加一字元）</p></li>
+<li><p>最多有 T 個字元彈出 S（大幅挪動 P，S 只剩下「次長的相同前綴後綴」）</p></li>
+</ol>
+<p><span class="math inline">\(\Rightarrow\)</span><strong>字元兩兩比對的總次數不超過 2T 次</strong></p>
+<p>（2）計算 P 的「Failure function」過程中</p>
+<p>原理相同，字元兩兩比對的總次數不超過 2P 次</p>
+<ul>
+<li><strong>總時間複雜度</strong>
+<ul>
+<li>O(∣T∣+∣P∣)</li>
+</ul></li>
+</ul>
+<h3 id="failure-function">Failure function</h3>
+<p>在比對失敗時會使用之</p>
+<p>因為函數的<strong>定義域</strong>是 Prefix，又稱作 Prefix function</p>
+<p>因為此函數的<strong>值域</strong>是 Border，又稱作 Border function</p>
+<ul>
+<li><strong>字串函數</strong>
+<ul>
+<li>輸入字串的其中一個前綴，<strong>輸出該前綴的「次長的相同前綴後綴」</strong></li>
+</ul></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\1549524903137.png" alt="1549524903137"><figcaption>1549524903137</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\1549529928795.png" alt="1549529928795"><figcaption>1549529928795</figcaption>
+</figure>
+<ul>
+<li>計算「Failure function」
+<ul>
+<li>Dynamic Programming</li>
+<li>分割問題
+<ul>
+<li>P[0…i] 除去尾端字元 P[i]</li>
+<li>利用已知 P[0…i-1] 的「次長相同前綴後綴」</li>
+<li>得到 P[0…i] 的「次長相同前綴後綴」</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>F[k]：P[0…k] 之「次長的相同前綴後綴」<strong>長度</strong></p>
+<p>（1）將 F[0] 初始化為 -1</p>
+<ul>
+<li>長度為 1 的子字串，不存在「次長相同前綴後綴」</li>
+</ul>
+<p>（2）F[k]：<strong>探討 P[1…k-1] 與 P[k] 之間的關係</strong></p>
+<figure>
+<img src="\willywangkaa\images\1549530552160.png" alt="1549530552160"><figcaption>1549530552160</figcaption>
+</figure>
+<ul>
+<li><strong>P[ F[k-1]+1 ] == P[k]</strong>
+<ul>
+<li>意旨「<strong>第 k 個字元</strong>」與「<strong>P[1…k-1] 之『次長的相同前綴後綴』下一個字元</strong>」相等</li>
+<li><span class="math inline">\(\Rightarrow\)</span> <strong>F[k] = F[k-1]+1</strong></li>
+</ul></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\1549530722575.png" alt="1549530722575"><figcaption>1549530722575</figcaption>
+</figure>
+<blockquote>
+<p><strong>對「P[1…k-1] 之『次長的相同前綴後綴』」作探討</strong></p>
+<figure>
+<img src="\willywangkaa\images\1549534207507.png" alt="1549534207507"><figcaption>1549534207507</figcaption>
+</figure>
+</blockquote>
+<ul>
+<li>P[ F[k-1]+1 ] ≠ P[k]
+<ul>
+<li>「<strong>第 k 個字元</strong>」與「P[1…k-1] 之『次長的相同前綴後綴』下一個字元」相異</li>
+</ul></li>
+</ul>
+<p><strong>若存在 P[ F…[F[k-1]]+1 ] == P[k]，則 F[k] = F…[F[k-1]]+1</strong></p>
+<figure>
+<img src="\willywangkaa\images\1549535284950.png" alt="1549535284950"><figcaption>1549535284950</figcaption>
+</figure>
+<p><strong>若不存在 P[ F…[F[k-1]]+1 ] == P[k]，則 F[k] = -1</strong></p>
+<figure>
+<img src="\willywangkaa\images\1549535607960.png" alt="1549535607960"><figcaption>1549535607960</figcaption>
+</figure>
+<p>上述可以表達為：</p>
+<ul>
+<li><p><span class="math inline">\(f[k]\left\{\begin{matrix} -1 &amp; if \;k = 0\\ f^m[k-1] +1 &amp; 最小的整數\; m\;使得\; P[f^m[k-1]+1] == P[k] \\ -1 &amp; 不存在整數\; m \;可以使得 P[f^m[k-1]+1] == P[k]\end{matrix}\right.\)</span></p></li>
+<li><p>Algorithm</p></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// pattern[0..m]</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GetFailureFunction</span><span class="params">(<span class="built_in">string</span> pattern)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> k = <span class="number">1</span> to pattern.size &#123;</span><br><span class="line">        i = failure[k<span class="number">-1</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>((pattern[k]!=pattern[i+<span class="number">1</span>]) &amp;&amp; <span class="comment">// P[k] != P[ F[...F[k-1]]+1 ]</span></span><br><span class="line">              i&gt;=<span class="number">0</span>)&#123;                        <span class="comment">// P[ F[...F[k-1]] ] 仍存在『次長的相同前綴後綴』</span></span><br><span class="line">            i = failure[i];                 <span class="comment">// 以 F[...F[k-1]] 繼續尋找</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(pattern[k] == pattern[i+<span class="number">1</span>])&#123;     <span class="comment">// P[k] == P[ F[...F[k-1]]+1 ]</span></span><br><span class="line">            failure[k] = i+<span class="number">1</span>;               <span class="comment">// F[k] = F[...F[k-1]]+1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="morris-pratt-automaton">Morris-Pratt Automaton</h3>
+<p>此演算法可以化作自動機，轉化的時間複雜度為 O( ∣P∣×∣Σ∣ )</p>
+<ul>
+<li>Σ 為字元集合</li>
+</ul>
+<blockquote>
+<p>化作自動機之後，字串搜尋的過程就變得更簡單了，甚至可以設計成電子迴路</p>
+<p>轉化的原理，是針對每個狀態，都找出經由「Failure function」能到達的狀態們，然後建立轉移邊，連到那些狀態們的下一個狀態</p>
+</blockquote>
+<figure>
+<img src="\willywangkaa\images\1549541112414.png" alt="1549541112414"><figcaption>1549541112414</figcaption>
+</figure>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/willywangkaa/tags/String-matching/" rel="tag"># String matching</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/willywangkaa/2019/02/02/Data-structure-Theoretical-evaluation-of-overflow-techniques/" rel="next" title="Data structure - Theoretical evaluation of overflow techniques">
+                <i class="fa fa-chevron-left"></i> Data structure - Theoretical evaluation of overflow techniques
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/willywangkaa/images/avatar_me.gif"
+                alt="Willy Wang (willywangkaa)" />
+            
+              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
+              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/willywangkaa/archives/">
+                
+                    <span class="site-state-item-count">55</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/willywangkaa/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/willywangkaa/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">80</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://typora.io/" title="Typora" target="_blank">Typora</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.geeksforgeeks.org/" title="GeeksforGeeks" target="_blank">GeeksforGeeks</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.codecogs.com/latex/eqneditor.php" title="Online LaTeX Equation Editor" target="_blank">Online LaTeX Equation Editor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://allem40306.github.io/blog/" title="CodingJack" target="_blank">CodingJack</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#algorithm---string-matching"><span class="nav-number">1.</span> <span class="nav-text">Algorithm - String matching</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#naive-string-matching窮舉法"><span class="nav-number">1.1.</span> <span class="nav-text">Naive string matching（窮舉法）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rabin-karp-演算法"><span class="nav-number">1.2.</span> <span class="nav-text">Rabin-Karp 演算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#knuth-morris-pratt-演算法"><span class="nav-number">1.3.</span> <span class="nav-text">Knuth-Morris-Pratt 演算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#時間複雜度分析均攤分析"><span class="nav-number">1.3.1.</span> <span class="nav-text">時間複雜度分析（均攤分析）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#failure-function"><span class="nav-number">1.3.2.</span> <span class="nav-text">Failure function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#morris-pratt-automaton"><span class="nav-number">1.3.3.</span> <span class="nav-text">Morris-Pratt Automaton</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/willywangkaa/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/affix.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/willywangkaa/js/src/schemes/pisces.js?v=6.0.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/willywangkaa/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/willywangkaa/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://https-wangwilly-github-io-blog.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://WangWilly.github.io/willywangkaa/2019/02/07/Algorithm-String-matching/';
+        this.page.identifier = '2019/02/07/Algorithm-String-matching/';
+        this.page.title = 'Algorithm - String matching';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-wangwilly-github-io-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/willywangkaa/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/willywangkaa/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>

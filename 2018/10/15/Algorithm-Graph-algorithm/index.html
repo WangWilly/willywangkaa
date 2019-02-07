@@ -121,7 +121,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/escapeproblem_sol.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/escapeproblem_solconti.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/vertexcover.png">
-<meta property="og:updated_time" content="2018-12-10T03:34:54.155Z">
+<meta property="og:updated_time" content="2019-02-06T11:54:05.207Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithm - Graph algorithm">
 <meta name="twitter:description" content="Graph algorithm Depth first search  所需變數：考慮圖中一點 u  color(u)：目前 u 節點的狀態  White：初始值，尚未訪查過 Gray：已被訪查過，但未訪查完其子節點 Black：已經訪查完其子節點  d(u)：發現時間點( Discover time )，即為第一次被訪查的時間點 f(u)：完結時間點( Finish ti">
@@ -371,7 +371,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-12-10T11:34:54+08:00">2018-12-10</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-06T19:54:05+08:00">2019-02-06</time>
             
           </span>
 
@@ -785,6 +785,146 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 <img src="\willywangkaa\images\vertexcover.png" alt="vertexcover"><figcaption>vertexcover</figcaption>
 </figure>
 </blockquote>
+<h1 id="補充例題">補充例題</h1>
+<p>Example（100 交通大學資料結構與演算法）</p>
+<ul>
+<li>Suppose there are several cities along a highway (from the left to the right on the map), which has no forks</li>
+<li>Given the distances between the neighboring cities, we can compute the distance between any two cities
+<ul>
+<li>For example, given 4 cities, in order, (A, B, C, D) and the distances between neighboring cities are: distance(A, B) = 1, distance(B, C) = 2, distance(C, D) = 4</li>
+<li>Then we can compute the distance matrix</li>
+</ul></li>
+<li>In this problem, we consider the reverse problem
+<ul>
+<li>Given the distance between all pair of the cities, we want to recover the order of the cities along the highway</li>
+<li>Suppose there are N cities and we only know the distances between all pairs of cities, that is, there are <span class="math inline">\(\frac{N(N-1)}{2}\)</span> number in arbitrary order</li>
+<li>For convenience, let the leftmost city be the first city and the rightmost city be the last one and order cities accordingly</li>
+</ul></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>1</td>
+<td>3</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td></td>
+<td>2</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td></td>
+<td></td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>（中譯）</p>
+<ul>
+<li>假設有數個在「無岔路高速公路」旁的城市（在地圖上為由左至右）</li>
+<li>當每個相鄰城市的距離得知時，我們可以計算出任兩個城市之間的距離
+<ul>
+<li>舉例來說，依序給定四個城市（A、B、C、D）與每個相鄰城市的距離：
+<ul>
+<li>A 與 B 距離 = 1</li>
+<li>B 與 C 距離 = 2</li>
+<li>C 與 D 距離 = 4</li>
+</ul></li>
+<li>則我們可以計算出其距離矩陣</li>
+</ul></li>
+<li>在此問題中要考慮的是「逆向工程問題」
+<ul>
+<li>給定任兩個城市之間的距離（未給出是哪兩個城市，只知道距離資訊），欲將原始相鄰城市的距離求出</li>
+<li>假設知道 N 個城市與城市的距離，也就是說會給定一串大小為 <span class="math inline">\(\frac{N(N-1)}{2}\)</span> 且無序的數字數列</li>
+<li>為了方便計算，讓最左邊的城市當作第一個城市最右邊的城市為最後一個城市</li>
+</ul></li>
+</ul>
+</blockquote>
+<p><strong>Which of the following is false?</strong></p>
+<ol type="1">
+<li>The largest value must be the distance of <strong>the first city and last city along the highway</strong></li>
+<li>It can be solved by <strong>searching</strong></li>
+<li>If the input has an answer, <strong>then it is unique</strong></li>
+<li>The second largest value can be the distance of the first city and second to the last city along the highway</li>
+<li>The second largest value can be the distance of <strong>the second city and the last city along the highway</strong></li>
+</ol>
+<p><strong>Ans: (3)</strong></p>
+<p><strong>Suppose there are 6 cities and the distance between each pair of the cities are: 9, 8, 8, 7, 6, 6, 5, 5, 3, 3, 3, 2, 2, 1, 1. Which of the following is correct ?</strong></p>
+<ol type="1">
+<li>There is no solution for this input</li>
+<li>The distance of the second city and the third city is 3</li>
+<li>The distance of the fourth city and the fifth city is 1</li>
+<li>The distance of the third city and the fourth city is 3</li>
+<li>The distance of the second city and the third city is 8</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>1</td>
+<td>3</td>
+<td>6</td>
+<td>8</td>
+<td>9</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td></td>
+<td>2</td>
+<td>5</td>
+<td>7</td>
+<td>8</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td></td>
+<td></td>
+<td>3</td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ans: (4)</strong></p>
 
       
     </div>
@@ -922,7 +1062,7 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
                 
                   <a href="/willywangkaa/archives/">
                 
-                    <span class="site-state-item-count">54</span>
+                    <span class="site-state-item-count">55</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1126,7 +1266,9 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
                     
                       
                     
-                    <span class="site-state-item-count">79</span>
+                      
+                    
+                    <span class="site-state-item-count">80</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1188,7 +1330,7 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#graph-algorithm"><span class="nav-number">1.</span> <span class="nav-text">Graph algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#depth-first-search"><span class="nav-number">1.1.</span> <span class="nav-text">Depth first search</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#應用"><span class="nav-number">1.1.1.</span> <span class="nav-text">應用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dfs-tree---edge"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">DFS tree - Edge</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dfs-tree---acyclic"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">DFS tree - Acyclic</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#minimum-spainning-tree"><span class="nav-number">1.2.</span> <span class="nav-text">Minimum spainning tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#問題探討"><span class="nav-number">1.2.1.</span> <span class="nav-text">問題探討</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#kruskals-algorithm-的正確性"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">Kruskal’s algorithm 的正確性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flow-network"><span class="nav-number">1.3.</span> <span class="nav-text">Flow network</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#max-flow-problem"><span class="nav-number">1.3.1.</span> <span class="nav-text">Max flow problem</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ford-fulkerson-algorithm"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">Ford-Fulkerson algorithm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#edmond-karp-algorithm"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">Edmond-Karp algorithm</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它問題"><span class="nav-number">1.4.</span> <span class="nav-text">其它問題</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#graph-algorithm"><span class="nav-number">1.</span> <span class="nav-text">Graph algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#depth-first-search"><span class="nav-number">1.1.</span> <span class="nav-text">Depth first search</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#應用"><span class="nav-number">1.1.1.</span> <span class="nav-text">應用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dfs-tree---edge"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">DFS tree - Edge</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dfs-tree---acyclic"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">DFS tree - Acyclic</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#minimum-spainning-tree"><span class="nav-number">1.2.</span> <span class="nav-text">Minimum spainning tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#問題探討"><span class="nav-number">1.2.1.</span> <span class="nav-text">問題探討</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#kruskals-algorithm-的正確性"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">Kruskal’s algorithm 的正確性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flow-network"><span class="nav-number">1.3.</span> <span class="nav-text">Flow network</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#max-flow-problem"><span class="nav-number">1.3.1.</span> <span class="nav-text">Max flow problem</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ford-fulkerson-algorithm"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">Ford-Fulkerson algorithm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#edmond-karp-algorithm"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">Edmond-Karp algorithm</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它問題"><span class="nav-number">1.4.</span> <span class="nav-text">其它問題</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#補充例題"><span class="nav-number">2.</span> <span class="nav-text">補充例題</span></a></li></ol></div>
             
 
           </div>

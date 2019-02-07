@@ -114,7 +114,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/tree_1.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/tree_2.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549349573405.png">
-<meta property="og:updated_time" content="2019-02-05T10:09:32.058Z">
+<meta property="og:updated_time" content="2019-02-07T05:06:38.137Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithm - Recurrence">
 <meta name="twitter:description" content="Recurrence  ＜外傳＞  某些問題隨輸入資料大小成指數成長是無法避免的  雖然「Divide-and-conquer」無法獲致良好的執行效率但仍可採用  河內塔問題  每呼叫一次就需搬動圓盤一次  當圓盤的個數 n 為 64 總共需要搬動圓盤 \(2^{64}-1\) 次 演算法的複雜度等級是 \(O(2^n)\)  河內塔問題圓盤搬動次序與 n 成指數關">
@@ -364,7 +364,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-02-05T18:09:32+08:00">2019-02-05</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-07T13:06:38+08:00">2019-02-07</time>
             
           </span>
 
@@ -822,6 +822,123 @@ c_0 = 5 = C_0 - 3 \\
 <li>即為「Strassen 演算法」</li>
 </ul></li>
 </ul>
+<h1 id="補充例題">補充例題</h1>
+<p>Example（100 交通大學資料結構與演算法）</p>
+<ul>
+<li>Let d and k be two non-negative integers, where k &gt; d ≧ 0.</li>
+<li>A dk-binary sequence is a binary sequence that satisfies the following two constraints：
+<ul>
+<li><ol type="a">
+<li>d constraint：two 1’s are separated by a run of consecutive 0 of length at least d</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>k constraint：any run of consecutive 0’s is of length at most k</li>
+</ol></li>
+</ul></li>
+<li>For example, 010010001001 is a dk-binary sequence of length 12 width d=0 and k=3.</li>
+<li>Let n indicate the length of dk-binary sequence</li>
+</ul>
+<ol start="47" type="1">
+<li>Given n=6, d=0, k=6, then how many dk-binary sequences are there?</li>
+</ol>
+<ul>
+<li>（A）8</li>
+<li>（B）16</li>
+<li><strong>（C）32</strong></li>
+<li>（D）64</li>
+<li>（E）128</li>
+</ul>
+<p>由 0、1 組成長度為六的字串個數 <span class="math inline">\(\Rightarrow 2^6\)</span></p>
+<ol start="48" type="1">
+<li>Given n=10, d=4, k=5, then how many dk-binary sequences are there?</li>
+</ol>
+<ul>
+<li>（A）8</li>
+<li>（B）6</li>
+<li>（C）12</li>
+<li>（D）10</li>
+<li>（E）11</li>
+</ul>
+<p>（參考：<a href="www.ptt.cc/bbs/Grad-ProbAsk/M.1329321054.A.ECB.html">Re: [理工] [DS&amp;algo] 100交大</a>）</p>
+<p><strong>在序列中有 0 個 1</strong></p>
+<ul>
+<li>不可能發生</li>
+</ul>
+<p><strong>在序列中有 1 個 1</strong></p>
+<ul>
+<li>0000010000</li>
+<li>0000100000</li>
+</ul>
+<p><strong>在序列中有 2 個 1</strong>（兩個 1 <strong>最多</strong>只能將序列切成 3 段）</p>
+<blockquote>
+<p>轉換題目成整數分割</p>
+<ul>
+<li>字串長度為 10</li>
+<li>兩個位子置 1</li>
+<li><p>剩下 8 個位子置 0</p></li>
+<li><p>必須有連續 4 個零或 5 個零出現</p></li>
+</ul>
+</blockquote>
+<ul>
+<li>在序列中有連續 4 個 0（必有連續 4 個 0 出現，則必有一個 4 在此整數分割）
+<ul>
+<li>8=4+<strong>4’</strong>
+<ul>
+<li>序列：0000100001</li>
+</ul></li>
+<li>8=4+3+1
+<ul>
+<li>序列：0001000010</li>
+</ul></li>
+<li>8=4+2+2
+<ul>
+<li>序列：0010000100</li>
+</ul></li>
+<li>8=4+1+3
+<ul>
+<li>序列：0100001000</li>
+</ul></li>
+<li>8=<strong>4’</strong>+4
+<ul>
+<li>序列：1000010000</li>
+</ul></li>
+</ul></li>
+<li>有連續5個零的狀況
+<ul>
+<li>8=5+3
+<ul>
+<li>序列：0001000001</li>
+</ul></li>
+<li>8=5+2+1
+<ul>
+<li>序列：0010000010</li>
+</ul></li>
+<li>8=5+1+2
+<ul>
+<li>序列：0100000100</li>
+</ul></li>
+<li>8=3+5
+<ul>
+<li>序列：1000001000</li>
+</ul></li>
+</ul></li>
+</ul>
+<ol start="49" type="1">
+<li>Given n=14, d=1, k=14, then how many dk-binary sequences are there?</li>
+</ol>
+<ul>
+<li>（A）81</li>
+<li>（B）160</li>
+<li>（C）821</li>
+<li><strong>（D）987</strong></li>
+<li>（E）1024</li>
+</ul>
+<p>由 0、1 組成長度為十四且 1 不得連續出現的字串個數</p>
+<ul>
+<li><span class="math inline">\(a_n = a_{n-1}+a_{n-2}\)</span></li>
+<li><span class="math inline">\(a_1 = 2、a_2 = 3\)</span></li>
+<li><span class="math inline">\(a_{14} = 987\)</span></li>
+</ul>
 
       
     </div>
@@ -961,7 +1078,7 @@ c_0 = 5 = C_0 - 3 \\
                 
                   <a href="/willywangkaa/archives/">
                 
-                    <span class="site-state-item-count">54</span>
+                    <span class="site-state-item-count">55</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1165,7 +1282,9 @@ c_0 = 5 = C_0 - 3 \\
                     
                       
                     
-                    <span class="site-state-item-count">79</span>
+                      
+                    
+                    <span class="site-state-item-count">80</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1227,7 +1346,7 @@ c_0 = 5 = C_0 - 3 \\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#recurrence"><span class="nav-number">1.</span> <span class="nav-text">Recurrence</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#substitution-method"><span class="nav-number">1.1.</span> <span class="nav-text">Substitution method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#經典範例"><span class="nav-number">1.1.1.</span> <span class="nav-text">經典範例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#recurrence-tree"><span class="nav-number">1.2.</span> <span class="nav-text">Recurrence tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#經典範例-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">經典範例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#master-theorem"><span class="nav-number">1.3.</span> <span class="nav-text">Master theorem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#經典例題"><span class="nav-number">1.3.1.</span> <span class="nav-text">經典例題</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#進階遞迴問題"><span class="nav-number">2.</span> <span class="nav-text">進階遞迴問題</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ackermanns-function"><span class="nav-number">2.1.</span> <span class="nav-text">Ackermann’s function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#strassen-演算法分治矩陣乘法"><span class="nav-number">2.2.</span> <span class="nav-text">Strassen 演算法（分治矩陣乘法）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法推導"><span class="nav-number">2.2.1.</span> <span class="nav-text">算法推導</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#recurrence"><span class="nav-number">1.</span> <span class="nav-text">Recurrence</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#substitution-method"><span class="nav-number">1.1.</span> <span class="nav-text">Substitution method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#經典範例"><span class="nav-number">1.1.1.</span> <span class="nav-text">經典範例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#recurrence-tree"><span class="nav-number">1.2.</span> <span class="nav-text">Recurrence tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#經典範例-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">經典範例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#master-theorem"><span class="nav-number">1.3.</span> <span class="nav-text">Master theorem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#經典例題"><span class="nav-number">1.3.1.</span> <span class="nav-text">經典例題</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#進階遞迴問題"><span class="nav-number">2.</span> <span class="nav-text">進階遞迴問題</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ackermanns-function"><span class="nav-number">2.1.</span> <span class="nav-text">Ackermann’s function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#strassen-演算法分治矩陣乘法"><span class="nav-number">2.2.</span> <span class="nav-text">Strassen 演算法（分治矩陣乘法）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法推導"><span class="nav-number">2.2.1.</span> <span class="nav-text">算法推導</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#補充例題"><span class="nav-number">3.</span> <span class="nav-text">補充例題</span></a></li></ol></div>
             
 
           </div>

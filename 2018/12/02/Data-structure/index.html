@@ -147,7 +147,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543748935456.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543749321235.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543749964256.png">
-<meta property="og:updated_time" content="2019-02-03T08:10:45.796Z">
+<meta property="og:updated_time" content="2019-02-07T05:18:37.586Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Data structure - Graph">
 <meta name="twitter:description" content="The structure of graph [Note] Adjacency list 有一圖 G = (V, E), |V| = n, |E| = e，需要 n 條相鄰串列（vertex[1…n] : pointer）來表達，其中 vertex[i] 代表頂點 i 的相鄰串列，紀錄所有與頂點 i 相鄰的頂點編號  以「相鄰串列」表示無向圖時，因為 邊(i,j) = 邊(j,i)（一條邊">
@@ -397,7 +397,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-02-03T16:10:45+08:00">2019-02-03</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-07T13:18:37+08:00">2019-02-07</time>
             
           </span>
 
@@ -873,6 +873,28 @@
 <li>刪除重複挑出的邊</li>
 <li>重複第一步與第二步直到成為「最小生成樹」</li>
 </ol>
+<blockquote>
+<ul>
+<li>在循環迭代中
+<ul>
+<li>每棵樹都會合併成一棵較大的子樹
+<ul>
+<li>每次<strong>會使子樹的數量至少減少一半</strong>
+<ul>
+<li>所以循環迭代的總次數為O( log|V| )</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>第一步會檢查所有邊以<strong>更新每個連通分量的最小弧</strong>
+<ul>
+<li>O( |E| )</li>
+</ul></li>
+<li><strong>時間複雜度</strong>
+<ul>
+<li><strong>O( log|V|×|E| )</strong></li>
+</ul></li>
+</ul>
+</blockquote>
 <h1 id="shortest-path-problem">Shortest path problem</h1>
 <table>
 <colgroup>
@@ -1719,7 +1741,7 @@
                 
                   <a href="/willywangkaa/archives/">
                 
-                    <span class="site-state-item-count">54</span>
+                    <span class="site-state-item-count">55</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1923,7 +1945,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">79</span>
+                      
+                    
+                    <span class="site-state-item-count">80</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
