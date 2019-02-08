@@ -1,0 +1,1744 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-tw,en,default">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/willywangkaa/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/willywangkaa/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/willywangkaa/images/apple-touch-icon-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/willywangkaa/images/favicon-32x32-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/willywangkaa/images/favicon-16x16-next_cat.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/willywangkaa/images/logo_cat.svg?v=6.0.4" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/willywangkaa/',
+    scheme: 'Pisces',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="Concept Learning,Supervised Learning," />
+
+
+<meta name="description" content="Supervised learning 監督式學習 Concept Learning 概念式學習  machinelearningconcept  機器學習簡介( 節錄自 Mr’ OpenGate ) 機器學習是近20多年興起的一門多領域交叉學科，涉及機率論、統計學、逼近論、凸分析、計算複雜性理論等多門學科。機器學習理論主要是設計和分析一些讓計算機可以自動「學習」的演算法。機器學習算法">
+<meta name="keywords" content="Concept Learning,Supervised Learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Machine learning - Supervised learning">
+<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/04/20/Machine-learning-Supervised-learning/index.html">
+<meta property="og:site_name" content="WillyWangkaa">
+<meta property="og:description" content="Supervised learning 監督式學習 Concept Learning 概念式學習  machinelearningconcept  機器學習簡介( 節錄自 Mr’ OpenGate ) 機器學習是近20多年興起的一門多領域交叉學科，涉及機率論、統計學、逼近論、凸分析、計算複雜性理論等多門學科。機器學習理論主要是設計和分析一些讓計算機可以自動「學習」的演算法。機器學習算法">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/machinelearningconcept.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/supervisedlearningworkflow.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/learningfunction.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/conceptlearningenjoysportdata.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/GtoSpraph.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/findsalgorithm.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/versionspacegraph.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/candidate-eliminationalgorithm.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/candidate-eliminationalgorithm2.png">
+<meta property="og:updated_time" content="2019-02-08T04:38:10.993Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Machine learning - Supervised learning">
+<meta name="twitter:description" content="Supervised learning 監督式學習 Concept Learning 概念式學習  machinelearningconcept  機器學習簡介( 節錄自 Mr’ OpenGate ) 機器學習是近20多年興起的一門多領域交叉學科，涉及機率論、統計學、逼近論、凸分析、計算複雜性理論等多門學科。機器學習理論主要是設計和分析一些讓計算機可以自動「學習」的演算法。機器學習算法">
+<meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/machinelearningconcept.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://WangWilly.github.io/willywangkaa/2018/04/20/Machine-learning-Supervised-learning/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>Machine learning - Supervised learning | WillyWangkaa</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/willywangkaa/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WillyWangkaa</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Live more like human</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/willywangkaa/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/willywangkaa/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/willywangkaa/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/willywangkaa/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/04/20/Machine-learning-Supervised-learning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WillyWangkaa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Machine learning - Supervised learning</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-20T16:15:00+08:00">2018-04-20</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-08T12:38:10+08:00">2019-02-08</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/willywangkaa/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/willywangkaa/2018/04/20/Machine-learning-Supervised-learning/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/04/20/Machine-learning-Supervised-learning/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="supervised-learning-監督式學習">Supervised learning 監督式學習</h1>
+<p>Concept Learning 概念式學習</p>
+<figure>
+<img src="\willywangkaa\images\machinelearningconcept.png" alt="machinelearningconcept"><figcaption>machinelearningconcept</figcaption>
+</figure>
+<h2 id="機器學習簡介-節錄自-mr-opengate">機器學習簡介<br>( 節錄自 <a href="http://mropengate.blogspot.tw/2015/05/ai-supervised-learning.html" target="_blank" rel="noopener">Mr’ OpenGate</a> )</h2>
+<p>機器學習是近20多年興起的一門多領域交叉學科，涉及<strong>機率論</strong>、<strong>統計學</strong>、<strong>逼近論</strong>、<strong>凸分析</strong>、<strong>計算複雜性理論</strong>等多門學科。機器學習理論主要是設計和分析一些讓計算機可以自動「學習」的演算法。機器學習算法是一類從資料中<strong>自動分析獲得規律</strong>，並利用規律對<strong>未知資料進行預測</strong>的算法。</p>
+<p>機器學習已廣泛應用於<strong>數據挖掘</strong>、<strong>計算機視覺</strong>、<strong>自然語言處理</strong>、<strong>生物特徵識別</strong>、<strong>搜尋引擎</strong>、<strong>醫學診斷</strong>、<strong>檢測信用卡欺詐</strong>、<strong>證券市場分析</strong>、<strong>DNA序列測序</strong>、<strong>語音和手寫識別</strong>、<strong>戰略遊戲</strong>和<strong>機器人</strong>等領域。</p>
+<p><strong>＜定義＞</strong> 機器學習定義如下</p>
+<p><code>A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E.</code></p>
+<h3 id="ex."><span class="math inline">\(Ex.\)</span></h3>
+<ul>
+<li>T(任務)：將郵件分類為垃圾或非垃圾。</li>
+<li>E(經驗)：觀察目前信箱的信是把哪些種類的郵件標記為垃圾，而哪些是非垃圾。</li>
+<li>P(效能)：被正確分類成垃圾或非垃圾的郵件的數量。</li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\supervisedlearningworkflow.png" alt="supervisedlearningworkflow"><figcaption>supervisedlearningworkflow</figcaption>
+</figure>
+<h2 id="一種歸納的方式">一種歸納的方式</h2>
+<ul>
+<li>從已知的現象訓練機器判斷常態的結果，而已知的現象只有<strong>是非</strong>之結論。(所以用這個方法訓練出來的智能只能判斷<strong>對錯</strong>)</li>
+<li>所以以這種方法訓練的<strong>智能</strong>我們可以看待它是一個布林函數(Boolean-valued Funciotn)。</li>
+<li>輸入 - 欲判斷的狀態 (Attributes)。</li>
+<li>輸出 - 對(TURE)、錯(FALSE)。</li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\learningfunction.png" alt="learningfunction"><figcaption>learningfunction</figcaption>
+</figure>
+<h2 id="環境狀態-attribute-學習目標-target-concept">環境狀態( Attribute )、<br>學習目標( Target Concept )</h2>
+<h3 id="example-from-bookenjoy-sport">Example from book：Enjoy sport</h3>
+<figure>
+<img src="\willywangkaa\images\conceptlearningenjoysportdata.png" alt="conceptlearningenjoysportdata"><figcaption>conceptlearningenjoysportdata</figcaption>
+</figure>
+<ul>
+<li>六個會影響的<strong>環境狀態 ( Attribute )</strong></li>
+<li>四個<strong>案例 ( Instance )</strong></li>
+<li>學習目標：<strong>判斷</strong>當時是否很享受運動。<span class="math inline">\(EnjoySport = \{Yes, No\}\)</span></li>
+</ul>
+<h4 id="環境狀態-attribute">環境狀態( Attribute )</h4>
+<ul>
+<li>每個事件(instance)發生時會引響結果的<em>基本元素</em>。</li>
+<li>倘若現在有一事件會被影響的環境狀態為 <span class="math inline">\(N\)</span> 個。</li>
+<li>每個環境狀態可能出現的狀態個數為 <span class="math inline">\(n_i\)</span> 。(第 <span class="math inline">\(i\)</span> 個環境狀態)</li>
+<li><strong>(Nominal values; symbolic values; Discretized values)</strong>(? 待了解)</li>
+</ul>
+<h4 id="案例-instance---已知結果的一群環境狀態">案例( Instance ) - 已知結果的一群環境狀態</h4>
+<ul>
+<li>令 <span class="math inline">\(x\)</span> 為已知結果的一群環境狀態。</li>
+<li>那我們稱所有可能產生的案例為一個空間(Space)並稱它 <span class="math inline">\(X\)</span>。</li>
+<li>若 <span class="math inline">\(M\)</span> 等於此空間 <span class="math inline">\(X\)</span> 的大小，則 $ M = n_1 n_2 n_{N-1} n_N$。</li>
+<li>我們其實可以將 <span class="math inline">\(M\)</span> 視為此環境狀態所有組合的方法數。</li>
+</ul>
+<h4 id="學習目標-target-concept">學習目標( Target Concept )</h4>
+<ul>
+<li>要學到的想法(在這裡我們給機器訓練的想法也可視為一個函式)。
+<ul>
+<li><span class="math inline">\(c(x)=1 \qquad if \; EnjoySport=Yes\)</span></li>
+<li><span class="math inline">\(c(x)=0 \qquad if \; EnjoySport=No\)</span></li>
+</ul></li>
+<li><span class="math inline">\(c\)</span> 是一個定義再<strong>案例空間(Instance Space)</strong>的布林函數。
+<ul>
+<li><span class="math inline">\(c:X \rightarrow \left\{ 0, 1 \right\}\)</span></li>
+</ul></li>
+<li>訓練集合 “<span class="math inline">\(D\)</span>”
+<ul>
+<li>所有已知想法的案例集合</li>
+<li><span class="math inline">\(Ex.\)</span></li>
+</ul></li>
+</ul>
+<p><span class="math display">\[
+ &lt;x_1, c(x_1)&gt;, &lt;x_2, c(x_2)&gt; \ldots &lt;x_m, c(x_m)&gt;
+ \]</span></p>
+<h4 id="假說-hypotheses---在這裡我們標記為-h">假說( Hypotheses ) - 在這裡我們標記為 <span class="math inline">\(H\)</span></h4>
+<ul>
+<li>定義：所有<strong>環境狀態( Attributes )</strong>之<strong>限制( Constraints )</strong> 的<strong>交集( Conjunction )</strong>。</li>
+<li>限制( Constraints )的種類
+<ul>
+<li>Specific value ( <strong>針對</strong>值 ) <span class="math inline">\(\qquad e.g. \; ( sky = sunny )\)</span></li>
+<li>Don’t care value ( <strong>不在意</strong>值 ) <span class="math inline">\(\qquad e.g. \; ( sky = &quot;？&quot; )\)</span></li>
+<li>No value allow ( <strong>無</strong>值 ) <span class="math inline">\(\qquad e.g. \; ( sky = &quot;\phi&quot; )\)</span></li>
+</ul></li>
+<li>若今天有一<strong>案例( Instance )</strong>符合了我們的假說，也就是說它每個<strong>環境狀態( Attributes )</strong>全部都不逾越我們假說中的所有<strong>限制( Constraints )</strong>。</li>
+<li><span class="math inline">\(Ex.\)</span></li>
+</ul>
+<p><span class="math display">\[
+h \leftarrow &lt; Sunny, Warm, ?, Strong, ?, ? &gt;
+\]</span></p>
+<ul>
+<li>假說空間( Hypotheses Space )的大小
+<ul>
+<li>語意上來說( Syntactically distinct number )</li>
+</ul></li>
+</ul>
+<p><span class="math display">\[
+M_H = ( n_1 + 2 ) \cdot ( n_2 + 2 ) \cdot \ldots \cdot ( n_{N-1} + 2 ) \cdot ( n_{N} + 2 )
+\]</span></p>
+<p><span class="math display">\[
+( Two \; more \; &quot;values&quot; \; have \; been \; added, &quot;?&quot; and &quot;\phi&quot; )
+\]</span></p>
+<ul>
+<li>實際上來說( Semantically distinct number )</li>
+</ul>
+<p><span class="math display">\[
+M_H = 1+ ( n_1 + 1 ) \cdot ( n_2 + 1 ) \cdot \ldots \cdot ( n_{N-1} + 1 ) \cdot ( n_{N} + 1 )
+\]</span></p>
+<p>因為如果該假說的限制交集裡，有一個以上的“”存在於集合中，代表所有的案例( Instances )絕對都不可能不逾越我們的假說，全部的案例都會判定為錯誤(False)。</p>
+<h4 id="小節論">小節論</h4>
+<ul>
+<li><p><span class="math inline">\(c:EnjoySport : X \rightarrow \{ 0, 1 \}\)</span> 是我們的<strong>學習目標( Target Concept )</strong>。</p></li>
+<li><p>六個<strong>環境狀態( Attributes )</strong>：</p>
+<ul>
+<li>Sky ( 可能的變數有三種 )</li>
+</ul>
+<p><span class="math display">\[\{ Sunny, Cloudy, Rainy \}\]</span></p>
+<ul>
+<li>Airtamp ( 可能的變數有兩種 )</li>
+</ul>
+<p><span class="math display">\[\{ Warm, Cold \}\]</span></p>
+<ul>
+<li>Humidity ( 可能的變數有兩種 )</li>
+</ul>
+<p><span class="math display">\[\{ Normal, High \}\]</span></p>
+<ul>
+<li>Wind ( 可能的變數有兩種 )</li>
+</ul>
+<p><span class="math display">\[\{ Strong, Light \}\]</span></p>
+<ul>
+<li>Water ( 可能的變數有兩種 )</li>
+</ul>
+<p><span class="math display">\[\{ Cold, Warm \}\]</span></p>
+<ul>
+<li>Forecast ( 可能的變數有兩種 )</li>
+</ul>
+<p><span class="math display">\[\{ Same, Change\}\]</span></p></li>
+<li>案例空間的大小 <span class="math inline">\(= 3 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 = 96\)</span></li>
+<li><p>假說空間的大小 <span class="math inline">\(= 1 + ( 4 \cdot 3 \cdot 3 \cdot 3 \cdot 3 \cdot 3 ) = 973\)</span> ( 實際上 )</p></li>
+</ul>
+<p>現在知道目前的假說空間大小後，就要開始找到符合我們期望( Target )的假說( Hypotheses )，那要從何先下手呢？首先，我們可以先從現有的訓練資料使用，其中，我們還可以了解一個概念－－－<strong>Inductive learning hypothesis</strong>，意思是說，我們今天使用訓練的資訊來找到一個最靠近的假說時，我們也可以找到一些潛在的的規則包含在我們找到的假說之中，其中會有我們從為訓練過的<strong>案例( Instance )</strong>在內。</p>
+<p><strong>＜注意＞：</strong>在實務上來說，有可能訓練的難度會急遽上升，有可能我們的假說空間會超級大，甚至於無限大也有可能，所以要一個個要從所有的假說找到我們需要的是不太可能的，<strong>那怎麼辦呢？</strong>我們可以利用假說空間的一個特性－－－Partial Ordering，也就是說，這個空間裡的元素，是可以依照一個順序大小排列的。</p>
+<h2 id="假說空間的廣至收斂-general-to-specific-ordering-over-hypotheses">假說空間的廣至收斂<br>General-to-Specific Ordering over Hypotheses</h2>
+<p>首先定義幾個名詞，我們有： - 案例( Instance )：<span class="math inline">\(x\)</span> - 假說( Hypothesis )：<span class="math inline">\(h\)</span> - 若今天 <span class="math inline">\(h(x) = 1\)</span> ，稱之 Positive ( True ) Outcome。</p>
+<p>由廣至收斂，定義若 <span class="math inline">\(H_1 \geq_g H_2\)</span>，則可以說 <span class="math inline">\(H_1\)</span> 比 <span class="math inline">\(H_2\)</span>還要更廣( General )，舉例：</p>
+<p><span class="math display">\[
+\{ Sunny, ?, ?, ?, ?, ? \} \geq_g \{ Sunny, ?, ?, Strong, ?, ? \}
+\]</span></p>
+<figure>
+<img src="\willywangkaa\images\GtoSpraph.png" alt="GtoSprap"><figcaption>GtoSprap</figcaption>
+</figure>
+<h2 id="find-s-algorithm">Find S Algorithm</h2>
+<ol type="1">
+<li>將假說 <span class="math inline">\(h\)</span> 初始化為假說空間 <span class="math inline">\(H\)</span> 中的最特殊假說 ${ , , , , , } $</li>
+<li>對每個<strong>正例</strong> <span class="math inline">\(x\)</span> ( <strong>＜注意＞</strong>我們只使用正例( Positive Outcome )，不用反例！ )<br></li>
+</ol>
+<ul>
+<li>對 <span class="math inline">\(h\)</span> 的每個環境狀態( Attribute )進行約束 如果 <span class="math inline">\(x\)</span> 的該環境狀態滿足 <span class="math inline">\(h\)</span> 對應的環境狀態，那麼不做任何處理。 否則將 <span class="math inline">\(h\)</span> 中該環境狀態一般化( Generalize ) 以滿足 <span class="math inline">\(x\)</span> 的環境狀態。</li>
+</ul>
+<ol start="3" type="1">
+<li>重複直到所有正例都被尋遍。</li>
+<li>輸出最後唯一的假說 <span class="math inline">\(h\)</span> ，而這個假說正是我們使用訓練資料中的正例所能訓練出最收斂的假說。</li>
+</ol>
+<figure>
+<img src="\willywangkaa\images\findsalgorithm.png" alt="findsalgorithm"><figcaption>findsalgorithm</figcaption>
+</figure>
+<h2 id="version-space">Version Space</h2>
+<h3 id="definition-consistent-hypotheses-認同假說">Definition: Consistent Hypotheses( 認同假說 )</h3>
+<p>若有假說 <span class="math inline">\(h\)</span> 以訓練集合所有的案例進行測試，輸出結果和我們的想法一致，就可以聲明假說 <span class="math inline">\(h\)</span> 為認同假說( Consistent Hypotheses )。( 下方為原始定義 )</p>
+<p>A hypothesis <span class="math inline">\(h\)</span> is consistent with a set of training examples <span class="math inline">\(D\)</span> of <strong>target concept</strong> <span class="math inline">\(c\)</span> if and only if <span class="math inline">\(h(x) = c(x)\)</span> for each training example <span class="math inline">\(&lt;x, c(x)&gt;\)</span> in <span class="math inline">\(D\)</span>.</p>
+<p><span class="math display">\[
+Consistent (h, D) \equiv ( \; \forall &lt;x, c(x ) \in D \;)  h(x) = c(x))
+\]</span></p>
+<h3 id="definition-version-space-候選空間">Definition: Version Space ( 候選空間 )</h3>
+<p>候選空間就是對於該測試的資料集，所有的認同假說所組合的空間，因為每個假說都可以符合目前的訓練資料的期望，所以每個假說都等待我們再進一步驗證。( 下方為原始定義 ) The version space <span class="math inline">\(VS_{H,D}\)</span> , with respect to hypothesis space <span class="math inline">\(H\)</span> and training examples <span class="math inline">\(D\)</span>, is the subset of hypotheses from <span class="math inline">\(H\)</span> consistent with all training examples in <span class="math inline">\(D\)</span>.</p>
+<p><span class="math display">\[
+VS_{H,D} \equiv \{ h \in H \; | \; Consistent (h, D) \}
+\]</span></p>
+<figure>
+<img src="\willywangkaa\images\versionspacegraph.png" alt="versionspacegraph"><figcaption>versionspacegraph</figcaption>
+</figure>
+<ul>
+<li>Version space for a “rectangle” hypothesis language in two dimensions. Green pluses are positive examples, and red circles are negative examples. GB is the maximally general positive hypothesis boundary, and SB is the maximally specific positive hypothesis boundary. The intermediate (thin) rectangles represent the hypotheses in the version space.</li>
+</ul>
+<p>Definition: General Boundary General boundary <span class="math inline">\(G\)</span> of version space <span class="math inline">\(VS_{H,D}\)</span> : set of most general members</p>
+<p>Definition: Specific Boundary Specific boundary <span class="math inline">\(S\)</span> of version space <span class="math inline">\(VS_{H,D}\)</span> : set of most specific members</p>
+<p>Version Space Every member of the version space lies between <span class="math inline">\(S\)</span> and <span class="math inline">\(G\)</span></p>
+<p><span class="math display">\[
+VS_{H,D} \equiv \{ h \in H \; | \; (\exists s \in  S ) (\exists g \in  G ) (g \geq_g h \; \geq_g s) \}
+\]</span></p>
+<p><span class="math display">\[
+where \geq_g \equiv more \; general \; than \; or \; equal \; to
+\]</span></p>
+<h2 id="the-list-then-elimination-algorithm-列表消除演算法">The <em>List-Then-Elimination</em> Algorithm<br>列表消除演算法</h2>
+<ol type="1">
+<li><p>起始化： 候選空間( Version Space ) <span class="math inline">\(\leftarrow(assign)\)</span> 所有在假說空間的假說。</p></li>
+<li><p>對每個訓練案例<span class="math inline">\(&lt;x, c(x)&gt;\)</span> 從候選空間消除所有 <span class="math inline">\(h(x) \neq c(x)\)</span> 的假說 <span class="math inline">\(h\)</span>。</p></li>
+<li><p>對所有的訓練案例檢驗過，最後輸出候選空見剩下的<strong>假說列表</strong>。</p></li>
+</ol>
+<h3 id="優點">優點</h3>
+<p><strong>保證</strong>最後的假說列表裡的所有假說必定和訓練案例的期望相符( Consistent )。</p>
+<h3 id="缺點">缺點</h3>
+<ul>
+<li>若今天假說空間是<strong>無窮大</strong>，那這個方法就不能使用。</li>
+<li>要將該假說空間的所有假說窮舉於列表之中。</li>
+</ul>
+<h2 id="candidate-elimination-algorithm-候選消除演算法">Candidate-Elimination Algorithm<br>候選消除演算法</h2>
+<p><strong>＜前情提要＞：</strong>候選空間( Version Space )可以由 Most specific boundaries 與 Most general boundaries 界定出來。 - 正例可以將 Specific boundary 變的更一般化( General )。 Positive examples force specific boundary to become more general. - 反例可以將 General boundary 變的更收斂( Specific )。 Negative examples force general boundary to become more specific.</p>
+<p>最後，這個界定出來的假說集合可以符合所有的訓練資料。 In the end, all hypotheses which satisfy training data remain.</p>
+<ol type="1">
+<li><p>起始化 G <span class="math inline">\(\leftarrow\)</span> 一組在假說空間 <span class="math inline">\(H\)</span> 最一般化的環境因素。標記為：<span class="math inline">\(&lt;?, \ldots, ?&gt;\)</span> S <span class="math inline">\(\leftarrow\)</span> 一組在假說空間 <span class="math inline">\(H\)</span> 最嚴苛的環境因素。標記為：<span class="math inline">\(&lt;\phi, \ldots, \phi&gt;\)</span></p></li>
+<li>對於每個訓練案例 <span class="math inline">\(d\)</span>，進行以下操作：</li>
+</ol>
+<ul>
+<li>若 <span class="math inline">\(d\)</span> 為一正例： 從 <span class="math inline">\(G\)</span> 中移除所有與 <span class="math inline">\(d\)</span> 不一致的假說。 對 <span class="math inline">\(S\)</span> 中每個對 <span class="math inline">\(s\)</span> 不一致的假說<span class="math inline">\(s\)</span>：</li>
+</ul>
+<ol type="1">
+<li>將 <span class="math inline">\(s\)</span> 從 <span class="math inline">\(S\)</span> 之中移去。</li>
+<li>把 <span class="math inline">\(s\)</span> 的所有的極小泛化假說 <span class="math inline">\(h\)</span> 加入到S中，其中 <span class="math inline">\(h\)</span> 滿足 <span class="math inline">\(h\)</span>與<span class="math inline">\(d\)</span>一致，且<span class="math inline">\(G\)</span>的其中一個元素必比起 <span class="math inline">\(h\)</span> 更泛化。</li>
+<li>從<span class="math inline">\(S\)</span>中移去所有符合這樣的假說：它比S中另一假設更泛化。</li>
+</ol>
+<ul>
+<li>若 <span class="math inline">\(d\)</span> 為一反例： 從 <span class="math inline">\(S\)</span> 中移去所有 <span class="math inline">\(d\)</span> 不一致的假說。 對 <span class="math inline">\(G\)</span> 中每個與 <span class="math inline">\(d\)</span> 不一致的假設 <span class="math inline">\(g\)</span>：</li>
+</ul>
+<ol type="1">
+<li>從 <span class="math inline">\(G\)</span> 中移去 <span class="math inline">\(g\)</span> 。</li>
+<li>把 <span class="math inline">\(g\)</span> 的所有的極小特化式 <span class="math inline">\(h\)</span> 加入到 <span class="math inline">\(G\)</span> 中，其中 <span class="math inline">\(h\)</span> 滿足 <span class="math inline">\(h\)</span> 與 <span class="math inline">\(d\)</span> 一致，而且 <span class="math inline">\(S\)</span> 的某個成員比 <span class="math inline">\(h\)</span> 更收斂。</li>
+<li>從 <span class="math inline">\(G\)</span> 中移去所有符合這樣的假說：它比 <span class="math inline">\(G\)</span> 中另一假說更特殊。</li>
+</ol>
+<h3 id="範例---enjoysport">範例 - <span class="math inline">\(EnjoySport\)</span></h3>
+<h4 id="起始化">起始化</h4>
+<p>Specific boundary to: <span class="math inline">\(S_0 = \{(Ø,Ø,Ø,Ø,Ø,Ø)\}\)</span> General boundary to: <span class="math inline">\(G_0 = \{(?,?,?,?,?,?)\}\)</span></p>
+<h4 id="st-instance-sunnywarmnormalstrongwarmsame-yes">1’st instance: (Sunny,Warm,Normal,Strong,Warm,Same) = Yes</h4>
+<p><strong>Positive</strong> example <em>generalizes</em> Specific boundary</p>
+<p><span class="math inline">\(S_1 = \{ (Sunny,Warm,Normal,Strong,Warm,Same)\}\)</span></p>
+<p><span class="math inline">\(G_1 = \{ (?,?,?,?,?,?)\}\)</span></p>
+<h4 id="nd-instance-sunnywarmhighstrongwarmsame-yes">2’nd instance: (Sunny,Warm,High,Strong,Warm,Same) = Yes</h4>
+<p><strong>Positive</strong> example <em>generalizes</em> Specific boundary</p>
+<p><span class="math inline">\(S_2 = \{(Sunny,Warm,?,Strong,Warm,Same)\}\)</span></p>
+<p><span class="math inline">\(G_2 = \{ (?,?,?,?,?,?)\}\)</span></p>
+<h4 id="rd-instance-rainycoldhighstrongwarmchange-no">3’rd instance: (Rainy,Cold,High,Strong,Warm,Change) = No</h4>
+<p><strong>Negative</strong> example <em>specializes</em> General boundary</p>
+<p><span class="math inline">\(S_3 = \{ (Sunny,Warm,?,Strong,Warm,Same) \}\)</span></p>
+<p><span class="math inline">\(G_3 = \{(Sunny,?,?,?,?,?), \quad O.K.\)</span> <br></p>
+<p><span class="math inline">\((Cloudy,?,?,?,?,?), \quad Not \; more \; general \; than \; S_3\)</span><br></p>
+<p><span class="math inline">\((?,Warm,?,?,?,?), \quad O.K.\)</span><br></p>
+<p><span class="math inline">\((?,?,Normal,?,?,?), \quad Not \; more \; general \; than \; S_3\)</span><br></p>
+<p><span class="math inline">\((?,?,?,Light,?,?), \quad Not \; more \; general \; than \; S_3\)</span><br></p>
+<p><span class="math inline">\((?,?,?,?,Cool,?), \quad Not \; more \; general \; than \; S_3\)</span><br></p>
+<p><span class="math inline">\((?,?,?,?,?,Same)\} \quad O.K.\)</span><br></p>
+<p><span class="math inline">\(\Rightarrow G_3 = \{ (Sunny,?,?,?,?,?), (?,Warm,?,?,?,?), (?,?,?,?,?,Same)\}\)</span><br></p>
+<h4 id="th-instance-sunnywarmhighstrongcoolchange-yes">4’th instance: (Sunny,Warm,High,Strong,Cool,Change) = Yes</h4>
+<p><strong>Positive</strong> example <em>generalizes</em> Specific boundary <span class="math inline">\(S_4 = \{ (Sunny,Warm,?,Strong,?,?) \}\)</span> <span class="math inline">\(G_4 = \{ (Sunny,?,?,?,?,?), (?,Warm,?,?,?,?) \}\)</span></p>
+<p>Final version space is all hypotheses, h such that:</p>
+<p><span class="math display">\[
+g \geq_ g h \; \geq_g s
+\]</span></p>
+<figure>
+<img src="\willywangkaa\images\candidate-eliminationalgorithm.png" alt="candidate-eliminationalgorithm"><figcaption>candidate-eliminationalgorithm</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\candidate-eliminationalgorithm2.png" alt="candidate-eliminationalgorithm2"><figcaption>candidate-eliminationalgorithm2</figcaption>
+</figure>
+<p>What query should the learner make next? How should these be classified?</p>
+<p><span class="math display">\[
+&lt;Sunny, Warm, Normal, Strong, Cool, Change&gt;
+\]</span></p>
+<p><span class="math display">\[
+&lt;Rainy, Cold, Normal, Light, Warm, Same&gt;
+\]</span></p>
+<p><span class="math display">\[
+&lt;Sunny, Warm, Normal, Light, Warm, Same&gt;
+\]</span></p>
+<h3 id="inductive-bias-歸納偏置-未完待補">Inductive Bias 歸納偏置 ( 未完待補 )</h3>
+<p>需要某些的預先設定( 偏見 )。</p>
+<h1 id="參考">參考</h1>
+<hr>
+<p><a href="http://mropengate.blogspot.tw/2015/05/ai-supervised-learning.html" target="_blank" rel="noopener">Mr’ OpenGate - AI - Ch13 機器學習(1), 機器學習簡介與監督式學習 Introduction to Machine Learning, Supervised Learning</a></p>
+<p><a href="https://willywangkaa.csdn.net/minvacai/article/details/20202687" target="_blank" rel="noopener">《机器学习》第2章中find-s算法的python实现</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Version_space_learning" target="_blank" rel="noopener">WEKIPEDIA - Version space learning</a></p>
+<p><a href="http://www.cnblogs.com/robert-dlut/p/3977184.html" target="_blank" rel="noopener">robert_ai - ML一（概念学习和一般到特殊序）</a></p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/willywangkaa/tags/Concept-Learning/" rel="tag"># Concept Learning</a>
+          
+            <a href="/willywangkaa/tags/Supervised-Learning/" rel="tag"># Supervised Learning</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/willywangkaa/2018/04/20/Machine-learning-機器學習地圖/" rel="next" title="Machine learning - 機器學習地圖">
+                <i class="fa fa-chevron-left"></i> Machine learning - 機器學習地圖
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/willywangkaa/2018/04/25/Machine learning-Artificial-Neural-Networks-類神經網路學習/" rel="prev" title="Machine learning - Artificial Neural Networks 類神經網路學習">
+                Machine learning - Artificial Neural Networks 類神經網路學習 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/willywangkaa/images/avatar_me.gif"
+                alt="Willy Wang (willywangkaa)" />
+            
+              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
+              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/willywangkaa/archives/">
+                
+                    <span class="site-state-item-count">54</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/willywangkaa/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/willywangkaa/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">74</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://typora.io/" title="Typora" target="_blank">Typora</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.geeksforgeeks.org/" title="GeeksforGeeks" target="_blank">GeeksforGeeks</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.codecogs.com/latex/eqneditor.php" title="Online LaTeX Equation Editor" target="_blank">Online LaTeX Equation Editor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://allem40306.github.io/blog/" title="CodingJack" target="_blank">CodingJack</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#supervised-learning-監督式學習"><span class="nav-number">1.</span> <span class="nav-text">Supervised learning 監督式學習</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#機器學習簡介-節錄自-mr-opengate"><span class="nav-number">1.1.</span> <span class="nav-text">機器學習簡介( 節錄自 Mr’ OpenGate )</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ex."><span class="nav-number">1.1.1.</span> <span class="nav-text">\(Ex.\)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一種歸納的方式"><span class="nav-number">1.2.</span> <span class="nav-text">一種歸納的方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#環境狀態-attribute-學習目標-target-concept"><span class="nav-number">1.3.</span> <span class="nav-text">環境狀態( Attribute )、學習目標( Target Concept )</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#example-from-bookenjoy-sport"><span class="nav-number">1.3.1.</span> <span class="nav-text">Example from book：Enjoy sport</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#環境狀態-attribute"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">環境狀態( Attribute )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#案例-instance---已知結果的一群環境狀態"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">案例( Instance ) - 已知結果的一群環境狀態</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#學習目標-target-concept"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">學習目標( Target Concept )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#假說-hypotheses---在這裡我們標記為-h"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">假說( Hypotheses ) - 在這裡我們標記為 \(H\)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小節論"><span class="nav-number">1.3.1.5.</span> <span class="nav-text">小節論</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#假說空間的廣至收斂-general-to-specific-ordering-over-hypotheses"><span class="nav-number">1.4.</span> <span class="nav-text">假說空間的廣至收斂General-to-Specific Ordering over Hypotheses</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#find-s-algorithm"><span class="nav-number">1.5.</span> <span class="nav-text">Find S Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#version-space"><span class="nav-number">1.6.</span> <span class="nav-text">Version Space</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#definition-consistent-hypotheses-認同假說"><span class="nav-number">1.6.1.</span> <span class="nav-text">Definition: Consistent Hypotheses( 認同假說 )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#definition-version-space-候選空間"><span class="nav-number">1.6.2.</span> <span class="nav-text">Definition: Version Space ( 候選空間 )</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-list-then-elimination-algorithm-列表消除演算法"><span class="nav-number">1.7.</span> <span class="nav-text">The List-Then-Elimination Algorithm列表消除演算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#優點"><span class="nav-number">1.7.1.</span> <span class="nav-text">優點</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺點"><span class="nav-number">1.7.2.</span> <span class="nav-text">缺點</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#candidate-elimination-algorithm-候選消除演算法"><span class="nav-number">1.8.</span> <span class="nav-text">Candidate-Elimination Algorithm候選消除演算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#範例---enjoysport"><span class="nav-number">1.8.1.</span> <span class="nav-text">範例 - \(EnjoySport\)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#起始化"><span class="nav-number">1.8.1.1.</span> <span class="nav-text">起始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#st-instance-sunnywarmnormalstrongwarmsame-yes"><span class="nav-number">1.8.1.2.</span> <span class="nav-text">1’st instance: (Sunny,Warm,Normal,Strong,Warm,Same) = Yes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nd-instance-sunnywarmhighstrongwarmsame-yes"><span class="nav-number">1.8.1.3.</span> <span class="nav-text">2’nd instance: (Sunny,Warm,High,Strong,Warm,Same) = Yes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rd-instance-rainycoldhighstrongwarmchange-no"><span class="nav-number">1.8.1.4.</span> <span class="nav-text">3’rd instance: (Rainy,Cold,High,Strong,Warm,Change) = No</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#th-instance-sunnywarmhighstrongcoolchange-yes"><span class="nav-number">1.8.1.5.</span> <span class="nav-text">4’th instance: (Sunny,Warm,High,Strong,Cool,Change) = Yes</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inductive-bias-歸納偏置-未完待補"><span class="nav-number">1.8.2.</span> <span class="nav-text">Inductive Bias 歸納偏置 ( 未完待補 )</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#參考"><span class="nav-number">2.</span> <span class="nav-text">參考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/willywangkaa/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/affix.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/willywangkaa/js/src/schemes/pisces.js?v=6.0.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/willywangkaa/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/willywangkaa/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://https-wangwilly-github-io-blog.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/04/20/Machine-learning-Supervised-learning/';
+        this.page.identifier = '2018/04/20/Machine-learning-Supervised-learning/';
+        this.page.title = 'Machine learning - Supervised learning';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-wangwilly-github-io-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/willywangkaa/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/willywangkaa/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>

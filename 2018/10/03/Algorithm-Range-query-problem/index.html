@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-tw,en,default">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/willywangkaa/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/willywangkaa/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/willywangkaa/images/apple-touch-icon-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/willywangkaa/images/favicon-32x32-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/willywangkaa/images/favicon-16x16-next_cat.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/willywangkaa/images/logo_cat.svg?v=6.0.4" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/willywangkaa/',
+    scheme: 'Pisces',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="Sequence,Sparse table," />
+
+
+<meta name="description" content="Segement tree 用來存放紀錄在特定區間內 ( segement, interval ) 的資訊。  Pros  可以動態的更新欲求數組之元素。 數組區間的查詢  區間求和值 區間最大值 區間最小值 區間異或值 ( Exclusive or；XOR )   Cons  無法刪除數值    線段樹無法新增節點，只能更新節點的數值並保持區間的最大最小值">
+<meta name="keywords" content="Sequence,Sparse table">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Algorithm - Range query problem">
+<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/10/03/Algorithm-Range-query-problem/index.html">
+<meta property="og:site_name" content="WillyWangkaa">
+<meta property="og:description" content="Segement tree 用來存放紀錄在特定區間內 ( segement, interval ) 的資訊。  Pros  可以動態的更新欲求數組之元素。 數組區間的查詢  區間求和值 區間最大值 區間最小值 區間異或值 ( Exclusive or；XOR )   Cons  無法刪除數值    線段樹無法新增節點，只能更新節點的數值並保持區間的最大最小值">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/STree_1.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/STree_2.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/STable_1.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/STable_2.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/STable_3.png">
+<meta property="og:updated_time" content="2019-02-08T04:50:05.462Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Algorithm - Range query problem">
+<meta name="twitter:description" content="Segement tree 用來存放紀錄在特定區間內 ( segement, interval ) 的資訊。  Pros  可以動態的更新欲求數組之元素。 數組區間的查詢  區間求和值 區間最大值 區間最小值 區間異或值 ( Exclusive or；XOR )   Cons  無法刪除數值    線段樹無法新增節點，只能更新節點的數值並保持區間的最大最小值">
+<meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/STree_1.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://WangWilly.github.io/willywangkaa/2018/10/03/Algorithm-Range-query-problem/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>Algorithm - Range query problem | WillyWangkaa</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/willywangkaa/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WillyWangkaa</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Live more like human</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/willywangkaa/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/willywangkaa/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/willywangkaa/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/willywangkaa/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/10/03/Algorithm-Range-query-problem/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WillyWangkaa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Algorithm - Range query problem</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-03T20:42:00+08:00">2018-10-03</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-08T12:50:05+08:00">2019-02-08</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/willywangkaa/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/willywangkaa/2018/10/03/Algorithm-Range-query-problem/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/10/03/Algorithm-Range-query-problem/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="segement-tree">Segement tree</h1>
+<p>用來存放紀錄在特定區間內 ( segement, interval ) 的資訊。</p>
+<ul>
+<li>Pros
+<ul>
+<li>可以動態的更新欲求數組之元素。</li>
+<li>數組區間的查詢
+<ul>
+<li>區間求和值</li>
+<li>區間最大值</li>
+<li>區間最小值</li>
+<li>區間<strong>異或值 ( Exclusive or；XOR )</strong></li>
+</ul></li>
+</ul></li>
+<li>Cons
+<ul>
+<li>無法刪除數值</li>
+</ul></li>
+</ul>
+<blockquote>
+<p>線段樹無法新增節點，只能更新節點的數值並保持區間的最大最小值仍保持正確。</p>
+</blockquote>
+<h2 id="實現">實現</h2>
+<ul>
+<li>特性
+<ul>
+<li>完全二元樹</li>
+<li>節點保存<strong>特定區間的訊息</strong></li>
+<li>採取 Buttom-up 的方式建構，從每一個葉節點建構</li>
+</ul></li>
+</ul>
+<blockquote>
+<figure>
+<img src="\willywangkaa\images\STree_1.png" alt="STree_1"><figcaption>STree_1</figcaption>
+</figure>
+<ul>
+<li>上面的分段樹根節點保存 0 ~ 7 的資訊，2 號節點保存 0 ~ 3 的資訊，以此類推。</li>
+</ul>
+</blockquote>
+<h3 id="初始化">初始化</h3>
+<p>在建構的過程中，內部節點之建構會使用兩個子節點的資訊，而建構的方式以處理的問題而作法不同 ( 最大、最小、和、XOR )。</p>
+<ul>
+<li>Segement create ( 求區間最小值 )
+<ul>
+<li>ST：線段樹</li>
+<li>A：欲判斷之數組資料</li>
+<li>線段樹因為為<strong>完全二元樹</strong>所以通常以陣列製作
+<ul>
+<li>陣列大小需求：<span class="math inline">\(2 \times 2^{\lfloor\lg N\rfloor + 1}\)</span>，N 為數組大小 (見下圖)</li>
+</ul></li>
+</ul></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\STree_2.png" alt="STree_2"><figcaption>STree_2</figcaption>
+</figure>
+<ul>
+<li>程式碼 ( c++ )</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vi;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ST:segement tree; A: target number array</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">st_create</span><span class="params">(vi &amp;ST, <span class="keyword">const</span> vi &amp;A)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> len = <span class="number">2</span>&lt;&lt;(<span class="keyword">sizeof</span>(<span class="keyword">unsigned</span> <span class="keyword">int</span>) - __buildin_clz((<span class="keyword">unsigned</span> <span class="keyword">int</span>)A.size()));</span><br><span class="line">	ST.assign(len, <span class="number">0</span>); <span class="comment">// 線段樹歸零</span></span><br><span class="line">	st_build(ST, A, <span class="number">1</span>, <span class="number">0</span>, (<span class="keyword">int</span>) A.size()<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line">                    </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">st_build</span><span class="params">(vi &amp;ST, <span class="keyword">const</span> vi &amp;A, <span class="keyword">int</span> vetex, <span class="keyword">int</span> L, <span class="keyword">int</span> R)</span> </span>&#123;     </span><br><span class="line">	<span class="keyword">if</span> (L==R)</span><br><span class="line">        ST[vertex] = L;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">int</span> nL =  vertex &lt;&lt; <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> nR = (vertex &lt;&lt; <span class="number">1</span>) + <span class="number">1</span>; </span><br><span class="line"></span><br><span class="line">		st_build(ST, A, nL, L           , ((L+R)&gt;&gt;<span class="number">1</span>));</span><br><span class="line">		st_build(ST, A, nR, ((L+R)&gt;&gt;<span class="number">1</span>)+<span class="number">1</span>, R         ); </span><br><span class="line">			</span><br><span class="line">		<span class="keyword">int</span> lContent=ST[nL], rContent=ST[nR];</span><br><span class="line">		<span class="keyword">int</span> lValue=A[lContent], rValue=A[rContent];</span><br><span class="line">		ST[vertex]=(lValue &lt;= rValue)? lContent : rContent;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>時間複雜度
+<ul>
+<li><span class="math inline">\(\Theta(\log n)\)</span></li>
+</ul></li>
+</ul>
+<h3 id="更新">更新</h3>
+<p>與建立線段樹的方法相同，將位於數組 <code>i</code> 的數字更新後，即從此葉節點向上執行更新至根節點。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 以數值 v 更新 A[p]</span></span><br><span class="line"><span class="comment">// x: 數根</span></span><br><span class="line"><span class="comment">// L: 數組左端</span></span><br><span class="line"><span class="comment">// R: 數組右端</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">update</span> <span class="params">(vi &amp;ST, vi &amp;A, <span class="keyword">int</span> x, <span class="keyword">int</span> L, <span class="keyword">int</span> R, <span class="keyword">int</span> p, <span class="keyword">int</span> v)</span> </span>&#123;  </span><br><span class="line">	<span class="keyword">int</span> mid=L+(R-L)/<span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (L == R)</span><br><span class="line">		A[x] = v;</span><br><span class="line">	<span class="keyword">else</span> &#123;     </span><br><span class="line">		<span class="keyword">if</span> (p &lt;= mid)</span><br><span class="line">			update(ST, A, x*<span class="number">2</span>  , L    , mid, p, v); <span class="comment">// 更新左子樹</span></span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			update(ST, A, x*<span class="number">2</span>+<span class="number">1</span>, mid+<span class="number">1</span>, R  , p, v); <span class="comment">// 更新右子樹</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	ST[x] = (A[ST[x*<span class="number">2</span>]]&lt;=A[ST[x*<span class="number">2</span>+<span class="number">1</span>]])? ST[x*<span class="number">2</span>]:ST[x*<span class="number">2</span>+<span class="number">1</span>]; <span class="comment">// 以左右子樹的資訊更新母節點</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="查詢">查詢</h3>
+<p>分為三種情形討論，若<strong>當前節點所代表的區間</strong></p>
+<ul>
+<li><strong>完全位於</strong>欲求取之區間之<strong>外</strong></li>
+<li><strong>完全位於</strong>欲求取之區間之<strong>內</strong></li>
+<li><strong>部分位於</strong>欲求取之區間</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span> <span class="params">(vi &amp;ST, <span class="keyword">const</span> vi &amp;A, <span class="keyword">int</span> x, <span class="keyword">int</span> L, <span class="keyword">int</span> R, <span class="keyword">int</span> ql, <span class="keyword">int</span> qr)</span> </span>&#123;  </span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> mid = (L+R)/<span class="number">2</span>, ans = <span class="number">-1</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 當前節點完全位於欲求取之區間之內</span></span><br><span class="line">	<span class="keyword">if</span> (L&gt;=ql &amp;&amp; R&lt;=qr)</span><br><span class="line">		<span class="comment">// 取出該區間值最小的位址</span></span><br><span class="line">		<span class="keyword">return</span> ST[x];</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// 當前節點部分或無位於欲求取之區間之內</span></span><br><span class="line">	<span class="keyword">if</span> (ql&lt;=mid) &#123;</span><br><span class="line">		<span class="comment">// 取出左區間</span></span><br><span class="line">		ans = query(ST, A, x*<span class="number">2</span>  , L    , mid, ql, qr);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (qr&gt;mid) &#123;</span><br><span class="line">		<span class="comment">// 取出右區間以及比較</span></span><br><span class="line">		<span class="keyword">int</span> tmp = </span><br><span class="line">		      query(ST, A, x*<span class="number">2</span>+<span class="number">1</span>, mid+<span class="number">1</span>, R  , ql, qr);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span> (ans == <span class="number">-1</span>)</span><br><span class="line">			ans = tmp;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			ans = (A[ans] &lt; A[tmp])? ans:tmp;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="其它實現">其它實現</h2>
+<p><a href="https://www.youtube.com/watch?v=Oq2E2yGadnU" target="_blank" rel="noopener">Efficient Segment Tree Tutorial</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;limits&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SegmentTree</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	SegmentTree(<span class="keyword">int</span> count) &#123;</span><br><span class="line">		n = count;</span><br><span class="line">		data = <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(<span class="number">2</span> * n, <span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	SegmentTree(<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="keyword">const</span> &amp;values) &#123;</span><br><span class="line">		n = values.size();</span><br><span class="line">		data = <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(<span class="number">2</span> * n);</span><br><span class="line">		<span class="built_in">std</span>::copy(values.begin(), values.end(), &amp;data[<span class="number">0</span>] + n);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> idx = n - <span class="number">1</span>; idx &gt; <span class="number">0</span>; idx--)</span><br><span class="line">			data[idx] = <span class="built_in">std</span>::min(data[idx * <span class="number">2</span>], data[idx * <span class="number">2</span> + <span class="number">1</span>]);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> idx, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">		idx += n;</span><br><span class="line">		data[idx] = value;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">while</span> (idx &gt; <span class="number">1</span>) &#123;</span><br><span class="line">			idx /= <span class="number">2</span>;</span><br><span class="line">			data[idx] = <span class="built_in">std</span>::min(data[<span class="number">2</span> * idx], data[<span class="number">2</span> * idx + <span class="number">1</span>]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">minimum</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123; <span class="comment">// interval [left, right)</span></span><br><span class="line">		<span class="keyword">int</span> ret = <span class="built_in">std</span>::numeric_limits&lt;<span class="keyword">int</span>&gt;::max();</span><br><span class="line">		left += n;</span><br><span class="line">		right += n;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">			<span class="keyword">if</span> (left &amp; <span class="number">1</span>) ret = <span class="built_in">std</span>::min(ret, data[left++]);</span><br><span class="line">			<span class="keyword">if</span> (right &amp; <span class="number">1</span>) ret = <span class="built_in">std</span>::min(ret, data[--right]);</span><br><span class="line">			left &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">			right &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> ret;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; data;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="function">SegmentTree <span class="title">st</span><span class="params">(<span class="number">5</span>)</span></span>;</span><br><span class="line">	st.update(<span class="number">0</span>, <span class="number">5</span>);</span><br><span class="line">	st.update(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">	st.update(<span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line">	st.update(<span class="number">3</span>, <span class="number">1</span>);</span><br><span class="line">	st.update(<span class="number">4</span>, <span class="number">4</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="string">": "</span> &lt;&lt; st.minimum(i, i+<span class="number">1</span>) &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; st.minimum(<span class="number">1</span>, <span class="number">4</span>) &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	st.update(<span class="number">3</span>, <span class="number">10</span>);</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; st.minimum(<span class="number">1</span>, <span class="number">4</span>) &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; st.minimum(<span class="number">0</span>, <span class="number">5</span>) &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	st.update(<span class="number">4</span>, <span class="number">0</span>);</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; st.minimum(<span class="number">1</span>, <span class="number">4</span>) &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; st.minimum(<span class="number">0</span>, <span class="number">5</span>) &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function">SegmentTree <span class="title">st2</span><span class="params">(&#123;<span class="number">5</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>&#125;)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="sparse-table">Sparse table</h1>
+<blockquote>
+<p>「Sparse table」為古代之稱，如今詞不達意</p>
+</blockquote>
+<ul>
+<li>Pros
+<ul>
+<li>數組區間的查詢
+<ul>
+<li>區間最大值</li>
+<li>區間最小值</li>
+</ul></li>
+</ul></li>
+<li>Cons
+<ul>
+<li>不能更新、插入、刪除值</li>
+<li><strong>浪費空間</strong></li>
+<li>無法數組區間的
+<ul>
+<li>求和值</li>
+<li><strong>異或值 ( Exclusive or；XOR )</strong></li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="實現-1">實現</h3>
+<h4 id="初始化-1">初始化</h4>
+<ul>
+<li>Construct sparse table
+<ul>
+<li>N：資料量</li>
+<li>value[N]：數組</li>
+<li>cnt［logN］[N]：Sparse table</li>
+</ul></li>
+</ul>
+<p>依序先求出寬度為 <span class="math inline">\(2^0, 2^1, 2^2, \ldots, 2^{\lfloor\lg N\rfloor}\)</span> 的區間<strong>最小值</strong>，區間的所有可能位置都要算一遍。兩個窄區間可以快速合成出一個寬區間。</p>
+<figure>
+<img src="\willywangkaa\images\STable_1.png" alt="STable_1"><figcaption>STable_1</figcaption>
+</figure>
+<p>將所有區間算完存入 Sparse table</p>
+<figure>
+<img src="\willywangkaa\images\STable_2.png" alt="STable_2"><figcaption>STable_2</figcaption>
+</figure>
+<blockquote>
+<p>實作時，通常表格中記錄的是索引值、指標，而不是直接記錄數值的最小值。(如下程式碼)</p>
+</blockquote>
+<ul>
+<li>程式碼 (c++)</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000000</span>; <span class="comment">//No. of elements</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> logN = <span class="built_in">ceil</span>(<span class="built_in">log</span>(N));</span><br><span class="line"><span class="comment">//const int logN = sizeof(unsigned int) - __builtin_clz((unsigned int)dist) - 1;;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> value[N];</span><br><span class="line"><span class="keyword">int</span> cnt[logN][N]; <span class="comment">//cnt[i][j]: RMQ index</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">construct_ST</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">//Initialization</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;N; ++i)</span><br><span class="line">		cnt[<span class="number">0</span>][i] = i;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 2^i - 1 &lt; N &lt;=&gt; i &lt; ceil(log(N))</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; (<span class="number">1</span>&lt;&lt;i)<span class="number">-1</span> &lt; N; i++)</span><br><span class="line">        <span class="comment">// j + (2^i-1) &lt; N ; buttom-up 建立</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>; j+(<span class="number">1</span>&lt;&lt;i)<span class="number">-1</span> &lt; N; j++) &#123;</span><br><span class="line">			<span class="keyword">int</span> L = cnt[i<span class="number">-1</span>][j];</span><br><span class="line">			<span class="keyword">int</span> R = cnt[i<span class="number">-1</span>][j+(<span class="number">1</span>&lt;&lt;(i<span class="number">-1</span>))];</span><br><span class="line">			cnt[i][j] = (value[L] &lt;= value[R])? L : R;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>時間複雜度
+<ul>
+<li><span class="math inline">\(\Theta(N\log N)\)</span></li>
+</ul></li>
+<li>空間複雜度
+<ul>
+<li><span class="math inline">\(\Theta(N \log N)\)</span></li>
+</ul></li>
+</ul>
+<h4 id="查詢-1">查詢</h4>
+<p>從表格中找到寬度略短於（相等於）查詢區間的區間，以靠左、靠右的兩條等寬區間，求得查詢區間的最小值：</p>
+<figure>
+<img src="\willywangkaa\images\STable_3.png" alt="STable_3"><figcaption>STable_3</figcaption>
+</figure>
+<ul>
+<li>如何知道要查「Range」大小為何的表？
+<ul>
+<li>令 <span class="math inline">\(k\)</span> 為我們所求 → <span class="math inline">\(k = \lfloor \lg N \rfloor\)</span></li>
+</ul></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> dist = <span class="built_in">abs</span>(b - a) + <span class="number">1</span>;</span><br><span class="line">	<span class="comment">// 2^i &lt; N &lt;=&gt; i &lt; cel(logN) ; 區間計算</span></span><br><span class="line">	<span class="keyword">int</span> i = <span class="keyword">sizeof</span>(<span class="keyword">unsigned</span> <span class="keyword">int</span>) - __builtin_clz((<span class="keyword">unsigned</span> <span class="keyword">int</span>)dist) - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> L = cnt[i][a];          <span class="comment">// 左區間</span></span><br><span class="line">	<span class="keyword">int</span> R = cnt[i][b-(<span class="number">1</span>&lt;&lt;i)+<span class="number">1</span>]; <span class="comment">// 右區間</span></span><br><span class="line">	<span class="keyword">return</span> value[L] &lt;= value[R]? L : R;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>時間複雜度
+<ul>
+<li><span class="math inline">\(\Theta(1)\)</span></li>
+</ul></li>
+</ul>
+<h1 id="參考">參考</h1>
+<ul>
+<li><p><a href="https://blog.csdn.net/Yaokai_AssultMaster/article/details/79599809" target="_blank" rel="noopener">线段树（segment tree)，看这一篇就够了</a></p></li>
+<li><p>輔大張信宏老師講義</p></li>
+<li><p><a href="http://www.csie.ntnu.edu.tw/~u91029/Sequence2.html#5" target="_blank" rel="noopener">演算法筆記</a></p></li>
+</ul>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/willywangkaa/tags/Sequence/" rel="tag"># Sequence</a>
+          
+            <a href="/willywangkaa/tags/Sparse-table/" rel="tag"># Sparse table</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/willywangkaa/2018/09/23/Algorithm-Dynamic-programming/" rel="next" title="Algorithm - Dynamic programming">
+                <i class="fa fa-chevron-left"></i> Algorithm - Dynamic programming
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/willywangkaa/2018/10/15/Algorithm-Graph-algorithm/" rel="prev" title="Algorithm - Graph algorithm">
+                Algorithm - Graph algorithm <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/willywangkaa/images/avatar_me.gif"
+                alt="Willy Wang (willywangkaa)" />
+            
+              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
+              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/willywangkaa/archives/">
+                
+                    <span class="site-state-item-count">54</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/willywangkaa/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/willywangkaa/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">74</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://typora.io/" title="Typora" target="_blank">Typora</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.geeksforgeeks.org/" title="GeeksforGeeks" target="_blank">GeeksforGeeks</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.codecogs.com/latex/eqneditor.php" title="Online LaTeX Equation Editor" target="_blank">Online LaTeX Equation Editor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://allem40306.github.io/blog/" title="CodingJack" target="_blank">CodingJack</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#segement-tree"><span class="nav-number">1.</span> <span class="nav-text">Segement tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#實現"><span class="nav-number">1.1.</span> <span class="nav-text">實現</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化"><span class="nav-number">1.1.1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新"><span class="nav-number">1.1.2.</span> <span class="nav-text">更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查詢"><span class="nav-number">1.1.3.</span> <span class="nav-text">查詢</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它實現"><span class="nav-number">1.2.</span> <span class="nav-text">其它實現</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sparse-table"><span class="nav-number">2.</span> <span class="nav-text">Sparse table</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#實現-1"><span class="nav-number">2.0.1.</span> <span class="nav-text">實現</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化-1"><span class="nav-number">2.0.1.1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查詢-1"><span class="nav-number">2.0.1.2.</span> <span class="nav-text">查詢</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#參考"><span class="nav-number">3.</span> <span class="nav-text">參考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/willywangkaa/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/affix.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/willywangkaa/js/src/schemes/pisces.js?v=6.0.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/willywangkaa/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/willywangkaa/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://https-wangwilly-github-io-blog.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/10/03/Algorithm-Range-query-problem/';
+        this.page.identifier = '2018/10/03/Algorithm-Range-query-problem/';
+        this.page.title = 'Algorithm - Range query problem';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-wangwilly-github-io-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/willywangkaa/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/willywangkaa/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>

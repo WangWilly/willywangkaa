@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-tw,en,default">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/willywangkaa/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/willywangkaa/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/willywangkaa/images/apple-touch-icon-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/willywangkaa/images/favicon-32x32-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/willywangkaa/images/favicon-16x16-next_cat.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/willywangkaa/images/logo_cat.svg?v=6.0.4" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/willywangkaa/',
+    scheme: 'Pisces',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="LU分解,LU Decomposition," />
+
+
+<meta name="description" content="Linear Algebra - LU分解  LU 分解的外表看似平淡無奇，但它可以用來解線性方程，逆矩陣和計算行列式，堪稱是最具實用價值的矩陣分解式之一。 令 \(A\) 為一個 \(n\cdot n\) 階矩陣。LU 分解是指將 \(A\) 表示為兩個 \(n \cdot n\) 階三角矩陣的乘積 \[ A = L\cdot U \] 其中 \(L\) 是下三角矩陣，\(U\) 是">
+<meta name="keywords" content="LU分解,LU Decomposition">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linear algebra - LU分解">
+<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/05/07/Linear-algebra-LU分解/index.html">
+<meta property="og:site_name" content="WillyWangkaa">
+<meta property="og:description" content="Linear Algebra - LU分解  LU 分解的外表看似平淡無奇，但它可以用來解線性方程，逆矩陣和計算行列式，堪稱是最具實用價值的矩陣分解式之一。 令 \(A\) 為一個 \(n\cdot n\) 階矩陣。LU 分解是指將 \(A\) 表示為兩個 \(n \cdot n\) 階三角矩陣的乘積 \[ A = L\cdot U \] 其中 \(L\) 是下三角矩陣，\(U\) 是">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2019-02-08T04:41:21.372Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linear algebra - LU分解">
+<meta name="twitter:description" content="Linear Algebra - LU分解  LU 分解的外表看似平淡無奇，但它可以用來解線性方程，逆矩陣和計算行列式，堪稱是最具實用價值的矩陣分解式之一。 令 \(A\) 為一個 \(n\cdot n\) 階矩陣。LU 分解是指將 \(A\) 表示為兩個 \(n \cdot n\) 階三角矩陣的乘積 \[ A = L\cdot U \] 其中 \(L\) 是下三角矩陣，\(U\) 是">
+
+
+
+
+
+
+  <link rel="canonical" href="http://WangWilly.github.io/willywangkaa/2018/05/07/Linear-algebra-LU分解/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>Linear algebra - LU分解 | WillyWangkaa</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/willywangkaa/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WillyWangkaa</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Live more like human</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/willywangkaa/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/willywangkaa/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/willywangkaa/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/willywangkaa/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/05/07/Linear-algebra-LU分解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WillyWangkaa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linear algebra - LU分解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-07T16:01:00+08:00">2018-05-07</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-08T12:41:21+08:00">2019-02-08</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/willywangkaa/categories/Linear-Algebra/" itemprop="url" rel="index"><span itemprop="name">Linear Algebra</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/willywangkaa/2018/05/07/Linear-algebra-LU分解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/05/07/Linear-algebra-LU分解/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="linear-algebra---lu分解">Linear Algebra - LU分解</h1>
+<hr>
+<p>LU 分解的外表看似平淡無奇，但它可以用來解線性方程，逆矩陣和計算行列式，堪稱是最具實用價值的矩陣分解式之一。</p>
+<p>令 <span class="math inline">\(A\)</span> 為一個 <span class="math inline">\(n\cdot n\)</span> 階矩陣。LU 分解是指將 <span class="math inline">\(A\)</span> 表示為兩個 <span class="math inline">\(n \cdot n\)</span> 階三角矩陣的乘積</p>
+<p><span class="math display">\[
+A = L\cdot U
+\]</span> 其中 <span class="math inline">\(L\)</span> 是下三角矩陣，<span class="math inline">\(U\)</span> 是上三角矩陣，如下例，</p>
+<p><span class="math display">\[
+\begin{bmatrix}3 &amp; 1 &amp; 2 \\ 6 &amp; -1 &amp; 5 \\ -9 &amp; 7 &amp; 3\end{bmatrix} = \begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 2 &amp; 1 &amp; 0 \\ -3 &amp; 4 &amp; 1 \end{bmatrix} \begin{bmatrix}3 &amp; -1 &amp; 2\\ 0 &amp; 1 &amp; 1\\ 0 &amp; 0 &amp; 5 \end{bmatrix}
+\]</span></p>
+<p>高斯消去法可以通過一連串的矩陣乘法來實現。每一個基本列運算等同於左乘一個基本矩陣，而對應列取代的基本矩陣 <span class="math inline">\(E_{ij}\)</span> 的 <span class="math inline">\((i, j)\)</span> 元即為 <span class="math inline">\(-l_{ij}\)</span>。</p>
+<p>消去程序可用下列矩陣乘法表示：</p>
+<p><span class="math display">\[
+E{32}E{31}E_{21}A=U
+\]</span></p>
+<p>因為基本矩陣 <span class="math inline">\(E_{ij}\)</span> 都是可逆的</p>
+<p><span class="math display">\[
+A=E_{21}^{-1}E_{31}^{-1}E_{32}^{-1}U=LU
+\]</span></p>
+<h1 id="存在性">存在性</h1>
+<hr>
+<p>然而，並非任何可逆矩陣都具有 LU 分解形式，例如：<span class="math inline">\(A=\begin{bmatrix} 0&amp;2\\ 1&amp;3 \end{bmatrix}\)</span>。假若 <span class="math inline">\(A\)</span> 可以寫為</p>
+<p><span class="math display">\[
+A=LU=\begin{bmatrix}  1&amp;0\\  l_{21}&amp;1  \end{bmatrix}\begin{bmatrix}  u_{11}&amp;u_{12}\\  0&amp;u_{22}  \end{bmatrix}
+\]</span></p>
+<p>則必有 <span class="math inline">\(u_{11}=0\)</span>， <span class="math inline">\(U\)</span> 是不可逆的，這與 為 <span class="math inline">\(LU=A\)</span> 可逆矩陣的事實相互矛盾。矩陣 之所 <span class="math inline">\(A\)</span> 以不存在 分解的<span class="math inline">\(LU\)</span> 原因在於 <span class="math inline">\(0\)</span> 占據了 <span class="math inline">\((1,1)\)</span> 元，但軸元必須不為零才能產生乘數。根據這項觀察，即知可逆矩陣 <span class="math inline">\(A\)</span> 的 LU 分解存在條件是：列運算過程中，<span class="math inline">\(0\)</span> 不得在軸元位置。萬一碰上零軸元的情況，還是有補救辦法，那就是使用列交換運算設法產生其他非零軸元，不過 LU 分解要修改成 <span class="math inline">\(PA=LU\)</span>，<span class="math inline">\(P\)</span> 是排列矩陣。例如，</p>
+<p><span class="math display">\[
+\begin{aligned}  PA&amp;=\begin{bmatrix}  0&amp;1\\  1&amp;0  \end{bmatrix}\begin{bmatrix}  0&amp;2\\  1&amp;3  \end{bmatrix}=\begin{bmatrix}  1&amp;3\\  0&amp;2  \end{bmatrix}\\  &amp;=\begin{bmatrix}  1&amp;0\\  0&amp;1  \end{bmatrix}\begin{bmatrix}  1&amp;3\\  0&amp;2  \end{bmatrix}=LU.\end{aligned}
+\]</span></p>
+<h1 id="應用">應用</h1>
+<hr>
+<p>最後討論 LU 分解的應用。LU 分解不僅僅只是記錄消去過程，它還有一個非常重要的實際用途：LU 分解具備快速求解線性方程 <span class="math inline">\(A\mathbf{x}=\mathbf{b}​\)</span> 的良好結構。一旦得到了可逆矩陣 <span class="math inline">\(A​\)</span> 的 LU 分解 <span class="math inline">\(A=LU​\)</span>，我們大可把 <span class="math inline">\(A​\)</span> 拋棄，將 <span class="math inline">\(A\mathbf{x}=\mathbf{b}​\)</span> 改為 <span class="math inline">\(L(U\mathbf{x})=\mathbf{b}​\)</span>，再令 <span class="math inline">\(\mathbf{y}=U\mathbf{x}​\)</span>，原線性方程等價於兩組三角形系統：</p>
+<p><span class="math display">\[
+\begin{aligned}  L\mathbf{y}&amp;=\mathbf{b}\\  U\mathbf{x}&amp;=\mathbf{y}.  \end{aligned}
+\]</span> 接著使用兩次迭代即可得到解。上例中，先以正向迭代解出 <span class="math inline">\(\mathbf{y}\)</span>，</p>
+<p><span class="math display">\[
+\left[\!\!\begin{array}{rcc}    1&amp;0&amp;0\\  2&amp;1&amp;0\\  -3&amp;4&amp;1  \end{array}\!\!\right]\begin{bmatrix}  y_1\\  y_2\\  y_3  \end{bmatrix}=\left[\!\!\begin{array}{r}    10\\  22\\  -7  \end{array}\!\!\right]\Rightarrow\begin{cases}  y_1=10&amp;\\  y_2=-2y_1+22=2&amp;\\  y_3=3y_1-4y_2-7=15&amp;  \end{cases}
+\]</span></p>
+<p>再以反向迭代解出 ，</p>
+<p><span class="math display">\[
+\left[\!\!\begin{array}{crc}    3&amp;-1&amp;2\\  0&amp;1&amp;1\\  0&amp;0&amp;5  \end{array}\!\!\right]\begin{bmatrix}  x_1\\  x_2\\  x_3  \end{bmatrix}=\left[\!\!\begin{array}{r}    10\\  2\\  15  \end{array}\!\!\right]\Rightarrow\begin{cases}  x_1=(x_2-2x_3+10)/3=1&amp;\\  x_2=-x_3+2=-1&amp;\\  x_3=15/5=3&amp;  \end{cases}
+\]</span></p>
+<p>對於 階矩陣 ，LU 分解耗費的乘法運算量大約是 <span class="math inline">\(\mathbf{O}(\frac{1}{3}n^3)\)</span>，與高斯消去法相同。這個數字其實不算太糟，因為兩個 <span class="math inline">\(n\)</span> 階方陣相乘就使用了 <span class="math inline">\(n^3\)</span> 次運算。另外，正向迭代或反向迭代的運算量都只有<span class="math inline">\(\mathbf{O}(\frac{1}{2}n^2)\)</span> ，遠比 LU 分解來的少。所以如果只要解出單一線性系統 ，直接用消去法化簡增廣矩陣 <span class="math inline">\(\begin{bmatrix} A\vert\mathbf{b} \end{bmatrix}\)</span> 和 LU 分解的兩段式解法兩者之間並沒有多大差別，但如果稍後還要解多個係數矩陣相同但常數向量改變的系統 ，LU 分解便能夠派上用場。舉例來說，LU 分解可以用來計算逆矩陣 <span class="math inline">\(A^{-1}\)</span>。將矩陣方程 看成三個線性方程：</p>
+<p><span class="math display">\[
+A\mathbf{x}_1=\begin{bmatrix}  1\\  0\\  0  \end{bmatrix},~ A\mathbf{x}_2=\begin{bmatrix}  0\\  1\\  0  \end{bmatrix},~ A\mathbf{x}_3=\begin{bmatrix}  0\\  0\\  1  \end{bmatrix}
+\]</span></p>
+<p>解出的未知向量 <span class="math inline">\(\mathbf{x}_i\)</span>，<span class="math inline">\(i=1,2,3\)</span>，就是逆矩陣 <span class="math inline">\(A^{-1}\)</span> 行向量。LU 分解還可以用來計算 <span class="math inline">\(n\times n\)</span> 階行列式。根據矩陣乘積的行列式可乘公式</p>
+<p><span class="math display">\[
+\det A=\det(LU)=(\det L)(\det U)
+\]</span></p>
+<p>三角矩陣的行列式等於主對角元乘積，因此 <span class="math inline">\(\mathrm{det}L=1\)</span>，推論</p>
+<p><span class="math display">\[
+\det A=\det U=\displaystyle\prod_{i=1}^nu_{ii}
+\]</span></p>
+<p>方陣 <span class="math inline">\(A\)</span> 的行列式即為消去法所得到的上三角矩陣 <span class="math inline">\(U\)</span> 主對角元之積 (關於其他行列式計算方法的介紹，請見“<a href="https://ccjou.wordpress.com/2009/11/24/%e5%8f%a6%e9%a1%9e%e8%a1%8c%e5%88%97%e5%bc%8f%e8%a8%88%e7%ae%97%e6%b3%95-chio-%e6%bc%94%e7%ae%97%e6%b3%95/" target="_blank" rel="noopener">Chiò 演算法──另類行列式計算法</a>”)。</p>
+<h1 id="參考">參考</h1>
+<hr>
+<p><a href="https://ccjou.wordpress.com/2010/09/01/lu-%E5%88%86%E8%A7%A3/" target="_blank" rel="noopener">LU 分解| 線代啟示錄</a></p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/willywangkaa/tags/LU分解/" rel="tag"># LU分解</a>
+          
+            <a href="/willywangkaa/tags/LU-Decomposition/" rel="tag"># LU Decomposition</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/willywangkaa/2018/05/05/Technical Patent-Study-Patent-Claim-專利聲明/" rel="next" title="Technical Patent Study - Patent Claim">
+                <i class="fa fa-chevron-left"></i> Technical Patent Study - Patent Claim
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/willywangkaa/2018/05/08/Discrete-mathematics-Chinese-Remainder-Theorem/" rel="prev" title="Discrete mathematics - Chinese Remainder Theorem">
+                Discrete mathematics - Chinese Remainder Theorem <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/willywangkaa/images/avatar_me.gif"
+                alt="Willy Wang (willywangkaa)" />
+            
+              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
+              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/willywangkaa/archives/">
+                
+                    <span class="site-state-item-count">54</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/willywangkaa/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/willywangkaa/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">74</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://typora.io/" title="Typora" target="_blank">Typora</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.geeksforgeeks.org/" title="GeeksforGeeks" target="_blank">GeeksforGeeks</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.codecogs.com/latex/eqneditor.php" title="Online LaTeX Equation Editor" target="_blank">Online LaTeX Equation Editor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://allem40306.github.io/blog/" title="CodingJack" target="_blank">CodingJack</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linear-algebra---lu分解"><span class="nav-number">1.</span> <span class="nav-text">Linear Algebra - LU分解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#存在性"><span class="nav-number">2.</span> <span class="nav-text">存在性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#應用"><span class="nav-number">3.</span> <span class="nav-text">應用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#參考"><span class="nav-number">4.</span> <span class="nav-text">參考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/willywangkaa/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/affix.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/willywangkaa/js/src/schemes/pisces.js?v=6.0.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/willywangkaa/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/willywangkaa/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://https-wangwilly-github-io-blog.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/05/07/Linear-algebra-LU分解/';
+        this.page.identifier = '2018/05/07/Linear-algebra-LU分解/';
+        this.page.title = 'Linear algebra - LU分解';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-wangwilly-github-io-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/willywangkaa/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/willywangkaa/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>
