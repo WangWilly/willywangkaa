@@ -111,7 +111,7 @@
 <meta property="og:site_name" content="WillyWangkaa">
 <meta property="og:description" content="Time complexity  重點  Asymptotic notation 考點著重  定義 特性 證明題、選擇題  Time complexity 的比較  定義法 極值法 ( limit )：以大資料的手法比較演算法的優劣 對數法 ( log )：當該算法的等級差距大時方便判斷與解釋  計算題要點 ( 離散數學 )  \(H _n = \Theta(\">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-10-21T04:36:08.535Z">
+<meta property="og:updated_time" content="2019-02-09T12:16:28.186Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithm - Time Complexity">
 <meta name="twitter:description" content="Time complexity  重點  Asymptotic notation 考點著重  定義 特性 證明題、選擇題  Time complexity 的比較  定義法 極值法 ( limit )：以大資料的手法比較演算法的優劣 對數法 ( log )：當該算法的等級差距大時方便判斷與解釋  計算題要點 ( 離散數學 )  \(H _n = \Theta(\">
@@ -360,7 +360,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-10-21T12:36:08+08:00">2018-10-21</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-09T20:16:28+08:00">2019-02-09</time>
             
           </span>
 
@@ -785,6 +785,51 @@ O(n^2) + \Theta(n^2) = \Theta(n^2)
 <li>＜分析＞：<span class="math inline">\(n^{1+\epsilon} = n^{2-\delta}, 0&lt;\delta&lt;1 \Rightarrow \frac{n^2}{n^\delta} \\ \because \log n = o(n^\delta) \\ \therefore n^{1 + \epsilon} = O(\frac{n^2}{\log n})\)</span></li>
 </ul></li>
 </ul>
+<h1 id="補充例題">補充例題</h1>
+<p>Example（101交通大學資料結構與演算法）</p>
+<p>Consider the following three problem. <strong>Assume that the only operations allowed on the data are</strong></p>
+<ul>
+<li><em>comparing the values of two floating-point numbers and identifying the larger value</em>;</li>
+<li><em>comparing the distance between two array entries (the absolute value of the difference between the two array entries) with the distance between two other array entries</em>;</li>
+<li><em>swapping two entries in the array</em>.</li>
+</ul>
+<p>Further assume that <strong>each allowed operation has unit cost</strong>. What are the worst-case optimal asymptotic running times for algorithms that solve these problems?</p>
+<ul>
+<li>（1）<strong>Nearest neighbors</strong>: given an <strong>unsorted array</strong> of n floating-point numbers as input, return two of the numbers that are closest in value to each other.
+<ul>
+<li>（A）<span class="math inline">\(O(n\log n)\)</span></li>
+<li>（B）<span class="math inline">\(O(\log n)\)</span></li>
+<li>（C）<span class="math inline">\(O(n^2)\)</span></li>
+<li>（D）<span class="math inline">\(O(n^3)\)</span></li>
+<li>（E）<span class="math inline">\(O(n)\)</span></li>
+</ul></li>
+</ul>
+<p>排序後元素兩兩算出距離 d，再從所有距離裡找出最小值</p>
+<p><span class="math inline">\(\Rightarrow O(n\log n) + O(n) + O(n) = O(n\log n)\)</span></p>
+<ul>
+<li><p>（2）<strong>Farthest neighbors</strong>: given an <strong>unsorted array</strong> of n floating-point numbers as input, return two of the numbers that are farthest in value from each other.</p>
+<ul>
+<li>（A）<span class="math inline">\(O(n\log n)\)</span></li>
+<li>（B）<span class="math inline">\(O(\log n)\)</span></li>
+<li><p>（C）<span class="math inline">\(O(n^2)\)</span></p></li>
+<li>（D）<span class="math inline">\(O(n^3)\)</span></li>
+<li><p>（E）<span class="math inline">\(O(n)\)</span></p></li>
+</ul></li>
+</ul>
+<p>找最大值、最小值</p>
+<p><span class="math inline">\(\Rightarrow O(n) + O(n) = O(n)\)</span></p>
+<ul>
+<li><p>（3）Given a floating-point number to find a closest value in a <strong>sorted array</strong> of n floating-point numbers.</p>
+<ul>
+<li>（A）<span class="math inline">\(O(n\log n)\)</span></li>
+<li>（B）<span class="math inline">\(O(\log n)\)</span></li>
+<li><p>（C）<span class="math inline">\(O(n^2)\)</span></p></li>
+<li>（D）<span class="math inline">\(O(n^3)\)</span></li>
+<li><p>（E）<span class="math inline">\(O(n)​\)</span></p></li>
+</ul></li>
+</ul>
+<p>使用「Binary search」找到最接近的值</p>
+<p><span class="math inline">\(\Rightarrow O(\log n)\)</span></p>
 
       
     </div>
@@ -953,8 +998,6 @@ O(n^2) + \Theta(n^2) = \Theta(n^2)
                     
                       
                     
-                      
-                    
                     <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
@@ -967,18 +1010,6 @@ O(n^2) + \Theta(n^2) = \Theta(n^2)
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
                     
                       
                     
@@ -1190,7 +1221,7 @@ O(n^2) + \Theta(n^2) = \Theta(n^2)
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#time-complexity"><span class="nav-number">1.</span> <span class="nav-text">Time complexity</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#asymptotic-notation"><span class="nav-number">1.1.</span> <span class="nav-text">Asymptotic notation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#符號定義"><span class="nav-number">1.1.1.</span> <span class="nav-text">符號定義</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特性"><span class="nav-number">1.1.2.</span> <span class="nav-text">特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函數比較等級"><span class="nav-number">1.1.3.</span> <span class="nav-text">函數比較等級</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定義法"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">定義法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#極值法"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">極值法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#對數法"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">對數法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#複雜度計算"><span class="nav-number">1.2.</span> <span class="nav-text">複雜度計算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#theta-集合的求取"><span class="nav-number">1.2.1.</span> <span class="nav-text">\(\Theta\) 集合的求取</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#close-form-的求取"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">Close form 的求取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-upper-bound-與-lower-bound-的夾擊"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">使用 Upper bound 與 Lower bound 的夾擊</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#time-complexity"><span class="nav-number">1.</span> <span class="nav-text">Time complexity</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#asymptotic-notation"><span class="nav-number">1.1.</span> <span class="nav-text">Asymptotic notation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#符號定義"><span class="nav-number">1.1.1.</span> <span class="nav-text">符號定義</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特性"><span class="nav-number">1.1.2.</span> <span class="nav-text">特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函數比較等級"><span class="nav-number">1.1.3.</span> <span class="nav-text">函數比較等級</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定義法"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">定義法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#極值法"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">極值法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#對數法"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">對數法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#複雜度計算"><span class="nav-number">1.2.</span> <span class="nav-text">複雜度計算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#theta-集合的求取"><span class="nav-number">1.2.1.</span> <span class="nav-text">\(\Theta\) 集合的求取</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#close-form-的求取"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">Close form 的求取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-upper-bound-與-lower-bound-的夾擊"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">使用 Upper bound 與 Lower bound 的夾擊</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#補充例題"><span class="nav-number">2.</span> <span class="nav-text">補充例題</span></a></li></ol></div>
             
 
           </div>

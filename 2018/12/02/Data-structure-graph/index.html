@@ -125,6 +125,10 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543736203059.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543736615438.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543737721578.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549622277405.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549627232982.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549628472201.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549628610514.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543738191981.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543739868201.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/johnsonalgorithm_1.png">
@@ -147,7 +151,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543748935456.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543749321235.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543749964256.png">
-<meta property="og:updated_time" content="2019-02-08T04:45:42.296Z">
+<meta property="og:updated_time" content="2019-02-08T12:56:14.341Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Data structure - Graph">
 <meta name="twitter:description" content="The structure of graph [Note] Adjacency list 有一圖 G = (V, E), |V| = n, |E| = e，需要 n 條相鄰串列（vertex[1…n] : pointer）來表達，其中 vertex[i] 代表頂點 i 的相鄰串列，紀錄所有與頂點 i 相鄰的頂點編號  以「相鄰串列」表示無向圖時，因為 邊(i,j) = 邊(j,i)（一條邊">
@@ -397,7 +401,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-02-08T12:45:42+08:00">2019-02-08</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-08T20:56:14+08:00">2019-02-08</time>
             
           </span>
 
@@ -812,6 +816,17 @@
 <li>因為 |E| ≦ |V|×|V|，所以 <strong>O(|E|log|E|) = O(|E|log|</strong><span class="math inline">\(V^2\)</span><strong>|) = O(|E|log|V|)</strong></li>
 </ul></li>
 </ul>
+<blockquote>
+<p>Example（102 交通大學資料結構與演算法）</p>
+<ul>
+<li>The running time of Kruskal’s algorithm for a connected undirected weighted graph G = (V, E) is ＿＿＿.</li>
+</ul>
+<p>O(∣E∣log∣V∣)</p>
+<ul>
+<li>Suppose that all edge weights in a graph G are integers <strong>in the range from 1 to ∣V∣</strong>. How fast can you make Kruskal’s algorithm run?</li>
+</ul>
+<p>O(∣E∣ α(∣V∣))，α 為「<a href="https://en.wikipedia.org/wiki/Ackermann_function" target="_blank" rel="noopener">Ackermann function</a>」反函數</p>
+</blockquote>
 <h3 id="prims-algorithm-ds-書上版本">Prim’s algorithm [DS 書上版本]</h3>
 <ul>
 <li>Time complexity
@@ -1039,6 +1054,80 @@
 <li>再求 <span class="math inline">\(Dist^n\)</span>，若有值比 <span class="math inline">\(Dist^{n-1}\)</span> 還小，則必存在負環</li>
 </ol>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    tmp_Dist[<span class="number">1.</span>..n];</span><br><span class="line">    <span class="function"><span class="keyword">for</span> each u that has <span class="title">edge</span><span class="params">(u,i)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(Dist[i] &gt; Dist[u]+Cost[u,i]) &#123;</span><br><span class="line">            <span class="keyword">if</span>(i==n) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"存在負環"</span>; </span><br><span class="line">            &#125;</span><br><span class="line">            tmp_Dist[i] = Dist[u]+Cost[u,i];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            tmp_Dist[i] = Dist[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    copy(Dist[<span class="number">1.</span>..n], tmp_Dist[<span class="number">1.</span>.n]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Example（102交通大學資料結構與演算法 - <strong>差分約束系統</strong>（System of Difference Constraints））</p>
+<ul>
+<li>Consider the problem of finding a vector <span class="math inline">\((x_1, x_2, x_3, x_4, x_5)\)</span> satisfying the following constrains such that <span class="math inline">\(x_1+x_2+x_3+x_4+x_5\)</span> is maximized, where <span class="math inline">\(x_i \leq 0\)</span> for i = 1, …, 5. What are <strong>the maximum value</strong> and the corresponding vector?</li>
+</ul>
+<p><span class="math inline">\(x_1 - x_2 \leq 1 \\x_1 - x_5 \leq -1 \\ x_2 - x_5 \leq 1 \\ x_3 - x_1 \leq 15 \\ x_4 - x_1 \leq 4 \\ x_4 - x_3 \leq -1 \\ x_5 - x_3 \leq -3 \\ x_5 - x_4 \leq 0\)</span></p>
+<p><strong>在此條件下求最大解</strong>可以轉換成「Single source all shortest path problem」</p>
+<ul>
+<li>觀察 <span class="math inline">\(x_j - x_i \leq b_k\)</span>
+<ul>
+<li>圖論中， d[v] ≦ d[u]+w[u,v]
+<ul>
+<li>d[v]：為 s 至 v 的最短路徑長</li>
+<li>d[u]：為 s 至 u 的最短路徑長</li>
+<li>w[u,v]：邊(u,v) 的權重</li>
+<li>所以此式意旨「s 至 v 的最短路徑長」≦「s 至 u 的最短路徑長」+「邊(u,v) 的權重」</li>
+</ul></li>
+<li>將 <span class="math inline">\(x_j - x_i \leq b_k\)</span> 視為 d[v] - d[u] ≦ w[u,v]
+<ul>
+<li>其中 s 為額外增加的節點</li>
+</ul></li>
+</ul></li>
+<li>如果 s 點無法到達 <span class="math inline">\(x_i\)</span>
+<ul>
+<li>則其路徑為無窮大</li>
+<li>因為不斷作「Relaxation」會使得路徑不斷變小，直到滿足所有條件時其為最大可能</li>
+</ul></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\1549622277405.png" alt="1549622277405"><figcaption>1549622277405</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\1549627232982.png" alt="1549627232982"><figcaption>1549627232982</figcaption>
+</figure>
+<ul>
+<li>對 s 頂點使用「Bellman-Ford algorithm」
+<ul>
+<li>解出 <span class="math inline">\((x_1, x_2, x_3, x_4, x_5) = (-4, -2, 0, -1, -3)\)</span></li>
+<li>總和：-10</li>
+</ul></li>
+</ul>
+<blockquote>
+<p><del><strong>在此條件下求最大解</strong>可以轉換成「Single source all <strong>longest path problem</strong>」</del></p>
+<ul>
+<li>觀察 <span class="math inline">\(-(x_j - x_i) \geq -b_k\)</span>
+<ul>
+<li>圖論中， d[v] ≧ d[u]+w[u,v]
+<ul>
+<li>d[v]：為 s 至 v 的最長路徑長</li>
+<li>d[u]：為 s 至 u 的最長路徑長</li>
+<li>w[u,v]：邊(u,v) 的權重</li>
+<li>所以此式意旨「s 至 v 的最長路徑長」≧「s 至 u 的最長路徑長」+「邊(u,v) 的權重」</li>
+</ul></li>
+<li>將 <span class="math inline">\(x_i - x_j \geq -b_k\)</span> 視為 d[v] - d[u] ≧ w[u,v]
+<ul>
+<li>其中 s 為額外增加的節點</li>
+</ul></li>
+</ul></li>
+<li>如果 s 點無法到達 <span class="math inline">\(x_i\)</span>
+<ul>
+<li>則其路徑為無窮小</li>
+<li>因為不斷作「Relaxation」會使得路徑不斷變大，直到滿足所有條件時其為最小可能</li>
+</ul></li>
+</ul>
+<p><span class="math inline">\(x_2 - x_1 \geq -1 \\x_5 - x_1 \geq 1 \\ x_5 - x_2 \geq -1 \\ x_1 - x_3 \geq -15 \\ x_1 - x_4 \geq -4 \\ x_3 - x_4 \geq 1 \\ x_3 - x_5 \geq 3 \\ x_4 - x_5 \geq 0\)</span></p>
+<figure>
+<img src="\willywangkaa\images\1549628472201.png" alt="1549628472201"><figcaption>1549628472201</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\1549628610514.png" alt="1549628610514"><figcaption>1549628610514</figcaption>
+</figure>
+<ul>
+<li><del>對 s 頂點使用「Bellman-Ford algorithm」（Single source all <strong>longest path</strong>）</del></li>
+</ul>
+</blockquote>
 <h2 id="floyd-warshell-algorithm">Floyd-Warshell algorithm</h2>
 <p>假設 G = ＜V, E＞</p>
 <p>Data structure</p>
@@ -1772,8 +1861,6 @@
                     
                       
                     
-                      
-                    
                     <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
@@ -1786,18 +1873,6 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
                     
                       
                     

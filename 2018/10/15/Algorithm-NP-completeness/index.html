@@ -117,7 +117,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/nprelation.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/longestpathproblem_NPC.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/TSP_NPC.png">
-<meta property="og:updated_time" content="2019-02-03T07:55:31.709Z">
+<meta property="og:updated_time" content="2019-02-09T12:29:24.281Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithm - NP-completeness">
 <meta name="twitter:description" content="基本概念  目的  將問題依照難度做分類 如何定義 A 問題比 B 問題難？ 如何分類？ 分幾類？   Decision problem 答案只有 Yse/No 的問題  Ex  一個圖中有無「Hamiltonian cycle」？   每一個最佳化問題 ( Optimization problem ) 均可用參數化的方式化成一對應的「Decision prob">
@@ -367,7 +367,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-02-03T15:55:31+08:00">2019-02-03</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-09T20:29:24+08:00">2019-02-09</time>
             
           </span>
 
@@ -728,6 +728,45 @@ Traveling \; salesman \; prblem
 </ul></li>
 </ul>
 </blockquote>
+<p>Example（101交通大學資料結構與演算法）</p>
+<p><strong>Problem I</strong>: Given a graph G=(V,E), is there a minimum-degree spanning tree T of <strong>maximum degree two</strong>, where the minimum-degree means that the maximum degree is maximized?</p>
+<blockquote>
+<p>其問題為一個「Hamiltonian path」問題</p>
+</blockquote>
+<p><strong>Problem II</strong>: Given an undirected graph and a positive integer K, is there a path of length at <strong>most</strong> K, <strong>where each edge has weight 1 and each vertex is visited exactly once（Simple path）</strong>?</p>
+<blockquote>
+<p>其問題為一個「Shortest path」問題</p>
+</blockquote>
+<p><strong>Problem III</strong>: Given an undirected graph and a positive integer K, is there a path of length at <strong>least</strong> K, <strong>where each edge has weight 1 and each vertex is visited at most once（Simple path）</strong>?</p>
+<blockquote>
+<p>其問題為一個「Longest path」問題</p>
+</blockquote>
+<ul>
+<li>Which of the following statements is wrong?
+<ul>
+<li>（A）A problem is NP-complete, if it belongs to the class NP and all the other members in NP can be reduced to it in polynomial time.</li>
+<li>（B）Problem I belongs to NP.</li>
+<li>（C）Problem III belongs to NP.</li>
+<li>（D）Problem III is NP-complete.</li>
+<li><strong>（E）If we change the graph in Problem III to directed graph, then it belongs to P.</strong></li>
+</ul></li>
+<li>Which of the followings is wrong?
+<ul>
+<li>（A）If a spanning tree has the maximum degree as 2, then it is a Hamiltonian path.</li>
+<li>（B）If Problem III can be solved in polynomial time, then we can find a Hamiltonian path in polynomial time.</li>
+<li><strong>（C）Problem I can be solved with the Prim’s algorithm.</strong></li>
+<li>（D）A graph can have more than one spanning tree.</li>
+<li>（E）If P=NP, then Problem II can be solved in polynomial time.</li>
+</ul></li>
+<li>Continuing the previous question, which of the following is wrong?
+<ul>
+<li>（A）Problem II can be solved with the Floyd-Warshall algorithm.</li>
+<li>（B）<em>An algorithm for Problem III can be used to find the longest path of a graph.</em></li>
+<li>（C）If there is an algorithm that can find the longest path in a graph in polynomial time, then Problem III can solved in polynomial time.</li>
+<li><strong>（D）Problem III can be reduced to Problem II by making each weight negative and thus can be solved with the Bellman-Ford algorithm.</strong></li>
+<li>（E）If Problem III can be solved in polynomial time, then P=NP.</li>
+</ul></li>
+</ul>
 
       
     </div>
@@ -898,8 +937,6 @@ Traveling \; salesman \; prblem
                     
                       
                     
-                      
-                    
                     <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
@@ -912,18 +949,6 @@ Traveling \; salesman \; prblem
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
                     
                       
                     
