@@ -117,6 +117,13 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/minimumspainingtree_2.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/minimumspainingtree_3.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/flownetwork.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549795349837.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549793031130.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549793298592.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549793355647.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549793388148.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549793497499.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549794137394.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/escapeproblem.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/escapeproblem_sol.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/escapeproblem_solconti.png">
@@ -124,7 +131,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549708938056.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549709744238.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/vertexcover.png">
-<meta property="og:updated_time" content="2019-02-09T10:57:03.047Z">
+<meta property="og:updated_time" content="2019-02-10T10:47:49.609Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithm - Graph algorithm">
 <meta name="twitter:description" content="Graph algorithm Depth first search  所需變數：考慮圖中一點 u  color(u)：目前 u 節點的狀態  White：初始值，尚未訪查過 Gray：已被訪查過，但未訪查完其子節點 Black：已經訪查完其子節點  d(u)：發現時間點( Discover time )，即為第一次被訪查的時間點 f(u)：完結時間點( Finish ti">
@@ -374,7 +381,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-02-09T18:57:03+08:00">2019-02-09</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-10T18:47:49+08:00">2019-02-10</time>
             
           </span>
 
@@ -629,17 +636,69 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 <p>將 e 加入 T’ 後，會形成一個 Cycle 「C」， <strong>在 {C.V - e} 中任取一邊 e’ 必會大於等於 e，</strong> <strong>因為如果該邊比較小，在 Kruskal 執行時必優先選擇 e’</strong> ( 然而如此一來導致矛盾所以不可能發生 )， 最後我們可以造一個生成樹 T’’ = ( G.V, <strong>(T’.E - {e’})</strong> <span class="math inline">\(\cup\)</span> {e} )， 且 <span class="math inline">\(Weight(T&#39;&#39;) \leq weight(T&#39;)\)</span> ；</p>
 <p>重複上述步驟 <span class="math inline">\(T&#39; \xrightarrow{用\;T\;有而\;T&#39;\;沒有的邊做替換} T&#39;&#39; \xrightarrow{用\;T\;有而\;T&#39;&#39;\;沒有的邊做替換} ... \rightarrow T\)</span> ， 並且其過程中生成樹的權重不會增加，所以可以證明 <span class="math inline">\(weight(T&#39;) = weight(T)\)</span>， 所以 T 是最小生成樹。</p>
 <h2 id="flow-network">Flow network</h2>
-<p>一個<strong>有向圖</strong> G = (V, E) 滿足</p>
-<ol type="1">
-<li>只含有唯一一個 <strong>in-degree = 0</strong> 的點 S ( Source )</li>
-<li>只含有唯一一個 <strong>out-degree = 0</strong> 的點 T ( Sink )</li>
-<li>對於 G.E 中每個邊 e ，定義一個<strong>容量</strong> c(e) ≧ 0</li>
-</ol>
-<p>另外，定義一個<strong>流量</strong>的函數：f(e)，滿足</p>
-<ol type="1">
-<li>對每個點而言，<strong>流入水量等於流出水量。</strong></li>
-<li>對每個邊而言，<strong>0 ≦ f(e) ≦ c(e)</strong></li>
-</ol>
+<p>「流量網路圖論模型」為一<strong>有向圖</strong> G = (V, E) 滿足：</p>
+<ul>
+<li><p>含有唯一「<strong>in-degree = 0</strong>」的點 S（Source；源點）</p></li>
+<li><p>含有唯一「<strong>out-degree = 0</strong>」的點 T（Sink；匯點）</p></li>
+<li>對於 (u,v) ∈ E
+<ul>
+<li>定義<strong>容量 c：</strong><span class="math inline">\(E→R^+\)</span>
+<ul>
+<li>通常其加權有向邊 (u,v) 代表其<strong>容量</strong></li>
+</ul></li>
+<li>定義<strong>流量 f：</strong><span class="math inline">\(E → R\)</span>
+<ul>
+<li><strong>每個點流入水量等於流出水量</strong></li>
+</ul></li>
+<li>容量限制（Capacity constraints）
+<ul>
+<li><span class="math inline">\(\forall(u,v )\in E \Rightarrow f(u,v)\leq c(u,v)\)</span></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>假設一流量網路 G=(V,E)，其「殘餘網路」（Residual network）為</p>
+<ul>
+<li>有向圖 <span class="math inline">\(G_f = (V, E_f)\)</span>
+<ul>
+<li><span class="math inline">\(E_f = ｛(u,v)︱^{（1）}0&lt;f(u,v)&lt;c(u,v) \;或\; ^{（2）}f(u,v)&lt;0｝\)</span></li>
+<li>上述意旨 <span class="math inline">\((u,v)\in E_f\)</span> 代表<strong>其邊「尚有容量可以自 u 至 v」</strong>
+<ul>
+<li>假設 <span class="math inline">\(f(u,v)&gt;0\)</span> 代表有流量自 u 至 v，則其邊有容量的可能有二
+<ul>
+<li><strong>（1）其流量尚未達到容量（</strong><span class="math inline">\(f(u,v) &lt; c(u,v)\)</span><strong>）</strong>
+<ul>
+<li>殘餘容量：<span class="math inline">\(c_f(u,v) = c(u,v)-f(u,v)\)</span></li>
+</ul></li>
+<li><strong>（2）流量可以使其產生「回推容量」</strong>
+<ul>
+<li>因為 <span class="math inline">\(f(u,v)\)</span> 代表<strong>「u 至 v 有流量通過」</strong>
+<ul>
+<li>則<strong>「v 至 u」</strong>可將通過的流量<strong>回推</strong>，進而產生<strong>容量</strong></li>
+</ul></li>
+<li>殘餘容量：<span class="math inline">\(c_f(v,u) = f(u,v) = -f(v,u)\)</span></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>「流量網路」的邊在「殘餘網路」中<strong>至多會被拆成兩條邊</strong>
+<ul>
+<li><span class="math inline">\(∣E_f∣ \leq 2∣E∣\)</span></li>
+</ul></li>
+</ul></li>
+<li>假設在 <span class="math inline">\(G_f\)</span> 中，<strong>從「源點」至「匯點」存在一條路徑</strong>
+<ul>
+<li><strong>代表「源點」至「匯點」尚有容量</strong></li>
+<li>假設其路徑中可以產生最小流量 <span class="math inline">\(f&#39;\)</span>
+<ul>
+<li>原流量網路的流量可增加為 <span class="math inline">\(f+f&#39;\)</span></li>
+</ul></li>
+</ul></li>
+</ul>
+<blockquote>
+<p><strong>增廣路徑定裡</strong></p>
+<ul>
+<li><strong>「一個網路達到最大流」</strong><span class="math inline">\(\Leftrightarrow\)</span> <strong>「其殘餘網路中『源點』至『匯點』沒有路徑」</strong></li>
+</ul>
+</blockquote>
 <h3 id="max-flow-problem">Max flow problem</h3>
 <ul>
 <li>Input
@@ -648,40 +707,55 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 </ul></li>
 <li>Output
 <ul>
-<li>此網路的最大流量（源頭最大能流出多少水量至出口）</li>
+<li>此網路的最大流量（源點最大流至匯點的水量）</li>
 </ul></li>
 </ul>
 <figure>
 <img src="\willywangkaa\images\flownetwork.png" alt="flownetwork"><figcaption>flownetwork</figcaption>
 </figure>
 <h4 id="ford-fulkerson-algorithm">Ford-Fulkerson algorithm</h4>
+<p>步驟</p>
 <ol type="1">
-<li>使用<strong>「Residual network」</strong>表示法</li>
-<li>自 s → t 找一條路徑 P，令 a 為 P 上最小的權重
+<li>先將「流量網路」G 轉換為「殘餘網路」<span class="math inline">\(G_f\)</span></li>
+<li>在 <span class="math inline">\(G_f\)</span> 中自 s → t 找一條增廣路徑 p（隨便的方法找一條路徑，如：DFS）
 <ul>
-<li><span class="math inline">\(\overrightarrow{P}\)</span> 上的每一邊 ← 權重 <strong>- a</strong></li>
-<li><span class="math inline">\(\overleftarrow{P}\)</span> 上的每一邊 ← 權重 <strong>+ a</strong></li>
-<li>重複此操作直到找不到最小的權重 a 可以做上述動作。</li>
+<li>令 f 為 p 上最小的權重
+<ul>
+<li><span class="math inline">\(\overrightarrow{P}\)</span> 上每一邊的容量減少 f</li>
+<li><span class="math inline">\(\overleftarrow{P}\)</span>上的每一邊容量增加 f<strong>（回推容量）</strong></li>
 </ul></li>
-<li>將最後指向 S 的邊之權重和輸出</li>
+</ul></li>
+<li>重複第二步直到找不到增廣路徑 p</li>
+<li>指向頂點 s 邊，其容量總和即為「最大流量」</li>
 </ol>
+<ul>
+<li>Algorithm</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Graph <span class="title">fordfulkerson</span><span class="params">(Graph G, node s, node t)</span> </span>&#123;</span><br><span class="line">    G_f = residualnetwork(G);</span><br><span class="line">    path = exist_path(G_f,s,t);</span><br><span class="line">    <span class="keyword">while</span>(path) &#123;</span><br><span class="line">        G_f = add_argumenting_path(G_f, path);</span><br><span class="line">        path = exist_path(G_f,s,t);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> G_f;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>Time complexity
 <ul>
-<li><span class="math inline">\(O(|f^＊|\cdot E)\)</span>
+<li><span class="math inline">\(O(∣f^＊∣\cdot E)\)</span>
 <ul>
-<li><span class="math inline">\(|f^＊|\)</span> 為最大流量的值</li>
+<li><span class="math inline">\(∣f^＊∣\)</span> 為最大流量</li>
 <li><strong>效能差</strong></li>
 </ul></li>
 </ul></li>
 </ul>
 <blockquote>
 <ul>
-<li><strong>如果每次在第二個步驟找到的最小流量 a 為 1</strong>
+<li><strong>每次在第二個步找到的最小流量 f 為 1</strong>
 <ul>
-<li><strong>勢必重複</strong> <span class="math inline">\(|f^＊|\)</span> <strong>回合找到最後總流量</strong></li>
+<li>每次找增廣路徑的時間複雜度為 O(∣V∣+∣E∣)</li>
+<li><strong>必重複</strong> <span class="math inline">\(∣f^＊∣\)</span> <strong>回合找到最後總流量</strong>
+<ul>
+<li><span class="math inline">\(O(∣f^＊∣\cdot(∣V∣+∣E∣)) = O(∣f^＊∣\cdot E)\)</span></li>
+</ul></li>
 </ul></li>
 </ul>
+<figure>
+<img src="\willywangkaa\images\1549795349837.png" alt="1549795349837"><figcaption>1549795349837</figcaption>
+</figure>
 </blockquote>
 <blockquote>
 <p><strong>利用「已經求取完最大流量」的 Residual network 可得到「原本流量網路」的 Minimum cut</strong></p>
@@ -700,37 +774,263 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 <p>則 (S, T) 是原本「Flow network」的「Minimum cut」</p>
 </blockquote>
 <h4 id="edmond-karp-algorithm">Edmond-Karp algorithm</h4>
+<p>步驟</p>
 <ol type="1">
-<li>使用<strong>「Residual network」</strong>表示法</li>
-<li>自 s 做 <strong>Breadth first search</strong> ，<strong>當找到 t 時建立一條 s → t 路徑 P，令 a 為 P 上最小的權重</strong>
+<li>先將「流量網路」G 轉換為「殘餘網路」<span class="math inline">\(G_f\)</span></li>
+<li>自 s 作「<strong>Breadth first search</strong>」至 t 找到路徑 p
 <ul>
-<li><span class="math inline">\(\overrightarrow{P}\)</span> 上的每一邊 ← 權重 <strong>- a</strong></li>
-<li><span class="math inline">\(\overleftarrow{P}\)</span> 上的每一邊 ← 權重 <strong>+ a</strong></li>
-<li>重複此操作直到找不到最小的權重 a 可以做上述動作。</li>
+<li>令 f 為 p 上最小的權重
+<ul>
+<li><span class="math inline">\(\overrightarrow{P}\)</span> 上每一邊的容量減少 f</li>
+<li><span class="math inline">\(\overleftarrow{P}\)</span>上的每一邊容量增加 f<strong>（回推容量）</strong></li>
 </ul></li>
-<li>將最後指向 S 的邊之權重和輸出</li>
+</ul></li>
+<li>重複第二步直到找不到增廣路徑 p</li>
+<li>指向頂點 s 邊，其容量總和即為「最大流量」</li>
 </ol>
 <ul>
 <li>Time complexity
 <ul>
-<li><span class="math inline">\(O(∣V∣∣E∣^2)\)</span>：<strong>只和網路的大小有關</strong></li>
+<li>以「Breadth first search」找最多 O(∣V∣∣E∣) 條「增廣路徑」
+<ul>
+<li>「鄰接矩陣」：<span class="math inline">\(O(∣V∣^2∣V∣∣E∣) = O(∣V∣^3∣E∣)\)</span></li>
+<li>「鄰接串列」：<span class="math inline">\(O((∣V∣+∣E∣)(∣V∣∣E∣)) = O(∣V∣∣E∣^2)\)</span></li>
+</ul></li>
 </ul></li>
 </ul>
-<p>時間複雜度證明：</p>
-<ol type="1">
-<li>證明<strong>最短增廣路徑</strong>（Argument path）的長度「非遞減」（利用反證法）
+<h5 id="時間複雜度證明">時間複雜度證明</h5>
+<p><strong>證明最短增廣路徑（Argument path）的長度「非遞減」（利用反證法）</strong></p>
+<blockquote>
+<p><span class="math inline">\(G_f = (V, E_f)\)</span>：<strong>某次增廣前的「殘餘網路圖」</strong></p>
+<p><span class="math inline">\(G_{f&#39;} = (V, E_{f&#39;})\)</span>：<strong>某次增廣後的「殘餘網路圖」</strong></p>
 <ul>
-<li>設 <span class="math inline">\(\delta_f (s, x)\)</span> 為源點 s 到 x 增廣前在 <span class="math inline">\(G_f\)</span> 中的最短路，令 v 頂點是在<strong>某次增廣後</strong> <span class="math inline">\(\delta_{f&#39;} (s, v)\)</span> 長度變小的頂點（$G_{f’} $ 中的最短路徑）
+<li><span class="math inline">\(\forall x \in V\)</span>
 <ul>
-<li>設 <span class="math inline">\(\delta_{f&#39;} (s, x)\)</span> 表示源點到 x 增廣後在 <span class="math inline">\(G_{f&#39;}\)</span> 中的最短路徑</li>
-<li>所以上述可以寫為 <span class="math inline">\(\delta_{f&#39;}(s,v) &lt; \delta_f (s,v)\)</span></li>
+<li><span class="math inline">\(\delta_f (s, x)\)</span> 為源點 s 到 x 頂點在 <span class="math inline">\(G_f\)</span> <strong>最短路徑</strong></li>
+<li><span class="math inline">\(\delta_{f&#39;} (s, x)\)</span> 為源點 s 到 x 頂點在 <span class="math inline">\(G_f\)</span> <strong>最短路徑</strong></li>
 </ul></li>
-<li>令 u 頂點為 v 增廣後在 <span class="math inline">\(G_{f&#39;}\)</span> 最短路徑中的前一個節點
+</ul>
+</blockquote>
+<ol type="1">
+<li>假設 v 頂點是「在某次增廣後 <span class="math inline">\(\delta_{f} (s, v)\)</span> 長度變小的頂點」
 <ul>
-<li>上述可以表示成 <span class="math inline">\(\delta_{f&#39;}(s,v)\)</span></li>
+<li><span class="math inline">\(\Rightarrow \delta_f(s,v) &gt; \delta_{f&#39;}(s,v)\)</span></li>
+</ul></li>
+<li>假設 u 頂點為最短路徑 <span class="math inline">\(\delta_{f&#39;}(s,v)\)</span> 裡 v 的前一個頂點（<strong>在該次增廣後其最短路徑有可能變長或不變</strong>）
+<ul>
+<li><span class="math inline">\(\Rightarrow \delta_{f&#39;}(s,v) = \delta_{f&#39;}(s,u)+1\)</span></li>
+<li>因為「增廣前 s 至 u 的最短路徑」≦「增廣後 s 至 u 的最短路徑」
+<ul>
+<li>$<em>f(s,u) </em>{f’}(s,u) $
+<ul>
+<li>則 <span class="math inline">\(\Rightarrow \delta_f(s,u)+1 \leq \delta_{f&#39;}(s,u)+1 = \delta_{f&#39;}(s,v) &lt; \delta_f(s,v)\\ \Rightarrow \delta_f(s,v)&gt; \delta_f(s,u)+1 \;......（1）\)</span></li>
+</ul></li>
+<li>如果 <span class="math inline">\((u,v) \in E_f\)</span>
+<ul>
+<li>由於三角定裡則「s 至 v 的最短路徑」必小於等於「s 至 u 的最短路徑」加上 (u,v) 邊
+<ul>
+<li><span class="math inline">\(\Rightarrow \delta_f(s,v) \leq \delta(s,u)+1\)</span></li>
+</ul></li>
+</ul></li>
+<li>因為（1）則 <span class="math inline">\((u,v)\notin E_f\)</span></li>
+</ul></li>
+</ul></li>
+<li>因為 <span class="math inline">\((u,v) \in E_{f&#39;}\)</span> 且 <span class="math inline">\((u,v) \notin E_f\)</span>
+<ul>
+<li>所以可以知道<strong>「此次增廣必經過 (v, u)」</strong>
+<ul>
+<li>則「s 至 u 的最短路徑」等於「s 至 v 的最短路徑」+ 1
+<ul>
+<li><span class="math inline">\(\Rightarrow \delta_f(s,u) = \delta_f(s,v)+1 \;.....（2）\)</span></li>
+</ul></li>
+</ul></li>
+<li>將（2）帶入（1）中
+<ul>
+<li>$_f(s,v) &gt; (_f(s,v) + 1)+1 $（矛盾）</li>
+</ul></li>
+</ul></li>
+<li>所以 v 頂點不存在，證明<strong>「最短增廣路徑」長度非遞減</strong></li>
+</ol>
+<p><strong>證明增廣次數為 O(∣V∣∣E∣)</strong></p>
+<blockquote>
+<ul>
+<li>在一次增廣中
+<ul>
+<li><strong>定義「Critical edge」為該增廣路徑中容量最小的邊（</strong>若有多條取其一即可）</li>
+</ul></li>
+</ul>
+</blockquote>
+<ol type="1">
+<li>假設 (u,v) 為 k-th 增廣中的「Critical edge」
+<ul>
+<li>則 k-th 增廣後 <span class="math inline">\((u,v) \notin E_{f&#39;}\)</span></li>
+<li>若在 k-th 增廣之後的 i-th 增廣後 (u,v) 再度出現（i &gt; k）
+<ul>
+<li>則 i-th 增廣必定沿著 (u,v) 進行增廣</li>
+</ul></li>
+</ul></li>
+<li>對 k-th 與 i-th 進行討論
+<ul>
+<li>在 k-th 增廣前，存在 <span class="math inline">\(\delta_{f^{作 \;k–th \; 之前}}(s,v)+1 = \delta_{f^{作 \;k–th \; 之前}}(s,u)\)</span></li>
+<li>在 i-th 增廣前，存在 <span class="math inline">\(\delta_{f^{作 \;i–th \; 之前}}(s,u)+1 = \delta_{f^{作 \;i–th \; 之前}}(s,v)\)</span></li>
+<li>然而已知「最短增廣路徑長度非遞減」
+<ul>
+<li>故 <span class="math inline">\(\delta_{f^{作 \;k–th \; 之前}}(s,v)+2 \leq \delta_{f^{作 \;i–th \; 之前}}(s,u)\)</span></li>
+</ul></li>
+</ul></li>
+<li>最短增廣路的長度不超過 ∣V∣-1
+<ul>
+<li>因為一條邊為「Critical edge」時，其增廣路徑會不斷累加 2
+<ul>
+<li>故一條邊成為「Critical edge」的次數不超過 <span class="math inline">\(\frac{∣V∣-1}{2}\)</span></li>
+</ul></li>
+<li>每次增廣最少有一條「Critical edge」
+<ul>
+<li>由定義可以知道 <span class="math inline">\(∣E_f∣ \leq 2∣E∣\)</span></li>
+</ul></li>
+<li>所以最差的情況就是每條邊都被選成為增廣路徑
+<ul>
+<li>$O(2∣E∣) =O(∣V∣∣E∣) $</li>
 </ul></li>
 </ul></li>
 </ol>
+<h4 id="dinic-algorithm">Dinic algorithm</h4>
+<p>「Shortest augmenting path algorithm」改良版，作一次可以找到所有「一樣長的最短擴充路徑」</p>
+<p>步驟</p>
+<ol type="1">
+<li>計算「剩餘網路」各點到源點（匯點）的最短距離</li>
+<li>建立「容許網路」（Admissible network）
+<ul>
+<li>尋找「阻塞流」（Blocking flow），並擴充其流量</li>
+</ul></li>
+<li>重覆步驟 1、2 最多 V-1 次，直到無法擴充流量</li>
+</ol>
+<blockquote>
+<ul>
+<li>在「剩餘網路」中
+<ul>
+<li>以阻塞流擴充流量，就斷絕了所有「一樣長的最短擴充路徑」</li>
+</ul></li>
+<li>在「容許網路」中
+<ul>
+<li>所有「由源點到匯點的最短路徑」都被阻塞
+<ul>
+<li>在「剩餘網路」中，在「Edmond-Karp algorithm」中已證明源點到匯點的最短距離會增加</li>
+</ul></li>
+</ul></li>
+<li>「擴充路徑」的長度範圍是 1 到 V-1 （Simple path）
+<ul>
+<li>故最多找 V-1 次阻塞流</li>
+</ul></li>
+</ul>
+</blockquote>
+<ul>
+<li>時間複雜度
+<ul>
+<li>O(V²E)
+<ul>
+<li>找一個阻塞流：O(VE)</li>
+<li>最多找：O(V)</li>
+</ul></li>
+</ul></li>
+</ul>
+<h5 id="容許網路">容許網路</h5>
+<p>在「剩餘網路」上以源點（匯點）作為起點，計算源點（匯點）到每一點的<strong>最短距離</strong></p>
+<ul>
+<li>在剩餘網路中
+<ul>
+<li>一條由<strong>源點往匯點方向</strong>的邊
+<ul>
+<li>若兩其端點最短距離相差一
+<ul>
+<li>稱作「容許邊」（Admissible edge）</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>所有容許邊，整體視作一張圖
+<ul>
+<li>稱作「容許網路」（Admissible Network）</li>
+</ul></li>
+</ul>
+<p>「流量網路」G = (V,E)</p>
+<figure>
+<img src="\willywangkaa\images\1549793031130.png" alt="1549793031130"><figcaption>1549793031130</figcaption>
+</figure>
+<p>其「剩餘網路」<span class="math inline">\(G_f = (V, E_f)\)</span></p>
+<figure>
+<img src="\willywangkaa\images\1549793298592.png" alt="1549793298592"><figcaption>1549793298592</figcaption>
+</figure>
+<p>一種由源點開始的「容許網路」</p>
+<figure>
+<img src="\willywangkaa\images\1549793355647.png" alt="1549793355647"><figcaption>1549793355647</figcaption>
+</figure>
+<p>一種由匯點開始的「容許網路」</p>
+<figure>
+<img src="\willywangkaa\images\1549793388148.png" alt="1549793388148"><figcaption>1549793388148</figcaption>
+</figure>
+<blockquote>
+<ul>
+<li>容許網路
+<ul>
+<li>為有向無環圖（DAG）或稱作分層圖（Level graph）
+<ul>
+<li>容許網路可以畫成一層一層的模樣，只有相鄰的層有邊</li>
+</ul></li>
+<li>任意一條由源點到匯點的路徑
+<ul>
+<li>為最短擴充路徑</li>
+</ul></li>
+<li>藉由容許網路，可以迅速找到所有「一樣長的最短擴充路徑」</li>
+</ul></li>
+</ul>
+<p>容許網路就是剩餘網路的「最短路徑圖」</p>
+<figure>
+<img src="\willywangkaa\images\1549793497499.png" alt="1549793497499"><figcaption>1549793497499</figcaption>
+</figure>
+<p>（左圖為源點開始的「容許網路」分層圖；右圖為匯點開始的「容許網路」分層圖）</p>
+</blockquote>
+<h5 id="阻塞流">阻塞流</h5>
+<p>在容許網路中一個源點到匯點的流，無法再擴充流量稱作「阻塞流」（通常會出現許多種選擇，不必選其最大流）</p>
+<ol type="1">
+<li>逐次建立的「容許網路」中
+<ul>
+<li><strong>會找到所有「一樣長的最短擴充路徑」</strong></li>
+</ul></li>
+<li>在該「容許網路」中<strong>讓擴充的流量到達瓶頸</strong>
+<ul>
+<li>整體形成「阻塞流」</li>
+</ul></li>
+</ol>
+<figure>
+<img src="\willywangkaa\images\1549794137394.png" alt="1549794137394"><figcaption>1549794137394</figcaption>
+</figure>
+<blockquote>
+<ul>
+<li>容許網路上尋找最短擴充路徑
+<ul>
+<li>不必作溯洄沖減（溯洄沖減會增加路徑長度，最後得到的不是最短擴充路徑）</li>
+</ul></li>
+<li>源點隨意往匯點走，若遇到死胡同，就重頭開始走，下次避免再走到死胡同
+<ul>
+<li><strong>改由匯點隨意往源點走，就不會遇到死胡同</strong></li>
+</ul></li>
+<li>若順利走到匯點，就形成一條最短擴充路徑，並且擴充流量
+<ul>
+<li><strong>一條最短擴充路徑</strong>
+<ul>
+<li>至少有<strong>一條邊</strong>是瓶頸</li>
+</ul></li>
+</ul></li>
+<li>容許網路最多只有 E 條邊能作為瓶頸
+<ul>
+<li>所以一個阻塞流最多只有 E 條最短擴充路徑</li>
+<li>從源點走到匯點並擴充流量需時 O(V)
+<ul>
+<li>最多有 O(E) 條最短擴充路徑，所以找出一個阻塞流的時間複雜度為 O(VE)</li>
+</ul></li>
+</ul></li>
+</ul>
+</blockquote>
 <h4 id="補充例題">補充例題</h4>
 <p>Example（1）（P.4-80 ex20）</p>
 <p><strong>Escape problem</strong></p>
@@ -1369,7 +1669,7 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#graph-algorithm"><span class="nav-number">1.</span> <span class="nav-text">Graph algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#depth-first-search"><span class="nav-number">1.1.</span> <span class="nav-text">Depth first search</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#應用"><span class="nav-number">1.1.1.</span> <span class="nav-text">應用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dfs-tree---edge"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">DFS tree - Edge</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dfs-tree---acyclic"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">DFS tree - Acyclic</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#minimum-spainning-tree"><span class="nav-number">1.2.</span> <span class="nav-text">Minimum spainning tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#問題探討"><span class="nav-number">1.2.1.</span> <span class="nav-text">問題探討</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#kruskals-algorithm-的正確性"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">Kruskal’s algorithm 的正確性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flow-network"><span class="nav-number">1.3.</span> <span class="nav-text">Flow network</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#max-flow-problem"><span class="nav-number">1.3.1.</span> <span class="nav-text">Max flow problem</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ford-fulkerson-algorithm"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">Ford-Fulkerson algorithm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#edmond-karp-algorithm"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">Edmond-Karp algorithm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#補充例題"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">補充例題</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它問題"><span class="nav-number">1.4.</span> <span class="nav-text">其它問題</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#補充例題-1"><span class="nav-number">2.</span> <span class="nav-text">補充例題</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#graph-algorithm"><span class="nav-number">1.</span> <span class="nav-text">Graph algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#depth-first-search"><span class="nav-number">1.1.</span> <span class="nav-text">Depth first search</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#應用"><span class="nav-number">1.1.1.</span> <span class="nav-text">應用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dfs-tree---edge"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">DFS tree - Edge</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dfs-tree---acyclic"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">DFS tree - Acyclic</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#minimum-spainning-tree"><span class="nav-number">1.2.</span> <span class="nav-text">Minimum spainning tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#問題探討"><span class="nav-number">1.2.1.</span> <span class="nav-text">問題探討</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#kruskals-algorithm-的正確性"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">Kruskal’s algorithm 的正確性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flow-network"><span class="nav-number">1.3.</span> <span class="nav-text">Flow network</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#max-flow-problem"><span class="nav-number">1.3.1.</span> <span class="nav-text">Max flow problem</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ford-fulkerson-algorithm"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">Ford-Fulkerson algorithm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#edmond-karp-algorithm"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">Edmond-Karp algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#時間複雜度證明"><span class="nav-number">1.3.1.2.1.</span> <span class="nav-text">時間複雜度證明</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dinic-algorithm"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">Dinic algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#容許網路"><span class="nav-number">1.3.1.3.1.</span> <span class="nav-text">容許網路</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#阻塞流"><span class="nav-number">1.3.1.3.2.</span> <span class="nav-text">阻塞流</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#補充例題"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">補充例題</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它問題"><span class="nav-number">1.4.</span> <span class="nav-text">其它問題</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#補充例題-1"><span class="nav-number">2.</span> <span class="nav-text">補充例題</span></a></li></ol></div>
             
 
           </div>
