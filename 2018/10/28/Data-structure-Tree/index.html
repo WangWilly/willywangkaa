@@ -132,7 +132,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/threadbt.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/threadbthead.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/extendbinarytree.png">
-<meta property="og:updated_time" content="2019-02-03T11:20:42.932Z">
+<meta property="og:updated_time" content="2019-02-11T08:18:40.532Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Data structure - Tree">
 <meta name="twitter:description" content="Binary tree 節點數量計算  二元樹之第 i 階之節點個數為 \(2^{i-1}\)，i ≧ 1 在高度為 k 的二元樹，全部節點之個數為 \(2^k-1\)，k ≧ 1 對於任一非空二原樹 T ，如果令 Leaf 節點的個數為 \(n_0\)， 而 Degree 為 2 的節點的個數為 \(n_2\)，則 \(n_0 = n_2+1\)  \[ 令\; n_1 代表 \">
@@ -382,7 +382,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-02-03T19:20:42+08:00">2019-02-03</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-11T16:18:40+08:00">2019-02-11</time>
             
           </span>
 
@@ -814,6 +814,144 @@ E = I + 2n
 <li>因為對「Min-heap」作了 n-1 次 Del_min 與 Insert(w, t) <span class="math inline">\(\Rightarrow O(n\log n)\)</span></li>
 </ul></li>
 </ul>
+<h1 id="infixprefixpostfix-expression">Infix、Prefix、Postfix expression</h1>
+<p><strong>Infix to postfix</strong></p>
+<ul>
+<li>優先權表</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Operator</th>
+<th style="text-align: center;">優先權</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">在「Stack」<strong>外</strong>的 “(”</td>
+<td style="text-align: center;"><strong>高</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">負號</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">在「Stack」<strong>外</strong>的 “^” （左結合）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">在「Stack」<strong>內</strong>的 “^”（左結合）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">&quot;*“、”/&quot;</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">“+”、“-”</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">“＞”、“＜”、“==”、“≧”、“≦”</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Not</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">AND、OR</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">在「Stack」<strong>外</strong>的 “=”（Assign）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">在「Stack」<strong>內</strong>的 “=”（Assign）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">在「Stack」<strong>內</strong>的 “(”</td>
+<td style="text-align: center;"><strong>低</strong></td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">infix_to_postfix</span><span class="params">(<span class="built_in">string</span> input)</span> </span>&#123;</span><br><span class="line">    output = <span class="keyword">new</span> <span class="built_in">string</span>;</span><br><span class="line">    s      = <span class="keyword">new</span> <span class="built_in">stack</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(x = Next_token(input)) &#123;</span><br><span class="line">        <span class="keyword">if</span>(is_operand(x)) &#123;</span><br><span class="line">            output.append(x);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(x==<span class="string">")"</span>) &#123;</span><br><span class="line">                <span class="keyword">do</span>&#123;</span><br><span class="line">                    tmp = pop(s);</span><br><span class="line">                    <span class="keyword">if</span>(tmp!=<span class="string">"("</span>) &#123;</span><br><span class="line">                        output.append(tmp);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">while</span>(tmp!=<span class="string">"("</span>)</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">switch</span>( compare_priority(x,s.top()) ) &#123;</span><br><span class="line">                    <span class="keyword">case</span> great:</span><br><span class="line">                        push(x,s);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> lessandequal:</span><br><span class="line">                        <span class="keyword">do</span>&#123;</span><br><span class="line">                            tmp = pop(s);</span><br><span class="line">                            output.append(tmp);</span><br><span class="line">                        &#125; <span class="keyword">while</span>(comparepriority(tmp,s.top())==great)</span><br><span class="line">                        push(x,s);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(!isempty(s)) &#123;</span><br><span class="line">        output.append(pop(s));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> output;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Infix to postfix</strong></p>
+<ul>
+<li>優先權表</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Operator</th>
+<th style="text-align: center;">優先權</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">在「Stack」<strong>外</strong>的 “)”</td>
+<td style="text-align: center;"><strong>高</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">負號</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">在「Stack」<strong>外</strong>的 “^” （左結合）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">在「Stack」<strong>內</strong>的 “^”（左結合）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">&quot;*“、”/&quot;</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">“+”、“-”</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">“＞”、“＜”、“==”、“≧”、“≦”</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Not</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">AND、OR</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">在「Stack」<strong>外</strong>的 “=”（Assign）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">在「Stack」<strong>內</strong>的 “=”（Assign）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">在「Stack」<strong>內</strong>的 “)”</td>
+<td style="text-align: center;"><strong>低</strong></td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">infix_to_prefix</span><span class="params">(<span class="built_in">string</span> input)</span> </span>&#123;</span><br><span class="line">    output  = <span class="keyword">new</span> <span class="built_in">string</span>;</span><br><span class="line">    a       = <span class="keyword">new</span> <span class="built_in">stack</span>;</span><br><span class="line">    b       = <span class="keyword">new</span> <span class="built_in">stack</span>;</span><br><span class="line">    outputs = <span class="keyword">new</span> <span class="built_in">stack</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(x = Next_token(input)) &#123;</span><br><span class="line">        push(x,a);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(x = pop(a)) &#123;</span><br><span class="line">        <span class="keyword">if</span>(is_operand(x)) &#123;</span><br><span class="line">            push(x,outputs);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(x==<span class="string">"("</span>) &#123;</span><br><span class="line">                <span class="keyword">do</span>&#123;</span><br><span class="line">                    tmp = pop(b);</span><br><span class="line">                    <span class="keyword">if</span>(tmp!=<span class="string">")"</span>) &#123;</span><br><span class="line">                        push(tmp,outputs);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">while</span>(tmp!=<span class="string">")"</span>)</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">switch</span>( compare_priority(x,b.top()) ) &#123;</span><br><span class="line">                    <span class="keyword">case</span> great:</span><br><span class="line">                        push(x,b);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> lessandequal:</span><br><span class="line">                        <span class="keyword">do</span>&#123;</span><br><span class="line">                            tmp = pop(b);</span><br><span class="line">                            push(tmp,outputs);</span><br><span class="line">                        &#125; <span class="keyword">while</span>(comparepriority(tmp,b.top())==great)</span><br><span class="line">                        push(x,b);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(!isempty(b)) &#123;</span><br><span class="line">        push(pop(b),outputs);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(!isempty(outputs)) &#123;</span><br><span class="line">        output.append(pop(outputs));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> output;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Postfix evaluation algorithm</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">evaluation</span><span class="params">(<span class="built_in">string</span> postfix)</span> </span>&#123;</span><br><span class="line">    output = <span class="keyword">new</span> <span class="keyword">int</span>;</span><br><span class="line">    s      = <span class="keyword">new</span> <span class="built_in">stack</span>;</span><br><span class="line">    <span class="keyword">while</span>(x=next_token(postfix)) &#123;</span><br><span class="line">        <span class="keyword">if</span>(isoperand(x)) &#123;</span><br><span class="line">            push(x,s);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(is_unary(x)) &#123;</span><br><span class="line">                tmp = pop(s);</span><br><span class="line">                push(s, <span class="keyword">operator</span>(tmp,x));</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                tmp1 = pop(s);</span><br><span class="line">                tmp2 = pop(s);</span><br><span class="line">                push(s, <span class="keyword">operator</span>(tmp1,tmp2,x));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> pop(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>求「Stack size」至少需要多少？</p>
+<ol type="1">
+<li>Infix to postfix：a × (b+c-d)/(e*f)</li>
+<li>Postfix to value：ab+c*de-/f+</li>
+</ol>
+<p>（1）：4</p>
+<p>（2）：3</p>
+</blockquote>
 
       
     </div>
@@ -1205,7 +1343,7 @@ E = I + 2n
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#binary-tree"><span class="nav-number">1.</span> <span class="nav-text">Binary tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#節點數量計算"><span class="nav-number">1.1.</span> <span class="nav-text">節點數量計算</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#strict-binary-tree"><span class="nav-number">2.</span> <span class="nav-text">Strict binary tree</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tree-travesal"><span class="nav-number">3.</span> <span class="nav-text">Tree travesal</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#應用"><span class="nav-number">3.1.</span> <span class="nav-text">應用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#binary-search-tree"><span class="nav-number">4.</span> <span class="nav-text">Binary search tree</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#thread-binary-tree"><span class="nav-number">5.</span> <span class="nav-text">Thread binary tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#head-node"><span class="nav-number">5.1.</span> <span class="nav-text">Head node</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#extended-binary-tree"><span class="nav-number">6.</span> <span class="nav-text">Extended binary tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#theorem"><span class="nav-number">6.1.</span> <span class="nav-text">Theorem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#weighted-external-path-length"><span class="nav-number">6.2.</span> <span class="nav-text">Weighted external path length</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#minimum-wepl"><span class="nav-number">6.2.1.</span> <span class="nav-text">Minimum WEPL</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#binary-tree"><span class="nav-number">1.</span> <span class="nav-text">Binary tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#節點數量計算"><span class="nav-number">1.1.</span> <span class="nav-text">節點數量計算</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#strict-binary-tree"><span class="nav-number">2.</span> <span class="nav-text">Strict binary tree</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tree-travesal"><span class="nav-number">3.</span> <span class="nav-text">Tree travesal</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#應用"><span class="nav-number">3.1.</span> <span class="nav-text">應用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#binary-search-tree"><span class="nav-number">4.</span> <span class="nav-text">Binary search tree</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#thread-binary-tree"><span class="nav-number">5.</span> <span class="nav-text">Thread binary tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#head-node"><span class="nav-number">5.1.</span> <span class="nav-text">Head node</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#extended-binary-tree"><span class="nav-number">6.</span> <span class="nav-text">Extended binary tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#theorem"><span class="nav-number">6.1.</span> <span class="nav-text">Theorem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#weighted-external-path-length"><span class="nav-number">6.2.</span> <span class="nav-text">Weighted external path length</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#minimum-wepl"><span class="nav-number">6.2.1.</span> <span class="nav-text">Minimum WEPL</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#infixprefixpostfix-expression"><span class="nav-number">7.</span> <span class="nav-text">Infix、Prefix、Postfix expression</span></a></li></ol></div>
             
 
           </div>
