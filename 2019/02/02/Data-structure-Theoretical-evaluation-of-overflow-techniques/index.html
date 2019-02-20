@@ -111,7 +111,7 @@
 <meta property="og:site_name" content="WillyWangkaa">
 <meta property="og:description" content="Data structure - Theoretical evaluation of overflow techniques（未完成） The basic of hashing 資料儲存機制，當資料 x 要在此結構存取時，需經過「Hashing function」求出「Hashing address」（H(x)），再以「Hashing address」視為此資料在此結構的定位點  「Has">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2019-02-02T12:18:58.751Z">
+<meta property="og:updated_time" content="2019-02-12T07:59:16.046Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Data structure - Theoretical evaluation of overflow techniques">
 <meta name="twitter:description" content="Data structure - Theoretical evaluation of overflow techniques（未完成） The basic of hashing 資料儲存機制，當資料 x 要在此結構存取時，需經過「Hashing function」求出「Hashing address」（H(x)），再以「Hashing address」視為此資料在此結構的定位點  「Has">
@@ -360,7 +360,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-02-02T20:18:58+08:00">2019-02-02</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-12T15:59:16+08:00">2019-02-12</time>
             
           </span>
 
@@ -565,11 +565,9 @@
 <li><strong>恰兩次</strong>探測找到可用空間的機率
 <ul>
 <li><span class="math inline">\(\alpha \times(1-\alpha)\)</span></li>
+<li><strong>恰 K 次</strong>探測找到可用空間的機率</li>
 </ul></li>
-<li><strong>恰 K 次</strong>探測找到可用空間的機率
-<ul>
 <li><span class="math inline">\(\alpha^{k-1}(1-\alpha)\)</span></li>
-</ul></li>
 </ul></li>
 <li><strong>探測失敗</strong>（<span class="math inline">\(U(\alpha)\)</span>）
 <ul>
@@ -612,6 +610,46 @@
 <li>每個串列的預期大小為 <span class="math inline">\(\frac{n-1}{m}\)</span></li>
 </ul></li>
 <li></li>
+</ul></li>
+</ul>
+<h1 id="補充試題">補充試題</h1>
+<p>Example（105 交通大學資料結構與演算法）</p>
+<p>Given a hash table of size m, please answer following questions.</p>
+<ul>
+<li>Under the uniform hashing assumption, if we use the hash table with open addressing to hash 3 keys, the probability that the third inserted key needs exactly three probes before being inserted into the table ts exactly
+<ul>
+<li>（A）<span class="math inline">\(\frac 2m\)</span></li>
+<li>（B）<span class="math inline">\(\frac 2{m-1}\)</span></li>
+<li><strong>（C）</strong><span class="math inline">\(\frac 2{m(m-1)}\)</span></li>
+<li>（D）<span class="math inline">\(\frac 1{m-1}\)</span></li>
+<li>（E）<span class="math inline">\(\frac 1{m(m-1)}\)</span></li>
+</ul></li>
+</ul>
+<blockquote>
+<ul>
+<li>第三個鍵值插入時
+<ul>
+<li>碰撞到兩個已插入的機率： <span class="math inline">\(\frac 2{m}\)</span></li>
+<li>假設不會再撞到第一次碰撞的值，作探測後再次碰撞的機率： <span class="math inline">\(\frac 1{m-1}\)</span></li>
+</ul></li>
+</ul>
+</blockquote>
+<ul>
+<li>We use the hash table with open addressing to hash n keys, where n is less than m. Under the uniform hashing assumption, the expected cost to insert another element into the table is at most
+<ul>
+<li>（A）<span class="math inline">\(1+\frac nm\)</span></li>
+<li><strong>（B）</strong><span class="math inline">\(\frac 1{1-\frac nm}\)</span></li>
+<li>（C）<span class="math inline">\(\frac nm\)</span></li>
+<li>（D）<span class="math inline">\(\frac 1{\frac nm}\)</span></li>
+<li>（E）<span class="math inline">\(1-\frac nm\)</span></li>
+</ul></li>
+<li>After hashing n keys into the hash table that uses chaining to handle collisions, we hash two new keys <span class="math inline">\(k_1\)</span> and <span class="math inline">\(k_2\)</span>. Under the simple uniform hashing assumption, the probability that <span class="math inline">\(k_1\)</span> and <span class="math inline">\(k_2\)</span> are hashed into the same table location is exactly
+<ul>
+<li>（A）<span class="math inline">\(\frac 1n​\)</span></li>
+<li><strong>（B）</strong><span class="math inline">\(\frac 1m\)</span></li>
+<li>（C）<span class="math inline">\(\frac 1{nm}\)</span></li>
+<li>（D）<span class="math inline">\(\frac nm\)</span></li>
+<li>（E）<span class="math inline">\(\frac mn\)</span></li>
 </ul></li>
 </ul>
 
@@ -1005,7 +1043,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#data-structure---theoretical-evaluation-of-overflow-techniques未完成"><span class="nav-number">1.</span> <span class="nav-text">Data structure - Theoretical evaluation of overflow techniques（未完成）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#the-basic-of-hashing"><span class="nav-number">1.1.</span> <span class="nav-text">The basic of hashing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#analysis-of-linear-probing"><span class="nav-number">1.1.1.</span> <span class="nav-text">Analysis of linear probing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#analysis-of-quadratic-probing"><span class="nav-number">1.1.2.</span> <span class="nav-text">Analysis of quadratic probing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#analysis-of-chaining"><span class="nav-number">1.1.3.</span> <span class="nav-text">Analysis of chaining</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#data-structure---theoretical-evaluation-of-overflow-techniques未完成"><span class="nav-number">1.</span> <span class="nav-text">Data structure - Theoretical evaluation of overflow techniques（未完成）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#the-basic-of-hashing"><span class="nav-number">1.1.</span> <span class="nav-text">The basic of hashing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#analysis-of-linear-probing"><span class="nav-number">1.1.1.</span> <span class="nav-text">Analysis of linear probing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#analysis-of-quadratic-probing"><span class="nav-number">1.1.2.</span> <span class="nav-text">Analysis of quadratic probing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#analysis-of-chaining"><span class="nav-number">1.1.3.</span> <span class="nav-text">Analysis of chaining</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#補充試題"><span class="nav-number">2.</span> <span class="nav-text">補充試題</span></a></li></ol></div>
             
 
           </div>

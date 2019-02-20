@@ -103,13 +103,13 @@
   <meta name="keywords" content="Approximation algorithm," />
 
 
-<meta name="description" content="Approximation ratio 設 A 為一個「Approximation algorithm」， OPT 為一個「Optimal algorithm」， 對於任何輸入 x ，|A(x)| ≦ |\(\alpha\) OPT(x)|，則稱 A 的「Approximation ratio」為 \(\alpha\)。 (假設處理「最小化問題」)  A(x)：以 x 為輸入產生的輸出大">
+<meta name="description" content="Approximation ratio  A ：「Approximation algorithm」、OPT ：「Optimal algorithm」  對於任何輸入 x ∣A(x)∣ ≦ \(\alpha\)∣OPT(x)∣  則稱 A 的「Approximation ratio」為 \(\alpha\)    （下方討論皆以「最小化問題」處理）   A(x)：以 x">
 <meta name="keywords" content="Approximation algorithm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Algorithm - Approximation algorithm">
 <meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/10/15/Algorithm-Approximation-algorithm/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="Approximation ratio 設 A 為一個「Approximation algorithm」， OPT 為一個「Optimal algorithm」， 對於任何輸入 x ，|A(x)| ≦ |\(\alpha\) OPT(x)|，則稱 A 的「Approximation ratio」為 \(\alpha\)。 (假設處理「最小化問題」)  A(x)：以 x 為輸入產生的輸出大">
+<meta property="og:description" content="Approximation ratio  A ：「Approximation algorithm」、OPT ：「Optimal algorithm」  對於任何輸入 x ∣A(x)∣ ≦ \(\alpha\)∣OPT(x)∣  則稱 A 的「Approximation ratio」為 \(\alpha\)    （下方討論皆以「最小化問題」處理）   A(x)：以 x">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/vertexcoverproblem.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/vertexcoverapproxi.png">
@@ -117,10 +117,10 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/EDTSPapproxi.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/triangleinequality.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/EDTSP_optimalsol.png">
-<meta property="og:updated_time" content="2018-10-15T10:49:20.936Z">
+<meta property="og:updated_time" content="2019-02-20T11:41:55.882Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithm - Approximation algorithm">
-<meta name="twitter:description" content="Approximation ratio 設 A 為一個「Approximation algorithm」， OPT 為一個「Optimal algorithm」， 對於任何輸入 x ，|A(x)| ≦ |\(\alpha\) OPT(x)|，則稱 A 的「Approximation ratio」為 \(\alpha\)。 (假設處理「最小化問題」)  A(x)：以 x 為輸入產生的輸出大">
+<meta name="twitter:description" content="Approximation ratio  A ：「Approximation algorithm」、OPT ：「Optimal algorithm」  對於任何輸入 x ∣A(x)∣ ≦ \(\alpha\)∣OPT(x)∣  則稱 A 的「Approximation ratio」為 \(\alpha\)    （下方討論皆以「最小化問題」處理）   A(x)：以 x">
 <meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/vertexcoverproblem.png">
 
 
@@ -367,7 +367,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-10-15T18:49:20+08:00">2018-10-15</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-20T19:41:55+08:00">2019-02-20</time>
             
           </span>
 
@@ -429,57 +429,90 @@
 
       
         <h1 id="approximation-ratio">Approximation ratio</h1>
-<p>設 A 為一個「Approximation algorithm」， OPT 為一個「Optimal algorithm」，</p>
-<p>對於任何輸入 x ，|A(x)| ≦ |<span class="math inline">\(\alpha\)</span> OPT(x)|，則稱 A 的「Approximation ratio」為 <span class="math inline">\(\alpha\)</span>。</p>
-<p>(<em>假設處理「最小化問題」</em>)</p>
+<ul>
+<li>A ：「Approximation algorithm」、OPT ：「Optimal algorithm」
+<ul>
+<li>對於任何輸入 x</li>
+<li>∣A(x)∣ ≦ <span class="math inline">\(\alpha\)</span>∣OPT(x)∣
+<ul>
+<li>則稱 A 的「Approximation ratio」為 <span class="math inline">\(\alpha\)</span></li>
+</ul></li>
+</ul></li>
+</ul>
+<p><strong>（下方討論皆以「最小化問題」處理）</strong></p>
 <blockquote>
-<p>A(x)：以 x 為輸入產生的輸出大小。</p>
-<p>所以「|A(x)| ≦ |<span class="math inline">\(\alpha\)</span> OPT(x)|」的意義是說<strong>「Approximation algorithm」的解不會大於最佳解的 </strong><span class="math inline">\(\alpha\)</span> <strong>倍。</strong></p>
+<ul>
+<li>A(x)：以 x 為輸入產生的輸出大小
+<ul>
+<li>∣A(x)∣ ≦ <span class="math inline">\(\alpha\)</span>∣OPT(x)∣ 的意旨
+<ul>
+<li><strong>「Approximation algorithm」的解不會大於最佳解的 </strong><span class="math inline">\(\alpha\)</span> <strong>倍</strong></li>
+</ul></li>
+</ul></li>
+</ul>
 </blockquote>
-<h2 id="approximation-algorithm-for-mimimum-vertex-cover-question">Approximation algorithm for mimimum vertex cover question</h2>
+<h2 id="approximation-algorithm-for-minimum-vertex-cover-question">Approximation algorithm for minimum vertex cover question</h2>
 <figure>
 <img src="\willywangkaa\images\vertexcoverproblem.png" alt="vertexcoverproblem"><figcaption>vertexcoverproblem</figcaption>
 </figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// Vertex cover algorithm</span><br><span class="line">// input G</span><br><span class="line"></span><br><span class="line">c  &lt;- &#123;&#125; // empty set</span><br><span class="line">E&apos; &lt;- G.E</span><br><span class="line"></span><br><span class="line">while(E&apos; != &#123;&#125;) &#123;</span><br><span class="line">	(u, v) &lt;- E&apos; // 任意 E&apos;</span><br><span class="line">	c &lt;- c \union &#123;u, v&#125;</span><br><span class="line">	將 E&apos; 所有含有 u 與 v 的邊去除</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">return c</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Vertex cover algorithm</span></span><br><span class="line"><span class="comment">// input G</span></span><br><span class="line"><span class="function"><span class="built_in">set</span> <span class="title">vertex_cover_approximation</span><span class="params">(Graph G)</span> </span>&#123;</span><br><span class="line">    c  = ∅;                            <span class="comment">// 建立一空集合用來儲存「Vertex cover」</span></span><br><span class="line">    E‘ = G.E;</span><br><span class="line">    <span class="keyword">while</span>(E‘ ≠ ∅) &#123;</span><br><span class="line">	    (u, v) = get_element(E‘);      <span class="comment">// 從 E‘ 集合中取任意一邊</span></span><br><span class="line">	    c      = c ∪ &#123;u,v&#125;;</span><br><span class="line">        E‘     = differ(E‘,u,v);       <span class="comment">// 將 E‘ 所有含有頂點 u、v 的邊去除</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure>
 <img src="\willywangkaa\images\vertexcoverapproxi.png" alt="vertexcoverapproxi"><figcaption>vertexcoverapproxi</figcaption>
 </figure>
 <ul>
 <li>Time complexity
 <ul>
-<li>因為在 While 中，每次至少會去除一條邊，且邊總共有|E|條
+<li>在 <code>while</code> 每回合<strong>至少</strong>去除一條邊
 <ul>
-<li><span class="math inline">\(\Theta(|E|)\)</span></li>
+<li>G 中總共有 ∣E∣ 條邊
+<ul>
+<li><span class="math inline">\(\Theta(∣E∣)\)</span></li>
 </ul></li>
 </ul></li>
-<li><strong>Apprimation ratio</strong>
+</ul></li>
+<li><strong>Approximation ratio</strong>
 <ul>
-<li>因為「Vertex cover」要涵蓋圖中所有的邊，所以演算法中任挑一邊時，該連接兩點的其中一點<strong>必在「Minimum vertex cover」集合之中</strong>。</li>
-<li>在此近似演算法中，每次都挑一邊並將兩頂點加入 c 集合之中，<strong>在最差的狀況下，都恰一個點在「Minimum vertex cover」中</strong></li>
-<li>所以 <strong>|c| ≦ 2 × |Minimum vertex cover|</strong>
+<li><strong>「Vertex cover problem」</strong>
 <ul>
-<li>「Approximation ratio」為 2</li>
+<li>此問題欲找一頂點集合<strong>涵蓋圖中所有的邊</strong></li>
+<li><strong>任挑</strong>圖中一邊
+<ul>
+<li><strong>連接該邊其中一點必存在「Minimum vertex cover」集合</strong></li>
+</ul></li>
+</ul></li>
+<li><strong>近似演算法分析</strong>
+<ul>
+<li>每回合任挑一邊並將兩頂點加入 c 集合之中
+<ul>
+<li><strong>最差的狀況下，恰一頂點存在「Minimum vertex cover」</strong></li>
+</ul></li>
+</ul></li>
+<li><strong>|c| ≦ 2 × |Minimum vertex cover|</strong>
+<ul>
+<li>「Approximation ratio」： 2</li>
 </ul></li>
 </ul></li>
 </ul>
 <h2 id="approximation-algorithm-for-euclidean-traveling-salesman-problem">Approximation algorithm for euclidean traveling salesman problem</h2>
 <blockquote>
-<p><strong>歐式空間</strong>上的「Traveling salesman problem」。</p>
+<p>在<strong>歐式空間</strong>上求取「Traveling salesman problem」</p>
 </blockquote>
-<p>給定平面上 n 個點，求一個<strong>環路 ( Cycle )</strong> 經過每個點恰一次且<strong>「Euclidean disteance」和最小</strong></p>
+<p>給定歐式平面上 n 個點，求一<strong>環路 ( Cycle )</strong> 經過每個點恰一次且<strong>「Euclidean distance」總和最小</strong></p>
 <figure>
 <img src="\willywangkaa\images\EDTSP.png" alt="EDTSP"><figcaption>EDTSP</figcaption>
 </figure>
 <ul>
 <li>Algorithm
 <ol type="1">
-<li>選一個點 v 當作根節點 ( Root )</li>
-<li>以 v 為起點，用「<strong>Prim’s algorithm</strong>」算出 n 個點的「Minimum spainning tree」
+<li>選一頂點 v 作根節點（Root）</li>
+<li>以 v 為起點，以「<strong>Prim’s algorithm</strong>」算出 n 個點的「Minimum spanning tree」 <span class="math inline">\(T\)</span>
 <ul>
 <li>將歐式空間上的每一點兩兩相連成為一個「Completed graph」</li>
 </ul></li>
-<li>令 L 為「Minimum spainning tree」做「Preorder traversal」的序列 (sequence)</li>
-<li>依照 L 的順序將點相連，則可以得到欲求取的環路 <span class="math inline">\(C\)</span></li>
+<li>令 <span class="math inline">\(L\)</span> 為「Minimum spanning tree」<span class="math inline">\(T\)</span> 之「Preorder traversal」序列（Sequence）
+<ul>
+<li>依 L 的順序將點相連，以求取其環路 <span class="math inline">\(C\)</span></li>
+</ul></li>
 </ol></li>
 <li><strong>Time complexity</strong>
 <ul>
@@ -499,7 +532,7 @@
 <li>假設最佳環路為 <span class="math inline">\(C^＊\)</span>，令 T 為第二步所求出的最小生成樹</li>
 <li>若將 <span class="math inline">\(C^＊\)</span> 去除任一邊<strong>會形成一個生成樹 T’</strong></li>
 <li><strong>因為 T 為最小生成樹</strong>，所以 distance(T) ≦ distance(T’) ≦ <strong>cost(</strong> <span class="math inline">\(C^＊\)</span> <strong>)</strong>……（1）</li>
-<li>假設 w 為「Preorder traversal」的「full walk」( 完整走過整顆最小生成樹 )，又最小生成樹的邊被「Full walk」走過兩次，<strong>所以 cost(w) = 2 × cost(T)</strong>……（2） 首先，將 w 序列<strong>以保留頭尾</strong>、由前至後將「追蹤該點前已經有追蹤過」 的點去除，並且兩兩相連成為一個環路 <span class="math inline">\(C\)</span> ，因為 <strong>三角不等式（dist(a, b) ≦ dist(a, c) + dist(c, b)）所以 cost( C ) ≦ cost( W )</strong>……（3） 因為（2）、（3）<span class="math inline">\(\Rightarrow\)</span> cost( <span class="math inline">\(C\)</span> ) ≦ 2 × cost( T )……（4） 因為（1）、（4）<span class="math inline">\(\Rightarrow\)</span> cost( <span class="math inline">\(C\)</span> ) ≦ 2 × cost( <span class="math inline">\(C^＊\)</span> ) <span class="math inline">\(\Rightarrow\)</span> <strong>「Approximation ratio」：2</strong></li>
+<li>假設 w 為「Preorder traversal」的「full walk」( 完整走過整顆最小生成樹 )，又最小生成樹的邊被「Full walk」走過兩次，<strong>所以 cost(w) = 2 × cost(T)</strong>……（2） 首先，將 w 序列<strong>以保留頭尾</strong>、由前至後將「追蹤該點前已經有追蹤過」 的點去除，並且兩兩相連成為一個環路 <span class="math inline">\(C​\)</span> ，因為 <strong>三角不等式（dist(a, b) ≦ dist(a, c) + dist(c, b)）所以 cost( C ) ≦ cost( W )</strong>……（3） 因為（2）、（3）<span class="math inline">\(\Rightarrow​\)</span> cost( <span class="math inline">\(C​\)</span> ) ≦ 2 × cost( T )……（4） 因為（1）、（4）<span class="math inline">\(\Rightarrow​\)</span> cost( <span class="math inline">\(C​\)</span> ) ≦ 2 × cost( <span class="math inline">\(C^＊​\)</span> ) <span class="math inline">\(\Rightarrow​\)</span> <strong>「Approximation ratio」：2</strong></li>
 </ul></li>
 </ul>
 <figure>
@@ -899,7 +932,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#approximation-ratio"><span class="nav-number">1.</span> <span class="nav-text">Approximation ratio</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#approximation-algorithm-for-mimimum-vertex-cover-question"><span class="nav-number">1.1.</span> <span class="nav-text">Approximation algorithm for mimimum vertex cover question</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#approximation-algorithm-for-euclidean-traveling-salesman-problem"><span class="nav-number">1.2.</span> <span class="nav-text">Approximation algorithm for euclidean traveling salesman problem</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#approximation-ratio"><span class="nav-number">1.</span> <span class="nav-text">Approximation ratio</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#approximation-algorithm-for-minimum-vertex-cover-question"><span class="nav-number">1.1.</span> <span class="nav-text">Approximation algorithm for minimum vertex cover question</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#approximation-algorithm-for-euclidean-traveling-salesman-problem"><span class="nav-number">1.2.</span> <span class="nav-text">Approximation algorithm for euclidean traveling salesman problem</span></a></li></ol></li></ol></div>
             
 
           </div>
