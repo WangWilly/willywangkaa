@@ -117,7 +117,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/EDTSPapproxi.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/triangleinequality.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/EDTSP_optimalsol.png">
-<meta property="og:updated_time" content="2019-02-21T04:01:43.455Z">
+<meta property="og:updated_time" content="2019-02-21T04:10:30.161Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithm - Approximation algorithm">
 <meta name="twitter:description" content="Approximation ratio A ：「Approximation algorithm」 OPT ：「Optimal algorithm」  對任何輸入 x ∣A(x)∣ ≦ α×∣OPT(x)∣  稱 A 的「Approximation ratio」為 α   （下方討論皆以「最小化問題」處理）   A(x)：以 x 為輸入產生的輸出大小  ∣A(x)∣ ≦">
@@ -367,7 +367,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-02-21T12:01:43+08:00">2019-02-21</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-21T12:10:30+08:00">2019-02-21</time>
             
           </span>
 
@@ -445,7 +445,7 @@
 <ul>
 <li><strong>∣A(x)∣ ≦ α×∣OPT(x)∣ 意旨</strong>
 <ul>
-<li><strong>「近似演算法解決方案之值」小於等於「最佳解決方案之值」的 α 倍</strong></li>
+<li><strong>「近似演算法解決方案之值」小於等於 「α × 最佳解決方案之值」</strong></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -504,7 +504,18 @@
 <figure>
 <img src="\willywangkaa\images\EDTSP.png" alt="EDTSP"><figcaption>EDTSP</figcaption>
 </figure>
-<p>步驟 1. 選一頂點 v 作根節點（Root） - 將歐式空間上每點兩兩相連成「完全圖」（<span class="math inline">\(G\)</span>） 2. 以 v 為起點作「<strong>Prim’s algorithm</strong>」算 <span class="math inline">\(G\)</span> 的「最小生成樹」 <span class="math inline">\(T\)</span> 3. 令 <span class="math inline">\(L\)</span> 為 <span class="math inline">\(T\)</span> 之「Preorder traversal」序列（Sequence） - 依 L 的順序將點相連，以求取其環路 <span class="math inline">\(C\)</span></p>
+<p>步驟</p>
+<ol type="1">
+<li>選一頂點 v 作根節點（Root）
+<ul>
+<li>將歐式空間上每點兩兩相連成「完全圖」（<span class="math inline">\(G\)</span>）</li>
+</ul></li>
+<li>以 v 為起點作「<strong>Prim’s algorithm</strong>」算 <span class="math inline">\(G\)</span> 的「最小生成樹」 <span class="math inline">\(T\)</span></li>
+<li>令 <span class="math inline">\(L\)</span> 為 <span class="math inline">\(T\)</span> 之「Preorder traversal」序列（Sequence）
+<ul>
+<li>依 L 的順序將點相連，以求取其環路 <span class="math inline">\(C\)</span></li>
+</ul></li>
+</ol>
 <ul>
 <li><strong>Time complexity</strong>
 <ul>
