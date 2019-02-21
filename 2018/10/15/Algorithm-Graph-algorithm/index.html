@@ -131,7 +131,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549708938056.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549709744238.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/vertexcover.png">
-<meta property="og:updated_time" content="2019-02-10T10:47:49.609Z">
+<meta property="og:updated_time" content="2019-02-21T17:37:50.986Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithm - Graph algorithm">
 <meta name="twitter:description" content="Graph algorithm Depth first search  所需變數：考慮圖中一點 u  color(u)：目前 u 節點的狀態  White：初始值，尚未訪查過 Gray：已被訪查過，但未訪查完其子節點 Black：已經訪查完其子節點  d(u)：發現時間點( Discover time )，即為第一次被訪查的時間點 f(u)：完結時間點( Finish ti">
@@ -381,7 +381,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-02-10T18:47:49+08:00">2019-02-10</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-22T01:37:50+08:00">2019-02-22</time>
             
           </span>
 
@@ -1278,6 +1278,54 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 </tbody>
 </table>
 <p><strong>Ans: (4)</strong></p>
+<p>Example（105 成功大學資料結構與演算法）</p>
+<p>（參考：<a href="http://cs.jhu.edu/~cs363/fall2013/assign8_sln.pdf" target="_blank" rel="noopener">600.363/463 Algorithms - Fall 2013 Solution to Assignment 8 - JHU CS</a>、<a href="https://www.ptt.cc/bbs/Grad-ProbAsk/M.1550727264.A.BB0.html" target="_blank" rel="noopener">105成大資演第7題</a>）</p>
+<ul>
+<li>We are given a direct graph G = (V,E) on which each edge (u,v)∈E has an associated value <strong>r(u,v), which is a read number in the range 0≦r(u,v)≦1 that represents the reliability of a communication channel from u to v</strong></li>
+<li>We interpret r(u,v) as <strong>the probabilities that the channel from u to v will not fail</strong>, and we assume that these probabilities are independent</li>
+<li>Given an efficient algorithm to find the most reliability path between two given vertices</li>
+</ul>
+<blockquote>
+<p>欲找到自 u 至 v 最可靠的路徑，最大化其路徑上的成功傳送機率乘積</p>
+<ul>
+<li>令 s 為起點、 t 為終點
+<ul>
+<li>p = (<span class="math inline">\(v_0, v_1, \ldots, v_k\)</span>)
+<ul>
+<li><span class="math inline">\(v_0 = s, v_k = t\)</span></li>
+</ul></li>
+<li>p = argument path, $ max(<em>{i = 0}^k r(v</em>{i-1},v_i))$</li>
+</ul></li>
+<li>將其問題轉換成「Single source shortest path problem」
+<ul>
+<li><strong>轉換權重</strong>
+<ul>
+<li>用對數含函數轉換
+<ul>
+<li><span class="math inline">\(\Rightarrow \log r(u,v)\)</span></li>
+<li>連乘轉換為連加
+<ul>
+<li><span class="math inline">\(max(\sum_{i = 0}^k r(v_{i-1},v_i))\)</span></li>
+</ul></li>
+<li><strong>對數函數不改變權重單調性</strong></li>
+</ul></li>
+<li>轉換為「最短路徑問題」
+<ul>
+<li><strong>取其負值將最大路徑問題轉換為最小路徑問題</strong></li>
+<li><span class="math inline">\(\Rightarrow w(u,v) = -\log r(u,v)\)</span>
+<ul>
+<li><span class="math inline">\(min(\sum_{i = 0}^k w(v_{i-1},v_i))\)</span></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><strong>以「Dijkstra’s algorithm」解決轉換後的問題</strong>
+<ul>
+<li>p = argument path, $ min(<em>{i = 0}^k w(v</em>{i-1},v_i))$</li>
+<li>時間複雜度：O(∣V∣log∣V∣+∣E∣)</li>
+</ul></li>
+</ul>
+</blockquote>
 
       
     </div>
