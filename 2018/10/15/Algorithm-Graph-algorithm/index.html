@@ -131,7 +131,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549708938056.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549709744238.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/vertexcover.png">
-<meta property="og:updated_time" content="2019-02-21T17:37:50.986Z">
+<meta property="og:updated_time" content="2019-02-21T17:44:08.958Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithm - Graph algorithm">
 <meta name="twitter:description" content="Graph algorithm Depth first search  所需變數：考慮圖中一點 u  color(u)：目前 u 節點的狀態  White：初始值，尚未訪查過 Gray：已被訪查過，但未訪查完其子節點 Black：已經訪查完其子節點  d(u)：發現時間點( Discover time )，即為第一次被訪查的時間點 f(u)：完結時間點( Finish ti">
@@ -381,7 +381,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-02-22T01:37:50+08:00">2019-02-22</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-22T01:44:08+08:00">2019-02-22</time>
             
           </span>
 
@@ -1294,7 +1294,7 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 <ul>
 <li><span class="math inline">\(v_0 = s, v_k = t\)</span></li>
 </ul></li>
-<li>p = argument path, $ max(<em>{i = 0}^k r(v</em>{i-1},v_i))$</li>
+<li>p = argument path, <span class="math inline">\(max(\prod_{i = 0}^k r(v_{i-1},v_i))\)</span></li>
 </ul></li>
 <li>將其問題轉換成「Single source shortest path problem」
 <ul>
@@ -1321,7 +1321,7 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 </ul></li>
 <li><strong>以「Dijkstra’s algorithm」解決轉換後的問題</strong>
 <ul>
-<li>p = argument path, $ min(<em>{i = 0}^k w(v</em>{i-1},v_i))$</li>
+<li>p = argument path, <span class="math inline">\(min(\sum_{i = 0}^k w(v_{i-1},v_i))\)</span></li>
 <li>時間複雜度：O(∣V∣log∣V∣+∣E∣)</li>
 </ul></li>
 </ul>
