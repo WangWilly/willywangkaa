@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-tw,en,default">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/willywangkaa/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/willywangkaa/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/willywangkaa/images/apple-touch-icon-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/willywangkaa/images/favicon-32x32-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/willywangkaa/images/favicon-16x16-next_cat.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/willywangkaa/images/logo_cat.svg?v=6.0.4" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/willywangkaa/',
+    scheme: 'Pisces',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+<meta name="description" content="Deep learning - Linear algebra 矩陣的正定性（Positive definiteness）  Eigen decomposition 矩陣的特徵值分解  一個矩陣 \(A\) 可作特徵值分解  若且唯若矩陣 \(A\) 的「代數重根數」（特徵根）等於其「幾何重根數」（特徵向量）  矩陣的特徵值分解不一定唯一  當有兩個或多個特徵向量屬於同一個特徵">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deep learning - Linear algebra">
+<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2019/04/19/Deep-learning-Linear-algebra/index.html">
+<meta property="og:site_name" content="WillyWangkaa">
+<meta property="og:description" content="Deep learning - Linear algebra 矩陣的正定性（Positive definiteness）  Eigen decomposition 矩陣的特徵值分解  一個矩陣 \(A\) 可作特徵值分解  若且唯若矩陣 \(A\) 的「代數重根數」（特徵根）等於其「幾何重根數」（特徵向量）  矩陣的特徵值分解不一定唯一  當有兩個或多個特徵向量屬於同一個特徵">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1553931898849.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1553933848943.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1553944007423.png">
+<meta property="og:updated_time" content="2019-04-19T13:30:23.654Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Deep learning - Linear algebra">
+<meta name="twitter:description" content="Deep learning - Linear algebra 矩陣的正定性（Positive definiteness）  Eigen decomposition 矩陣的特徵值分解  一個矩陣 \(A\) 可作特徵值分解  若且唯若矩陣 \(A\) 的「代數重根數」（特徵根）等於其「幾何重根數」（特徵向量）  矩陣的特徵值分解不一定唯一  當有兩個或多個特徵向量屬於同一個特徵">
+<meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/1553931898849.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://WangWilly.github.io/willywangkaa/2019/04/19/Deep-learning-Linear-algebra/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>Deep learning - Linear algebra | WillyWangkaa</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/willywangkaa/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WillyWangkaa</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Live more like human</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/willywangkaa/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/willywangkaa/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/willywangkaa/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/willywangkaa/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2019/04/19/Deep-learning-Linear-algebra/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WillyWangkaa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Deep learning - Linear algebra</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-19T21:13:00+08:00">2019-04-19</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-04-19T21:30:23+08:00">2019-04-19</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/willywangkaa/categories/Deep-learning/" itemprop="url" rel="index"><span itemprop="name">Deep learning</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/willywangkaa/2019/04/19/Deep-learning-Linear-algebra/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/04/19/Deep-learning-Linear-algebra/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="deep-learning---linear-algebra">Deep learning - Linear algebra</h1>
+<h2 id="矩陣的正定性positive-definiteness">矩陣的正定性（Positive definiteness）</h2>
+<blockquote>
+<p><strong>Eigen decomposition</strong> 矩陣的特徵值分解</p>
+<ul>
+<li>一個矩陣 <span class="math inline">\(A\)</span> 可作特徵值分解
+<ul>
+<li>若且唯若矩陣 <span class="math inline">\(A\)</span> 的「代數重根數」（特徵根）等於其「幾何重根數」（特徵向量）</li>
+</ul></li>
+<li>矩陣的特徵值分解<strong>不一定唯一</strong>
+<ul>
+<li>當有兩個或多個特徵向量屬於同一個特徵值時</li>
+<li>取其原始「特徵向量組」之拓展空間（Span；亦為該 <span class="math inline">\(\lambda\)</span> 的特徵空間）的其他「正交向量組」亦為該 <span class="math inline">\(\lambda\)</span> 的「特徵向量組」</li>
+</ul></li>
+<li><span class="math inline">\(A \in \mathbf R^{n\times n} \quad A = A^T\)</span>
+<ul>
+<li>則其可被分解成 <span class="math inline">\(Q\mathrm{diag}(\lambda)Q^T\)</span></li>
+<li><span class="math inline">\(\lambda \in \mathbf R^n\)</span> 為 <span class="math inline">\(A\)</span> 的特徵根</li>
+<li><span class="math inline">\(Q = [v^{(1)}, \ldots, v^{(n)}]\)</span> 為正交矩陣（Orthogonal matrix），其中每一行（Column）為對應 <span class="math inline">\(\lambda\)</span> 的特徵向量</li>
+</ul></li>
+</ul>
+<p><strong>證明對於相異的特徵根之特徵向量相互正交</strong></p>
+<p>矩陣 <span class="math inline">\(A\)</span> 在可對角化的情況下</p>
+<p>假設 <span class="math inline">\(A : n\times n, A^T = A, \lambda_1\neq\lambda_2\in\lambda(A)\)</span></p>
+<ol type="1">
+<li>假設 <span class="math inline">\(x_1, x_2\)</span> 為 <span class="math inline">\(A\)</span> 相對於 <span class="math inline">\(\lambda_1, \lambda_2\)</span> 的特徵向量
+<ul>
+<li>則 <span class="math inline">\(Ax_1 = \lambda_1 x_1, Ax_2 = \lambda_2x_2\)</span></li>
+</ul></li>
+<li><span class="math inline">\(\lambda_1＜x_1, x_2＞ = ＜\lambda_1x_1, x_2＞ \\ = ＜Ax_1, x_2＞ = ＜x_1, A^Hx_2＞ = ＜x_1, A^Tx_2＞ \\ = ＜x_1, Ax_2＞ = ＜x_1, \lambda_2x_2＞ = \bar{\lambda_2}＜x_1, x_2＞ = \\ \lambda_2＜x_1, x_2＞\)</span>
+<ul>
+<li>因為 <span class="math inline">\(\lambda_1 \neq \lambda_2\)</span> 所以 <span class="math inline">\(＜x_1, x_2＞ = 0\)</span></li>
+</ul></li>
+<li>所以 <span class="math inline">\(x_1, x_2\)</span> 正交</li>
+</ol>
+<p>而對應於同一特徵根的特徵向量可以作「Gram-Schimidt」正交化，故可以找出一組正交基底可對矩陣 <span class="math inline">\(A\)</span> 作對角化</p>
+<ul>
+<li><span class="math inline">\(A \in \mathbf R^{n\times n} \quad A = A^T \Rightarrow A = Q\mathrm{diag}(\lambda)Q^T\)</span>
+<ul>
+<li><span class="math inline">\([x_0&#39;, x_1&#39;] = A [x_0,x_1]\)</span></li>
+<li>因為 <span class="math inline">\(Q = [v^{(1)}, \ldots, v^{(n)}]\)</span> 為正交矩陣，因為其<strong>鋼性</strong>，所以對向量作用時，<strong>不改變其向量的長度</strong>
+<ul>
+<li>可以將 <span class="math inline">\(A\)</span> 視為「對該特徵向量 <span class="math inline">\(v^{(i)}\)</span> 之方向伸縮 <span class="math inline">\(\lambda\)</span> 倍」</li>
+</ul></li>
+<li>令下圖的 <span class="math inline">\(v^{(1)}、v^{(2)}\)</span> 為 <span class="math inline">\(A\)</span> 的特徵向量
+<ul>
+<li>對該平面以 <span class="math inline">\(Q^T = [v^{(1)}, v^{(2)}]^T\)</span> 作用，則此平面系統會以 <span class="math inline">\(v^{(1)}, v^{(2)}\)</span> 向量組重新參考</li>
+<li>接著對此平面以舉陣 <span class="math inline">\(\mathrm{diag}(\lambda)\)</span> 作用會伸縮 <span class="math inline">\(v^{(1)}, v^{(2)}\)</span> 方向 <span class="math inline">\(\lambda_1, \lambda_2\)</span> 倍</li>
+<li>最後在對該平面以 <span class="math inline">\(Q = [v^{(1)}, v^{(2)}]\)</span> 作用，還原平面向量參考系統</li>
+</ul></li>
+</ul></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\1553931898849.png" alt="1553931898849"><figcaption>1553931898849</figcaption>
+</figure>
+<p><strong>Theorem</strong></p>
+<p>Rayleigh’s quotient</p>
+<ul>
+<li>給定一對稱矩陣 <span class="math inline">\(A\in \mathbf R^{n\times n}\)</span>，對於所有向量 <span class="math inline">\(x\in\mathbf R^{n}\)</span>
+<ul>
+<li><span class="math inline">\(\lambda_{min} \leq \frac{x^TAx}{x^Tx}\leq\lambda_{max}\)</span></li>
+<li><span class="math inline">\(\lambda_{min}、\lambda_{max}\)</span> 分別為 <span class="math inline">\(A\)</span> 最小與最大的特徵向量</li>
+</ul></li>
+</ul>
+<p><em>（直觀想法）</em></p>
+<p>以 <span class="math inline">\(A\)</span> 矩陣對上圖平面作用時，對所有在該平面向量 <span class="math inline">\(x\)</span> 最長只會伸縮 <span class="math inline">\(\lambda_{max}\)</span> 倍，最短只會伸縮 <span class="math inline">\(\lambda_{min}\)</span> 倍</p>
+</blockquote>
+<ul>
+<li><span class="math inline">\(A\)</span> 有「半正定性」（Positive semidifinite；標記為 <span class="math inline">\(A \succeq O\)</span>）
+<ul>
+<li>若且唯若其特徵值皆非負</li>
+<li><span class="math inline">\(x^TAx \geq 0 , \forall x\)</span></li>
+</ul></li>
+<li><span class="math inline">\(A\)</span> 有「正定性」（Positive definite；標記為 <span class="math inline">\(A \succ O\)</span>）
+<ul>
+<li>若且唯若其特徵直皆大於 0</li>
+<li>任意非零向量 <span class="math inline">\(x\)</span> ，<span class="math inline">\(x^TAx \neq 0\)</span></li>
+</ul></li>
+</ul>
+<h2 id="quadretic-function">Quadretic function</h2>
+<ul>
+<li>一個二次函數（Qusdretic function）
+<ul>
+<li>若且唯若可寫成 <span class="math inline">\(f(x) = \frac12x^TAx-b^Tx +c\)</span></li>
+<li>上述 <span class="math inline">\(A\)</span> 為<strong>對稱矩陣</strong></li>
+</ul></li>
+</ul>
+<p><strong>Example</strong></p>
+<p><span class="math inline">\(f(x)= x^2+x+1 = \frac12[x]^T[2][x]-[-1]^Tx+c\)</span></p>
+<ul>
+<li><span class="math inline">\(x^TAx\)</span> 稱作<strong>「二次式」（Quadertic form）</strong>
+<ul>
+<li>觀察其「正定性質」以判斷其函數的「凹性」</li>
+</ul></li>
+<li>令 <span class="math inline">\(x = \begin{bmatrix} x_1\\ x_2\end{bmatrix}\)</span> 則 <span class="math inline">\(f(x) = x^TAx\)</span> 可作成下圖
+<ul>
+<li><span class="math inline">\(x_1、x_2\)</span> 之平面為該函數的輸入（Input）</li>
+<li><span class="math inline">\(f(x)\)</span> 為該函數的輸出（Output）</li>
+</ul></li>
+<li>（a）當 <span class="math inline">\(A\)</span> 為「正定矩陣」
+<ul>
+<li>如果此時 <span class="math inline">\(x \in \mathbf R\)</span>，代表 <span class="math inline">\(A\)</span> 為 x 的係數（<span class="math inline">\(xAx = Ax^2\)</span>；為一元二次方程式）</li>
+<li>若 <span class="math inline">\(A &gt; 0\)</span> 則此二次式的圖會上凹（碗型）</li>
+</ul></li>
+<li>（b）當 <span class="math inline">\(A\)</span> 為「負定矩陣」
+<ul>
+<li>如果此時 <span class="math inline">\(x \in \mathbf R\)</span>，代表 <span class="math inline">\(A\)</span> 為 x 的係數（<span class="math inline">\(xAx = Ax^2\)</span>；為一元二次方程式）</li>
+<li>若 <span class="math inline">\(A &lt; 0\)</span> 則此二次式的圖會下凹</li>
+</ul></li>
+<li>（c）當 <span class="math inline">\(A\)</span> 為「半正定矩陣」（奇異矩陣；Sigular matrix）
+<ul>
+<li>代表在某些特徵向量的<strong>方向</strong>之下其特徵值為 0 ，則<strong>在該方向的輸入值輸出必為 0</strong>（上凹峽谷型）</li>
+</ul></li>
+<li>（d）當 <span class="math inline">\(A\)</span> 有「未定矩陣」（Indefinite matrix）
+<ul>
+<li>其特徵值包含大於 0 與小於 0 之值</li>
+<li>某些特徵向量方向上凹，某些特徵向量下凹</li>
+</ul></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\1553933848943.png" alt="1553933848943"><figcaption>1553933848943</figcaption>
+</figure>
+<h2 id="singular-value-decomposition">Singular value decomposition</h2>
+<ul>
+<li>所有 m×n 矩陣 <span class="math inline">\(A \in \mathbf R^{m\times n}\)</span> 可作「奇異值分解」（Singular value decomposition）
+<ul>
+<li><span class="math inline">\(A = UDV^T\)</span></li>
+<li><span class="math inline">\(U \in \mathbf R^{m\times m}, D \in \mathbf R^{m\times n}, V \in \mathbf R^{n\times n}\)</span></li>
+<li><span class="math inline">\(U, V\)</span> 為正交矩陣，各自的行向量分別稱為<strong>「左奇異向量」（Left-singular vector）與「右奇異向量」（Right-singular vector）</strong></li>
+<li>在 <span class="math inline">\(D\)</span> 矩陣上對角線元素稱為「奇異值」（Singular value）</li>
+</ul></li>
+<li><span class="math inline">\(A\)</span> 的「左奇異向量」為 <span class="math inline">\(AA^T\)</span> 的「特徵向量」</li>
+<li><span class="math inline">\(A\)</span> 的「左奇異向量」為 <span class="math inline">\(A^TA\)</span> 的「特徵向量」</li>
+<li><span class="math inline">\(A\)</span> 的所有非零「奇異值」為 <span class="math inline">\(AA^T\)</span> （或 <span class="math inline">\(A^TA\)</span>）的<strong>「非零特徵值」</strong></li>
+</ul>
+<h3 id="moore-penrose-pseudoinverse虛反矩陣">Moore-Penrose pseudoinverse（虛反矩陣）</h3>
+<blockquote>
+<ul>
+<li>反矩陣只定義在方陣上</li>
+</ul>
+</blockquote>
+<ul>
+<li>欲對矩陣 <span class="math inline">\(A \in \mathbf R^{m\times n}\)</span> 找到一個「左反矩陣」<span class="math inline">\(B \in \mathbf R^{n\times m}\)</span>，對線性方程組 <span class="math inline">\(Ax = y\)</span> 兩側左乘 <span class="math inline">\(B\)</span> 以解出 <span class="math inline">\(x = By\)</span>
+<ul>
+<li>若 m &gt; n
+<ul>
+<li>則可能因為 <span class="math inline">\(y \notin \mathrm{col}(A)\)</span>，所以 <span class="math inline">\(B\)</span> 矩陣不存在</li>
+</ul></li>
+<li>若 m &lt; n
+<ul>
+<li>則可能會有多個符合的 <span class="math inline">\(B\)</span> 矩陣</li>
+</ul></li>
+</ul></li>
+<li>若 <span class="math inline">\(B\)</span> 為<strong>「Moore-Penrose pseudoinverse」</strong><span class="math inline">\(A^+\)</span>
+<ul>
+<li>當 m = n 且 <span class="math inline">\(A^{-1}\)</span> 存在時，<span class="math inline">\(A^+\)</span> 退化成 <span class="math inline">\(A^{-1}\)</span></li>
+<li>當 m &gt; n 且 <span class="math inline">\(\hat x = A^+y\)</span>，則 <span class="math inline">\(\forall x, ∥Ax-y∥_2 \geq ∥A\hat x-y∥_2\)</span>
+<ul>
+<li>因為 <span class="math inline">\(A\)</span> 為 n 維映射至 m 維所對應的矩陣，則有可能向量 <span class="math inline">\(y \notin Ax, \forall x\)</span>，目標找到與其最相似的向量 <span class="math inline">\(A\hat x\)</span></li>
+<li><span class="math inline">\(A\hat x\)</span> 為 <span class="math inline">\(\mathrm{col}(A)\)</span> 中距離 <span class="math inline">\(y\)</span> 最短的向量</li>
+</ul></li>
+<li>當 m &lt; n 且 <span class="math inline">\(\hat x = A^+y\)</span>，則 <span class="math inline">\(\forall x \in ｛x｜Ax = y｝, ∥x∥ \geq ∥\hat x∥\)</span>
+<ul>
+<li><span class="math inline">\(\hat x\)</span> 為 <span class="math inline">\(Ax = y\)</span> 的最小長度解（Minimal Eudlidean norm solution）</li>
+</ul></li>
+</ul></li>
+<li>「Moore-Penrose psedoinverse」的定義
+<ul>
+<li><span class="math inline">\(A^+ = \lim_{a \to 0}(A^TA+\alpha I_n)^{-1}+A^T\)</span></li>
+</ul></li>
+<li>在實作上是以 <span class="math inline">\(A^+ = VD^+U^T\)</span> 計算，其 <span class="math inline">\(UDV^T = A\)</span>
+<ul>
+<li><span class="math inline">\(D^+ \in \mathbf R^{n\times m}\)</span> 為將 <span class="math inline">\(D\)</span> 矩陣中的非零對角元素<strong>取其乘法反元素</strong>，再對其<strong>作轉置</strong></li>
+</ul></li>
+</ul>
+<h2 id="trace矩陣的跡">Trace（矩陣的跡）</h2>
+<ul>
+<li><span class="math inline">\(\mathrm{tr}(A) = \Sigma_i A_{i, i}\)</span></li>
+<li><span class="math inline">\(\mathrm{tr}(A) = \mathrm{tr}(A^T)\)</span></li>
+<li><span class="math inline">\(∥A∥^2_F = \mathrm{tr}(AA^T) = \mathrm{tr}(A^TA)\)</span>
+<ul>
+<li>（矩陣的長度）</li>
+</ul></li>
+<li><span class="math inline">\(\mathrm{tr}(ABC) = \mathrm{tr}(BCA) = \mathrm{tr}(CAB)\)</span>
+<ul>
+<li>因為 <span class="math inline">\(\mathrm{tr}(AB) = \mathrm{tr}(BA)\)</span> （可暴力正明其正確性）則 <span class="math inline">\(\mathrm{tr}(A(BC)) = \mathrm{tr}((BC)A)\)</span></li>
+</ul></li>
+</ul>
+<h2 id="determinant矩陣的行列式">Determinant（矩陣的行列式）</h2>
+<ul>
+<li>行列式 <span class="math inline">\(\det(\cdot)\)</span> 為一函數將方陣 <span class="math inline">\(A \in \mathbf R^{n \times n}\)</span> 映射至<strong>實數域</strong>
+<ul>
+<li><span class="math inline">\(\det(A) = \Sigma_i(-1)^{i+1}A_{1,i}\det(A_{-1,-i})\)</span><strong>（此亦為降階求行列式的定義）</strong>
+<ul>
+<li><span class="math inline">\(A_{-1,-i}\)</span> 為減去<strong>第 1 列</strong>與<strong>第 i 行</strong>的 (n-1)×(n-1) <strong>矩陣</strong></li>
+<li><span class="math inline">\(A_{1,i}\)</span> 為第 1 列第 i 行的<strong>元素</strong></li>
+</ul></li>
+</ul></li>
+<li><span class="math inline">\(\det(A^T) = \det(A)\)</span></li>
+<li><span class="math inline">\(\det(A^{-1}) = \frac 1{\det(A)}\)</span></li>
+<li><span class="math inline">\(\det(AB) = \det(A)\det(B)\)</span></li>
+<li><span class="math inline">\(\det(A) = \prod_i \lambda_i\)</span>
+<ul>
+<li>當一個矩陣可作「特徵值分解」時，可藉由特徵值 <span class="math inline">\(\lambda\)</span> 發現矩陣 <span class="math inline">\(A\)</span> 所對應的函數 <span class="math inline">\(T\)</span> 作用後，在其特徵向量 <span class="math inline">\(x\)</span> 的「方向」上伸縮的倍率</li>
+<li>由此可見 <span class="math inline">\(A\)</span> 的行列式為這些倍率的「總乘」</li>
+<li>其幾何意義可視為：當被作用的輸入向量可形成一個「超單位矩體」（Image of the unit square）時，則 <span class="math inline">\(T\)</span> 的行列值為「<span class="math inline">\(T\)</span> 作用之後而形成『超矩體』之<strong>體積</strong>」</li>
+</ul></li>
+</ul>
+<p><strong>Example</strong></p>
+<ul>
+<li>令 <span class="math inline">\(A = \begin{bmatrix} a &amp; b \\ c &amp; d\end{bmatrix}\)</span> ，有兩單位向量 <span class="math inline">\(e_1 = \begin{bmatrix} 1 \\ 0 \end{bmatrix}, e_2 = \begin{bmatrix} 0 \\ 1 \end{bmatrix}\)</span>
+<ul>
+<li>經過矩陣 <span class="math inline">\(A\)</span> 作用後 <span class="math inline">\(Ae_1 = \begin{bmatrix} a \\ c \end{bmatrix} \\ Ae_2 = \begin{bmatrix} b \\ d \end{bmatrix}\)</span></li>
+<li>下圖中的平行四邊形為標準基底向量經過 <span class="math inline">\(A\)</span> 矩陣後而成，行列式值為其面積</li>
+</ul></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\1553944007423.png" alt="1553944007423"><figcaption>1553944007423</figcaption>
+</figure>
+<ul>
+<li>一個函數 <span class="math inline">\(T\)</span> 的行列式值比「特徵值分解」更能簡潔表達其函數的<strong>伸縮性</strong></li>
+<li>若 <span class="math inline">\(\det(A) = 0\)</span>，代表經過此函數作用後會比原本維度至少<strong>少一個維度以上</strong>
+<ul>
+<li>由高維度的空間映射至低維度的空間
+<ul>
+<li>該函數不能取其「反函數」</li>
+</ul></li>
+<li>在特徵值上，也就是說有一特徵值等於 0，其對應的特徵向量的方向伸縮為 0，其「超體」亦退化成「超面」導致『超矩體』之<strong>體積</strong>退化成 0</li>
+</ul></li>
+<li>若 <span class="math inline">\(\det(A) = 0\)</span>，代表經過此函數 <span class="math inline">\(T\)</span> 的轉換後，其『超矩體』之<strong>體積</strong>不變</li>
+</ul>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/willywangkaa/2019/02/07/Algorithm-String-matching/" rel="next" title="Algorithm - String matching">
+                <i class="fa fa-chevron-left"></i> Algorithm - String matching
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/willywangkaa/2019/04/19/Deep-learning-Probability-and-Information-theories-I/" rel="prev" title="Deep learning - Probability and Information theories I">
+                Deep learning - Probability and Information theories I <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/willywangkaa/images/avatar_me.gif"
+                alt="Willy Wang (willywangkaa)" />
+            
+              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
+              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/willywangkaa/archives/">
+                
+                    <span class="site-state-item-count">59</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/willywangkaa/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/willywangkaa/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">76</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://typora.io/" title="Typora" target="_blank">Typora</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.geeksforgeeks.org/" title="GeeksforGeeks" target="_blank">GeeksforGeeks</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.codecogs.com/latex/eqneditor.php" title="Online LaTeX Equation Editor" target="_blank">Online LaTeX Equation Editor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://allem40306.github.io/blog/" title="CodingJack" target="_blank">CodingJack</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#deep-learning---linear-algebra"><span class="nav-number">1.</span> <span class="nav-text">Deep learning - Linear algebra</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#矩陣的正定性positive-definiteness"><span class="nav-number">1.1.</span> <span class="nav-text">矩陣的正定性（Positive definiteness）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#quadretic-function"><span class="nav-number">1.2.</span> <span class="nav-text">Quadretic function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#singular-value-decomposition"><span class="nav-number">1.3.</span> <span class="nav-text">Singular value decomposition</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#moore-penrose-pseudoinverse虛反矩陣"><span class="nav-number">1.3.1.</span> <span class="nav-text">Moore-Penrose pseudoinverse（虛反矩陣）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#trace矩陣的跡"><span class="nav-number">1.4.</span> <span class="nav-text">Trace（矩陣的跡）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#determinant矩陣的行列式"><span class="nav-number">1.5.</span> <span class="nav-text">Determinant（矩陣的行列式）</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/willywangkaa/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/affix.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/willywangkaa/js/src/schemes/pisces.js?v=6.0.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/willywangkaa/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/willywangkaa/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://https-wangwilly-github-io-blog.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://WangWilly.github.io/willywangkaa/2019/04/19/Deep-learning-Linear-algebra/';
+        this.page.identifier = '2019/04/19/Deep-learning-Linear-algebra/';
+        this.page.title = 'Deep learning - Linear algebra';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-wangwilly-github-io-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/willywangkaa/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/willywangkaa/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>

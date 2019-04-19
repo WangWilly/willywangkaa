@@ -1,0 +1,1843 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-tw,en,default">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/willywangkaa/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/willywangkaa/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/willywangkaa/images/apple-touch-icon-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/willywangkaa/images/favicon-32x32-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/willywangkaa/images/favicon-16x16-next_cat.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/willywangkaa/images/logo_cat.svg?v=6.0.4" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/willywangkaa/',
+    scheme: 'Pisces',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="Probability,Information theories," />
+
+
+<meta name="description" content="Deep learning - Probability and Information theories I Random variables and probability distribution Random variables（隨機變數）  在實驗的過程，所有可能的實驗結果 \(\omega\) 組成之集合稱為「樣本空間」（Sample space）\(\Omega\)  擲一">
+<meta name="keywords" content="Probability,Information theories">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deep learning - Probability and Information theories I">
+<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2019/04/19/Deep-learning-Probability-and-Information-theories-I/index.html">
+<meta property="og:site_name" content="WillyWangkaa">
+<meta property="og:description" content="Deep learning - Probability and Information theories I Random variables and probability distribution Random variables（隨機變數）  在實驗的過程，所有可能的實驗結果 \(\omega\) 組成之集合稱為「樣本空間」（Sample space）\(\Omega\)  擲一">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1554273024744.png">
+<meta property="og:updated_time" content="2019-04-19T13:32:07.045Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Deep learning - Probability and Information theories I">
+<meta name="twitter:description" content="Deep learning - Probability and Information theories I Random variables and probability distribution Random variables（隨機變數）  在實驗的過程，所有可能的實驗結果 \(\omega\) 組成之集合稱為「樣本空間」（Sample space）\(\Omega\)  擲一">
+<meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/1554273024744.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://WangWilly.github.io/willywangkaa/2019/04/19/Deep-learning-Probability-and-Information-theories-I/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>Deep learning - Probability and Information theories I | WillyWangkaa</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/willywangkaa/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WillyWangkaa</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Live more like human</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/willywangkaa/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/willywangkaa/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/willywangkaa/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/willywangkaa/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2019/04/19/Deep-learning-Probability-and-Information-theories-I/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WillyWangkaa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Deep learning - Probability and Information theories I</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-19T21:16:00+08:00">2019-04-19</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-04-19T21:32:07+08:00">2019-04-19</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/willywangkaa/categories/Deep-learning/" itemprop="url" rel="index"><span itemprop="name">Deep learning</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/willywangkaa/2019/04/19/Deep-learning-Probability-and-Information-theories-I/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/04/19/Deep-learning-Probability-and-Information-theories-I/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="deep-learning---probability-and-information-theories-i">Deep learning - Probability and Information theories I</h1>
+<h2 id="random-variables-and-probability-distribution">Random variables and probability distribution</h2>
+<h3 id="random-variables隨機變數">Random variables（隨機變數）</h3>
+<blockquote>
+<p>在實驗的過程，所有可能的實驗結果 <span class="math inline">\(\omega\)</span> 組成之集合稱為「樣本空間」（Sample space）<span class="math inline">\(\Omega\)</span></p>
+<ul>
+<li>擲<strong>一次</strong>六面骰子
+<ul>
+<li>其樣本空間為｛1, 2, 3, 4, 5, 6｝</li>
+</ul></li>
+</ul>
+<p>「事件」（Event）為樣本空間的<strong>子集合</strong></p>
+<ul>
+<li>擲<strong>一次</strong>六面骰子
+<ul>
+<li>其中一個事件「大於 4 點」的集合為｛5, 6｝</li>
+<li>上述事件的機率為一分數（Fraction）
+<ul>
+<li>分母為樣本空間的元素個數 6</li>
+<li>分子為其事件的元素個數 2</li>
+<li><span class="math inline">\(機率(大於 \;4 \;點) = \frac 26 = \frac 13\)</span></li>
+</ul></li>
+</ul></li>
+<li><strong>對於所有事件</strong>
+<ul>
+<li><strong>0 ≦ 事件對應的機率 ≦ 1</strong></li>
+</ul></li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>Definition</strong>（隨機變數 <span class="math inline">\(\mathrm x\)</span>）</p>
+<p>為一個<strong>函數</strong>將樣本空間 <span class="math inline">\(\Omega\)</span> 的元素映射至實數空間，換言之 <span class="math inline">\(\mathrm X\)</span> 為一個自訂的法則，將每個實驗結果 <span class="math inline">\(\omega \in \Omega\)</span> 賦予其實數值 <span class="math inline">\(\mathrm X(\omega)\)</span></p>
+<p>Example</p>
+<ul>
+<li>對應於樣本空間 <span class="math inline">\(\Omega = ｛(1,1),(1,2), \ldots,(6, 6)｝\)</span>，自訂一個隨機變數 <span class="math inline">\(\mathrm X\)</span> 其等於有序對（Order pair）的元素相加
+<ul>
+<li><span class="math inline">\(\mathrm X(1, 1) = 2, \mathrm X(1, 2) = 3\)</span></li>
+<li>推廣：<span class="math inline">\(\mathrm X(i, j) = i+j\)</span></li>
+</ul></li>
+</ul>
+<p><strong>Notation</strong></p>
+<ul>
+<li><span class="math inline">\(\mathrm X = x\)</span>
+<ul>
+<li>為事件集合 <span class="math inline">\(｛\omega\in\Omega:\mathrm X(\omega) = x｝\)</span></li>
+</ul></li>
+</ul>
+</blockquote>
+<ul>
+<li>一個<strong>隨機變數</strong> <span class="math inline">\(\mathrm X\)</span> 可被隨機指定指定值的變數
+<ul>
+<li>（以正體標示，斜體標示為一個常數變數）</li>
+<li>會對應一個機率值當指定 <span class="math inline">\(\mathrm x\)</span> 一個值時
+<ul>
+<li>如：<span class="math inline">\(\Pr(\mathrm X = x_1) = 0.1, \Pr(\mathrm X = x_2) = 0.3\ldots\)</span></li>
+</ul></li>
+<li>正規來說，<span class="math inline">\(\mathrm X\)</span> 為一個函數將一個「機率事件」映射至「實數域」</li>
+</ul></li>
+<li>必須伴隨一個可以說明當 <span class="math inline">\(\mathrm X\)</span> 為該實數值的<strong>機率分佈</strong> <span class="math inline">\(\mathrm P\)</span>
+<ul>
+<li><span class="math inline">\(\mathrm X～\mathrm P(\theta)\)</span> 意旨「<span class="math inline">\(\mathrm X\)</span> 擁有一個以 <span class="math inline">\(\theta\)</span> 為<strong>參數</strong>的機率分佈 <span class="math inline">\(\mathrm P\)</span>」</li>
+</ul></li>
+</ul>
+<blockquote>
+<ul>
+<li>若 <span class="math inline">\(\mathrm X\)</span> 為<strong>離散值</strong>，<span class="math inline">\(\mathrm P(\mathrm X = x)\)</span> 為一個<strong>「機率質量函數」（Probability mass function</strong>；<span class="math inline">\(P_{\mathrm X}(x) = \mathrm P(\mathrm X = x) = \Pr(\mathrm X =x )\)</span>）
+<ul>
+<li>如：「一個公正的骰子能擲出的點數」為「離散均勻分佈」並且 <span class="math inline">\(P_{\mathrm X}(x) = \frac 16\)</span></li>
+</ul></li>
+<li>若 <span class="math inline">\(\mathrm X\)</span> 為<strong>連續值</strong>，<span class="math inline">\(\mathrm P(\mathrm X = x)\)</span> 為一個<strong>「機率密度函數」（Probability density function</strong>；<span class="math inline">\(F_{\mathrm x}(x)\)</span>）
+<ul>
+<li><span class="math inline">\(F_{\mathrm X}(x)\)</span> 的輸出值不為<strong>機率</strong>而是<strong>機率密度</strong>（在 <span class="math inline">\(x\)</span> 點之<strong>累進機率成長的幅度</strong>）</li>
+<li>為「累進分佈函數」（Cumulative distribution function）的<strong>導函數</strong>
+<ul>
+<li>機率求取：<span class="math inline">\(\Pr(a\leq\mathrm x\leq b) = \int_{[a,b]}p(x)\mathrm dx\)</span></li>
+<li><span class="math inline">\(F_{\mathrm X}(x)\)</span> 的輸出可能大於 1
+<ul>
+<li>在 [a, b] <strong>平均分佈（Uniform distribution）</strong>的狀態下</li>
+<li>其<strong>機率密度函數</strong> <span class="math inline">\(p(x) = \left\{\begin{matrix}\frac {1}{b-a} &amp;,if\; x\in [a, b] \\ 0 &amp;,otherwise \end{matrix}\right.\)</span></li>
+<li>當 <span class="math inline">\(b-a\)</span> 小於 1 時，<span class="math inline">\(p(x)&gt;1\)</span></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</blockquote>
+<h3 id="marginal-probability邊際機率">Marginal probability（邊際機率）</h3>
+<ul>
+<li>多個變數存在於一個機率分佈
+<ul>
+<li><span class="math inline">\(P_{\mathrm{X,Y}}(x, y)\)</span> （<strong>聯合機率分佈；Joint probability distribution</strong>）</li>
+</ul></li>
+<li><strong>邊際機率分佈</strong>
+<ul>
+<li>在一個聯合機率分佈之下，取其多個隨機變數中只對其子集所關心的機率分佈
+<ul>
+<li>離散型：<span class="math inline">\(\mathrm P(\mathrm X = x) = \sum_y P_{\mathrm{X,Y}}(x, y)\)</span></li>
+<li>連續型：<span class="math inline">\(\int F_{\mathrm{X,Y}}(x,y)\mathrm dy\)</span></li>
+</ul></li>
+<li>亦稱作「Sum rule of probability」</li>
+</ul></li>
+</ul>
+<h3 id="conditional-probability條件機率">Conditional probability（條件機率）</h3>
+<ul>
+<li>在機率質量函數或機率密度函數中，其條件機率函數為
+<ul>
+<li><span class="math inline">\(\mathrm P(\mathrm X = x\vert\mathrm X = y) = \frac {\mathrm P(\mathrm X = x,\mathrm Y = y)}{\mathrm P(\mathrm Y = y)}\)</span></li>
+<li>必須符合 <span class="math inline">\(\mathrm P(\mathrm y = y) &gt; 0\)</span> 的情況下</li>
+</ul></li>
+<li><strong>Product rule of probability</strong>
+<ul>
+<li><span class="math inline">\(\mathrm P(\mathrm X^{(1)}, \ldots, \mathrm X^{(n)}) = \mathrm P(\mathrm X^{(1)})\prod_{i = 2}^n\mathrm P(\mathrm X^{(i)}｜\mathrm X^{(1)}, \ldots, \mathrm X^{(i-1)})\)</span></li>
+<li>如：<span class="math inline">\(\mathrm P(\mathrm{a, b, c}) = \mathrm P(\mathrm{c｜a, b})\mathrm P(\mathrm{b｜a})\mathrm P(\mathrm{a})\)</span></li>
+</ul></li>
+</ul>
+<h3 id="independence-and-conditional-independence獨立與條件獨立">Independence and conditional independence（獨立與條件獨立）</h3>
+<ul>
+<li>隨機變數 <span class="math inline">\(\mathrm X\)</span> <strong>獨立</strong>於（Independent）<span class="math inline">\(\mathrm Y\)</span>
+<ul>
+<li>若且唯若 <span class="math inline">\(\mathrm P(\mathrm X\vert\mathrm Y) = \mathrm {P(Y)}\)</span></li>
+<li>可推論至 <span class="math inline">\(\mathrm {P(X,Y) = P(X)P(Y)}\)</span></li>
+<li>標記為 <span class="math inline">\(\mathrm X \perp \mathrm Y\)</span></li>
+</ul></li>
+<li>隨機變數 <span class="math inline">\(\mathrm X\)</span> 在 <span class="math inline">\(\mathrm Z\)</span> 之下<strong>條件獨立</strong>於（Conditionally independent）<span class="math inline">\(\mathrm Y\)</span>
+<ul>
+<li>若且唯若 <span class="math inline">\(\mathrm {P(X\vert Y, Z) = P(X\vert Z)}\)</span></li>
+<li>可推論至 <span class="math inline">\(\mathrm {P(X,Y\vert Z) = P(X\vert Z)P(Y\vert Z)}\)</span></li>
+<li>標記為 <span class="math inline">\(\mathrm X \perp \mathrm{Y\vert Z}\)</span></li>
+</ul></li>
+</ul>
+<h3 id="expectation期望值">Expectation（期望值）</h3>
+<ul>
+<li>可稱為「Expectation value」或「Mean」（平均值）</li>
+<li>當一個“平均值”定義在對應於 <span class="math inline">\(\mathrm X\)</span> 的函數 <span class="math inline">\(f\)</span> 中
+<ul>
+<li>將 <span class="math inline">\(f\)</span> 視為一個事件模型（分佈模型），當輸入 <span class="math inline">\(\mathrm X\)</span> 值改變時，其輸出值的加權（其出現機率）平均</li>
+<li>離散型：<span class="math inline">\(\mathrm E_{\mathrm {X～P}}[f(x)] = \sum_xP_{\mathrm X}(x)f(x)\)</span></li>
+<li>連續型：<span class="math inline">\(\mathrm E_{\mathrm {X～P}}[f(x)] = \int F_{\mathrm X}(x)f(x) \mathrm dx = \mu_{f(x)}\)</span></li>
+</ul></li>
+<li>對於與 <span class="math inline">\(\mathrm X\)</span> 無關的變數 <span class="math inline">\(a, b\)</span>，<strong>期望值函數為線性函數</strong>
+<ul>
+<li><span class="math inline">\(\mathrm E[af(\mathrm X)+b] = a\mathrm E[f(\mathrm X)]+b\)</span></li>
+</ul></li>
+</ul>
+<p><strong>證明</strong>（離散型）</p>
+<p><span class="math inline">\(\mathrm E[af(\mathrm X)+b] = \sum_xP_{\mathrm X}(x)(af(x)+b) \\ = \sum_x aP_{\mathrm X}(x)f(x)+ bP_{\mathrm X}(x) = a\sum_x P_{\mathrm X}(x)f(x)+b\sum_xP_{\mathrm X}(x)= \\ =a\sum_x P_{\mathrm X}(x)f(x)+b\cdot1 = a\mathrm E[f(\mathrm x)]+b\)</span></p>
+<ul>
+<li>因為 <span class="math inline">\(\mathrm E[f(x)]\)</span> 為一個<strong>決定性的定值</strong>
+<ul>
+<li>則 <span class="math inline">\(\mathrm E[\mathrm E[f(x)]] = \mathrm E[f(x)]\)</span></li>
+</ul></li>
+<li>在<strong>聯合機率分佈之下定義期望值</strong>
+<ul>
+<li>離散型：<span class="math inline">\(\mathrm {E[f(X,Y)]} = \sum_{x,y}P_{\mathrm {X,Y}}(x,y)f(x,y)\)</span></li>
+<li>連續型：<span class="math inline">\(\mathrm {E[f(X,Y)]} = \int_{x,y}F_{\mathrm {X,Y}}(x,y)f(x,y)\mathrm dx\mathrm dy\)</span></li>
+</ul></li>
+<li>條件期望值
+<ul>
+<li>離散型：<span class="math inline">\(\mathrm E[f(\mathrm X)｜\mathrm Y = y] = \sum_x P_{\mathrm{X,Y}}(x｜y)f(x)\)</span></li>
+<li>連續型：<span class="math inline">\(\mathrm E[f(\mathrm X)｜\mathrm Y = y] = \int F_{\mathrm{X,Y}}(x｜y)f(x)\mathrm dx\)</span></li>
+<li>若隨機變數 <span class="math inline">\(\mathrm {X,Y}\)</span> <strong>相互獨立</strong>
+<ul>
+<li><span class="math inline">\(\mathrm {E[f(X)g(Y)] = E[f(X)]E[g(Y)]}\)</span></li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="variance變異數">Variance（變異數）</h3>
+<ul>
+<li>描述「一個對應於隨機變數 <span class="math inline">\(\mathrm X\)</span> 的事件函數 <span class="math inline">\(f\)</span>」其<strong>輸出之於該期望值的差異量</strong>
+<ul>
+<li><span class="math inline">\(\mathrm {Var[f(X)] = E[(f(X)-E[f(X)])^2] = \sigma_{f(X)}^2}\)</span>
+<ul>
+<li>= <span class="math inline">\((「每個 \;\mathrm {f(X)} \;的輸出」- 「\;\mathrm {f(X)} \;的平均數」)^2 的平均數\)</span></li>
+<li>離散型：<span class="math inline">\(\sigma^2 = \frac 1n\sum_{i = 1}^n(x_i-\mu)^2\)</span></li>
+</ul></li>
+<li><span class="math inline">\(\sigma_{\mathrm f(x)}\)</span> 稱作「Standard deviation」（標準差）</li>
+</ul></li>
+<li>對於與 <span class="math inline">\(\mathrm x\)</span> 無關的變數 <span class="math inline">\(a, b\)</span> 時
+<ul>
+<li><span class="math inline">\(\mathrm {Var}[af(\mathrm X)+b] = a^2\mathrm{Var}[f(\mathrm X)]\)</span></li>
+<li>因為取變異數其可視為一個<strong>二次式</strong></li>
+<li>又因為取變異數是與其平均數的<strong>相對值</strong>，所以 <span class="math inline">\(b\)</span> 不影響其輸出</li>
+</ul></li>
+</ul>
+<p><strong>證明</strong></p>
+<p><span class="math inline">\(\mathrm {Var}[af(\mathrm X)+b] = \mathrm{E[(af(X)+b-E[af(X)+b])^2]} \\ = \mathrm{E[(af(X)+b-aE[f(X)]-b)^2]} = \mathrm{E[(af(X)-aE[f(X)])^2]}\\= \mathrm{a^2E[(f(X)-E[f(X)])^2]} = a^2\mathrm{Var}[f(\mathrm X)]\)</span></p>
+<h3 id="covariance共變異數">Covariance（共變異數）</h3>
+<blockquote>
+<p>在給定兩個變量（兩個隨機變數 <span class="math inline">\(\mathrm {X, Y}\)</span>）之下</p>
+<ol type="1">
+<li>探討兩個變量之間是否有關聯，其關聯程度是多少，在統計學上稱為「<strong>相關</strong>」</li>
+<li>藉由「共變異數」可以決定兩個變量的「線性相關程度」
+<ul>
+<li>正相關：當 <span class="math inline">\(\mathrm X\)</span> 值增加時 <span class="math inline">\(\mathrm Y\)</span> 值隨之增加，此時稱兩變數為<strong>線性正相關</strong></li>
+<li>負相關：當 <span class="math inline">\(\mathrm X\)</span> 值增加時 <span class="math inline">\(\mathrm Y\)</span> 值隨之遞減，此時稱兩變數為<strong>線性負相關</strong></li>
+<li>零相關：當 <span class="math inline">\(\mathrm X\)</span> 值增加時 <span class="math inline">\(\mathrm Y\)</span> 值不隨之增加遞減或是成<strong>非線性相關</strong>，此時稱兩變數為<strong>線性零相關</strong></li>
+</ul></li>
+<li>引申出「相關係數」<span class="math inline">\(r\)</span>，<span class="math inline">\(\mathrm {X, Y}\)</span> 有 <span class="math inline">\(n\)</span> 筆數據
+<ul>
+<li><span class="math inline">\(-1\leq\frac{\sum_{i = 1}^n(x_i-\mathrm E[f(\mathrm X)])(y_i-\mathrm E[g(\mathrm Y)])}{n\cdot\sigma_{\mathrm X}\cdot \sigma_{\mathrm Y}}\leq1\)</span></li>
+</ul></li>
+</ol>
+</blockquote>
+<ul>
+<li>共變異數描述 <span class="math inline">\(f(\mathrm X)\)</span> 與 <span class="math inline">\(g(\mathrm Y)\)</span> 的變動的差異性
+<ul>
+<li><span class="math inline">\(\mathrm{Cov[f(X), g(Y)] = E[(f(X)-E[f(X)])(g(Y)-E[g(Y)])]}\)</span></li>
+<li>此數為正時，當 <span class="math inline">\(\mathrm X\)</span> 值增加時 <span class="math inline">\(\mathrm Y\)</span> 值隨之增加</li>
+<li>此數為負時，當 <span class="math inline">\(\mathrm X\)</span> 值增加時 <span class="math inline">\(\mathrm Y\)</span> 值隨之遞減，反之亦然</li>
+</ul></li>
+<li>若 <span class="math inline">\(\mathrm{X, Y}\)</span> 相互獨立，則 <span class="math inline">\(\mathrm{Cov(X,Y)} =0\)</span>
+<ul>
+<li><strong>反之不成立</strong>，當 <span class="math inline">\(\mathrm{X,Y}\)</span> 有可能相互有「非線性關係」（Nonlinear）</li>
+<li>如：<span class="math inline">\(\mathrm Y = \sin(\mathrm X), \mathrm Y ～\mathrm{Uniform(-\pi, \pi)}\)</span> 如下圖</li>
+</ul></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\1554273024744.png" alt="1554273024744"><figcaption>1554273024744</figcaption>
+</figure>
+<ul>
+<li><span class="math display">\[\mathrm{Var}(af(\mathrm X)+bg(\mathrm Y)) \equiv \mathrm{Var}(a\mathrm X+b\mathrm Y) \\ = a^2\mathrm{Var(X)}+b^2\mathrm{Var(Y)}+2ab\mathrm{Cov(X,Y)}\]</span>
+<ul>
+<li>如果 <span class="math inline">\(\mathrm{X,Y}\)</span> 相互獨立則 <span class="math inline">\(\mathrm{Var}(\mathrm X+\mathrm Y) = \mathrm{Var(X)}+\mathrm{Var(Y)}\)</span></li>
+</ul></li>
+</ul>
+<p><strong>證明</strong></p>
+<p><span class="math inline">\(\mathrm{Var}(a\mathrm X+b\mathrm Y) = \mathrm{E[(ax+by-E[ax+by])^2]} \\ = \mathrm{E[(ax+by- aE[x]-bE[y])^2]} = \mathrm{E[(a(x-E[x])+b(y-E[y]))^2]} \\ = \mathrm{E[a^2(x-E[x])^2+b^2(y-E[y])^2+ab(x-E[x])(y-E[y])]} \\ = \mathrm{a^2E[(x-E[x])^2]+b^2E[(y-E[y])^2]+abE[(x-E[x])(y-E[y])]} \\ = a^2\mathrm{Var(x)}+b^2\mathrm{Var(y)}+2ab\mathrm{Cov(x,y)}\)</span></p>
+<ul>
+<li><span class="math inline">\(\mathrm{Cov}(a\mathrm x+b, c\mathrm y+d) = ac\mathrm{Cov(x,y)}\)</span></li>
+</ul>
+<p><strong>證明</strong></p>
+<p><span class="math inline">\(\mathrm{Cov}(a\mathrm x+b, c\mathrm y+d) = \mathrm E[(a\mathrm x+b-\mathrm E[a\mathrm x+b])(c\mathrm y+d-\mathrm E[c\mathrm y+d])] \\ = \mathrm E[(a\mathrm x+b-a\mathrm E[\mathrm x]-b)(c\mathrm y+d-c\mathrm E[\mathrm y]-d)] \\ = \mathrm E[ac(\mathrm x-\mathrm E[\mathrm x])(\mathrm y-\mathrm E[\mathrm y])] = ac\mathrm E[(\mathrm x-\mathrm E[\mathrm x])(\mathrm y-\mathrm E[\mathrm y])] = ac\mathrm{Cov(x,y)}\)</span></p>
+<ul>
+<li><span class="math inline">\(\mathrm{Cov}(a\mathrm x+b\mathrm y, c\mathrm w +d\mathrm v) = \\ ac\mathrm{Cov(x,w)}+ad\mathrm{Cov(x,v)}+bc\mathrm{Cov(y,w)}+bd\mathrm{Cov(y,v)}\)</span></li>
+</ul>
+<p><strong>證明</strong></p>
+<p><span class="math inline">\(\mathrm{Cov}(a\mathrm x+b\mathrm y, c\mathrm w +d\mathrm v) \\= \mathrm E[(a\mathrm x+b\mathrm y-\mathrm E[a\mathrm x+b\mathrm y])(c\mathrm w+d\mathrm v-\mathrm E[c\mathrm w+d\mathrm v])] \\ = \mathrm E[(a\mathrm x+b\mathrm y-a\mathrm E[\mathrm x]-b\mathrm E[\mathrm y])(c\mathrm w+d\mathrm v-c\mathrm E[\mathrm w]-d\mathrm E[\mathrm v])] \\ = \mathrm E[(a(\mathrm x-\mathrm E[\mathrm x])+b(\mathrm y-\mathrm E[\mathrm y]))(c(\mathrm w-\mathrm E[\mathrm w])+d(\mathrm v-\mathrm E[\mathrm v]))] \\= \mathrm E[ac(\mathrm x-\mathrm E[\mathrm x])(\mathrm w-\mathrm E[\mathrm w])+ad(\mathrm x-\mathrm E[\mathrm x])(\mathrm v-\mathrm E[\mathrm v])\\+bc(\mathrm y-\mathrm E[\mathrm y])(\mathrm w-\mathrm E[\mathrm w])+bd(\mathrm y-\mathrm E[\mathrm y])(\mathrm v-\mathrm E[\mathrm v])] \\ = ac\mathrm{Cov(x,w)}+ad\mathrm{Cov(x,v)}+bc\mathrm{Cov(y,w)}+bd\mathrm{Cov(y,v)}\)</span></p>
+<h2 id="multivariate-and-derived-variables">Multivariate and Derived variables</h2>
+<h3 id="multivariate-random-variables多元隨機變數">Multivariate random variables（多元隨機變數）</h3>
+<ul>
+<li>多元隨機變數標記為 <span class="math inline">\(\mathrm x = \begin{bmatrix} \mathrm x_1\\ \vdots \\ \mathrm x_d \end{bmatrix}\)</span>
+<ul>
+<li>可視為一個向量（稱作「Random vector」隨機向量），裡面每一個分量則為一個特性（Attributes；Variables；Features），其彼此通常為相互依賴的（Dependent）否則拆開討論即可</li>
+<li>多元隨機變數對應的機率分佈 <span class="math inline">\(\mathrm {P(x)}\)</span> 即為 <span class="math inline">\(\mathrm{x_1,\ldots,x_d}\)</span> 對應的<strong>聯合機率分佈</strong></li>
+</ul></li>
+<li><span class="math inline">\(\mathrm x\)</span> 的<strong>期望值</strong>定義為 <span class="math inline">\(\mu_{\mathrm x} = \mathrm{E(x) = \begin{bmatrix} \mathrm \mu_{x_1}\\ \vdots \\ \mathrm \mu_{x_d} \end{bmatrix}}\)</span></li>
+<li><span class="math inline">\(\mathrm x\)</span> 的<strong>共變異數矩陣（Covariance matrix）</strong>
+<ul>
+<li><span class="math inline">\(\Sigma_x = \begin{bmatrix} \sigma^2_{\mathrm x_1} &amp; \sigma_{\mathrm {x_1,x_2}} &amp; \ldots &amp; \sigma_{\mathrm {x_1,x_d}}\\ \sigma_{\mathrm {x_2,x_1}} &amp; \sigma^2_{\mathrm x_2} &amp; \ldots &amp; \sigma_{\mathrm {x_2,x_d}} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ \sigma_{\mathrm {x_d,x_1}} &amp; \sigma_{\mathrm {x_d,x_2}} &amp; \ldots &amp;\sigma^2_{\mathrm x_d} \end{bmatrix}\)</span></li>
+<li><span class="math inline">\(\sigma_{\mathrm {x_i,x_j}} = \mathrm{Cov(x_i,x_j) = E(x_i-\mu_{x_i})(x_j-\mu_{x_j})} \\ = \mathrm{E(x_ix_j)-\mu_{x_i}\mu_{x_j}}\)</span></li>
+<li><span class="math inline">\(\Sigma_x = \mathrm{Cov(x) = E[(x-\mu_x)(x-\mu_x)^T] = E(xx^T)-\mu_x\mu_x^T}\)</span></li>
+<li><strong>重要性質</strong>
+<ul>
+<li>必為<strong>對稱矩陣</strong></li>
+<li>必為<strong>半正定</strong>
+<ul>
+<li>特徵向量必為<strong>實數</strong>且 ≧ 0</li>
+</ul></li>
+<li>此矩陣為<strong>非奇異</strong>若且唯若此舉陣為<strong>正定</strong></li>
+<li>此矩陣為<strong>奇異</strong>代表隨機向量 <span class="math inline">\(\mathrm x\)</span> 可能
+<ul>
+<li>包含<strong>確定性（Deterministic）</strong>的隨機變數，此值與其他隨機變數的共變異數為 0（相互獨立）</li>
+<li>包含一對以上隨機變數<strong>相互獨立</strong></li>
+<li>包含一對以上隨機變數為<strong>非線性相依</strong></li>
+<li>包含重複的隨機變數導致矩陣內兩列（Row）相依</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<p><strong>證明共變異數矩陣必為半正定</strong></p>
+<ol type="1">
+<li>令 <span class="math inline">\(C\)</span> 為一個共變異數矩陣
+<ul>
+<li>存在一個隨機向量 <span class="math inline">\(\mathrm x\)</span> 使得 <span class="math inline">\(C = E[(x-\mu_x)(x-\mu_x)^T]\)</span></li>
+</ul></li>
+<li><span class="math inline">\(\forall u, u^TCu = u^TE[(x-\mu_x)(x-\mu_x)^T]u \\ = E[u^T(x-\mu_x)(x-\mu_x)^Tu] \\ = E[＜(x-\mu_x), u＞^2] = ＜(x-\mu_x), u＞^2\)</span>
+<ul>
+<li>因為 <span class="math inline">\(＜(x-\mu_x), u＞^2\)</span> 必為<strong>實數</strong>，則對其求期望值不會改變其值</li>
+</ul></li>
+<li>因為 <span class="math inline">\(＜(x-\mu_x), u＞ \in \mathbf R\)</span>
+<ul>
+<li><span class="math inline">\(u^TCu = ＜(x-\mu_x), u＞^2 \geq 0\)</span></li>
+<li>共變異數矩陣為半正定</li>
+</ul></li>
+</ol>
+<h3 id="derived-random-variables衍隨機變數">Derived random variables（衍隨機變數）</h3>
+<ul>
+<li>由其他<strong>隨機向量</strong>（<span class="math inline">\(\mathrm x\)</span>）衍生定義出的<strong>隨機變數</strong>（<span class="math inline">\(\mathrm y\)</span>）
+<ul>
+<li>給定一個參數向量 <span class="math inline">\(w\)</span>，<span class="math inline">\(\mathrm x\)</span> 可衍生隨機變數 <span class="math inline">\(\mathrm y\)</span></li>
+<li><span class="math inline">\(\mathrm y = f(\mathrm x;w) = w^Tx\)</span></li>
+</ul></li>
+<li>由 <span class="math inline">\(\mathrm x\)</span> 向量以描述向量 <span class="math inline">\(\mathrm y\)</span> 的性質
+<ul>
+<li>期望值向量：<span class="math inline">\(\mu_{\mathrm y} = \mathrm E(w^T\mathrm x) = w^T\mathrm{E(x)} = w^T\mu_x\)</span></li>
+</ul></li>
+<li><span class="math inline">\(\sigma^2_{\mathrm y} = w^T\Sigma_{\mathrm x}w\)</span>
+<ul>
+<li><span class="math inline">\(\sigma^2_{\mathrm y} = \mathrm E[(\mathrm y-\mu_{\mathrm y})^2] \\ = \mathrm E[(w^T\mathrm x-w^T\mu_{\mathrm x})^2] \\ = \mathrm E[(w^T(\mathrm x-\mu_{\mathrm x}))^2] \\ = \mathrm E[(w^T(\mathrm x-\mu_{\mathrm x}))((\mathrm x-\mu_{\mathrm x})^Tw)] \\ = w^T \mathrm E[((\mathrm x-\mu_{\mathrm x}))((\mathrm x-\mu_{\mathrm x})^T)] w = w^T\Sigma_{\mathrm x}w\)</span></li>
+</ul></li>
+</ul>
+<h2 id="bayes-rule-and-statistics">Bayes’ rule and statistics</h2>
+<blockquote>
+<p><span class="math inline">\(\Pr(\mathrm x = x)\)</span> <strong>的意義？</strong></p>
+<ol type="1">
+<li><strong>Bayesian probability（貝氏機率）</strong>
+<ul>
+<li>It’s a degree of belief or qualitative levels of certainty</li>
+<li>「相信 <span class="math inline">\(\mathrm x = x\)</span> 事件發生的程度（確定性）」</li>
+</ul></li>
+<li><strong>Frequentist probability（頻率）</strong>
+<ul>
+<li>If we can draw samples of <span class="math inline">\(\mathrm x\)</span>, them the proportion of frequency of samples having the value <span class="math inline">\(\mathrm x\)</span> is equal to <span class="math inline">\(\Pr(\mathrm x = x)\)</span></li>
+<li>如果可以對隨機變數 <span class="math inline">\(\mathrm x\)</span> 進行抽樣，<span class="math inline">\(\Pr(\mathrm x = x)\)</span> 則為 <span class="math inline">\(x\)</span> 在抽樣中的出現比率</li>
+</ul></li>
+</ol>
+<p><strong>上述兩個意義應為一致</strong></p>
+</blockquote>
+<h3 id="bayes-rule貝氏定理">Bayes’ rule（貝氏定理）</h3>
+<p><span class="math display">\[
+\mathrm {P(y\vert x)} = \frac{\mathrm{P(x\vert y)P(y)}}{\mathrm{P(x)}} = \frac{\mathrm{P(x\vert y)P(y)}}{\mathrm{\sum_yP(x\vert y} = y)\mathrm{P(y}=y)}
+\]</span></p>
+<ul>
+<li>貝氏定理在機器學習上是非常重要的概念，所以上述的每一項皆有各自的名稱
+<ul>
+<li><span class="math inline">\(\mathrm{posterior = \frac{likeihood \times prior}{evidence}} \\ \mathrm{後驗機率 = \frac{相似性\times 前驗機率}{事證}}\)</span></li>
+</ul></li>
+<li><strong>為何重要？</strong>
+<ul>
+<li>一個醫生在診斷病人的疾病時，內心中其實令看到的「病徵」（Symptom）為 <span class="math inline">\(\mathrm x\)</span>、令「病種」（Disease）為 <span class="math inline">\(\mathrm y\)</span>，而醫生的目標就是要經由「病徵」確診病人的「病種」（使 <span class="math inline">\(\mathrm{P(y\vert x)}\)</span> 最大化）</li>
+<li>醫生藉由過往統計的 <span class="math inline">\(\mathrm{P(x \vert y), P(y)}\)</span> （在某個「病種」下其「病徵」發作的機率、該「病種」發生的機率）更輕鬆的判斷</li>
+</ul></li>
+</ul>
+<h3 id="point-estimation點估計">Point estimation（點估計）</h3>
+<ul>
+<li>「點估計」：試著<strong>藉由樣本（單一的性質；單點）</strong>以估計<strong>母體未知的參數</strong>（<span class="math inline">\(\theta\)</span>；性質，有可能是平均值、標準差…等性質）
+<ul>
+<li>如：為了瞭解台北市民的平均月收入（假設有 260 萬人），挑選其中 1000 人計算月收入的算術平均數，假設為 60000，若使用點估計則會推論台北市民的月平均收入為 60000</li>
+</ul></li>
+<li>假設一個獨立同分佈（Independent and identically distributed；i.i.d.）隨機變數 <span class="math inline">\(\mathrm x\)</span> 有 <span class="math inline">\(n\)</span> 個的樣本記作 <span class="math inline">\(\left\{ x^{(1)},\ldots,x^{(n)} \right\}\)</span>
+<ul>
+<li>這些資料的點估計（Pointer estimator；Statistic）函數為
+<ul>
+<li><span class="math inline">\(\hat\theta_n = g(x^{(1)},\ldots,x^{(n)})\)</span></li>
+</ul></li>
+<li><span class="math inline">\(\hat \theta_n\)</span> 稱作 <span class="math inline">\(\theta\)</span> 性質的<strong>估計</strong>
+<ul>
+<li>在機器學習中目標就是希望能找出一個好的函數 <span class="math inline">\(g\)</span> 使得 <span class="math inline">\(\hat \theta_n\)</span> 性質與 <span class="math inline">\(\theta\)</span> 性質越相近越好</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4 id="sample-mean-and-covariance">Sample mean and covariance</h4>
+<ul>
+<li>給定 <span class="math inline">\(X = \begin{bmatrix} x^{(1)} \\ \vdots \\ x^{(n)} \end{bmatrix} \in \mathbf R^{n\times d}\)</span> 為一個 i.i.d. 樣本（Design matrix），則 <span class="math inline">\(\mathrm x\)</span> 的「猜想平均數向量」與「猜想共變異矩陣」為何？
+<ul>
+<li>樣本平均數向量
+<ul>
+<li><span class="math inline">\(\hat\mu_x = \frac 1n\sum_{i = 1}^nx^{(i)}\)</span></li>
+</ul></li>
+<li>樣本共變異矩陣
+<ul>
+<li><span class="math inline">\(\hat\Sigma_{\mathrm x} = \frac 1n\sum_{i = 1}^n(x^{(i)}-\hat\mu_{\mathrm x})(x^{(i)}-\hat\mu_{\mathrm x})^T\)</span>
+<ul>
+<li>第 <span class="math inline">\((i)\)</span> 個樣本</li>
+<li><span class="math inline">\((x^{(i)}-\hat\mu_{\mathrm x})(x^{(i)}-\hat\mu_{\mathrm x})^T\)</span> 為第 <span class="math inline">\((i)\)</span> 個樣本的共變異矩陣</li>
+</ul></li>
+<li><span class="math inline">\(\mathrm x_i, \mathrm x_j\)</span> 兩個<strong>隨機變數</strong>的「共變異數」
+<ul>
+<li><span class="math inline">\(\hat\sigma_{\mathrm x_i,\mathrm x_j}^2 = \frac1n\sum_{s = 1}^n(x^{(s)}_i-\hat\mu_{\mathrm x_i})(x^{(s)}_j-\hat\mu_{\mathrm x_j})\)</span>
+<ul>
+<li>第 <span class="math inline">\((s)\)</span> 個樣本</li>
+<li><span class="math inline">\((x^{(s)}_i-\hat\mu_{\mathrm x_i})(x^{(s)}_j-\hat\mu_{\mathrm x_j})\)</span> 為第 <span class="math inline">\((s)\)</span> 個樣本對於 <span class="math inline">\(\mathrm x_i, \mathrm x_j\)</span> 兩個<strong>隨機變數</strong>的「共變異數」</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>若將每個樣本 <span class="math inline">\(x^{(i)}\)</span> 歸位化（先將每個樣本減去 <span class="math inline">\(\hat\mu_{\mathrm x}\)</span>，成為零均值 zero-mean）
+<ul>
+<li>則 <span class="math inline">\(\hat\Sigma_{\mathrm x} = \frac {\sum_{i = 1}^nx^{(i)^T}x^{i}}{n} = \frac1n X^TX\)</span></li>
+</ul></li>
+</ul></li>
+</ul>
+<blockquote>
+<ul>
+<li>假設只有一個歸位化的隨機變數 <span class="math inline">\(\mathrm Y\)</span>
+<ul>
+<li>其變異數 <span class="math inline">\(\sigma^2 = \mathrm {E(Y^2)}\)</span></li>
+<li>在有 <span class="math inline">\(n\)</span> 個樣本資料 <span class="math inline">\(\mathrm {Y_1,Y_2,\ldots, Y_n}\)</span> 的情況下，其「猜想變異數」會等價於「猜想平均數」
+<ul>
+<li><span class="math inline">\(\hat\sigma^2_{\mathrm Y} = \hat\mu_{\mathrm Y} = \frac{\sum_{k = 1}^n Y_k^2}{n}\)</span></li>
+</ul></li>
+</ul></li>
+<li>假設一個隨機向量 <span class="math inline">\(\mathrm X = \begin{bmatrix}\mathrm{X_1,\ldots,X_d} \end{bmatrix}\)</span>，每個元素皆為歸位化的隨機變數</li>
+<li>其共變異數矩陣 <span class="math inline">\(\Sigma_{\mathrm X }\mathrm {= E(X^TX)}\)</span></li>
+</ul>
+</blockquote>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/willywangkaa/tags/Probability/" rel="tag"># Probability</a>
+          
+            <a href="/willywangkaa/tags/Information-theories/" rel="tag"># Information theories</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/willywangkaa/2019/04/19/Deep-learning-Linear-algebra/" rel="next" title="Deep learning - Linear algebra">
+                <i class="fa fa-chevron-left"></i> Deep learning - Linear algebra
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/willywangkaa/2019/04/19/Deep-learning-Probability-and-Information-theories-II/" rel="prev" title="Deep learning - Probability and Information theories II">
+                Deep learning - Probability and Information theories II <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/willywangkaa/images/avatar_me.gif"
+                alt="Willy Wang (willywangkaa)" />
+            
+              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
+              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/willywangkaa/archives/">
+                
+                    <span class="site-state-item-count">59</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/willywangkaa/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/willywangkaa/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">76</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://typora.io/" title="Typora" target="_blank">Typora</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.geeksforgeeks.org/" title="GeeksforGeeks" target="_blank">GeeksforGeeks</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.codecogs.com/latex/eqneditor.php" title="Online LaTeX Equation Editor" target="_blank">Online LaTeX Equation Editor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://allem40306.github.io/blog/" title="CodingJack" target="_blank">CodingJack</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#deep-learning---probability-and-information-theories-i"><span class="nav-number">1.</span> <span class="nav-text">Deep learning - Probability and Information theories I</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#random-variables-and-probability-distribution"><span class="nav-number">1.1.</span> <span class="nav-text">Random variables and probability distribution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#random-variables隨機變數"><span class="nav-number">1.1.1.</span> <span class="nav-text">Random variables（隨機變數）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#marginal-probability邊際機率"><span class="nav-number">1.1.2.</span> <span class="nav-text">Marginal probability（邊際機率）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#conditional-probability條件機率"><span class="nav-number">1.1.3.</span> <span class="nav-text">Conditional probability（條件機率）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#independence-and-conditional-independence獨立與條件獨立"><span class="nav-number">1.1.4.</span> <span class="nav-text">Independence and conditional independence（獨立與條件獨立）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#expectation期望值"><span class="nav-number">1.1.5.</span> <span class="nav-text">Expectation（期望值）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#variance變異數"><span class="nav-number">1.1.6.</span> <span class="nav-text">Variance（變異數）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#covariance共變異數"><span class="nav-number">1.1.7.</span> <span class="nav-text">Covariance（共變異數）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multivariate-and-derived-variables"><span class="nav-number">1.2.</span> <span class="nav-text">Multivariate and Derived variables</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#multivariate-random-variables多元隨機變數"><span class="nav-number">1.2.1.</span> <span class="nav-text">Multivariate random variables（多元隨機變數）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#derived-random-variables衍隨機變數"><span class="nav-number">1.2.2.</span> <span class="nav-text">Derived random variables（衍隨機變數）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bayes-rule-and-statistics"><span class="nav-number">1.3.</span> <span class="nav-text">Bayes’ rule and statistics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bayes-rule貝氏定理"><span class="nav-number">1.3.1.</span> <span class="nav-text">Bayes’ rule（貝氏定理）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#point-estimation點估計"><span class="nav-number">1.3.2.</span> <span class="nav-text">Point estimation（點估計）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sample-mean-and-covariance"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">Sample mean and covariance</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/willywangkaa/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/affix.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/willywangkaa/js/src/schemes/pisces.js?v=6.0.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/willywangkaa/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/willywangkaa/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://https-wangwilly-github-io-blog.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://WangWilly.github.io/willywangkaa/2019/04/19/Deep-learning-Probability-and-Information-theories-I/';
+        this.page.identifier = '2019/04/19/Deep-learning-Probability-and-Information-theories-I/';
+        this.page.title = 'Deep learning - Probability and Information theories I';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-wangwilly-github-io-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/willywangkaa/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/willywangkaa/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>

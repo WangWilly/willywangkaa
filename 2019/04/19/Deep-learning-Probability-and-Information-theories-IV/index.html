@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-tw,en,default">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/willywangkaa/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/willywangkaa/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/willywangkaa/images/apple-touch-icon-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/willywangkaa/images/favicon-32x32-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/willywangkaa/images/favicon-16x16-next_cat.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/willywangkaa/images/logo_cat.svg?v=6.0.4" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/willywangkaa/',
+    scheme: 'Pisces',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="Probability,Information theories," />
+
+
+<meta name="description" content="Deep learning - Probability and Information theories IV Common probability distribution Multivariate Gaussian distribution（多元常態分佈；Continuous）  \(\mathrm{X～Gaussian}(\mu, \sigma)\quad f_{\mathrm X}">
+<meta name="keywords" content="Probability,Information theories">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deep learning - Probability and Information theories IV">
+<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2019/04/19/Deep-learning-Probability-and-Information-theories-IV/index.html">
+<meta property="og:site_name" content="WillyWangkaa">
+<meta property="og:description" content="Deep learning - Probability and Information theories IV Common probability distribution Multivariate Gaussian distribution（多元常態分佈；Continuous）  \(\mathrm{X～Gaussian}(\mu, \sigma)\quad f_{\mathrm X}">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1555650665915.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1555650853286.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1555651404197.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1555580591425.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1555580920252.png">
+<meta property="og:updated_time" content="2019-04-19T13:33:31.781Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Deep learning - Probability and Information theories IV">
+<meta name="twitter:description" content="Deep learning - Probability and Information theories IV Common probability distribution Multivariate Gaussian distribution（多元常態分佈；Continuous）  \(\mathrm{X～Gaussian}(\mu, \sigma)\quad f_{\mathrm X}">
+<meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/1555650665915.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://WangWilly.github.io/willywangkaa/2019/04/19/Deep-learning-Probability-and-Information-theories-IV/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>Deep learning - Probability and Information theories IV | WillyWangkaa</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/willywangkaa/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WillyWangkaa</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Live more like human</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/willywangkaa/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/willywangkaa/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/willywangkaa/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/willywangkaa/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2019/04/19/Deep-learning-Probability-and-Information-theories-IV/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WillyWangkaa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Deep learning - Probability and Information theories IV</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-19T21:19:00+08:00">2019-04-19</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-04-19T21:33:31+08:00">2019-04-19</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/willywangkaa/categories/Deep-learning/" itemprop="url" rel="index"><span itemprop="name">Deep learning</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/willywangkaa/2019/04/19/Deep-learning-Probability-and-Information-theories-IV/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/04/19/Deep-learning-Probability-and-Information-theories-IV/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="deep-learning---probability-and-information-theories-iv">Deep learning - Probability and Information theories IV</h1>
+<h2 id="common-probability-distribution">Common probability distribution</h2>
+<h3 id="multivariate-gaussian-distribution多元常態分佈continuous">Multivariate Gaussian distribution（多元常態分佈；Continuous）</h3>
+<blockquote>
+<p><span class="math inline">\(\mathrm{X～Gaussian}(\mu, \sigma)\quad f_{\mathrm X}(x) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}\)</span></p>
+<p>常態分佈亦可推廣至 <span class="math inline">\(\mathbb R^n\)</span> 空間，稱作<strong>多元常態分佈</strong></p>
+</blockquote>
+<p><span class="math display">\[
+\mathrm {X～Gaussian}(\boldsymbol \mu, \Sigma)
+\]</span></p>
+<ul>
+<li>機率密度函數（Probability density function）
+<ul>
+<li><span class="math inline">\(f_X(\boldsymbol x) = \sqrt{\frac{1}{(2\pi)^d\det(\Sigma)}}e^{-\frac12(\boldsymbol x-\boldsymbol \mu)^T\Sigma^{-1}(\boldsymbol x-\boldsymbol \mu)}\)</span></li>
+</ul></li>
+</ul>
+<blockquote>
+<ul>
+<li><span class="math inline">\(\boldsymbol \mu = \begin{bmatrix}\mu_1 \\ \vdots \\ \mu_d\end{bmatrix} \in \mathbb R^d\)</span> 為平均數向量</li>
+<li><span class="math inline">\(\Sigma \in \mathbb R^{n\times n}\)</span> 共變異數矩陣（Covariance matrix）</li>
+</ul>
+</blockquote>
+<ul>
+<li>若 <span class="math inline">\(\mathrm {X～Gaussian}(\boldsymbol \mu, \Sigma)\)</span>
+<ul>
+<li>則每個隨機變數 <span class="math inline">\(X_i\)</span> 為單變量常態分佈</li>
+<li><strong>反向不成立</strong></li>
+</ul></li>
+<li>但是若 <span class="math inline">\(X_1, \ldots, X_d\)</span> 為 i.i.d. 且 <span class="math inline">\(X_i～\mathrm{Gaussian}(\mu_i,\sigma_i)\)</span>
+<ul>
+<li>則 <span class="math inline">\(\mathrm {X～Gaussian}(\boldsymbol \mu, \Sigma)\)</span></li>
+<li><span class="math inline">\(\boldsymbol \mu = \begin{bmatrix}\mu_1 \\ \vdots \\ \mu_d\end{bmatrix}\)</span></li>
+<li><span class="math inline">\(\Sigma = \mathrm{diag}(\sigma_1^2,\ldots,\sigma_d^2)\)</span></li>
+</ul></li>
+</ul>
+<blockquote>
+<p><strong>運用矩陣分解可以從另一個角度認識常態分布和共變異數矩陣</strong></p>
+<ul>
+<li><span class="math inline">\(\Sigma\)</span> 的正交對角化表達式為 <span class="math inline">\(\Sigma=Q\Lambda Q^T=BB^T\)</span>
+<ul>
+<li>其中 <span class="math inline">\(B=Q\Lambda^{1/2}\)</span> 稱為極分解（見“<a href="https://ccjou.wordpress.com/2009/09/09/%E6%A5%B5%E5%88%86%E8%A7%A3/" target="_blank" rel="noopener">極分解</a>”）</li>
+<li><span class="math inline">\(Q\)</span> 是一個正交矩陣表示<strong>旋轉或鏡射</strong></li>
+<li><span class="math inline">\(\Lambda^{1/2}=\hbox{diag}(\sqrt{\lambda_1},\ldots,\sqrt{\lambda_n})\)</span> 是一個正定矩陣表示<strong>伸縮</strong></li>
+</ul></li>
+<li>馬氏距離可表示成
+<ul>
+<li><span class="math inline">\(\Delta^2=(\mathbf{x}-\boldsymbol{\mu})^T(B^{-1})^TB^{-1}(\mathbf{x}-\boldsymbol{\mu}) \\=\Vert B^{-1}(\mathbf{x}-\boldsymbol{\mu})\Vert^2=\Vert\Lambda^{-1/2}Q^T(\mathbf{x}-\boldsymbol{\mu})\Vert^2\)</span></li>
+<li><span class="math inline">\(\mathbf{z}=\Lambda^{-1/2}Q^T(\mathbf{x}-\boldsymbol{\mu})\)</span>，即有 <span class="math inline">\(\Delta^2=\mathbf{z}^T\mathbf{z}\)</span>
+<ul>
+<li>隨機向量 <span class="math inline">\(\mathbf{z}\)</span> 的機率密度函數</li>
+<li><span class="math inline">\(p(\mathbf{z})=\frac{1}{(2\pi)^{n/2}}\exp\left\{-\frac{1}{2}\mathbf{z}^T\mathbf{z}\right\}=\prod_{i=1}^n\frac{1}{\sqrt{2\pi}}\exp\left\{-\frac{z_i^2}{2}\right\}\)</span>
+<ul>
+<li>稱為標準常態分布</li>
+<li>平均數向量是 <span class="math inline">\(\boldsymbol{\mu}=\mathbf{0}\)</span></li>
+<li>共變異數矩陣是 <span class="math inline">\(\Sigma=I\)</span></li>
+</ul></li>
+</ul></li>
+<li>一般常態分布的隨機向量 <span class="math inline">\(\mathbf{x}\)</span>其生成過程可表示為<strong>仿射變換</strong>
+<ul>
+<li><span class="math inline">\(\mathbf{x}=Q\Lambda^{1/2}\mathbf{z}+\boldsymbol{\mu}\)</span></li>
+<li>先伸縮標準常態分布的隨機向量 <span class="math inline">\(\mathbf{z}\)</span> 各個變數（乘以 <span class="math inline">\(\Lambda^{1/2}\)</span>）</li>
+<li>再旋轉（乘以 <span class="math inline">\(Q\)</span>）</li>
+<li>最後平移（加上 <span class="math inline">\(\boldsymbol{\mu}\)</span>），<strong>如下圖</strong></li>
+</ul></li>
+</ul></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\1555650665915.png" alt="1555650665915"><figcaption>1555650665915</figcaption>
+</figure>
+<p><strong>共變異數矩陣</strong> <span class="math inline">\(\Sigma\)</span> <strong>的作用在於決定常態分布的伸縮</strong> <span class="math inline">\(\Lambda^{1/2}\)</span> <strong>和旋轉</strong> <span class="math inline">\(Q\)</span></p>
+</blockquote>
+<figure>
+<img src="\willywangkaa\images\1555650853286.png" alt="1555650853286"><figcaption>1555650853286</figcaption>
+</figure>
+<ul>
+<li>隨著 <span class="math inline">\(\mathrm{Cov}[X_1,X_2]\)</span> 增長，會將等高線沿著 45 度伸長</li>
+<li>隨著 <span class="math inline">\(\mathrm{Cov}[X_1,X_2]\)</span> 減少，會將等高線沿著 -45 度伸長</li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\1555651404197.png" alt="1555651404197"><figcaption>1555651404197</figcaption>
+</figure>
+<ul>
+<li>上圖高度為 <span class="math inline">\(f_X(\boldsymbol x) = \sqrt{\frac{1}{(2\pi)^d\det(\Sigma)}}e^{-\frac12(\boldsymbol x-\boldsymbol \mu)^T\Sigma^{-1}(\boldsymbol x-\boldsymbol \mu)}\)</span> 的輸出
+<ul>
+<li>高度與馬氏距離成反比</li>
+<li>若 <span class="math inline">\(\Sigma=\sigma^2I\)</span> 則該常態分佈具有<strong>等向性（Isotropic）</strong></li>
+</ul></li>
+</ul>
+<h4 id="特性">特性</h4>
+<ul>
+<li>若 <span class="math inline">\(\mathrm {X～Gaussian}(\boldsymbol \mu, \Sigma)\)</span>
+<ul>
+<li>對於任意常數向量 <span class="math inline">\(\mathbf w\in\mathbb R^d\)</span></li>
+<li><span class="math inline">\(\mathrm {w^TX～Gaussian}(\mathbf w^T\boldsymbol \mu, \mathbf w^T\Sigma\mathbf w)\)</span></li>
+</ul></li>
+<li>廣義的說給定 <span class="math inline">\(\mathbf W\in \mathbb R^{d\times k}, k\leq d\)</span>
+<ul>
+<li><span class="math inline">\(\mathbf W^T\mathrm {X～Gaussian}(\mathbf W^T\boldsymbol \mu, \mathbf W^T\Sigma\mathbf W)\)</span> 為 <span class="math inline">\(k\)</span> 變量常態分佈</li>
+<li>將隨機向量 <span class="math inline">\(\mathbf x\)</span> 投影至 <span class="math inline">\(k\)</span> 為空間<strong>仍然為常態分佈</strong></li>
+</ul></li>
+</ul>
+<h4 id="mahalanobis-distance馬氏距離">Mahalanobis distance（馬氏距離）</h4>
+<p><strong>常態分佈</strong>的機率密度函數由下列二次型決定： <span class="math display">\[
+\Delta^2 = (\boldsymbol x-\boldsymbol\mu)^T\Sigma^{-1}(\boldsymbol x-\boldsymbol\mu)
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\Delta\)</span> 稱為 <span class="math inline">\(\boldsymbol \mu\)</span> 與 <span class="math inline">\(\boldsymbol x\)</span> 的馬氏距離</li>
+<li>若 <span class="math inline">\(\Sigma = I_d\)</span> ，則 <span class="math inline">\(\Sigma^2 = \Vert \boldsymbol x -\boldsymbol \mu\Vert^2\)</span>
+<ul>
+<li>馬氏距離退化為歐氏距離（Euclidean distance）</li>
+</ul></li>
+<li>通過解析馬氏距離的二次型表達式
+<ul>
+<li>可以瞭解常態分布的<strong>幾何型態</strong></li>
+</ul></li>
+</ul>
+<blockquote>
+<p>不失一般性原則下，假設 <span class="math inline">\(\Sigma\)</span> 為一個實對稱矩陣</p>
+<ul>
+<li>考慮特徵方程 <span class="math inline">\(\Sigma\mathbf{q}_i=\lambda_i\mathbf{q}_i\)</span></li>
+<li><span class="math inline">\(\Vert\mathbf{q}_i\Vert=1\)</span>，<span class="math inline">\(i=1,\ldots,d\)</span></li>
+<li>實對稱矩陣可正交對角化（<a href="https://ccjou.wordpress.com/2011/02/09/%E5%AF%A6%E5%B0%8D%E7%A8%B1%E7%9F%A9%E9%99%A3%E5%8F%AF%E6%AD%A3%E4%BA%A4%E5%B0%8D%E8%A7%92%E5%8C%96%E7%9A%84%E8%AD%89%E6%98%8E/" target="_blank" rel="noopener">實對稱矩陣可正交對角化的證明</a>）
+<ul>
+<li>令 <span class="math inline">\(Q=\begin{bmatrix} \mathbf{q}_1&amp;\cdots&amp;\mathbf{q}_d \end{bmatrix}\)</span> 且 <span class="math inline">\(\Lambda=\mathrm{diag}(\lambda_1,\ldots,\lambda_d)\)</span></li>
+<li><span class="math inline">\(\Sigma=Q\Lambda Q^T=\begin{bmatrix} \mathbf{q}_1&amp;\cdots&amp;\mathbf{q}_d \end{bmatrix}\begin{bmatrix} \lambda_1&amp;&amp;\\ &amp;\ddots&amp;\\ &amp;&amp;\lambda_d \end{bmatrix}\begin{bmatrix} \mathbf{q}_1^T\\ \vdots\\ \mathbf{q}_d^T \end{bmatrix}=\displaystyle\sum_{i=1}^d\lambda_i\mathbf{q}_i\mathbf{q}_i^T\)</span></li>
+</ul></li>
+</ul>
+</blockquote>
+<p>將正交對角化分解後的式子代入馬氏距離公式 <span class="math display">\[
+\Delta^2=(\mathbf{x}-\boldsymbol{\mu})^TQ\Lambda^{-1}Q^T(\mathbf{x}-\boldsymbol{\mu})=\mathbf{y}^T\Lambda^{-1}\mathbf{y}=\displaystyle\sum_{i=1}^d\frac{y_i^2}{\lambda_i}
+\]</span></p>
+<ul>
+<li>令 <span class="math inline">\(\mathbf{y}=Q^T(\mathbf{x}-\boldsymbol{\mu})\)</span></li>
+<li><span class="math inline">\(\mathbf{x}-\boldsymbol{\mu}=Q\mathbf{y}=\begin{bmatrix} \mathbf{q}_1&amp;\cdots&amp;\mathbf{q}_d \end{bmatrix}\begin{bmatrix} y_1\\ \vdots\\ y_d \end{bmatrix}=y_1\mathbf{q}_1+\cdots+y_d\mathbf{q}_d\)</span>
+<ul>
+<li><span class="math inline">\(\mathbf{x}-\boldsymbol{\mu}\)</span> 在<strong>參考基底</strong> <span class="math inline">\(\{\mathbf{q}_1,\ldots,\mathbf{q}_d\}\)</span> 上的座標（向量）為 <span class="math inline">\(\mathbf y=\begin{bmatrix} y_1\\ \vdots\\ y_d \end{bmatrix}\)</span></li>
+<li>可以解讀為 <span class="math inline">\(\mathbf{y}\)</span> 至 <span class="math inline">\(\mathbf{x}\)</span> 的仿射變換</li>
+<li><span class="math inline">\(\mathbf{y}\)</span> 經過旋轉或鏡射 <span class="math inline">\(Q\)</span>，再平移 <span class="math inline">\(\boldsymbol{\mu}\)</span> 得到 <span class="math inline">\(\mathbf{x}\)</span></li>
+</ul></li>
+</ul>
+<h4 id="contour-line等高線">Contour line（等高線）</h4>
+<blockquote>
+<p>透過<strong>等高線</strong>可<strong>視覺化常態分布的型態</strong></p>
+<p>方便說明考慮 <span class="math inline">\(d=2\)</span> 的情形</p>
+</blockquote>
+<ul>
+<li>若 <span class="math inline">\(\Delta=1\)</span>，馬氏距離公式給出
+<ul>
+<li><span class="math inline">\(\left(\frac{y_1}{\sqrt{\lambda_1}}\right)^2+\left(\frac{y_2}{\sqrt{\lambda_2}}\right)^2=1\)</span></li>
+</ul></li>
+<li>如果 <span class="math inline">\(\lambda_1\geq\lambda_2&gt;0\)</span>，在新座標系統 <span class="math inline">\((y_1,y_2)\)</span> 中（下圖）
+<ul>
+<li>等高線的軌跡為一個標準橢圓
+<ul>
+<li>長軸（即 <span class="math inline">\(y_1\)</span> 軸）半徑等於 <span class="math inline">\(\sqrt{\lambda_1}\)</span></li>
+<li>短軸（即 <span class="math inline">\(y_2\)</span> 軸）半徑等於 <span class="math inline">\(\sqrt{\lambda_2}\)</span></li>
+</ul></li>
+<li>在標準座標系統 <span class="math inline">\((x_1,x_2)\)</span>
+<ul>
+<li>特徵向量 <span class="math inline">\(\mathbf{q}_1\)</span> 指向長軸方向</li>
+<li><span class="math inline">\(\mathbf{q}_2\)</span> 指向短軸方向</li>
+</ul></li>
+<li>橢圓上的任何一個點 <span class="math inline">\(\mathbf{x}\)</span> 至 <span class="math inline">\(\boldsymbol{\mu}\)</span> 的馬氏距離都等於 <span class="math inline">\(1\)</span></li>
+</ul></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\1555580591425.png" alt="1555580591425"><figcaption>1555580591425</figcaption>
+</figure>
+<blockquote>
+<p>在實作上經常<strong>限制共變異數矩陣的型態</strong></p>
+<ul>
+<li><strong>（a）</strong>一般共變異數矩陣</li>
+<li><strong>（b）</strong>共變異數矩陣是對角矩陣
+<ul>
+<li><span class="math inline">\(\Sigma=\mathrm{diag}(\sigma_1^2,\ldots,\sigma_n^2)\)</span></li>
+<li><span class="math inline">\(\sigma_i^2\)</span> 代表隨機變數 <span class="math inline">\(X_i\)</span> 的變異數</li>
+</ul></li>
+<li><strong>（c）</strong>所有隨機變數 <span class="math inline">\(X_i\)</span> 有相同的共變異數
+<ul>
+<li><span class="math inline">\(\Sigma=\sigma^2I\)</span></li>
+</ul></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\1555580920252.png" alt="1555580920252"><figcaption>1555580920252</figcaption>
+</figure>
+</blockquote>
+<h4 id="moment動差">Moment（動差）</h4>
+<blockquote>
+<p><strong>考慮單變量常態分佈的動差：</strong></p>
+<ul>
+<li>令隨機變數 <span class="math inline">\(W = X-\mu\)</span>
+<ul>
+<li>則 <span class="math inline">\(W～\mathrm{Gaussian}(0,\sigma)\)</span> 的機率密度函數會對稱於 <span class="math inline">\(W = 0\)</span></li>
+</ul></li>
+<li>期望值公式為 <span class="math inline">\(\mathrm E[X] = \int_{-\infty}^{\infty}xf_X(x)\mathrm dx\)</span>
+<ul>
+<li><span class="math inline">\(\text{E}[X]=\frac{1}{\sqrt{2\pi}\sigma}\int\exp\left\{-\frac{(x-\mu)^2}{2\sigma^2}\right\}xdx\\ =\frac{1}{\sqrt{2\pi}\sigma}\int\exp\left\{-\frac{w^2}{2\sigma^2}\right\}(w+\mu)dw\\=\frac{1}{\sqrt{2\pi}\sigma}(\int\exp\left\{-\frac{w^2}{2\sigma^2}\right\}wdw+\mu\int\exp\left\{-\frac{w^2}{2\sigma^2}\right\}dw.....（＊）\\ =\mu\frac{1}{\sqrt{2\pi}\sigma}\int\exp\left\{-\frac{w^2}{2\sigma^2}\right\}dw=\mu\)</span>
+<ul>
+<li>（＊）式中的指數函數 <span class="math inline">\(\exp\)</span> 為 <span class="math inline">\(w\)</span> 的偶函數，乘上 <span class="math inline">\(w\)</span> 後變成奇函數，且積分範圍為 <span class="math inline">\((-\infty, \infty)\)</span>，根據對稱性前式為 0</li>
+</ul></li>
+</ul></li>
+<li>變異數公式為 <span class="math inline">\(\mathrm{Var}(X) = \mathrm E[(X-\mu)^2] = \int_{-\infty}^{\infty}(x-\mu)^2f_X(x)\mathrm dx \\=\int_{-\infty}^{\infty}\frac{(x-\mu)^2}{\sqrt{2\pi}\sigma}\exp\left\{-\frac{(x-\mu)^2}{2\sigma^2}\right\}\mathrm dx\)</span>
+<ul>
+<li><strong>已知</strong> <span class="math inline">\(\int\exp\left\{-\frac{(x-\mu)^2}{2\sigma^2}\right\}dx=\sqrt{2\pi}\sigma\)</span></li>
+<li>對 <span class="math inline">\(\sigma\)</span> 求導數可得 <span class="math inline">\(\int\frac{(x-\mu)^2}{\sigma^3}\exp\left\{-\frac{(x-\mu)^2}{2\sigma^2}\right\}dx=\sqrt{2\pi}\)</span>
+<ul>
+<li>將上式兩側同乘以 <span class="math inline">\(\frac{\sigma^2}{\sqrt{2\pi}}\)</span></li>
+<li>可得 <span class="math inline">\(\int_{-\infty}^{\infty}\frac{(x-\mu)^2}{\sqrt{2\pi}\sigma}\exp\left\{-\frac{(x-\mu)^2}{2\sigma^2}\right\}\mathrm dx = \mathrm E[(X-\mu)^2] = \sigma^2\)</span></li>
+</ul></li>
+</ul></li>
+</ul>
+<p><strong>說明單變量常態分布的「參數」</strong> <span class="math inline">\(\mu\)</span> <strong>是平均數，</strong><span class="math inline">\(\sigma^2\)</span> <strong>是變異數</strong></p>
+</blockquote>
+<p><strong>討論多變量常態分布的動差：</strong></p>
+<ul>
+<li>令隨機變數 <span class="math inline">\(W = X-\boldsymbol\mu\)</span></li>
+<li>期望值公式為 <span class="math inline">\(\mathrm E[X] = \int_{-\infty}^{\infty}\boldsymbol xf_X(\boldsymbol x)\mathrm dx\)</span>
+<ul>
+<li><span class="math inline">\(\text{E}[\mathbf{X}]=\frac{1}{(2\pi)^{n/2}\vert\Sigma\vert^{1/2}}\int\exp\left\{-\frac{1}{2}(\mathbf{x}-\boldsymbol{\mu})^T\Sigma^{-1}(\mathbf{x}-\boldsymbol{\mu})\right\}\mathbf{x}d\mathbf{x}\\ =\frac{1}{(2\pi)^{n/2}\vert\Sigma\vert^{1/2}}\int\exp\left\{-\frac{1}{2}\mathbf{w}^T\Sigma^{-1}\mathbf{w}\right\}(\mathbf{w}+\boldsymbol{\mu})d\mathbf{w}\\ =\frac{1}{(2\pi)^{n/2}\vert\Sigma\vert^{1/2}}\left(\int\exp\left\{-\frac{1}{2}\mathbf{w}^T\Sigma^{-1}\mathbf{w}\right\}\mathbf{w}d\mathbf{w}+\boldsymbol{\mu}\int\exp\left\{-\frac{1}{2}\mathbf{w}^T\Sigma^{-1}\mathbf{w}\right\}d\mathbf{w}\right)\)</span></li>
+<li>指數函數 <span class="math inline">\(\exp\)</span> 是 <span class="math inline">\(\mathbf{w}\)</span> 的偶函數，且積分範圍是 <span class="math inline">\((-\infty,\infty)\)</span>，根據對稱性可知上式第一項等於零，故得
+<ul>
+<li><span class="math inline">\(\text{E}[\mathbf{x}]=\boldsymbol{\mu}\int\mathcal{N}(\mathbf{w}\vert\mathbf{0},\Sigma)d\mathbf{w}=\boldsymbol{\mu}\)</span></li>
+<li>因此稱 <span class="math inline">\(\boldsymbol{\mu}\)</span> 是常態分布的平均數向量</li>
+</ul></li>
+</ul></li>
+</ul>
+<blockquote>
+<p><strong>考慮二階動差</strong></p>
+<ul>
+<li>對於單變量二階動差
+<ul>
+<li>由 <span class="math inline">\(\text{E}[X^2]\)</span> 給定</li>
+</ul></li>
+<li>對於多變量
+<ul>
+<li>共有 <span class="math inline">\(n^2\)</span> 個二階動差 <span class="math inline">\(\text{E}[X_iX_j]\)</span>，<span class="math inline">\(i,j=1,\ldots,n\)</span></li>
+<li>因為期望值是<strong>線性運算</strong>，所有的二階動差可合併為一個 <span class="math inline">\(n\times n\)</span> 階矩陣 <span class="math inline">\(\text{E}[\mathbf{x}\mathbf{x}^T]\)</span></li>
+</ul></li>
+</ul>
+</blockquote>
+<p><span class="math display">\[
+\displaystyle \begin{aligned}  \text{E}\left[\mathbf{x}\mathbf{x}^T\right]&amp;=\frac{1}{(2\pi)^{n/2}\vert\Sigma\vert^{1/2}}\int\exp\left\{-\frac{1}{2}(\mathbf{x}-\boldsymbol{\mu})^T\Sigma^{-1}(\mathbf{x}-\boldsymbol{\mu})\right\}\mathbf{x}\mathbf{x}^Td\mathbf{x}\\  &amp;=\frac{1}{(2\pi)^{n/2}\vert\Sigma\vert^{1/2}}\int\exp\left\{-\frac{1}{2}\mathbf{w}^T\Sigma^{-1}\mathbf{w}\right\}(\mathbf{w}+\boldsymbol{\mu})(\mathbf{w}+\boldsymbol{\mu})^Td\mathbf{w}.  \end{aligned}
+\]</span></p>
+<ul>
+<li><span class="math inline">\((\mathbf{w}+\boldsymbol{\mu})(\mathbf{w}+\boldsymbol{\mu})^T=\mathbf{w}\mathbf{w}^T+\mathbf{w}\boldsymbol{\mu}^T+\boldsymbol{\mu}\mathbf{w}^T+\boldsymbol{\mu}\boldsymbol{\mu}^T\)</span>
+<ul>
+<li>根據對稱性，交互項 <span class="math inline">\(\mathbf{w}\boldsymbol{\mu}^T\)</span> 和 <span class="math inline">\(\boldsymbol{\mu}\mathbf{w}^T\)</span> 的積分等於零</li>
+<li><span class="math inline">\(\boldsymbol{\mu}\boldsymbol{\mu}^T\)</span> 可提出，剩下的機率密度函數積分等於 <span class="math inline">\(1\)</span></li>
+<li><span class="math inline">\(\boldsymbol{\mu}\boldsymbol{\mu}^T\int\frac{1}{(2\pi)^{n/2}\vert\Sigma\vert^{1/2}}\exp\left\{-\frac{1}{2}\mathbf{w}^T\Sigma^{-1}\mathbf{w}\right\}d\mathbf{w}=\boldsymbol{\mu}\boldsymbol{\mu}^T\)</span></li>
+<li>考慮包含 <span class="math inline">\(\mathbf{w}\mathbf{w}^T\)</span> 的積分
+<ul>
+<li><span class="math inline">\(\Sigma=Q\Lambda Q^T=\begin{bmatrix} \mathbf{q}_1&amp;\cdots&amp;\mathbf{q}_d \end{bmatrix}\begin{bmatrix} \lambda_1&amp;&amp;\\ &amp;\ddots&amp;\\ &amp;&amp;\lambda_d \end{bmatrix}\begin{bmatrix} \mathbf{q}_1^T\\ \vdots\\ \mathbf{q}_d^T \end{bmatrix}=\displaystyle\sum_{i=1}^d\lambda_i\mathbf{q}_i\mathbf{q}_i^T\)</span></li>
+<li>令 <span class="math inline">\(\mathbf{v}=Q^T\mathbf{w}\)</span>， <span class="math inline">\(\mathbf{w}=Q\mathbf{v}=\sum_{i=1}^nv_i\mathbf{q}_i\)</span>
+<ul>
+<li>則 <span class="math inline">\(\mathbf{w}\mathbf{w}^T=Q\mathbf{v}\mathbf{v}^TQ^T=\sum_{i=1}^n\sum_{j=1}^nv_iv_j\mathbf{q}_i\mathbf{q}_j^T\)</span></li>
+<li><span class="math inline">\(\mathbf{w}^T\Sigma^{-1}\mathbf{w}=\mathbf{v}^TQ^T\Sigma^{-1} Q\mathbf{v}=\mathbf{v}^T\Lambda^{-1}\mathbf{v}=\sum_{k=1}^nv_k^2/\lambda_k\)</span></li>
+</ul></li>
+<li><span class="math inline">\(\frac{1}{(2\pi)^{n/2}\vert\Sigma\vert^{1/2}}\int\exp\left\{-\frac{1}{2}\mathbf{w}^T\Sigma^{-1}\mathbf{w}\right\}\mathbf{w}\mathbf{w}^Td\mathbf{w}\\ =\sum_{i=1}^n\sum_{j=1}^n\mathbf{q}_i\mathbf{q}_j^T\frac{1}{(2\pi)^{n/2}(\lambda_1\cdots\lambda_n)^{1/2}}\int\exp\left\{-\sum_{k=1}^n\frac{v_k^2}{2\lambda_k}\right\}v_iv_jd\mathbf{v}\\ =\sum_{i=1}^n\mathbf{q}_i\mathbf{q}_i^T\left(\prod_{k=1\atop k\neq i}^n\frac{1}{(2\pi\lambda_k)^{1/2}}\int\exp\left\{-\frac{v_k^2}{2\lambda_k}\right\}dv_k\cdot\frac{1}{(2\pi\lambda_i)^{1/2}}\int\exp\left\{-\frac{v_i^2}{2\lambda_i}\right\}v_i^2dv_i\right)\\ =\sum_{i=1}^n\mathbf{q}_i\mathbf{q}_i^T\lambda_i=\Sigma\)</span>
+<ul>
+<li>當 <span class="math inline">\(i\neq j\)</span>，根據對稱性可知積分為零，並使用單變量變異數 <span class="math inline">\(\hbox{E}\left[v_i^2\right]=\lambda_i\)</span></li>
+</ul></li>
+<li><span class="math inline">\(\hbox{E}\left[\mathbf{x}\mathbf{x}^T\right]=\boldsymbol{\mu}\boldsymbol{\mu}^T+\Sigma\)</span></li>
+</ul></li>
+<li><span class="math inline">\(\hbox{cov}[\mathbf{x}]= \hbox{E}\left[\mathbf{x}\mathbf{x}^T-\mathbf{x}\boldsymbol{\mu}^T-\boldsymbol{\mu}\mathbf{x}^T+\boldsymbol{\mu}\boldsymbol{\mu}^T\right]\\ =\hbox{E}\left[\mathbf{x}\mathbf{x}^T\right]-\text{E}[\mathbf{x}]\boldsymbol{\mu}^T-\boldsymbol{\mu}\text{E}\left[\mathbf{x}\right]^T+\boldsymbol{\mu}\boldsymbol{\mu}^T\\ =\hbox{E}\left[\mathbf{x}\mathbf{x}^T\right]-\boldsymbol{\mu}\boldsymbol{\mu}^T=\Sigma\)</span></li>
+</ul></li>
+</ul>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/willywangkaa/tags/Probability/" rel="tag"># Probability</a>
+          
+            <a href="/willywangkaa/tags/Information-theories/" rel="tag"># Information theories</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/willywangkaa/2019/04/19/Deep-learning-Probability-and-Information-theories-III/" rel="next" title="Deep learning - Probability and Information theories III">
+                <i class="fa fa-chevron-left"></i> Deep learning - Probability and Information theories III
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/willywangkaa/images/avatar_me.gif"
+                alt="Willy Wang (willywangkaa)" />
+            
+              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
+              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/willywangkaa/archives/">
+                
+                    <span class="site-state-item-count">59</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/willywangkaa/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/willywangkaa/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">76</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://typora.io/" title="Typora" target="_blank">Typora</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.geeksforgeeks.org/" title="GeeksforGeeks" target="_blank">GeeksforGeeks</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.codecogs.com/latex/eqneditor.php" title="Online LaTeX Equation Editor" target="_blank">Online LaTeX Equation Editor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://allem40306.github.io/blog/" title="CodingJack" target="_blank">CodingJack</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#deep-learning---probability-and-information-theories-iv"><span class="nav-number">1.</span> <span class="nav-text">Deep learning - Probability and Information theories IV</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#common-probability-distribution"><span class="nav-number">1.1.</span> <span class="nav-text">Common probability distribution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#multivariate-gaussian-distribution多元常態分佈continuous"><span class="nav-number">1.1.1.</span> <span class="nav-text">Multivariate Gaussian distribution（多元常態分佈；Continuous）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特性"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mahalanobis-distance馬氏距離"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">Mahalanobis distance（馬氏距離）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#contour-line等高線"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">Contour line（等高線）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#moment動差"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">Moment（動差）</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/willywangkaa/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/affix.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/willywangkaa/js/src/schemes/pisces.js?v=6.0.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/willywangkaa/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/willywangkaa/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://https-wangwilly-github-io-blog.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://WangWilly.github.io/willywangkaa/2019/04/19/Deep-learning-Probability-and-Information-theories-IV/';
+        this.page.identifier = '2019/04/19/Deep-learning-Probability-and-Information-theories-IV/';
+        this.page.title = 'Deep learning - Probability and Information theories IV';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-wangwilly-github-io-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/willywangkaa/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/willywangkaa/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>

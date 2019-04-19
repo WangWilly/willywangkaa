@@ -151,7 +151,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543748935456.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543749321235.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543749964256.png">
-<meta property="og:updated_time" content="2019-02-08T12:56:14.341Z">
+<meta property="og:updated_time" content="2019-02-22T08:25:00.635Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Data structure - Graph">
 <meta name="twitter:description" content="The structure of graph [Note] Adjacency list 有一圖 G = (V, E), |V| = n, |E| = e，需要 n 條相鄰串列（vertex[1…n] : pointer）來表達，其中 vertex[i] 代表頂點 i 的相鄰串列，紀錄所有與頂點 i 相鄰的頂點編號  以「相鄰串列」表示無向圖時，因為 邊(i,j) = 邊(j,i)（一條邊">
@@ -401,7 +401,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-02-08T20:56:14+08:00">2019-02-08</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-22T16:25:00+08:00">2019-02-22</time>
             
           </span>
 
@@ -1314,6 +1314,61 @@
 </figure>
 </blockquote>
 <blockquote>
+<p><strong>Topological sort + Strongly connected component</strong></p>
+<p><strong>（判斷「Semi-connected graph」）</strong></p>
+<p>Example（106 成功大學程式設計）</p>
+<ul>
+<li>A directed graph G=(V,E) is semi-connected if, for all pairs of vertices u,v ∈ V, u is reachable from v through a directed path, or v is reachable from u through a directed path. Given a linear-time algorithm to determine whether or not G is semi-connected.</li>
+</ul>
+<ol type="1">
+<li><p>用「Topological sort」找出 G 的所有「Strongly connected component」（SCC）</p>
+<ul>
+<li>將每個 SCC 視為一頂點組成集合 V’
+<ul>
+<li>假設共有 k 個 SCC</li>
+</ul></li>
+<li>各個 SCC 在 G 相連的邊組成集合 E’
+<ul>
+<li><span class="math inline">\(E&#39;=｛(V_1,V_2) ∣ \exist v_1 \in V_1 , v_2 \in V_2 \ni (v1,v2) \in E)｝\)</span></li>
+</ul></li>
+</ul></li>
+<li><p>令 G’=(V’,E’)</p>
+<ul>
+<li>必為「Directed acyclic graph」（DAG）
+<ul>
+<li>若兩點存在環路
+<ul>
+<li>則該兩點必成為一個 SCC</li>
+</ul></li>
+</ul></li>
+<li>對 G’ 執行「Topological sort」
+<ul>
+<li>找出序列 <span class="math inline">\(T=(v_1,\ldots,v_k )\)</span></li>
+<li>若 <span class="math inline">\((V_i, V_{i+1}) \in E&#39; ,i = 1,\ldots,k-1\)</span> 成立
+<ul>
+<li>G 為「Semi-connected graph」</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ol>
+<p><strong>正確性證明</strong></p>
+<p>假設 G=(V,E) 為「Semi-connected graph」</p>
+<ul>
+<li>對所有 <span class="math inline">\(v_1, v_2\in V\)</span> 存在路徑
+<ul>
+<li>不失一般性假設為 <span class="math inline">\((v_1\rightarrow \ldots\rightarrow v_2)\)</span></li>
+</ul></li>
+<li>假設 <span class="math inline">\(v_1 \in V_1, v_2 \in V_2\)</span>
+<ul>
+<li><span class="math inline">\(V_1, V_2\)</span> 為 G 的兩個 SCC</li>
+<li>若 <span class="math inline">\((V_1, V_2)\in E&#39;\)</span>
+<ul>
+<li><span class="math inline">\(v_1, v_2\)</span> 必有路徑</li>
+</ul></li>
+</ul></li>
+</ul>
+</blockquote>
+<blockquote>
 <p><strong>有向無環路圖（Direct acyclic graph）</strong>上求「Single source all shortest paths」</p>
 <p>可以利用「Topological sort」（O(|V|+|E|)）來減少維護「Fibonacci heap」需要的時間複雜度（每回合的Delete-min：O(|V|log|V|)）</p>
 <ul>
@@ -1830,7 +1885,7 @@
                 
                   <a href="/willywangkaa/archives/">
                 
-                    <span class="site-state-item-count">54</span>
+                    <span class="site-state-item-count">59</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1861,7 +1916,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -2022,7 +2079,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">74</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">76</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

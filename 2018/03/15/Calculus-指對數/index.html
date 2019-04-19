@@ -103,22 +103,22 @@
   <meta name="keywords" content="Exponent,Logarithm," />
 
 
-<meta name="description" content="“\(e^{x}\)”  緣起 首先，要先從複利的公式開始說明： \[ 一年後的本利和 = \left(1+\frac{年利率}{期數} \right)^{期數} \] 其中期數就是看多久複利一次。一個月複利一次的話期數就是12。 依上述所說，設 1 份借貸有 x 年利率，逐月複利話，則每月增加當前值的 \(\frac{x}{12}\) 倍，每月總值都要乘以 \(1 + \frac">
+<meta name="description" content="\(e^x\)  exp  緣起  複利公式  一年後的本利和 = \((1+\frac{年利率}{期數})^{期數}\)  期數：一年期間內複利次數  若為「逐月複利」則期數為 12   若有 1 份借貸以「x 年利率」並「逐月複利」  則每個月為前一月總值乘以 \(1 + \frac{x}{12}\)，一年的總增值為 \((1 + \frac{x}{12})^">
 <meta name="keywords" content="Exponent,Logarithm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Calculus - 指對數">
 <meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/03/15/Calculus-指對數/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="“\(e^{x}\)”  緣起 首先，要先從複利的公式開始說明： \[ 一年後的本利和 = \left(1+\frac{年利率}{期數} \right)^{期數} \] 其中期數就是看多久複利一次。一個月複利一次的話期數就是12。 依上述所說，設 1 份借貸有 x 年利率，逐月複利話，則每月增加當前值的 \(\frac{x}{12}\) 倍，每月總值都要乘以 \(1 + \frac">
+<meta property="og:description" content="\(e^x\)  exp  緣起  複利公式  一年後的本利和 = \((1+\frac{年利率}{期數})^{期數}\)  期數：一年期間內複利次數  若為「逐月複利」則期數為 12   若有 1 份借貸以「x 年利率」並「逐月複利」  則每個月為前一月總值乘以 \(1 + \frac{x}{12}\)，一年的總增值為 \((1 + \frac{x}{12})^">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Exp.svg/260px-Exp.svg.png">
-<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Log.svg/250px-Log.svg.png">
-<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Log-pole-x_1.svg/250px-Log-pole-x_1.svg.png">
-<meta property="og:updated_time" content="2019-02-08T04:30:39.270Z">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/exp.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/log.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/log2.png">
+<meta property="og:updated_time" content="2019-03-03T09:40:53.298Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Calculus - 指對數">
-<meta name="twitter:description" content="“\(e^{x}\)”  緣起 首先，要先從複利的公式開始說明： \[ 一年後的本利和 = \left(1+\frac{年利率}{期數} \right)^{期數} \] 其中期數就是看多久複利一次。一個月複利一次的話期數就是12。 依上述所說，設 1 份借貸有 x 年利率，逐月複利話，則每月增加當前值的 \(\frac{x}{12}\) 倍，每月總值都要乘以 \(1 + \frac">
-<meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Exp.svg/260px-Exp.svg.png">
+<meta name="twitter:description" content="\(e^x\)  exp  緣起  複利公式  一年後的本利和 = \((1+\frac{年利率}{期數})^{期數}\)  期數：一年期間內複利次數  若為「逐月複利」則期數為 12   若有 1 份借貸以「x 年利率」並「逐月複利」  則每個月為前一月總值乘以 \(1 + \frac{x}{12}\)，一年的總增值為 \((1 + \frac{x}{12})^">
+<meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/exp.png">
 
 
 
@@ -364,7 +364,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-02-08T12:30:39+08:00">2019-02-08</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-03-03T17:40:53+08:00">2019-03-03</time>
             
           </span>
 
@@ -425,149 +425,229 @@
       
 
       
-        <h1 id="ex">“<span class="math inline">\(e^{x}\)</span>”</h1>
-<hr>
+        <h1 id="ex"><span class="math inline">\(e^x\)</span></h1>
+<figure>
+<img src="\willywangkaa\images\exp.png" alt="exp"><figcaption>exp</figcaption>
+</figure>
 <h2 id="緣起">緣起</h2>
-<p>首先，要先從複利的公式開始說明：</p>
-<p><span class="math display">\[
-一年後的本利和 = \left(1+\frac{年利率}{期數} \right)^{期數}
-\]</span></p>
-<p>其中期數就是看多久複利一次。一個月複利一次的話期數就是12。</p>
-<p>依上述所說，設 1 份借貸有 x 年利率，逐月複利話，則每月增加當前值的 <span class="math inline">\(\frac{x}{12}\)</span> 倍，每月總值都要乘以 <span class="math inline">\(1 + \frac{x}{12}\)</span>，一年的總值為 <span class="math inline">\(\left(1 + \frac{x}{12} \right)^{12}\)</span>，逐日複利的話，就是 <span class="math inline">\(\left (1+ \frac{x}{365} \right)^{365}\)</span>。設年中時段數可為無限，則有如下最初由歐拉提出的指數函數定義：</p>
-<p><span class="math display">\[
-\\lim_{n \to \infty}\left ( 1 + \frac{x}{n} \right )^{n}
-\]</span></p>
-<p>然後才真正的導出e這個數字，一開始存1元，如果年利率是100%，如果每分每秒都算利息，那麼一年後會得到的利息大約是2.71828，如果把算利息的區間縮到無限小，也就是期數變成無限大的話，就會得到</p>
-<p><span class="math display">\[
-\lim_{n \to \infty}\left ( 1 + \frac{1}{n} \right )^{n} = e
-\]</span></p>
-<p>由上式我們則可以得到,</p>
-<p><span class="math display">\[
-\lim_{n \to \infty}\left ( 1 + \frac{x}{n} \right )^{n} = \lim_{n \to \infty} \left ( \left ( 1 + \frac{1}{\frac{n}{x}} \right )^{\frac{n}{x}} \right )^{x} \approx e^{x}
-\]</span></p>
-<p>其中，</p>
-<p><span class="math display">\[
-\lim_{n \to \infty} \left ( 1 + \frac{1}{\frac{n}{x}} \right )^{\frac{n}{x}} \approx e^{1} = e
-\]</span></p>
-<p>而這是它寫為 <span class="math inline">\(e^{x}\)</span> 的原因。</p>
-<figure>
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Exp.svg/260px-Exp.svg.png" alt="wiki-exponential"><figcaption>wiki-exponential</figcaption>
-</figure>
-<p>所以指數函數有基本的恆等式：</p>
-<p><span class="math display">\[
-e^{x+y} = e^{x} \cdot e^{y}
-\]</span></p>
-<p><span class="math display">\[
-\parallel
-\]</span></p>
-<p><span class="math display">\[
-\exp\left ( x + y \right ) = \exp\left ( x \right ) \cdot \exp\left ( y \right )
-\]</span></p>
+<ul>
+<li>複利公式
+<ul>
+<li>一年後的本利和 = <span class="math inline">\((1+\frac{年利率}{期數})^{期數}\)</span>
+<ul>
+<li><strong>期數：一年期間內複利次數</strong>
+<ul>
+<li>若為「逐月複利」則期數為 12</li>
+</ul></li>
+</ul></li>
+<li>若有 1 份借貸以「x 年利率」並<strong>「逐月複利」</strong>
+<ul>
+<li>則<strong>每個月為前一月</strong>總值乘以 <span class="math inline">\(1 + \frac{x}{12}\)</span>，<strong>一年</strong>的總增值為 <span class="math inline">\((1 + \frac{x}{12})^{12}\)</span></li>
+</ul></li>
+<li>若有 1 份借貸以「x 年利率」並<strong>「逐日複利」</strong>
+<ul>
+<li>則<strong>每天為前一天</strong>總值乘以 <span class="math inline">\(1 + \frac{x}{365}\)</span>，<strong>一年</strong>的總增值為 <span class="math inline">\(\left (1+ \frac{x}{365} \right)^{365}\)</span></li>
+</ul></li>
+</ul></li>
+<li>歐拉數 <span class="math inline">\(e\)</span> 進而被提出
+<ul>
+<li>若一開始存 1 元、年利率是100%、<strong>「逐秒複利」</strong>
+<ul>
+<li>則一年後的利息約為 2.71828 元（1 年 = 31,556,926 秒）</li>
+</ul></li>
+<li>若一開始存 1 元、年利率是100%、<strong>複利期數期數無限大</strong>
+<ul>
+<li>則一年後的利息為 <span class="math inline">\(e = \lim_{n \to \infty}\left ( 1 + \frac{1}{n} \right )^{n}\)</span> 元</li>
+</ul></li>
+</ul></li>
+<li><strong>當複利期數為無限大時，為歐拉提出「指數函數」的定義</strong>，由上式可以知道
+<ul>
+<li><span class="math inline">\(\lim_{n \to \infty}\left ( 1 + \frac xn \right )^n = \lim_{n \to \infty} \left ( \left ( 1 + \frac{1}{\frac nx} \right )^{\frac nx} \right)^x \approx e^x\)</span>
+<ul>
+<li>對 n 與 x 進行探討，當 n <strong>趨近於無限大</strong>時 x 相對來說為一定值，所以 <span class="math inline">\(\frac nx\)</span> 亦<strong>趨近無限大</strong>
+<ul>
+<li><span class="math inline">\(\lim_{n \to \infty} \left ( 1 + \frac{1}{\frac nx} \right )^{\frac nx} \approx e^1 = e\)</span></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<blockquote>
+<p><strong>指數函數基本恆等式</strong></p>
+<ul>
+<li>下方兩式等價
+<ul>
+<li><span class="math inline">\(e^{x+y} = e^{x} \cdot e^{y}\)</span></li>
+<li><span class="math inline">\(\exp\left ( x + y \right ) = \exp\left ( x \right ) \cdot \exp\left ( y \right )\)</span></li>
+</ul></li>
+</ul>
+</blockquote>
 <h2 id="性質">性質</h2>
-<p>所以，正常指數該有的性質 <span class="math inline">\(e\)</span> 也都有具備，令 <span class="math inline">\(\forall x, y\in \mathrm{R}\)</span> ，則：<br> <span class="math inline">\(e^{0}=1\)</span><br> <span class="math inline">\(e^{1}=e\)</span><br> <span class="math inline">\(e^{x+y}=e^{x}e^{y}\)</span><br> <span class="math inline">\(e^{x \cdot y}=\left(e^{x}\right)^{y}\)</span><br> <span class="math inline">\(e^{-x}={1 \over e^{x}}\)</span><br></p>
+<ul>
+<li>歐拉數 <span class="math inline">\(e\)</span> 的性質，對 <span class="math inline">\(\forall x, y\in \mathrm{R}\)</span>
+<ul>
+<li><span class="math inline">\(e^{0}=1\)</span></li>
+<li><span class="math inline">\(e^{1}=e\)</span></li>
+<li><span class="math inline">\(e^{x+y}=e^{x}e^{y}\)</span></li>
+<li><span class="math inline">\(e^{x \cdot y}=\left(e^{x}\right)^{y}\)</span></li>
+<li><span class="math inline">\(e^{-x}={1 \over e^{x}}\)</span></li>
+</ul></li>
+</ul>
 <h2 id="微分">微分</h2>
-<p>微分的時候需要下面這個式子：</p>
-<p><span class="math display">\[
-\lim_{n \to \infty} \left(1 + \frac{1}{n}\right)
- =\lim_{n \to \infty}\left(\left(1 + \frac{1}{\frac{n}{1}}\right)^{\frac{n}{1}}\right)^{\frac{1}{n}} \approx  \lim_{n \to \infty} e^{\frac{1}{n}} \Rightarrow e^{\Delta x} \approx (1 + \Delta x)
-\]</span></p>
-<p>其中，<br> <span class="math inline">\(\lim_{n \to \infty} \left ( 1 + \frac{1}{\frac{n}{1}} \right )^{\frac{n}{1}} \approx e^{1} = e\)</span></p>
-<p>當<span class="math inline">\(n \to \infty\)</span>時 <span class="math inline">\(\frac{1}{n}\)</span> 可視為一個很小的量 <span class="math inline">\(\Delta x\)</span> ，也就是：</p>
-<p><span class="math display">\[
-\lim_{m \to 0} (1 + m ) \approx \lim_{m \to 0} e^{m}
-\]</span></p>
-<p><span class="math display">\[
-(1 + 很小 ) \approx e^{很小}
-\]</span></p>
-<p><span class="math display">\[
-(1 + \Delta x ) \approx e^{\Delta x}
-\]</span></p>
-<h3 id="微分推導">微分推導</h3>
-<p><span class="math display">\[
-\Delta y = e^{x+\Delta x} - e^{x} = e^{\Delta x}\cdot e^{x} - 1\cdot e^{x} = (e^{\Delta x} - 1) e^{x}
-\]</span></p>
-<p>又因：</p>
-<p><span class="math display">\[
-e^{\Delta x} \approx (1 + \Delta x)
-\]</span></p>
-<p>所以：</p>
-<p><span class="math display">\[
-\Delta y \approx e^{x}\Delta x \rightarrow dy = e^{x}\cdot dx
-\]</span></p>
-<h4 id="小結">小結：</h4>
-<p><span class="math display">\[
-de^{□} = e^{□}d□
-\]</span></p>
-<p><span class="math inline">\(ex.\)</span></p>
-<p><span class="math display">\[
-de^{-x^2} = e^{-x^2}\cdot d(-x^2) = (-2x)\cdot e^{-x^2}\cdot dx
-\]</span></p>
-<h3 id="一般化">一般化：</h3>
-<p>$y = a^x <span class="math inline">\(&lt;br&gt;\)</span>y = e^{} = e^{x} $ (對 <span class="math inline">\(y\)</span> 作微分)<br><span class="math inline">\(\Rightarrow dy= e^{x\cdot\ln{a}} \cdot \left ( x\cdot\ln{a} \right )\)</span><br><span class="math inline">\(\Rightarrow dy=a^x\cdot \ln a \cdot dx\)</span></p>
-<h1 id="ex-的反函數">“<span class="math inline">\(e^{x}\)</span>” 的反函數</h1>
-<hr>
-<p>對數函數，就是 <span class="math inline">\(e^{x}\)</span> 的反函數，也就是</p>
-<p><span class="math display">\[
-y = \log_{e}{x} = \ln{x} \quad x = e^{y}
-\]</span></p>
+<ol type="1">
+<li>假設 <span class="math inline">\(y = e^x\)</span> 可微
+<ul>
+<li>根據其定義<strong>「應變數的微分」</strong><span class="math inline">\(\mathrm dy = f&#39;(x) \cdot \mathrm dx\)</span>
+<ul>
+<li>其中 <span class="math inline">\(f(x) = e^x\)</span>，而 <span class="math inline">\(f&#39;(x)\)</span> 為<strong>「導函數」</strong></li>
+<li><span class="math inline">\(\mathrm dx\)</span> 為<strong>「自變數的微分」</strong></li>
+</ul></li>
+</ul></li>
+<li>探討 <span class="math inline">\(\Delta x\)</span> 與 <span class="math inline">\(\Delta y\)</span> 的「比例」以求其<strong>「導函數」</strong>
+<ul>
+<li>根據定義 <span class="math inline">\(\Delta y = f(x+\Delta x) - f(x)\)</span>
+<ul>
+<li>$y = e^{x+x} - e^{x}\ = e^x e^{x} - e^x \ = (e^{x} - 1) e^{x} …….（1） $</li>
+</ul></li>
+<li>當 <span class="math inline">\(\Delta x\)</span> 很小時，對 <span class="math inline">\(e^{\Delta x}\)</span> 進行探討
+<ul>
+<li><span class="math inline">\(e^{\Delta x} \Rightarrow \lim_{n \to \infty} e^{\frac 1n} \approx \lim_{n \to \infty}\left(\left(1 + \frac1n\right)^n\right)^{\frac 1n} \\ = \lim_{n \to \infty} \left(1 + \frac1n\right) = 1 + \Delta x \quad ......（2）\)</span></li>
+</ul></li>
+</ul></li>
+<li>將式（2）帶入式（1）可得知其<strong>「導函數」</strong>
+<ul>
+<li><span class="math inline">\(\Delta y = (e^{\Delta x} - 1) e^{x} \approx (1+\Delta x -1)e^x = e^x\Delta x\)</span>
+<ul>
+<li>則 <span class="math inline">\(f&#39;(x) = \lim_{\Delta x \to \infty} \frac {\Delta y}{\Delta x} = e^x\)</span></li>
+<li><span class="math inline">\(\Rightarrow \frac {\mathrm dy}{\mathrm dx} = e^x \\ \Rightarrow dy = e^{x}\cdot dx\)</span></li>
+</ul></li>
+</ul></li>
+</ol>
+<p><strong>Example</strong></p>
+<ul>
+<li>對 <span class="math inline">\(y = e^{-x^2}\)</span> 微分
+<ul>
+<li><span class="math inline">\(\mathrm dy = (e^{-x^2}) \cdot \mathrm d(-x^2)\)</span></li>
+<li><span class="math inline">\(\mathrm dy= (-2x e^{-x^2}) \cdot dx\)</span></li>
+</ul></li>
+</ul>
+<p><strong>Example</strong></p>
+<ul>
+<li>對 $y = a^x $ 微分
+<ul>
+<li><span class="math inline">\(\Rightarrow y = e^{\ln{a^x}} = e^{x\cdot\ln a}\)</span></li>
+<li>對 <span class="math inline">\(y\)</span> 作微分
+<ul>
+<li><span class="math inline">\(\Rightarrow \mathrm dy= e^{x\cdot\ln a} \cdot \mathrm d(x \ln a )\)</span></li>
+<li><span class="math inline">\(\Rightarrow \mathrm dy= (\ln a\cdot a^x) \cdot \mathrm dx\)</span></li>
+</ul></li>
+</ul></li>
+</ul>
+<blockquote>
+<p><strong>求 <span class="math inline">\(y = a^x\)</span> 之「導函數」</strong></p>
+<ul>
+<li><span class="math inline">\(\frac{\mathrm dy}{\mathrm dx} = \lim_{\Delta x \to 0} \frac {a^{x+\Delta x}-a^x}{\Delta x} = (\lim_{\Delta x \to 0} \frac {a^{\Delta x}-1}{\Delta x})a^x\)</span></li>
+</ul>
+<p>其「導函數」為「原函數」乘上<strong>與自己成正比</strong>之值</p>
+<ul>
+<li>對 <span class="math inline">\(\lim_{\Delta x \to 0} \frac {a^{\Delta x}-1}{\Delta x}\)</span> 進行探討，將 <span class="math inline">\(a\)</span> 以 <span class="math inline">\(e\)</span> 代入可得
+<ul>
+<li><span class="math inline">\(\lim_{\Delta x \to 0} \frac {e^{\Delta x}-1}{\Delta x} \approx \lim_{\Delta \to 0} \frac {(1+ \Delta x)-1}{\Delta x} = \lim_{\Delta \to 0} \frac {\Delta x}{\Delta x} = 1\)</span>
+<ul>
+<li>推估此式為反函數：<span class="math inline">\(\log_e x = \lim_{n \to 0} \frac {x^n-1}{n} \equiv \lim_{n\to\infty} n(x^{\frac 1n}-1)\)</span></li>
+<li>亦為<strong>「歐拉對自然對數的定義」</strong></li>
+</ul></li>
+</ul></li>
+</ul>
+</blockquote>
+<h1 id="ln-x"><span class="math inline">\(\ln x\)</span></h1>
 <figure>
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Log.svg/250px-Log.svg.png" alt="img"><figcaption>img</figcaption>
+<img src="\willywangkaa\images\log.png" alt="log"><figcaption>log</figcaption>
 </figure>
-<h2 id="定義">定義</h2>
-<p>尤拉定義自然對數為序列的極限：</p>
 <p><span class="math display">\[
-\ln (x) = \lim_{x\rightarrow \infty} n(x^{\frac{1}{n}}- 1)
+y = \log_{e}{x} = \ln{x} \quad, x = e^{y}
 \]</span></p>
-<p>正式的定義為積分<span class="math inline">\(\ln (a)\)</span>：</p>
 <p><span class="math display">\[
 \ln (a) = \int_1^a \frac{1}{x} dx
 \]</span></p>
-<h2 id="對-lnx-做微分">對 “<span class="math inline">\(\ln{x}\)</span>” 做微分</h2>
-<p>簡單地，我們可以推得： $y = x $<br> $x = e^y $<br> $dx = e^y dy <span class="math inline">\(&lt;br&gt;\)</span>dy =  dx =  dx $ (移&quot; <span class="math inline">\(e^{y}\)</span> &quot;項)</p>
 <figure>
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Log-pole-x_1.svg/250px-Log-pole-x_1.svg.png" alt="img"><figcaption>img</figcaption>
+<img src="\willywangkaa\images\log2.png" alt="log2"><figcaption>log2</figcaption>
 </figure>
+<p><strong>Proof</strong>：<span class="math inline">\(\ln x = \int_1^x \frac{1}{x} dx\)</span></p>
+<ol type="1">
+<li><span class="math inline">\(\frac{\mathrm d}{\mathrm dx}(\ln x) = \lim_{\Delta x \to 0} (\frac{\ln(x+\Delta x) - \ln x}{\Delta x})\)</span>
 <ul>
-<li>Proof <span class="math inline">\(\ln x = \int_1^x \frac{1}{x} dx\)</span></li>
+<li><span class="math inline">\(\Leftrightarrow \lim_{\Delta x \to 0} (\frac 1{\Delta x}\cdot \ln(\frac{x+\Delta x}{x})) \\ \Leftrightarrow \lim_{\Delta x \to 0} (\ln (1+\frac{\Delta x}{x})^{\frac{1}{\Delta x}})\)</span></li>
+</ul></li>
+<li>令 <span class="math inline">\(u = \frac {\Delta x}{x}、\Delta x = ux\)</span>
+<ul>
+<li>欲使 <span class="math inline">\(\Delta x \to 0\)</span> 時
+<ul>
+<li>則必使 <span class="math inline">\(u \to 0\)</span></li>
+</ul></li>
+<li><span class="math inline">\(\Rightarrow \lim_{u \to 0} (\ln (1+u)^{\frac{1}{u x}} ) = \lim_{u \to 0} (\ln(((1+u)^{\frac{1}{u}})^\frac{1}{x}))\\ \Leftrightarrow \lim_{u \to 0} (\frac 1x \cdot ln (1+u)^{\frac 1u}) \\ \Leftrightarrow \frac 1x \lim_{u \to 0} (\ln(1+u)^{\frac 1u})\)</span></li>
+</ul></li>
+<li>令 <span class="math inline">\(n = \frac 1u\)</span>
+<ul>
+<li>欲使 <span class="math inline">\(u \to 0\)</span>
+<ul>
+<li>則必使 <span class="math inline">\(n \to \infty\)</span></li>
+</ul></li>
+<li><span class="math inline">\(\Rightarrow \frac 1x lim_{n \to \infty} (\ln (1 + \frac 1n)^n) \\ \Leftrightarrow \frac 1x \ln( \lim_{n \to \infty} (1 + \frac 1n)^n ) \\ \Leftrightarrow \frac 1x \ln e \Leftrightarrow \frac 1x\)</span>
+<ul>
+<li>則 <span class="math inline">\(\frac{\mathrm d}{\mathrm dx}(\ln x) = \frac 1x = \frac{\mathrm d}{\mathrm dx} \int_1^x \frac 1t \mathrm dt\)</span></li>
+<li>根據「微積分第一基本定理」，表明不定積分是微分的逆運算，其保證某連續函數之原函數的存在性
+<ul>
+<li><span class="math inline">\(\frac{\mathrm d}{\mathrm dx} (\ln x) = \frac{\mathrm d}{\mathrm dx} (\int_1^x \frac{1}{t} \mathrm dt) \\ \Leftrightarrow \ln x = \int_1^x \frac{1}{t} \mathrm dt\)</span></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ol>
+<blockquote>
+<p><span class="math inline">\(\ln x\)</span> <strong>的微分</strong></p>
+<ul>
+<li>$y = x $
+<ul>
+<li>$x = e^y $</li>
+<li>$dx = e^y dy $
+<ul>
+<li>（對 <span class="math inline">\(e^{y}\)</span> 作移項）</li>
+<li>$dy =  dx =  dx $</li>
+</ul></li>
+</ul></li>
 </ul>
-<p><span class="math inline">\(\frac{d}{dx}\ln x = \lim_{h \rightarrow 0} (\frac{\ln(x+h) - \ln x}{h})\)</span></p>
-<p><span class="math inline">\(\Leftrightarrow \lim_{h \rightarrow 0} (\frac{1}{h}\cdot \ln(\frac{x+h}{x}))\)</span></p>
-<p><span class="math inline">\(\Leftrightarrow \lim_{h \rightarrow 0} (\ln (1+\frac{h}{x})^{\frac{1}{h}})\)</span></p>
-<p><strong>＜Note＞：</strong><span class="math inline">\(Let \; u = \frac{h}{x} , h = u\cdot x \rightarrow h \; gose \; to \; 0 \; then \; u \; gose \; to \; 0\)</span></p>
-<p><span class="math inline">\(\Rightarrow \lim_{u \to 0} (\ln (1+u)^{\frac{1}{u\cdot x}} ) \Rightarrow \lim_{u \to 0} (\ln(1+u)^{\frac{1}{u}^\frac{1}{x}})\)</span></p>
-<p><span class="math inline">\(\Leftrightarrow \lim_{u \to 0} (\frac{1}{x} \cdot ln (1 + u)^{\frac{1}{u}})\)</span></p>
-<p><span class="math inline">\(\Leftrightarrow \frac{1}{x} \lim_{u \to 0} (\ln(1+u)^{\frac{1}{u}})\)</span></p>
-<p><strong>＜Note＞：</strong>$Let ; n =  u ; gose ; to ; 0 ; then ; n ; gose ; to ; $</p>
-<p><span class="math inline">\(\Rightarrow \frac{1}{x} lim_{n \to \infty} (\ln (1 + \frac{1}{n})^n)\)</span></p>
-<p><span class="math inline">\(\Leftrightarrow \frac{1}{x} \ln( \lim_{n \to \infty} (1 + \frac{1}{n})^n )\)</span></p>
-<p><span class="math inline">\(\Leftrightarrow \frac{1}{x} \ln e \Leftrightarrow \frac{1}{x}\)</span></p>
-<p>$ _1^x  dt $（微積分第一基本定理）</p>
-<p><span class="math display">\[
-\frac{d}{dx} \ln x = \frac{d}{dx} \int_1^x \frac{1}{t} dt \Leftrightarrow \ln x = \int_1^x \frac{1}{t} dt
-\]</span></p>
-<h3 id="一般化-1">一般化：</h3>
-<p>$y=_a x $<br> <span class="math inline">\(\Rightarrow y = \frac{\ln{x}}{\ln{a}}\)</span><br> <span class="math inline">\(\Rightarrow dy=\frac{1}{x}\cdot \frac{1}{\ln a} \cdot dx\)</span></p>
-<h1 id="f-left-xright-xx-的微分">&quot; <span class="math inline">\(f \left( x\right) = x^x\)</span> &quot;的微分</h1>
-<hr>
-<h2 id="兩側取-ln">兩側取 “<span class="math inline">\(\ln\)</span>”</h2>
-<p><span class="math display">\[
-\ln \left( f \left( x\right) \right) = x \cdot \ln{x}
-\]</span></p>
-<h2 id="對兩側微分">對兩側微分</h2>
-<p><span class="math display">\[
-\frac{f&#39;(x)}{f(x)} = \left( 1 \cdot \ln{x} \right) + \left( x \cdot \frac{1}{x}\right)
-\]</span></p>
-<h2 id="對兩側乘上-fx">對兩側乘上 “<span class="math inline">\(f(x)\)</span>”</h2>
-<p><span class="math display">\[
-f&#39;(x) = \left( \left( 1 \cdot \ln{x} \right) + \left( x \cdot \frac{1}{x}\right) \right) \cdot f(x)
-\]</span></p>
-<p><span class="math display">\[
-\Rightarrow f&#39;(x) = \left( \ln{x}  + 1 \right) \cdot  \left( x^x \right)
-\]</span></p>
+</blockquote>
+<p><strong>Example</strong></p>
+<ul>
+<li>對 $y=_a x $ 作微分
+<ul>
+<li>$ y = $
+<ul>
+<li><span class="math inline">\(\Rightarrow dy= (\frac{1}{\ln a} \cdot \frac 1x) \cdot dx\)</span></li>
+</ul></li>
+</ul></li>
+</ul>
+<h1 id="補充例題">補充例題</h1>
+<p><strong>Example</strong></p>
+<ul>
+<li>對 <span class="math inline">\(y = f \left( x\right) = x^x\)</span> 作微分
+<ul>
+<li><strong>兩側取自然對數函數</strong>
+<ul>
+<li><span class="math inline">\(\ln ( f ( x ) ) = x \cdot \ln x\)</span></li>
+</ul></li>
+<li><strong>對兩側取微分</strong>
+<ul>
+<li><span class="math inline">\(\frac{f&#39;(x)}{f(x)} = \left( 1 \cdot \ln{x} \right) + \left( x \cdot \frac{1}{x}\right)\)</span></li>
+</ul></li>
+<li><strong>對兩側乘上</strong> <span class="math inline">\(f(x)\)</span>
+<ul>
+<li><span class="math inline">\(f&#39;(x) = \left( \left( 1 \cdot \ln{x} \right) + \left( x \cdot \frac{1}{x}\right) \right) \cdot f(x) \\ \Rightarrow f&#39;(x) = \left( \ln{x} + 1 \right) \cdot \left( x^x \right)\)</span></li>
+</ul></li>
+</ul></li>
+</ul>
 <h1 id="參考">參考</h1>
-<hr>
-<p><a href="http://moodle.ncku.edu.tw/mod/wiki/view.php?pageid=363" target="_blank" rel="noopener">成大微積分指對數函數的微分(第四週共筆)</a></p>
-<p><a href="https://zh.wikipedia.org/wiki/E_%28%E6%95%B0%E5%AD%A6%E5%B8%B8%E6%95%B0%29" target="_blank" rel="noopener">維基百科 - e (數學常數)</a></p>
+<p><a href="http://moodle.ncku.edu.tw/mod/wiki/view.php?pageid=363" target="_blank" rel="noopener">成大微積分指對數函數的微分（第四週共筆）</a></p>
+<p><a href="https://zh.wikipedia.org/wiki/E_%28%E6%95%B0%E5%AD%A6%E5%B8%B8%E6%95%B0%29" target="_blank" rel="noopener">維基百科 - e （數學常數）</a></p>
 <p><a href="https://zh.wikipedia.org/wiki/%E6%8C%87%E6%95%B0%E5%87%BD%E6%95%B0" target="_blank" rel="noopener">維基百科 - 指數函數</a></p>
 <p><a href="http://aca.cust.edu.tw/online/custcalculusi/10/07_03_10.html" target="_blank" rel="noopener">中華科大 - PART 10：指數與對數微分公式彙整</a></p>
 
@@ -709,7 +789,7 @@ f&#39;(x) = \left( \left( 1 \cdot \ln{x} \right) + \left( x \cdot \frac{1}{x}\ri
                 
                   <a href="/willywangkaa/archives/">
                 
-                    <span class="site-state-item-count">54</span>
+                    <span class="site-state-item-count">59</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -740,7 +820,9 @@ f&#39;(x) = \left( \left( 1 \cdot \ln{x} \right) + \left( x \cdot \frac{1}{x}\ri
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -901,7 +983,11 @@ f&#39;(x) = \left( \left( 1 \cdot \ln{x} \right) + \left( x \cdot \frac{1}{x}\ri
                     
                       
                     
-                    <span class="site-state-item-count">74</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">76</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -963,7 +1049,7 @@ f&#39;(x) = \left( \left( 1 \cdot \ln{x} \right) + \left( x \cdot \frac{1}{x}\ri
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ex"><span class="nav-number">1.</span> <span class="nav-text">“\(e^{x}\)”</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#緣起"><span class="nav-number">1.1.</span> <span class="nav-text">緣起</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性質"><span class="nav-number">1.2.</span> <span class="nav-text">性質</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#微分"><span class="nav-number">1.3.</span> <span class="nav-text">微分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#微分推導"><span class="nav-number">1.3.1.</span> <span class="nav-text">微分推導</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#小結"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">小結：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一般化"><span class="nav-number">1.3.2.</span> <span class="nav-text">一般化：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ex-的反函數"><span class="nav-number">2.</span> <span class="nav-text">“\(e^{x}\)” 的反函數</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定義"><span class="nav-number">2.1.</span> <span class="nav-text">定義</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#對-lnx-做微分"><span class="nav-number">2.2.</span> <span class="nav-text">對 “\(\ln{x}\)” 做微分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一般化-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">一般化：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#f-left-xright-xx-的微分"><span class="nav-number">3.</span> <span class="nav-text">&quot; \(f \left( x\right) = x^x\) &quot;的微分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#兩側取-ln"><span class="nav-number">3.1.</span> <span class="nav-text">兩側取 “\(\ln\)”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#對兩側微分"><span class="nav-number">3.2.</span> <span class="nav-text">對兩側微分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#對兩側乘上-fx"><span class="nav-number">3.3.</span> <span class="nav-text">對兩側乘上 “\(f(x)\)”</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#參考"><span class="nav-number">4.</span> <span class="nav-text">參考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ex"><span class="nav-number">1.</span> <span class="nav-text">\(e^x\)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#緣起"><span class="nav-number">1.1.</span> <span class="nav-text">緣起</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性質"><span class="nav-number">1.2.</span> <span class="nav-text">性質</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#微分"><span class="nav-number">1.3.</span> <span class="nav-text">微分</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ln-x"><span class="nav-number">2.</span> <span class="nav-text">\(\ln x\)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#補充例題"><span class="nav-number">3.</span> <span class="nav-text">補充例題</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#參考"><span class="nav-number">4.</span> <span class="nav-text">參考</span></a></li></ol></div>
             
 
           </div>
