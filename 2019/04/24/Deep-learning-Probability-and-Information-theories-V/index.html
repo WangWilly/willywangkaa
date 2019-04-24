@@ -1,0 +1,1965 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-tw,en,default">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/willywangkaa/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/willywangkaa/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/willywangkaa/images/apple-touch-icon-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/willywangkaa/images/favicon-32x32-next_cat.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/willywangkaa/images/favicon-16x16-next_cat.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/willywangkaa/images/logo_cat.svg?v=6.0.4" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/willywangkaa/',
+    scheme: 'Pisces',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="Probability,Information theories," />
+
+
+<meta name="description" content="Deep learning - Probability and Information theories V Common probability distribution Dirac distribution（Continuous） \[ \mathrm{X～Dirac}(\mu) \]  在一些情況下，希望機率分佈中的所有質量集中在一點 \(\mu\) 上 透過 Dirac d">
+<meta name="keywords" content="Probability,Information theories">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deep learning - Probability and Information theories V">
+<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2019/04/24/Deep-learning-Probability-and-Information-theories-V/index.html">
+<meta property="og:site_name" content="WillyWangkaa">
+<meta property="og:description" content="Deep learning - Probability and Information theories V Common probability distribution Dirac distribution（Continuous） \[ \mathrm{X～Dirac}(\mu) \]  在一些情況下，希望機率分佈中的所有質量集中在一點 \(\mu\) 上 透過 Dirac d">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/Dirac_function_approximation.gif">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1555918141695.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1555919224741.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1556025616392.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1556025648289.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1555929886554.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1556023800324.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1556026885048.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1556026848421.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1555937595977.png">
+<meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1555982692715.png">
+<meta property="og:updated_time" content="2019-04-24T04:48:06.993Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Deep learning - Probability and Information theories V">
+<meta name="twitter:description" content="Deep learning - Probability and Information theories V Common probability distribution Dirac distribution（Continuous） \[ \mathrm{X～Dirac}(\mu) \]  在一些情況下，希望機率分佈中的所有質量集中在一點 \(\mu\) 上 透過 Dirac d">
+<meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/Dirac_function_approximation.gif">
+
+
+
+
+
+
+  <link rel="canonical" href="http://WangWilly.github.io/willywangkaa/2019/04/24/Deep-learning-Probability-and-Information-theories-V/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>Deep learning - Probability and Information theories V | WillyWangkaa</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/willywangkaa/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WillyWangkaa</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Live more like human</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/willywangkaa/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/willywangkaa/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/willywangkaa/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/willywangkaa/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2019/04/24/Deep-learning-Probability-and-Information-theories-V/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WillyWangkaa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Deep learning - Probability and Information theories V</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-24T12:38:00+08:00">2019-04-24</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-04-24T12:48:06+08:00">2019-04-24</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/willywangkaa/categories/Deep-learning/" itemprop="url" rel="index"><span itemprop="name">Deep learning</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/willywangkaa/2019/04/24/Deep-learning-Probability-and-Information-theories-V/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/04/24/Deep-learning-Probability-and-Information-theories-V/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="deep-learning---probability-and-information-theories-v">Deep learning - Probability and Information theories V</h1>
+<h2 id="common-probability-distribution">Common probability distribution</h2>
+<h3 id="dirac-distributioncontinuous">Dirac distribution（Continuous）</h3>
+<p><span class="math display">\[
+\mathrm{X～Dirac}(\mu)
+\]</span></p>
+<ul>
+<li>在一些情況下，希望機率分佈中的所有質量集中在一點 <span class="math inline">\(\mu\)</span> 上</li>
+<li>透過 Dirac delta 函數 <span class="math inline">\(\delta(x)\)</span> 定義機率密度函數
+<ul>
+<li><span class="math inline">\(f_X(x) = \delta(x-\mu)\)</span></li>
+<li>Dirac delta 函數被定義成<strong>除了在</strong> <span class="math inline">\(X=0\)</span> <strong>以外的所有點的值都為 0，但是整體積分為 1</strong></li>
+</ul></li>
+<li>下圖為 Dirac delta 函數以 <span class="math inline">\(X = 0\)</span> 為中心的<strong>常態分佈</strong>
+<ul>
+<li><span class="math inline">\(\delta _{a}(x)=\frac {1}{a\sqrt{\pi}}e^{-x^{2}/a^{2}}\)</span> 隨著 <span class="math inline">\(a\to0\)</span> 的極限（<strong>分佈意義上的</strong>）</li>
+</ul></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\Dirac_function_approximation.gif" alt="1555656295794"><figcaption>1555656295794</figcaption>
+</figure>
+<blockquote>
+<p>Dirac delta 函數不像普通函數依樣對 <span class="math inline">\(x\)</span> 的每個值皆有一個實數值的輸出，此為一中不同類型的數學對象，稱作<strong>廣義函數（Generalized function）</strong></p>
+<ul>
+<li>廣義函數依據積分性質定義的數學對象
+<ul>
+<li>Dirac delta 函數可以想成一系列函數的<strong>極限點</strong></li>
+<li>此系列函數將除 0 以外所有點的機率密度<strong>越變越小</strong></li>
+</ul></li>
+</ul>
+<p>透過將機率密度函數 <span class="math inline">\(f_X(x)\)</span> 定義成 delta 函數左移 <span class="math inline">\(-\mu\)</span> 個單位，得到一個在 <span class="math inline">\(X = \mu\)</span> <strong>具有無限窄也無限高的峰值機率質量</strong></p>
+</blockquote>
+<h4 id="empirical-distribution經驗分佈continuous">Empirical Distribution（經驗分佈；Continuous）</h4>
+<blockquote>
+<p>Dirac 分佈經常做為經驗分佈的一個組成部分</p>
+</blockquote>
+<p><span class="math display">\[
+\mathrm{X～Empirical}(\mathbb X)
+\]</span></p>
+<ul>
+<li>給定一個資料集 <span class="math inline">\(\mathbb X = \{x^{(i)}\}_{i = 1}^N\)</span>
+<ul>
+<li><span class="math inline">\(x^{(i)}\)</span> 相互為 <span class="math inline">\(X\)</span> 的 i.i.d. 樣本</li>
+</ul></li>
+<li>在訓練集上訓練模型時，可以從這個<strong>訓練集上得到的經驗分佈指明了採樣來源的分佈</strong>
+<ul>
+<li>經驗分佈為訓練數據相似度最大的<strong>機率密度函數</strong></li>
+</ul></li>
+<li>怎樣的機率分佈 <span class="math inline">\(\mathrm P(\theta)\)</span> 可以將 <span class="math inline">\(\mathrm P(\theta\vert\mathbb X)\)</span> 相似度最大化
+<ul>
+<li>找到此資料集的<strong>機率分佈</strong></li>
+</ul></li>
+<li>若 <span class="math inline">\(X\)</span> 為<strong>離散型</strong>，經驗分佈可以被「Multinoulli」分佈所組成
+<ul>
+<li><span class="math inline">\(f_X(x) = \frac 1N\sum_{i = 1}^N 1(x = x^{(i)})\)</span></li>
+</ul></li>
+<li>若 <span class="math inline">\(X\)</span> 為<strong>連續型</strong>，經驗分佈需要藉由 Dirac delta 函數定義
+<ul>
+<li><span class="math inline">\(f_X(x) = \frac 1N \sum_{i = 1}^N\delta(x-x^{(i)})\)</span></li>
+</ul></li>
+</ul>
+<h3 id="mixtures-of-distribution機率分佈的混合">Mixtures of distribution（機率分佈的混合）</h3>
+<blockquote>
+<ul>
+<li>透過組合一些簡單的機率分佈以定義新的機率分佈
+<ul>
+<li>機率分佈集合 <span class="math inline">\(\{\mathrm P^{(i)}(\theta^{(i)})\}\)</span></li>
+<li><span class="math inline">\(\theta^{(i)}\)</span> 為第 <span class="math inline">\((i)\)</span> 個機率分佈函數的參數</li>
+</ul></li>
+</ul>
+</blockquote>
+<p><span class="math display">\[
+\mathrm {X～Mixture}(\boldsymbol p, \{\theta^{(i)}\}_i)
+\]</span></p>
+<p><strong>一種機率分佈的混和</strong></p>
+<ul>
+<li>取決於從一個 <strong>Categorical 分佈</strong>中取樣的結果</li>
+</ul>
+<p><span class="math display">\[
+P_X(x)= \sum_i \mathrm P^{(i)}_X(x)\mathrm P_C(i)
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\mathrm P_C(\cdot)\)</span> 為對各「子分佈」的 Categorical 機率質量函數
+<ul>
+<li>其每個子分佈機率由 <span class="math inline">\(\mathrm {X～Mixture}(\boldsymbol p, \{\theta^{(i)}\}_i)\)</span> 的 <span class="math inline">\(p^{(i)}\)</span> 決定</li>
+<li><span class="math inline">\(C～\mathrm{Categorical}(\boldsymbol p)\)</span></li>
+</ul></li>
+<li><span class="math inline">\(\mathrm P^{(i)}_X(\cdot)\)</span> 為第 <span class="math inline">\((i)\)</span> 個「子機率分佈函數」
+<ul>
+<li>其參數為 <span class="math inline">\(\theta^{(i)}\)</span></li>
+</ul></li>
+</ul>
+<blockquote>
+<p>實數隨機變數的「經驗分佈」（Empirical distribution）對於每個<strong>訓練樣本</strong>，是以 <em>Dirac 分佈</em>為子分佈的<strong>混合分佈</strong></p>
+<ul>
+<li>經驗分佈：<span class="math inline">\(f_X(x) = \frac 1N \sum_{i = 1}^N\delta(x-x^{(i)})\)</span>
+<ul>
+<li><span class="math inline">\(\Rightarrow \sum_{i = 1}^N \delta(x-x^{(i)})\frac 1N =\sum_{i = 1}^N \delta(x-x^{(i)}) P_C(i)\)</span></li>
+<li><span class="math inline">\(C～\mathrm{Categorical}(\boldsymbol p)\)</span>，<span class="math inline">\(\forall i, p_i = \frac 1N\)</span></li>
+</ul></li>
+<li>子分佈的編號隨機變數 <span class="math inline">\(C\)</span> 為一個<strong>「潛變量」（Latent variable）</strong>
+<ul>
+<li>是一個不能直接觀測到的隨機變數</li>
+<li>在聯合分佈（Joint distribution）下可能與 <span class="math inline">\(X\)</span> 有關
+<ul>
+<li>則 <span class="math inline">\(P_{X,C}(x,c)= \mathrm P_{X,C}(x\vert c)\mathrm P_C(c)\)</span></li>
+<li><span class="math inline">\(\mathrm P_C(\cdot)\)</span> 為潛變量的分佈</li>
+<li><span class="math inline">\(\mathrm P_{X,C}(x\vert c)\)</span> 為關聯潛變量與觀測變量的條件分佈</li>
+</ul></li>
+</ul></li>
+</ul>
+</blockquote>
+<h4 id="gaussian-mixture-model高斯混合模型">Gaussian mixture model（高斯混合模型）</h4>
+<ul>
+<li>其每個子分佈皆為高斯分佈
+<ul>
+<li><span class="math inline">\(\mathrm {X～Mixture}(\boldsymbol p, \{\mu^{(i)}, \Sigma^{(i)}\}_i)\)</span></li>
+<li><span class="math inline">\(P^{(i)}_X(x)\)</span>：<span class="math inline">\(X～\mathrm{Gaussian}^{(i)}(\mu^{(i)}, \Sigma^{(i)})\)</span></li>
+</ul></li>
+<li>混合模型可擁有更多限制
+<ul>
+<li>共變數矩陣在各個子分佈間共享 <span class="math inline">\(\Sigma^{(i)} = \Sigma,\forall i\)</span></li>
+<li>限制共變數矩陣為對角陣 <span class="math inline">\(\Sigma^{(i)} = \mathrm{diag}(\boldsymbol \sigma)\)</span></li>
+<li>限制每個高斯分佈皆有「等向性」（Isotropic） <span class="math inline">\(\Sigma^{(i)} = \boldsymbol \sigma I\)</span></li>
+</ul></li>
+<li>任何平滑的<strong>機率密度函數</strong>皆可以被高斯混合模型逼近</li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\1555918141695.png" alt="1555918141695"><figcaption>1555918141695</figcaption>
+</figure>
+<h2 id="common-parameterizing-function">Common parameterizing function</h2>
+<blockquote>
+<ul>
+<li>一個機率的分佈函數 <span class="math inline">\(\mathrm P_X\)</span>
+<ul>
+<li><span class="math inline">\(X～\mathrm{Distribution}(\theta)\)</span></li>
+<li>其參數由 <span class="math inline">\(\theta\)</span> 決定</li>
+</ul></li>
+<li>在機器學習的領域中，<span class="math inline">\(\theta\)</span> 的控制會由一個給定函數來決定
+<ul>
+<li>稱為「Parameterizing function」</li>
+</ul></li>
+</ul>
+</blockquote>
+<h3 id="logistic-function">Logistic function</h3>
+<ul>
+<li>「Logistic sigmoid function」為其中一個特別的函數
+<ul>
+<li><span class="math inline">\(\sigma(x) = \frac{\exp(x)}{\exp(x)+1} = \frac{1}{1+\exp(-x)} = \frac{1}{1+e^{-x}}\)</span></li>
+</ul></li>
+<li>值域
+<ul>
+<li><span class="math inline">\((0,1)\)</span>，實數域</li>
+</ul></li>
+<li>常用來決定 Bernoulli 分佈中的參數 <span class="math inline">\(p\)</span>
+<ul>
+<li><span class="math inline">\(p\in(0,1)\)</span></li>
+</ul></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\1555919224741.png" alt="1555919224741"><figcaption>1555919224741</figcaption>
+</figure>
+<h3 id="softplus-function">Softplus function</h3>
+<p><span class="math display">\[
+\zeta(x) = \log(1+\exp(x)) = \log(1+e^x)
+\]</span></p>
+<ul>
+<li>Softplus 函數為 <span class="math inline">\(x^+\)</span> 函數（正部函數）的平滑版本
+<ul>
+<li><span class="math inline">\(x^+ = \max(0,x)\)</span></li>
+</ul></li>
+<li>值域
+<ul>
+<li><span class="math inline">\((0,\infty)\)</span></li>
+</ul></li>
+<li>可用來產生常態分佈的
+<ul>
+<li><span class="math inline">\(\beta\)</span> 精度（變異數倒數）</li>
+<li><span class="math inline">\(\sigma\)</span> 標準差</li>
+</ul></li>
+</ul>
+<h3 id="properties">Properties</h3>
+<ul>
+<li><span class="math inline">\(1-\sigma(x) = \sigma(-x)\)</span></li>
+</ul>
+<p><span class="math display">\[
+1-\frac{1}{1+e^{-x}} = \frac{e^{-x}}{1+e^{-x}} = \frac{1}{1+e^{-(-x)}} = \sigma(-x)
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\log \sigma(x) = -\zeta(-x)\)</span></li>
+</ul>
+<p><span class="math display">\[
+\log(\frac{1}{1+e^{-x}}) = -\log(1+e^{-x}) = -\zeta(-x)
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\frac{\mathrm d}{\mathrm dx}\sigma(x) = \sigma(x)(1-\sigma(x))\)</span></li>
+</ul>
+<p><span class="math display">\[
+\frac{\mathrm d}{\mathrm dx}\frac{1}{1+e^{-x}} = \frac{\mathrm d}{\mathrm dx}(1+e^{-x})^{-1} = -(1+e^{-x})^{-2}\cdot-(e^{-x}) \\ = \frac{1}{1+2e^{-x}+(e^{-x})^2}\cdot e^{-x} = \frac{1}{e^x+2+e^{-x}} = \frac{1}{1+e^{-x}}\frac{1}{1+e^x}\\= \sigma(x)\sigma(-x) = \sigma(x)(1-\sigma(x))
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\frac{\mathrm d}{\mathrm dx} \zeta(x) = \sigma(x)\)</span></li>
+</ul>
+<p><span class="math display">\[
+\frac{\mathrm d}{\mathrm dx} \log(1+e^x) = \frac{e^x}{1+e^x} = \frac{1}{1+e^{-x}} = \sigma(x)
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\forall x\in(0,1), \sigma^{-1}(x) = \log(\frac{x}{1-x})\)</span>
+<ul>
+<li>稱作<strong>分對數（Legit）</strong></li>
+</ul></li>
+</ul>
+<p><span class="math display">\[
+x = \frac{1}{1+e^{-y}} \\ {\Rightarrow} x+xe^{-y} = 1 \\ \Rightarrow e^{-y} = \frac{1-x}{x} \\ \Rightarrow e^y = \frac{x}{1-x} \\ \Rightarrow y = \sigma^{-1}(x) = \ln(\frac{x}{1-x})
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\forall x&gt;0, \zeta^{-1}(x) = \log(e^x-1)\)</span></li>
+</ul>
+<p><span class="math display">\[
+x = \ln(1+e^y) \\ \Rightarrow e^x = 1+e^y \\ \Rightarrow e^y = e^x-1 \\ \Rightarrow y = \zeta^{-1}(x) = \ln(e^x-1)
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\zeta(x) = \int_{-\infty}^x \sigma(y)\mathrm dy\)</span>
+<ul>
+<li><span class="math inline">\(\mathrm de^y = e^{y}\mathrm dy\)</span></li>
+</ul></li>
+</ul>
+<p><span class="math display">\[
+\int_{-\infty}^x \frac{e^y}{1+e^{y}} \mathrm dy = \int_{-\infty}^x \frac{1}{1+e^y}(e^y\mathrm dy) = \int_{-\infty}^x \frac{1}{1+e^y} \mathrm de^y \\ = \log(1+e^y)\vert_{-\infty}^x = \log(1+e^x)-\log(1+e^{-\infty})\\ = \log(1+e^x)-\log(1) = \log(1+e^x)
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\zeta(x)-\zeta(-x) = x\)</span>
+<ul>
+<li>正部函數 <span class="math inline">\(x^+ = \max\{0,x\}\)</span>
+<ul>
+<li>其平滑函數為「softplus 函數」<span class="math inline">\(\zeta(x)\)</span></li>
+</ul></li>
+<li>負部函數 <span class="math inline">\(x^- = \max\{0,-x\}\)</span>
+<ul>
+<li>其平滑函數為 <span class="math inline">\(\zeta(-x)\)</span></li>
+</ul></li>
+<li><span class="math inline">\(x = x^+-x^-\)</span>
+<ul>
+<li><span class="math inline">\(x = \zeta(x)-\zeta(-x)\)</span></li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="information-theory資訊論">Information theory（資訊論）</h2>
+<blockquote>
+<p><strong>基本概念</strong></p>
+<ul>
+<li><strong>一個不太可能發生的事件</strong>比<strong>一個非常可能發生的事件</strong>所攜帶的資訊還多
+<ul>
+<li>「早上太陽升起」的資訊量少到沒有必要發送</li>
+<li>「早上發生日蝕」的資訊量非常豐富</li>
+</ul></li>
+<li>欲透過此基本想法來<strong>量化（Quantify）</strong>資訊
+<ul>
+<li>機率論可以確立一個事件發生的不確定性的百分比</li>
+<li>資訊論可以<strong>量化該不確定性</strong></li>
+</ul></li>
+</ul>
+<ol type="1">
+<li><strong>非常可能發生的事件資訊量要比較少</strong>
+<ul>
+<li>在極端狀況下，確保能夠發生的事件應該沒有資訊量</li>
+</ul></li>
+<li><p><strong>較不可能發生的事件具有更高的資訊量</strong></p></li>
+<li><strong>獨立事件應具有增量的資訊</strong>
+<ul>
+<li>投擲硬幣兩次皆為正面攜帶的資訊量，應為擲幣一次為正面所攜帶的訊量還高</li>
+</ul></li>
+</ol>
+</blockquote>
+<h3 id="self-information自資訊">Self-information（自資訊）</h3>
+<p>定義一個事件 <span class="math inline">\(X = x\)</span> 的<strong>自資訊</strong> <span class="math display">\[
+I_X(x) = -\log P_X(x)
+\]</span></p>
+<blockquote>
+<p>通常 <span class="math inline">\(\log\)</span> 沒有指定時，在此會是底數為 <span class="math inline">\(e\)</span> 的自然對數</p>
+</blockquote>
+<ul>
+<li>定義 <span class="math inline">\(I_X(x)\)</span> 的單位為<strong>「奈特」（nat）</strong>
+<ul>
+<li>一奈特為「以 <span class="math inline">\(\frac 1e\)</span> 的機率觀測到一個事件獲得的資訊量」</li>
+<li><span class="math inline">\(-\log P_X(x) = \log_{\frac 1e}P_X(x)\)</span></li>
+<li><span class="math inline">\(\frac 1e^{奈特} = 事件\;x\;的機率\)</span></li>
+</ul></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\1556025616392.png" alt="1556025616392"><figcaption>1556025616392</figcaption>
+</figure>
+<ul>
+<li>當對數底數為 2 時，單位稱作<strong>「比特」（bit）</strong>
+<ul>
+<li>或稱作<strong>夏農（Shannons）</strong></li>
+<li><span class="math inline">\(\frac12^{比特} = 事件\;x\;的機率\)</span></li>
+</ul></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\1556025648289.png" alt="1556025648289"><figcaption>1556025648289</figcaption>
+</figure>
+<blockquote>
+<p><strong>連續型隨機變數</strong></p>
+<ul>
+<li>可能喪失原為離散型隨機變數的性質</li>
+<li>一個具有大機率的事件其<strong>資訊量為 0</strong>
+<ul>
+<li>但不保證其一定發生，或一定不發生</li>
+</ul></li>
+</ul>
+</blockquote>
+<h3 id="entropy熵-ㄕ_ㄤ">Entropy（熵 <span class="math inline">\(^ㄕ_ㄤ\)</span>）</h3>
+<p>對<strong>整個機率分佈其不確定性</strong>的量化稱為「熵」（Entropy） <span class="math display">\[
+\mathrm H(X～\mathrm{Distribution})\\ = \mathrm E_{X～\mathrm{Distribution}}[I_X(x)] = -\mathrm E_{X～\mathrm {Distribution}}[\log P_X(x)]
+\]</span></p>
+<ul>
+<li>亦記作 <span class="math inline">\(\mathrm {H(Distribution)}\)</span></li>
+<li>當 <span class="math inline">\(X\)</span> 為離散型隨機變數
+<ul>
+<li><span class="math inline">\(\mathrm {H(Distribution)} = -\sum_x P_X\log P_X(x)\)</span></li>
+<li>稱作<strong>「夏農熵」（Shannon entropy）</strong></li>
+</ul></li>
+<li>當 <span class="math inline">\(X\)</span> 為連續型隨機變數
+<ul>
+<li><span class="math inline">\(\mathrm {H(Distribution)} = -\int f_X\log f_X(x)\mathrm dx\)</span></li>
+<li>稱作<strong>「微分熵」（Differential entropy）</strong></li>
+</ul></li>
+<li><strong>接近確定性的機率分佈（輸出幾乎肯定）具有較低的熵</strong>
+<ul>
+<li>反之，接近均勻的機率分佈具有較高的熵</li>
+</ul></li>
+<li>（下圖）Bernoulli distribution 的夏農熵
+<ul>
+<li>水平軸為 <span class="math inline">\(\mathrm{X～Bernoulli}(p)\)</span> 中的 <span class="math inline">\(p\)</span>
+<ul>
+<li><span class="math inline">\(\mathrm {H(Bernoulli)} = -(1-p)\log(1-p)-p\log p\)</span></li>
+</ul></li>
+<li>更接近確定性的分佈有較低的夏農熵
+<ul>
+<li>當 <span class="math inline">\(p\)</span> 接近 <span class="math inline">\(0\)</span>（或接近 <span class="math inline">\(1\)</span>）時，分佈幾乎確定，因為隨機便量總是為 <span class="math inline">\(0\)</span>（為 <span class="math inline">\(1\)</span>）</li>
+</ul></li>
+<li>接近均勻的分佈有高的夏農滴
+<ul>
+<li>當 <span class="math inline">\(p = 0.5\)</span>，因為分佈在兩個結果之上是均勻的，所以熵最大</li>
+</ul></li>
+</ul></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\1555929886554.png" alt="1555929886554"><figcaption>1555929886554</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\1556023800324.png" alt="1556023800324"><figcaption>1556023800324</figcaption>
+</figure>
+<blockquote>
+<figure>
+<img src="\willywangkaa\images\1556026885048.png" alt="1556026885048"><figcaption>1556026885048</figcaption>
+</figure>
+<figure>
+<img src="\willywangkaa\images\1556026848421.png" alt="1556026848421"><figcaption>1556026848421</figcaption>
+</figure>
+</blockquote>
+<h3 id="average-code-length期望編碼長度">Average code length（期望編碼長度）</h3>
+<blockquote>
+<p>資訊論為應用數學的一個分支，主要研究一個信號包含的資訊多寡進行量化</p>
+<p>最初被發明用來研究一個含有雜訊的信道上用離散的字母表來發送消息，例如無線電通信</p>
+<p>資訊論可以對消息進行最優編碼、計算消息的期望長度</p>
+<p>夏農熵（Shannon entropy）原始就是要解決此通訊問題</p>
+</blockquote>
+<ul>
+<li>從機率分佈 <span class="math inline">\(P_X\)</span> 中的值（<span class="math inline">\(X = x\)</span>）
+<ul>
+<li>夏農熵可以計算「將每個 <span class="math inline">\(x\)</span> 進行編碼」後平均最低的「比特」（Bit）數量</li>
+</ul></li>
+<li>一個隨機變數 <span class="math inline">\(X～\mathrm{Uniform}\)</span>
+<ul>
+<li>有八個機率相等的狀態
+<ul>
+<li><span class="math inline">\(P_X(x) = \frac 18,\forall x\)</span></li>
+</ul></li>
+<li>欲將 <span class="math inline">\(x\)</span> 傳送，勢必要將其編碼
+<ul>
+<li>由<strong>夏農熵</strong>可知，平均最低的比特數為 <span class="math inline">\(3\)</span></li>
+<li><span class="math inline">\(\mathrm {H(Uniform)} = 8\cdot(-\frac18\log_2\frac 18) = 3\)</span></li>
+<li>其最佳編碼為 000, 001, 010, 011, 100, 101, 110, 111</li>
+</ul></li>
+<li>每個狀態出現的機率相等，當一個未知的狀態出現時，<strong>很難猜測</strong>是哪個狀態
+<ul>
+<li><strong>亂度大</strong></li>
+</ul></li>
+</ul></li>
+<li>若八個狀態的機率為 <span class="math inline">\((\frac12,\frac14,\frac18,\frac1{16}, \frac1{64},\frac1{64},\frac1{64},\frac1{64})\)</span>
+<ul>
+<li><span class="math inline">\(\mathrm {H(X)} = 2\)</span></li>
+<li>其最佳的編碼為 0, 10, 110, 1110, 111100, 111101, 111110, 111111
+<ul>
+<li>平均編碼長度為 <span class="math inline">\(2\)</span> 比特</li>
+</ul></li>
+<li>每個狀態出現的機率不等，當一個未知的狀態出現時，<strong>較易猜測</strong>可能是前面幾個狀態會發生
+<ul>
+<li><strong>亂度小</strong></li>
+</ul></li>
+</ul></li>
+<li>此編碼的演算法為<strong>「霍夫曼編碼」（Huffman Coding）</strong>
+<ul>
+<li>將每個狀態表示為一個<strong>二元決策樹的葉節點</strong></li>
+<li>每個<strong>決策節點（內節點）</strong>皆有兩個決策，令其各個決策選到的機率為 <span class="math inline">\(\frac12\)</span></li>
+</ul></li>
+<li>熵的另一種解釋是<strong>「亂度」（Impurity）</strong>，由此可知如果亂度越大，代表其<strong>平均資訊量（期望資訊量）</strong>會越大
+<ul>
+<li><strong>資訊量：Bit、Nat</strong></li>
+<li>因為比特與奈特兩個資訊量的度量只差一個倍數所以在機器學習的範疇中，<strong>通常使用奈特作為資訊量的度量</strong>
+<ul>
+<li><span class="math inline">\(-\ln P_X(x) = -\log_2 P_X(x)\times\frac{1}{\log_2(e)}\)</span></li>
+<li><span class="math inline">\(\log_{\frac 1e}P_X(x) = \log_{\frac12}P_X(x)\times\frac{1}{\log_2(e)}\)</span></li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="kullback-leibler-divergencekl散度relative-entropy">Kullback-Leibler divergence（KL散度；Relative entropy）</h3>
+<blockquote>
+<p>對於<strong>一個隨機變數</strong> <span class="math inline">\(X\)</span>，有兩個單獨的機率分佈 <span class="math inline">\(P_X(x)、Q_X(x)\)</span></p>
+</blockquote>
+<p>從機率分佈 <span class="math inline">\(Q\)</span> 至 <span class="math inline">\(P\)</span> 的 KL 散度（KL divergence from distribution <span class="math inline">\(Q\)</span> to <span class="math inline">\(P\)</span>） <span class="math display">\[
+\mathrm {D_{KL}(P\Vert Q)} = \mathrm E_{X～P_X}\left[\log\frac{P_X(x)}{Q_X(x)}\right] = \mathrm E_{X～P_X}[\log P_X(x)-\log Q_X(x)] \\= \underset{\mathrm{entropy}}{\mathrm E_{X～P_X}[\log P_X(x)]}-\mathrm E_{X～P_X}[\log Q_X(x)] \\ = -\mathrm H_X(P_X)-\mathrm E_{X～P_X}[\log Q_X(x)] \\ = 
+\underset{\mathrm{cross \; entropy}}{\left(-\mathrm E_{X～P_X}[\log Q_X(x)]\right)}-\mathrm H_X(P_X)
+\]</span></p>
+<ul>
+<li>在<strong>離散型隨機變數</strong>下
+<ul>
+<li>編碼集合 <span class="math inline">\(\mathbb Q\)</span> 為一種能夠使「機率分佈 <span class="math inline">\(Q_X\)</span> 產生的消息」平均<em>長度</em> <span class="math inline">\(k\)</span> 是最小的</li>
+<li>使用 <span class="math inline">\(\mathbb Q\)</span> 來對「機率分佈 <span class="math inline">\(P_X\)</span> 產生的消息」編碼時，「KL 散度」用來衡量此平均編碼的<em>長度</em> <span class="math inline">\(l\)</span> 與<em>長度</em> <span class="math inline">\(k\)</span> 的差異（使用 <span class="math inline">\(\mathbb Q\)</span> 來對「機率分佈 <span class="math inline">\(P_X\)</span> 產生的消息」編碼時，所需的額外平均編碼長度）</li>
+</ul></li>
+<li>當使用的對數底數為 <span class="math inline">\(2\)</span> 時
+<ul>
+<li>資訊<em>長度</em>的單位為<strong>比特</strong></li>
+</ul></li>
+<li>機器學習中，使用的對數底數通常為 <span class="math inline">\(e\)</span>
+<ul>
+<li>資訊<em>長度</em>的單位為<strong>奈特</strong></li>
+</ul></li>
+<li><strong>交叉熵（Cross entropy）</strong>
+<ul>
+<li><span class="math inline">\(\mathrm {H(P,Q) = H(P)+D_{KL}(P\Vert Q)} = -\mathrm E_{X～P_X}[\log Q_X(x)]\)</span></li>
+<li>當 <span class="math inline">\(P_X\)</span> 與 <span class="math inline">\(Q_X\)</span> 相互獨立
+<ul>
+<li><span class="math inline">\(\arg \underset{\mathrm Q}{\min}\mathrm {D_{KL}(P\Vert Q)}\)</span> 可以由 <span class="math inline">\(\arg \underset{\mathrm Q}{\min}-\mathrm E_{X～P_X}[\log Q_X(x)]\)</span> 解出</li>
+<li>因為 <span class="math inline">\(Q_X\)</span> 不參與被省略的那一項</li>
+</ul></li>
+</ul></li>
+</ul>
+<blockquote>
+<ul>
+<li><span class="math inline">\(0 \log 0 = 0\)</span>
+<ul>
+<li>在資訊論中，將上式表達為 <span class="math inline">\(\lim_{x\to 0} x\log x = 0\)</span></li>
+</ul></li>
+</ul>
+</blockquote>
+<h4 id="properties-1">Properties</h4>
+<p>KL 散度的性質</p>
+<ul>
+<li><span class="math inline">\(\mathrm {D_{KL}(P\Vert Q)} \geq 0 , \forall \mathrm {P,Q}\)</span>
+<ul>
+<li>對於「機率分佈 <span class="math inline">\(Q_X\)</span> 產生的消息」所進行的最好編碼，拿來對「機率分佈 <span class="math inline">\(P_X\)</span> 產生的消息」編碼，其平均長度必比較長</li>
+</ul></li>
+<li><span class="math inline">\(\mathrm {D_{KL}(P\Vert Q)} = 0\)</span>
+<ul>
+<li><span class="math inline">\(\mathrm{P、Q}\)</span> 在離散型隨機變數下為<strong>相同的機率分佈</strong></li>
+<li><span class="math inline">\(\mathrm{P、Q}\)</span> 在連續型隨機變數下為<strong>幾乎處處相同</strong></li>
+</ul></li>
+<li><span class="math inline">\(\mathrm {D_{KL}(P\Vert Q)}\neq\mathrm {D_{KL}(Q\Vert P)}\)</span>
+<ul>
+<li>經常被視為分佈之間的<em>某種距離</em>，但<strong>非真正的距離</strong></li>
+</ul></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\1555937595977.png" alt="1555937595977"><figcaption>1555937595977</figcaption>
+</figure>
+<h4 id="minimizer-of-kl-divergence">Minimizer of KL divergence</h4>
+<p>在給定一個分佈 <span class="math inline">\(P_X\)</span> 希望用另一個分佈 <span class="math inline">\(Q^＊_X\)</span> 近似之，要選擇 <span class="math inline">\(\mathrm {D_{KL}(P\Vert Q)}\)</span> 或 <span class="math inline">\(\mathrm {D_{KL}(Q\Vert P)}\)</span>？</p>
+<ul>
+<li>令 <span class="math inline">\(P_X\)</span> 為高斯混合模型（兩個高斯分佈）、<span class="math inline">\(Q_X\)</span> 為單一高斯分佈</li>
+<li><span class="math inline">\(\mathrm{Q^{＊(from)}} = \arg \underset{\mathrm Q}{\min}\mathrm {D_{KL}(P\Vert Q)}\)</span> 或 <span class="math inline">\(\mathrm{Q^{＊(to)}} = \arg \underset{\mathrm Q}{\min}\mathrm {D_{KL}(Q\Vert P)}\)</span> ？
+<ul>
+<li>在不同的情況下，會選擇不同的近似手段</li>
+</ul></li>
+<li><span class="math inline">\(\mathrm{Q^{＊(from)}}\)</span> 會選擇一個 <span class="math inline">\(Q^＊_X\)</span> <strong>在「</strong><span class="math inline">\(P_X\)</span> <strong>有高機率密度」的地方使其具有高機率密度</strong>
+<ul>
+<li>當 <span class="math inline">\(P_X\)</span> 的機率密度函數同時有多個峰值時</li>
+<li><span class="math inline">\(Q^＊_X\)</span> 會選擇將這些峰值模糊到一起，以便將高機率值量同時放到所有峰上</li>
+</ul></li>
+<li><span class="math inline">\(\mathrm{Q^{＊(to)}}\)</span> 會選擇一個 <span class="math inline">\(Q^＊_X\)</span> <strong>在「</strong><span class="math inline">\(P_X\)</span> <strong>有低機率密度」的地方使其具有低機率密度</strong>
+<ul>
+<li>當 <span class="math inline">\(P_X\)</span> 的機率密度函數同時有多個峰值且峰值之間隔很寬時</li>
+<li><span class="math inline">\(Q^＊_X\)</span> 會選擇其中一個峰以避免將機率質量放置於 <span class="math inline">\(P_X\)</span> 低機率質量的區域中
+<ul>
+<li>下圖 <span class="math inline">\(Q^＊_X\)</span> 是選擇強調左峰的結果，當然也可以選擇右峰以達到 <span class="math inline">\(\mathrm{Q^{＊(to)}}\)</span></li>
+<li>如果 <span class="math inline">\(P_X\)</span> 的多峰無法被足夠強的低機率區域分離，那 <span class="math inline">\(\mathrm{Q^{＊(to)}}\)</span> 仍可能<strong>選擇模糊這些峰</strong></li>
+</ul></li>
+</ul></li>
+</ul>
+<figure>
+<img src="\willywangkaa\images\1555982692715.png" alt="1555982692715"><figcaption>1555982692715</figcaption>
+</figure>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/willywangkaa/tags/Probability/" rel="tag"># Probability</a>
+          
+            <a href="/willywangkaa/tags/Information-theories/" rel="tag"># Information theories</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/willywangkaa/2019/04/19/Deep-learning-Probability-and-Information-theories-IV/" rel="next" title="Deep learning - Probability and Information theories IV">
+                <i class="fa fa-chevron-left"></i> Deep learning - Probability and Information theories IV
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/willywangkaa/2019/04/24/Deep-learning-Probability-and-Information-theories-VI/" rel="prev" title="Deep learning - Probability and Information theories VI">
+                Deep learning - Probability and Information theories VI <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/willywangkaa/images/avatar_me.gif"
+                alt="Willy Wang (willywangkaa)" />
+            
+              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
+              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/willywangkaa/archives/">
+                
+                    <span class="site-state-item-count">61</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/willywangkaa/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/willywangkaa/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">76</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://typora.io/" title="Typora" target="_blank">Typora</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.geeksforgeeks.org/" title="GeeksforGeeks" target="_blank">GeeksforGeeks</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.codecogs.com/latex/eqneditor.php" title="Online LaTeX Equation Editor" target="_blank">Online LaTeX Equation Editor</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://allem40306.github.io/blog/" title="CodingJack" target="_blank">CodingJack</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#deep-learning---probability-and-information-theories-v"><span class="nav-number">1.</span> <span class="nav-text">Deep learning - Probability and Information theories V</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#common-probability-distribution"><span class="nav-number">1.1.</span> <span class="nav-text">Common probability distribution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dirac-distributioncontinuous"><span class="nav-number">1.1.1.</span> <span class="nav-text">Dirac distribution（Continuous）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#empirical-distribution經驗分佈continuous"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">Empirical Distribution（經驗分佈；Continuous）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mixtures-of-distribution機率分佈的混合"><span class="nav-number">1.1.2.</span> <span class="nav-text">Mixtures of distribution（機率分佈的混合）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#gaussian-mixture-model高斯混合模型"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">Gaussian mixture model（高斯混合模型）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#common-parameterizing-function"><span class="nav-number">1.2.</span> <span class="nav-text">Common parameterizing function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#logistic-function"><span class="nav-number">1.2.1.</span> <span class="nav-text">Logistic function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#softplus-function"><span class="nav-number">1.2.2.</span> <span class="nav-text">Softplus function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#properties"><span class="nav-number">1.2.3.</span> <span class="nav-text">Properties</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#information-theory資訊論"><span class="nav-number">1.3.</span> <span class="nav-text">Information theory（資訊論）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#self-information自資訊"><span class="nav-number">1.3.1.</span> <span class="nav-text">Self-information（自資訊）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#entropy熵-ㄕ_ㄤ"><span class="nav-number">1.3.2.</span> <span class="nav-text">Entropy（熵 \(^ㄕ_ㄤ\)）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#average-code-length期望編碼長度"><span class="nav-number">1.3.3.</span> <span class="nav-text">Average code length（期望編碼長度）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kullback-leibler-divergencekl散度relative-entropy"><span class="nav-number">1.3.4.</span> <span class="nav-text">Kullback-Leibler divergence（KL散度；Relative entropy）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#properties-1"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">Properties</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#minimizer-of-kl-divergence"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">Minimizer of KL divergence</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/willywangkaa/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/willywangkaa/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/affix.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/willywangkaa/js/src/schemes/pisces.js?v=6.0.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/willywangkaa/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/willywangkaa/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/willywangkaa/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://https-wangwilly-github-io-blog.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://WangWilly.github.io/willywangkaa/2019/04/24/Deep-learning-Probability-and-Information-theories-V/';
+        this.page.identifier = '2019/04/24/Deep-learning-Probability-and-Information-theories-V/';
+        this.page.title = 'Deep learning - Probability and Information theories V';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-wangwilly-github-io-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/willywangkaa/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/willywangkaa/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>

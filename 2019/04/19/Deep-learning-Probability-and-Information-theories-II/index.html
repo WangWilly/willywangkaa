@@ -123,7 +123,7 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1554966387154.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1554968485171.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1554969621742.png">
-<meta property="og:updated_time" content="2019-04-19T13:32:33.789Z">
+<meta property="og:updated_time" content="2019-04-22T09:33:47.903Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Deep learning - Probability and Information theories II">
 <meta name="twitter:description" content="Deep learning - Probability and Information theories II Principal components analysis（PCA；主成份分析）  PCA 視覺化：Principal Component Analysis   給定一組資料點 \(\mathbf X = \left\{x^{(i)}\right\}_{i = 1}^{N}\">
@@ -373,7 +373,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-04-19T21:32:33+08:00">2019-04-19</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-04-22T17:33:47+08:00">2019-04-22</time>
             
           </span>
 
@@ -567,7 +567,43 @@
 <blockquote>
 <p>由此可知，<span class="math inline">\(K&gt;1, w^{(1)}, \ldots, w^{(K)}\)</span> 為 <span class="math inline">\(X^TX\)</span> 前 <span class="math inline">\(K\)</span> 大的特徵值所對應的特徵向量（由歸納法可知）</p>
 </blockquote>
-<h2 id="technical-details-of-random-variables">Technical details of random variables</h2>
+<h2 id="technical-details-of-continuous-random-variables">Technical details of continuous random variables</h2>
+<blockquote>
+<p>連續型隨機變數與機率密度函數的深度理解需要用到「測度論」（Measure theory）的相關內容來擴展<strong>機率論</strong></p>
+<ul>
+<li>連續型隨機向量 <span class="math inline">\(\boldsymbol X\)</span> 落在一個集合 <span class="math inline">\(\mathbb S\)</span> 中的機率
+<ul>
+<li>透過 <span class="math inline">\(f_{\boldsymbol X}(\boldsymbol x)\)</span> 對集合 <span class="math inline">\(\mathbb S\)</span> 積分得到</li>
+</ul></li>
+<li>在一些選擇之下可能引起悖論
+<ul>
+<li>給兩集合 <span class="math inline">\(\mathbb S_1、\mathbb S_2 \ni f_{\boldsymbol X}(\boldsymbol x\in \mathbb S_1)+f_{\boldsymbol X}(\boldsymbol x\in \mathbb S_2)&gt;1\)</span></li>
+<li>且 <span class="math inline">\(\mathbb S_1 \cap \mathbb S_2 = \O\)</span></li>
+<li>這些集合通常是大量使用實數的無限精度來構造
+<ul>
+<li><a href="https://zh.wikipedia.org/wiki/%E5%88%86%E5%BD%A2" target="_blank" rel="noopener">碎形集合</a></li>
+<li>透過有理數相關集合的變換定義集合</li>
+</ul></li>
+</ul></li>
+<li><p>測度論提供一些集合的特徵，使計算該機率時不會遇到悖論</p></li>
+<li>測度論提供一種嚴格的方式<strong>描述那些非常微小的點集</strong>
+<ul>
+<li>稱為「零測度」（Measure zero）</li>
+<li>可以認為零測度集合在「度量空間」中不佔有任何<strong>體積</strong></li>
+<li>在 <span class="math inline">\(\mathbb R^2\)</span> 空間中，一直線的測度為零，一多面體具有真正的測度</li>
+<li>一個單獨的點其測度為零；「可數多個零測度集合的聯集」依然為零測度</li>
+</ul></li>
+<li><strong>幾乎處處（Almost everywhere）</strong>
+<ul>
+<li>某個性質是幾乎處處都成立
+<ul>
+<li><strong>其性質除了一個測度為零的集合以外皆成立</strong></li>
+</ul></li>
+<li>因為不成立的例外在該空間中只佔有極其微小的量</li>
+<li>機率論中一些重要結果對於離散值成立但對於連續值只能是「幾乎處處」成立</li>
+</ul></li>
+</ul>
+</blockquote>
 <h3 id="sure-and-almost-sure-events">Sure and almost sure events</h3>
 <blockquote>
 <p><strong>機率公理（Axioms of probability）</strong></p>
@@ -1160,7 +1196,7 @@ P_{\mathrm X}(x) = \mathrm P(\mathrm X = x) = \left\{\begin{matrix}\binom nx p^x
                 
                   <a href="/willywangkaa/archives/">
                 
-                    <span class="site-state-item-count">59</span>
+                    <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1205,6 +1241,8 @@ P_{\mathrm X}(x) = \mathrm P(\mathrm X = x) = \left\{\begin{matrix}\binom nx p^x
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
+                    
+                      
                     
                       
                     
@@ -1420,7 +1458,7 @@ P_{\mathrm X}(x) = \mathrm P(\mathrm X = x) = \left\{\begin{matrix}\binom nx p^x
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#deep-learning---probability-and-information-theories-ii"><span class="nav-number">1.</span> <span class="nav-text">Deep learning - Probability and Information theories II</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#principal-components-analysispca主成份分析"><span class="nav-number">1.1.</span> <span class="nav-text">Principal components analysis（PCA；主成份分析）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#solving-w"><span class="nav-number">1.1.1.</span> <span class="nav-text">Solving W</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#technical-details-of-random-variables"><span class="nav-number">1.2.</span> <span class="nav-text">Technical details of random variables</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sure-and-almost-sure-events"><span class="nav-number">1.2.1.</span> <span class="nav-text">Sure and almost sure events</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#equality-of-random-variables"><span class="nav-number">1.2.2.</span> <span class="nav-text">Equality of random variables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#convergence-of-random-variables"><span class="nav-number">1.2.3.</span> <span class="nav-text">Convergence of random variables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#distribution-of-derived-variables"><span class="nav-number">1.2.4.</span> <span class="nav-text">Distribution of derived variables</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#common-probability-distribution"><span class="nav-number">1.3.</span> <span class="nav-text">Common probability distribution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#random-experiments"><span class="nav-number">1.3.1.</span> <span class="nav-text">Random experiments</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bernoulli-distributiondiscrete"><span class="nav-number">1.3.2.</span> <span class="nav-text">Bernoulli distribution（Discrete）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#binominal-distributiondiscrete"><span class="nav-number">1.3.3.</span> <span class="nav-text">Binominal distribution（Discrete）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#uniform-distributiondiscrete"><span class="nav-number">1.3.4.</span> <span class="nav-text">Uniform distribution（Discrete）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#geometric-distributiondiscrete"><span class="nav-number">1.3.5.</span> <span class="nav-text">Geometric distribution（Discrete）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pascal-distributiondiscrete"><span class="nav-number">1.3.6.</span> <span class="nav-text">Pascal distribution（Discrete）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#poisson-distributiondiscrete"><span class="nav-number">1.3.7.</span> <span class="nav-text">Poisson distribution（Discrete）</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#deep-learning---probability-and-information-theories-ii"><span class="nav-number">1.</span> <span class="nav-text">Deep learning - Probability and Information theories II</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#principal-components-analysispca主成份分析"><span class="nav-number">1.1.</span> <span class="nav-text">Principal components analysis（PCA；主成份分析）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#solving-w"><span class="nav-number">1.1.1.</span> <span class="nav-text">Solving W</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#technical-details-of-continuous-random-variables"><span class="nav-number">1.2.</span> <span class="nav-text">Technical details of continuous random variables</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sure-and-almost-sure-events"><span class="nav-number">1.2.1.</span> <span class="nav-text">Sure and almost sure events</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#equality-of-random-variables"><span class="nav-number">1.2.2.</span> <span class="nav-text">Equality of random variables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#convergence-of-random-variables"><span class="nav-number">1.2.3.</span> <span class="nav-text">Convergence of random variables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#distribution-of-derived-variables"><span class="nav-number">1.2.4.</span> <span class="nav-text">Distribution of derived variables</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#common-probability-distribution"><span class="nav-number">1.3.</span> <span class="nav-text">Common probability distribution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#random-experiments"><span class="nav-number">1.3.1.</span> <span class="nav-text">Random experiments</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bernoulli-distributiondiscrete"><span class="nav-number">1.3.2.</span> <span class="nav-text">Bernoulli distribution（Discrete）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#binominal-distributiondiscrete"><span class="nav-number">1.3.3.</span> <span class="nav-text">Binominal distribution（Discrete）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#uniform-distributiondiscrete"><span class="nav-number">1.3.4.</span> <span class="nav-text">Uniform distribution（Discrete）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#geometric-distributiondiscrete"><span class="nav-number">1.3.5.</span> <span class="nav-text">Geometric distribution（Discrete）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pascal-distributiondiscrete"><span class="nav-number">1.3.6.</span> <span class="nav-text">Pascal distribution（Discrete）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#poisson-distributiondiscrete"><span class="nav-number">1.3.7.</span> <span class="nav-text">Poisson distribution（Discrete）</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
