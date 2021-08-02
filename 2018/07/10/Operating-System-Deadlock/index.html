@@ -454,10 +454,10 @@
 
       
         <h1 id="deadlock">Deadlock</h1>
-<hr>
+<hr />
 <p>系統中存在一組 processes，彼此形成 <em>循環等待</em> 的情況，<strong>造成這些 processes 皆無法往下執行，並降低產量 ( throughput ) 的現象。</strong></p>
 <figure>
-<img src="\willywangkaa\images\1530163891325.png" alt="1530163891325"><figcaption aria-hidden="true">1530163891325</figcaption>
+<img src="\willywangkaa\images\1530163891325.png" alt="1530163891325" /><figcaption aria-hidden="true">1530163891325</figcaption>
 </figure>
 <ul>
 <li>死結成立的四個必要條件 ( 所以有一個不成立，則死結必不發生，<strong>但是若四個條件全部成立時，死結不一定會發生。</strong> )<br>If there are 4 conditions are true, then the deadlock <strong>will/can</strong> arise. <span class="math inline">\(\rightarrow\)</span> <strong>false/true.</strong>
@@ -469,7 +469,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530163425234.png" alt="1530163425234"><figcaption aria-hidden="true">1530163425234</figcaption>
+<img src="\willywangkaa\images\1530163425234.png" alt="1530163425234" /><figcaption aria-hidden="true">1530163425234</figcaption>
 </figure>
 <p>＜Note＞<br>1. (恐龍版本)Circular waiting 代表 Hold and wait。<br>2. (其他版本)Circular waiting 代表 Mutual exclusion、Hold and wait、No preemption。<br>3. <strong>為何 Single-process 必不會造成 Deadlock ？ 因為 Circular waiting 不存在，所以 Deadlock 不發生。</strong></p>
 <ul>
@@ -480,7 +480,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\deadlock.png" alt="deadlock"><figcaption aria-hidden="true">deadlock</figcaption>
+<img src="\willywangkaa\images\deadlock.png" alt="deadlock" /><figcaption aria-hidden="true">deadlock</figcaption>
 </figure>
 <ul>
 <li>與 Starvation 比較。
@@ -490,8 +490,8 @@
 </ul>
 <table>
 <colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -529,13 +529,13 @@
 <li>Process</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530164365297.png" alt="1530164365297"><figcaption aria-hidden="true">1530164365297</figcaption>
+<img src="\willywangkaa\images\1530164365297.png" alt="1530164365297" /><figcaption aria-hidden="true">1530164365297</figcaption>
 </figure>
 <ul>
 <li>Resource</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530164408843.png" alt="1530164408843"><figcaption aria-hidden="true">1530164408843</figcaption>
+<img src="\willywangkaa\images\1530164408843.png" alt="1530164408843" /><figcaption aria-hidden="true">1530164408843</figcaption>
 </figure>
 <p>其中「。」數目代表該項資源的數目。</p>
 <ul>
@@ -543,19 +543,19 @@
 <li>Allocation edge</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530164614789.png" alt="1530164614789"><figcaption aria-hidden="true">1530164614789</figcaption>
+<img src="\willywangkaa\images\1530164614789.png" alt="1530164614789" /><figcaption aria-hidden="true">1530164614789</figcaption>
 </figure>
 <ul>
 <li>Request edge</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530164672585.png" alt="1530164672585"><figcaption aria-hidden="true">1530164672585</figcaption>
+<img src="\willywangkaa\images\1530164672585.png" alt="1530164672585" /><figcaption aria-hidden="true">1530164672585</figcaption>
 </figure>
 <ul>
 <li>$Ex. $</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530166364004.png" alt="1530166364004"><figcaption aria-hidden="true">1530166364004</figcaption>
+<img src="\willywangkaa\images\1530166364004.png" alt="1530166364004" /><figcaption aria-hidden="true">1530166364004</figcaption>
 </figure>
 <h3 id="結論">結論</h3>
 <ul>
@@ -563,11 +563,11 @@
 <li><p><strong>Cycle 不一定有 deadlock。</strong></p></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530166810415.png" alt="1530166810415"><figcaption aria-hidden="true">1530166810415</figcaption>
+<img src="\willywangkaa\images\1530166810415.png" alt="1530166810415" /><figcaption aria-hidden="true">1530166810415</figcaption>
 </figure>
 <p>此圖雖然有 Cycle，但因為 P3 必可以完工且會釋出一個 R2 Resource，再配置給 P2 使用，所以無死結。</p>
 <figure>
-<img src="\willywangkaa\images\1530166364004.png" alt="1530166364004"><figcaption aria-hidden="true">1530166364004</figcaption>
+<img src="\willywangkaa\images\1530166364004.png" alt="1530166364004" /><figcaption aria-hidden="true">1530166364004</figcaption>
 </figure>
 <p>因為 P4 必可以完工且會釋出 R3 Resource，再配置給 P3 使用，所以無死結。</p>
 <ul>
@@ -649,12 +649,12 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530168967415.png" alt="1530168967415"><figcaption aria-hidden="true">1530168967415</figcaption>
+<img src="\willywangkaa\images\1530168967415.png" alt="1530168967415" /><figcaption aria-hidden="true">1530168967415</figcaption>
 </figure>
 <h3 id="deadlock-aviodance">Deadlock aviodance</h3>
 <p>當某個 process 提出某些資源申請時，則作業系統必須執行「Banker's algorithm」以確認<strong>倘若分配給 Process 其申請資源後，系統未來是否處於「Safe state」；若為「Saft state」，則核准申請，否則為「Unsafe state」系統會否決該資源申請，</strong>Process 必須等一段時間後再重新申請資源，系統會再確認當時的狀態是否安全。</p>
 <figure>
-<img src="\willywangkaa\images\1528970642055.png" alt="1528970642055"><figcaption aria-hidden="true">1528970642055</figcaption>
+<img src="\willywangkaa\images\1528970642055.png" alt="1528970642055" /><figcaption aria-hidden="true">1528970642055</figcaption>
 </figure>
 <p>Deadlock 是 Unsafe 集合的 Subset。</p>
 <h4 id="bankers-algorithm">Banker's Algorithm</h4>
@@ -671,7 +671,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1528971381784.png" alt="1528971381784"><figcaption aria-hidden="true">1528971381784</figcaption>
+<img src="\willywangkaa\images\1528971381784.png" alt="1528971381784" /><figcaption aria-hidden="true">1528971381784</figcaption>
 </figure>
 <ul>
 <li>演算步驟
@@ -715,10 +715,10 @@
 <li>起始資源量：<span class="math inline">\((A, B, C) = (10, 5, 7)\)</span><br>求取 <span class="math inline">\(Need[]\)</span> 與<span class="math inline">\(Available[]\)</span><br><span class="math inline">\(P_1\)</span> 提出 <span class="math inline">\((A, B, C) = (1, 0, 2)\)</span> 之資源申請，請問是否予以核准或是核駁，請說明。</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1531184487179.png" alt="1531184487179"><figcaption aria-hidden="true">1531184487179</figcaption>
+<img src="\willywangkaa\images\1531184487179.png" alt="1531184487179" /><figcaption aria-hidden="true">1531184487179</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1531184825933.png" alt="1531184825933"><figcaption aria-hidden="true">1531184825933</figcaption>
+<img src="\willywangkaa\images\1531184825933.png" alt="1531184825933" /><figcaption aria-hidden="true">1531184825933</figcaption>
 </figure>
 <ul>
 <li><p><strong>Banker's algorithm</strong></p>
@@ -749,10 +749,10 @@
 <li>起始資源量：<span class="math inline">\((A, B, C) = (10, 5, 7)\)</span><br>求取 <span class="math inline">\(Need[]\)</span> 與<span class="math inline">\(Available[]\)</span><br><span class="math inline">\(P_4\)</span> 提出 <span class="math inline">\((A, B, C) = (3, 3, 0)\)</span> 之資源申請，請問是否予以核准或是核駁，請說明。</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1531184487179.png" alt="1531184487179"><figcaption aria-hidden="true">1531184487179</figcaption>
+<img src="\willywangkaa\images\1531184487179.png" alt="1531184487179" /><figcaption aria-hidden="true">1531184487179</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1531184825933.png" alt="1531184825933"><figcaption aria-hidden="true">1531184825933</figcaption>
+<img src="\willywangkaa\images\1531184825933.png" alt="1531184825933" /><figcaption aria-hidden="true">1531184825933</figcaption>
 </figure>
 <ul>
 <li>Banker's algorithm
@@ -790,7 +790,7 @@
 <li>利用 RAG，加上<strong>「Claim edge」使用。</strong></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530172024919.png" alt="1530172024919"><figcaption aria-hidden="true">1530172024919</figcaption>
+<img src="\willywangkaa\images\1530172024919.png" alt="1530172024919" /><figcaption aria-hidden="true">1530172024919</figcaption>
 </figure>
 <ul>
 <li><p>clam edge (虛線)：代表 <span class="math inline">\(P_i\)</span> <strong>未來</strong>會對 <span class="math inline">\(R_j\)</span> 提出申請。(即為 Max/Need 的意義)</p></li>
@@ -804,26 +804,26 @@
 <li><p><span class="math inline">\(Ex .\)</span></p></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530172534581.png" alt="1530172534581"><figcaption aria-hidden="true">1530172534581</figcaption>
+<img src="\willywangkaa\images\1530172534581.png" alt="1530172534581" /><figcaption aria-hidden="true">1530172534581</figcaption>
 </figure>
 <ul>
 <li>若<span class="math inline">\(P_1\)</span> 對 <span class="math inline">\(R_2\)</span> 提出申請是否核准？<strong>因為沒有 Cycle 存在，所以 Safe 核准申請。</strong></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530172797528.png" alt="1530172797528"><figcaption aria-hidden="true">1530172797528</figcaption>
+<img src="\willywangkaa\images\1530172797528.png" alt="1530172797528" /><figcaption aria-hidden="true">1530172797528</figcaption>
 </figure>
 <ul>
 <li>若為 <span class="math inline">\(P_2\)</span> 對 <span class="math inline">\(R_2\)</span> 提出申請是否核准？<strong>因為有 cycle 存在，所以核駁申請。</strong></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530172966437.png" alt="1530172966437"><figcaption aria-hidden="true">1530172966437</figcaption>
+<img src="\willywangkaa\images\1530172966437.png" alt="1530172966437" /><figcaption aria-hidden="true">1530172966437</figcaption>
 </figure>
 <ul>
 <li><strong>＜Note＞：Deadlock 位於 Unsafe state 的集合之中，也就是說若目前的狀態是 unsafe state 有可能會導致死結，但也有可能不會導致死結。</strong></li>
 </ul>
 <h4 id="theorem-deadlock-free">*＜Theorem＞ Deadlock free</h4>
 <figure>
-<img src="\willywangkaa\images\1530173438706.png" alt="1530173438706"><figcaption aria-hidden="true">1530173438706</figcaption>
+<img src="\willywangkaa\images\1530173438706.png" alt="1530173438706" /><figcaption aria-hidden="true">1530173438706</figcaption>
 </figure>
 <p>系統若有 n 個 processes、m 個 resources intsance ( 單一種類 )，<strong>且滿足下列條件</strong>：</p>
 <ol type="1">
@@ -881,7 +881,7 @@
 </ul>
 <h4 id="實際演練一-1">實際演練一</h4>
 <figure>
-<img src="\willywangkaa\images\1531188159444.png" alt="1531188159444"><figcaption aria-hidden="true">1531188159444</figcaption>
+<img src="\willywangkaa\images\1531188159444.png" alt="1531188159444" /><figcaption aria-hidden="true">1531188159444</figcaption>
 </figure>
 <ul>
 <li><ol type="1">
@@ -906,7 +906,7 @@
 </ul>
 <h4 id="實際演練二-1">實際演練二</h4>
 <figure>
-<img src="\willywangkaa\images\1531188115016.png" alt="1531188115016"><figcaption aria-hidden="true">1531188115016</figcaption>
+<img src="\willywangkaa\images\1531188115016.png" alt="1531188115016" /><figcaption aria-hidden="true">1531188115016</figcaption>
 </figure>
 <ul>
 <li><span class="math inline">\(Work = Available = (0, 0, 0)\)</span></li>
@@ -928,16 +928,16 @@
 <li>令 <span class="math inline">\(G = ＜V, E＞\)</span> 有向圖代表「Wait-for Graph」，其中<br>1. Vertex：<strong>只有 Process 而已，無 Resource 頂點</strong>。<br>2. Edge：Wait-for edge。</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530174622303.png" alt="1530174622303"><figcaption aria-hidden="true">1530174622303</figcaption>
+<img src="\willywangkaa\images\1530174622303.png" alt="1530174622303" /><figcaption aria-hidden="true">1530174622303</figcaption>
 </figure>
 <ul>
 <li>從 RAG 簡化而成，即為：</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530174725109.png" alt="1530174725109"><figcaption aria-hidden="true">1530174725109</figcaption>
+<img src="\willywangkaa\images\1530174725109.png" alt="1530174725109" /><figcaption aria-hidden="true">1530174725109</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1530174756704.png" alt="1530174756704"><figcaption aria-hidden="true">1530174756704</figcaption>
+<img src="\willywangkaa\images\1530174756704.png" alt="1530174756704" /><figcaption aria-hidden="true">1530174756704</figcaption>
 </figure>
 <ul>
 <li>較為 Detection 演算法<strong>簡單</strong>
@@ -946,13 +946,13 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1529287297237.png" alt="1529287297237"><figcaption aria-hidden="true">1529287297237</figcaption>
+<img src="\willywangkaa\images\1529287297237.png" alt="1529287297237" /><figcaption aria-hidden="true">1529287297237</figcaption>
 </figure>
 <ul>
 <li>此「Wait-for Graph」有 Cycle，所以有死結存在。</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1529287327536.png" alt="1529287327536"><figcaption aria-hidden="true">1529287327536</figcaption>
+<img src="\willywangkaa\images\1529287327536.png" alt="1529287327536" /><figcaption aria-hidden="true">1529287327536</figcaption>
 </figure>
 <h4 id="recovery">Recovery</h4>
 <ul>

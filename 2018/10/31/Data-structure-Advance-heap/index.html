@@ -493,7 +493,7 @@
 <li>從最後一個父節點 (A[i]) 開始，往回執行 ( A[i-1], A[i-2] ... ) 對各個父節點，調整子樹成為「Heap」，直到 A[1] 為止</li>
 </ol>
 <figure>
-<img src="\willywangkaa\images\buildheap.png" alt="buildheap"><figcaption aria-hidden="true">buildheap</figcaption>
+<img src="\willywangkaa\images\buildheap.png" alt="buildheap" /><figcaption aria-hidden="true">buildheap</figcaption>
 </figure>
 <h4 id="time-complexity">Time complexity</h4>
 <blockquote>
@@ -501,7 +501,7 @@
 </blockquote>
 <p>討論</p>
 <figure>
-<img src="\willywangkaa\images\buildheap_2.png" alt="buildheap_2"><figcaption aria-hidden="true">buildheap_2</figcaption>
+<img src="\willywangkaa\images\buildheap_2.png" alt="buildheap_2" /><figcaption aria-hidden="true">buildheap_2</figcaption>
 </figure>
 <p>若父節點位於「Level i」調整其子樹成為「Heap」之最大成本為 <strong>K-i</strong></p>
 <p>而第 i 層最多有 <span class="math inline">\(2^{i-1}\)</span> 個子樹需要調整，則最大總成本為 <span class="math inline">\(\sum_{i=1}^k 2^{i-1}\times (K-i) = \sum_{i=1}^{k-1} 2^{i-1}\times (K-i)\)</span></p>
@@ -517,21 +517,21 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 <li>Algorithm ( Heapify )</li>
 </ul>
 <p>Max-heap</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// tree: Array[1..n]</span></span><br><span class="line"><span class="comment">// n   : 元素個數</span></span><br><span class="line"><span class="comment">// i   : 節點編號 (調整以 i 為樹根之子樹)</span></span><br><span class="line">Heapify(tree, i, n) &#123;</span><br><span class="line">    x = tree[i];</span><br><span class="line">    j = <span class="number">2</span> * i                     <span class="comment">//左子</span></span><br><span class="line">    <span class="keyword">while</span>(j &lt;= n) &#123;</span><br><span class="line">        <span class="keyword">if</span>(j &lt; n)                 <span class="comment">// 具有右子</span></span><br><span class="line">            <span class="keyword">if</span>(tree[j]&lt;tree[j+<span class="number">1</span>])</span><br><span class="line">                j = j+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(x &gt;= tree[j])          <span class="comment">// 已經為 heap</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            tree[j/<span class="number">2</span>] = tree[j];</span><br><span class="line">            j = <span class="number">2</span> * j;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    tree[j/<span class="number">2</span>] = x;                <span class="comment">// 將資料 x 置於正確位置</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// tree: Array[1..n]</span></span><br><span class="line"><span class="comment">// n   : 元素個數</span></span><br><span class="line"><span class="comment">// i   : 節點編號 (調整以 i 為樹根之子樹)</span></span><br><span class="line"><span class="built_in">Heapify</span>(tree, i, n) &#123;</span><br><span class="line">    x = tree[i];</span><br><span class="line">    j = <span class="number">2</span> * i                     <span class="comment">//左子</span></span><br><span class="line">    <span class="keyword">while</span>(j &lt;= n) &#123;</span><br><span class="line">        <span class="keyword">if</span>(j &lt; n)                 <span class="comment">// 具有右子</span></span><br><span class="line">            <span class="keyword">if</span>(tree[j]&lt;tree[j+<span class="number">1</span>])</span><br><span class="line">                j = j+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(x &gt;= tree[j])          <span class="comment">// 已經為 heap</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            tree[j/<span class="number">2</span>] = tree[j];</span><br><span class="line">            j = <span class="number">2</span> * j;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    tree[j/<span class="number">2</span>] = x;                <span class="comment">// 將資料 x 置於正確位置</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>Build</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Build(tree, n) &#123;</span><br><span class="line">    <span class="keyword">for</span>(i = n/<span class="number">2</span>; i&gt;= <span class="number">1</span>; i--) &#123;     <span class="comment">// i = n/2 為最後一個父節點</span></span><br><span class="line">        Heapify(tree, i, n);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Build</span>(tree, n) &#123;</span><br><span class="line">    <span class="keyword">for</span>(i = n/<span class="number">2</span>; i&gt;= <span class="number">1</span>; i--) &#123;     <span class="comment">// i = n/2 為最後一個父節點</span></span><br><span class="line">        <span class="built_in">Heapify</span>(tree, i, n);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Example ( Delete max )</p>
 <ul>
 <li>Time complexity：O(log n)</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ...</span></span><br><span class="line">x = tree[<span class="number">1</span>];</span><br><span class="line">tree[<span class="number">1</span>] = tree[n];</span><br><span class="line">n--;</span><br><span class="line">heapify(tree, <span class="number">1</span>, n);</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ...</span></span><br><span class="line">x = tree[<span class="number">1</span>];</span><br><span class="line">tree[<span class="number">1</span>] = tree[n];</span><br><span class="line">n--;</span><br><span class="line"><span class="built_in">heapify</span>(tree, <span class="number">1</span>, n);</span><br></pre></td></tr></table></figure>
 <p>Example ( Merge heap )</p>
 <ul>
 <li>Time complexity：O(n)</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// H1:[1..n]</span></span><br><span class="line"><span class="comment">// H2:[1..m]</span></span><br><span class="line"></span><br><span class="line">Heap H3[<span class="number">1.</span>.m+n];</span><br><span class="line">copy(H3[<span class="number">1.</span>.n], H1);   <span class="comment">// O(n)</span></span><br><span class="line">copy(H3[n+<span class="number">1.</span>.m], H2); <span class="comment">// O(n)</span></span><br><span class="line"></span><br><span class="line">Build(H3, m+n);       <span class="comment">// O(n)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// H1:[1..n]</span></span><br><span class="line"><span class="comment">// H2:[1..m]</span></span><br><span class="line"></span><br><span class="line">Heap H3[<span class="number">1.</span>.m+n];</span><br><span class="line"><span class="built_in">copy</span>(H3[<span class="number">1.</span>.n], H1);   <span class="comment">// O(n)</span></span><br><span class="line"><span class="built_in">copy</span>(H3[n+<span class="number">1.</span>.m], H2); <span class="comment">// O(n)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Build</span>(H3, m+n);       <span class="comment">// O(n)</span></span><br></pre></td></tr></table></figure>
 <h1 id="double-ended-priority-queue">Double ended priority queue</h1>
 <ul>
 <li>時間複雜度特性
@@ -556,7 +556,7 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\minmaxheap.png" alt="minmaxheap"><figcaption aria-hidden="true">minmaxheap</figcaption>
+<img src="\willywangkaa\images\minmaxheap.png" alt="minmaxheap" /><figcaption aria-hidden="true">minmaxheap</figcaption>
 </figure>
 <blockquote>
 <p>Minimum value = 樹根節點</p>
@@ -568,7 +568,7 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 <li>x 先置於最後一個節點之下一個位置 ( n = Min-max heap.size + 1 )</li>
 <li>令 p 為「 x 的父節點」</li>
 </ol>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// case1 "p": 位於「Min-level」</span></span><br><span class="line"><span class="keyword">if</span>(x &lt; H[p]) &#123;</span><br><span class="line">    H[n] = H[p];       <span class="comment">// 父節點下移</span></span><br><span class="line">    <span class="comment">// verifyMin( binary_heap, position, value )</span></span><br><span class="line">    verifyMin(H, p, x);   <span class="comment">// 往祖父點測試有無違反「Min-level」性質</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    verifyMax(H, n, x);   <span class="comment">// 往祖父點測試有無違反「Max-level」性質</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// case2 "p": 位於「Max-level」</span></span><br><span class="line"><span class="keyword">if</span>(x &gt; H[p]) &#123;</span><br><span class="line">    H[n] = H[p];       <span class="comment">// 父節點下移</span></span><br><span class="line">    <span class="comment">// verifyMax( binary_heap, position, value )</span></span><br><span class="line">    verifyMax(H, p, x);   <span class="comment">// 往祖父點測試有無違反「Max-level」性質</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    verifyMin(H, n, x);   <span class="comment">// 往祖父點測試有無違反「Min-level」性質</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// case1 &quot;p&quot;: 位於「Min-level」</span></span><br><span class="line"><span class="keyword">if</span>(x &lt; H[p]) &#123;</span><br><span class="line">    H[n] = H[p];       <span class="comment">// 父節點下移</span></span><br><span class="line">    <span class="comment">// verifyMin( binary_heap, position, value )</span></span><br><span class="line">    <span class="built_in">verifyMin</span>(H, p, x);   <span class="comment">// 往祖父點測試有無違反「Min-level」性質</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">verifyMax</span>(H, n, x);   <span class="comment">// 往祖父點測試有無違反「Max-level」性質</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// case2 &quot;p&quot;: 位於「Max-level」</span></span><br><span class="line"><span class="keyword">if</span>(x &gt; H[p]) &#123;</span><br><span class="line">    H[n] = H[p];       <span class="comment">// 父節點下移</span></span><br><span class="line">    <span class="comment">// verifyMax( binary_heap, position, value )</span></span><br><span class="line">    <span class="built_in">verifyMax</span>(H, p, x);   <span class="comment">// 往祖父點測試有無違反「Max-level」性質</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">verifyMin</span>(H, n, x);   <span class="comment">// 往祖父點測試有無違反「Min-level」性質</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>Time complexity
 <ul>
@@ -583,67 +583,67 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 <li>將最後一節點先暫存於 x 後刪除</li>
 <li><strong>x 插入樹根</strong></li>
 </ol>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// H: Heap</span></span><br><span class="line"><span class="comment">// n: Heap 大小</span></span><br><span class="line"><span class="comment">// r: 目前子樹樹根編號</span></span><br><span class="line"><span class="comment">// x: 重新插入值</span></span><br><span class="line">Del_reinsert(H, n, r, x) &#123;</span><br><span class="line">    <span class="comment">// case 1</span></span><br><span class="line">    <span class="keyword">if</span>(r*<span class="number">2</span> &gt; n) &#123;                                   <span class="comment">// 檢查子樹樹根有無左子節點，若無則無子節點</span></span><br><span class="line">        H[r] = x;</span><br><span class="line">    <span class="comment">// case 2</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (n*<span class="number">4</span> &gt; n) &#123;                           <span class="comment">// 樹根無孫節點，所以此樹最小值可能落在樹根之子節點中</span></span><br><span class="line">        <span class="keyword">int</span> k = r*<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(H[k] &gt; H[k+<span class="number">1</span>])</span><br><span class="line">            k++;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(x &lt; H[k]) &#123;                              <span class="comment">// 此樹最小值在子樹樹根子節點中</span></span><br><span class="line">            H[r] = x;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            H[r] = H[k];</span><br><span class="line">            H[k] = r;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="comment">// case 3</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> k;</span><br><span class="line">        <span class="keyword">int</span> j = r*<span class="number">4</span>;</span><br><span class="line">        <span class="keyword">int</span> min = oo;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = j; i &lt;= j+<span class="number">4</span> &amp;&amp; i&lt;= n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(H[i] &lt; min) &#123;</span><br><span class="line">                k = i;</span><br><span class="line">                min = H[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> p = k/<span class="number">2</span>;                                 <span class="comment">// p 為 k 之父節點</span></span><br><span class="line">        <span class="comment">// k 必位於「Min-level」</span></span><br><span class="line">        <span class="keyword">if</span>(H[k] &lt; x) &#123;                               <span class="comment">// 此樹最小值在子樹樹根孫節點中</span></span><br><span class="line">            H[r] = H[k];</span><br><span class="line">            <span class="keyword">if</span>(x &gt; H[p]) Swap(x, H[p]);              <span class="comment">// !!</span></span><br><span class="line">            Del_reinsert(H, n, k, x);                <span class="comment">// "x"插入原本 k 所在之位置</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            H[r] = x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Del_min (H, n) &#123;</span><br><span class="line">    swap(H[<span class="number">1</span>], H[n]);</span><br><span class="line">    re = H[n];</span><br><span class="line">    n--;</span><br><span class="line">	Del_reinsert(H, n, <span class="number">1</span>, H[<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// H: Heap</span></span><br><span class="line"><span class="comment">// n: Heap 大小</span></span><br><span class="line"><span class="comment">// r: 目前子樹樹根編號</span></span><br><span class="line"><span class="comment">// x: 重新插入值</span></span><br><span class="line"><span class="built_in">Del_reinsert</span>(H, n, r, x) &#123;</span><br><span class="line">    <span class="comment">// case 1</span></span><br><span class="line">    <span class="keyword">if</span>(r*<span class="number">2</span> &gt; n) &#123;                                   <span class="comment">// 檢查子樹樹根有無左子節點，若無則無子節點</span></span><br><span class="line">        H[r] = x;</span><br><span class="line">    <span class="comment">// case 2</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (n*<span class="number">4</span> &gt; n) &#123;                           <span class="comment">// 樹根無孫節點，所以此樹最小值可能落在樹根之子節點中</span></span><br><span class="line">        <span class="keyword">int</span> k = r*<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(H[k] &gt; H[k+<span class="number">1</span>])</span><br><span class="line">            k++;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(x &lt; H[k]) &#123;                              <span class="comment">// 此樹最小值在子樹樹根子節點中</span></span><br><span class="line">            H[r] = x;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            H[r] = H[k];</span><br><span class="line">            H[k] = r;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="comment">// case 3</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> k;</span><br><span class="line">        <span class="keyword">int</span> j = r*<span class="number">4</span>;</span><br><span class="line">        <span class="keyword">int</span> min = oo;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = j; i &lt;= j+<span class="number">4</span> &amp;&amp; i&lt;= n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(H[i] &lt; min) &#123;</span><br><span class="line">                k = i;</span><br><span class="line">                min = H[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> p = k/<span class="number">2</span>;                                 <span class="comment">// p 為 k 之父節點</span></span><br><span class="line">        <span class="comment">// k 必位於「Min-level」</span></span><br><span class="line">        <span class="keyword">if</span>(H[k] &lt; x) &#123;                               <span class="comment">// 此樹最小值在子樹樹根孫節點中</span></span><br><span class="line">            H[r] = H[k];</span><br><span class="line">            <span class="keyword">if</span>(x &gt; H[p]) <span class="built_in">Swap</span>(x, H[p]);              <span class="comment">// !!</span></span><br><span class="line">            <span class="built_in">Del_reinsert</span>(H, n, k, x);                <span class="comment">// &quot;x&quot;插入原本 k 所在之位置</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            H[r] = x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Del_min</span> (H, n) &#123;</span><br><span class="line">    <span class="built_in">swap</span>(H[<span class="number">1</span>], H[n]);</span><br><span class="line">    re = H[n];</span><br><span class="line">    n--;</span><br><span class="line">	<span class="built_in">Del_reinsert</span>(H, n, <span class="number">1</span>, H[<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Example (Delete 3 times)</p>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_1.png" alt="delminmaxheap_1"><figcaption aria-hidden="true">delminmaxheap_1</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_1.png" alt="delminmaxheap_1" /><figcaption aria-hidden="true">delminmaxheap_1</figcaption>
 </figure>
 <ul>
 <li>1 st deletion</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_2.png" alt="delminmaxheap_2"><figcaption aria-hidden="true">delminmaxheap_2</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_2.png" alt="delminmaxheap_2" /><figcaption aria-hidden="true">delminmaxheap_2</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_3.png" alt="delminmaxheap_3"><figcaption aria-hidden="true">delminmaxheap_3</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_3.png" alt="delminmaxheap_3" /><figcaption aria-hidden="true">delminmaxheap_3</figcaption>
 </figure>
 <p><strong>Seep 3</strong> ↓</p>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_4.png" alt="delminmaxheap_4"><figcaption aria-hidden="true">delminmaxheap_4</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_4.png" alt="delminmaxheap_4" /><figcaption aria-hidden="true">delminmaxheap_4</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_5.png" alt="delminmaxheap_5"><figcaption aria-hidden="true">delminmaxheap_5</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_5.png" alt="delminmaxheap_5" /><figcaption aria-hidden="true">delminmaxheap_5</figcaption>
 </figure>
 <ul>
 <li>2nd delition</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_6.png" alt="delminmaxheap_6"><figcaption aria-hidden="true">delminmaxheap_6</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_6.png" alt="delminmaxheap_6" /><figcaption aria-hidden="true">delminmaxheap_6</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_7.png" alt="delminmaxheap_7"><figcaption aria-hidden="true">delminmaxheap_7</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_7.png" alt="delminmaxheap_7" /><figcaption aria-hidden="true">delminmaxheap_7</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_8.png" alt="delminmaxheap_8"><figcaption aria-hidden="true">delminmaxheap_8</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_8.png" alt="delminmaxheap_8" /><figcaption aria-hidden="true">delminmaxheap_8</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_9.png" alt="delminmaxheap_9"><figcaption aria-hidden="true">delminmaxheap_9</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_9.png" alt="delminmaxheap_9" /><figcaption aria-hidden="true">delminmaxheap_9</figcaption>
 </figure>
 <ul>
 <li>3rd delietion</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_10.png" alt="delminmaxheap_10"><figcaption aria-hidden="true">delminmaxheap_10</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_10.png" alt="delminmaxheap_10" /><figcaption aria-hidden="true">delminmaxheap_10</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_11.png" alt="delminmaxheap_11"><figcaption aria-hidden="true">delminmaxheap_11</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_11.png" alt="delminmaxheap_11" /><figcaption aria-hidden="true">delminmaxheap_11</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_12.png" alt="delminmaxheap_12"><figcaption aria-hidden="true">delminmaxheap_12</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_12.png" alt="delminmaxheap_12" /><figcaption aria-hidden="true">delminmaxheap_12</figcaption>
 </figure>
 <h4 id="delete-max">Delete-max</h4>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_1.png" alt="delminmaxheap_1"><figcaption aria-hidden="true">delminmaxheap_1</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_1.png" alt="delminmaxheap_1" /><figcaption aria-hidden="true">delminmaxheap_1</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_13.png" alt="delminmaxheap_13"><figcaption aria-hidden="true">delminmaxheap_13</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_13.png" alt="delminmaxheap_13" /><figcaption aria-hidden="true">delminmaxheap_13</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_14.png" alt="delminmaxheap_14"><figcaption aria-hidden="true">delminmaxheap_14</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_14.png" alt="delminmaxheap_14" /><figcaption aria-hidden="true">delminmaxheap_14</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_15.png" alt="delminmaxheap_15"><figcaption aria-hidden="true">delminmaxheap_15</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_15.png" alt="delminmaxheap_15" /><figcaption aria-hidden="true">delminmaxheap_15</figcaption>
 </figure>
 <h2 id="double-ended-heap-deap">Double-ended heap (DEAP)</h2>
 <p>Complete binary tree</p>
@@ -653,7 +653,7 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 <li>樹根右子樹為「Max heap」</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\deapnodemap.png" alt="deapnodemap"><figcaption aria-hidden="true">deapnodemap</figcaption>
+<img src="\willywangkaa\images\deapnodemap.png" alt="deapnodemap" /><figcaption aria-hidden="true">deapnodemap</figcaption>
 </figure>
 <ul>
 <li><strong>「Min heap」與「Max heap」對應編號</strong>
@@ -670,9 +670,9 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 <li>檢查</li>
 </ol>
 <p>（1）若 x 目前位於「Min-heap」( 位置假設為 i )，則 j 為 x 在「Max-heap」對應之節點編號</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(x &gt; deap[j]) &#123;</span><br><span class="line">    deap[i] = deap[j];</span><br><span class="line">    <span class="comment">//max_heap_insert(陣列, 陣列位置, 資料);</span></span><br><span class="line">    max_heap_insert(deap, j, x);          <span class="comment">// 將 x 與該父節點比較並調整</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">//min_heap_insert(陣列, 陣列位置, 資料);</span></span><br><span class="line">    min_heap_insert(deap, i, x);          <span class="comment">// 將 x 與該父節點比較並調整</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(x &gt; deap[j]) &#123;</span><br><span class="line">    deap[i] = deap[j];</span><br><span class="line">    <span class="comment">//max_heap_insert(陣列, 陣列位置, 資料);</span></span><br><span class="line">    <span class="built_in">max_heap_insert</span>(deap, j, x);          <span class="comment">// 將 x 與該父節點比較並調整</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">//min_heap_insert(陣列, 陣列位置, 資料);</span></span><br><span class="line">    <span class="built_in">min_heap_insert</span>(deap, i, x);          <span class="comment">// 將 x 與該父節點比較並調整</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>（2）若 x 目前位於「Max-heap」( 位置假設為 j )，則 i 為 x 在「Min-heap」對應之節點編號</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(x &lt; deap[i]) &#123;</span><br><span class="line">    deap[i] = deap[j];</span><br><span class="line">    <span class="comment">//min_heap_insert(陣列, 陣列位置, 資料);</span></span><br><span class="line">    min_heap_insert(deap, i, x);          <span class="comment">// 將 x 與該父節點比較並調整</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">//max_heap_insert(陣列, 陣列位置, 資料);</span></span><br><span class="line">    max_heap_insert(deap, j, x);          <span class="comment">// 將 x 與該父節點比較並調整</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(x &lt; deap[i]) &#123;</span><br><span class="line">    deap[i] = deap[j];</span><br><span class="line">    <span class="comment">//min_heap_insert(陣列, 陣列位置, 資料);</span></span><br><span class="line">    <span class="built_in">min_heap_insert</span>(deap, i, x);          <span class="comment">// 將 x 與該父節點比較並調整</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">//max_heap_insert(陣列, 陣列位置, 資料);</span></span><br><span class="line">    <span class="built_in">max_heap_insert</span>(deap, j, x);          <span class="comment">// 將 x 與該父節點比較並調整</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="delete-data-in-deap">Delete data in deap</h3>
 <p>步驟：</p>
 <ol type="1">
@@ -682,23 +682,23 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 <li>對該空缺作「Insert data in deap」</li>
 </ol>
 <figure>
-<img src="\willywangkaa\images\deap.png" alt="deap"><figcaption aria-hidden="true">deap</figcaption>
+<img src="\willywangkaa\images\deap.png" alt="deap" /><figcaption aria-hidden="true">deap</figcaption>
 </figure>
 <p>Example</p>
 <figure>
-<img src="\willywangkaa\images\deldeap_1.png" alt="deldeap_1"><figcaption aria-hidden="true">deldeap_1</figcaption>
+<img src="\willywangkaa\images\deldeap_1.png" alt="deldeap_1" /><figcaption aria-hidden="true">deldeap_1</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\deldeap_2.png" alt="deldeap_2"><figcaption aria-hidden="true">deldeap_2</figcaption>
+<img src="\willywangkaa\images\deldeap_2.png" alt="deldeap_2" /><figcaption aria-hidden="true">deldeap_2</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\deldeap_3.png" alt="deldeap_3"><figcaption aria-hidden="true">deldeap_3</figcaption>
+<img src="\willywangkaa\images\deldeap_3.png" alt="deldeap_3" /><figcaption aria-hidden="true">deldeap_3</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\deldeap_4.png" alt="deldeap_4"><figcaption aria-hidden="true">deldeap_4</figcaption>
+<img src="\willywangkaa\images\deldeap_4.png" alt="deldeap_4" /><figcaption aria-hidden="true">deldeap_4</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\deldeap_5.png" alt="deldeap_5"><figcaption aria-hidden="true">deldeap_5</figcaption>
+<img src="\willywangkaa\images\deldeap_5.png" alt="deldeap_5" /><figcaption aria-hidden="true">deldeap_5</figcaption>
 </figure>
 <h2 id="symmetric-min-max-heap-smmh">Symmetric min-max heap (SMMH)</h2>
 <p>Complete binary tree</p>
@@ -710,7 +710,7 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 </ul>
 <p>針對下方全部綠色節點，全部鍵值都比 2 大，都比 80 小</p>
 <figure>
-<img src="\willywangkaa\images\SMMH.png" alt="SMMH"><figcaption aria-hidden="true">SMMH</figcaption>
+<img src="\willywangkaa\images\SMMH.png" alt="SMMH" /><figcaption aria-hidden="true">SMMH</figcaption>
 </figure>
 <blockquote>
 <p>由上方性質可以反映出</p>
@@ -735,26 +735,26 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 </ol>
 <p>Example</p>
 <figure>
-<img src="\willywangkaa\images\SMMH_2.png" alt="SMMH_2"><figcaption aria-hidden="true">SMMH_2</figcaption>
+<img src="\willywangkaa\images\SMMH_2.png" alt="SMMH_2" /><figcaption aria-hidden="true">SMMH_2</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\delSMMH_1.png" alt="delSMMH_1"><figcaption aria-hidden="true">delSMMH_1</figcaption>
+<img src="\willywangkaa\images\delSMMH_1.png" alt="delSMMH_1" /><figcaption aria-hidden="true">delSMMH_1</figcaption>
 </figure>
 <p>在藍色中選出一個最小值</p>
 <figure>
-<img src="\willywangkaa\images\delSMMH_2.png" alt="delSMMH_2"><figcaption aria-hidden="true">delSMMH_2</figcaption>
+<img src="\willywangkaa\images\delSMMH_2.png" alt="delSMMH_2" /><figcaption aria-hidden="true">delSMMH_2</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\delSMMH_3.png" alt="delSMMH_3"><figcaption aria-hidden="true">delSMMH_3</figcaption>
+<img src="\willywangkaa\images\delSMMH_3.png" alt="delSMMH_3" /><figcaption aria-hidden="true">delSMMH_3</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\delSMMH_4.png" alt="delSMMH_4"><figcaption aria-hidden="true">delSMMH_4</figcaption>
+<img src="\willywangkaa\images\delSMMH_4.png" alt="delSMMH_4" /><figcaption aria-hidden="true">delSMMH_4</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\delSMMH_5.png" alt="delSMMH_5"><figcaption aria-hidden="true">delSMMH_5</figcaption>
+<img src="\willywangkaa\images\delSMMH_5.png" alt="delSMMH_5" /><figcaption aria-hidden="true">delSMMH_5</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\delSMMH_6.png" alt="delSMMH_6"><figcaption aria-hidden="true">delSMMH_6</figcaption>
+<img src="\willywangkaa\images\delSMMH_6.png" alt="delSMMH_6" /><figcaption aria-hidden="true">delSMMH_6</figcaption>
 </figure>
 <h1 id="leftist-heap">Leftist heap</h1>
 <table>
@@ -807,13 +807,13 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 </ol>
 <p>Example</p>
 <figure>
-<img src="\willywangkaa\images\leftisttreemerge_1.png" alt="leftisttreemerge_1"><figcaption aria-hidden="true">leftisttreemerge_1</figcaption>
+<img src="\willywangkaa\images\leftisttreemerge_1.png" alt="leftisttreemerge_1" /><figcaption aria-hidden="true">leftisttreemerge_1</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\leftisttreemerge_2.png" alt="leftisttreemerge_2"><figcaption aria-hidden="true">leftisttreemerge_2</figcaption>
+<img src="\willywangkaa\images\leftisttreemerge_2.png" alt="leftisttreemerge_2" /><figcaption aria-hidden="true">leftisttreemerge_2</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\leftisttreemerge_3.png" alt="leftisttreemerge_3"><figcaption aria-hidden="true">leftisttreemerge_3</figcaption>
+<img src="\willywangkaa\images\leftisttreemerge_3.png" alt="leftisttreemerge_3" /><figcaption aria-hidden="true">leftisttreemerge_3</figcaption>
 </figure>
 <h3 id="delete-min-in-leftist-heap">Delete-min in leftist heap</h3>
 <p>步驟：</p>
@@ -865,10 +865,10 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 <li>合併直到此<strong>集合中無相同高度之「Binominal 」</strong></li>
 </ol>
 <figure>
-<img src="\willywangkaa\images\leftistheapmerge_1.png" alt="leftistheapmerge_1"><figcaption aria-hidden="true">leftistheapmerge_1</figcaption>
+<img src="\willywangkaa\images\leftistheapmerge_1.png" alt="leftistheapmerge_1" /><figcaption aria-hidden="true">leftistheapmerge_1</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\leftistheapmerge_2.png" alt="leftistheapmerge_2"><figcaption aria-hidden="true">leftistheapmerge_2</figcaption>
+<img src="\willywangkaa\images\leftistheapmerge_2.png" alt="leftistheapmerge_2" /><figcaption aria-hidden="true">leftistheapmerge_2</figcaption>
 </figure>
 <blockquote>
 <ol type="1">
@@ -901,13 +901,13 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 </ol>
 <p>Example (<strong>Amotize 計算</strong>) 給 1, 2, 3, 4, 5, 6, 7 以建立「Binominal heap」</p>
 <figure>
-<img src="\willywangkaa\images\insertbinominalheap_1.png" alt="insertbinominalheap_1"><figcaption aria-hidden="true">insertbinominalheap_1</figcaption>
+<img src="\willywangkaa\images\insertbinominalheap_1.png" alt="insertbinominalheap_1" /><figcaption aria-hidden="true">insertbinominalheap_1</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\insertbinominalheap_2.png" alt="insertbinominalheap_2"><figcaption aria-hidden="true">insertbinominalheap_2</figcaption>
+<img src="\willywangkaa\images\insertbinominalheap_2.png" alt="insertbinominalheap_2" /><figcaption aria-hidden="true">insertbinominalheap_2</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\insertbinominalheap_3.png" alt="insertbinominalheap_3"><figcaption aria-hidden="true">insertbinominalheap_3</figcaption>
+<img src="\willywangkaa\images\insertbinominalheap_3.png" alt="insertbinominalheap_3" /><figcaption aria-hidden="true">insertbinominalheap_3</figcaption>
 </figure>
 <blockquote>
 <ul>
@@ -921,7 +921,7 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 </blockquote>
 <h2 id="binominal-heap-不同版本">Binominal heap ( 不同版本 )</h2>
 <figure>
-<img src="\willywangkaa\images\datastructurebinominalheap.png" alt="datastructurebinominalheap"><figcaption aria-hidden="true">datastructurebinominalheap</figcaption>
+<img src="\willywangkaa\images\datastructurebinominalheap.png" alt="datastructurebinominalheap" /><figcaption aria-hidden="true">datastructurebinominalheap</figcaption>
 </figure>
 <ul>
 <li>著重於「Data structure」之表示</li>
@@ -972,16 +972,16 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 </ol>
 <h3 id="delete-x-in-fibonacci-heap">Delete x in fibonacci heap</h3>
 <figure>
-<img src="\willywangkaa\images\delfibonacciheap.png" alt="delfibonacciheap"><figcaption aria-hidden="true">delfibonacciheap</figcaption>
+<img src="\willywangkaa\images\delfibonacciheap.png" alt="delfibonacciheap" /><figcaption aria-hidden="true">delfibonacciheap</figcaption>
 </figure>
 <p>Example 刪除節點 12</p>
 <p>刪除該節點後，其兩棵子樹獨立，成為樹根之間之「Sibling」，<strong>並且遇到相同高度「Binominal tree」時不合併 ( 偷懶合併法 )</strong></p>
 <figure>
-<img src="\willywangkaa\images\delfibonacciheap_2.png" alt="delfibonacciheap_2"><figcaption aria-hidden="true">delfibonacciheap_2</figcaption>
+<img src="\willywangkaa\images\delfibonacciheap_2.png" alt="delfibonacciheap_2" /><figcaption aria-hidden="true">delfibonacciheap_2</figcaption>
 </figure>
 <h3 id="decrease-key-in-fibonacci-heap">Decrease key in fibonacci heap</h3>
 <figure>
-<img src="\willywangkaa\images\delfibonacciheap.png" alt="delfibonacciheap"><figcaption aria-hidden="true">delfibonacciheap</figcaption>
+<img src="\willywangkaa\images\delfibonacciheap.png" alt="delfibonacciheap" /><figcaption aria-hidden="true">delfibonacciheap</figcaption>
 </figure>
 <ul>
 <li>針對節點（1）減少 1：<strong>（1）→（0），其餘不動</strong>
@@ -1006,10 +1006,10 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\decreasekeyfibonacciheap_1.png" alt="decreasekeyfibonacciheap_1"><figcaption aria-hidden="true">decreasekeyfibonacciheap_1</figcaption>
+<img src="\willywangkaa\images\decreasekeyfibonacciheap_1.png" alt="decreasekeyfibonacciheap_1" /><figcaption aria-hidden="true">decreasekeyfibonacciheap_1</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\decreasekeyfibonacciheap_2.png" alt="decreasekeyfibonacciheap_2"><figcaption aria-hidden="true">decreasekeyfibonacciheap_2</figcaption>
+<img src="\willywangkaa\images\decreasekeyfibonacciheap_2.png" alt="decreasekeyfibonacciheap_2" /><figcaption aria-hidden="true">decreasekeyfibonacciheap_2</figcaption>
 </figure>
 <blockquote>
 <table>
@@ -1062,11 +1062,11 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 <li>Decrease key in binary heap ( <span class="math inline">\(\Theta(\log n)\)</span> )</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\decreasekeyinbinaryheap.png" alt="decreasekeyinbinaryheap"><figcaption aria-hidden="true">decreasekeyinbinaryheap</figcaption>
+<img src="\willywangkaa\images\decreasekeyinbinaryheap.png" alt="decreasekeyinbinaryheap" /><figcaption aria-hidden="true">decreasekeyinbinaryheap</figcaption>
 </figure>
 </blockquote>
 <blockquote>
-<p>（參考：<a href="https://www.ptt.cc/bbs/Grad-ProbAsk/M.1549085126.A.609.html" target="_blank" rel="noopener">Re: ［理工］ 106交大資演9 - 看板Grad-ProbAsk - 批踢踢實業坊</a>）</p>
+<p>（參考：<a target="_blank" rel="noopener" href="https://www.ptt.cc/bbs/Grad-ProbAsk/M.1549085126.A.609.html">Re: ［理工］ 106交大資演9 - 看板Grad-ProbAsk - 批踢踢實業坊</a>）</p>
 <ul>
 <li>「Fibonacci Heap」
 <ul>
@@ -1085,13 +1085,13 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 <p>時間複雜度整理</p>
 <table>
 <colgroup>
-<col style="width: 16%">
-<col style="width: 17%">
-<col style="width: 17%">
-<col style="width: 15%">
-<col style="width: 15%">
-<col style="width: 7%">
-<col style="width: 7%">
+<col style="width: 16%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
 </colgroup>
 <thead>
 <tr class="header">

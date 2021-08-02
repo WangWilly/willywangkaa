@@ -501,7 +501,7 @@
 <p>Example</p>
 <p>求取 n 個節點的「Binary ordered tree」個數？</p>
 <figure>
-<img src="\willywangkaa\images\1548332494667.png" alt="1548332494667"><figcaption aria-hidden="true">1548332494667</figcaption>
+<img src="\willywangkaa\images\1548332494667.png" alt="1548332494667" /><figcaption aria-hidden="true">1548332494667</figcaption>
 </figure>
 <p>，k ≧ 0</p>
 <p><span class="math inline">\(\Rightarrow\left\{\begin{matrix} a_n = a_0a_{n-1} + a_1a_{n-2} + \ldots + a_{n-1}a_0 , n\geq 1 \\ a_0 = 1 \end{matrix}\right. \\ \Rightarrow a_n = c_n = \frac{1}{n+1}\binom{2n}{n}\)</span></p>
@@ -524,7 +524,7 @@
 <p>Example</p>
 <p>n 個變數 <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> 之合法的括號數有幾個？</p>
 <figure>
-<img src="\willywangkaa\images\1548332797656.png" alt="1548332797656"><figcaption aria-hidden="true">1548332797656</figcaption>
+<img src="\willywangkaa\images\1548332797656.png" alt="1548332797656" /><figcaption aria-hidden="true">1548332797656</figcaption>
 </figure>
 <p>，k ≧ 1</p>
 <p><span class="math inline">\(\left\{\begin{matrix} a_n = a_1a_{n-1} + a_2a_{n-2} + \ldots + a_{n-1}a_1 , n\geq 1 \\ a_1 = 1 \end{matrix}\right. \Rightarrow c_{n-1} = \frac{1}{n}\binom{2(n-1)}{n-1}\)</span></p>
@@ -588,21 +588,21 @@
 <h3 id="組合證明">組合證明</h3>
 <p>一樣是上述的<strong>簡化的「合法路徑問題」</strong>，由下圖來討論</p>
 <figure>
-<img src="\willywangkaa\images\1548319123283.png" alt="1548319123283"><figcaption aria-hidden="true">1548319123283</figcaption>
+<img src="\willywangkaa\images\1548319123283.png" alt="1548319123283" /><figcaption aria-hidden="true">1548319123283</figcaption>
 </figure>
 <p>自 (0, 0) 至 (16, 16) 且不得超過<strong>中間雙線的部分（可觸及）</strong></p>
 <p>合法示意圖：</p>
 <figure>
-<img src="\willywangkaa\images\1548319440435.png" alt="1548319440435"><figcaption aria-hidden="true">1548319440435</figcaption>
+<img src="\willywangkaa\images\1548319440435.png" alt="1548319440435" /><figcaption aria-hidden="true">1548319440435</figcaption>
 </figure>
 <p>非法示意圖：</p>
 <figure>
-<img src="\willywangkaa\images\1548319549796.png" alt="1548319549796"><figcaption aria-hidden="true">1548319549796</figcaption>
+<img src="\willywangkaa\images\1548319549796.png" alt="1548319549796" /><figcaption aria-hidden="true">1548319549796</figcaption>
 </figure>
 <blockquote>
 <p>每個違法的路徑，必定會和下方紅色雙斜線接觸</p>
 <figure>
-<img src="\willywangkaa\images\1548320935256.png" alt="1548320935256"><figcaption aria-hidden="true">1548320935256</figcaption>
+<img src="\willywangkaa\images\1548320935256.png" alt="1548320935256" /><figcaption aria-hidden="true">1548320935256</figcaption>
 </figure>
 <p>將<strong>「開始違法的座標」之後的路徑</strong>對紅色雙斜線做對稱化，則最後到達的座標必定在 (15,17)，而這種轉換有幾個特性：</p>
 <ul>
@@ -636,15 +636,15 @@
 </ul>
 </blockquote>
 <figure>
-<img src="\willywangkaa\images\1548330759722.png" alt="1548330759722"><figcaption aria-hidden="true">1548330759722</figcaption>
+<img src="\willywangkaa\images\1548330759722.png" alt="1548330759722" /><figcaption aria-hidden="true">1548330759722</figcaption>
 </figure>
 <p>假設 A 得到 15 票，B 得到 11 票，則上圖中綠色為合法的開票方法，紅色虛線為不合法的開票方法，但是這樣討論之下，綠色的開票方法在尚未開票時其實也觸碰了紅色雙斜線，然而為何還是正確的開票方法，因為我們在尚未開票時不討論誰贏的比較多，所以我們可以將起點平移到 (1, 0) 處，代表第一章開出來的票一定是 A 得到，且亦不牴觸我們方才的假設</p>
 <figure>
-<img src="\willywangkaa\images\1548331206829.png" alt="1548331206829"><figcaption aria-hidden="true">1548331206829</figcaption>
+<img src="\willywangkaa\images\1548331206829.png" alt="1548331206829" /><figcaption aria-hidden="true">1548331206829</figcaption>
 </figure>
 <p>則<strong>每個非法路徑</strong>會唯一對應到「自 (1,0) 至 (11,15) 的開票方法」</p>
 <figure>
-<img src="\willywangkaa\images\1548332141506.png" alt="1548332141506"><figcaption aria-hidden="true">1548332141506</figcaption>
+<img src="\willywangkaa\images\1548332141506.png" alt="1548332141506" /><figcaption aria-hidden="true">1548332141506</figcaption>
 </figure>
 <ul>
 <li>合法的開票方法為

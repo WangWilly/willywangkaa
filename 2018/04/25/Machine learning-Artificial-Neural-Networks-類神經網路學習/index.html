@@ -443,11 +443,11 @@
 
       
         <h1 id="artificial-neural-networks-類神經網路概論-未完成">Artificial Neural Networks 類神經網路概論( 未完成 )</h1>
-<hr>
+<hr />
 <h2 id="簡介">簡介</h2>
-<p>類神經網絡是一種受生物學啟發而產生的一種模擬人腦的學習系統。 <a href="https://youtu.be/gcK_5x2KsLA" target="_blank" rel="noopener">Youtube - 介紹神經元與類神經的關係</a></p>
+<p>類神經網絡是一種受生物學啟發而產生的一種模擬人腦的學習系統。 <a target="_blank" rel="noopener" href="https://youtu.be/gcK_5x2KsLA">Youtube - 介紹神經元與類神經的關係</a></p>
 <figure>
-<img src="\willywangkaa\images\neuralgraph.png" alt="neuralgraph"><figcaption aria-hidden="true">neuralgraph</figcaption>
+<img src="\willywangkaa\images\neuralgraph.png" alt="neuralgraph" /><figcaption aria-hidden="true">neuralgraph</figcaption>
 </figure>
 <p>↑ 神經元示意圖( *synapse：比重 )</p>
 <p>對於神經(neuron)我們有一個簡單的抽象：每個神經元是與其他神經元連結在一起的，一個神經元會受到多個其他神經元狀態的衝擊，並由此決定自身是否激發。</p>
@@ -460,7 +460,7 @@
 <p>如果這個訊號夠強，則新的脈波信號會由神經軸傳送到輸出神經樹，再透過神經節將此訊號傳給其它神經細胞。值得注意的是：當訊號經過神經節後，由於<strong>神經節加權值</strong>的影響，其訊號大小值會改變。</p>
 <p>神經網絡裡的結點相互連結決定了輸入的數據在裡面經過怎樣的計算。我們可以通過大量的輸入，讓神經網絡調整它自身的連接情況從而總是能夠得到我們預期的輸出。</p>
 <figure>
-<img src="\willywangkaa\images\neuralgraph2.png" alt="neuralgraph2"><figcaption aria-hidden="true">neuralgraph2</figcaption>
+<img src="\willywangkaa\images\neuralgraph2.png" alt="neuralgraph2" /><figcaption aria-hidden="true">neuralgraph2</figcaption>
 </figure>
 <p><strong>＜比較＞</strong>電腦裡的模擬神經網路的架構需具備：</p>
 <ul>
@@ -470,9 +470,9 @@
 <li>極大量的資訊</li>
 <li>遷移學習( Transfer learning )
 <ul>
-<li><a href="https://www.youtube.com/watch?v=fCEHdyLkjNE" target="_blank" rel="noopener">基礎概念 - 周莫烦 - 站在巨人的肩膀上, 迁移学习 Transfer Learning</a></li>
-<li><a href="https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/5-16-transfer-learning/" target="_blank" rel="noopener">實際應用( Python ) - 周莫烦 - 迁移学习 Transfer Learning</a></li>
-<li><a href="https://www.zhihu.com/question/41979241" target="_blank" rel="noopener">什么是迁移学习 (Transfer Learning)？这个领域历史发展前景如何？</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=fCEHdyLkjNE">基礎概念 - 周莫烦 - 站在巨人的肩膀上, 迁移学习 Transfer Learning</a></li>
+<li><a target="_blank" rel="noopener" href="https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/5-16-transfer-learning/">實際應用( Python ) - 周莫烦 - 迁移学习 Transfer Learning</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/41979241">什么是迁移学习 (Transfer Learning)？这个领域历史发展前景如何？</a></li>
 </ul></li>
 </ul>
 <h2 id="感知器-perceptron">感知器 ( Perceptron )</h2>
@@ -484,7 +484,7 @@ Input: x_1, x_2, …,x_n
 Output: 1 or  -1
 \]</span></p>
 <figure>
-<img src="\willywangkaa\images\perceptrongraph.png" alt="perceptrongraph"><figcaption aria-hidden="true">perceptrongraph</figcaption>
+<img src="\willywangkaa\images\perceptrongraph.png" alt="perceptrongraph" /><figcaption aria-hidden="true">perceptrongraph</figcaption>
 </figure>
 <ul>
 <li><strong>類神經元</strong>示意圖
@@ -494,7 +494,7 @@ Output: 1 or  -1
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\sgn_triggerfunction.png" alt="sgn_triggerfunction"><figcaption aria-hidden="true">sgn_triggerfunction</figcaption>
+<img src="\willywangkaa\images\sgn_triggerfunction.png" alt="sgn_triggerfunction" /><figcaption aria-hidden="true">sgn_triggerfunction</figcaption>
 </figure>
 <p>上圖為此神經元判斷的觸發函數( 每個神經元的判斷都不盡相同，此為其中一種 )，帶入剛剛所算的淨輸入，計算輸出( -1就是判斷為無反應的狀況 )。</p>
 <ul>
@@ -503,17 +503,17 @@ Output: 1 or  -1
 <li><p><strong>決策邊界(decision boundary)</strong>：設輸入向量與權向量的<strong>內積為零</strong>，可得出 n+1 維的<strong>超平面</strong>。平面的法向量為 w，並經過 n+1 維輸入空間的原點。法向量指向的<strong>輸入空間</strong>，其輸出值為<strong>+1</strong>，而與法向量<strong>反向的輸入空間</strong>，其輸出值則為<strong>−1</strong>。故可知這個超平面<strong>定義了決策邊界</strong>，並把輸入空間劃分為二。</p></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\decisionboundery.png" alt="decisionboundery"><figcaption aria-hidden="true">decisionboundery</figcaption>
+<img src="\willywangkaa\images\decisionboundery.png" alt="decisionboundery" /><figcaption aria-hidden="true">decisionboundery</figcaption>
 </figure>
 <ul>
 <li><strong>激勵函數(activation function)</strong>：激勵函數代表神經元在什麼輸入情況下，才觸發動作。</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\activationfunction.png" alt="activationfunction"><figcaption aria-hidden="true">activationfunction</figcaption>
+<img src="\willywangkaa\images\activationfunction.png" alt="activationfunction" /><figcaption aria-hidden="true">activationfunction</figcaption>
 </figure>
 <h3 id="感知器可以學習的函數">感知器可以「學習」的函數</h3>
 <figure>
-<img src="\willywangkaa\images\singlelayertwoinputperceptron.png" alt="singlelayertwoinputperceptron"><figcaption aria-hidden="true">singlelayertwoinputperceptron</figcaption>
+<img src="\willywangkaa\images\singlelayertwoinputperceptron.png" alt="singlelayertwoinputperceptron" /><figcaption aria-hidden="true">singlelayertwoinputperceptron</figcaption>
 </figure>
 <p>Consider a 2-input perceptron ( 感知器 ) : It outputs 1 iff</p>
 <p><span class="math display">\[
@@ -528,29 +528,29 @@ o( x_1, x_2 ) = sgn( w_0+w_1 \cdot x_1+w2 \cdot x2 )
 <h4 id="what-weights-represent-and-x1-x2">What weights represent <span class="math inline">\(AND (x1, x2)\)</span>?</h4>
 <p><span class="math inline">\(w_0 = -0.8, w_1 = w_2 = 0.5\)</span><br><span class="math inline">\(o( x_1, x_2 ) \Rightarrow sgn(-0.8 + 0.5 \cdot x_1 + 0.5 \cdot x_2 )\)</span></p>
 <figure>
-<img src="\willywangkaa\images\weighttorepresentAND.png" alt="weighttorepresentAND"><figcaption aria-hidden="true">weighttorepresentAND</figcaption>
+<img src="\willywangkaa\images\weighttorepresentAND.png" alt="weighttorepresentAND" /><figcaption aria-hidden="true">weighttorepresentAND</figcaption>
 </figure>
 <h4 id="what-weights-represent-or-x1-x2">What weights represent <span class="math inline">\(OR (x1, x2)\)</span>?</h4>
 <p><span class="math inline">\(w_0 = 0.3, w_1 = w_2 = 0.5\)</span><br><br><span class="math inline">\(o( x_1, x_2 ) = sgn(0.3 + 0.5 \cdot x1 + 0.5 \cdot x2 )\)</span></p>
 <figure>
-<img src="\willywangkaa\images\weighttorepresentOR.png" alt="weighttorepresentOR"><figcaption aria-hidden="true">weighttorepresentOR</figcaption>
+<img src="\willywangkaa\images\weighttorepresentOR.png" alt="weighttorepresentOR" /><figcaption aria-hidden="true">weighttorepresentOR</figcaption>
 </figure>
 <h4 id="what-weights-represent-not-x1-x2">What weights represent <span class="math inline">\(NOT (x1, x2)\)</span>?</h4>
 <p><span class="math inline">\(w_0 =0.0, w_1 = -1.0, w_2 = 0\)</span><br><br><span class="math inline">\(o(x_1) = sgn( 0.0 –1.0x_1)\)</span></p>
 <figure>
-<img src="\willywangkaa\images\weighttorepresentNOT.png" alt="weighttorepresentNOT"><figcaption aria-hidden="true">weighttorepresentNOT</figcaption>
+<img src="\willywangkaa\images\weighttorepresentNOT.png" alt="weighttorepresentNOT" /><figcaption aria-hidden="true">weighttorepresentNOT</figcaption>
 </figure>
 <h4 id="what-weights-represent-xor-x1-x2">What weights represent <span class="math inline">\(XOR (x1, x2)\)</span>?</h4>
 <p>Not possible.</p>
 <figure>
-<img src="\willywangkaa\images\possibletorepresentXOR.png" alt="possibletorepresentXOR"><figcaption aria-hidden="true">possibletorepresentXOR</figcaption>
+<img src="\willywangkaa\images\possibletorepresentXOR.png" alt="possibletorepresentXOR" /><figcaption aria-hidden="true">possibletorepresentXOR</figcaption>
 </figure>
 <p><strong>＜NOTE＞</strong>Not linearly separable <span class="math inline">\(\rightarrow\)</span> Can not be represented by a <strong>single percepton</strong>.<br><br> <strong>Solution: use multilayer networks.</strong></p>
 <figure>
-<img src="\willywangkaa\images\multilayertorepresentXOR.png" alt="multilayertorepresentXOR"><figcaption aria-hidden="true">multilayertorepresentXOR</figcaption>
+<img src="\willywangkaa\images\multilayertorepresentXOR.png" alt="multilayertorepresentXOR" /><figcaption aria-hidden="true">multilayertorepresentXOR</figcaption>
 </figure>
 <h2 id="how-to-determine-a-weight-vector-如何決定權重向量">How to Determine a Weight Vector? <br>如何決定權重向量？</h2>
-<hr>
+<hr />
 <p>在類神經網路學習的過程中，最重要的就是權重向量( Weight Vector )，因為這就是決定到時候感知器( Perceptrons )能不能做出正確預測( correct <span class="math inline">\(\pm 1\)</span> output )的關鍵依據。</p>
 <p>通常來說，都會給定一組訓練範例( Trainning example )，而且，每個元素裡必定會含有輸入( Input )與輸出( Output )。</p>
 <ul>
@@ -578,12 +578,12 @@ o( x_1, x_2 ) = sgn( w_0+w_1 \cdot x_1+w2 \cdot x2 )
 <p><span class="math display">\[
 D = \{ ( \vec{x}, t ) \}
 \]</span></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Initialize all weights w_i to random values</span></span><br><span class="line">w[] &lt;- random values</span><br><span class="line">WHILE <span class="keyword">not</span> all examples correctly predicted DO</span><br><span class="line">	FOR each training example </span><br><span class="line">	x = (x_1, x_2, x_3, ..., x_n ) in D</span><br><span class="line">		Compute current output o ( x_1, x_2, x_3, ..., x_n ) </span><br><span class="line">		FOR i = <span class="number">0</span> to n</span><br><span class="line">		    <span class="comment">// always let x_0=1</span></span><br><span class="line">			w_i  w_i + eta(t - o) * x_i</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Initialize all weights w_i to random values</span></span><br><span class="line">w[] &lt;- random values</span><br><span class="line">WHILE <span class="keyword">not</span> all examples correctly predicted DO</span><br><span class="line">	FOR each training example </span><br><span class="line">	x = (x_1, x_2, x_3, ..., x_n ) in D</span><br><span class="line">		Compute current output <span class="built_in">o</span> ( x_1, x_2, x_3, ..., x_n ) </span><br><span class="line">		FOR i = <span class="number">0</span> to n</span><br><span class="line">		    <span class="comment">// always let x_0=1</span></span><br><span class="line">			w_i  w_i + <span class="built_in">eta</span>(t - o) * x_i   </span><br></pre></td></tr></table></figure>
 <p><strong>＜Note＞</strong> If (t-o) = 0, no change in weight.</p>
 <p>輪過一遍所有訓練資料，稱之為一個時代( Epoch )，若一個時代過後還有 <span class="math inline">\(w_i\)</span> 是錯誤的就繼續修改 <span class="math inline">\(w_i\)</span> ，直到某個時代所有的 $ w_i $ 可以讓 $ x_i $ 輸出正確。 <strong>＜注意＞：</strong>如果訓練資料是<strong>線性可分離</strong>( XOR就不可線性分離 )，且<span class="math inline">\(\eta\)</span>是小於1的很小的值，那麼一定最後可以在<strong>有限的世代</strong>找到最後的感知器( Perceptron )。<br><br></p>
 <p>倘若今天的資料是無法被線性分離的改如何處理？ - <strong>Approach 1:</strong> 建立一個演算法可以努力找到逼近值。 E.g. gradient descent method ( 梯度下降法 ) - <strong>Approach 2:</strong> 建立不同架構或多層( Multilayer networks )結構的神經網路以突破限制。</p>
 <h3 id="gradient-descent">Gradient Descent</h3>
-<p><a href="https://www.youtube.com/watch?v=_-02ze7tf08" target="_blank" rel="noopener">Youtube - Gradient Decent 介紹</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=_-02ze7tf08">Youtube - Gradient Decent 介紹</a></p>
 <p>我們需要在 <span class="math inline">\((n+1)\)</span> 維的假說向量空間( Hypotheses Space )中搜索最合適( Best fit )的權值向量，我們需要有一定的規則指導我們的搜索，採用沿著梯度<strong>反方向</strong>往下走的方法，就稱為「梯度下降法」(Gradient Descent)。這種方法可以說是一種「貪婪演算法」(Greedy Algorithm)，因為它每次都朝著最陡的方向走去，企圖得到最大的下降幅度。即使訓練資料是不可線性分離的( Not lineary separable )，最後這個演算法還是會收斂在極趨近於目標想法的銓重向量停止。</p>
 <p><strong>＜注意＞：</strong> <em>Least square</em>為最常用來檢測誤差的方法。</p>
 <p>為了要計算梯度，我們不能採用不可微分的 sign() 步階函數，因為這樣就不能用<strong>微積分</strong>的方式計算出<strong>梯度</strong>了，而必須改用可以微分的連續函數 sigmoid()，這樣才能夠透過微分計算出梯度。</p>
@@ -597,7 +597,7 @@ E(w) = \frac{1}{2} \sum_{d \in D} ( t_d - o_d )
 \]</span></p>
 <p><strong>＜注意＞：</strong> <em>梯度</em> 是一個裡面所有元素為對 <span class="math inline">\(E\)</span> 以對每個 <span class="math inline">\(w_i\)</span> 偏微分的<strong>向量</strong>。且這個向量指向的地方為最上坡之處。( 如下圖紅色處顯示，而下方黑色箭頭則表示該梯度投影下來所對應的方向 )</p>
 <figure>
-<img src="\willywangkaa\images\gradient.png" alt="gradient"><figcaption aria-hidden="true">gradient</figcaption>
+<img src="\willywangkaa\images\gradient.png" alt="gradient" /><figcaption aria-hidden="true">gradient</figcaption>
 </figure>
 <p>所以 <strong>Gradient Descent</strong> 就是該點梯度的 <em>反方向</em> ，也就是最下坡的方向，<span class="math inline">\(i.e. \; -\bigtriangledown E(w)\)</span>。</p>
 <p>這樣目標就明確了，欲在假說空間找到一組權值 <span class="math inline">\(w\)</span> 讓這個誤差的值最小，顯然我們用<strong>誤差對權值</strong>求導將是一個很好的選擇，導數的意義是提供了一個方向，沿著這個方向改變權值，將會讓總的<strong>誤差變大</strong>，更形象的叫它為梯度。</p>
@@ -606,7 +606,7 @@ E(w) = \frac{1}{2} \sum_{d \in D} ( t_d - o_d )
 \vec{w_i} \leftarrow \vec{w_i} + \Delta \vec{w_i}, \quad where \; \Delta \vec{w_i} = \eta \frac{\partial E}{\partial w_i}
 \]</span></p>
 <figure>
-<img src="\willywangkaa\images\gradientgraph.png" alt="gradientgraph"><figcaption aria-hidden="true">gradientgraph</figcaption>
+<img src="\willywangkaa\images\gradientgraph.png" alt="gradientgraph" /><figcaption aria-hidden="true">gradientgraph</figcaption>
 </figure>
 <h4 id="e.x."><span class="math inline">\(E.x.\)</span></h4>
 <ul>
@@ -619,7 +619,7 @@ E(w) = \frac{1}{2} \sum_{d \in D} ( t_d - o_d )
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\examplegradient.png" alt="examplegradient"><figcaption aria-hidden="true">examplegradient</figcaption>
+<img src="\willywangkaa\images\examplegradient.png" alt="examplegradient" /><figcaption aria-hidden="true">examplegradient</figcaption>
 </figure>
 <p>For the least square error function, gradient is easy to calculate:</p>
 <p><span class="math display">\[
@@ -643,15 +643,15 @@ and
 \]</span></p>
 <p>最後公式變成：</p>
 <figure>
-<img src="\willywangkaa\images\gradientdecentfinalformula.png" alt="gradientdecentfinalformula"><figcaption aria-hidden="true">gradientdecentfinalformula</figcaption>
+<img src="\willywangkaa\images\gradientdecentfinalformula.png" alt="gradientdecentfinalformula" /><figcaption aria-hidden="true">gradientdecentfinalformula</figcaption>
 </figure>
 <h1 id="參考">參考</h1>
-<hr>
-<p><a href="http://mropengate.blogspot.tw/2015/06/ch15-4-neural-network.html" target="_blank" rel="noopener">Mr' opengate - AI - Ch16 機器學習(4), 類神經網路 Neural network</a></p>
-<p><a href="https://zh.wikipedia.org/wiki/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C" target="_blank" rel="noopener">Wikipedia - 人工神經網路</a></p>
-<p><a href="https://www.youtube.com/watch?v=fCEHdyLkjNE" target="_blank" rel="noopener">基礎概念 - 周莫烦 - 站在巨人的肩膀上, 迁移学习 Transfer Learning</a></p>
-<p><a href="https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/5-16-transfer-learning/" target="_blank" rel="noopener">實際應用( Python ) - 周莫烦 - 迁移学习 Transfer Learning</a></p>
-<p><a href="https://www.zhihu.com/question/41979241" target="_blank" rel="noopener">什么是迁移学习 (Transfer Learning)？这个领域历史发展前景如何？</a></p>
+<hr />
+<p><a target="_blank" rel="noopener" href="http://mropengate.blogspot.tw/2015/06/ch15-4-neural-network.html">Mr' opengate - AI - Ch16 機器學習(4), 類神經網路 Neural network</a></p>
+<p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">Wikipedia - 人工神經網路</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=fCEHdyLkjNE">基礎概念 - 周莫烦 - 站在巨人的肩膀上, 迁移学习 Transfer Learning</a></p>
+<p><a target="_blank" rel="noopener" href="https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/5-16-transfer-learning/">實際應用( Python ) - 周莫烦 - 迁移学习 Transfer Learning</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/41979241">什么是迁移学习 (Transfer Learning)？这个领域历史发展前景如何？</a></p>
 
       
     </div>

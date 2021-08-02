@@ -471,7 +471,7 @@
 <h2 id="實現虛擬記憶體">實現虛擬記憶體</h2>
 <h3 id="demand-paging-需求分頁技術">Demand paging ( 需求分頁技術 )</h3>
 <figure>
-<img src="\willywangkaa\images\demandpaging.png" alt="demandpaging"><figcaption aria-hidden="true">demandpaging</figcaption>
+<img src="\willywangkaa\images\demandpaging.png" alt="demandpaging" /><figcaption aria-hidden="true">demandpaging</figcaption>
 </figure>
 <ul>
 <li><p>架構於 Page memory management 的基礎之上</p>
@@ -484,8 +484,8 @@
 <li><p><span class="math inline">\(\left\{\begin{matrix} 1 &amp; ： &amp; 在 \; RAM 中 \\ 0 &amp; ： &amp; 不存在於 RAM 中 \end{matrix}\right.\)</span></p></li>
 <li><table>
 <colgroup>
-<col style="width: 18%">
-<col style="width: 81%">
+<col style="width: 18%" />
+<col style="width: 81%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -508,7 +508,7 @@
 </ul>
 <h3 id="處理-page-fault">處理 Page fault</h3>
 <figure>
-<img src="\willywangkaa\images\handlingpagefault.png" alt="handlingpagefault"><figcaption aria-hidden="true">handlingpagefault</figcaption>
+<img src="\willywangkaa\images\handlingpagefault.png" alt="handlingpagefault" /><figcaption aria-hidden="true">handlingpagefault</figcaption>
 </figure>
 <ul>
 <li><strong>處理時間長</strong></li>
@@ -658,12 +658,12 @@ p \times (TLB \;time + Memory \;access \;time) + (1-p) \times (TLB \;time + \\ M
 \]</span></p>
 <p>配置<strong>三個</strong>頁框：</p>
 <figure>
-<img src="\willywangkaa\images\FIFO3frame.png" alt="FIFO3frame"><figcaption aria-hidden="true">FIFO3frame</figcaption>
+<img src="\willywangkaa\images\FIFO3frame.png" alt="FIFO3frame" /><figcaption aria-hidden="true">FIFO3frame</figcaption>
 </figure>
 <p>9 次「Page fault」</p>
 <p>配置<strong>四個</strong>頁框：</p>
 <figure>
-<img src="\willywangkaa\images\FIFO4frame.png" alt="FIFO4frame"><figcaption aria-hidden="true">FIFO4frame</figcaption>
+<img src="\willywangkaa\images\FIFO4frame.png" alt="FIFO4frame" /><figcaption aria-hidden="true">FIFO4frame</figcaption>
 </figure>
 <p><strong>10 次「Page fault」</strong></p>
 <ul>
@@ -682,7 +682,7 @@ p \times (TLB \;time + Memory \;access \;time) + (1-p) \times (TLB \;time + \\ M
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\stackproperty.png" alt="stackproperty"><figcaption aria-hidden="true">stackproperty</figcaption>
+<img src="\willywangkaa\images\stackproperty.png" alt="stackproperty" /><figcaption aria-hidden="true">stackproperty</figcaption>
 </figure>
 </blockquote>
 <h5 id="fifo-法則">FIFO 法則</h5>
@@ -714,7 +714,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 \]</span></p>
 </blockquote>
 <figure>
-<img src="\willywangkaa\images\FIFOpagereplace.png" alt="FIFOpagereplace"><figcaption aria-hidden="true">FIFOpagereplace</figcaption>
+<img src="\willywangkaa\images\FIFOpagereplace.png" alt="FIFOpagereplace" /><figcaption aria-hidden="true">FIFOpagereplace</figcaption>
 </figure>
 <p><strong>總共 15 次。</strong></p>
 <h5 id="optimal-法則-opt">Optimal 法則 ( OPT )</h5>
@@ -741,7 +741,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0 ,1
 \]</span></p>
 <figure>
-<img src="\willywangkaa\images\pagereplacement_opt.png" alt="pagereplacement_opt"><figcaption aria-hidden="true">pagereplacement_opt</figcaption>
+<img src="\willywangkaa\images\pagereplacement_opt.png" alt="pagereplacement_opt" /><figcaption aria-hidden="true">pagereplacement_opt</figcaption>
 </figure>
 <p><strong>總共 9 次。</strong></p>
 <h5 id="least-recently-used-lru-法則">Least recently used ( LRU ) 法則</h5>
@@ -780,7 +780,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\LRU_stack.png" alt="LRU_stack"><figcaption aria-hidden="true">LRU_stack</figcaption>
+<img src="\willywangkaa\images\LRU_stack.png" alt="LRU_stack" /><figcaption aria-hidden="true">LRU_stack</figcaption>
 </figure>
 <ul>
 <li>3 個頁框有 10 次「Page fault」</li>
@@ -798,7 +798,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0 ,1
 \]</span></p>
 <figure>
-<img src="\willywangkaa\images\pagereplacement_LRU.png" alt="pagereplacement_LRU"><figcaption aria-hidden="true">pagereplacement_LRU</figcaption>
+<img src="\willywangkaa\images\pagereplacement_LRU.png" alt="pagereplacement_LRU" /><figcaption aria-hidden="true">pagereplacement_LRU</figcaption>
 </figure>
 <p><strong>總共 12 次。</strong></p>
 <h5 id="least-recently-used-近似法則">Least recently used 近似法則</h5>
@@ -817,7 +817,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 1, 2, 1, 1 ,1 ,1, 3, 1, 3, 3, 3, 3, 5
 \]</span></p>
 <figure>
-<img src="\willywangkaa\images\pagereplacement_addbit.png" alt="pagereplacement_addbit"><figcaption aria-hidden="true">pagereplacement_addbit</figcaption>
+<img src="\willywangkaa\images\pagereplacement_addbit.png" alt="pagereplacement_addbit" /><figcaption aria-hidden="true">pagereplacement_addbit</figcaption>
 </figure>
 <p>遇到「Page 5」時，因為<strong>「Page 2」</strong>的暫存器值最小所以選擇該分頁為犧牲分頁。</p>
 </blockquote>
@@ -836,7 +836,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 <li>☆Ex ( 四個頁框中，依目前狀態挑一頁框為犧牲頁框 )</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\pagereplacement_secondchance.png" alt="pagereplacement_secondchance"><figcaption aria-hidden="true">pagereplacement_secondchance</figcaption>
+<img src="\willywangkaa\images\pagereplacement_secondchance.png" alt="pagereplacement_secondchance" /><figcaption aria-hidden="true">pagereplacement_secondchance</figcaption>
 </figure>
 <p>挑「Page 3」為犧牲頁框。</p>
 <ul>
@@ -846,7 +846,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 1, 2, 3, 4, 2, 5, 2, 6, 1, 2
 \]</span></p>
 <figure>
-<img src="\willywangkaa\images\pagereplecement_secondchoice_2.png" alt="pagereplecement_secondchoice_2"><figcaption aria-hidden="true">pagereplecement_secondchoice_2</figcaption>
+<img src="\willywangkaa\images\pagereplecement_secondchoice_2.png" alt="pagereplecement_secondchoice_2" /><figcaption aria-hidden="true">pagereplecement_secondchoice_2</figcaption>
 </figure>
 <p><strong>8 次「Page fault」。</strong></p>
 <blockquote>
@@ -984,7 +984,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 </ol></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\freefreampool.png" alt="freefreampool"><figcaption aria-hidden="true">freefreampool</figcaption>
+<img src="\willywangkaa\images\freefreampool.png" alt="freefreampool" /><figcaption aria-hidden="true">freefreampool</figcaption>
 </figure>
 <h5 id="modification-list">Modification list</h5>
 <ul>
@@ -1043,7 +1043,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 </ul>
 <h3 id="thrashing-現象">Thrashing 現象</h3>
 <figure>
-<img src="\willywangkaa\images\thrashing.png" alt="thrashing"><figcaption aria-hidden="true">thrashing</figcaption>
+<img src="\willywangkaa\images\thrashing.png" alt="thrashing" /><figcaption aria-hidden="true">thrashing</figcaption>
 </figure>
 <p><strong>若 Process 分配到的頁框不足時，</strong>則此 Process 會經常「Page fault」，所以作業系統要作 Page replacement，若作業系統採用「Global replacement policy」，可能會挑選到其他 Process 所把持的頁框當作犧牲頁面，而如此一來也會造成其他 Process page fault 使得其他 Process 也發生 Page fault，最後又去搶奪其他 Process 的頁框來使用，導致所有 Process 皆發生 Page fault 且<strong>等待 Paging I/O 裝置運作完成 ( Swap out / Swap in )，此時 CPU 利用度下降，作業系統會企圖調高「Multiprogramming degree」</strong>，將導入更多 Process 進入執行，<strong>但是記憶體原本就不夠，</strong>所以這些 Process 也立刻發生「Page fault」，而作業系統又在調高「Multiprogramming degree」，<strong>不斷循環下去</strong>，此時系統呈現：</p>
 <ul>
@@ -1059,7 +1059,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 </ul>
 <h5 id="使用-page-fault-frequency-control-機制---預防">使用 Page fault frequency control 機制 - 預防</h5>
 <figure>
-<img src="\willywangkaa\images\pagefaultfrequencycontrol.png" alt="pagefaultfrequencycontrol"><figcaption aria-hidden="true">pagefaultfrequencycontrol</figcaption>
+<img src="\willywangkaa\images\pagefaultfrequencycontrol.png" alt="pagefaultfrequencycontrol" /><figcaption aria-hidden="true">pagefaultfrequencycontrol</figcaption>
 </figure>
 <p>使用 <strong>Page fault frequency contro</strong>l 機制，來防止 Thrashing 發生。</p>
 <ul>
@@ -1077,7 +1077,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 <p>運用 Working set model 技術預估 Process 在不同時間執行時，所需之頁框數量，作業系統根據此資訊，分配 Process 足夠的數量，以防止 Thrashing。</p>
 <p>此技術是基於「Locality model」( 集中模型 )之理論基礎之上。</p>
 <figure>
-<img src="\willywangkaa\images\workingsetwindow.png" alt="workingsetwindow"><figcaption aria-hidden="true">workingsetwindow</figcaption>
+<img src="\willywangkaa\images\workingsetwindow.png" alt="workingsetwindow" /><figcaption aria-hidden="true">workingsetwindow</figcaption>
 </figure>
 <ul>
 <li><p>相關名詞解釋</p>
@@ -1164,7 +1164,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 <h6 id="locality-model">☆Locality model</h6>
 <blockquote>
 <figure>
-<img src="\willywangkaa\images\localittmodel.png" alt="localittmodel"><figcaption aria-hidden="true">localittmodel</figcaption>
+<img src="\willywangkaa\images\localittmodel.png" alt="localittmodel" /><figcaption aria-hidden="true">localittmodel</figcaption>
 </figure>
 <p>Process 執行時，對於所存取之「記憶體區塊」，<strong>並非是均勻的，而是具有某種 局部/集中 區域存取之特性。</strong></p>
 <ul>
@@ -1228,7 +1228,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 </blockquote>
 <h3 id="program-structure-對於記憶體存取之影響">Program structure 對於記憶體存取之影響</h3>
 <figure>
-<img src="\willywangkaa\images\workingset.png" alt="workingset"><figcaption aria-hidden="true">workingset</figcaption>
+<img src="\willywangkaa\images\workingset.png" alt="workingset" /><figcaption aria-hidden="true">workingset</figcaption>
 </figure>
 <ul>
 <li><p>若 Program 中使用的指令、資料結構、演算法符合「Locality model」，則有助於降低「Page fault ratio」。</p>
@@ -1244,12 +1244,12 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 <li><p>Page size = 128 B</p></li>
 <li><p>給該 Process 三個頁框，且程式已經在記憶體之中，採用 FIFO replacement policy 求下列程式碼的「Page fault」次數。</p></li>
 <li><p>（1）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (i = 1 to 128) &#123;</span><br><span class="line">    for (j = 1 to 128) &#123;</span><br><span class="line">        A[i, j] = 0</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (i = 1 to 128) &#123;</span><br><span class="line">    for (j = 1 to 128) &#123;</span><br><span class="line">        A[i, j] = 0</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <p>每一列發生 1 次「Page fault」，共 128 列，所以總共發生 128 次「Page fault」。</p>
 <ul>
 <li><p>（2）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (j = 1 to 128) &#123;</span><br><span class="line">    for (i = 1 to 128) &#123;</span><br><span class="line">        A[i, j] = 0</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (j = 1 to 128) &#123;</span><br><span class="line">    for (i = 1 to 128) &#123;</span><br><span class="line">        A[i, j] = 0</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <p>每一行發生 128 次「Page fault」，共 128 行，所以總共發生 128 <span class="math inline">\(\times\)</span> 128 次「Page fault」。</p></li>
 <li><p>Ex</p>
@@ -1260,19 +1260,19 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 <li><p>Page size = 200 B</p></li>
 <li><p>給該 Process 三個頁框，且程式已經在記憶體之中，採用 <strong>LRU</strong> replacement policy 求下列程式碼的「Page fault」次數。</p></li>
 <li><p>（1）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (i = 1 to 100) &#123;</span><br><span class="line">    for (j = 1 to 100) &#123;</span><br><span class="line">        A[i, j] = 0</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (i = 1 to 100) &#123;</span><br><span class="line">    for (j = 1 to 100) &#123;</span><br><span class="line">        A[i, j] = 0</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <p>每兩列發生 1 次「Page fault」，共 100 列，所以總共發生 100 / 2 次「Page fault」。</p>
 <ul>
 <li><p>（2）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (j = 1 to 100) &#123;</span><br><span class="line">    for (i = 1 to 100) &#123;</span><br><span class="line">        A[i, j] = 0</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (j = 1 to 100) &#123;</span><br><span class="line">    for (i = 1 to 100) &#123;</span><br><span class="line">        A[i, j] = 0</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <p>每一行發生 100 / 2 次「Page fault」，共 100 行，所以總共發生 50 <span class="math inline">\(\times\)</span> 100 次「Page fault」。</p></li>
 </ul>
 <h3 id="copy-on-write">Copy-on-write</h3>
 <p>主要談論到三種 <code>fork()</code> 的差異。</p>
 <figure>
-<img src="\willywangkaa\images\copyonwrite.png" alt="copyonwrite"><figcaption aria-hidden="true">copyonwrite</figcaption>
+<img src="\willywangkaa\images\copyonwrite.png" alt="copyonwrite" /><figcaption aria-hidden="true">copyonwrite</figcaption>
 </figure>
 <ul>
 <li><code>fork()</code> without「copy-on-write」
@@ -1293,7 +1293,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 <li>有可能會修改 ( modified ) 的 分頁需標示「copy-on-write bit」為 1。<br>( Read-only code / data 無須標示 )</li>
 <li>Pros
 <ul>
-<li><strong>可降低頁框需求量</strong><br>
+<li><strong>可降低頁框需求量</strong><br />
 </li>
 <li><strong>加速 Process 的建立。</strong></li>
 </ul></li>

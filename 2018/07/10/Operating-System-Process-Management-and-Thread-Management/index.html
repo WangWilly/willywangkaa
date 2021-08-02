@@ -569,7 +569,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1526880431737.png" alt="1526880431737"><figcaption aria-hidden="true">1526880431737</figcaption>
+<img src="\willywangkaa\images\1526880431737.png" alt="1526880431737" /><figcaption aria-hidden="true">1526880431737</figcaption>
 </figure>
 <h3 id="七個狀態">*七個狀態</h3>
 <ul>
@@ -590,22 +590,22 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1526883114200.png" alt="1526883114200"><figcaption aria-hidden="true">1526883114200</figcaption>
+<img src="\willywangkaa\images\1526883114200.png" alt="1526883114200" /><figcaption aria-hidden="true">1526883114200</figcaption>
 </figure>
 <blockquote>
 <p>Queuing diagram</p>
 <figure>
-<img src="\willywangkaa\images\queuingdiagramforprocessmodel.png" alt="Queuingdiagram"><figcaption aria-hidden="true">Queuingdiagram</figcaption>
+<img src="\willywangkaa\images\queuingdiagramforprocessmodel.png" alt="Queuingdiagram" /><figcaption aria-hidden="true">Queuingdiagram</figcaption>
 </figure>
 </blockquote>
 <h3 id="unix-std">UNIX STD</h3>
 <figure>
-<img src="\willywangkaa\images\1526885420905.png" alt="1526885420905"><figcaption aria-hidden="true">1526885420905</figcaption>
+<img src="\willywangkaa\images\1526885420905.png" alt="1526885420905" /><figcaption aria-hidden="true">1526885420905</figcaption>
 </figure>
 <h1 id="scheduler">Scheduler</h1>
 <h2 id="io-bound-cpu-bound">I/O-bound &amp; CPU-bound</h2>
 <figure>
-<img src="\willywangkaa\images\1526887552589.png" alt="1526887552589"><figcaption aria-hidden="true">1526887552589</figcaption>
+<img src="\willywangkaa\images\1526887552589.png" alt="1526887552589" /><figcaption aria-hidden="true">1526887552589</figcaption>
 </figure>
 <ul>
 <li>I/O-bound Job
@@ -709,7 +709,7 @@
 </ul>
 <h2 id="unix-system-call">UNIX system call</h2>
 <figure>
-<img src="\willywangkaa\images\1527077415190.png" alt="1527077415190"><figcaption aria-hidden="true">1527077415190</figcaption>
+<img src="\willywangkaa\images\1527077415190.png" alt="1527077415190" /><figcaption aria-hidden="true">1527077415190</figcaption>
 </figure>
 <ul>
 <li><strong>fork()：</strong>用以建立 child process ，而 fork() 之回傳結果如下：
@@ -723,7 +723,7 @@
 <li>getpid()：用以取得 process 的 ID。</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1527077382823.png" alt="1527077382823"><figcaption aria-hidden="true">1527077382823</figcaption>
+<img src="\willywangkaa\images\1527077382823.png" alt="1527077382823" /><figcaption aria-hidden="true">1527077382823</figcaption>
 </figure>
 <p><strong>＜Note＞：</strong></p>
 <ol type="1">
@@ -732,50 +732,50 @@
 <li><strong>若 child 要做特定的工作(與 parent 不同)，則 child 必須執行 execlp() 以載入特定工作的執行檔。</strong></li>
 </ol>
 <figure>
-<img src="\willywangkaa\images\1527077442901.png" alt="1527077442901"><figcaption aria-hidden="true">1527077442901</figcaption>
+<img src="\willywangkaa\images\1527077442901.png" alt="1527077442901" /><figcaption aria-hidden="true">1527077442901</figcaption>
 </figure>
 <h2 id="程式實際操作">程式實際操作</h2>
-<hr>
+<hr />
 <h3 id="ex1."><span class="math inline">\(Ex1.\)</span></h3>
 <p>建立 child process 執行 ls 命定檔且 parent 等到 child 完成之後 parent 才輸出「child complete」。</p>
 <p>Creating a separate process using the UNIX fork() system call.</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">pid_t</span> pid;</span><br><span class="line">    pid = fork();                        <span class="comment">//fork a child process</span></span><br><span class="line">    <span class="keyword">if</span> (pid &lt; <span class="number">0</span>) &#123;                       <span class="comment">// error occurred</span></span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"Fork Failed\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;                        <span class="comment">//exit(-1);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (pid == <span class="number">0</span>) &#123;                 <span class="comment">// child process</span></span><br><span class="line">    	execlp(<span class="string">"/bin/ls"</span>,<span class="string">"ls"</span>,<span class="literal">NULL</span>);     <span class="comment">// 程式區塊指標轉換，下方不做，見上圖。</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;                               <span class="comment">// parent process</span></span><br><span class="line">        wait(<span class="literal">NULL</span>);                      <span class="comment">// parent will wait for the child to complete</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Child Complete\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">pid_t</span> pid;</span><br><span class="line">    pid = fork();                        <span class="comment">//fork a child process</span></span><br><span class="line">    <span class="keyword">if</span> (pid &lt; <span class="number">0</span>) &#123;                       <span class="comment">// error occurred</span></span><br><span class="line">        <span class="built_in">fprintf</span>(stderr, <span class="string">&quot;Fork Failed\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;                        <span class="comment">//exit(-1);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (pid == <span class="number">0</span>) &#123;                 <span class="comment">// child process</span></span><br><span class="line">    	<span class="built_in">execlp</span>(<span class="string">&quot;/bin/ls&quot;</span>,<span class="string">&quot;ls&quot;</span>,<span class="literal">NULL</span>);     <span class="comment">// 程式區塊指標轉換，下方不做，見上圖。</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;                               <span class="comment">// parent process</span></span><br><span class="line">        <span class="built_in">wait</span>(<span class="literal">NULL</span>);                      <span class="comment">// parent will wait for the child to complete</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Child Complete\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="ex2.-ref-p.-4-52"><span class="math inline">\(Ex2.\)</span> (Ref p. 4-52)</h3>
 <p>Identify the values of pid at lines A, B, C, and D. ( Assume that the actual pids of the <strong>parent and child are 2600 and 2603</strong>, respectively. )</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">pid_t</span> pid, pid1;</span><br><span class="line">    pid = fork();                          <span class="comment">// fork a child process</span></span><br><span class="line">	</span><br><span class="line">    <span class="keyword">if</span> (pid &lt; <span class="number">0</span>) &#123;                         <span class="comment">// error occurred</span></span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"Fork Failed\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (pid == <span class="number">0</span>) &#123;                   <span class="comment">// child process</span></span><br><span class="line">        pid1 = getpid();</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"A: Child: pid = %d\n"</span>,pid);     <span class="comment">// A -&gt; 0</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"B: Child: pid1 = %d\n"</span>,pid1);   <span class="comment">// B -&gt; 2603</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;                                 <span class="comment">// parent process</span></span><br><span class="line">        pid1 = getpid();                   <span class="comment">// child process ID</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"C: Parent: pid = %d\n"</span>,pid);    <span class="comment">// C -&gt; 2603</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"D: Parent: pid1 = %d\n"</span>,pid1);  <span class="comment">// D -&gt; 2600</span></span><br><span class="line">        wait(<span class="literal">NULL</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">pid_t</span> pid, pid1;</span><br><span class="line">    pid = fork();                          <span class="comment">// fork a child process</span></span><br><span class="line">	</span><br><span class="line">    <span class="keyword">if</span> (pid &lt; <span class="number">0</span>) &#123;                         <span class="comment">// error occurred</span></span><br><span class="line">        <span class="built_in">fprintf</span>(stderr, <span class="string">&quot;Fork Failed\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (pid == <span class="number">0</span>) &#123;                   <span class="comment">// child process</span></span><br><span class="line">        pid1 = <span class="built_in">getpid</span>();</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;A: Child: pid = %d\n&quot;</span>,pid);     <span class="comment">// A -&gt; 0</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;B: Child: pid1 = %d\n&quot;</span>,pid1);   <span class="comment">// B -&gt; 2603</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;                                 <span class="comment">// parent process</span></span><br><span class="line">        pid1 = <span class="built_in">getpid</span>();                   <span class="comment">// child process ID</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;C: Parent: pid = %d\n&quot;</span>,pid);    <span class="comment">// C -&gt; 2603</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;D: Parent: pid1 = %d\n&quot;</span>,pid1);  <span class="comment">// D -&gt; 2600</span></span><br><span class="line">        <span class="built_in">wait</span>(<span class="literal">NULL</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="ex3.-ref-p.-4-53"><span class="math inline">\(Ex3.\)</span> (Ref p. 4-53)</h3>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> value = <span class="number">5</span>;                                <span class="comment">// global varible</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">pid_t</span> pid;</span><br><span class="line">    pid = fork();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (pid == <span class="number">0</span>) &#123;                           <span class="comment">// child process</span></span><br><span class="line">        value += <span class="number">15</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (pid &gt; <span class="number">0</span>) &#123;                       <span class="comment">// parent process</span></span><br><span class="line">        wait(<span class="literal">NULL</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"PARENT: value = %d\n"</span>,value); <span class="comment">// LINE A value -&gt; 5</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> value = <span class="number">5</span>;                                <span class="comment">// global varible</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">pid_t</span> pid;</span><br><span class="line">    pid = fork();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (pid == <span class="number">0</span>) &#123;                           <span class="comment">// child process</span></span><br><span class="line">        value += <span class="number">15</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (pid &gt; <span class="number">0</span>) &#123;                       <span class="comment">// parent process</span></span><br><span class="line">        <span class="built_in">wait</span>(<span class="literal">NULL</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;PARENT: value = %d\n&quot;</span>,value); <span class="comment">// LINE A value -&gt; 5</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="ex4.-程序的並行">★<span class="math inline">\(Ex4.\)</span> 程序的並行</h3>
 <ol type="1">
 <li>求輸出結果？ ( Tip: <strong>父與子是並行的。</strong> )</li>
 </ol>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">pid_t</span> pid;</span><br><span class="line">    pid = fork();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (pid == <span class="number">0</span>) &#123;                         <span class="comment">// child process</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"A\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (pid &gt; <span class="number">0</span>) &#123;                     <span class="comment">// parent process</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"B\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">pid_t</span> pid;</span><br><span class="line">    pid = fork();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (pid == <span class="number">0</span>) &#123;                         <span class="comment">// child process</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;A\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (pid &gt; <span class="number">0</span>) &#123;                     <span class="comment">// parent process</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;B\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Ans：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A</span><br><span class="line">B</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A</span><br><span class="line">B</span><br></pre></td></tr></table></figure>
 <p>OR</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">B</span><br><span class="line">A</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">B</span><br><span class="line">A</span><br></pre></td></tr></table></figure>
 <p>都有可能。</p>
 <ol start="2" type="1">
 <li>求輸出結果？ ( Tip: <strong>父與子是並行的。</strong> )</li>
 </ol>
 <p>考慮：</p>
 <figure>
-<img src="\willywangkaa\images\1527080836257.png" alt="1527080836257"><figcaption aria-hidden="true">1527080836257</figcaption>
+<img src="\willywangkaa\images\1527080836257.png" alt="1527080836257" /><figcaption aria-hidden="true">1527080836257</figcaption>
 </figure>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">pid_t</span> pid;</span><br><span class="line">    pid = fork();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (pid == <span class="number">0</span>) &#123;                         <span class="comment">// child process</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"A\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (pid &gt; <span class="number">0</span>) &#123;                     <span class="comment">// parent process</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"B\n"</span>);</span><br><span class="line">        wait(<span class="literal">NULL</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"C\n"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">pid_t</span> pid;</span><br><span class="line">    pid = fork();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (pid == <span class="number">0</span>) &#123;                         <span class="comment">// child process</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;A\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (pid &gt; <span class="number">0</span>) &#123;                     <span class="comment">// parent process</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;B\n&quot;</span>);</span><br><span class="line">        <span class="built_in">wait</span>(<span class="literal">NULL</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;C\n&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Ans：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A</span><br><span class="line">C</span><br><span class="line">B</span><br><span class="line">C</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A</span><br><span class="line">C</span><br><span class="line">B</span><br><span class="line">C</span><br></pre></td></tr></table></figure>
 <p>OR</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A</span><br><span class="line">B</span><br><span class="line">C</span><br><span class="line">C</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A</span><br><span class="line">B</span><br><span class="line">C</span><br><span class="line">C</span><br></pre></td></tr></table></figure>
 <p>OR</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">B</span><br><span class="line">A</span><br><span class="line">C</span><br><span class="line">C</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">B</span><br><span class="line">A</span><br><span class="line">C</span><br><span class="line">C</span><br></pre></td></tr></table></figure>
 <h3 id="ex5.-共享變數">★<span class="math inline">\(Ex5.\)</span> 共享變數</h3>
 <ol type="1">
 <li><strong>假設 Count 是 parent 與 child process 的共享變數，且初值為 5。</strong></li>
 </ol>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">pid_t</span> pid;</span><br><span class="line">    pid = fork();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (pid == <span class="number">0</span>) &#123;                         <span class="comment">// child process</span></span><br><span class="line">		count++;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, count);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (pid &gt; <span class="number">0</span>) &#123;                     <span class="comment">// parent process</span></span><br><span class="line">		wait();</span><br><span class="line">		count--;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, count);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">pid_t</span> pid;</span><br><span class="line">    pid = fork();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (pid == <span class="number">0</span>) &#123;                         <span class="comment">// child process</span></span><br><span class="line">		count++;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, count);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (pid &gt; <span class="number">0</span>) &#123;                     <span class="comment">// parent process</span></span><br><span class="line">		<span class="built_in">wait</span>();</span><br><span class="line">		count--;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, count);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Ans：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">5</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">5</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><strong>＜Note＞：</strong>共享變數可用以下方式達成。</p>
 <ol type="1">
@@ -789,23 +789,23 @@
 </ol>
 <p>考慮：</p>
 <figure>
-<img src="\willywangkaa\images\1527081997770.png" alt="1527081997770"><figcaption aria-hidden="true">1527081997770</figcaption>
+<img src="\willywangkaa\images\1527081997770.png" alt="1527081997770" /><figcaption aria-hidden="true">1527081997770</figcaption>
 </figure>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cerrno&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/mman.h&gt; </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>* count;</span><br><span class="line">	count = (<span class="keyword">int</span>*) mmap(<span class="literal">NULL</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>), PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANON, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">	<span class="keyword">if</span> (count == MAP_FAILED) &#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"mmap failed..."</span> &lt;&lt; strerror(errno) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	*count = <span class="number">5</span>;</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">pid_t</span> pid;</span><br><span class="line">    pid = fork();</span><br><span class="line">    <span class="keyword">if</span> (pid == <span class="number">0</span>) &#123;	</span><br><span class="line">        (*count)++;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (pid &gt; <span class="number">0</span>) &#123;</span><br><span class="line">		(*count)--;</span><br><span class="line">	&#125;</span><br><span class="line"> 	<span class="built_in">cout</span> &lt;&lt; (*count) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cerrno&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/mman.h&gt;</span> </span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>* count;</span><br><span class="line">	count = (<span class="keyword">int</span>*) <span class="built_in">mmap</span>(<span class="literal">NULL</span>, <span class="built_in"><span class="keyword">sizeof</span></span>(<span class="keyword">int</span>), PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANON, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">	<span class="keyword">if</span> (count == MAP_FAILED) &#123;</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;mmap failed...&quot;</span> &lt;&lt; <span class="built_in">strerror</span>(errno) &lt;&lt; endl;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	*count = <span class="number">5</span>;</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">pid_t</span> pid;</span><br><span class="line">    pid = fork();</span><br><span class="line">    <span class="keyword">if</span> (pid == <span class="number">0</span>) &#123;	</span><br><span class="line">        (*count)++;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (pid &gt; <span class="number">0</span>) &#123;</span><br><span class="line">		(*count)--;</span><br><span class="line">	&#125;</span><br><span class="line"> 	cout &lt;&lt; (*count) &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Ans：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">5</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">5</span><br></pre></td></tr></table></figure>
 <p>OR</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">5</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">5</span><br></pre></td></tr></table></figure>
 <p>OR</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">5</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">5</span><br></pre></td></tr></table></figure>
 <p>OR ( <strong>當指令不是 atomic 時</strong> )</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">6</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">6</span><br></pre></td></tr></table></figure>
 <p>OR ( <strong>當指令不是 atomic 時</strong> )</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
 <p>★OR ( <strong>當指令不是 atomic 時</strong> )</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">6</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">6</span><br></pre></td></tr></table></figure>
 <p>★OR ( <strong>當指令不是 atomic 時</strong> )</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
 <h3 id="ex6.-有幾個-process-被建立了-including-main-ref-p.-4-54-text-book-p.-150"><span class="math inline">\(Ex6.\)</span> 有幾個 process 被建立了？ including main() (Ref p. 4-54, Text book p. 150)</h3>
 <ol type="1">
 <li></li>
@@ -818,7 +818,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(fork() == <span class="number">0</span>) &#123; <span class="comment">// child process</span></span><br><span class="line">        fork();</span><br><span class="line">        fork();</span><br><span class="line">    &#125;</span><br><span class="line">    fork();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Ans：10 個。</p>
 <figure>
-<img src="\willywangkaa\images\1531135436305.png" alt="1531135436305"><figcaption aria-hidden="true">1531135436305</figcaption>
+<img src="\willywangkaa\images\1531135436305.png" alt="1531135436305" /><figcaption aria-hidden="true">1531135436305</figcaption>
 </figure>
 <ol start="3" type="1">
 <li>★</li>
@@ -826,10 +826,10 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    fork();</span><br><span class="line">    <span class="keyword">if</span>(fork()&gt;<span class="number">0</span>) &#123;       <span class="comment">// parent process</span></span><br><span class="line">        fork();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(fork()==<span class="number">0</span>) &#123; <span class="comment">// child process</span></span><br><span class="line">        fork();</span><br><span class="line">        fork();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Ans： 14 個。(<del>30個</del>)</p>
 <figure>
-<img src="\willywangkaa\images\1531136821130.png" alt="1531136821130"><figcaption aria-hidden="true">1531136821130</figcaption>
+<img src="\willywangkaa\images\1531136821130.png" alt="1531136821130" /><figcaption aria-hidden="true">1531136821130</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1531137337724.png" alt="1531137337724"><figcaption aria-hidden="true">1531137337724</figcaption>
+<img src="\willywangkaa\images\1531137337724.png" alt="1531137337724" /><figcaption aria-hidden="true">1531137337724</figcaption>
 </figure>
 <ol start="4" type="1">
 <li>★★</li>
@@ -837,10 +837,10 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(fork()==<span class="number">0</span>) &#123;</span><br><span class="line">            fork();</span><br><span class="line">            fork();</span><br><span class="line">            fork();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Ans：729 個。</p>
 <figure>
-<img src="\willywangkaa\images\1531138419381.png" alt="1531138419381"><figcaption aria-hidden="true">1531138419381</figcaption>
+<img src="\willywangkaa\images\1531138419381.png" alt="1531138419381" /><figcaption aria-hidden="true">1531138419381</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1531139238689.png" alt="1531139238689"><figcaption aria-hidden="true">1531139238689</figcaption>
+<img src="\willywangkaa\images\1531139238689.png" alt="1531139238689" /><figcaption aria-hidden="true">1531139238689</figcaption>
 </figure>
 <p><span class="math inline">\(i == 2\)</span>, 會再多新生 <span class="math inline">\(8 \times 81 = 648\)</span> 加上原本的 81 個等於 729 個 Processes。</p>
 <ol start="5" type="1">
@@ -849,7 +849,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(fork()==<span class="number">0</span>) &#123;</span><br><span class="line">            fork();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (fork()&gt;<span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(fork()==<span class="number">0</span>) &#123;</span><br><span class="line">                fork();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Ans：216 個。(<del>1728 個</del>)</p>
 <figure>
-<img src="\willywangkaa\images\1531139971022.png" alt="1531139971022"><figcaption aria-hidden="true">1531139971022</figcaption>
+<img src="\willywangkaa\images\1531139971022.png" alt="1531139971022" /><figcaption aria-hidden="true">1531139971022</figcaption>
 </figure>
 <p><span class="math inline">\(i == 1\)</span>，上面六個 Processes 會再各自生成 5 個行程，所以會再多生產 <span class="math inline">\(5 \times 6 = 30\)</span> 個 Processes ，加上原本的 Processes 等於 36 個。<br><span class="math inline">\(i == 2\)</span>，36 個 Processes 會再各自生成 5 個行程，所以會再多生產 <span class="math inline">\(5 \times 36 = 180\)</span> 個 Processes ，加上原本的 Processes 等於 216 個。</p>
 <ol start="6" type="1">
@@ -860,13 +860,13 @@
 <li>印出<code>2</code>幾次？</li>
 </ol></li>
 </ol>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a = <span class="number">2</span>;</span><br><span class="line">    fork();</span><br><span class="line">    a--;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, a);</span><br><span class="line">    <span class="keyword">if</span>(fork()==<span class="number">0</span>) &#123;</span><br><span class="line">        a--;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, a);</span><br><span class="line">        fork();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        a++;</span><br><span class="line">        fork();</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a = <span class="number">2</span>;</span><br><span class="line">    fork();</span><br><span class="line">    a--;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, a);</span><br><span class="line">    <span class="keyword">if</span>(fork()==<span class="number">0</span>) &#123;</span><br><span class="line">        a--;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, a);</span><br><span class="line">        fork();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        a++;</span><br><span class="line">        fork();</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Ans：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">1</span><br><span class="line">0</span><br><span class="line">0</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">1</span><br><span class="line">0</span><br><span class="line">0</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
 <figure>
-<img src="\willywangkaa\images\1531141578065.png" alt="1531141578065"><figcaption aria-hidden="true">1531141578065</figcaption>
+<img src="\willywangkaa\images\1531141578065.png" alt="1531141578065" /><figcaption aria-hidden="true">1531141578065</figcaption>
 </figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">\\ 錯誤答案</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">0</span><br><span class="line">0</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">\\ 錯誤答案</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">0</span><br><span class="line">0</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
 <h1 id="cpu-排程">CPU 排程</h1>
 <h2 id="評估-cpu-scheduking-效能之五個準則criteria">評估 CPU scheduking 效能之五個準則(criteria)</h2>
 <ul>
@@ -882,7 +882,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1527426695265.png" alt="1527426695265"><figcaption aria-hidden="true">1527426695265</figcaption>
+<img src="\willywangkaa\images\1527426695265.png" alt="1527426695265" /><figcaption aria-hidden="true">1527426695265</figcaption>
 </figure>
 <ul>
 <li><strong>★ Waiting time - 等待時間</strong>
@@ -984,13 +984,13 @@
 <li><span class="math inline">\(Ex.\)</span> 當<span class="math inline">\(\alpha = 0.5\)</span></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1527475744485.png" alt="1527475744485"><figcaption aria-hidden="true">1527475744485</figcaption>
+<img src="\willywangkaa\images\1527475744485.png" alt="1527475744485" /><figcaption aria-hidden="true">1527475744485</figcaption>
 </figure>
 <p><strong>＜Note＞：</strong><span class="math inline">\(\alpha\)</span> 的值用於條整與<strong>歷史紀錄的相依性高低。</strong></p>
 <h3 id="fifo">FIFO</h3>
 <p><strong>到達時間最小的 process 取得 CPU，也就是說先來先做。</strong></p>
 <figure>
-<img src="\willywangkaa\images\1527427440948.png" alt="1527427440948"><figcaption aria-hidden="true">1527427440948</figcaption>
+<img src="\willywangkaa\images\1527427440948.png" alt="1527427440948" /><figcaption aria-hidden="true">1527427440948</figcaption>
 </figure>
 <ul>
 <li>到達時間皆為 0。</li>
@@ -998,7 +998,7 @@
 <li>Gantt chart。</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\FIFO.png" alt="FIFO"><figcaption aria-hidden="true">FIFO</figcaption>
+<img src="\willywangkaa\images\FIFO.png" alt="FIFO" /><figcaption aria-hidden="true">FIFO</figcaption>
 </figure>
 <ul>
 <li>Avg. waitting time</li>
@@ -1026,14 +1026,14 @@
 <h3 id="sjf-shortest-job-first">SJF ( Shortest Job First )</h3>
 <p><strong>具有最小 CPU time 的 process，</strong>優先取得 CPU。</p>
 <figure>
-<img src="\willywangkaa\images\1527472805224.png" alt="1527472805224"><figcaption aria-hidden="true">1527472805224</figcaption>
+<img src="\willywangkaa\images\1527472805224.png" alt="1527472805224" /><figcaption aria-hidden="true">1527472805224</figcaption>
 </figure>
 <ul>
 <li>到達時間皆為 0。</li>
 <li>Gantt chart。</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1527472898945.png" alt="1527472898945"><figcaption aria-hidden="true">1527472898945</figcaption>
+<img src="\willywangkaa\images\1527472898945.png" alt="1527472898945" /><figcaption aria-hidden="true">1527472898945</figcaption>
 </figure>
 <ul>
 <li>Avg. waiting time</li>
@@ -1048,7 +1048,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1527473571408.png" alt="1527473571408"><figcaption aria-hidden="true">1527473571408</figcaption>
+<img src="\willywangkaa\images\1527473571408.png" alt="1527473571408" /><figcaption aria-hidden="true">1527473571408</figcaption>
 </figure>
 <ul>
 <li>由上圖可知<br>Waiting time for long job：<span class="math inline">\(0 \rightarrow CPU \; execution \; time_{short \; job}\)</span><br>Waiting time for short job：<span class="math inline">\(CPU \; execution \; time_{long \; job} \rightarrow 0\)</span><br>Avg. waiting ime：<span class="math inline">\(\frac{(CPU \; execution \; time_{short \; job}-0)+(0-0)}{2} &lt; \frac{(0-0)+(CPU \; execution \; time_{long \; job}-0)}{2}\)</span></li>
@@ -1065,7 +1065,7 @@
 <h3 id="srtf-shorest-remaining-time-job-first">SRTF ( Shorest Remaining-time Job First )</h3>
 <p>又稱為 SRJF 或 SRTN ( Shorest Remaining-time Job Next )，<strong>即為「Preemptive - SJF」</strong>，將剩餘 CPU burst time 最小的 Process 取得 CPU，若「新到達的 process」 的 CPU burst time 目前執行中 process 剩下的 CPU time ，則新到達的 Process 可以<strong>插隊( Preemption )目前執行中的 Process。</strong></p>
 <figure>
-<img src="\willywangkaa\images\SRTF.png" alt="SRTF"><figcaption aria-hidden="true">SRTF</figcaption>
+<img src="\willywangkaa\images\SRTF.png" alt="SRTF" /><figcaption aria-hidden="true">SRTF</figcaption>
 </figure>
 <ul>
 <li><p>Avg. waiting time for</p>
@@ -1074,7 +1074,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1527477828916.png" alt="1527477828916"><figcaption aria-hidden="true">1527477828916</figcaption>
+<img src="\willywangkaa\images\1527477828916.png" alt="1527477828916" /><figcaption aria-hidden="true">1527477828916</figcaption>
 </figure>
 <p><span class="math display">\[
   \frac{ ((0-0)+(10-1)) + (1-1) + (17-2) + (5-3) }{ 4 } = 6.5
@@ -1082,7 +1082,7 @@
 <ul>
 <li><strong>SJF</strong></li>
 </ul>
-<p><img src="\willywangkaa\images\SJF_correct.png" alt="SJF">  </p>
+<p><img src="\willywangkaa\images\SJF_correct.png" alt="SJF" />  </p>
 <p><span class="math display">\[
   \frac{ (0-0)+(8-1)+(12-3)+(17-2) }{4} = 7.75
 \]</span></p>
@@ -1090,7 +1090,7 @@
 <li>FIFO</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\SJF.png" alt="FIFO"><figcaption aria-hidden="true">FIFO</figcaption>
+<img src="\willywangkaa\images\SJF.png" alt="FIFO" /><figcaption aria-hidden="true">FIFO</figcaption>
 </figure>
 <p><span class="math display">\[
 \frac{ (0-0) + (8-1) + (12-2) + (21 -3) }{4} = 8.75
@@ -1107,7 +1107,7 @@
 <h3 id="priority-method">Priority Method</h3>
 <p><strong>具有最高優先權的 Process</strong> 取得 CPU ，若多個 Process 權值相同，則以 <strong>FIFO</strong> 為準。</p>
 <figure>
-<img src="\willywangkaa\images\1527479225080.png" alt="1527479225080"><figcaption aria-hidden="true">1527479225080</figcaption>
+<img src="\willywangkaa\images\1527479225080.png" alt="1527479225080" /><figcaption aria-hidden="true">1527479225080</figcaption>
 </figure>
 <ul>
 <li>到達時間皆為 0。</li>
@@ -1115,7 +1115,7 @@
 <li>Avg. waiting time</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1527479387651.png" alt="1527479387651"><figcaption aria-hidden="true">1527479387651</figcaption>
+<img src="\willywangkaa\images\1527479387651.png" alt="1527479387651" /><figcaption aria-hidden="true">1527479387651</figcaption>
 </figure>
 <p><span class="math display">\[
 \frac{ (6-0)+(1-0)+(16-0)+(18-0)+(1-0) }{5}=8.2
@@ -1171,7 +1171,7 @@
 <li>Avg. waiting time</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1527486332570.png" alt="1527486332570"><figcaption aria-hidden="true">1527486332570</figcaption>
+<img src="\willywangkaa\images\1527486332570.png" alt="1527486332570" /><figcaption aria-hidden="true">1527486332570</figcaption>
 </figure>
 <p><span class="math display">\[
 \frac{ ((0-0)+(23-2)) + (2-2) + ((5-5)+(20-10)) + ((10-10)+(19-13)) + (13-13) }{5} = \frac{37}{5}
@@ -1222,7 +1222,7 @@
 </ul></li>
 </ul>
 <blockquote>
-<p><strong>Timer</strong>（參考自：<a href="https://www.cs.umd.edu/~hollings/cs412/s96/project/proj3/proj3.html" target="_blank" rel="noopener">CMSC 412 Project 3: Multiprogramming, Part II</a>）</p>
+<p><strong>Timer</strong>（參考自：<a target="_blank" rel="noopener" href="https://www.cs.umd.edu/~hollings/cs412/s96/project/proj3/proj3.html">CMSC 412 Project 3: Multiprogramming, Part II</a>）</p>
 <ul>
 <li><strong>D</strong>isk <strong>O</strong>perating <strong>S</strong>ystem（DOS；磁碟作業系統）
 <ul>
@@ -1310,7 +1310,7 @@
 <li>Avg. waiting time</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1527829801602.png" alt="1527829801602"><figcaption aria-hidden="true">1527829801602</figcaption>
+<img src="\willywangkaa\images\1527829801602.png" alt="1527829801602" /><figcaption aria-hidden="true">1527829801602</figcaption>
 </figure>
 <p><span class="math display">\[
 \frac{((0-0)+(16-4))+((4-0))+((8-0)+(20-12)+(25-24))+((12-0)+(24-16))}{4} = \frac{53}{4}
@@ -1351,7 +1351,7 @@
 <li>Avg. waiting time</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1527831109693.png" alt="1527831109693"><figcaption aria-hidden="true">1527831109693</figcaption>
+<img src="\willywangkaa\images\1527831109693.png" alt="1527831109693" /><figcaption aria-hidden="true">1527831109693</figcaption>
 </figure>
 <p><span class="math display">\[
 \frac{((0-0)+(8-4)+(16-12))+((4-2)+(15-8))+((12-7))+((18-13))}{4} = \frac{27}{4}
@@ -1391,7 +1391,7 @@
 <li>Quantum = 5 <strong>(Ref p.4-111)</strong></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1528097302440.png" alt="1528097302440"><figcaption aria-hidden="true">1528097302440</figcaption>
+<img src="\willywangkaa\images\1528097302440.png" alt="1528097302440" /><figcaption aria-hidden="true">1528097302440</figcaption>
 </figure>
 <ul>
 <li>Turnaround time。
@@ -1437,7 +1437,7 @@
 <li>Quantum = 4。</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1527833536050.png" alt="1527833536050"><figcaption aria-hidden="true">1527833536050</figcaption>
+<img src="\willywangkaa\images\1527833536050.png" alt="1527833536050" /><figcaption aria-hidden="true">1527833536050</figcaption>
 </figure>
 <ul>
 <li>不知道為 P2 還是 P1 先進入 Waiting queue。</li>
@@ -1493,7 +1493,7 @@
 <li>Process 一旦被置入於某個 Queue 中，<strong>就不可(不允許)在不同 Ready queue 之間移動。</strong></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1527835326994.png" alt="1527835326994"><figcaption aria-hidden="true">1527835326994</figcaption>
+<img src="\willywangkaa\images\1527835326994.png" alt="1527835326994" /><figcaption aria-hidden="true">1527835326994</figcaption>
 </figure>
 <ul>
 <li>$Ex. $ I/O - Bound 與 CPU - Bound Job 各自要置入哪種等級的 Queue 比較好？
@@ -1573,14 +1573,14 @@
 <li><p>0 &lt; S &lt; T &lt;&lt; Q</p></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1527838126019.png" alt="1527838126019"><figcaption aria-hidden="true">1527838126019</figcaption>
+<img src="\willywangkaa\images\1527838126019.png" alt="1527838126019" /><figcaption aria-hidden="true">1527838126019</figcaption>
 </figure>
 <p>所以 <span class="math inline">\(\frac{T}{T+S}\)</span></p>
 <ul>
 <li>0 &lt; S &lt; Q &lt;&lt; T</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1527838656554.png" alt="1527838656554"><figcaption aria-hidden="true">1527838656554</figcaption>
+<img src="\willywangkaa\images\1527838656554.png" alt="1527838656554" /><figcaption aria-hidden="true">1527838656554</figcaption>
 </figure>
 <p>所以 <span class="math inline">\(\frac{Q}{Q+S}\)</span></p>
 <ul>
@@ -1633,7 +1633,7 @@
 <h2 id="real-time-system-排班設計考量">Real-time system 排班設計考量</h2>
 <h3 id="hard-read-time-system">Hard read-time system</h3>
 <figure>
-<img src="\willywangkaa\images\1528098291707.png" alt="1528098291707"><figcaption aria-hidden="true">1528098291707</figcaption>
+<img src="\willywangkaa\images\1528098291707.png" alt="1528098291707" /><figcaption aria-hidden="true">1528098291707</figcaption>
 </figure>
 <ul>
 <li><strong>排班設計考量</strong>
@@ -1685,7 +1685,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\Ratemonotonic.png" alt="Ratemonotonic"><figcaption aria-hidden="true">Ratemonotonic</figcaption>
+<img src="\willywangkaa\images\Ratemonotonic.png" alt="Ratemonotonic" /><figcaption aria-hidden="true">Ratemonotonic</figcaption>
 </figure>
 <p>P1 未能滿足 deadline，P2 滿足 deadline。</p>
 <ul>
@@ -1696,7 +1696,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1528099381692.png" alt="1528099381692"><figcaption aria-hidden="true">1528099381692</figcaption>
+<img src="\willywangkaa\images\1528099381692.png" alt="1528099381692" /><figcaption aria-hidden="true">1528099381692</figcaption>
 </figure>
 <p>P1 滿足 deadline，P2 滿足 deadline。</p>
 <ul>
@@ -1731,7 +1731,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1528099949133.png" alt="1528099949133"><figcaption aria-hidden="true">1528099949133</figcaption>
+<img src="\willywangkaa\images\1528099949133.png" alt="1528099949133" /><figcaption aria-hidden="true">1528099949133</figcaption>
 </figure>
 <ul>
 <li>分析：
@@ -1774,7 +1774,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1528701363468.png" alt="1528701363468"><figcaption aria-hidden="true">1528701363468</figcaption>
+<img src="\willywangkaa\images\1528701363468.png" alt="1528701363468" /><figcaption aria-hidden="true">1528701363468</figcaption>
 </figure>
 <ul>
 <li>以 EDF 是否滿足 Deadline？
@@ -1791,7 +1791,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1528704009904.png" alt="1528704009904"><figcaption aria-hidden="true">1528704009904</figcaption>
+<img src="\willywangkaa\images\1528704009904.png" alt="1528704009904" /><figcaption aria-hidden="true">1528704009904</figcaption>
 </figure>
 <ul>
 <li><span class="math inline">\(Ex 2.\)</span></li>
@@ -1824,7 +1824,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1528704266407.png" alt="1528704266407"><figcaption aria-hidden="true">1528704266407</figcaption>
+<img src="\willywangkaa\images\1528704266407.png" alt="1528704266407" /><figcaption aria-hidden="true">1528704266407</figcaption>
 </figure>
 <ul>
 <li>以 EDF 是否滿足 Deadline？
@@ -1836,7 +1836,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1528705571205.png" alt="1528705571205"><figcaption aria-hidden="true">1528705571205</figcaption>
+<img src="\willywangkaa\images\1528705571205.png" alt="1528705571205" /><figcaption aria-hidden="true">1528705571205</figcaption>
 </figure>
 <ul>
 <li><strong>分析</strong>
@@ -1890,7 +1890,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1528637800281.png" alt="1528637800281"><figcaption aria-hidden="true">1528637800281</figcaption>
+<img src="\willywangkaa\images\1528637800281.png" alt="1528637800281" /><figcaption aria-hidden="true">1528637800281</figcaption>
 </figure>
 <h1 id="thread-management">Thread management</h1>
 <ul>
@@ -1912,13 +1912,13 @@
 <li>Tradition process (Single-thread model)</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1528638942439.png" alt="1528638942439"><figcaption aria-hidden="true">1528638942439</figcaption>
+<img src="\willywangkaa\images\1528638942439.png" alt="1528638942439" /><figcaption aria-hidden="true">1528638942439</figcaption>
 </figure>
 <ul>
 <li>Multithreading mode</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1528639073333.png" alt="1528639073333"><figcaption aria-hidden="true">1528639073333</figcaption>
+<img src="\willywangkaa\images\1528639073333.png" alt="1528639073333" /><figcaption aria-hidden="true">1528639073333</figcaption>
 </figure>
 <ul>
 <li>Pros
@@ -1932,8 +1932,8 @@
 <h2 id="process-vs.-thread">Process VS. Thread</h2>
 <table>
 <colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -2038,10 +2038,10 @@
 </ul>
 <h4 id="many-to-one-user-thread">Many to one ( User thread )</h4>
 <figure>
-<img src="\willywangkaa\images\1528718261665.png" alt="1528718261665"><figcaption aria-hidden="true">1528718261665</figcaption>
+<img src="\willywangkaa\images\1528718261665.png" alt="1528718261665" /><figcaption aria-hidden="true">1528718261665</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1528718722383.png" alt="1528718722383"><figcaption aria-hidden="true">1528718722383</figcaption>
+<img src="\willywangkaa\images\1528718722383.png" alt="1528718722383" /><figcaption aria-hidden="true">1528718722383</figcaption>
 </figure>
 <p>This model maps <strong>many</strong> user threads to one kernel thread. Thread management is done in <strong>User space.</strong></p>
 <ul>
@@ -2063,10 +2063,10 @@
 </ul>
 <h4 id="one-to-one-kernel-thread">One to one ( Kernel thread )</h4>
 <figure>
-<img src="\willywangkaa\images\1528718998029.png" alt="1528718998029"><figcaption aria-hidden="true">1528718998029</figcaption>
+<img src="\willywangkaa\images\1528718998029.png" alt="1528718998029" /><figcaption aria-hidden="true">1528718998029</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1528719859725.png" alt="1528719859725"><figcaption aria-hidden="true">1528719859725</figcaption>
+<img src="\willywangkaa\images\1528719859725.png" alt="1528719859725" /><figcaption aria-hidden="true">1528719859725</figcaption>
 </figure>
 <p>This model maps <strong>each</strong> user threads to <strong>a</strong> kernel thread.</p>
 <ul>
@@ -2092,13 +2092,13 @@
 </ul>
 <h4 id="many-to-many-kernel-thread">Many to many ( Kernel thread )</h4>
 <figure>
-<img src="\willywangkaa\images\1528719979394.png" alt="1528719979394"><figcaption aria-hidden="true">1528719979394</figcaption>
+<img src="\willywangkaa\images\1528719979394.png" alt="1528719979394" /><figcaption aria-hidden="true">1528719979394</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1528720444327.png" alt="1528720444327"><figcaption aria-hidden="true">1528720444327</figcaption>
+<img src="\willywangkaa\images\1528720444327.png" alt="1528720444327" /><figcaption aria-hidden="true">1528720444327</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1530181565681.png" alt="1530181565681"><figcaption aria-hidden="true">1530181565681</figcaption>
+<img src="\willywangkaa\images\1530181565681.png" alt="1530181565681" /><figcaption aria-hidden="true">1530181565681</figcaption>
 </figure>
 <p>This model maps <strong>many</strong> user threads to <strong>a small or equal number of</strong> kernel thread.</p>
 <ul>
@@ -2119,15 +2119,15 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530181715559.png" alt="1530181715559"><figcaption aria-hidden="true">1530181715559</figcaption>
+<img src="\willywangkaa\images\1530181715559.png" alt="1530181715559" /><figcaption aria-hidden="true">1530181715559</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1530182120849.png" alt="1530182120849"><figcaption aria-hidden="true">1530182120849</figcaption>
+<img src="\willywangkaa\images\1530182120849.png" alt="1530182120849" /><figcaption aria-hidden="true">1530182120849</figcaption>
 </figure>
 <h2 id="multithreading-issues">Multithreading issues</h2>
 <h3 id="fork-issue">fork() issue</h3>
 <figure>
-<img src="\willywangkaa\images\1530178012484.png" alt="1530178012484"><figcaption aria-hidden="true">1530178012484</figcaption>
+<img src="\willywangkaa\images\1530178012484.png" alt="1530178012484" /><figcaption aria-hidden="true">1530178012484</figcaption>
 </figure>
 <ul>
 <li><strong>Child1：適用在「子程序」工作與「父程序」相同時。</strong></li>
@@ -2135,11 +2135,11 @@
 </ul>
 <h3 id="signal-delivery-issue">Signal delivery issue</h3>
 <figure>
-<img src="\willywangkaa\images\1530178614262.png" alt="1530178614262"><figcaption aria-hidden="true">1530178614262</figcaption>
+<img src="\willywangkaa\images\1530178614262.png" alt="1530178614262" /><figcaption aria-hidden="true">1530178614262</figcaption>
 </figure>
 <h4 id="signal">Signal</h4>
 <figure>
-<img src="\willywangkaa\images\1530178832898.png" alt="1530178832898"><figcaption aria-hidden="true">1530178832898</figcaption>
+<img src="\willywangkaa\images\1530178832898.png" alt="1530178832898" /><figcaption aria-hidden="true">1530178832898</figcaption>
 </figure>
 <p><strong>It's used in UNIX to notify the process that a particular event has occurred.</strong></p>
 <ul>
@@ -2160,25 +2160,25 @@
 <li><strong>Case 1 ( Ex. Synchronous signal )</strong></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\Signalisssue.png" alt="Signalisssue"><figcaption aria-hidden="true">Signalisssue</figcaption>
+<img src="\willywangkaa\images\Signalisssue.png" alt="Signalisssue" /><figcaption aria-hidden="true">Signalisssue</figcaption>
 </figure>
 <ul>
 <li><strong>Case 2 ( Ex.「Ctrl-break」)</strong></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530179630741.png" alt="1530179630741"><figcaption aria-hidden="true">1530179630741</figcaption>
+<img src="\willywangkaa\images\1530179630741.png" alt="1530179630741" /><figcaption aria-hidden="true">1530179630741</figcaption>
 </figure>
 <ul>
 <li><strong>Case 3</strong></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530179857612.png" alt="1530179857612"><figcaption aria-hidden="true">1530179857612</figcaption>
+<img src="\willywangkaa\images\1530179857612.png" alt="1530179857612" /><figcaption aria-hidden="true">1530179857612</figcaption>
 </figure>
 <ul>
 <li><strong>Case 4 ( Set a default signal handler. Ex. Solaris )</strong></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530180057880.png" alt="1530180057880"><figcaption aria-hidden="true">1530180057880</figcaption>
+<img src="\willywangkaa\images\1530180057880.png" alt="1530180057880" /><figcaption aria-hidden="true">1530180057880</figcaption>
 </figure>
 <h3 id="thread-pool">Thread pool</h3>
 <p>在 client-server model 中，當 server 收到 client 的 request 後，server <strong>才建立 thread 以服務此一請求，然而 thread creation 仍需耗用一些時間，所以對 client 的回應不能非常即時，以「Thread pool」解決。</strong>Process ( server ) 事先建立一些 threads 置於「thread pool」中，當收到 client 的 request 後，就從「thread pool 」中指派一條可使用的 thread 以服務此請求，<strong>不須重新建立 thread ，回應較為即時，</strong>當此 thread 完成工作之後，再回到 thread pool 中待命，如果 thread pool 中沒有可用的 thread 則 client 的 request 需要等待。</p>
@@ -2192,8 +2192,8 @@
 <ul>
 <li>pthread library</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> sum; <span class="comment">/* this data is shared by the thread(s) */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">runner</span><span class="params">(<span class="keyword">void</span> *param)</span></span>; <span class="comment">/* threads call this function */</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">pthread_t</span> tid; <span class="comment">/* the thread identifier */</span></span><br><span class="line">    <span class="keyword">pthread_attr_t</span> attr; <span class="comment">/* set of thread attributes */</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (argc != <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>,<span class="string">"usage: a.out &lt;integer value&gt;\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (atoi(argv[<span class="number">1</span>]) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>,<span class="string">"%d must be &gt;= 0\n"</span>,atoi(argv[<span class="number">1</span>]));</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"><span class="comment">/* get the default attributes */</span></span><br><span class="line">    pthread_attr_init(&amp;attr);</span><br><span class="line"><span class="comment">/* create the thread. 根據 attr 屬性值建立一條 thread，ID 記錄在 tid 中，執行 runner() 副程式*/</span></span><br><span class="line">    pthread_create(&amp;tid, &amp;attr, runner, argv[<span class="number">1</span>]);</span><br><span class="line"><span class="comment">/* wait for the thread to exit */</span></span><br><span class="line">    pthread_join(tid, <span class="literal">NULL</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"sum = %d\n"</span>,sum); <span class="comment">// 輸出應為 15</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* The thread will begin control in this function */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">runner</span><span class="params">(<span class="keyword">void</span> *param)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//若為 static 變數就為全域共享變數。</span></span><br><span class="line">    <span class="keyword">int</span> i, upper = atoi(param);</span><br><span class="line">    sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= upper; i++)</span><br><span class="line">    	sum += i;</span><br><span class="line">    <span class="comment">/*Thread 終止*/</span></span><br><span class="line">    pthread_exit(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;types.h&gt;</span></span></span><br><span class="line"><span class="keyword">int</span> value = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">runner</span><span class="params">(<span class="keyword">void</span> *param)</span></span>; <span class="comment">/* the thread */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">pid_t</span> pid;</span><br><span class="line">    <span class="keyword">pthread_t</span> tid;</span><br><span class="line">    <span class="keyword">pthread_attr_t</span> attr;</span><br><span class="line">    pid = fork();</span><br><span class="line">    <span class="keyword">if</span> (pid == <span class="number">0</span>) &#123; <span class="comment">/* child process */</span></span><br><span class="line">        pthread_attr_init(&amp;attr);</span><br><span class="line">        pthread_create(&amp;tid,&amp;attr,runner,<span class="literal">NULL</span>);</span><br><span class="line">        pthread_join(tid,<span class="literal">NULL</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"CHILD: value = %d"</span>,value); <span class="comment">/* LINE C -&gt; 5 */</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (pid &gt; <span class="number">0</span>) &#123; <span class="comment">/* parent process */</span></span><br><span class="line">    	wait(<span class="literal">NULL</span>);</span><br><span class="line">    	<span class="built_in">printf</span>(<span class="string">"PARENT: value = %d"</span>,value); <span class="comment">/* LINE P -&gt; 0 */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">runner</span><span class="params">(<span class="keyword">void</span> *param)</span> </span>&#123;</span><br><span class="line">    value = <span class="number">5</span>;</span><br><span class="line">    <span class="function">pthread <span class="title">exit</span><span class="params">(<span class="number">0</span>)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> sum; <span class="comment">/* this data is shared by the thread(s) */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">runner</span><span class="params">(<span class="keyword">void</span> *param)</span></span>; <span class="comment">/* threads call this function */</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">pthread_t</span> tid; <span class="comment">/* the thread identifier */</span></span><br><span class="line">    <span class="keyword">pthread_attr_t</span> attr; <span class="comment">/* set of thread attributes */</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (argc != <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(stderr,<span class="string">&quot;usage: a.out &lt;integer value&gt;\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">atoi</span>(argv[<span class="number">1</span>]) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(stderr,<span class="string">&quot;%d must be &gt;= 0\n&quot;</span>,<span class="built_in">atoi</span>(argv[<span class="number">1</span>]));</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"><span class="comment">/* get the default attributes */</span></span><br><span class="line">    <span class="built_in">pthread_attr_init</span>(&amp;attr);</span><br><span class="line"><span class="comment">/* create the thread. 根據 attr 屬性值建立一條 thread，ID 記錄在 tid 中，執行 runner() 副程式*/</span></span><br><span class="line">    <span class="built_in">pthread_create</span>(&amp;tid, &amp;attr, runner, argv[<span class="number">1</span>]);</span><br><span class="line"><span class="comment">/* wait for the thread to exit */</span></span><br><span class="line">    <span class="built_in">pthread_join</span>(tid, <span class="literal">NULL</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;sum = %d\n&quot;</span>,sum); <span class="comment">// 輸出應為 15</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* The thread will begin control in this function */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">runner</span><span class="params">(<span class="keyword">void</span> *param)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//若為 static 變數就為全域共享變數。</span></span><br><span class="line">    <span class="keyword">int</span> i, upper = <span class="built_in">atoi</span>(param);</span><br><span class="line">    sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= upper; i++)</span><br><span class="line">    	sum += i;</span><br><span class="line">    <span class="comment">/*Thread 終止*/</span></span><br><span class="line">    <span class="built_in">pthread_exit</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;types.h&gt;</span></span></span><br><span class="line"><span class="keyword">int</span> value = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">runner</span><span class="params">(<span class="keyword">void</span> *param)</span></span>; <span class="comment">/* the thread */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">pid_t</span> pid;</span><br><span class="line">    <span class="keyword">pthread_t</span> tid;</span><br><span class="line">    <span class="keyword">pthread_attr_t</span> attr;</span><br><span class="line">    pid = fork();</span><br><span class="line">    <span class="keyword">if</span> (pid == <span class="number">0</span>) &#123; <span class="comment">/* child process */</span></span><br><span class="line">        <span class="built_in">pthread_attr_init</span>(&amp;attr);</span><br><span class="line">        <span class="built_in">pthread_create</span>(&amp;tid,&amp;attr,runner,<span class="literal">NULL</span>);</span><br><span class="line">        <span class="built_in">pthread_join</span>(tid,<span class="literal">NULL</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;CHILD: value = %d&quot;</span>,value); <span class="comment">/* LINE C -&gt; 5 */</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (pid &gt; <span class="number">0</span>) &#123; <span class="comment">/* parent process */</span></span><br><span class="line">    	<span class="built_in">wait</span>(<span class="literal">NULL</span>);</span><br><span class="line">    	<span class="built_in">printf</span>(<span class="string">&quot;PARENT: value = %d&quot;</span>,value); <span class="comment">/* LINE P -&gt; 0 */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">runner</span><span class="params">(<span class="keyword">void</span> *param)</span> </span>&#123;</span><br><span class="line">    value = <span class="number">5</span>;</span><br><span class="line">    <span class="function">pthread <span class="title">exit</span><span class="params">(<span class="number">0</span>)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="補充例題">補充例題</h1>
 <p><strong>Example</strong></p>
 <ul>
@@ -2253,7 +2253,7 @@
 <ul>
 <li>觸發「Page fault interrupt」，使作業系統必須對應處理
 <ul>
-<li>處理分頁錯誤通常是<strong>把被請求的資料載入實體記憶體中</strong>，並將該分頁表條目對映正確的實體位址，並重新啟動程式（詳見<a href="https://zh.wikipedia.org/wiki/%E5%88%86%E9%A0%81%E9%8C%AF%E8%AA%A4" target="_blank" rel="noopener">分頁錯誤</a>）</li>
+<li>處理分頁錯誤通常是<strong>把被請求的資料載入實體記憶體中</strong>，並將該分頁表條目對映正確的實體位址，並重新啟動程式（詳見<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%88%86%E9%A0%81%E9%8C%AF%E8%AA%A4">分頁錯誤</a>）</li>
 </ul></li>
 </ul></li>
 </ul></li>
@@ -2273,7 +2273,7 @@
 <ul>
 <li>觸發「Page fault interrupt」，使作業系統必須對應處理
 <ul>
-<li>處理分頁錯誤通常是<strong>把被請求的資料載入實體記憶體中</strong>，並將該分頁表條目對映正確的實體位址，並重新啟動程式（詳見<a href="https://zh.wikipedia.org/wiki/%E5%88%86%E9%A0%81%E9%8C%AF%E8%AA%A4" target="_blank" rel="noopener">分頁錯誤</a>）</li>
+<li>處理分頁錯誤通常是<strong>把被請求的資料載入實體記憶體中</strong>，並將該分頁表條目對映正確的實體位址，並重新啟動程式（詳見<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%88%86%E9%A0%81%E9%8C%AF%E8%AA%A4">分頁錯誤</a>）</li>
 </ul></li>
 </ul></li>
 </ul></li>
@@ -2281,7 +2281,7 @@
 </ul>
 </blockquote>
 <h1 id="參考">參考</h1>
-<h3 id="operating-systems-internals-and-design-principles"><a href="http://dinus.ac.id/repository/docs/ajar/Operating_System.pdf" target="_blank" rel="noopener">Operating Systems: Internals and Design Principles</a></h3>
+<h3 id="operating-systems-internals-and-design-principles"><a target="_blank" rel="noopener" href="http://dinus.ac.id/repository/docs/ajar/Operating_System.pdf">Operating Systems: Internals and Design Principles</a></h3>
 
       
     </div>

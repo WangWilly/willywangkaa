@@ -615,7 +615,7 @@
 <ul>
 <li>演算法</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 將資料 r 插入到已排好的區塊 A[0] ~ A[i]</span></span><br><span class="line">Insert(A[], r, i) &#123;</span><br><span class="line">    j = i;</span><br><span class="line">    <span class="keyword">while</span>(r &lt; A[j]) &#123;</span><br><span class="line">        A[j+<span class="number">1</span>] = A[j];</span><br><span class="line">        j = j<span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    A[j+<span class="number">1</span>] = r;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Insort(A[], n) &#123;</span><br><span class="line">    A[<span class="number">0</span>] = -oo;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        Insert(A, A[i], i<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 將資料 r 插入到已排好的區塊 A[0] ~ A[i]</span></span><br><span class="line"><span class="built_in">Insert</span>(A[], r, i) &#123;</span><br><span class="line">    j = i;</span><br><span class="line">    <span class="keyword">while</span>(r &lt; A[j]) &#123;</span><br><span class="line">        A[j+<span class="number">1</span>] = A[j];</span><br><span class="line">        j = j<span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    A[j+<span class="number">1</span>] = r;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Insort</span>(A[], n) &#123;</span><br><span class="line">    A[<span class="number">0</span>] = -oo;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="built_in">Insert</span>(A, A[i], i<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Time complexity</p>
 <ul>
 <li>Best case：O(n)
@@ -628,7 +628,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1541038370084.png" alt="1541038370084"><figcaption aria-hidden="true">1541038370084</figcaption>
+<img src="\willywangkaa\images\1541038370084.png" alt="1541038370084" /><figcaption aria-hidden="true">1541038370084</figcaption>
 </figure>
 <ul>
 <li>Avg. case：O( <span class="math inline">\(n^2\)</span> )
@@ -642,7 +642,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1541092068950.png" alt="1541092068950"><figcaption aria-hidden="true">1541092068950</figcaption>
+<img src="\willywangkaa\images\1541092068950.png" alt="1541092068950" /><figcaption aria-hidden="true">1541092068950</figcaption>
 </figure>
 <ul>
 <li>Stable
@@ -654,9 +654,9 @@
 <ul>
 <li>演算法</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SelectionSort</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> n)</span> </span>&#123; </span><br><span class="line">    <span class="comment">// Iterate through array elements </span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) &#123;   </span><br><span class="line">        <span class="keyword">int</span> min = i; </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; n; j++) </span><br><span class="line">            <span class="keyword">if</span> (a[min] &gt; a[j]) </span><br><span class="line">                min = j;</span><br><span class="line">        <span class="keyword">if</span>(min != i) swap(a[i], a[min]);</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SelectionSort</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> n)</span> </span>&#123; </span><br><span class="line">    <span class="comment">// Iterate through array elements </span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) &#123;   </span><br><span class="line">        <span class="keyword">int</span> min = i; </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; n; j++) </span><br><span class="line">            <span class="keyword">if</span> (a[min] &gt; a[j]) </span><br><span class="line">                min = j;</span><br><span class="line">        <span class="keyword">if</span>(min != i) <span class="built_in">swap</span>(a[i], a[min]);</span><br><span class="line">    &#125; </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
 <figure>
-<img src="\willywangkaa\images\1541092807581.png" alt="1541092807581"><figcaption aria-hidden="true">1541092807581</figcaption>
+<img src="\willywangkaa\images\1541092807581.png" alt="1541092807581" /><figcaption aria-hidden="true">1541092807581</figcaption>
 </figure>
 <ul>
 <li>Time complexity
@@ -671,7 +671,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1541093304800.png" alt="1541093304800"><figcaption aria-hidden="true">1541093304800</figcaption>
+<img src="\willywangkaa\images\1541093304800.png" alt="1541093304800" /><figcaption aria-hidden="true">1541093304800</figcaption>
 </figure>
 <ul>
 <li><p>Unstable</p></li>
@@ -693,9 +693,9 @@
 <ul>
 <li>演算法</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubblesort</span><span class="params">(A[], n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = n; i &gt;= <span class="number">1</span>; i--) &#123;</span><br><span class="line">        <span class="keyword">bool</span> f = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; i; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(A[j]&gt;A[j+<span class="number">1</span>]) &#123;</span><br><span class="line">                swap(A[j], A[j+<span class="number">1</span>]);</span><br><span class="line">                f = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!f) &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubblesort</span><span class="params">(A[], n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = n; i &gt;= <span class="number">1</span>; i--) &#123;</span><br><span class="line">        <span class="keyword">bool</span> f = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; i; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(A[j]&gt;A[j+<span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="built_in">swap</span>(A[j], A[j+<span class="number">1</span>]);</span><br><span class="line">                f = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!f) &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure>
-<img src="\willywangkaa\images\1541094481788.png" alt="1541094481788"><figcaption aria-hidden="true">1541094481788</figcaption>
+<img src="\willywangkaa\images\1541094481788.png" alt="1541094481788" /><figcaption aria-hidden="true">1541094481788</figcaption>
 </figure>
 <h3 id="版本二">版本二</h3>
 <p>由左而右，<strong>兩兩互相比較如果後者小於前者交換之</strong></p>
@@ -705,9 +705,9 @@
 <ul>
 <li>演算法</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubblesort</span><span class="params">(A[], n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">bool</span> f = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = n; j &gt; i; j--) &#123;</span><br><span class="line">            <span class="keyword">if</span>(A[j] &lt; A[j<span class="number">-1</span>]) &#123;</span><br><span class="line">                swap(A[j], A[j<span class="number">-1</span>]);</span><br><span class="line">                f = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!f)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubblesort</span><span class="params">(A[], n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">bool</span> f = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = n; j &gt; i; j--) &#123;</span><br><span class="line">            <span class="keyword">if</span>(A[j] &lt; A[j<span class="number">-1</span>]) &#123;</span><br><span class="line">                <span class="built_in">swap</span>(A[j], A[j<span class="number">-1</span>]);</span><br><span class="line">                f = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!f)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure>
-<img src="\willywangkaa\images\1541094963273.png" alt="1541094963273"><figcaption aria-hidden="true">1541094963273</figcaption>
+<img src="\willywangkaa\images\1541094963273.png" alt="1541094963273" /><figcaption aria-hidden="true">1541094963273</figcaption>
 </figure>
 <ul>
 <li>Time complexity
@@ -730,7 +730,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1541214129532.png" alt="1541214129532"><figcaption aria-hidden="true">1541214129532</figcaption>
+<img src="\willywangkaa\images\1541214129532.png" alt="1541214129532" /><figcaption aria-hidden="true">1541214129532</figcaption>
 </figure>
 <ul>
 <li>Space complexity
@@ -777,12 +777,12 @@
 <p>Example ( Span型：5、3、2、1 )</p>
 <p>排序：9 8 7 2 3 5 1 4 6</p>
 <figure>
-<img src="\willywangkaa\images\1542454674621.png" alt="1542454674621"><figcaption aria-hidden="true">1542454674621</figcaption>
+<img src="\willywangkaa\images\1542454674621.png" alt="1542454674621" /><figcaption aria-hidden="true">1542454674621</figcaption>
 </figure>
 <ul>
 <li>Algorithm</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// span 型態 =&gt; n/(2^k)</span></span><br><span class="line">Shellsort(A[], n) &#123;</span><br><span class="line">    span = n/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">while</span>(span &gt;= <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            f = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= (n-span); i++) &#123;</span><br><span class="line">                <span class="keyword">if</span>(A[i] &gt; A[i+span]) &#123;</span><br><span class="line">                    swap(A[i], A[i+span]);</span><br><span class="line">                    f = <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">while</span>(f != <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// span 型態 =&gt; n/(2^k)</span></span><br><span class="line"><span class="built_in">Shellsort</span>(A[], n) &#123;</span><br><span class="line">    span = n/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">while</span>(span &gt;= <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            f = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= (n-span); i++) &#123;</span><br><span class="line">                <span class="keyword">if</span>(A[i] &gt; A[i+span]) &#123;</span><br><span class="line">                    <span class="built_in">swap</span>(A[i], A[i+span]);</span><br><span class="line">                    f = <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">while</span>(f != <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>Time complexity
 <ul>
@@ -799,7 +799,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1542455003562.png" alt="1542455003562"><figcaption aria-hidden="true">1542455003562</figcaption>
+<img src="\willywangkaa\images\1542455003562.png" alt="1542455003562" /><figcaption aria-hidden="true">1542455003562</figcaption>
 </figure>
 <ul>
 <li>Unstable</li>
@@ -810,7 +810,7 @@
 <p>Example</p>
 <p>三筆資料 R1, R2, R3 不知其大小關係，在排序之後之所有可能</p>
 <figure>
-<img src="\willywangkaa\images\1541935896940.png" alt="1541935896940"><figcaption aria-hidden="true">1541935896940</figcaption>
+<img src="\willywangkaa\images\1541935896940.png" alt="1541935896940" /><figcaption aria-hidden="true">1541935896940</figcaption>
 </figure>
 <blockquote>
 <p>根據上圖之「Decision tree」：</p>
@@ -841,28 +841,28 @@
 </ul>
 <p>令陣列最左資料 A[1] 作為「Pivot key」，經過「分割」( Partition ) 動作後，將「Pivot」置於大小關係"最正確"的位置上</p>
 <figure>
-<img src="\willywangkaa\images\1541215583779.png" alt="1541215583779"><figcaption aria-hidden="true">1541215583779</figcaption>
+<img src="\willywangkaa\images\1541215583779.png" alt="1541215583779" /><figcaption aria-hidden="true">1541215583779</figcaption>
 </figure>
 <blockquote>
 <p>可用多線程電腦加速執行</p>
 </blockquote>
 <h3 id="quicksort1-hoare-partition">Quicksort1 ( Hoare partition )</h3>
 <figure>
-<img src="\willywangkaa\images\1541216603304.png" alt="1541216603304"><figcaption aria-hidden="true">1541216603304</figcaption>
+<img src="\willywangkaa\images\1541216603304.png" alt="1541216603304" /><figcaption aria-hidden="true">1541216603304</figcaption>
 </figure>
 <p>Example</p>
 <p>排序：6, 8, 3, 7, 5, 9, 4, 1, 10, 2</p>
 <figure>
-<img src="\willywangkaa\images\1541217794632.png" alt="1541217794632"><figcaption aria-hidden="true">1541217794632</figcaption>
+<img src="\willywangkaa\images\1541217794632.png" alt="1541217794632" /><figcaption aria-hidden="true">1541217794632</figcaption>
 </figure>
 <ul>
 <li>Algorithm</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 排序陣列 A[l] ~ A[u]</span></span><br><span class="line">Qsort(A[], l, u) &#123;</span><br><span class="line">    <span class="comment">// Partition</span></span><br><span class="line">    <span class="keyword">if</span>(l &lt; u) &#123;</span><br><span class="line">        i = l;</span><br><span class="line">        j = u+<span class="number">1</span>;</span><br><span class="line">        p = A[l];</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            <span class="keyword">do</span> &#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125; <span class="keyword">while</span>(A[i] &lt; p);</span><br><span class="line">        </span><br><span class="line">            <span class="keyword">do</span> &#123;</span><br><span class="line">                j--;</span><br><span class="line">            &#125; <span class="keyword">while</span>(A[j] &gt; p);</span><br><span class="line">        </span><br><span class="line">            <span class="keyword">if</span>( i &lt;= j ) &#123;</span><br><span class="line">                swap(A[i], A[j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">while</span>(i &lt;= j);</span><br><span class="line">        swap(A[l], A[j]);</span><br><span class="line">        </span><br><span class="line">        Qsort(A[], l, j<span class="number">-1</span>);</span><br><span class="line">        Qsort(A[], j+<span class="number">1</span>, l);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 排序陣列 A[l] ~ A[u]</span></span><br><span class="line"><span class="built_in">Qsort</span>(A[], l, u) &#123;</span><br><span class="line">    <span class="comment">// Partition</span></span><br><span class="line">    <span class="keyword">if</span>(l &lt; u) &#123;</span><br><span class="line">        i = l;</span><br><span class="line">        j = u+<span class="number">1</span>;</span><br><span class="line">        p = A[l];</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            <span class="keyword">do</span> &#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125; <span class="keyword">while</span>(A[i] &lt; p);</span><br><span class="line">        </span><br><span class="line">            <span class="keyword">do</span> &#123;</span><br><span class="line">                j--;</span><br><span class="line">            &#125; <span class="keyword">while</span>(A[j] &gt; p);</span><br><span class="line">        </span><br><span class="line">            <span class="keyword">if</span>( i &lt;= j ) &#123;</span><br><span class="line">                <span class="built_in">swap</span>(A[i], A[j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">while</span>(i &lt;= j);</span><br><span class="line">        <span class="built_in">swap</span>(A[l], A[j]);</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">Qsort</span>(A[], l, j<span class="number">-1</span>);</span><br><span class="line">        <span class="built_in">Qsort</span>(A[], j+<span class="number">1</span>, l);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Example</p>
 <p>排序：<span class="math inline">\(5^＊, 5, 5, 5, 5\)</span></p>
 <figure>
-<img src="\willywangkaa\images\1541218724819.png" alt="1541218724819"><figcaption aria-hidden="true">1541218724819</figcaption>
+<img src="\willywangkaa\images\1541218724819.png" alt="1541218724819" /><figcaption aria-hidden="true">1541218724819</figcaption>
 </figure>
 <ul>
 <li><p><strong>Unstable</strong></p></li>
@@ -901,15 +901,15 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1541765950716.png" alt="1541765950716"><figcaption aria-hidden="true">1541765950716</figcaption>
+<img src="\willywangkaa\images\1541765950716.png" alt="1541765950716" /><figcaption aria-hidden="true">1541765950716</figcaption>
 </figure>
 <p>圖一</p>
 <figure>
-<img src="\willywangkaa\images\1541766239354.png" alt="1541766239354"><figcaption aria-hidden="true">1541766239354</figcaption>
+<img src="\willywangkaa\images\1541766239354.png" alt="1541766239354" /><figcaption aria-hidden="true">1541766239354</figcaption>
 </figure>
 <p>圖二</p>
 <figure>
-<img src="\willywangkaa\images\1541766394245.png" alt="1541766394245"><figcaption aria-hidden="true">1541766394245</figcaption>
+<img src="\willywangkaa\images\1541766394245.png" alt="1541766394245" /><figcaption aria-hidden="true">1541766394245</figcaption>
 </figure>
 <p>圖三</p>
 <blockquote>
@@ -931,7 +931,7 @@
 <li>可以解決「Worst case」問題</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1541766823939.png" alt="1541766823939"><figcaption aria-hidden="true">1541766823939</figcaption>
+<img src="\willywangkaa\images\1541766823939.png" alt="1541766823939" /><figcaption aria-hidden="true">1541766823939</figcaption>
 </figure>
 <p><strong>Median of medians</strong></p>
 <p><strong>＜下方細述＞</strong></p>
@@ -944,36 +944,36 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1541816631365.png" alt="1541816631365"><figcaption aria-hidden="true">1541816631365</figcaption>
+<img src="\willywangkaa\images\1541816631365.png" alt="1541816631365" /><figcaption aria-hidden="true">1541816631365</figcaption>
 </figure>
 <p>圖一</p>
 <figure>
-<img src="\willywangkaa\images\1541816965630.png" alt="1541816965630"><figcaption aria-hidden="true">1541816965630</figcaption>
+<img src="\willywangkaa\images\1541816965630.png" alt="1541816965630" /><figcaption aria-hidden="true">1541816965630</figcaption>
 </figure>
 <p>圖二</p>
 <h3 id="quicksort2-algorithm書中版本">Quicksort2 ( 「Algorithm」書中版本 )</h3>
 <p>Example</p>
 <p>2 8 7 1 3 5 6 4 之第一次「Partition」</p>
 <figure>
-<img src="\willywangkaa\images\1541818660118.png" alt="1541818660118"><figcaption aria-hidden="true">1541818660118</figcaption>
+<img src="\willywangkaa\images\1541818660118.png" alt="1541818660118" /><figcaption aria-hidden="true">1541818660118</figcaption>
 </figure>
 <ul>
 <li>Algorithm</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Quicksort(A[], p, r) &#123;               <span class="comment">// 排序 A[p] ~ A[r]</span></span><br><span class="line">    <span class="keyword">if</span>(p &lt; r) &#123;</span><br><span class="line">        q = Partition(A[], p, r);    <span class="comment">// 見下圖一</span></span><br><span class="line">        Quicksort(A[], p, q<span class="number">-1</span>);</span><br><span class="line">        Quicksort(A[], q+<span class="number">1</span>, r);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Partition(A[], p, r) &#123;</span><br><span class="line">    pivot = A[r];</span><br><span class="line">    i = p<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>(l = p; i &lt;= r<span class="number">-1</span>; j++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(A[j] &lt;= pivot) &#123;</span><br><span class="line">            i++;</span><br><span class="line">            swap(A[i], A[j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    swap(A[i+<span class="number">1</span>], A[r]);</span><br><span class="line">    <span class="keyword">return</span> i+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Quicksort</span>(A[], p, r) &#123;               <span class="comment">// 排序 A[p] ~ A[r]</span></span><br><span class="line">    <span class="keyword">if</span>(p &lt; r) &#123;</span><br><span class="line">        q = <span class="built_in">Partition</span>(A[], p, r);    <span class="comment">// 見下圖一</span></span><br><span class="line">        <span class="built_in">Quicksort</span>(A[], p, q<span class="number">-1</span>);</span><br><span class="line">        <span class="built_in">Quicksort</span>(A[], q+<span class="number">1</span>, r);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Partition</span>(A[], p, r) &#123;</span><br><span class="line">    pivot = A[r];</span><br><span class="line">    i = p<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>(l = p; i &lt;= r<span class="number">-1</span>; j++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(A[j] &lt;= pivot) &#123;</span><br><span class="line">            i++;</span><br><span class="line">            <span class="built_in">swap</span>(A[i], A[j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">swap</span>(A[i+<span class="number">1</span>], A[r]);</span><br><span class="line">    <span class="keyword">return</span> i+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Example</p>
 <p>The output of quicksort pass1</p>
 <ul>
 <li>1 2 3 4 5</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1541927350444.png" alt="1541927350444"><figcaption aria-hidden="true">1541927350444</figcaption>
+<img src="\willywangkaa\images\1541927350444.png" alt="1541927350444" /><figcaption aria-hidden="true">1541927350444</figcaption>
 </figure>
 <ul>
 <li>5 4 3 2 1</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1541927780299.png" alt="1541927780299"><figcaption aria-hidden="true">1541927780299</figcaption>
+<img src="\willywangkaa\images\1541927780299.png" alt="1541927780299" /><figcaption aria-hidden="true">1541927780299</figcaption>
 </figure>
 <ul>
 <li><span class="math inline">\(5 \;5 \;5 \;5 \;5^＊\)</span>
@@ -983,7 +983,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1541928492844.png" alt="1541928492844"><figcaption aria-hidden="true">1541928492844</figcaption>
+<img src="\willywangkaa\images\1541928492844.png" alt="1541928492844" /><figcaption aria-hidden="true">1541928492844</figcaption>
 </figure>
 <blockquote>
 <p><strong>改善上述問題</strong></p>
@@ -1053,7 +1053,7 @@
 <ul>
 <li>Algorithm</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在 A[p]~A[r] 中找到第 i 小的資料</span></span><br><span class="line">Select(A[], p, r, i) &#123;</span><br><span class="line">    q = Partition(A, p, r); <span class="comment">// 將 pivot 大小定位在 q 點</span></span><br><span class="line">    k = q-p+<span class="number">1</span>;              <span class="comment">// 算出 pivot 是第 k 小的資料</span></span><br><span class="line">    <span class="keyword">if</span>(i == k) &#123;            <span class="comment">// pivot 即為 A[p]~A[r] 中第 k 小的資料</span></span><br><span class="line">        <span class="keyword">return</span> A[q];</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(i &lt; k) &#123;</span><br><span class="line">        Select(A, p, q<span class="number">-1</span>, i);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        Select(A, q+<span class="number">1</span>, r, i-q);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在 A[p]~A[r] 中找到第 i 小的資料</span></span><br><span class="line"><span class="built_in">Select</span>(A[], p, r, i) &#123;</span><br><span class="line">    q = <span class="built_in">Partition</span>(A, p, r); <span class="comment">// 將 pivot 大小定位在 q 點</span></span><br><span class="line">    k = q-p+<span class="number">1</span>;              <span class="comment">// 算出 pivot 是第 k 小的資料</span></span><br><span class="line">    <span class="keyword">if</span>(i == k) &#123;            <span class="comment">// pivot 即為 A[p]~A[r] 中第 k 小的資料</span></span><br><span class="line">        <span class="keyword">return</span> A[q];</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(i &lt; k) &#123;</span><br><span class="line">        <span class="built_in">Select</span>(A, p, q<span class="number">-1</span>, i);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">Select</span>(A, q+<span class="number">1</span>, r, i-q);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>Time complexity</strong></p>
 <ul>
 <li>Best case：<strong>Pivot 的定位恰將資料切為兩等分</strong>
@@ -1077,7 +1077,7 @@
 </ul>
 <h4 id="selection-with-median-of-medians">Selection with median of medians</h4>
 <figure>
-<img src="\willywangkaa\images\1542449916157.png" alt="1542449916157"><figcaption aria-hidden="true">1542449916157</figcaption>
+<img src="\willywangkaa\images\1542449916157.png" alt="1542449916157" /><figcaption aria-hidden="true">1542449916157</figcaption>
 </figure>
 <p>步驟</p>
 <ol type="1">
@@ -1127,7 +1127,7 @@
 </ul></li>
 </ul></li>
 </ol>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">k = q-p+<span class="number">1</span>;</span><br><span class="line"><span class="keyword">if</span> (i == k) &#123;</span><br><span class="line">    <span class="keyword">return</span> A&#123;q];</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (i &lt; k) &#123;</span><br><span class="line">    Select(A, p, q<span class="number">-1</span>, i);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    Select(A, q+<span class="number">1</span>, r, i-k);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">k = q-p+<span class="number">1</span>;</span><br><span class="line"><span class="keyword">if</span> (i == k) &#123;</span><br><span class="line">    <span class="keyword">return</span> A&#123;q];</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (i &lt; k) &#123;</span><br><span class="line">    <span class="built_in">Select</span>(A, p, q<span class="number">-1</span>, i);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">Select</span>(A, q+<span class="number">1</span>, r, i-k);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <ul>
 <li>扣除「Pivot」所在的群組以及不滿五筆資料之群組
@@ -1138,7 +1138,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1542450245855.png" alt="1542450245855"><figcaption aria-hidden="true">1542450245855</figcaption>
+<img src="\willywangkaa\images\1542450245855.png" alt="1542450245855" /><figcaption aria-hidden="true">1542450245855</figcaption>
 </figure>
 </blockquote>
 <ul>
@@ -1156,7 +1156,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1542451499380.png" alt="1542451499380"><figcaption aria-hidden="true">1542451499380</figcaption>
+<img src="\willywangkaa\images\1542451499380.png" alt="1542451499380" /><figcaption aria-hidden="true">1542451499380</figcaption>
 </figure>
 <blockquote>
 <ul>
@@ -1171,7 +1171,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1542450561714.png" alt="1542450561714"><figcaption aria-hidden="true">1542450561714</figcaption>
+<img src="\willywangkaa\images\1542450561714.png" alt="1542450561714" /><figcaption aria-hidden="true">1542450561714</figcaption>
 </figure>
 <ul>
 <li>（下圖）如果以<strong>三筆資料為一群組</strong>
@@ -1185,12 +1185,12 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1542450928741.png" alt="1542450928741"><figcaption aria-hidden="true">1542450928741</figcaption>
+<img src="\willywangkaa\images\1542450928741.png" alt="1542450928741" /><figcaption aria-hidden="true">1542450928741</figcaption>
 </figure>
 </blockquote>
 <h2 id="merge-sort">Merge sort</h2>
 <p>適用於「External sort」，所以可以又稱為「External merge sort」；其特性可讀入一些能放在內存內的數據量，在內存中排序後輸出為一個順串（即是內部數據有序的臨時文件），處理完所有的數據後再進行歸併</p>
-<p>(見<a href="https://zh.wikipedia.org/zh-tw/%E5%A4%96%E6%8E%92%E5%BA%8F" target="_blank" rel="noopener">外排序- 維基百科，自由的百科全書 - Wikipedia</a>)</p>
+<p>(見<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%A4%96%E6%8E%92%E5%BA%8F">外排序- 維基百科，自由的百科全書 - Wikipedia</a>)</p>
 <ul>
 <li>名詞
 <ul>
@@ -1199,7 +1199,7 @@
 </ul></li>
 </ul>
 <blockquote>
-<p>計算機科學家 <a href="https://zh.wikipedia.org/w/index.php?title=%E5%90%89%E5%A7%86%C2%B7%E6%A0%BC%E9%9B%B7&amp;action=edit&amp;redlink=1" target="_blank" rel="noopener">吉姆·格雷</a> 的 <a href="http://sortbenchmark.org/" target="_blank" rel="noopener">Sort Benchmark</a> 網站用不同的硬體、軟體環境測試了實現方法不同的多種外排序算法的效率。效率較高的算法具有以下的特徵：</p>
+<p>計算機科學家 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E5%90%89%E5%A7%86%C2%B7%E6%A0%BC%E9%9B%B7&amp;action=edit&amp;redlink=1">吉姆·格雷</a> 的 <a target="_blank" rel="noopener" href="http://sortbenchmark.org/">Sort Benchmark</a> 網站用不同的硬體、軟體環境測試了實現方法不同的多種外排序算法的效率。效率較高的算法具有以下的特徵：</p>
 <ul>
 <li><strong>並行計算</strong>
 <ul>
@@ -1216,14 +1216,14 @@
 </ul></li>
 <li><strong>提高軟體速度</strong>
 <ul>
-<li>對於某些特殊數據，在第一階段的排序中使用<a href="https://zh.wikipedia.org/wiki/%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F" target="_blank" rel="noopener">基數排序</a></li>
+<li>對於某些特殊數據，在第一階段的排序中使用<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F">基數排序</a></li>
 <li>壓縮輸入輸出文件和臨時文件</li>
 </ul></li>
 </ul>
 </blockquote>
 <blockquote>
 <ul>
-<li><p>外歸併排序法並不是唯一的「External sort」，另外有<strong>「外分配排序」</strong>，其原理類似於內排序中的<a href="https://zh.wikipedia.org/wiki/%E6%A1%B6%E6%8E%92%E5%BA%8F" target="_blank" rel="noopener">桶排序（Bucket sort）</a></p></li>
+<li><p>外歸併排序法並不是唯一的「External sort」，另外有<strong>「外分配排序」</strong>，其原理類似於內排序中的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%A1%B6%E6%8E%92%E5%BA%8F">桶排序（Bucket sort）</a></p></li>
 <li><p>「Merge sort」和「Bucket sort」之間存在數學上的某種對偶性</p></li>
 </ul>
 <p>Example（106 清華大學資工基礎計算機科學第 6 題）</p>
@@ -1249,12 +1249,12 @@
 <h3 id="iterative-merge-sorttwo-way-merge">Iterative merge sort（Two way merge）</h3>
 <p>Example</p>
 <figure>
-<img src="\willywangkaa\images\1542088579919.png" alt="1542088579919"><figcaption aria-hidden="true">1542088579919</figcaption>
+<img src="\willywangkaa\images\1542088579919.png" alt="1542088579919" /><figcaption aria-hidden="true">1542088579919</figcaption>
 </figure>
 <ul>
 <li>Algorithm（Merge 2 runs）</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A[l....m]: 子陣列「順串一」</span></span><br><span class="line"><span class="comment">// A[m+1..n]: 子陣列「順串二」</span></span><br><span class="line">Merge(A[], l, m, n) &#123;</span><br><span class="line">    <span class="keyword">int</span> p = l, q = m+<span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> tmp[n-l+<span class="number">1</span>];   <span class="comment">// 暫存陣列 [1..(n-l+1)]</span></span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 當 run1 與 run2 皆未掃描完</span></span><br><span class="line">    <span class="keyword">while</span>(p &lt;= m &amp;&amp; q &lt;= n) &#123;</span><br><span class="line">        <span class="keyword">if</span>(A[p] &lt;= A[q]) &#123;</span><br><span class="line">            tmp[i++] = A[p++];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            tmp[i++] = A[q++];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// run1 未掃描完</span></span><br><span class="line">    <span class="keyword">while</span>(p &lt;= m) &#123;</span><br><span class="line">        tmp[i++] = A[p++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// run2 未掃描完</span></span><br><span class="line">    <span class="keyword">while</span>(q &lt;= n) &#123;</span><br><span class="line">        tmp[i++] = A[q++];</span><br><span class="line">    &#125;</span><br><span class="line">    copy(A[l..n], tmp[<span class="number">1.</span>.(n-l+<span class="number">1</span>)]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A[l....m]: 子陣列「順串一」</span></span><br><span class="line"><span class="comment">// A[m+1..n]: 子陣列「順串二」</span></span><br><span class="line"><span class="built_in">Merge</span>(A[], l, m, n) &#123;</span><br><span class="line">    <span class="keyword">int</span> p = l, q = m+<span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> tmp[n-l+<span class="number">1</span>];   <span class="comment">// 暫存陣列 [1..(n-l+1)]</span></span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 當 run1 與 run2 皆未掃描完</span></span><br><span class="line">    <span class="keyword">while</span>(p &lt;= m &amp;&amp; q &lt;= n) &#123;</span><br><span class="line">        <span class="keyword">if</span>(A[p] &lt;= A[q]) &#123;</span><br><span class="line">            tmp[i++] = A[p++];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            tmp[i++] = A[q++];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// run1 未掃描完</span></span><br><span class="line">    <span class="keyword">while</span>(p &lt;= m) &#123;</span><br><span class="line">        tmp[i++] = A[p++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// run2 未掃描完</span></span><br><span class="line">    <span class="keyword">while</span>(q &lt;= n) &#123;</span><br><span class="line">        tmp[i++] = A[q++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">copy</span>(A[l..n], tmp[<span class="number">1.</span>.(n-l+<span class="number">1</span>)]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>Time complexity：O( n log n )
 <ul>
@@ -1275,11 +1275,11 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1542088930143.png" alt="1542088930143"><figcaption aria-hidden="true">1542088930143</figcaption>
+<img src="\willywangkaa\images\1542088930143.png" alt="1542088930143" /><figcaption aria-hidden="true">1542088930143</figcaption>
 </figure>
 <p>圖一</p>
 <figure>
-<img src="\willywangkaa\images\1542089353231.png" alt="1542089353231"><figcaption aria-hidden="true">1542089353231</figcaption>
+<img src="\willywangkaa\images\1542089353231.png" alt="1542089353231" /><figcaption aria-hidden="true">1542089353231</figcaption>
 </figure>
 <p>圖二</p>
 <h3 id="recursive-merge-sorttwo-way-merge">Recursive merge sort（Two way merge）</h3>
@@ -1307,12 +1307,12 @@
 </ul>
 </blockquote>
 <figure>
-<img src="\willywangkaa\images\1542090860348.png" alt="1542090860348"><figcaption aria-hidden="true">1542090860348</figcaption>
+<img src="\willywangkaa\images\1542090860348.png" alt="1542090860348" /><figcaption aria-hidden="true">1542090860348</figcaption>
 </figure>
 <ul>
 <li>Algorithm</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A[l....m]: 子陣列「順串一」</span></span><br><span class="line"><span class="comment">// A[m+1..n]: 子陣列「順串二」</span></span><br><span class="line">Merge(A[], l, m, n) &#123;</span><br><span class="line">    <span class="keyword">int</span> p = l, q = m+<span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> tmp[n-l+<span class="number">1</span>];   <span class="comment">// 暫存陣列 [1..(n-l+1)]</span></span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 當 run1 與 run2 皆未掃描完</span></span><br><span class="line">    <span class="keyword">while</span>(p &lt;= m &amp;&amp; q &lt;= n) &#123;</span><br><span class="line">        <span class="keyword">if</span>(A[p] &lt;= A[q]) &#123;</span><br><span class="line">            tmp[i++] = A[p++];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            tmp[i++] = A[q++];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// run1 未掃描完</span></span><br><span class="line">    <span class="keyword">while</span>(p &lt;= m) &#123;</span><br><span class="line">        tmp[i++] = A[p++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// run2 未掃描完</span></span><br><span class="line">    <span class="keyword">while</span>(q &lt;= n) &#123;</span><br><span class="line">        tmp[i++] = A[q++];</span><br><span class="line">    &#125;</span><br><span class="line">    copy(A[l..n], tmp[<span class="number">1.</span>.(n-l+<span class="number">1</span>)]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 對 A[L]~A[R] 排序</span></span><br><span class="line">Mergesort(A[], L, R) &#123;</span><br><span class="line">    <span class="keyword">if</span>(L &lt; R) &#123;</span><br><span class="line">        m = (l+u)/<span class="number">2</span>;</span><br><span class="line">        Mergesort(A, L  , m);</span><br><span class="line">        Mergesort(A, m+<span class="number">1</span>, R);</span><br><span class="line">        Merge(A, L, m, R);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A[l....m]: 子陣列「順串一」</span></span><br><span class="line"><span class="comment">// A[m+1..n]: 子陣列「順串二」</span></span><br><span class="line"><span class="built_in">Merge</span>(A[], l, m, n) &#123;</span><br><span class="line">    <span class="keyword">int</span> p = l, q = m+<span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> tmp[n-l+<span class="number">1</span>];   <span class="comment">// 暫存陣列 [1..(n-l+1)]</span></span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 當 run1 與 run2 皆未掃描完</span></span><br><span class="line">    <span class="keyword">while</span>(p &lt;= m &amp;&amp; q &lt;= n) &#123;</span><br><span class="line">        <span class="keyword">if</span>(A[p] &lt;= A[q]) &#123;</span><br><span class="line">            tmp[i++] = A[p++];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            tmp[i++] = A[q++];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// run1 未掃描完</span></span><br><span class="line">    <span class="keyword">while</span>(p &lt;= m) &#123;</span><br><span class="line">        tmp[i++] = A[p++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// run2 未掃描完</span></span><br><span class="line">    <span class="keyword">while</span>(q &lt;= n) &#123;</span><br><span class="line">        tmp[i++] = A[q++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">copy</span>(A[l..n], tmp[<span class="number">1.</span>.(n-l+<span class="number">1</span>)]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 對 A[L]~A[R] 排序</span></span><br><span class="line"><span class="built_in">Mergesort</span>(A[], L, R) &#123;</span><br><span class="line">    <span class="keyword">if</span>(L &lt; R) &#123;</span><br><span class="line">        m = (l+u)/<span class="number">2</span>;</span><br><span class="line">        <span class="built_in">Mergesort</span>(A, L  , m);</span><br><span class="line">        <span class="built_in">Mergesort</span>(A, m+<span class="number">1</span>, R);</span><br><span class="line">        <span class="built_in">Merge</span>(A, L, m, R);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>Time complexity
 <ul>
@@ -1342,7 +1342,7 @@
 <p>Example</p>
 <p><strong>4-way merge</strong></p>
 <figure>
-<img src="\willywangkaa\images\1542091456582.png" alt="1542091456582"><figcaption aria-hidden="true">1542091456582</figcaption>
+<img src="\willywangkaa\images\1542091456582.png" alt="1542091456582" /><figcaption aria-hidden="true">1542091456582</figcaption>
 </figure>
 <ul>
 <li>每次要對 k 個順串作合併時
@@ -1367,19 +1367,19 @@
 <p>Example</p>
 <p><strong>8-way merge with winner tree</strong></p>
 <figure>
-<img src="\willywangkaa\images\1542091906501.png" alt="1542091906501"><figcaption aria-hidden="true">1542091906501</figcaption>
+<img src="\willywangkaa\images\1542091906501.png" alt="1542091906501" /><figcaption aria-hidden="true">1542091906501</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1542092026110.png" alt="1542092026110"><figcaption aria-hidden="true">1542092026110</figcaption>
+<img src="\willywangkaa\images\1542092026110.png" alt="1542092026110" /><figcaption aria-hidden="true">1542092026110</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1542092171261.png" alt="1542092171261"><figcaption aria-hidden="true">1542092171261</figcaption>
+<img src="\willywangkaa\images\1542092171261.png" alt="1542092171261" /><figcaption aria-hidden="true">1542092171261</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1542092353259.png" alt="1542092353259"><figcaption aria-hidden="true">1542092353259</figcaption>
+<img src="\willywangkaa\images\1542092353259.png" alt="1542092353259" /><figcaption aria-hidden="true">1542092353259</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1542092514867.png" alt="1542092514867"><figcaption aria-hidden="true">1542092514867</figcaption>
+<img src="\willywangkaa\images\1542092514867.png" alt="1542092514867" /><figcaption aria-hidden="true">1542092514867</figcaption>
 </figure>
 <p>（重複動作直到「新順串」建立完）</p>
 <ul>
@@ -1423,10 +1423,10 @@
 <p>Example</p>
 <p>8-way merge with loser tree</p>
 <figure>
-<img src="\willywangkaa\images\1542093764103.png" alt="1542093764103"><figcaption aria-hidden="true">1542093764103</figcaption>
+<img src="\willywangkaa\images\1542093764103.png" alt="1542093764103" /><figcaption aria-hidden="true">1542093764103</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1542093996385.png" alt="1542093996385"><figcaption aria-hidden="true">1542093996385</figcaption>
+<img src="\willywangkaa\images\1542093996385.png" alt="1542093996385" /><figcaption aria-hidden="true">1542093996385</figcaption>
 </figure>
 <p>（執行直到「新順串」建立完成）</p>
 <p>Time complexity （假設為「k-way merge」、總資料數為 n）</p>
@@ -1473,7 +1473,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1542095449837.png" alt="1542095449837"><figcaption aria-hidden="true">1542095449837</figcaption>
+<img src="\willywangkaa\images\1542095449837.png" alt="1542095449837" /><figcaption aria-hidden="true">1542095449837</figcaption>
 </figure>
 <ul>
 <li>假設 m 個順串被 k-way 分成了<strong>兩堆</strong>
@@ -1497,7 +1497,7 @@
 </ul>
 <p><strong>因為『回合數 = 樹高 - 1』（見下圖），在「Sorting」時需要執行</strong> <span class="math inline">\(\lceil log_km \rceil\)</span> <strong>回合</strong></p>
 <figure>
-<img src="\willywangkaa\images\1542097917874.png" alt="1542097917874"><figcaption aria-hidden="true">1542097917874</figcaption>
+<img src="\willywangkaa\images\1542097917874.png" alt="1542097917874" /><figcaption aria-hidden="true">1542097917874</figcaption>
 </figure>
 <ul>
 <li>Time complexity
@@ -1530,25 +1530,25 @@
 <p>Example</p>
 <p>排序：5 3 8 2 6 9 1 4 10 7</p>
 <figure>
-<img src="\willywangkaa\images\1542105475686.png" alt="1542105475686"><figcaption aria-hidden="true">1542105475686</figcaption>
+<img src="\willywangkaa\images\1542105475686.png" alt="1542105475686" /><figcaption aria-hidden="true">1542105475686</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1542105714121.png" alt="1542105714121"><figcaption aria-hidden="true">1542105714121</figcaption>
+<img src="\willywangkaa\images\1542105714121.png" alt="1542105714121" /><figcaption aria-hidden="true">1542105714121</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1542105818821.png" alt="1542105818821"><figcaption aria-hidden="true">1542105818821</figcaption>
+<img src="\willywangkaa\images\1542105818821.png" alt="1542105818821" /><figcaption aria-hidden="true">1542105818821</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1542105935299.png" alt="1542105935299"><figcaption aria-hidden="true">1542105935299</figcaption>
+<img src="\willywangkaa\images\1542105935299.png" alt="1542105935299" /><figcaption aria-hidden="true">1542105935299</figcaption>
 </figure>
 <p>（重複動作）</p>
 <figure>
-<img src="\willywangkaa\images\1542106039971.png" alt="1542106039971"><figcaption aria-hidden="true">1542106039971</figcaption>
+<img src="\willywangkaa\images\1542106039971.png" alt="1542106039971" /><figcaption aria-hidden="true">1542106039971</figcaption>
 </figure>
 <ul>
 <li>Algorithm</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// tree: Array[1..n]</span></span><br><span class="line"><span class="comment">// n   : 元素個數</span></span><br><span class="line"><span class="comment">// i   : 節點編號 (調整以 i 為樹根之子樹)</span></span><br><span class="line">Heapify(tree, i, n) &#123;</span><br><span class="line">    x = tree[i];</span><br><span class="line">    j = <span class="number">2</span> * i                     <span class="comment">//左子</span></span><br><span class="line">    <span class="keyword">while</span>(j &lt;= n) &#123;</span><br><span class="line">        <span class="keyword">if</span>(j &lt; n)                 <span class="comment">// 具有右子</span></span><br><span class="line">            <span class="keyword">if</span>(tree[j]&lt;tree[j+<span class="number">1</span>])</span><br><span class="line">                j = j+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(x &gt;= tree[j])          <span class="comment">// 已經為 heap</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            tree[j/<span class="number">2</span>] = tree[j];</span><br><span class="line">            j = <span class="number">2</span> * j;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    tree[j/<span class="number">2</span>] = x;                <span class="comment">// 將資料 x 置於正確位置</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// tree[]: 目標排序資料</span></span><br><span class="line"><span class="comment">// n: 排序資料數量</span></span><br><span class="line">Heapsort(tree[], n) &#123;</span><br><span class="line">    <span class="comment">// Build heap</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = n/<span class="number">2</span>; i&gt;=<span class="number">1</span>; i--) &#123;</span><br><span class="line">        heapify(tree, i, n);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 執行 n-1 回合之 heap sorting</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = n<span class="number">-1</span>; i&gt;= <span class="number">1</span>; i--) &#123;</span><br><span class="line">        swap(tree[<span class="number">1</span>], tree[i+<span class="number">1</span>]);</span><br><span class="line">        heapify(tree, <span class="number">1</span>, i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// tree: Array[1..n]</span></span><br><span class="line"><span class="comment">// n   : 元素個數</span></span><br><span class="line"><span class="comment">// i   : 節點編號 (調整以 i 為樹根之子樹)</span></span><br><span class="line"><span class="built_in">Heapify</span>(tree, i, n) &#123;</span><br><span class="line">    x = tree[i];</span><br><span class="line">    j = <span class="number">2</span> * i                     <span class="comment">//左子</span></span><br><span class="line">    <span class="keyword">while</span>(j &lt;= n) &#123;</span><br><span class="line">        <span class="keyword">if</span>(j &lt; n)                 <span class="comment">// 具有右子</span></span><br><span class="line">            <span class="keyword">if</span>(tree[j]&lt;tree[j+<span class="number">1</span>])</span><br><span class="line">                j = j+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(x &gt;= tree[j])          <span class="comment">// 已經為 heap</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            tree[j/<span class="number">2</span>] = tree[j];</span><br><span class="line">            j = <span class="number">2</span> * j;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    tree[j/<span class="number">2</span>] = x;                <span class="comment">// 將資料 x 置於正確位置</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// tree[]: 目標排序資料</span></span><br><span class="line"><span class="comment">// n: 排序資料數量</span></span><br><span class="line"><span class="built_in">Heapsort</span>(tree[], n) &#123;</span><br><span class="line">    <span class="comment">// Build heap</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = n/<span class="number">2</span>; i&gt;=<span class="number">1</span>; i--) &#123;</span><br><span class="line">        <span class="built_in">heapify</span>(tree, i, n);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 執行 n-1 回合之 heap sorting</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = n<span class="number">-1</span>; i&gt;= <span class="number">1</span>; i--) &#123;</span><br><span class="line">        <span class="built_in">swap</span>(tree[<span class="number">1</span>], tree[i+<span class="number">1</span>]);</span><br><span class="line">        <span class="built_in">heapify</span>(tree, <span class="number">1</span>, i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>Time complexity
 <ul>
@@ -1566,7 +1566,7 @@
 <p>Example</p>
 <p>排序： 5 5* 1</p>
 <figure>
-<img src="\willywangkaa\images\1542106445237.png" alt="1542106445237"><figcaption aria-hidden="true">1542106445237</figcaption>
+<img src="\willywangkaa\images\1542106445237.png" alt="1542106445237" /><figcaption aria-hidden="true">1542106445237</figcaption>
 </figure>
 <ul>
 <li><strong>Unstable</strong></li>
@@ -1635,7 +1635,7 @@
 <p>Example（基底為 10；十進位）</p>
 <p>排序：329、457、657、839、436、720、355</p>
 <figure>
-<img src="\willywangkaa\images\1542447949542.png" alt="1542447949542"><figcaption aria-hidden="true">1542447949542</figcaption>
+<img src="\willywangkaa\images\1542447949542.png" alt="1542447949542" /><figcaption aria-hidden="true">1542447949542</figcaption>
 </figure>
 <ul>
 <li>Time complexity
@@ -1680,14 +1680,14 @@
 <li>以各個純小數之小數後第一位值有序的插入「Bucket」中</li>
 <li>由小到大合併所有「Bucket」</li>
 </ol>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Pseudo code</span></span><br><span class="line">Array bucket-sort(<span class="built_in">array</span>, n) &#123;</span><br><span class="line">    Array buckets[n];</span><br><span class="line">    <span class="keyword">for</span> i = <span class="number">0</span> to (length(<span class="built_in">array</span>)<span class="number">-1</span>) &#123;</span><br><span class="line">        buckets[msbits(<span class="built_in">array</span>[i], k)].insert(<span class="built_in">array</span>[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i = <span class="number">0</span> to n - <span class="number">1</span> </span><br><span class="line">        next-sort(buckets[i]);</span><br><span class="line">    <span class="keyword">return</span> concatenation(buckets[<span class="number">0</span>], ..., buckets[n<span class="number">-1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Pseudo code</span></span><br><span class="line">Array bucket-<span class="built_in">sort</span>(array, n) &#123;</span><br><span class="line">    Array buckets[n];</span><br><span class="line">    <span class="keyword">for</span> i = <span class="number">0</span> <span class="built_in">to</span> (<span class="built_in">length</span>(array)<span class="number">-1</span>) &#123;</span><br><span class="line">        buckets[<span class="built_in">msbits</span>(array[i], k)].<span class="built_in">insert</span>(array[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i = <span class="number">0</span> to n - <span class="number">1</span> </span><br><span class="line">        next-<span class="built_in">sort</span>(buckets[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">concatenation</span>(buckets[<span class="number">0</span>], ..., buckets[n<span class="number">-1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>在實作裡，可用每個桶內部用連結串列表示，在資料入桶的同時<strong>插入排序</strong>，然後把各個桶中的資料合併</p>
 </blockquote>
 <p>Example</p>
 <p>排序：179、208、306、93、859、984、55、9、271、33</p>
 <figure>
-<img src="\willywangkaa\images\1542448961965.png" alt="1542448961965"><figcaption aria-hidden="true">1542448961965</figcaption>
+<img src="\willywangkaa\images\1542448961965.png" alt="1542448961965" /><figcaption aria-hidden="true">1542448961965</figcaption>
 </figure>
 <h2 id="counting-sort">Counting sort</h2>
 <p>假設 n 為欲排序資料之總數，且該資料範圍介於 1 ~ k 之間</p>
@@ -1700,7 +1700,7 @@
 <ul>
 <li>Algorithm</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A: 欲排序陣列</span></span><br><span class="line"><span class="comment">// n: 資料個數</span></span><br><span class="line"><span class="comment">// k: 值域範圍</span></span><br><span class="line">Countingsort(A[], n, k) &#123;</span><br><span class="line">    <span class="keyword">new</span> count[<span class="number">1.</span>..k];</span><br><span class="line">    <span class="keyword">new</span> start[<span class="number">1.</span>..k];</span><br><span class="line">    <span class="keyword">new</span> output[<span class="number">1.</span>..n];</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= k; i++) &#123;         <span class="comment">// Time complexity: O(k)</span></span><br><span class="line">        count[i] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 步驟一：統計鍵值出現個數</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;         <span class="comment">// Time complexity: O(n)</span></span><br><span class="line">        count[A[i]]++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 步驟二：計算每個鍵值排序時之起點位置</span></span><br><span class="line">    start[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= k; i++) &#123;         <span class="comment">// Time complexity: O(k)</span></span><br><span class="line">        start[i] = start[i<span class="number">-1</span>]+count[i<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 步驟三：依照指示放置資料</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;         <span class="comment">// Time complexity: O(n)</span></span><br><span class="line">        <span class="comment">// 先使用 start[A[i]] 原本資料後，</span></span><br><span class="line">        <span class="comment">// 將 start[A[i]]+=1</span></span><br><span class="line">        output[start[A[i]]++] = A[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A: 欲排序陣列</span></span><br><span class="line"><span class="comment">// n: 資料個數</span></span><br><span class="line"><span class="comment">// k: 值域範圍</span></span><br><span class="line"><span class="built_in">Countingsort</span>(A[], n, k) &#123;</span><br><span class="line">    <span class="keyword">new</span> count[<span class="number">1.</span>..k];</span><br><span class="line">    <span class="keyword">new</span> start[<span class="number">1.</span>..k];</span><br><span class="line">    <span class="keyword">new</span> output[<span class="number">1.</span>..n];</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= k; i++) &#123;         <span class="comment">// Time complexity: O(k)</span></span><br><span class="line">        count[i] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 步驟一：統計鍵值出現個數</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;         <span class="comment">// Time complexity: O(n)</span></span><br><span class="line">        count[A[i]]++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 步驟二：計算每個鍵值排序時之起點位置</span></span><br><span class="line">    start[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= k; i++) &#123;         <span class="comment">// Time complexity: O(k)</span></span><br><span class="line">        start[i] = start[i<span class="number">-1</span>]+count[i<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 步驟三：依照指示放置資料</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;         <span class="comment">// Time complexity: O(n)</span></span><br><span class="line">        <span class="comment">// 先使用 start[A[i]] 原本資料後，</span></span><br><span class="line">        <span class="comment">// 將 start[A[i]]+=1</span></span><br><span class="line">        output[start[A[i]]++] = A[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>Time complexity
 <ul>

@@ -427,11 +427,11 @@ F_{n-1} + F_{n-2} &amp; , if \; n \geq 2
 \end{matrix}\right.
 \]</span> 欲求出 <span class="math inline">\(F_5\)</span> ，以遞迴程式執行，會造成「Overlapping subproblem」，如下圖 <span class="math inline">\(F_2\)</span> 重複計算了 3 次，<span class="math inline">\(F_3\)</span> 重複計算 2 次。</p>
 <figure>
-<img src="\willywangkaa\images\overlappingsubproblem.png" alt="overlappingsubproblem"><figcaption aria-hidden="true">overlappingsubproblem</figcaption>
+<img src="\willywangkaa\images\overlappingsubproblem.png" alt="overlappingsubproblem" /><figcaption aria-hidden="true">overlappingsubproblem</figcaption>
 </figure>
 <p>使用動態表格執行之，可以省去很多不必要的重複計算，如下圖。</p>
 <figure>
-<img src="\willywangkaa\images\fibonassidp.png" alt="fibonassidp"><figcaption aria-hidden="true">fibonassidp</figcaption>
+<img src="\willywangkaa\images\fibonassidp.png" alt="fibonassidp" /><figcaption aria-hidden="true">fibonassidp</figcaption>
 </figure>
 <ul>
 <li>構思動態規劃題目的流程
@@ -440,20 +440,20 @@ F_{n-1} + F_{n-2} &amp; , if \; n \geq 2
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\observedp.png" alt="observedp"><figcaption aria-hidden="true">observedp</figcaption>
+<img src="\willywangkaa\images\observedp.png" alt="observedp" /><figcaption aria-hidden="true">observedp</figcaption>
 </figure>
 <h2 id="shortest-path-problem">Shortest path problem</h2>
 <ul>
 <li><strong>Optimal substructure</strong></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\shortestpathproblem_subproblem.png" alt="shortestpathproblem_subproblem"><figcaption aria-hidden="true">shortestpathproblem_subproblem</figcaption>
+<img src="\willywangkaa\images\shortestpathproblem_subproblem.png" alt="shortestpathproblem_subproblem" /><figcaption aria-hidden="true">shortestpathproblem_subproblem</figcaption>
 </figure>
 <blockquote>
 <p>(98 交大資工) 問 longest path problem 有無 optimal substructure。</p>
 <p>無，所以不可以使用動態規劃解此問題。</p>
 <figure>
-<img src="\willywangkaa\images\longestpathproblem.png" alt="longestpathproblem"><figcaption aria-hidden="true">longestpathproblem</figcaption>
+<img src="\willywangkaa\images\longestpathproblem.png" alt="longestpathproblem" /><figcaption aria-hidden="true">longestpathproblem</figcaption>
 </figure>
 <p><strong>但是</strong>如果此圖加上「Acyclic」、「Direct」等條件限制之後，可以用動態規劃解「longest path problem」。</p>
 </blockquote>
@@ -555,7 +555,7 @@ F_{n-1} + F_{n-2} &amp; , if \; n \geq 2
 <li>取物品 3，取物品之 2 單位重量，背包剩餘空間 0 單位重量，<strong>獲利 24 單位價值</strong>。</li>
 </ol>
 <figure>
-<img src="\willywangkaa\images\kpdp.png" alt="kpdp"><figcaption aria-hidden="true">kpdp</figcaption>
+<img src="\willywangkaa\images\kpdp.png" alt="kpdp" /><figcaption aria-hidden="true">kpdp</figcaption>
 </figure>
 <table>
 <thead>
@@ -661,7 +661,7 @@ C[i-1][k] &amp; , if \; w_i &gt; k \\
 </ul></li>
 <li><p>Algorithm ( Bottom up )</p></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">for k &lt;- 0 to w</span><br><span class="line">	c[0, k] &lt;- 0</span><br><span class="line">for i &lt;- 1 to n</span><br><span class="line">&#123;</span><br><span class="line">    c[i, 0] &lt;- 0</span><br><span class="line">    for k &lt;- 1 to w</span><br><span class="line">    &#123;</span><br><span class="line">        if k &lt; w_i</span><br><span class="line">        	c[i, k] &lt;- c[i-1, k]</span><br><span class="line">        else</span><br><span class="line">        	c[i, k] &lt;- max(c[i-1, k], c[i-1, k-w_i]+v_i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">for k &lt;- 0 to w</span><br><span class="line">	c[0, k] &lt;- 0</span><br><span class="line">for i &lt;- 1 to n</span><br><span class="line">&#123;</span><br><span class="line">    c[i, 0] &lt;- 0</span><br><span class="line">    for k &lt;- 1 to w</span><br><span class="line">    &#123;</span><br><span class="line">        if k &lt; w_i</span><br><span class="line">        	c[i, k] &lt;- c[i-1, k]</span><br><span class="line">        else</span><br><span class="line">        	c[i, k] &lt;- max(c[i-1, k], c[i-1, k-w_i]+v_i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>Time complexity
 <ul>
@@ -746,7 +746,7 @@ Bounding \;funciotn(目前的節點)\\
 (將背包剩餘的重量以「Fractional \;knapsack \;problem」拿取剩下的物品的獲利)
 \]</span></p>
 <figure>
-<img src="\willywangkaa\images\KPstatesearchtree.png" alt="KPstatesearchtree"><figcaption aria-hidden="true">KPstatesearchtree</figcaption>
+<img src="\willywangkaa\images\KPstatesearchtree.png" alt="KPstatesearchtree" /><figcaption aria-hidden="true">KPstatesearchtree</figcaption>
 </figure>
 <ol start="3" type="1">
 <li>拓展節點
@@ -805,7 +805,7 @@ max(c[i-1, j], c[i, j-1])&amp; , if \; X[i] \ne Y[j] \; &amp; （該兩個字絕
 <ul>
 <li>演算法 ( Bottom-up )</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">for j &lt;- 0 to n</span><br><span class="line">	c[0, j] &lt;- 0</span><br><span class="line">for i &lt;- 0 to m</span><br><span class="line">	c[i, 0] &lt;- 0</span><br><span class="line">for i &lt;- 1 to m</span><br><span class="line">	for j &lt;- 1 to n</span><br><span class="line">	&#123;</span><br><span class="line">        if(X[i] = Y[i])</span><br><span class="line">        	c[i, j] = c[i-1, j-1] + 1</span><br><span class="line">        else</span><br><span class="line">        	c[i, j] = max(c[i-1, j], c[i, j-1])</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">for j &lt;- 0 to n</span><br><span class="line">	c[0, j] &lt;- 0</span><br><span class="line">for i &lt;- 0 to m</span><br><span class="line">	c[i, 0] &lt;- 0</span><br><span class="line">for i &lt;- 1 to m</span><br><span class="line">	for j &lt;- 1 to n</span><br><span class="line">	&#123;</span><br><span class="line">        if(X[i] = Y[i])</span><br><span class="line">        	c[i, j] = c[i-1, j-1] + 1</span><br><span class="line">        else</span><br><span class="line">        	c[i, j] = max(c[i-1, j], c[i, j-1])</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>Time complexity
 <ul>
@@ -931,7 +931,7 @@ c[i-1, j-1] + 1 &amp; , if \; X[i] = Y[j] &amp; \\
 <ul>
 <li>Algorithm</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// X[1...n]</span><br><span class="line">// Y[1...m]</span><br><span class="line">lcstring = &#123;&#125;</span><br><span class="line">length = 0</span><br><span class="line">// initialize</span><br><span class="line">for i &lt;- 0 to n</span><br><span class="line">    c[0, i] &lt;- 0</span><br><span class="line">for i &lt;- 0 to m</span><br><span class="line">    c[i, 0] &lt;- 0</span><br><span class="line"></span><br><span class="line">for i &lt;- 1 to m</span><br><span class="line">    for j &lt;- 1 to n &#123;</span><br><span class="line">        if(X[i] != Y[i])</span><br><span class="line">            c[i, j] = 0</span><br><span class="line">        else &#123;</span><br><span class="line">            c[i, j] = c[i-1, j-1] + 1</span><br><span class="line">            if(length &lt; c[i, j]) &#123;</span><br><span class="line">                length = c[i, j]</span><br><span class="line">                lcstring = X[(i-length+1)...i]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// X[1...n]</span><br><span class="line">// Y[1...m]</span><br><span class="line">lcstring = &#123;&#125;</span><br><span class="line">length = 0</span><br><span class="line">// initialize</span><br><span class="line">for i &lt;- 0 to n</span><br><span class="line">    c[0, i] &lt;- 0</span><br><span class="line">for i &lt;- 0 to m</span><br><span class="line">    c[i, 0] &lt;- 0</span><br><span class="line"></span><br><span class="line">for i &lt;- 1 to m</span><br><span class="line">    for j &lt;- 1 to n &#123;</span><br><span class="line">        if(X[i] != Y[i])</span><br><span class="line">            c[i, j] = 0</span><br><span class="line">        else &#123;</span><br><span class="line">            c[i, j] = c[i-1, j-1] + 1</span><br><span class="line">            if(length &lt; c[i, j]) &#123;</span><br><span class="line">                length = c[i, j]</span><br><span class="line">                lcstring = X[(i-length+1)...i]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <h2 id="matrix-chain-multiplication">Matrix Chain Multiplication</h2>
 <ul>
 <li>Input：
@@ -973,7 +973,7 @@ MIN_{i\leq k \leq j-1}(m[i, k] + m[k+1, j] + P_i\times P_k \times P_j) &amp; , i
 <ul>
 <li>演算法</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">for i &lt;- 1 to n (「Matrix chain」長度為一)</span><br><span class="line">	m[i, i] &lt;- 0</span><br><span class="line">for l &lt;- 2 to n (「Matrix chain」長度為二以上)</span><br><span class="line">	for i &lt;- 1 to n-l+1 (起點)</span><br><span class="line">		&#123;</span><br><span class="line">            j &lt;- i+l-1 (終點)</span><br><span class="line">            m[i, j] &lt;- infinity</span><br><span class="line">            for k &lt;- i to j-1</span><br><span class="line">            &#123;</span><br><span class="line">            	tmp &lt;- m[i, k] + m[k+1, j] + P_i-1 * P_k * P_j</span><br><span class="line">                if tmp &lt; m[i, j]</span><br><span class="line">                	m[i, j] &lt;- tmp  (純量乘法數)</span><br><span class="line">                	s[i, j] &lt;- k    (切點)</span><br><span class="line">            &#125;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">for i &lt;- 1 to n (「Matrix chain」長度為一)</span><br><span class="line">	m[i, i] &lt;- 0</span><br><span class="line">for l &lt;- 2 to n (「Matrix chain」長度為二以上)</span><br><span class="line">	for i &lt;- 1 to n-l+1 (起點)</span><br><span class="line">		&#123;</span><br><span class="line">            j &lt;- i+l-1 (終點)</span><br><span class="line">            m[i, j] &lt;- infinity</span><br><span class="line">            for k &lt;- i to j-1</span><br><span class="line">            &#123;</span><br><span class="line">            	tmp &lt;- m[i, k] + m[k+1, j] + P_i-1 * P_k * P_j</span><br><span class="line">                if tmp &lt; m[i, j]</span><br><span class="line">                	m[i, j] &lt;- tmp  (純量乘法數)</span><br><span class="line">                	s[i, j] &lt;- k    (切點)</span><br><span class="line">            &#125;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>Time complexity
 <ul>
@@ -994,10 +994,10 @@ MIN_{i\leq k \leq j-1}(m[i, k] + m[k+1, j] + P_i\times P_k \times P_j) &amp; , i
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\matrixchaindp.png" alt="matrixchaindp"><figcaption aria-hidden="true">matrixchaindp</figcaption>
+<img src="\willywangkaa\images\matrixchaindp.png" alt="matrixchaindp" /><figcaption aria-hidden="true">matrixchaindp</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\martixchainproblem_2.png" alt="martixchainproblem_2"><figcaption aria-hidden="true">martixchainproblem_2</figcaption>
+<img src="\willywangkaa\images\martixchainproblem_2.png" alt="martixchainproblem_2" /><figcaption aria-hidden="true">martixchainproblem_2</figcaption>
 </figure>
 <table>
 <thead>
@@ -1102,7 +1102,7 @@ MIN_{i\leq k \leq j-1}(m[i, k] + m[k+1, j] + P_i\times P_k \times P_j) &amp; , i
 <li>We define the maximum subarray of an array A to be the nonempty, contiguous subarray of A whose value have the largest sum</li>
 <li>Fill in the blank (a), (b) in the following c++ function so that it returns value are placed in A[1], A[2], …, A[n-1]</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxSubarray</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;n; ++i) &#123;</span><br><span class="line">        A[i] += A[i<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> ans = A[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;n; ++i) &#123;</span><br><span class="line">        ans = max(ans,  (a)  );</span><br><span class="line">        k = min(k,      (b)  );</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxSubarray</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;n; ++i) &#123;</span><br><span class="line">        A[i] += A[i<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> ans = A[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;n; ++i) &#123;</span><br><span class="line">        ans = <span class="built_in">max</span>(ans,  (a)  );</span><br><span class="line">        k = <span class="built_in">min</span>(k,      (b)  );</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>考慮一個「Maximum subarray」為 A[x…y]</p>
 <ul>

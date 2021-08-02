@@ -440,7 +440,7 @@
 <h3 id="file-open">File open</h3>
 <p>當檔案第一次被使用時，作業系統必須到磁碟的「Physical directory」找出檔案的配置資訊，<strong>接著將此資訊複製到作業系統的記憶體空間之中的一個表格稱為「Open file table」。</strong>將來對這個檔案進行任何操作之前，<strong>作業系統只需要到此表格搜尋取得檔案的配置資訊即可。</strong>由於「Open file table」中的檔案很少 ( E.g., 20 個)，<strong>搜尋的時間可以大幅降低，</strong>此表格位於<strong>記憶體中，所以可以節省可觀的 I/O time (次數)。</strong></p>
 <figure>
-<img src="\willywangkaa\images\fileopen.png" alt="fileopen"><figcaption aria-hidden="true">fileopen</figcaption>
+<img src="\willywangkaa\images\fileopen.png" alt="fileopen" /><figcaption aria-hidden="true">fileopen</figcaption>
 </figure>
 <ul>
 <li>因為檔案可以被多個 Process 共用，「Open file table 」分為：
@@ -461,7 +461,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\openfiletable.png" alt="openfiletable"><figcaption aria-hidden="true">openfiletable</figcaption>
+<img src="\willywangkaa\images\openfiletable.png" alt="openfiletable" /><figcaption aria-hidden="true">openfiletable</figcaption>
 </figure>
 <h3 id="file-close">File close</h3>
 <p>當檔案不再使用時，<strong>作業系統會將「Open file table」中此檔案的配置資訊更新回磁碟的「Physical directory」，且自表格中刪除此檔案的配置資訊。</strong></p>
@@ -519,7 +519,7 @@
 </ul>
 <h4 id="access-group">Access group</h4>
 <figure>
-<img src="\willywangkaa\images\accessgroup.png" alt="accessgroup"><figcaption aria-hidden="true">accessgroup</figcaption>
+<img src="\willywangkaa\images\accessgroup.png" alt="accessgroup" /><figcaption aria-hidden="true">accessgroup</figcaption>
 </figure>
 <ul>
 <li><strong>User</strong>

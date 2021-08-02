@@ -439,24 +439,24 @@
 
       
         <h1 id="decision-tree-learning-決策樹學習">Decision Tree Learning 決策樹學習</h1>
-<hr>
+<hr />
 <h2 id="簡介">簡介</h2>
 <ul>
 <li><p>最受歡迎的<strong>歸納推理演算法( inductive inference algorithm )</strong>。</p></li>
 <li><p>廣泛且實務的方法。</p></li>
 <li><p><strong>對於干擾值( Noise )相當敏感</strong>。</p></li>
-<li><p>可用來學習如何以<strong>聯集( Disjunctive )</strong>表示<strong>限制集( Constraints )</strong>。 ( <a href>Concept Learning</a> 以<strong>交集( Conjunctive )</strong>表示 )</p></li>
+<li><p>可用來學習如何以<strong>聯集( Disjunctive )</strong>表示<strong>限制集( Constraints )</strong>。 ( <a href="">Concept Learning</a> 以<strong>交集( Conjunctive )</strong>表示 )</p></li>
 <li><p>呈現的方式相當簡單。</p></li>
 <li><p>樹狀結構( Tree Structure )、若則表示式( If-Then rules )</p></li>
 </ul>
 <h2 id="ex.-play-tennis"><span class="math inline">\(Ex.\)</span> Play Tennis</h2>
 <h3 id="範例訓練資料-training-example">範例訓練資料( Training Example )</h3>
 <figure>
-<img src="\willywangkaa\images\decisiontreelearning_training%20example.png" alt="decisiontreelearning_training example"><figcaption aria-hidden="true">decisiontreelearning_training example</figcaption>
+<img src="\willywangkaa\images\decisiontreelearning_training%20example.png" alt="decisiontreelearning_training example" /><figcaption aria-hidden="true">decisiontreelearning_training example</figcaption>
 </figure>
 <h3 id="決策樹-decision-tree">決策樹( Decision Tree )</h3>
 <figure>
-<img src="\willywangkaa\images\decisiontreelearning_exampletree.png" alt="decisiontreelearning_exampletree"><figcaption aria-hidden="true">decisiontreelearning_exampletree</figcaption>
+<img src="\willywangkaa\images\decisiontreelearning_exampletree.png" alt="decisiontreelearning_exampletree" /><figcaption aria-hidden="true">decisiontreelearning_exampletree</figcaption>
 </figure>
 <h2 id="決策樹-decision-tree-的介紹">決策樹( Decision Tree )的介紹</h2>
 <h3 id="決策樹表示法-decision-tree-representation">決策樹表示法( Decision Tree Representation )</h3>
@@ -517,12 +517,12 @@ or
 <li>同上述，在每次的選擇之中，由於我們認知這種情況適用<strong>貪心法( Greedy Method )</strong>，所以我們每次<strong>環境因素( Attribute )</strong>的選擇都朝向我們最後最佳的<strong>假說</strong>靠近。</li>
 </ul>
 <h4 id="虛擬碼-pseudo-code">虛擬碼( Pseudo Code )</h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 使用屬性計算與之相關的樣本熵值</span><br><span class="line">2. 選取其中熵值最小的屬性(資訊獲利最大)</span><br><span class="line">3. 生成包含該屬性的節點</span><br><span class="line">4. 遞迴直到終止</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 使用屬性計算與之相關的樣本熵值</span><br><span class="line">2. 選取其中熵值最小的屬性(資訊獲利最大)</span><br><span class="line">3. 生成包含該屬性的節點</span><br><span class="line">4. 遞迴直到終止</span><br></pre></td></tr></table></figure>
 <figure>
-<img src="\willywangkaa\images\decisiontreelearning_builddecisiontree_algorithm.png" alt="decisiontreelearning_builddecisiontree_algorithm"><figcaption aria-hidden="true">decisiontreelearning_builddecisiontree_algorithm</figcaption>
+<img src="\willywangkaa\images\decisiontreelearning_builddecisiontree_algorithm.png" alt="decisiontreelearning_builddecisiontree_algorithm" /><figcaption aria-hidden="true">decisiontreelearning_builddecisiontree_algorithm</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\decisiontreelearning_howtochoosenode.png" alt="decisiontreelearning_howtochoosenode"><figcaption aria-hidden="true">decisiontreelearning_howtochoosenode</figcaption>
+<img src="\willywangkaa\images\decisiontreelearning_howtochoosenode.png" alt="decisiontreelearning_howtochoosenode" /><figcaption aria-hidden="true">decisiontreelearning_howtochoosenode</figcaption>
 </figure>
 <p><strong>＜討論＞</strong> ID3演算法的終極目標，就是要將決策樹中每個節點都擺上最優的<strong>環境因素( Attributes )</strong>。<br> <span class="math inline">\(Question.\)</span><br> 到底以甚麼條件決定甚麼因素要擺放於哪個節點？ <span class="math inline">\(Answer.\)</span> 資訊獎賞 or 資訊獲利( Information gain )。 - 資訊獲利( Information gain ) 統計該價值以檢視該環境因素置於何處來分類我們的資料，我們使用<strong>熵( entropy 又稱"亂度" )</strong>來定義這邊的<strong>資訊獲利( Information gain )</strong>。( 原文：Statistical quantity measuring how well an attribute classifies the data. Use entropy to define information gain. )</p>
 <h3 id="id3-和-c4.5---information-gain-資訊獲利-與-gain-ratio">ID3 和 C4.5 - Information gain ( 資訊獲利 ) 與 Gain ratio</h3>
@@ -548,7 +548,7 @@ or
 <li><p>訓練資料表</p></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\decisiontreelearning_trainningdataform.png" alt="decisiontreelearning_trainningdataform"><figcaption aria-hidden="true">decisiontreelearning_trainningdataform</figcaption>
+<img src="\willywangkaa\images\decisiontreelearning_trainningdataform.png" alt="decisiontreelearning_trainningdataform" /><figcaption aria-hidden="true">decisiontreelearning_trainningdataform</figcaption>
 </figure>
 <h5 id="step-1.-計算整體的亂度-entropy">Step 1. 計算整體的亂度( Entropy )</h5>
 <p><span class="math inline">\(N_\oplus = 9, N_\ominus = 5, N_{Total} = 14\)</span> <span class="math inline">\(Entropy( S ) = -\frac{9}{14} \cdot \lg (\frac{9}{14}) - \frac{5}{14} \cdot \lg ( \frac{5}{14} ) = 0.940\)</span></p>
@@ -583,7 +583,7 @@ or
 <p><span class="math display">\[ Gain( S, Wind ) = 0.048 \]</span></p>
 <p>從亂度的點看來，似乎Outlook的亂度最低( 與宇亂度相減後剩餘比較多資訊獲利 )，所以我們選擇<strong>Outlook</strong>作為我們根結點( root node )，如下圖：</p>
 <figure>
-<img src="\willywangkaa\images\decisiontreelearning_choosenode.png" alt="decisiontreelearning_choosenode"><figcaption aria-hidden="true">decisiontreelearning_choosenode</figcaption>
+<img src="\willywangkaa\images\decisiontreelearning_choosenode.png" alt="decisiontreelearning_choosenode" /><figcaption aria-hidden="true">decisiontreelearning_choosenode</figcaption>
 </figure>
 <p>選擇了Outlook做為決策樹的根結點後，緊接著，我們可以將三種不同的Outlook作為分支，其中特別的是，Overcast狀態之中( 上圖中間綠色部分 )，全部皆為開心狀態( Positive outcome )，所以可以直接決定Overcast輸出為開心( Positive )。</p>
 <h5 id="step-2.-conti.---選擇下一個節點-子樹的根結點">Step 2. Conti. - 選擇下一個節點( 子樹的根結點 )</h5>
@@ -599,10 +599,10 @@ or
 <p>由上式可以看出來<strong>Humidity</strong>的亂度最小，所以選擇之為此子樹的根。</p>
 <h5 id="final-decision-tree">Final Decision Tree</h5>
 <figure>
-<img src="\willywangkaa\images\decisiontreelearning_finaldecisiontree.png" alt="decisiontreelearning_finaldecisiontree"><figcaption aria-hidden="true">decisiontreelearning_finaldecisiontree</figcaption>
+<img src="\willywangkaa\images\decisiontreelearning_finaldecisiontree.png" alt="decisiontreelearning_finaldecisiontree" /><figcaption aria-hidden="true">decisiontreelearning_finaldecisiontree</figcaption>
 </figure>
 <h1 id="熵亂度-entropy">熵、亂度 (Entropy)</h1>
-<hr>
+<hr />
 <h2 id="介紹">介紹</h2>
 <p>在資訊理論中，熵被用來衡量一個<strong>隨機變數出現的期望值</strong>(機率與統計)。它代表了在被接收之前，訊號傳輸過程中損失的資訊量，又被稱為資訊熵。熵是對<strong>不確定性</strong>的測量。在資訊界，熵<strong>越高</strong>則能<strong>傳輸越多的資訊</strong>( 資訊越多意味著有<strong>更多的可能性</strong> )，熵<strong>越低</strong>則意味著<strong>傳輸的資訊越少</strong>( 資訊越少意味著有<strong>更少的可能性</strong> )。<br><br> 如果有一枚理想的硬幣，其出現正面和反面的機會相等，則拋硬幣事件的熵等於其能夠達到的最大值。我們無法知道下一個硬幣拋擲的結果是什麼，因此每一次拋硬幣都是不可預測的。( 越是不可預測的結果 <span class="math inline">\(\rightarrow\)</span> 亂度越大，而這種結果，正是造成人類<strong>選擇障礙</strong>的原因，所以我們希望熵越低越好，我們可以立即做出判斷 )</p>
 <h3 id="ex1."><span class="math inline">\(Ex1.\)</span></h3>
@@ -613,34 +613,34 @@ or
 <h2 id="定義-1">定義</h2>
 <p>首先，我們可以先從簡單的看討當目前的結果最多只有兩種情況，如拋硬幣，最多只有正面或是反面，下圖<span class="math inline">\(x\)</span>軸<span class="math inline">\(P_\oplus\)</span>代表擲出正面的機率函數，而<span class="math inline">\(y\)</span>軸則是對應的熵值，而<span class="math inline">\(P_\ominus\)</span>的機率軸則是會隨著<span class="math inline">\(P_\oplus\)</span>下降而上升( 兩者互補 )，但是對應到的熵值會一樣大。</p>
 <figure>
-<img src="\willywangkaa\images\decisiontreelearning_entropygraph.png" alt="decisiontreelearning_entropygraph"><figcaption aria-hidden="true">decisiontreelearning_entropygraph</figcaption>
+<img src="\willywangkaa\images\decisiontreelearning_entropygraph.png" alt="decisiontreelearning_entropygraph" /><figcaption aria-hidden="true">decisiontreelearning_entropygraph</figcaption>
 </figure>
 <p><span class="math inline">\(S\)</span> is a sample of training examples( 隨機變量 ). 當今天的結果只有正與反 ( 與硬幣一樣 )時，觀察目前的<strong>隨機變量</strong> - 我們令： - <span class="math inline">\(P_\oplus\)</span> ( 就目前隨機變數產生的機率 ) is the portion of the positive examples ( 正面 ) in <span class="math inline">\(S\)</span>. - <span class="math inline">\(P_\ominus\)</span> ( 就目前隨機變數產生的機率 ) is the portion of the negative examples ( 反面 ) in <span class="math inline">\(S\)</span>. Entropy ( 熵 ) measures the impurity ( 亂度 ) of <span class="math inline">\(S\)</span>.</p>
-<p>我們先定義熵值 ( Entropy ) 如下： <span class="math display">\[ Entropy( S ) = E( I( S ) ) = E(- \ln ( P ( S ) ) ) \]</span> 其中，<span class="math inline">\(E\)</span>為<strong>期望函數</strong>，<span class="math inline">\(I( S )\)</span>是 <span class="math inline">\(S\)</span> 的<strong>資訊量</strong>（又稱為<a href="https://zh.wikipedia.org/wiki/%E8%87%AA%E4%BF%A1%E6%81%AF" target="_blank" rel="noopener">資訊本體</a>），<span class="math inline">\(I( S )\)</span>也是一個<strong>隨機變數</strong>。 所以在取硬幣的樣本( <span class="math inline">\(S\)</span> )完後，我們可以將熵值寫成：</p>
+<p>我們先定義熵值 ( Entropy ) 如下： <span class="math display">\[ Entropy( S ) = E( I( S ) ) = E(- \ln ( P ( S ) ) ) \]</span> 其中，<span class="math inline">\(E\)</span>為<strong>期望函數</strong>，<span class="math inline">\(I( S )\)</span>是 <span class="math inline">\(S\)</span> 的<strong>資訊量</strong>（又稱為<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%87%AA%E4%BF%A1%E6%81%AF">資訊本體</a>），<span class="math inline">\(I( S )\)</span>也是一個<strong>隨機變數</strong>。 所以在取硬幣的樣本( <span class="math inline">\(S\)</span> )完後，我們可以將熵值寫成：</p>
 <p><span class="math display">\[ Entropy( S ) = \sum_{i = 1}^{2} P(S_i)I(S_i)\]</span></p>
 <p><span class="math display">\[ \Rightarrow -\sum_{i = 1}^{2} P(S_i)\log_{2} P(S_i) \]</span></p>
 <p><span class="math display">\[ \Rightarrow  -P_{\oplus}\log_2 P_{\oplus} - P_{\ominus}\log_2 P_{\ominus}\]</span></p>
 <p><strong>＜Note＞</strong> <span class="math display">\[\sum_{i = 1}^N P_i = 1 \; and \;  0 \leq P_i \leq 1 \]</span></p>
 <h3 id="推廣至一般式"><strong>推廣至一般式</strong></h3>
 <figure>
-<img src="\willywangkaa\images\decisiontreelearning_generalentropygraph.png" alt="decisiontreelearning_generalentropygraph"><figcaption aria-hidden="true">decisiontreelearning_generalentropygraph</figcaption>
+<img src="\willywangkaa\images\decisiontreelearning_generalentropygraph.png" alt="decisiontreelearning_generalentropygraph" /><figcaption aria-hidden="true">decisiontreelearning_generalentropygraph</figcaption>
 </figure>
 <p>當取自有限的樣本時，熵的公式可以表示為： <span class="math display">\[H(X) = \sum _{i} P(x_i) \, I(x_i)=-\sum_i P(x_i)\log _b P(x_i)\]</span></p>
 <p>在這裏 <span class="math inline">\(b\)</span> 通常是<span class="math inline">\(2\)</span>,自然常數 <span class="math inline">\(e\)</span>，或是<span class="math inline">\(10\)</span>。當<span class="math inline">\(b = 2\)</span>，熵的單位是<span class="math inline">\(bit\)</span>；當<span class="math inline">\(b = e\)</span>，熵的單位是<span class="math inline">\(nat\)</span>；而當<span class="math inline">\(b = 10\)</span>,熵的單位是<span class="math inline">\(Hart\)</span>。</p>
 <p><strong>＜Note＞</strong> 定義當<span class="math inline">\(P_i = 0\)</span>時，對於一些 <span class="math inline">\(i\)</span> 值，對應的被加數 <span class="math inline">\(0 \log_b 0\)</span> 的值將會是 <span class="math inline">\(0\)</span>，這與極限一致。 <span class="math display">\[ \Rightarrow \lim_{p\to0+} ( p\log p ) = 0 \]</span></p>
 <h1 id="cart-classification-and-regression-tree">CART (Classification and Regression Tree)</h1>
-<hr>
-<p>見 <a href="http://mropengate.blogspot.tw/2015/06/ai-ch13-2-decision-tree.html" target="_blank" rel="noopener">Mr' opengate - AI - Ch14 機器學習(2), 決策樹 Decision Tree</a></p>
+<hr />
+<p>見 <a target="_blank" rel="noopener" href="http://mropengate.blogspot.tw/2015/06/ai-ch13-2-decision-tree.html">Mr' opengate - AI - Ch14 機器學習(2), 決策樹 Decision Tree</a></p>
 <h1 id="決策樹學習的常見問題">決策樹學習的常見問題</h1>
-<hr>
+<hr />
 <h2 id="避免過度適配資料-prevent-overfitting">避免過度適配資料( Prevent Overfitting )</h2>
-<p>首先，相較於很冗長的樹，在機器學習中其實比較偏向於比較矮的樹，然而，為何？我們可以由<a href="https://zh.wikipedia.org/wiki/%E5%A5%A5%E5%8D%A1%E5%A7%86%E5%89%83%E5%88%80" target="_blank" rel="noopener">Occam’s Razor ( 奧坎剃刀 )</a>得知，若有兩個假說同時都能解釋該現象，我們偏向於比較沒那麼嚴個的假說( 可以表達比較廣的概念 )。<br>過度配適是指模型對於範例的過度訓練，導致模型記住的不是訓練資料的一般特性，反而是訓練資料的局部特性。對測試樣本的分類將會變得很不精確。</p>
+<p>首先，相較於很冗長的樹，在機器學習中其實比較偏向於比較矮的樹，然而，為何？我們可以由<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%A5%A5%E5%8D%A1%E5%A7%86%E5%89%83%E5%88%80">Occam’s Razor ( 奧坎剃刀 )</a>得知，若有兩個假說同時都能解釋該現象，我們偏向於比較沒那麼嚴個的假說( 可以表達比較廣的概念 )。<br>過度配適是指模型對於範例的過度訓練，導致模型記住的不是訓練資料的一般特性，反而是訓練資料的局部特性。對測試樣本的分類將會變得很不精確。</p>
 <p><strong>＜注意＞</strong>通常過度適配發生在訓練範例含有雜訊和離異值時，但當訓練數據沒有雜訊時，過度適配也有可能發生，特別是當訓練範例的數量太少，使得某一些屬性「恰巧」可以很好地分割目前的訓練範例，但卻與實際的狀況並無太多關係。</p>
 <figure>
-<img src="\willywangkaa\images\decisiontreelearning_overfitting1.png" alt="decisiontreelearning_overfitting1"><figcaption aria-hidden="true">decisiontreelearning_overfitting1</figcaption>
+<img src="\willywangkaa\images\decisiontreelearning_overfitting1.png" alt="decisiontreelearning_overfitting1" /><figcaption aria-hidden="true">decisiontreelearning_overfitting1</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\decisiontreelearning_overfitting2.png" alt="decisiontreelearning_overfitting2"><figcaption aria-hidden="true">decisiontreelearning_overfitting2</figcaption>
+<img src="\willywangkaa\images\decisiontreelearning_overfitting2.png" alt="decisiontreelearning_overfitting2" /><figcaption aria-hidden="true">decisiontreelearning_overfitting2</figcaption>
 </figure>
 <h2 id="解決方案修剪決策樹移除不可信賴的分支">解決方案：修剪決策樹移除不可信賴的分支</h2>
 <ul>
@@ -650,7 +650,7 @@ or
 <li>子樹提升 (Subtree Raising)：</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\decisiontreelearning_subtreeraising.png" alt="decisiontreelearning_subtreeraising"><figcaption aria-hidden="true">decisiontreelearning_subtreeraising</figcaption>
+<img src="\willywangkaa\images\decisiontreelearning_subtreeraising.png" alt="decisiontreelearning_subtreeraising" /><figcaption aria-hidden="true">decisiontreelearning_subtreeraising</figcaption>
 </figure>
 <h2 id="合併連續值屬性">合併連續值屬性</h2>
 <p>透過動態地定義新的離散值屬性來實現，即先把連續值屬性的值域分割為離散的區間集合，或設定門檻值以進行二分法。</p>
@@ -662,7 +662,7 @@ or
 </ul>
 <p><strong>＜尚有其他的度量標準，也都各有利弊＞</strong></p>
 <h1 id="例題">例題</h1>
-<hr>
+<hr />
 <ul>
 <li>A data set has 4 Boolean variables. What is the maximum number of leaves in a decision tree? <span class="math inline">\(2^4\)</span></li>
 <li>To each leaf in the decision, the number of corresponding rule is <strong>1</strong></li>
@@ -671,7 +671,7 @@ or
 <li>A decision tree can describe any Boolean function? <strong>Yes</strong></li>
 </ul>
 <h1 id="補充">補充</h1>
-<hr>
+<hr />
 <ul>
 <li>C4.5 演算法
 <ul>
@@ -694,10 +694,10 @@ or
 </ul></li>
 </ul>
 <h1 id="參考">參考</h1>
-<hr>
-<p><a href="http://mropengate.blogspot.tw/2015/06/ai-ch13-2-decision-tree.html" target="_blank" rel="noopener">Mr' opengate - AI - Ch14 機器學習(2), 決策樹 Decision Tree</a></p>
-<p><a href="https://zh.wikipedia.org/wiki/%E7%86%B5_%E4%BF%A1%E6%81%AF%E8%AE%BA" target="_blank" rel="noopener">Wiki - 熵 - 資訊理論</a></p>
-<p><a href="https://zh.wikipedia.org/wiki/%E5%A5%A5%E5%8D%A1%E5%A7%86%E5%89%83%E5%88%80" target="_blank" rel="noopener">奧坎剃刀</a></p>
+<hr />
+<p><a target="_blank" rel="noopener" href="http://mropengate.blogspot.tw/2015/06/ai-ch13-2-decision-tree.html">Mr' opengate - AI - Ch14 機器學習(2), 決策樹 Decision Tree</a></p>
+<p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%86%B5_%E4%BF%A1%E6%81%AF%E8%AE%BA">Wiki - 熵 - 資訊理論</a></p>
+<p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%A5%A5%E5%8D%A1%E5%A7%86%E5%89%83%E5%88%80">奧坎剃刀</a></p>
 
       
     </div>

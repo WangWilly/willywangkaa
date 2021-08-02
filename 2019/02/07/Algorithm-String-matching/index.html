@@ -468,7 +468,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1549517694185.png" alt="1549517694185"><figcaption aria-hidden="true">1549517694185</figcaption>
+<img src="\willywangkaa\images\1549517694185.png" alt="1549517694185" /><figcaption aria-hidden="true">1549517694185</figcaption>
 </figure>
 <table>
 <thead>
@@ -509,21 +509,21 @@
 </ol>
 <p>Example</p>
 <figure>
-<img src="\willywangkaa\images\1549518031466.png" alt="1549518031466"><figcaption aria-hidden="true">1549518031466</figcaption>
+<img src="\willywangkaa\images\1549518031466.png" alt="1549518031466" /><figcaption aria-hidden="true">1549518031466</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1549518053082.png" alt="1549518053082"><figcaption aria-hidden="true">1549518053082</figcaption>
+<img src="\willywangkaa\images\1549518053082.png" alt="1549518053082" /><figcaption aria-hidden="true">1549518053082</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1549518063746.png" alt="1549518063746"><figcaption aria-hidden="true">1549518063746</figcaption>
+<img src="\willywangkaa\images\1549518063746.png" alt="1549518063746" /><figcaption aria-hidden="true">1549518063746</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1549518076863.png" alt="1549518076863"><figcaption aria-hidden="true">1549518076863</figcaption>
+<img src="\willywangkaa\images\1549518076863.png" alt="1549518076863" /><figcaption aria-hidden="true">1549518076863</figcaption>
 </figure>
 <ul>
 <li>Algorithm</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Nativestrinmatcher</span><span class="params">(<span class="built_in">string</span> T,<span class="built_in">string</span> P)</span> </span>&#123;</span><br><span class="line">    n = T.length();</span><br><span class="line">    m = P.length();</span><br><span class="line">    <span class="keyword">for</span> s = <span class="number">0</span> to n-m &#123;</span><br><span class="line">        <span class="keyword">if</span>(P[<span class="number">1.</span>.m] == T[s+<span class="number">1.</span>.s+m])</span><br><span class="line">            print(<span class="string">"Pattern occurs with shift"</span>+ s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Nativestrinmatcher</span><span class="params">(string T,string P)</span> </span>&#123;</span><br><span class="line">    n = T.<span class="built_in">length</span>();</span><br><span class="line">    m = P.<span class="built_in">length</span>();</span><br><span class="line">    <span class="keyword">for</span> s = <span class="number">0</span> to n-m &#123;</span><br><span class="line">        <span class="keyword">if</span>(P[<span class="number">1.</span>.m] == T[s+<span class="number">1.</span>.s+m])</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;Pattern occurs with shift&quot;</span>+ s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>時間複雜度
 <ul>
@@ -606,12 +606,12 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1549521217587.png" alt="1549521217587"><figcaption aria-hidden="true">1549521217587</figcaption>
+<img src="\willywangkaa\images\1549521217587.png" alt="1549521217587" /><figcaption aria-hidden="true">1549521217587</figcaption>
 </figure>
 <ul>
 <li>Algorithm</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Rabinkarpmatcher</span> <span class="params">(T,P,d,q)</span> </span>&#123;</span><br><span class="line">    n = T.length();</span><br><span class="line">    m = T.length();</span><br><span class="line">    h = <span class="built_in">pow</span>(d,m<span class="number">-1</span>) % q;</span><br><span class="line">    t[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    p = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Preprocessing</span></span><br><span class="line">    <span class="keyword">for</span> i = <span class="number">1</span> to m &#123;</span><br><span class="line">        p = (d*p + P[i]) % q;</span><br><span class="line">        t[<span class="number">0</span>] = (d*t_0 + T[i]) % q;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Matching</span></span><br><span class="line">    <span class="keyword">for</span> s = <span class="number">0</span> to n-m &#123;</span><br><span class="line">        <span class="keyword">if</span>(p == t[s])&#123;</span><br><span class="line">            <span class="keyword">if</span>(P[<span class="number">1.</span>.m] == T[s+<span class="number">1.</span>.s+m])&#123;</span><br><span class="line">                print(<span class="string">"Pattern occurs with shift"</span>+ s);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// Next substring</span></span><br><span class="line">        <span class="keyword">if</span>(s &lt; n-m)&#123;</span><br><span class="line">            t[s+<span class="number">1</span>] = (d*(t[s]-T[s+<span class="number">1</span>]*h)+T[s+m+<span class="number">1</span>]) % q;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Rabinkarpmatcher</span> <span class="params">(T,P,d,q)</span> </span>&#123;</span><br><span class="line">    n = T.<span class="built_in">length</span>();</span><br><span class="line">    m = T.<span class="built_in">length</span>();</span><br><span class="line">    h = <span class="built_in">pow</span>(d,m<span class="number">-1</span>) % q;</span><br><span class="line">    t[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    p = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Preprocessing</span></span><br><span class="line">    <span class="keyword">for</span> i = <span class="number">1</span> to m &#123;</span><br><span class="line">        p = (d*p + P[i]) % q;</span><br><span class="line">        t[<span class="number">0</span>] = (d*t_0 + T[i]) % q;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Matching</span></span><br><span class="line">    <span class="keyword">for</span> s = <span class="number">0</span> to n-m &#123;</span><br><span class="line">        <span class="keyword">if</span>(p == t[s])&#123;</span><br><span class="line">            <span class="keyword">if</span>(P[<span class="number">1.</span>.m] == T[s+<span class="number">1.</span>.s+m])&#123;</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;Pattern occurs with shift&quot;</span>+ s);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// Next substring</span></span><br><span class="line">        <span class="keyword">if</span>(s &lt; n-m)&#123;</span><br><span class="line">            t[s+<span class="number">1</span>] = (d*(t[s]-T[s+<span class="number">1</span>]*h)+T[s+m+<span class="number">1</span>]) % q;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>時間複雜度
 <ul>
@@ -649,15 +649,15 @@
 </ul>
 <p>（從左往右一一比對字元，一旦發現字元不同，將 P 往右挪動一位）</p>
 <figure>
-<img src="\willywangkaa\images\1549522985570.png" alt="1549522985570"><figcaption aria-hidden="true">1549522985570</figcaption>
+<img src="\willywangkaa\images\1549522985570.png" alt="1549522985570" /><figcaption aria-hidden="true">1549522985570</figcaption>
 </figure>
 <p>（在往右挪動 P 之前，當下比對成功的字串片段「abzab」可以加以利用）</p>
 <figure>
-<img src="\willywangkaa\images\1549523718157.png" alt="1549523718157"><figcaption aria-hidden="true">1549523718157</figcaption>
+<img src="\willywangkaa\images\1549523718157.png" alt="1549523718157" /><figcaption aria-hidden="true">1549523718157</figcaption>
 </figure>
 <p>（繼續往右挪動 P，挪動一個位置、挪動兩個位置、…）</p>
 <figure>
-<img src="\willywangkaa\images\1549523787809.png" alt="1549523787809"><figcaption aria-hidden="true">1549523787809</figcaption>
+<img src="\willywangkaa\images\1549523787809.png" alt="1549523787809" /><figcaption aria-hidden="true">1549523787809</figcaption>
 </figure>
 <p>觀察上述行為</p>
 <ul>
@@ -679,11 +679,11 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1549524105095.png" alt="1549524105095"><figcaption aria-hidden="true">1549524105095</figcaption>
+<img src="\willywangkaa\images\1549524105095.png" alt="1549524105095" /><figcaption aria-hidden="true">1549524105095</figcaption>
 </figure>
 <p><strong>「相同前綴後綴」</strong>（Prefix-suffix）</p>
 <figure>
-<img src="\willywangkaa\images\1549524327132.png" alt="1549524327132"><figcaption aria-hidden="true">1549524327132</figcaption>
+<img src="\willywangkaa\images\1549524327132.png" alt="1549524327132" /><figcaption aria-hidden="true">1549524327132</figcaption>
 </figure>
 <p><strong>「次長相同前綴後綴」</strong></p>
 <ul>
@@ -692,7 +692,7 @@
 <li>「次長相同前綴後綴」就是第二長的「相同前綴後綴」</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1549524493648.png" alt="1549524493648"><figcaption aria-hidden="true">1549524493648</figcaption>
+<img src="\willywangkaa\images\1549524493648.png" alt="1549524493648" /><figcaption aria-hidden="true">1549524493648</figcaption>
 </figure>
 <p>窮舉法的過程當中，<strong>當前比對成功的字串片段是 P 的前綴</strong></p>
 <ul>
@@ -728,7 +728,7 @@
 <ul>
 <li>Algorithm</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// pattern[0..m]</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GetFailureFunction</span><span class="params">(<span class="built_in">string</span> pattern)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> k = <span class="number">1</span> to pattern.size &#123;</span><br><span class="line">        i = failure[k<span class="number">-1</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>( pattern[k] != pattern[i+<span class="number">1</span>]   <span class="comment">// P[k] != P[ F[...F[k-1]]+1 ]</span></span><br><span class="line">              &amp;&amp; i&gt;=<span class="number">0</span> )&#123;                    <span class="comment">// P[ F[...F[k-1]] ] 仍存在『次長的相同前綴後綴』</span></span><br><span class="line">            i = failure[i];                 <span class="comment">// 以 F[...F[k-1]] 繼續尋找</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(pattern[k] == pattern[i+<span class="number">1</span>])&#123;     <span class="comment">// P[k] == P[ F[...F[k-1]]+1 ]</span></span><br><span class="line">            failure[k] = i+<span class="number">1</span>;               <span class="comment">// F[k] = F[...F[k-1]]+1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Morris_Pratt</span><span class="params">(<span class="built_in">string</span> T, <span class="built_in">string</span> P)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> P.size &gt; T.size</span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">    GetFailureFunction(P);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 進行字串搜尋，時間複雜度：O(T)</span></span><br><span class="line">    <span class="keyword">for</span> k = <span class="number">1</span> to T.size &#123;</span><br><span class="line">        s = <span class="number">-1</span>;                                      <span class="comment">// 目前 P 字元比對已成功的位置</span></span><br><span class="line">        <span class="comment">// 比對 P 的下一個尚未比對位置（s+1）</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 若 T[k] != P[s+1]，尋找大幅挪動的步伐數</span></span><br><span class="line">        <span class="comment">// 在 P 中找出 P[1..s] == T[k-s..k] 以大幅挪動 P</span></span><br><span class="line">        <span class="keyword">while</span> ( P[s+<span class="number">1</span>] != T[k]                       <span class="comment">// T[k] != P[ F[...F[k-1]]+1 ]</span></span><br><span class="line">              &amp;&amp; s &gt;= <span class="number">0</span> ) &#123;                          <span class="comment">// P[ F[...F[k-1]] ] 仍存在『次長的相同前綴後綴』</span></span><br><span class="line">            s = failure[s];                          <span class="comment">// 以 F[...F[k-1]] 繼續尋找</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// T[k] 與 P[s+1] 比對成功</span></span><br><span class="line">        <span class="keyword">if</span> (P[s+<span class="number">1</span>] == T[k]) &#123;                         </span><br><span class="line">            s++;                                     <span class="comment">// P 字元比對已成功的位置後移一位 </span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (s == P.size<span class="number">-1</span>) &#123;                        <span class="comment">// P 字元比對已成功的位置已移完</span></span><br><span class="line">            print( <span class="string">" P出現的位置"</span> + (s-P.size+<span class="number">1</span>) );</span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">            s = failure[s];                         <span class="comment">// 如果字串結尾不是'\0'的時候，就必須挪動 P</span></span><br><span class="line">                                                    <span class="comment">// 如果字串結尾是'\0'的時候，就能省略這一行</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// pattern[0..m]</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GetFailureFunction</span><span class="params">(string pattern)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> k = <span class="number">1</span> to pattern.size &#123;</span><br><span class="line">        i = failure[k<span class="number">-1</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>( pattern[k] != pattern[i+<span class="number">1</span>]   <span class="comment">// P[k] != P[ F[...F[k-1]]+1 ]</span></span><br><span class="line">              &amp;&amp; i&gt;=<span class="number">0</span> )&#123;                    <span class="comment">// P[ F[...F[k-1]] ] 仍存在『次長的相同前綴後綴』</span></span><br><span class="line">            i = failure[i];                 <span class="comment">// 以 F[...F[k-1]] 繼續尋找</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(pattern[k] == pattern[i+<span class="number">1</span>])&#123;     <span class="comment">// P[k] == P[ F[...F[k-1]]+1 ]</span></span><br><span class="line">            failure[k] = i+<span class="number">1</span>;               <span class="comment">// F[k] = F[...F[k-1]]+1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Morris_Pratt</span><span class="params">(string T, string P)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> P.size &gt; T.size</span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">    <span class="built_in">GetFailureFunction</span>(P);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 進行字串搜尋，時間複雜度：O(T)</span></span><br><span class="line">    <span class="keyword">for</span> k = <span class="number">1</span> to T.size &#123;</span><br><span class="line">        s = <span class="number">-1</span>;                                      <span class="comment">// 目前 P 字元比對已成功的位置</span></span><br><span class="line">        <span class="comment">// 比對 P 的下一個尚未比對位置（s+1）</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 若 T[k] != P[s+1]，尋找大幅挪動的步伐數</span></span><br><span class="line">        <span class="comment">// 在 P 中找出 P[1..s] == T[k-s..k] 以大幅挪動 P</span></span><br><span class="line">        <span class="keyword">while</span> ( P[s+<span class="number">1</span>] != T[k]                       <span class="comment">// T[k] != P[ F[...F[k-1]]+1 ]</span></span><br><span class="line">              &amp;&amp; s &gt;= <span class="number">0</span> ) &#123;                          <span class="comment">// P[ F[...F[k-1]] ] 仍存在『次長的相同前綴後綴』</span></span><br><span class="line">            s = failure[s];                          <span class="comment">// 以 F[...F[k-1]] 繼續尋找</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// T[k] 與 P[s+1] 比對成功</span></span><br><span class="line">        <span class="keyword">if</span> (P[s+<span class="number">1</span>] == T[k]) &#123;                         </span><br><span class="line">            s++;                                     <span class="comment">// P 字元比對已成功的位置後移一位 </span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (s == P.size<span class="number">-1</span>) &#123;                        <span class="comment">// P 字元比對已成功的位置已移完</span></span><br><span class="line">            <span class="built_in">print</span>( <span class="string">&quot; P出現的位置&quot;</span> + (s-P.size+<span class="number">1</span>) );</span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">            s = failure[s];                         <span class="comment">// 如果字串結尾不是&#x27;\0&#x27;的時候，就必須挪動 P</span></span><br><span class="line">                                                    <span class="comment">// 如果字串結尾是&#x27;\0&#x27;的時候，就能省略這一行</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="時間複雜度分析均攤分析">時間複雜度分析（均攤分析）</h3>
 <p>以「Multipop stack」概念作均攤分析，以<strong>字元兩兩比對總次數</strong>作為時間複雜度</p>
 <p>（1）進行字串搜尋的過程中</p>
@@ -774,10 +774,10 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1549524903137.png" alt="1549524903137"><figcaption aria-hidden="true">1549524903137</figcaption>
+<img src="\willywangkaa\images\1549524903137.png" alt="1549524903137" /><figcaption aria-hidden="true">1549524903137</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1549529928795.png" alt="1549529928795"><figcaption aria-hidden="true">1549529928795</figcaption>
+<img src="\willywangkaa\images\1549529928795.png" alt="1549529928795" /><figcaption aria-hidden="true">1549529928795</figcaption>
 </figure>
 <ul>
 <li>計算「Failure function」
@@ -798,7 +798,7 @@
 </ul>
 <p>（2）F[k]：<strong>探討 P[1...k-1] 與 P[k] 之間的關係</strong></p>
 <figure>
-<img src="\willywangkaa\images\1549530552160.png" alt="1549530552160"><figcaption aria-hidden="true">1549530552160</figcaption>
+<img src="\willywangkaa\images\1549530552160.png" alt="1549530552160" /><figcaption aria-hidden="true">1549530552160</figcaption>
 </figure>
 <ul>
 <li><strong>P[ F[k-1]+1 ] == P[k]</strong>
@@ -808,12 +808,12 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1549530722575.png" alt="1549530722575"><figcaption aria-hidden="true">1549530722575</figcaption>
+<img src="\willywangkaa\images\1549530722575.png" alt="1549530722575" /><figcaption aria-hidden="true">1549530722575</figcaption>
 </figure>
 <blockquote>
 <p><strong>對「P[1...k-1] 之『次長的相同前綴後綴』」作探討</strong></p>
 <figure>
-<img src="\willywangkaa\images\1549534207507.png" alt="1549534207507"><figcaption aria-hidden="true">1549534207507</figcaption>
+<img src="\willywangkaa\images\1549534207507.png" alt="1549534207507" /><figcaption aria-hidden="true">1549534207507</figcaption>
 </figure>
 </blockquote>
 <ul>
@@ -824,18 +824,18 @@
 </ul>
 <p><strong>若存在 P[ F...[F[k-1]]+1 ] == P[k]，則 F[k] = F...[F[k-1]]+1</strong></p>
 <figure>
-<img src="\willywangkaa\images\1549535284950.png" alt="1549535284950"><figcaption aria-hidden="true">1549535284950</figcaption>
+<img src="\willywangkaa\images\1549535284950.png" alt="1549535284950" /><figcaption aria-hidden="true">1549535284950</figcaption>
 </figure>
 <p><strong>若不存在 P[ F...[F[k-1]]+1 ] == P[k]，則 F[k] = -1</strong></p>
 <figure>
-<img src="\willywangkaa\images\1549535607960.png" alt="1549535607960"><figcaption aria-hidden="true">1549535607960</figcaption>
+<img src="\willywangkaa\images\1549535607960.png" alt="1549535607960" /><figcaption aria-hidden="true">1549535607960</figcaption>
 </figure>
 <p>上述可以表達為：</p>
 <ul>
 <li><p><span class="math inline">\(f[k]\left\{\begin{matrix} -1 &amp; if \;k = 0\\ f^m[k-1] +1 &amp; 最小的整數\; m\;使得\; P[f^m[k-1]+1] == P[k] \\ -1 &amp; 不存在整數\; m \;可以使得 P[f^m[k-1]+1] == P[k]\end{matrix}\right.\)</span></p></li>
 <li><p>Algorithm</p></li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// pattern[0..m]</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GetFailureFunction</span><span class="params">(<span class="built_in">string</span> pattern)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> k = <span class="number">1</span> to pattern.size &#123;</span><br><span class="line">        i = failure[k<span class="number">-1</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>((pattern[k]!=pattern[i+<span class="number">1</span>]) &amp;&amp; <span class="comment">// P[k] != P[ F[...F[k-1]]+1 ]</span></span><br><span class="line">              i&gt;=<span class="number">0</span>)&#123;                        <span class="comment">// P[ F[...F[k-1]] ] 仍存在『次長的相同前綴後綴』</span></span><br><span class="line">            i = failure[i];                 <span class="comment">// 以 F[...F[k-1]] 繼續尋找</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(pattern[k] == pattern[i+<span class="number">1</span>])&#123;     <span class="comment">// P[k] == P[ F[...F[k-1]]+1 ]</span></span><br><span class="line">            failure[k] = i+<span class="number">1</span>;               <span class="comment">// F[k] = F[...F[k-1]]+1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// pattern[0..m]</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GetFailureFunction</span><span class="params">(string pattern)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> k = <span class="number">1</span> to pattern.size &#123;</span><br><span class="line">        i = failure[k<span class="number">-1</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>((pattern[k]!=pattern[i+<span class="number">1</span>]) &amp;&amp; <span class="comment">// P[k] != P[ F[...F[k-1]]+1 ]</span></span><br><span class="line">              i&gt;=<span class="number">0</span>)&#123;                        <span class="comment">// P[ F[...F[k-1]] ] 仍存在『次長的相同前綴後綴』</span></span><br><span class="line">            i = failure[i];                 <span class="comment">// 以 F[...F[k-1]] 繼續尋找</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(pattern[k] == pattern[i+<span class="number">1</span>])&#123;     <span class="comment">// P[k] == P[ F[...F[k-1]]+1 ]</span></span><br><span class="line">            failure[k] = i+<span class="number">1</span>;               <span class="comment">// F[k] = F[...F[k-1]]+1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="morris-pratt-automaton">Morris-Pratt Automaton</h3>
 <p>此演算法可以化作自動機，轉化的時間複雜度為 O( ∣P∣×∣Σ∣ )</p>
 <ul>
@@ -846,7 +846,7 @@
 <p>轉化的原理，是針對每個狀態，都找出經由「Failure function」能到達的狀態們，然後建立轉移邊，連到那些狀態們的下一個狀態</p>
 </blockquote>
 <figure>
-<img src="\willywangkaa\images\1549541112414.png" alt="1549541112414"><figcaption aria-hidden="true">1549541112414</figcaption>
+<img src="\willywangkaa\images\1549541112414.png" alt="1549541112414" /><figcaption aria-hidden="true">1549541112414</figcaption>
 </figure>
 
       

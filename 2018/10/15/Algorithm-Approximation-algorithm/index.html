@@ -454,11 +454,11 @@
 </blockquote>
 <h1 id="approximation-algorithm-for-minimum-vertex-cover-problem">Approximation algorithm for minimum vertex cover problem</h1>
 <figure>
-<img src="\willywangkaa\images\vertexcoverproblem.png" alt="vertexcoverproblem"><figcaption aria-hidden="true">vertexcoverproblem</figcaption>
+<img src="\willywangkaa\images\vertexcoverproblem.png" alt="vertexcoverproblem" /><figcaption aria-hidden="true">vertexcoverproblem</figcaption>
 </figure>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Vertex cover algorithm</span></span><br><span class="line"><span class="comment">// input G</span></span><br><span class="line"><span class="function"><span class="built_in">set</span> <span class="title">vertex_cover_approximation</span><span class="params">(Graph G)</span> </span>&#123;</span><br><span class="line">    c  = ∅;                            <span class="comment">// 建立一空集合用來儲存「Vertex cover」</span></span><br><span class="line">    E′ = G.E;</span><br><span class="line">    <span class="keyword">while</span>(E′ ≠ ∅) &#123;</span><br><span class="line">        (u, v) = get_element(E′);      <span class="comment">// 從 E′ 集合中取任意一邊</span></span><br><span class="line">        c      = c ∪ &#123;u,v&#125;;</span><br><span class="line">        E′     = differ(E′,u,v);       <span class="comment">// 將 E′ 所有含有頂點 u、v 的邊去除</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Vertex cover algorithm</span></span><br><span class="line"><span class="comment">// input G</span></span><br><span class="line"><span class="function">set <span class="title">vertex_cover_approximation</span><span class="params">(Graph G)</span> </span>&#123;</span><br><span class="line">    c  = ∅;                            <span class="comment">// 建立一空集合用來儲存「Vertex cover」</span></span><br><span class="line">    E′ = G.E;</span><br><span class="line">    <span class="keyword">while</span>(E′ ≠ ∅) &#123;</span><br><span class="line">        (u, v) = <span class="built_in">get_element</span>(E′);      <span class="comment">// 從 E′ 集合中取任意一邊</span></span><br><span class="line">        c      = c ∪ &#123;u,v&#125;;</span><br><span class="line">        E′     = <span class="built_in">differ</span>(E′,u,v);       <span class="comment">// 將 E′ 所有含有頂點 u、v 的邊去除</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure>
-<img src="\willywangkaa\images\vertexcoverapproxi.png" alt="vertexcoverapproxi"><figcaption aria-hidden="true">vertexcoverapproxi</figcaption>
+<img src="\willywangkaa\images\vertexcoverapproxi.png" alt="vertexcoverapproxi" /><figcaption aria-hidden="true">vertexcoverapproxi</figcaption>
 </figure>
 <ul>
 <li><strong>Time complexity</strong>
@@ -504,7 +504,7 @@
 </ul>
 </blockquote>
 <figure>
-<img src="\willywangkaa\images\EDTSP.png" alt="EDTSP"><figcaption aria-hidden="true">EDTSP</figcaption>
+<img src="\willywangkaa\images\EDTSP.png" alt="EDTSP" /><figcaption aria-hidden="true">EDTSP</figcaption>
 </figure>
 <p>步驟</p>
 <ol type="1">
@@ -557,7 +557,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\EDTSPapproxi.png" alt="EDTSPapproxi"><figcaption aria-hidden="true">EDTSPapproxi</figcaption>
+<img src="\willywangkaa\images\EDTSPapproxi.png" alt="EDTSPapproxi" /><figcaption aria-hidden="true">EDTSPapproxi</figcaption>
 </figure>
 <ul>
 <li><strong>Approximation ratio </strong>（100 中央資工）
@@ -614,10 +614,10 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\triangleinequality.png" alt="triangleinequality"><figcaption aria-hidden="true">triangleinequality</figcaption>
+<img src="\willywangkaa\images\triangleinequality.png" alt="triangleinequality" /><figcaption aria-hidden="true">triangleinequality</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\EDTSP_optimalsol.png" alt="EDTSP_optimalsol"><figcaption aria-hidden="true">EDTSP_optimalsol</figcaption>
+<img src="\willywangkaa\images\EDTSP_optimalsol.png" alt="EDTSP_optimalsol" /><figcaption aria-hidden="true">EDTSP_optimalsol</figcaption>
 </figure>
 
       
