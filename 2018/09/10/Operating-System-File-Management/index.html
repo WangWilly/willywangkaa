@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/willywangkaa/',
+    root: '',
     scheme: 'Pisces',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -103,21 +103,21 @@
   <meta name="keywords" content="File Management," />
 
 
-<meta name="description" content="File management File open、File close 作業系統對檔案進行任何運作之前，皆必須到磁碟的「Physical directory」找出檔案的配置資訊。  問題  因為檔案數目太龐大，所以搜尋的時間長 磁碟 I/O time(次數)很多，非常耗時   File open 當檔案第一次被使用時，作業系統必須到磁碟的「Physical director">
-<meta name="keywords" content="File Management">
+<meta name="description" content="File management File open、File close 作業系統對檔案進行任何運作之前，皆必須到磁碟的「Physical directory」找出檔案的配置資訊。  問題  因為檔案數目太龐大，所以搜尋的時間長 磁碟 I&#x2F;O time(次數)很多，非常耗時   File open 當檔案第一次被使用時，作業系統必須到磁碟的「Physical directory」找出檔案的配置資訊">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Operating System - File Management">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/09/10/Operating-System-File-Management/index.html">
+<meta property="og:url" content="http://wangwilly.github.io/willywangkaa/2018/09/10/Operating-System-File-Management/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="File management File open、File close 作業系統對檔案進行任何運作之前，皆必須到磁碟的「Physical directory」找出檔案的配置資訊。  問題  因為檔案數目太龐大，所以搜尋的時間長 磁碟 I/O time(次數)很多，非常耗時   File open 當檔案第一次被使用時，作業系統必須到磁碟的「Physical director">
-<meta property="og:locale" content="zh-tw">
+<meta property="og:description" content="File management File open、File close 作業系統對檔案進行任何運作之前，皆必須到磁碟的「Physical directory」找出檔案的配置資訊。  問題  因為檔案數目太龐大，所以搜尋的時間長 磁碟 I&#x2F;O time(次數)很多，非常耗時   File open 當檔案第一次被使用時，作業系統必須到磁碟的「Physical directory」找出檔案的配置資訊">
+<meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/fileopen.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/openfiletable.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/accessgroup.png">
-<meta property="og:updated_time" content="2018-09-10T10:17:09.168Z">
+<meta property="article:published_time" content="2018-09-10T10:14:00.000Z">
+<meta property="article:modified_time" content="2018-09-10T10:17:09.168Z">
+<meta property="article:author" content="Wang Yu Li">
+<meta property="article:tag" content="File Management">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Operating System - File Management">
-<meta name="twitter:description" content="File management File open、File close 作業系統對檔案進行任何運作之前，皆必須到磁碟的「Physical directory」找出檔案的配置資訊。  問題  因為檔案數目太龐大，所以搜尋的時間長 磁碟 I/O time(次數)很多，非常耗時   File open 當檔案第一次被使用時，作業系統必須到磁碟的「Physical director">
 <meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/fileopen.png">
 
 
@@ -170,9 +170,11 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
@@ -197,7 +199,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Live more like human</p>
+        <p class="site-subtitle">The higher up, the greater the fall.</p>
       
   </div>
 
@@ -218,25 +220,25 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/willywangkaa/" rel="section">
+          <a href="/willywangkaa/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/willywangkaa/archives/" rel="section">
+          <a href="/willywangkaa/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/willywangkaa/categories/" rel="section">
+          <a href="/willywangkaa/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/willywangkaa/tags/" rel="section">
+          <a href="/willywangkaa/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
@@ -317,7 +319,7 @@
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/09/10/Operating-System-File-Management/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -438,7 +440,7 @@
 <h3 id="file-open">File open</h3>
 <p>當檔案第一次被使用時，作業系統必須到磁碟的「Physical directory」找出檔案的配置資訊，<strong>接著將此資訊複製到作業系統的記憶體空間之中的一個表格稱為「Open file table」。</strong>將來對這個檔案進行任何操作之前，<strong>作業系統只需要到此表格搜尋取得檔案的配置資訊即可。</strong>由於「Open file table」中的檔案很少 ( E.g., 20 個)，<strong>搜尋的時間可以大幅降低，</strong>此表格位於<strong>記憶體中，所以可以節省可觀的 I/O time (次數)。</strong></p>
 <figure>
-<img src="\willywangkaa\images\fileopen.png" alt="fileopen"><figcaption>fileopen</figcaption>
+<img src="\willywangkaa\images\fileopen.png" alt="fileopen"><figcaption aria-hidden="true">fileopen</figcaption>
 </figure>
 <ul>
 <li>因為檔案可以被多個 Process 共用，「Open file table 」分為：
@@ -459,7 +461,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\openfiletable.png" alt="openfiletable"><figcaption>openfiletable</figcaption>
+<img src="\willywangkaa\images\openfiletable.png" alt="openfiletable"><figcaption aria-hidden="true">openfiletable</figcaption>
 </figure>
 <h3 id="file-close">File close</h3>
 <p>當檔案不再使用時，<strong>作業系統會將「Open file table」中此檔案的配置資訊更新回磁碟的「Physical directory」，且自表格中刪除此檔案的配置資訊。</strong></p>
@@ -517,7 +519,7 @@
 </ul>
 <h4 id="access-group">Access group</h4>
 <figure>
-<img src="\willywangkaa\images\accessgroup.png" alt="accessgroup"><figcaption>accessgroup</figcaption>
+<img src="\willywangkaa\images\accessgroup.png" alt="accessgroup"><figcaption aria-hidden="true">accessgroup</figcaption>
 </figure>
 <ul>
 <li><strong>User</strong>
@@ -580,7 +582,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/willywangkaa/2018/09/11/Discrete Mathematics-Principle-of-inclusion-and-exclusion/" rel="prev" title="Discrete Mathematics - Principle of inclusion and exclusion（排容原理）">
+              <a href="/willywangkaa/2018/09/11/Discrete%20Mathematics-Principle-of-inclusion-and-exclusion/" rel="prev" title="Discrete Mathematics - Principle of inclusion and exclusion（排容原理）">
                 Discrete Mathematics - Principle of inclusion and exclusion（排容原理） <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -613,7 +615,7 @@
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -657,10 +659,10 @@
             
               <img class="site-author-image" itemprop="image"
                 src="/willywangkaa/images/avatar_me.gif"
-                alt="Willy Wang (willywangkaa)" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
-              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -668,7 +670,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/willywangkaa/archives/">
+                  <a href="/willywangkaa/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">posts</span>
@@ -715,8 +717,6 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -932,7 +932,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#file-management"><span class="nav-number">1.</span> <span class="nav-text">File management</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#file-openfile-close"><span class="nav-number">1.1.</span> <span class="nav-text">File open、File close</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#file-open"><span class="nav-number">1.1.1.</span> <span class="nav-text">File open</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#file-close"><span class="nav-number">1.1.2.</span> <span class="nav-text">File close</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#consistency-semantic---一致性語意"><span class="nav-number">1.2.</span> <span class="nav-text">Consistency semantic - 一致性語意</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#unix-semantic"><span class="nav-number">1.2.1.</span> <span class="nav-text">UNIX semantic</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#session-semantic"><span class="nav-number">1.2.2.</span> <span class="nav-text">Session semantic</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#immutable-不可改變-semantic"><span class="nav-number">1.2.3.</span> <span class="nav-text">Immutable (不可改變) semantic</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#file-protection"><span class="nav-number">1.3.</span> <span class="nav-text">File protection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#physical-protection"><span class="nav-number">1.3.1.</span> <span class="nav-text">Physical protection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#logical-protection"><span class="nav-number">1.3.2.</span> <span class="nav-text">Logical protection</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#access-group"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">Access group</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#file-management"><span class="nav-number">1.</span> <span class="nav-text">File management</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#file-openfile-close"><span class="nav-number">1.1.</span> <span class="nav-text">File open、File close</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#file-open"><span class="nav-number">1.1.1.</span> <span class="nav-text">File open</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#file-close"><span class="nav-number">1.1.2.</span> <span class="nav-text">File close</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#consistency-semantic---%E4%B8%80%E8%87%B4%E6%80%A7%E8%AA%9E%E6%84%8F"><span class="nav-number">1.2.</span> <span class="nav-text">Consistency semantic - 一致性語意</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#unix-semantic"><span class="nav-number">1.2.1.</span> <span class="nav-text">UNIX semantic</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#session-semantic"><span class="nav-number">1.2.2.</span> <span class="nav-text">Session semantic</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#immutable-%E4%B8%8D%E5%8F%AF%E6%94%B9%E8%AE%8A-semantic"><span class="nav-number">1.2.3.</span> <span class="nav-text">Immutable (不可改變) semantic</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#file-protection"><span class="nav-number">1.3.</span> <span class="nav-text">File protection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#physical-protection"><span class="nav-number">1.3.1.</span> <span class="nav-text">Physical protection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#logical-protection"><span class="nav-number">1.3.2.</span> <span class="nav-text">Logical protection</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#access-group"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">Access group</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -952,11 +952,11 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+  <span class="author" itemprop="copyrightHolder">Wang Yu Li</span>
 
   
 
@@ -1100,7 +1100,7 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/09/10/Operating-System-File-Management/';
+        this.page.url = 'http://wangwilly.github.io/willywangkaa/2018/09/10/Operating-System-File-Management/';
         this.page.identifier = '2018/09/10/Operating-System-File-Management/';
         this.page.title = 'Operating System - File Management';
       };
@@ -1535,24 +1535,7 @@
   
     bookmark.scrollToMark('auto', "#more");
   
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>

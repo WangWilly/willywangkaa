@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/willywangkaa/',
+    root: '',
     scheme: 'Pisces',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -103,13 +103,13 @@
   <meta name="keywords" content="Hexo, NexT" />
 
 
-<meta name="description" content="System Call  It’s a programming interface to the services provides by the OS.  定義：幫助執行中的 user process 與 kernel 之間溝通，當 user peocess 需要OS提供某種服務時，會先以 Trap 通知 OS (由 User mode 轉為 Kernel mode) 並傳入System">
+<meta name="description" content="System Call  It&#39;s a programming interface to the services provides by the OS.  定義：幫助執行中的 user process 與 kernel 之間溝通，當 user peocess 需要OS提供某種服務時，會先以 Trap 通知 OS (由 User mode 轉為 Kernel mode) 並傳入System cal">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Operating System - Basic Concept 3">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/07/10/Operating-System-Basic-Concept-3/index.html">
+<meta property="og:url" content="http://wangwilly.github.io/willywangkaa/2018/07/10/Operating-System-Basic-Concept-3/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="System Call  It’s a programming interface to the services provides by the OS.  定義：幫助執行中的 user process 與 kernel 之間溝通，當 user peocess 需要OS提供某種服務時，會先以 Trap 通知 OS (由 User mode 轉為 Kernel mode) 並傳入System">
-<meta property="og:locale" content="zh-tw">
+<meta property="og:description" content="System Call  It&#39;s a programming interface to the services provides by the OS.  定義：幫助執行中的 user process 與 kernel 之間溝通，當 user peocess 需要OS提供某種服務時，會先以 Trap 通知 OS (由 User mode 轉為 Kernel mode) 並傳入System cal">
+<meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1526605131439.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1526608163203.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1526609224214.png">
@@ -121,10 +121,10 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1526615255622.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1526615230230.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1526804733939.png">
-<meta property="og:updated_time" content="2019-01-27T08:35:53.602Z">
+<meta property="article:published_time" content="2018-07-10T13:44:00.000Z">
+<meta property="article:modified_time" content="2019-01-27T08:35:53.602Z">
+<meta property="article:author" content="Wang Yu Li">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Operating System - Basic Concept 3">
-<meta name="twitter:description" content="System Call  It’s a programming interface to the services provides by the OS.  定義：幫助執行中的 user process 與 kernel 之間溝通，當 user peocess 需要OS提供某種服務時，會先以 Trap 通知 OS (由 User mode 轉為 Kernel mode) 並傳入System">
 <meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/1526605131439.png">
 
 
@@ -177,9 +177,11 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
@@ -204,7 +206,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Live more like human</p>
+        <p class="site-subtitle">The higher up, the greater the fall.</p>
       
   </div>
 
@@ -225,25 +227,25 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/willywangkaa/" rel="section">
+          <a href="/willywangkaa/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/willywangkaa/archives/" rel="section">
+          <a href="/willywangkaa/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/willywangkaa/categories/" rel="section">
+          <a href="/willywangkaa/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/willywangkaa/tags/" rel="section">
+          <a href="/willywangkaa/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
@@ -324,7 +326,7 @@
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/07/10/Operating-System-Basic-Concept-3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -434,12 +436,12 @@
       
         <h1 id="system-call">System Call</h1>
 <hr>
-<p>It’s a programming interface to the services provides by the OS.</p>
+<p>It's a programming interface to the services provides by the OS.</p>
 <ul>
 <li>定義：幫助執行中的 user process 與 kernel 之間溝通，當 user peocess 需要OS提供某種服務時，會先以 Trap 通知 OS (由 User mode 轉為 Kernel mode) 並傳入System call ID (no.) 及所需參數，接著 OS 執行對應的 System call，完成後將服務結果回傳至 User process。</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1526605131439.png" alt="1526605131439"><figcaption>1526605131439</figcaption>
+<img src="\willywangkaa\images\1526605131439.png" alt="1526605131439"><figcaption aria-hidden="true">1526605131439</figcaption>
 </figure>
 <ul>
 <li>種類 (Ref P.3-8 ~ 3-9)
@@ -492,11 +494,11 @@
 <li>Beyond simple but not fully layered.</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1526608163203.png" alt="1526608163203"><figcaption>1526608163203</figcaption>
+<img src="\willywangkaa\images\1526608163203.png" alt="1526608163203"><figcaption aria-hidden="true">1526608163203</figcaption>
 </figure>
 <h2 id="layered-approach">Layered approach</h2>
 <figure>
-<img src="\willywangkaa\images\1526609224214.png" alt="1526609224214"><figcaption>1526609224214</figcaption>
+<img src="\willywangkaa\images\1526609224214.png" alt="1526609224214"><figcaption aria-hidden="true">1526609224214</figcaption>
 </figure>
 <ul>
 <li>定義：
@@ -533,7 +535,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1526610608669.png" alt="1526610608669"><figcaption>1526610608669</figcaption>
+<img src="\willywangkaa\images\1526610608669.png" alt="1526610608669"><figcaption aria-hidden="true">1526610608669</figcaption>
 </figure>
 <ul>
 <li>Pros
@@ -556,15 +558,15 @@
 <li>Each core component is <strong>separate</strong>.</li>
 <li>Each talks to the others over known interface.</li>
 <li><strong>Each is loadable as needed within the kernel.</strong> ( 需要該服務的時候再載入到記憶體執行，不需要時就從記憶體移除 )</li>
-<li><strong>Similar to “Layers” but with more flexible.</strong>( 效能更好 )</li>
-<li>例如：Linux, Solaris …</li>
+<li><strong>Similar to "Layers" but with more flexible.</strong>( 效能更好 )</li>
+<li>例如：Linux, Solaris ...</li>
 <li>Pros
 <ul>
 <li>因為與 Kernel 傳輸的距離不長，效能比較好。</li>
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1526611810996.png" alt="1526611810996"><figcaption>1526611810996</figcaption>
+<img src="\willywangkaa\images\1526611810996.png" alt="1526611810996"><figcaption aria-hidden="true">1526611810996</figcaption>
 </figure>
 <h2 id="hybrid---混和型">Hybrid - 混和型</h2>
 <ul>
@@ -580,19 +582,19 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1526613108853.png" alt="1526613108853"><figcaption>1526613108853</figcaption>
+<img src="\willywangkaa\images\1526613108853.png" alt="1526613108853"><figcaption aria-hidden="true">1526613108853</figcaption>
 </figure>
 <p>Aqua：負責 GUI 的顯示。</p>
 <h1 id="vritual-machine">Vritual Machine</h1>
 <hr>
 <figure>
-<img src="\willywangkaa\images\1530162737868.png" alt="1530162737868"><figcaption>1530162737868</figcaption>
+<img src="\willywangkaa\images\1530162737868.png" alt="1530162737868"><figcaption aria-hidden="true">1530162737868</figcaption>
 </figure>
 <ul>
 <li>定義：利用<strong>軟體技術</strong>模擬出一份與底層硬體一模一樣的功能介面之<strong>抽象化機器( abstract machine )。</strong></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1526613748648.png" alt="1526613748648"><figcaption>1526613748648</figcaption>
+<img src="\willywangkaa\images\1526613748648.png" alt="1526613748648"><figcaption aria-hidden="true">1526613748648</figcaption>
 </figure>
 <ul>
 <li>名詞解釋
@@ -613,10 +615,10 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1526615255622.png" alt="1526615255622"><figcaption>1526615255622</figcaption>
+<img src="\willywangkaa\images\1526615255622.png" alt="1526615255622"><figcaption aria-hidden="true">1526615255622</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1526615230230.png" alt="1526615230230"><figcaption>1526615230230</figcaption>
+<img src="\willywangkaa\images\1526615230230.png" alt="1526615230230"><figcaption aria-hidden="true">1526615230230</figcaption>
 </figure>
 <h3 id="vmm的實現">VMM的實現</h3>
 <h4 id="主流">主流</h4>
@@ -651,7 +653,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1526804733939.png" alt="1526804733939"><figcaption>1526804733939</figcaption>
+<img src="\willywangkaa\images\1526804733939.png" alt="1526804733939"><figcaption aria-hidden="true">1526804733939</figcaption>
 </figure>
 <ul>
 <li>Programming - environment virtualization
@@ -670,12 +672,12 @@
 <ul>
 <li>Policy
 <ul>
-<li>定義：<strong>“What” to be provided&quot;</strong></li>
+<li>定義：<strong>"What" to be provided"</strong></li>
 <li>Policy 會經常改變。</li>
 </ul></li>
 <li>Mechanism
 <ul>
-<li>定義：<strong>“How” to do that</strong></li>
+<li>定義：<strong>"How" to do that</strong></li>
 <li>「The underlying mechanism」甚少改變或不變。</li>
 </ul></li>
 <li><strong>設計原則</strong>
@@ -767,7 +769,7 @@
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -811,10 +813,10 @@
             
               <img class="site-author-image" itemprop="image"
                 src="/willywangkaa/images/avatar_me.gif"
-                alt="Willy Wang (willywangkaa)" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
-              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -822,7 +824,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/willywangkaa/archives/">
+                  <a href="/willywangkaa/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">posts</span>
@@ -869,8 +871,6 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -1086,7 +1086,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#system-call"><span class="nav-number">1.</span> <span class="nav-text">System Call</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#作業系統的架構-structure"><span class="nav-number">2.</span> <span class="nav-text">作業系統的架構( Structure )</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#simple"><span class="nav-number">2.1.</span> <span class="nav-text">Simple</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#more-complex-than-simple"><span class="nav-number">2.2.</span> <span class="nav-text">More complex than simple</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#layered-approach"><span class="nav-number">2.3.</span> <span class="nav-text">Layered approach</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#microkernel---微核心"><span class="nav-number">2.4.</span> <span class="nav-text">＊Microkernel - 微核心</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#module---模組化"><span class="nav-number">2.5.</span> <span class="nav-text">Module - 模組化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hybrid---混和型"><span class="nav-number">2.6.</span> <span class="nav-text">Hybrid - 混和型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vritual-machine"><span class="nav-number">3.</span> <span class="nav-text">Vritual Machine</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vmm的實現"><span class="nav-number">3.0.1.</span> <span class="nav-text">VMM的實現</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#主流"><span class="nav-number">3.0.1.1.</span> <span class="nav-text">主流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非主流"><span class="nav-number">3.0.1.2.</span> <span class="nav-text">非主流</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#policy-and-mechanism"><span class="nav-number">4.</span> <span class="nav-text">Policy and Mechanism</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#system-call"><span class="nav-number">1.</span> <span class="nav-text">System Call</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%9C%E6%A5%AD%E7%B3%BB%E7%B5%B1%E7%9A%84%E6%9E%B6%E6%A7%8B-structure"><span class="nav-number">2.</span> <span class="nav-text">作業系統的架構( Structure )</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#simple"><span class="nav-number">2.1.</span> <span class="nav-text">Simple</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#more-complex-than-simple"><span class="nav-number">2.2.</span> <span class="nav-text">More complex than simple</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#layered-approach"><span class="nav-number">2.3.</span> <span class="nav-text">Layered approach</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#microkernel---%E5%BE%AE%E6%A0%B8%E5%BF%83"><span class="nav-number">2.4.</span> <span class="nav-text">＊Microkernel - 微核心</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#module---%E6%A8%A1%E7%B5%84%E5%8C%96"><span class="nav-number">2.5.</span> <span class="nav-text">Module - 模組化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hybrid---%E6%B7%B7%E5%92%8C%E5%9E%8B"><span class="nav-number">2.6.</span> <span class="nav-text">Hybrid - 混和型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vritual-machine"><span class="nav-number">3.</span> <span class="nav-text">Vritual Machine</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vmm%E7%9A%84%E5%AF%A6%E7%8F%BE"><span class="nav-number">3.0.1.</span> <span class="nav-text">VMM的實現</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E6%B5%81"><span class="nav-number">3.0.1.1.</span> <span class="nav-text">主流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%9E%E4%B8%BB%E6%B5%81"><span class="nav-number">3.0.1.2.</span> <span class="nav-text">非主流</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#policy-and-mechanism"><span class="nav-number">4.</span> <span class="nav-text">Policy and Mechanism</span></a></li></ol></div>
             
 
           </div>
@@ -1106,11 +1106,11 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+  <span class="author" itemprop="copyrightHolder">Wang Yu Li</span>
 
   
 
@@ -1254,7 +1254,7 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/07/10/Operating-System-Basic-Concept-3/';
+        this.page.url = 'http://wangwilly.github.io/willywangkaa/2018/07/10/Operating-System-Basic-Concept-3/';
         this.page.identifier = '2018/07/10/Operating-System-Basic-Concept-3/';
         this.page.title = 'Operating System - Basic Concept 3';
       };
@@ -1689,24 +1689,7 @@
   
     bookmark.scrollToMark('auto', "#more");
   
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>

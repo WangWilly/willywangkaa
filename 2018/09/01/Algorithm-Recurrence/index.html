@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/willywangkaa/',
+    root: '',
     scheme: 'Pisces',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -103,21 +103,22 @@
   <meta name="keywords" content="Recurrence,Ackermann," />
 
 
-<meta name="description" content="Recurrence  ＜外傳＞  某些問題隨輸入資料大小成指數成長是無法避免的  雖然「Divide-and-conquer」無法獲致良好的執行效率但仍可採用  河內塔問題  每呼叫一次就需搬動圓盤一次  當圓盤的個數 n 為 64 總共需要搬動圓盤 \(2^{64}-1\) 次 演算法的複雜度等級是 \(O(2^n)\)  河內塔問題圓盤搬動次序與 n 成指數關">
-<meta name="keywords" content="Recurrence,Ackermann">
+<meta name="description" content="Recurrence  ＜外傳＞  某些問題隨輸入資料大小成指數成長是無法避免的  雖然「Divide-and-conquer」無法獲致良好的執行效率但仍可採用  河內塔問題  每呼叫一次就需搬動圓盤一次  當圓盤的個數 n 為 64 總共需要搬動圓盤 \(2^{64}-1\) 次 演算法的複雜度等級是 \(O(2^n)\)  河內塔問題圓盤搬動次序與 n 成指數關係 經過証明，上述河內塔問題的演">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Algorithm - Recurrence">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/09/01/Algorithm-Recurrence/index.html">
+<meta property="og:url" content="http://wangwilly.github.io/willywangkaa/2018/09/01/Algorithm-Recurrence/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="Recurrence  ＜外傳＞  某些問題隨輸入資料大小成指數成長是無法避免的  雖然「Divide-and-conquer」無法獲致良好的執行效率但仍可採用  河內塔問題  每呼叫一次就需搬動圓盤一次  當圓盤的個數 n 為 64 總共需要搬動圓盤 \(2^{64}-1\) 次 演算法的複雜度等級是 \(O(2^n)\)  河內塔問題圓盤搬動次序與 n 成指數關">
-<meta property="og:locale" content="zh-tw">
+<meta property="og:description" content="Recurrence  ＜外傳＞  某些問題隨輸入資料大小成指數成長是無法避免的  雖然「Divide-and-conquer」無法獲致良好的執行效率但仍可採用  河內塔問題  每呼叫一次就需搬動圓盤一次  當圓盤的個數 n 為 64 總共需要搬動圓盤 \(2^{64}-1\) 次 演算法的複雜度等級是 \(O(2^n)\)  河內塔問題圓盤搬動次序與 n 成指數關係 經過証明，上述河內塔問題的演">
+<meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/tree_1.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/tree_2.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549349573405.png">
-<meta property="og:updated_time" content="2019-02-07T05:06:38.137Z">
+<meta property="article:published_time" content="2018-08-31T17:49:00.000Z">
+<meta property="article:modified_time" content="2019-02-07T05:06:38.137Z">
+<meta property="article:author" content="Wang Yu Li">
+<meta property="article:tag" content="Recurrence">
+<meta property="article:tag" content="Ackermann">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Algorithm - Recurrence">
-<meta name="twitter:description" content="Recurrence  ＜外傳＞  某些問題隨輸入資料大小成指數成長是無法避免的  雖然「Divide-and-conquer」無法獲致良好的執行效率但仍可採用  河內塔問題  每呼叫一次就需搬動圓盤一次  當圓盤的個數 n 為 64 總共需要搬動圓盤 \(2^{64}-1\) 次 演算法的複雜度等級是 \(O(2^n)\)  河內塔問題圓盤搬動次序與 n 成指數關">
 <meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/tree_1.png">
 
 
@@ -170,9 +171,11 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
@@ -197,7 +200,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Live more like human</p>
+        <p class="site-subtitle">The higher up, the greater the fall.</p>
       
   </div>
 
@@ -218,25 +221,25 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/willywangkaa/" rel="section">
+          <a href="/willywangkaa/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/willywangkaa/archives/" rel="section">
+          <a href="/willywangkaa/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/willywangkaa/categories/" rel="section">
+          <a href="/willywangkaa/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/willywangkaa/tags/" rel="section">
+          <a href="/willywangkaa/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
@@ -317,7 +320,7 @@
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/09/01/Algorithm-Recurrence/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -498,7 +501,7 @@
 </ul>
 <h3 id="經典範例-1">經典範例</h3>
 <figure>
-<img src="\willywangkaa\images\tree_1.png" alt="tree_1"><figcaption>tree_1</figcaption>
+<img src="\willywangkaa\images\tree_1.png" alt="tree_1"><figcaption aria-hidden="true">tree_1</figcaption>
 </figure>
 <ul>
 <li><span class="math inline">\(r &lt; 1\)</span>
@@ -507,18 +510,18 @@
 <ul>
 <li><span class="math inline">\(T(n) = T(\frac n2) + T(\frac n4) + T(\frac n8) + n\)</span>，求 <span class="math inline">\(\Theta\)</span></li>
 </ul></li>
-<li>Sol
+<li><p>Sol</p>
 <ul>
-<li><span class="math inline">\(r = \frac n 2 + \frac n 4 + \frac n 8 = \frac 7 8 &lt; 1\)</span></li>
-<li>建立遞迴樹 <span class="math inline">\(T(n) = n + \frac 78 n +\frac{49}{64}n + \ldots + C_l\)</span> (等比級數)</li>
+<li><p><span class="math inline">\(r = \frac n 2 + \frac n 4 + \frac n 8 = \frac 7 8 &lt; 1\)</span></p></li>
+<li><p>建立遞迴樹 <span class="math inline">\(T(n) = n + \frac 78 n +\frac{49}{64}n + \ldots + C_l\)</span> (等比級數)</p></li>
 <li><p><strong>求取其邊界 (夾擠法)</strong> 求上邊界：<span class="math inline">\(T(n) = n + \frac 78 n +\frac{49}{64}n + \ldots + C_l \leq n + \frac 78 n +\frac{49}{64}n + \ldots + (\frac 78)^h\)</span> <strong>(有限等比級數小於無限等比級數)</strong> <span class="math inline">\(\Rightarrow \frac{n}{1 - \frac 7 8} = 8 n \Rightarrow T(n) = O(n)\)</span></p>
-求下邊界：<span class="math inline">\(T(n) = n + \frac 78 n +\frac{49}{64}n + \ldots + C_l \geq n \Rightarrow T(n) = \Omega(n)\)</span></li>
+<p>求下邊界：<span class="math inline">\(T(n) = n + \frac 78 n +\frac{49}{64}n + \ldots + C_l \geq n \Rightarrow T(n) = \Omega(n)\)</span></p></li>
 <li><p><span class="math inline">\(\Rightarrow T(n) = \Theta(n)\)</span></p></li>
 </ul></li>
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\tree_2.png" alt="tree_1"><figcaption>tree_1</figcaption>
+<img src="\willywangkaa\images\tree_2.png" alt="tree_1"><figcaption aria-hidden="true">tree_1</figcaption>
 </figure>
 <ul>
 <li><span class="math inline">\(r = 1\)</span>
@@ -593,7 +596,7 @@
 </ul></li>
 </ul>
 <h1 id="進階遞迴問題">進階遞迴問題</h1>
-<h2 id="ackermanns-function">Ackermann’s function</h2>
+<h2 id="ackermanns-function">Ackermann's function</h2>
 <p><span class="math display">\[
 \left\{\begin{matrix}
 A(0, n) &amp; = &amp; n+1 &amp; (1)\\
@@ -693,7 +696,7 @@ c_0 = 5 = C_0 - 3 \\
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1549349573405.png" alt="1549349573405"><figcaption>1549349573405</figcaption>
+<img src="\willywangkaa\images\1549349573405.png" alt="1549349573405"><figcaption aria-hidden="true">1549349573405</figcaption>
 </figure>
 <p><span class="math inline">\(C_{11} = A_{11}B_{11} + A_{12}B_{21} \\ C_{12} = A_{11}B_{12} + A_{12}B_{22} \\ C_{21} = A_{21}B_{11} + A_{22}B_{21} \\ C_{22} = A_{21}B_{12} + A_{22}B_{22}\)</span></p>
 <ul>
@@ -795,12 +798,12 @@ c_0 = 5 = C_0 - 3 \\
 <li><p>令 <span class="math inline">\(M_2\)</span> 表示上式等號<strong>右邊的第二個矩陣</strong></p>
 <ul>
 <li><p>觀察發現 <span class="math inline">\(M_2\)</span> 可分解成兩個<strong>型態 III</strong></p></li>
-<li><span class="math inline">\(M_2=\begin{bmatrix} 0&amp;0&amp;0&amp;0\\ c+d&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;0\\ (c-a)-(c+d)&amp;0&amp;c-a&amp;0 \end{bmatrix}+\begin{bmatrix} 0&amp;b-d&amp;0&amp;(b-d)-(a+b)\\ 0&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;a+b\\ 0&amp;0&amp;0&amp;0 \end{bmatrix}\)</span></li>
-<li>等號右邊的第一個矩陣
+<li><p><span class="math inline">\(M_2=\begin{bmatrix} 0&amp;0&amp;0&amp;0\\ c+d&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;0\\ (c-a)-(c+d)&amp;0&amp;c-a&amp;0 \end{bmatrix}+\begin{bmatrix} 0&amp;b-d&amp;0&amp;(b-d)-(a+b)\\ 0&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;a+b\\ 0&amp;0&amp;0&amp;0 \end{bmatrix}\)</span></p></li>
+<li><p>等號右邊的第一個矩陣</p>
 <ul>
 <li><span class="math inline">\(\begin{bmatrix} 0&amp;0&amp;0&amp;0\\ c+d&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;0\\ -(c+d)&amp;0&amp;0&amp;0 \end{bmatrix}+\begin{bmatrix} 0&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;0\\ c-a&amp;0&amp;c-a&amp;0 \end{bmatrix}\)</span></li>
 </ul></li>
-<li>等號右邊的第二個矩陣
+<li><p>等號右邊的第二個矩陣</p>
 <ul>
 <li><span class="math inline">\(\begin{bmatrix} 0&amp;b-d&amp;0&amp;b-d\\ 0&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;0 \end{bmatrix}+\begin{bmatrix} 0&amp;0&amp;0&amp;0-(a+b)\\ 0&amp;0&amp;0&amp;0\\ 0&amp;0&amp;0&amp;a+b\\ 0&amp;0&amp;0&amp;0 \end{bmatrix}\)</span></li>
 </ul></li>
@@ -829,10 +832,10 @@ c_0 = 5 = C_0 - 3 \\
 <li>A dk-binary sequence is a binary sequence that satisfies the following two constraints：
 <ul>
 <li><ol type="a">
-<li>d constraint：two 1’s are separated by a run of consecutive 0 of length at least d</li>
+<li>d constraint：two 1's are separated by a run of consecutive 0 of length at least d</li>
 </ol></li>
 <li><ol start="2" type="a">
-<li>k constraint：any run of consecutive 0’s is of length at most k</li>
+<li>k constraint：any run of consecutive 0's is of length at most k</li>
 </ol></li>
 </ul></li>
 <li>For example, 010010001001 is a dk-binary sequence of length 12 width d=0 and k=3.</li>
@@ -873,8 +876,8 @@ c_0 = 5 = C_0 - 3 \\
 <blockquote>
 <p>轉換題目成整數分割</p>
 <ul>
-<li>字串長度為 10</li>
-<li>兩個位子置 1</li>
+<li><p>字串長度為 10</p></li>
+<li><p>兩個位子置 1</p></li>
 <li><p>剩下 8 個位子置 0</p></li>
 <li><p>必須有連續 4 個零或 5 個零出現</p></li>
 </ul>
@@ -882,7 +885,7 @@ c_0 = 5 = C_0 - 3 \\
 <ul>
 <li>在序列中有連續 4 個 0（必有連續 4 個 0 出現，則必有一個 4 在此整數分割）
 <ul>
-<li>8=4+<strong>4’</strong>
+<li>8=4+<strong>4'</strong>
 <ul>
 <li>序列：0000100001</li>
 </ul></li>
@@ -898,7 +901,7 @@ c_0 = 5 = C_0 - 3 \\
 <ul>
 <li>序列：0100001000</li>
 </ul></li>
-<li>8=<strong>4’</strong>+4
+<li>8=<strong>4'</strong>+4
 <ul>
 <li>序列：1000010000</li>
 </ul></li>
@@ -1021,7 +1024,7 @@ c_0 = 5 = C_0 - 3 \\
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -1065,10 +1068,10 @@ c_0 = 5 = C_0 - 3 \\
             
               <img class="site-author-image" itemprop="image"
                 src="/willywangkaa/images/avatar_me.gif"
-                alt="Willy Wang (willywangkaa)" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
-              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -1076,7 +1079,7 @@ c_0 = 5 = C_0 - 3 \\
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/willywangkaa/archives/">
+                  <a href="/willywangkaa/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">posts</span>
@@ -1123,8 +1126,6 @@ c_0 = 5 = C_0 - 3 \\
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -1340,7 +1341,7 @@ c_0 = 5 = C_0 - 3 \\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#recurrence"><span class="nav-number">1.</span> <span class="nav-text">Recurrence</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#substitution-method"><span class="nav-number">1.1.</span> <span class="nav-text">Substitution method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#經典範例"><span class="nav-number">1.1.1.</span> <span class="nav-text">經典範例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#recurrence-tree"><span class="nav-number">1.2.</span> <span class="nav-text">Recurrence tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#經典範例-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">經典範例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#master-theorem"><span class="nav-number">1.3.</span> <span class="nav-text">Master theorem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#經典例題"><span class="nav-number">1.3.1.</span> <span class="nav-text">經典例題</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#進階遞迴問題"><span class="nav-number">2.</span> <span class="nav-text">進階遞迴問題</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ackermanns-function"><span class="nav-number">2.1.</span> <span class="nav-text">Ackermann’s function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#strassen-演算法分治矩陣乘法"><span class="nav-number">2.2.</span> <span class="nav-text">Strassen 演算法（分治矩陣乘法）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法推導"><span class="nav-number">2.2.1.</span> <span class="nav-text">算法推導</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#補充例題"><span class="nav-number">3.</span> <span class="nav-text">補充例題</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#recurrence"><span class="nav-number">1.</span> <span class="nav-text">Recurrence</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#substitution-method"><span class="nav-number">1.1.</span> <span class="nav-text">Substitution method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B6%93%E5%85%B8%E7%AF%84%E4%BE%8B"><span class="nav-number">1.1.1.</span> <span class="nav-text">經典範例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#recurrence-tree"><span class="nav-number">1.2.</span> <span class="nav-text">Recurrence tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B6%93%E5%85%B8%E7%AF%84%E4%BE%8B-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">經典範例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#master-theorem"><span class="nav-number">1.3.</span> <span class="nav-text">Master theorem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B6%93%E5%85%B8%E4%BE%8B%E9%A1%8C"><span class="nav-number">1.3.1.</span> <span class="nav-text">經典例題</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%B2%E9%9A%8E%E9%81%9E%E8%BF%B4%E5%95%8F%E9%A1%8C"><span class="nav-number">2.</span> <span class="nav-text">進階遞迴問題</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ackermanns-function"><span class="nav-number">2.1.</span> <span class="nav-text">Ackermann&#39;s function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#strassen-%E6%BC%94%E7%AE%97%E6%B3%95%E5%88%86%E6%B2%BB%E7%9F%A9%E9%99%A3%E4%B9%98%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">Strassen 演算法（分治矩陣乘法）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%8E%A8%E5%B0%8E"><span class="nav-number">2.2.1.</span> <span class="nav-text">算法推導</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A3%9C%E5%85%85%E4%BE%8B%E9%A1%8C"><span class="nav-number">3.</span> <span class="nav-text">補充例題</span></a></li></ol></div>
             
 
           </div>
@@ -1360,11 +1361,11 @@ c_0 = 5 = C_0 - 3 \\
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+  <span class="author" itemprop="copyrightHolder">Wang Yu Li</span>
 
   
 
@@ -1508,7 +1509,7 @@ c_0 = 5 = C_0 - 3 \\
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/09/01/Algorithm-Recurrence/';
+        this.page.url = 'http://wangwilly.github.io/willywangkaa/2018/09/01/Algorithm-Recurrence/';
         this.page.identifier = '2018/09/01/Algorithm-Recurrence/';
         this.page.title = 'Algorithm - Recurrence';
       };
@@ -1943,24 +1944,7 @@ c_0 = 5 = C_0 - 3 \\
   
     bookmark.scrollToMark('auto', "#more");
   
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>

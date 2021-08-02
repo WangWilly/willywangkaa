@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/willywangkaa/',
+    root: '',
     scheme: 'Pisces',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -103,14 +103,13 @@
   <meta name="keywords" content="Process,Thread,Management," />
 
 
-<meta name="description" content="Process  定義：A program in execution.  Process 建立後，主要組成有：\(^{[1]}\)Process NO.(ID), \(^{[2]}\)Process state, \(^{[3]}\)Process menory space：Code section, Data section。 Programming Counter (PC)：下一條指">
-<meta name="keywords" content="Process,Thread,Management">
+<meta name="description" content="Process  定義：A program in execution.  Process 建立後，主要組成有：\(^{[1]}\)Process NO.(ID), \(^{[2]}\)Process state, \(^{[3]}\)Process menory space：Code section, Data section。 Programming Counter (PC)：下一條指令的位址。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Operating System - Process Management and Thread Management">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/07/10/Operating-System-Process-Management-and-Thread-Management/index.html">
+<meta property="og:url" content="http://wangwilly.github.io/willywangkaa/2018/07/10/Operating-System-Process-Management-and-Thread-Management/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="Process  定義：A program in execution.  Process 建立後，主要組成有：\(^{[1]}\)Process NO.(ID), \(^{[2]}\)Process state, \(^{[3]}\)Process menory space：Code section, Data section。 Programming Counter (PC)：下一條指">
-<meta property="og:locale" content="zh-tw">
+<meta property="og:description" content="Process  定義：A program in execution.  Process 建立後，主要組成有：\(^{[1]}\)Process NO.(ID), \(^{[2]}\)Process state, \(^{[3]}\)Process menory space：Code section, Data section。 Programming Counter (PC)：下一條指令的位址。">
+<meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1526880431737.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1526883114200.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/queuingdiagramforprocessmodel.png">
@@ -176,10 +175,13 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530179630741.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530179857612.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530180057880.png">
-<meta property="og:updated_time" content="2019-02-21T09:16:57.791Z">
+<meta property="article:published_time" content="2018-07-10T14:14:00.000Z">
+<meta property="article:modified_time" content="2019-02-21T09:16:57.791Z">
+<meta property="article:author" content="Wang Yu Li">
+<meta property="article:tag" content="Process">
+<meta property="article:tag" content="Thread">
+<meta property="article:tag" content="Management">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Operating System - Process Management and Thread Management">
-<meta name="twitter:description" content="Process  定義：A program in execution.  Process 建立後，主要組成有：\(^{[1]}\)Process NO.(ID), \(^{[2]}\)Process state, \(^{[3]}\)Process menory space：Code section, Data section。 Programming Counter (PC)：下一條指">
 <meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/1526880431737.png">
 
 
@@ -232,9 +234,11 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
@@ -259,7 +263,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Live more like human</p>
+        <p class="site-subtitle">The higher up, the greater the fall.</p>
       
   </div>
 
@@ -280,25 +284,25 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/willywangkaa/" rel="section">
+          <a href="/willywangkaa/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/willywangkaa/archives/" rel="section">
+          <a href="/willywangkaa/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/willywangkaa/categories/" rel="section">
+          <a href="/willywangkaa/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/willywangkaa/tags/" rel="section">
+          <a href="/willywangkaa/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
@@ -379,7 +383,7 @@
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/07/10/Operating-System-Process-Management-and-Thread-Management/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -511,8 +515,8 @@
 <td>只是一個在硬碟的檔案</td>
 </tr>
 <tr class="even">
-<td>“執行中”的單位</td>
-<td>“被動的”單位</td>
+<td>"執行中"的單位</td>
+<td>"被動的"單位</td>
 </tr>
 </tbody>
 </table></li>
@@ -520,12 +524,12 @@
 <h2 id="procress-control-block">Procress Control Block</h2>
 <ul>
 <li><p>定義：作業系統為了管裡所有的 process ，會在 kernel memory 中，替每個 process 各自準備一個 block 紀錄 process 之所有相關的資訊。</p></li>
-<li>內容：
+<li><p>內容：</p>
 <ul>
 <li>Process No. (ID)：是唯一( unique )的。</li>
-<li>Process state：有 「ready」、「running」、「wait」…。</li>
+<li>Process state：有 「ready」、「running」、「wait」...。</li>
 <li>Programming Counter ( PC )</li>
-<li>CPU registers：有accmulatorm, psw, stack top…</li>
+<li>CPU registers：有accmulatorm, psw, stack top...</li>
 <li>CPU schedualing infomation：優先權值、process arrival time (FIFO)。</li>
 <li>Memory management infomation：隨作業系統記憶體管理方式不同記錄不同的資訊。如：Base/limit register, page table 或 segememt table。</li>
 <li>Accounting infomation：Pocess 已使用了多少 CPU time ，那些資源還剩多少資源、還剩 CPU time 可用，<strong>系統管理員依據此資訊用以調校效能</strong>。</li>
@@ -565,7 +569,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1526880431737.png" alt="1526880431737"><figcaption>1526880431737</figcaption>
+<img src="\willywangkaa\images\1526880431737.png" alt="1526880431737"><figcaption aria-hidden="true">1526880431737</figcaption>
 </figure>
 <h3 id="七個狀態">*七個狀態</h3>
 <ul>
@@ -586,33 +590,33 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1526883114200.png" alt="1526883114200"><figcaption>1526883114200</figcaption>
+<img src="\willywangkaa\images\1526883114200.png" alt="1526883114200"><figcaption aria-hidden="true">1526883114200</figcaption>
 </figure>
 <blockquote>
 <p>Queuing diagram</p>
 <figure>
-<img src="\willywangkaa\images\queuingdiagramforprocessmodel.png" alt="Queuingdiagram"><figcaption>Queuingdiagram</figcaption>
+<img src="\willywangkaa\images\queuingdiagramforprocessmodel.png" alt="Queuingdiagram"><figcaption aria-hidden="true">Queuingdiagram</figcaption>
 </figure>
 </blockquote>
 <h3 id="unix-std">UNIX STD</h3>
 <figure>
-<img src="\willywangkaa\images\1526885420905.png" alt="1526885420905"><figcaption>1526885420905</figcaption>
+<img src="\willywangkaa\images\1526885420905.png" alt="1526885420905"><figcaption aria-hidden="true">1526885420905</figcaption>
 </figure>
 <h1 id="scheduler">Scheduler</h1>
 <h2 id="io-bound-cpu-bound">I/O-bound &amp; CPU-bound</h2>
 <figure>
-<img src="\willywangkaa\images\1526887552589.png" alt="1526887552589"><figcaption>1526887552589</figcaption>
+<img src="\willywangkaa\images\1526887552589.png" alt="1526887552589"><figcaption aria-hidden="true">1526887552589</figcaption>
 </figure>
 <ul>
 <li>I/O-bound Job
 <ul>
 <li>定義：此類型的工作大都是需要<em>大量的 I/O operation( Resourse )但對於 CPU time( Computation )需求很少</em>，<strong>所以其工作效能會受限於 I/O-device 之速度。</strong></li>
-<li>例如：資料庫管理、財報列印…。</li>
+<li>例如：資料庫管理、財報列印...。</li>
 </ul></li>
 <li>CPU-bound Job
 <ul>
 <li>定義：此類型的工作大都是需要<em>大量的 CPU time( Computation ) 但對於 I/O operation( Resourse )需求很少</em>，<strong>所以其工作效能會受限於 CPU 之速度。</strong></li>
-<li>氣象預估的大氣模型、科學模擬…。</li>
+<li>氣象預估的大氣模型、科學模擬...。</li>
 </ul></li>
 </ul>
 <h2 id="long-term-schduler">Long-term schduler</h2>
@@ -652,7 +656,7 @@
 <h1 id="context-switching">Context switching</h1>
 <p>當 CPU 要從 running process 切給另一個 process 使用之前，kernel 執行 <strong>context-switching</strong> 包含：</p>
 <ul>
-<li><strong>保存</strong> running process 之目前狀態的資訊( PCB )。如：PC、stack、CPU register…。</li>
+<li><strong>保存</strong> running process 之目前狀態的資訊( PCB )。如：PC、stack、CPU register...。</li>
 <li>要載入( Restore )另一個 Process 之狀態資訊( PCB )。</li>
 </ul>
 <p><strong>Context switching 是一額外負擔</strong>，其時間長短大都取決於硬體的因素。如：暫存器之數量、記憶體存取速度。</p>
@@ -679,7 +683,7 @@
 <li>Dispatch Latency 越小越好。</li>
 </ul>
 <h1 id="process-control-operations">Process control operations</h1>
-<p>也就是 process 的建立、終止、暫停、回復執行、設定、修改、讀取 process attributes …，<strong>而這些都應是作業系統提供的服務(system call)</strong></p>
+<p>也就是 process 的建立、終止、暫停、回復執行、設定、修改、讀取 process attributes ...，<strong>而這些都應是作業系統提供的服務(system call)</strong></p>
 <ul>
 <li>Process 可以建立自己的 child process，<strong>目的是要 child process 工作。</strong></li>
 <li><strong>Child process 的工作可分為兩類：</strong>
@@ -705,7 +709,7 @@
 </ul>
 <h2 id="unix-system-call">UNIX system call</h2>
 <figure>
-<img src="\willywangkaa\images\1527077415190.png" alt="1527077415190"><figcaption>1527077415190</figcaption>
+<img src="\willywangkaa\images\1527077415190.png" alt="1527077415190"><figcaption aria-hidden="true">1527077415190</figcaption>
 </figure>
 <ul>
 <li><strong>fork()：</strong>用以建立 child process ，而 fork() 之回傳結果如下：
@@ -715,11 +719,11 @@
 </ul></li>
 <li><strong>wait()：</strong>用以暫停 process 的執行直到某個事件發生。例如：parent 等到 child 直到 child 終止。</li>
 <li><strong>exit()：</strong>用以終止 process 的執行且回收期資源 ( 不包含PCB )，通常 <br><span class="math inline">\(^{[1]}\)</span> exit(0) 表示正常終止。 <br><span class="math inline">\(^{[2]}\)</span> exit(-1) 表示異常終止。</li>
-<li><strong>execlp() 或 exec() 或 execve()：</strong>用以載入特定的 Binary code( 可執行檔 ) 執行。 <br><strong>例：execlp(“目錄名稱”, “檔名”, 個數)</strong></li>
+<li><strong>execlp() 或 exec() 或 execve()：</strong>用以載入特定的 Binary code( 可執行檔 ) 執行。 <br><strong>例：execlp("目錄名稱", "檔名", 個數)</strong></li>
 <li>getpid()：用以取得 process 的 ID。</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1527077382823.png" alt="1527077382823"><figcaption>1527077382823</figcaption>
+<img src="\willywangkaa\images\1527077382823.png" alt="1527077382823"><figcaption aria-hidden="true">1527077382823</figcaption>
 </figure>
 <p><strong>＜Note＞：</strong></p>
 <ol type="1">
@@ -728,7 +732,7 @@
 <li><strong>若 child 要做特定的工作(與 parent 不同)，則 child 必須執行 execlp() 以載入特定工作的執行檔。</strong></li>
 </ol>
 <figure>
-<img src="\willywangkaa\images\1527077442901.png" alt="1527077442901"><figcaption>1527077442901</figcaption>
+<img src="\willywangkaa\images\1527077442901.png" alt="1527077442901"><figcaption aria-hidden="true">1527077442901</figcaption>
 </figure>
 <h2 id="程式實際操作">程式實際操作</h2>
 <hr>
@@ -736,10 +740,10 @@
 <p>建立 child process 執行 ls 命定檔且 parent 等到 child 完成之後 parent 才輸出「child complete」。</p>
 <p>Creating a separate process using the UNIX fork() system call.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">pid_t</span> pid;</span><br><span class="line">    pid = fork();                        <span class="comment">//fork a child process</span></span><br><span class="line">    <span class="keyword">if</span> (pid &lt; <span class="number">0</span>) &#123;                       <span class="comment">// error occurred</span></span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"Fork Failed\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;                        <span class="comment">//exit(-1);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (pid == <span class="number">0</span>) &#123;                 <span class="comment">// child process</span></span><br><span class="line">    	execlp(<span class="string">"/bin/ls"</span>,<span class="string">"ls"</span>,<span class="literal">NULL</span>);     <span class="comment">// 程式區塊指標轉換，下方不做，見上圖。</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;                               <span class="comment">// parent process</span></span><br><span class="line">        wait(<span class="literal">NULL</span>);                      <span class="comment">// parent will wait for the child to complete</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Child Complete\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="ex2.-ref-p.4-52"><span class="math inline">\(Ex2.\)</span> (Ref p. 4-52)</h3>
+<h3 id="ex2.-ref-p.-4-52"><span class="math inline">\(Ex2.\)</span> (Ref p. 4-52)</h3>
 <p>Identify the values of pid at lines A, B, C, and D. ( Assume that the actual pids of the <strong>parent and child are 2600 and 2603</strong>, respectively. )</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">pid_t</span> pid, pid1;</span><br><span class="line">    pid = fork();                          <span class="comment">// fork a child process</span></span><br><span class="line">	</span><br><span class="line">    <span class="keyword">if</span> (pid &lt; <span class="number">0</span>) &#123;                         <span class="comment">// error occurred</span></span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"Fork Failed\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (pid == <span class="number">0</span>) &#123;                   <span class="comment">// child process</span></span><br><span class="line">        pid1 = getpid();</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"A: Child: pid = %d\n"</span>,pid);     <span class="comment">// A -&gt; 0</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"B: Child: pid1 = %d\n"</span>,pid1);   <span class="comment">// B -&gt; 2603</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;                                 <span class="comment">// parent process</span></span><br><span class="line">        pid1 = getpid();                   <span class="comment">// child process ID</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"C: Parent: pid = %d\n"</span>,pid);    <span class="comment">// C -&gt; 2603</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"D: Parent: pid1 = %d\n"</span>,pid1);  <span class="comment">// D -&gt; 2600</span></span><br><span class="line">        wait(<span class="literal">NULL</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="ex3.-ref-p.4-53"><span class="math inline">\(Ex3.\)</span> (Ref p. 4-53)</h3>
+<h3 id="ex3.-ref-p.-4-53"><span class="math inline">\(Ex3.\)</span> (Ref p. 4-53)</h3>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> value = <span class="number">5</span>;                                <span class="comment">// global varible</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">pid_t</span> pid;</span><br><span class="line">    pid = fork();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (pid == <span class="number">0</span>) &#123;                           <span class="comment">// child process</span></span><br><span class="line">        value += <span class="number">15</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (pid &gt; <span class="number">0</span>) &#123;                       <span class="comment">// parent process</span></span><br><span class="line">        wait(<span class="literal">NULL</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"PARENT: value = %d\n"</span>,value); <span class="comment">// LINE A value -&gt; 5</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="ex4.-程序的並行">★<span class="math inline">\(Ex4.\)</span> 程序的並行</h3>
 <ol type="1">
@@ -756,7 +760,7 @@
 </ol>
 <p>考慮：</p>
 <figure>
-<img src="\willywangkaa\images\1527080836257.png" alt="1527080836257"><figcaption>1527080836257</figcaption>
+<img src="\willywangkaa\images\1527080836257.png" alt="1527080836257"><figcaption aria-hidden="true">1527080836257</figcaption>
 </figure>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">pid_t</span> pid;</span><br><span class="line">    pid = fork();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (pid == <span class="number">0</span>) &#123;                         <span class="comment">// child process</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"A\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (pid &gt; <span class="number">0</span>) &#123;                     <span class="comment">// parent process</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"B\n"</span>);</span><br><span class="line">        wait(<span class="literal">NULL</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"C\n"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Ans：</p>
@@ -785,7 +789,7 @@
 </ol>
 <p>考慮：</p>
 <figure>
-<img src="\willywangkaa\images\1527081997770.png" alt="1527081997770"><figcaption>1527081997770</figcaption>
+<img src="\willywangkaa\images\1527081997770.png" alt="1527081997770"><figcaption aria-hidden="true">1527081997770</figcaption>
 </figure>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cerrno&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/mman.h&gt; </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>* count;</span><br><span class="line">	count = (<span class="keyword">int</span>*) mmap(<span class="literal">NULL</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>), PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANON, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">	<span class="keyword">if</span> (count == MAP_FAILED) &#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"mmap failed..."</span> &lt;&lt; strerror(errno) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	*count = <span class="number">5</span>;</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">pid_t</span> pid;</span><br><span class="line">    pid = fork();</span><br><span class="line">    <span class="keyword">if</span> (pid == <span class="number">0</span>) &#123;	</span><br><span class="line">        (*count)++;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (pid &gt; <span class="number">0</span>) &#123;</span><br><span class="line">		(*count)--;</span><br><span class="line">	&#125;</span><br><span class="line"> 	<span class="built_in">cout</span> &lt;&lt; (*count) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Ans：</p>
@@ -802,7 +806,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">6</span><br></pre></td></tr></table></figure>
 <p>★OR ( <strong>當指令不是 atomic 時</strong> )</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
-<h3 id="ex6.-有幾個-process-被建立了-including-main-ref-p.4-54-text-book-p.150"><span class="math inline">\(Ex6.\)</span> 有幾個 process 被建立了？ including main() (Ref p. 4-54, Text book p. 150)</h3>
+<h3 id="ex6.-有幾個-process-被建立了-including-main-ref-p.-4-54-text-book-p.-150"><span class="math inline">\(Ex6.\)</span> 有幾個 process 被建立了？ including main() (Ref p. 4-54, Text book p. 150)</h3>
 <ol type="1">
 <li></li>
 </ol>
@@ -814,7 +818,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(fork() == <span class="number">0</span>) &#123; <span class="comment">// child process</span></span><br><span class="line">        fork();</span><br><span class="line">        fork();</span><br><span class="line">    &#125;</span><br><span class="line">    fork();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Ans：10 個。</p>
 <figure>
-<img src="\willywangkaa\images\1531135436305.png" alt="1531135436305"><figcaption>1531135436305</figcaption>
+<img src="\willywangkaa\images\1531135436305.png" alt="1531135436305"><figcaption aria-hidden="true">1531135436305</figcaption>
 </figure>
 <ol start="3" type="1">
 <li>★</li>
@@ -822,10 +826,10 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    fork();</span><br><span class="line">    <span class="keyword">if</span>(fork()&gt;<span class="number">0</span>) &#123;       <span class="comment">// parent process</span></span><br><span class="line">        fork();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(fork()==<span class="number">0</span>) &#123; <span class="comment">// child process</span></span><br><span class="line">        fork();</span><br><span class="line">        fork();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Ans： 14 個。(<del>30個</del>)</p>
 <figure>
-<img src="\willywangkaa\images\1531136821130.png" alt="1531136821130"><figcaption>1531136821130</figcaption>
+<img src="\willywangkaa\images\1531136821130.png" alt="1531136821130"><figcaption aria-hidden="true">1531136821130</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1531137337724.png" alt="1531137337724"><figcaption>1531137337724</figcaption>
+<img src="\willywangkaa\images\1531137337724.png" alt="1531137337724"><figcaption aria-hidden="true">1531137337724</figcaption>
 </figure>
 <ol start="4" type="1">
 <li>★★</li>
@@ -833,10 +837,10 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(fork()==<span class="number">0</span>) &#123;</span><br><span class="line">            fork();</span><br><span class="line">            fork();</span><br><span class="line">            fork();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Ans：729 個。</p>
 <figure>
-<img src="\willywangkaa\images\1531138419381.png" alt="1531138419381"><figcaption>1531138419381</figcaption>
+<img src="\willywangkaa\images\1531138419381.png" alt="1531138419381"><figcaption aria-hidden="true">1531138419381</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1531139238689.png" alt="1531139238689"><figcaption>1531139238689</figcaption>
+<img src="\willywangkaa\images\1531139238689.png" alt="1531139238689"><figcaption aria-hidden="true">1531139238689</figcaption>
 </figure>
 <p><span class="math inline">\(i == 2\)</span>, 會再多新生 <span class="math inline">\(8 \times 81 = 648\)</span> 加上原本的 81 個等於 729 個 Processes。</p>
 <ol start="5" type="1">
@@ -845,12 +849,12 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(fork()==<span class="number">0</span>) &#123;</span><br><span class="line">            fork();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (fork()&gt;<span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(fork()==<span class="number">0</span>) &#123;</span><br><span class="line">                fork();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Ans：216 個。(<del>1728 個</del>)</p>
 <figure>
-<img src="\willywangkaa\images\1531139971022.png" alt="1531139971022"><figcaption>1531139971022</figcaption>
+<img src="\willywangkaa\images\1531139971022.png" alt="1531139971022"><figcaption aria-hidden="true">1531139971022</figcaption>
 </figure>
 <p><span class="math inline">\(i == 1\)</span>，上面六個 Processes 會再各自生成 5 個行程，所以會再多生產 <span class="math inline">\(5 \times 6 = 30\)</span> 個 Processes ，加上原本的 Processes 等於 36 個。<br><span class="math inline">\(i == 2\)</span>，36 個 Processes 會再各自生成 5 個行程，所以會再多生產 <span class="math inline">\(5 \times 36 = 180\)</span> 個 Processes ，加上原本的 Processes 等於 216 個。</p>
 <ol start="6" type="1">
 <li><ol type="1">
-<li><code>printf(&quot;%d\n;&quot;, a);</code>共做幾次？</li>
+<li><code>printf("%d\n;", a);</code>共做幾次？</li>
 <li>印出<code>0</code>幾次？</li>
 <li>印出<code>1</code>幾次？</li>
 <li>印出<code>2</code>幾次？</li>
@@ -860,7 +864,7 @@
 <p>Ans：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">1</span><br><span class="line">0</span><br><span class="line">0</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
 <figure>
-<img src="\willywangkaa\images\1531141578065.png" alt="1531141578065"><figcaption>1531141578065</figcaption>
+<img src="\willywangkaa\images\1531141578065.png" alt="1531141578065"><figcaption aria-hidden="true">1531141578065</figcaption>
 </figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">\\ 錯誤答案</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">0</span><br><span class="line">0</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
 <h1 id="cpu-排程">CPU 排程</h1>
@@ -878,7 +882,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1527426695265.png" alt="1527426695265"><figcaption>1527426695265</figcaption>
+<img src="\willywangkaa\images\1527426695265.png" alt="1527426695265"><figcaption aria-hidden="true">1527426695265</figcaption>
 </figure>
 <ul>
 <li><strong>★ Waiting time - 等待時間</strong>
@@ -913,7 +917,7 @@
 <li>Non-premptive 法則
 <ul>
 <li>除非執行中的 process <strong>自願放掉 CPU</strong>，其他的 process 才有機會取得 CPU，否則就只能 wait ，不可逕自搶奪 CPU。</li>
-<li><span class="math inline">\(Ex.\)</span> 自願放棄使用 CPU 的情況：<strong>完成工作、wait for I/O-completed after issue I/O-request …。</strong></li>
+<li><span class="math inline">\(Ex.\)</span> 自願放棄使用 CPU 的情況：<strong>完成工作、wait for I/O-completed after issue I/O-request ...。</strong></li>
 <li>Pros
 <ol type="1">
 <li>Comtext switching 次數<strong>較少</strong> ( 時間節省 )。</li>
@@ -929,7 +933,7 @@
 <li>Preemptive 法則
 <ul>
 <li>執中的 Provess 有可能<strong>被迫放棄 CPU ，</strong>回到 Ready queue ，再將 CPU 指派給別的 Process 使用。</li>
-<li><span class="math inline">\(Ex.\)</span> <strong>Time-out ( 用在分時系統 )、interrupt …。</strong></li>
+<li><span class="math inline">\(Ex.\)</span> <strong>Time-out ( 用在分時系統 )、interrupt ...。</strong></li>
 <li>Pros
 <ol type="1">
 <li>排班效益較佳，平均 waiting / turnaround time 較小。</li>
@@ -964,7 +968,7 @@
 </ul></li>
 </ul>
 <p><strong>所以若排班決策之啟動點只包含</strong> Running <span class="math inline">\(\rightarrow\)</span> Block 與 Running <span class="math inline">\(\rightarrow\)</span> Exit (terminate) <strong>未包含</strong> Running <span class="math inline">\(\rightarrow\)</span> Ready 或 Wait <span class="math inline">\(\rightarrow\)</span> Ready <strong>則為 Non-preemptive，否則為 Preempt。</strong></p>
-<p><strong>＜Note＞：凡是 </strong><span class="math inline">\(\ldots \rightarrow\)</span> <strong>Ready 皆列入 Preemptive 元素，所以 Ready/suspend </strong> <span class="math inline">\(\rightarrow_{Swap\; in}\)</span> <strong>Ready、New</strong> <span class="math inline">\(\rightarrow\)</span> <strong>Ready … 也列入。</strong></p>
+<p><strong>＜Note＞：凡是 </strong><span class="math inline">\(\ldots \rightarrow\)</span> <strong>Ready 皆列入 Preemptive 元素，所以 Ready/suspend </strong> <span class="math inline">\(\rightarrow_{Swap\; in}\)</span> <strong>Ready、New</strong> <span class="math inline">\(\rightarrow\)</span> <strong>Ready ... 也列入。</strong></p>
 <h3 id="預估-process-next-cpu-burst-time">預估 Process Next CPU Burst Time</h3>
 <ul>
 <li>公式</li>
@@ -980,13 +984,13 @@
 <li><span class="math inline">\(Ex.\)</span> 當<span class="math inline">\(\alpha = 0.5\)</span></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1527475744485.png" alt="1527475744485"><figcaption>1527475744485</figcaption>
+<img src="\willywangkaa\images\1527475744485.png" alt="1527475744485"><figcaption aria-hidden="true">1527475744485</figcaption>
 </figure>
 <p><strong>＜Note＞：</strong><span class="math inline">\(\alpha\)</span> 的值用於條整與<strong>歷史紀錄的相依性高低。</strong></p>
 <h3 id="fifo">FIFO</h3>
 <p><strong>到達時間最小的 process 取得 CPU，也就是說先來先做。</strong></p>
 <figure>
-<img src="\willywangkaa\images\1527427440948.png" alt="1527427440948"><figcaption>1527427440948</figcaption>
+<img src="\willywangkaa\images\1527427440948.png" alt="1527427440948"><figcaption aria-hidden="true">1527427440948</figcaption>
 </figure>
 <ul>
 <li>到達時間皆為 0。</li>
@@ -994,7 +998,7 @@
 <li>Gantt chart。</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\FIFO.png" alt="FIFO"><figcaption>FIFO</figcaption>
+<img src="\willywangkaa\images\FIFO.png" alt="FIFO"><figcaption aria-hidden="true">FIFO</figcaption>
 </figure>
 <ul>
 <li>Avg. waitting time</li>
@@ -1022,14 +1026,14 @@
 <h3 id="sjf-shortest-job-first">SJF ( Shortest Job First )</h3>
 <p><strong>具有最小 CPU time 的 process，</strong>優先取得 CPU。</p>
 <figure>
-<img src="\willywangkaa\images\1527472805224.png" alt="1527472805224"><figcaption>1527472805224</figcaption>
+<img src="\willywangkaa\images\1527472805224.png" alt="1527472805224"><figcaption aria-hidden="true">1527472805224</figcaption>
 </figure>
 <ul>
 <li>到達時間皆為 0。</li>
 <li>Gantt chart。</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1527472898945.png" alt="1527472898945"><figcaption>1527472898945</figcaption>
+<img src="\willywangkaa\images\1527472898945.png" alt="1527472898945"><figcaption aria-hidden="true">1527472898945</figcaption>
 </figure>
 <ul>
 <li>Avg. waiting time</li>
@@ -1044,7 +1048,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1527473571408.png" alt="1527473571408"><figcaption>1527473571408</figcaption>
+<img src="\willywangkaa\images\1527473571408.png" alt="1527473571408"><figcaption aria-hidden="true">1527473571408</figcaption>
 </figure>
 <ul>
 <li>由上圖可知<br>Waiting time for long job：<span class="math inline">\(0 \rightarrow CPU \; execution \; time_{short \; job}\)</span><br>Waiting time for short job：<span class="math inline">\(CPU \; execution \; time_{long \; job} \rightarrow 0\)</span><br>Avg. waiting ime：<span class="math inline">\(\frac{(CPU \; execution \; time_{short \; job}-0)+(0-0)}{2} &lt; \frac{(0-0)+(CPU \; execution \; time_{long \; job}-0)}{2}\)</span></li>
@@ -1061,7 +1065,7 @@
 <h3 id="srtf-shorest-remaining-time-job-first">SRTF ( Shorest Remaining-time Job First )</h3>
 <p>又稱為 SRJF 或 SRTN ( Shorest Remaining-time Job Next )，<strong>即為「Preemptive - SJF」</strong>，將剩餘 CPU burst time 最小的 Process 取得 CPU，若「新到達的 process」 的 CPU burst time 目前執行中 process 剩下的 CPU time ，則新到達的 Process 可以<strong>插隊( Preemption )目前執行中的 Process。</strong></p>
 <figure>
-<img src="\willywangkaa\images\SRTF.png" alt="SRTF"><figcaption>SRTF</figcaption>
+<img src="\willywangkaa\images\SRTF.png" alt="SRTF"><figcaption aria-hidden="true">SRTF</figcaption>
 </figure>
 <ul>
 <li><p>Avg. waiting time for</p>
@@ -1070,7 +1074,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1527477828916.png" alt="1527477828916"><figcaption>1527477828916</figcaption>
+<img src="\willywangkaa\images\1527477828916.png" alt="1527477828916"><figcaption aria-hidden="true">1527477828916</figcaption>
 </figure>
 <p><span class="math display">\[
   \frac{ ((0-0)+(10-1)) + (1-1) + (17-2) + (5-3) }{ 4 } = 6.5
@@ -1086,7 +1090,7 @@
 <li>FIFO</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\SJF.png" alt="FIFO"><figcaption>FIFO</figcaption>
+<img src="\willywangkaa\images\SJF.png" alt="FIFO"><figcaption aria-hidden="true">FIFO</figcaption>
 </figure>
 <p><span class="math display">\[
 \frac{ (0-0) + (8-1) + (12-2) + (21 -3) }{4} = 8.75
@@ -1103,7 +1107,7 @@
 <h3 id="priority-method">Priority Method</h3>
 <p><strong>具有最高優先權的 Process</strong> 取得 CPU ，若多個 Process 權值相同，則以 <strong>FIFO</strong> 為準。</p>
 <figure>
-<img src="\willywangkaa\images\1527479225080.png" alt="1527479225080"><figcaption>1527479225080</figcaption>
+<img src="\willywangkaa\images\1527479225080.png" alt="1527479225080"><figcaption aria-hidden="true">1527479225080</figcaption>
 </figure>
 <ul>
 <li>到達時間皆為 0。</li>
@@ -1111,7 +1115,7 @@
 <li>Avg. waiting time</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1527479387651.png" alt="1527479387651"><figcaption>1527479387651</figcaption>
+<img src="\willywangkaa\images\1527479387651.png" alt="1527479387651"><figcaption aria-hidden="true">1527479387651</figcaption>
 </figure>
 <p><span class="math display">\[
 \frac{ (6-0)+(1-0)+(16-0)+(18-0)+(1-0) }{5}=8.2
@@ -1167,7 +1171,7 @@
 <li>Avg. waiting time</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1527486332570.png" alt="1527486332570"><figcaption>1527486332570</figcaption>
+<img src="\willywangkaa\images\1527486332570.png" alt="1527486332570"><figcaption aria-hidden="true">1527486332570</figcaption>
 </figure>
 <p><span class="math display">\[
 \frac{ ((0-0)+(23-2)) + (2-2) + ((5-5)+(20-10)) + ((10-10)+(19-13)) + (13-13) }{5} = \frac{37}{5}
@@ -1306,7 +1310,7 @@
 <li>Avg. waiting time</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1527829801602.png" alt="1527829801602"><figcaption>1527829801602</figcaption>
+<img src="\willywangkaa\images\1527829801602.png" alt="1527829801602"><figcaption aria-hidden="true">1527829801602</figcaption>
 </figure>
 <p><span class="math display">\[
 \frac{((0-0)+(16-4))+((4-0))+((8-0)+(20-12)+(25-24))+((12-0)+(24-16))}{4} = \frac{53}{4}
@@ -1347,7 +1351,7 @@
 <li>Avg. waiting time</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1527831109693.png" alt="1527831109693"><figcaption>1527831109693</figcaption>
+<img src="\willywangkaa\images\1527831109693.png" alt="1527831109693"><figcaption aria-hidden="true">1527831109693</figcaption>
 </figure>
 <p><span class="math display">\[
 \frac{((0-0)+(8-4)+(16-12))+((4-2)+(15-8))+((12-7))+((18-13))}{4} = \frac{27}{4}
@@ -1387,7 +1391,7 @@
 <li>Quantum = 5 <strong>(Ref p.4-111)</strong></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1528097302440.png" alt="1528097302440"><figcaption>1528097302440</figcaption>
+<img src="\willywangkaa\images\1528097302440.png" alt="1528097302440"><figcaption aria-hidden="true">1528097302440</figcaption>
 </figure>
 <ul>
 <li>Turnaround time。
@@ -1433,7 +1437,7 @@
 <li>Quantum = 4。</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1527833536050.png" alt="1527833536050"><figcaption>1527833536050</figcaption>
+<img src="\willywangkaa\images\1527833536050.png" alt="1527833536050"><figcaption aria-hidden="true">1527833536050</figcaption>
 </figure>
 <ul>
 <li>不知道為 P2 還是 P1 先進入 Waiting queue。</li>
@@ -1489,7 +1493,7 @@
 <li>Process 一旦被置入於某個 Queue 中，<strong>就不可(不允許)在不同 Ready queue 之間移動。</strong></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1527835326994.png" alt="1527835326994"><figcaption>1527835326994</figcaption>
+<img src="\willywangkaa\images\1527835326994.png" alt="1527835326994"><figcaption aria-hidden="true">1527835326994</figcaption>
 </figure>
 <ul>
 <li>$Ex. $ I/O - Bound 與 CPU - Bound Job 各自要置入哪種等級的 Queue 比較好？
@@ -1498,7 +1502,7 @@
 </ul></li>
 <li>分析
 <ul>
-<li><strong>可參數化 ( Queue 數目、Queue之間的排班法則、每個 Queue自己的排班法則、Process被放入哪個 Queue 之準則—Critera ) 的項目眾多，</strong>有助於排班設計及效能調校之彈性 ( flexibility )。</li>
+<li><strong>可參數化 ( Queue 數目、Queue之間的排班法則、每個 Queue自己的排班法則、Process被放入哪個 Queue 之準則---Critera ) 的項目眾多，</strong>有助於排班設計及效能調校之彈性 ( flexibility )。</li>
 <li>不公平。</li>
 <li>*<strong>有 Starcation。</strong></li>
 <li>Preemptive。</li>
@@ -1509,7 +1513,7 @@
 <ul>
 <li>分析
 <ul>
-<li><strong>可參數化 ( Queue 數目、Queue之間的排班法則、每個 Queue自己的排班法則、Process被放入哪個 Queue 之準則—Critera ) 的項目眾多，</strong>有助於排班設計及效能調校之彈性 ( flexibility )。</li>
+<li><strong>可參數化 ( Queue 數目、Queue之間的排班法則、每個 Queue自己的排班法則、Process被放入哪個 Queue 之準則---Critera ) 的項目眾多，</strong>有助於排班設計及效能調校之彈性 ( flexibility )。</li>
 <li>不公平。</li>
 <li><strong>可解決 Starcation。</strong></li>
 <li>Preemptive。</li>
@@ -1569,14 +1573,14 @@
 <li><p>0 &lt; S &lt; T &lt;&lt; Q</p></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1527838126019.png" alt="1527838126019"><figcaption>1527838126019</figcaption>
+<img src="\willywangkaa\images\1527838126019.png" alt="1527838126019"><figcaption aria-hidden="true">1527838126019</figcaption>
 </figure>
 <p>所以 <span class="math inline">\(\frac{T}{T+S}\)</span></p>
 <ul>
 <li>0 &lt; S &lt; Q &lt;&lt; T</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1527838656554.png" alt="1527838656554"><figcaption>1527838656554</figcaption>
+<img src="\willywangkaa\images\1527838656554.png" alt="1527838656554"><figcaption aria-hidden="true">1527838656554</figcaption>
 </figure>
 <p>所以 <span class="math inline">\(\frac{Q}{Q+S}\)</span></p>
 <ul>
@@ -1586,7 +1590,7 @@
 <li>Q 趨近於 0。</li>
 </ol>
 <p><span class="math inline">\(\frac{Q}{Q+S} \approx \frac{0}{0+S} = 0\)</span>，<strong>CPU utilization 趨近於 0。</strong></p></li>
-<li><p>恐龍版 ( Ref p. 4-86 Ex.50 )</p>
+<li><p>恐龍版 ( Ref p. 4-86 Ex.50 )</p>
 <ul>
 <li><p>10 個 I/O-Bound tasks、1 個 CPU-Bound task，I/O-Bound task 執行每隔 1ms 發出 I/O-request ，<em>每個 I/O 運作花 10 ms</em> ( 此例子有 CPU-Bound task 所以不會因此 Idle )。Context switching time: 0.1 ms，所有process 永遠不會結束，求 CPU utilization ，採 RR 法則。</p>
 <ol type="1">
@@ -1611,15 +1615,15 @@
 <li><strong>不須有互斥存取的考量。</strong></li>
 <li><strong>需考慮附載平衡 ( Load balanceing )，避免 CPU 之勞務不均 (有人忙、有人閒)。</strong><br>通常使用 2 種機制來調整 CPU 的附載 ( loading )：
 <ol type="1">
-<li>Push migration ( 移轉 ) — 像是領班、工頭</li>
-<li>Pull migration — 好同事</li>
+<li>Push migration ( 移轉 ) --- 像是領班、工頭</li>
+<li>Pull migration --- 好同事</li>
 </ol></li>
 </ol></li>
 </ul></li>
 </ul>
 <h3 id="process-affinity">Process affinity</h3>
 <ul>
-<li>在 multiprocesors system 中，當 Process 已決定某 CPU 上執行，則在他執行過程之中，盡量<strong>不要將之移轉到其他 CPUs 上執行，</strong>除非有其必要。( 如：Processor bad、Load balancing… )<strong>避免 CPU 之 Cache、暫存器的內容要複製且又要刪除該工作，而影響效能。</strong></li>
+<li>在 multiprocesors system 中，當 Process 已決定某 CPU 上執行，則在他執行過程之中，盡量<strong>不要將之移轉到其他 CPUs 上執行，</strong>除非有其必要。( 如：Processor bad、Load balancing... )<strong>避免 CPU 之 Cache、暫存器的內容要複製且又要刪除該工作，而影響效能。</strong></li>
 <li>有兩種 Affinity：
 <ul>
 <li>Hard-affinity：該 Process 不可移轉。</li>
@@ -1629,7 +1633,7 @@
 <h2 id="real-time-system-排班設計考量">Real-time system 排班設計考量</h2>
 <h3 id="hard-read-time-system">Hard read-time system</h3>
 <figure>
-<img src="\willywangkaa\images\1528098291707.png" alt="1528098291707"><figcaption>1528098291707</figcaption>
+<img src="\willywangkaa\images\1528098291707.png" alt="1528098291707"><figcaption aria-hidden="true">1528098291707</figcaption>
 </figure>
 <ul>
 <li><strong>排班設計考量</strong>
@@ -1681,7 +1685,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\Ratemonotonic.png" alt="Ratemonotonic"><figcaption>Ratemonotonic</figcaption>
+<img src="\willywangkaa\images\Ratemonotonic.png" alt="Ratemonotonic"><figcaption aria-hidden="true">Ratemonotonic</figcaption>
 </figure>
 <p>P1 未能滿足 deadline，P2 滿足 deadline。</p>
 <ul>
@@ -1692,7 +1696,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1528099381692.png" alt="1528099381692"><figcaption>1528099381692</figcaption>
+<img src="\willywangkaa\images\1528099381692.png" alt="1528099381692"><figcaption aria-hidden="true">1528099381692</figcaption>
 </figure>
 <p>P1 滿足 deadline，P2 滿足 deadline。</p>
 <ul>
@@ -1727,7 +1731,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1528099949133.png" alt="1528099949133"><figcaption>1528099949133</figcaption>
+<img src="\willywangkaa\images\1528099949133.png" alt="1528099949133"><figcaption aria-hidden="true">1528099949133</figcaption>
 </figure>
 <ul>
 <li>分析：
@@ -1770,7 +1774,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1528701363468.png" alt="1528701363468"><figcaption>1528701363468</figcaption>
+<img src="\willywangkaa\images\1528701363468.png" alt="1528701363468"><figcaption aria-hidden="true">1528701363468</figcaption>
 </figure>
 <ul>
 <li>以 EDF 是否滿足 Deadline？
@@ -1787,7 +1791,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1528704009904.png" alt="1528704009904"><figcaption>1528704009904</figcaption>
+<img src="\willywangkaa\images\1528704009904.png" alt="1528704009904"><figcaption aria-hidden="true">1528704009904</figcaption>
 </figure>
 <ul>
 <li><span class="math inline">\(Ex 2.\)</span></li>
@@ -1820,7 +1824,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1528704266407.png" alt="1528704266407"><figcaption>1528704266407</figcaption>
+<img src="\willywangkaa\images\1528704266407.png" alt="1528704266407"><figcaption aria-hidden="true">1528704266407</figcaption>
 </figure>
 <ul>
 <li>以 EDF 是否滿足 Deadline？
@@ -1832,7 +1836,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1528705571205.png" alt="1528705571205"><figcaption>1528705571205</figcaption>
+<img src="\willywangkaa\images\1528705571205.png" alt="1528705571205"><figcaption aria-hidden="true">1528705571205</figcaption>
 </figure>
 <ul>
 <li><strong>分析</strong>
@@ -1886,35 +1890,35 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1528637800281.png" alt="1528637800281"><figcaption>1528637800281</figcaption>
+<img src="\willywangkaa\images\1528637800281.png" alt="1528637800281"><figcaption aria-hidden="true">1528637800281</figcaption>
 </figure>
 <h1 id="thread-management">Thread management</h1>
 <ul>
-<li>Thread：又稱之為「Lightweight proces」，為作業系統分配 CPU time 之基本單位 (It’s a basic unit of CPU utilization)。( Process 是分配資源如：I/O, memory，的最基本單位 )</li>
+<li>Thread：又稱之為「Lightweight proces」，為作業系統分配 CPU time 之基本單位 (It's a basic unit of CPU utilization)。( Process 是分配資源如：I/O, memory，的最基本單位 )</li>
 <li>Thread 建立後，其私有的內容 ( 紀錄於TCB - thread control block 之中 ) 組成有：
 <ul>
 <li><strong>Programming counter</strong></li>
 <li><strong>CPU registers value</strong></li>
 <li><strong>Stack</strong></li>
-<li>Thread ID, state …</li>
+<li>Thread ID, state ...</li>
 </ul></li>
 <li><strong>此外，同一個 process 內之不同 threads 彼此共享此 process 的：</strong>
 <ul>
 <li><strong>Code section</strong></li>
 <li><strong>Data section</strong></li>
-<li><strong>Other OS resources</strong> (Open files, I/O resources, siginal, …)</li>
+<li><strong>Other OS resources</strong> (Open files, I/O resources, siginal, ...)</li>
 <li><strong>Code section 與 Data section 合稱為 Memory address space。</strong></li>
 </ul></li>
 <li>Tradition process (Single-thread model)</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1528638942439.png" alt="1528638942439"><figcaption>1528638942439</figcaption>
+<img src="\willywangkaa\images\1528638942439.png" alt="1528638942439"><figcaption aria-hidden="true">1528638942439</figcaption>
 </figure>
 <ul>
 <li>Multithreading mode</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1528639073333.png" alt="1528639073333"><figcaption>1528639073333</figcaption>
+<img src="\willywangkaa\images\1528639073333.png" alt="1528639073333"><figcaption aria-hidden="true">1528639073333</figcaption>
 </figure>
 <ul>
 <li>Pros
@@ -1989,7 +1993,7 @@
 <ul>
 <li>Pros
 <ul>
-<li>Thread creation、context switching …等管理成本低，速度快。</li>
+<li>Thread creation、context switching ...等管理成本低，速度快。</li>
 </ul></li>
 <li>Cons
 <ul>
@@ -2013,13 +2017,13 @@
 </ul></li>
 <li>Cons
 <ul>
-<li>Thread creation、context switching …等管理成本<strong>較高</strong>，速度<strong>較慢</strong>。</li>
+<li>Thread creation、context switching ...等管理成本<strong>較高</strong>，速度<strong>較慢</strong>。</li>
 </ul></li>
 <li><span class="math inline">\(Ex .\)</span>
 <ul>
 <li>大部分作業系統都支援。</li>
 <li>Windows (2000、NT)</li>
-<li>UNIX、Linux …</li>
+<li>UNIX、Linux ...</li>
 <li>Solaris</li>
 </ul></li>
 <li>[ Modern例題 ]：CPU time 依照分配對象數平均分配 thread，<span class="math inline">\(P_a\)</span> 有三條 threads ，<span class="math inline">\(P_b\)</span> 有兩條 threads，則 <span class="math inline">\(P_a, P_b\)</span> 各分到多少趴的 CPU time。
@@ -2034,24 +2038,24 @@
 </ul>
 <h4 id="many-to-one-user-thread">Many to one ( User thread )</h4>
 <figure>
-<img src="\willywangkaa\images\1528718261665.png" alt="1528718261665"><figcaption>1528718261665</figcaption>
+<img src="\willywangkaa\images\1528718261665.png" alt="1528718261665"><figcaption aria-hidden="true">1528718261665</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1528718722383.png" alt="1528718722383"><figcaption>1528718722383</figcaption>
+<img src="\willywangkaa\images\1528718722383.png" alt="1528718722383"><figcaption aria-hidden="true">1528718722383</figcaption>
 </figure>
 <p>This model maps <strong>many</strong> user threads to one kernel thread. Thread management is done in <strong>User space.</strong></p>
 <ul>
 <li><p>與 User thread 一致，不同解釋法。</p></li>
-<li>Pros
+<li><p>Pros</p>
 <ul>
-<li>Thread creation、context switching …等管理成本低，速度快。</li>
+<li>Thread creation、context switching ...等管理成本低，速度快。</li>
 </ul></li>
-<li>Cons
+<li><p>Cons</p>
 <ul>
 <li><strong>當 Process 內某條執行中的 user-thread 是被 blocked 的，會導致整個 porcess 亦被 blocked。( 即使 process 內還是有其他可執行的 thread。)</strong></li>
 <li><strong>因為無法做到 process 內之多條 user-threads 的平行執行，導致 Multprocessors 的效能發揮較差。</strong></li>
 </ul></li>
-<li>$Ex. $
+<li><p>$Ex. $</p>
 <ul>
 <li><strong>舉凡 Thread liberary 皆是 user threads。</strong></li>
 <li>如：POSIX 的 pthread library ( <strong>是只在UNIX、Linux系統上的規格</strong> )、Mach 的 c-thread library、Solaris 2以上的 UI thread library、Green thread library。</li>
@@ -2059,10 +2063,10 @@
 </ul>
 <h4 id="one-to-one-kernel-thread">One to one ( Kernel thread )</h4>
 <figure>
-<img src="\willywangkaa\images\1528718998029.png" alt="1528718998029"><figcaption>1528718998029</figcaption>
+<img src="\willywangkaa\images\1528718998029.png" alt="1528718998029"><figcaption aria-hidden="true">1528718998029</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1528719859725.png" alt="1528719859725"><figcaption>1528719859725</figcaption>
+<img src="\willywangkaa\images\1528719859725.png" alt="1528719859725"><figcaption aria-hidden="true">1528719859725</figcaption>
 </figure>
 <p>This model maps <strong>each</strong> user threads to <strong>a</strong> kernel thread.</p>
 <ul>
@@ -2074,27 +2078,27 @@
 </ul></li>
 <li>Cons
 <ul>
-<li>Thread creation、context switching …等管理成本<strong>較高</strong>，速度<strong>較慢</strong>。</li>
+<li>Thread creation、context switching ...等管理成本<strong>較高</strong>，速度<strong>較慢</strong>。</li>
 <li>*<strong>Process 每建立一條 User-thread，作業系統就必須配合產生一條 Kernel-thread 與 User-thread 搭配，所以若 User-thread 數產生眾多，則會讓作業系統負擔太大，耗資源大。</strong></li>
 </ul></li>
 <li><span class="math inline">\(Ex .\)</span>
 <ul>
 <li>大部分作業系統都支援。</li>
 <li>Windows (2000、NT)</li>
-<li>UNIX、Linux …</li>
+<li>UNIX、Linux ...</li>
 <li>Solaris</li>
 <li>OS/2</li>
 </ul></li>
 </ul>
 <h4 id="many-to-many-kernel-thread">Many to many ( Kernel thread )</h4>
 <figure>
-<img src="\willywangkaa\images\1528719979394.png" alt="1528719979394"><figcaption>1528719979394</figcaption>
+<img src="\willywangkaa\images\1528719979394.png" alt="1528719979394"><figcaption aria-hidden="true">1528719979394</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1528720444327.png" alt="1528720444327"><figcaption>1528720444327</figcaption>
+<img src="\willywangkaa\images\1528720444327.png" alt="1528720444327"><figcaption aria-hidden="true">1528720444327</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1530181565681.png" alt="1530181565681"><figcaption>1530181565681</figcaption>
+<img src="\willywangkaa\images\1530181565681.png" alt="1530181565681"><figcaption aria-hidden="true">1530181565681</figcaption>
 </figure>
 <p>This model maps <strong>many</strong> user threads to <strong>a small or equal number of</strong> kernel thread.</p>
 <ul>
@@ -2106,7 +2110,7 @@
 </ul></li>
 <li>Cons
 <ul>
-<li>Thread creation、context switching …等管理成本<strong>較高</strong>，速度<strong>較慢</strong>。</li>
+<li>Thread creation、context switching ...等管理成本<strong>較高</strong>，速度<strong>較慢</strong>。</li>
 <li><strong>製作、設計較為複雜。</strong></li>
 </ul></li>
 <li><span class="math inline">\(Ex .\)</span>
@@ -2115,15 +2119,15 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530181715559.png" alt="1530181715559"><figcaption>1530181715559</figcaption>
+<img src="\willywangkaa\images\1530181715559.png" alt="1530181715559"><figcaption aria-hidden="true">1530181715559</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1530182120849.png" alt="1530182120849"><figcaption>1530182120849</figcaption>
+<img src="\willywangkaa\images\1530182120849.png" alt="1530182120849"><figcaption aria-hidden="true">1530182120849</figcaption>
 </figure>
 <h2 id="multithreading-issues">Multithreading issues</h2>
 <h3 id="fork-issue">fork() issue</h3>
 <figure>
-<img src="\willywangkaa\images\1530178012484.png" alt="1530178012484"><figcaption>1530178012484</figcaption>
+<img src="\willywangkaa\images\1530178012484.png" alt="1530178012484"><figcaption aria-hidden="true">1530178012484</figcaption>
 </figure>
 <ul>
 <li><strong>Child1：適用在「子程序」工作與「父程序」相同時。</strong></li>
@@ -2131,13 +2135,13 @@
 </ul>
 <h3 id="signal-delivery-issue">Signal delivery issue</h3>
 <figure>
-<img src="\willywangkaa\images\1530178614262.png" alt="1530178614262"><figcaption>1530178614262</figcaption>
+<img src="\willywangkaa\images\1530178614262.png" alt="1530178614262"><figcaption aria-hidden="true">1530178614262</figcaption>
 </figure>
 <h4 id="signal">Signal</h4>
 <figure>
-<img src="\willywangkaa\images\1530178832898.png" alt="1530178832898"><figcaption>1530178832898</figcaption>
+<img src="\willywangkaa\images\1530178832898.png" alt="1530178832898"><figcaption aria-hidden="true">1530178832898</figcaption>
 </figure>
-<p><strong>It’s used in UNIX to notify the process that a particular event has occurred.</strong></p>
+<p><strong>It's used in UNIX to notify the process that a particular event has occurred.</strong></p>
 <ul>
 <li>當 process 收到 siginal 通知後，他必須處理 ( <strong>可交 process 自行處理或交付給 default signal handler kernel 處理</strong> )</li>
 <li><strong>Synchronous signal</strong>
@@ -2156,25 +2160,25 @@
 <li><strong>Case 1 ( Ex. Synchronous signal )</strong></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\Signalisssue.png" alt="Signalisssue"><figcaption>Signalisssue</figcaption>
+<img src="\willywangkaa\images\Signalisssue.png" alt="Signalisssue"><figcaption aria-hidden="true">Signalisssue</figcaption>
 </figure>
 <ul>
 <li><strong>Case 2 ( Ex.「Ctrl-break」)</strong></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530179630741.png" alt="1530179630741"><figcaption>1530179630741</figcaption>
+<img src="\willywangkaa\images\1530179630741.png" alt="1530179630741"><figcaption aria-hidden="true">1530179630741</figcaption>
 </figure>
 <ul>
 <li><strong>Case 3</strong></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530179857612.png" alt="1530179857612"><figcaption>1530179857612</figcaption>
+<img src="\willywangkaa\images\1530179857612.png" alt="1530179857612"><figcaption aria-hidden="true">1530179857612</figcaption>
 </figure>
 <ul>
 <li><strong>Case 4 ( Set a default signal handler. Ex. Solaris )</strong></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530180057880.png" alt="1530180057880"><figcaption>1530180057880</figcaption>
+<img src="\willywangkaa\images\1530180057880.png" alt="1530180057880"><figcaption aria-hidden="true">1530180057880</figcaption>
 </figure>
 <h3 id="thread-pool">Thread pool</h3>
 <p>在 client-server model 中，當 server 收到 client 的 request 後，server <strong>才建立 thread 以服務此一請求，然而 thread creation 仍需耗用一些時間，所以對 client 的回應不能非常即時，以「Thread pool」解決。</strong>Process ( server ) 事先建立一些 threads 置於「thread pool」中，當收到 client 的 request 後，就從「thread pool 」中指派一條可使用的 thread 以服務此請求，<strong>不須重新建立 thread ，回應較為即時，</strong>當此 thread 完成工作之後，再回到 thread pool 中待命，如果 thread pool 中沒有可用的 thread 則 client 的 request 需要等待。</p>
@@ -2210,8 +2214,8 @@
 <p><strong>Example（104 成功大學計算機組織與系統）</strong></p>
 <ul>
 <li><p>Assume that a process currently runs in the user mode of <strong>x86 system</strong></p></li>
-<li>Which of the following situation(s) always cause a transition from the user mode to the kernel mode?</li>
-<li>Please briefly explain your answer
+<li><p>Which of the following situation(s) always cause a transition from the user mode to the kernel mode?</p></li>
+<li><p>Please briefly explain your answer</p>
 <ul>
 <li>（a）A timer occurs and the time quantum has not expired
 <ul>
@@ -2362,7 +2366,7 @@
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -2406,10 +2410,10 @@
             
               <img class="site-author-image" itemprop="image"
                 src="/willywangkaa/images/avatar_me.gif"
-                alt="Willy Wang (willywangkaa)" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
-              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -2417,7 +2421,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/willywangkaa/archives/">
+                  <a href="/willywangkaa/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">posts</span>
@@ -2464,8 +2468,6 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -2681,7 +2683,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#process"><span class="nav-number">1.</span> <span class="nav-text">Process</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#procress-control-block"><span class="nav-number">1.1.</span> <span class="nav-text">Procress Control Block</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#state-trasition-diagram-s.t.d."><span class="nav-number">1.2.</span> <span class="nav-text">State trasition diagram (S.T.D.)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#五個狀態"><span class="nav-number">1.2.1.</span> <span class="nav-text">五個狀態</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七個狀態"><span class="nav-number">1.2.2.</span> <span class="nav-text">*七個狀態</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#unix-std"><span class="nav-number">1.2.3.</span> <span class="nav-text">UNIX STD</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scheduler"><span class="nav-number">2.</span> <span class="nav-text">Scheduler</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#io-bound-cpu-bound"><span class="nav-number">2.1.</span> <span class="nav-text">I/O-bound &amp; CPU-bound</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#long-term-schduler"><span class="nav-number">2.2.</span> <span class="nav-text">Long-term schduler</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#short-term-schduler"><span class="nav-number">2.3.</span> <span class="nav-text">Short-term schduler</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#midium-term-scheduler"><span class="nav-number">2.4.</span> <span class="nav-text">★Midium-term scheduler</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#context-switching"><span class="nav-number">3.</span> <span class="nav-text">Context switching</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何降低-context-switching-的負擔"><span class="nav-number">3.1.</span> <span class="nav-text">如何降低 Context switching 的負擔？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dispatcher-and-dispatch-latency-分派器與分派延時"><span class="nav-number">4.</span> <span class="nav-text">Dispatcher and dispatch latency （分派器與分派延時）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#process-control-operations"><span class="nav-number">5.</span> <span class="nav-text">Process control operations</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#unix-system-call"><span class="nav-number">5.1.</span> <span class="nav-text">UNIX system call</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程式實際操作"><span class="nav-number">5.2.</span> <span class="nav-text">程式實際操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ex1."><span class="nav-number">5.2.1.</span> <span class="nav-text">\(Ex1.\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ex2.-ref-p.4-52"><span class="nav-number">5.2.2.</span> <span class="nav-text">\(Ex2.\) (Ref p. 4-52)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ex3.-ref-p.4-53"><span class="nav-number">5.2.3.</span> <span class="nav-text">\(Ex3.\) (Ref p. 4-53)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ex4.-程序的並行"><span class="nav-number">5.2.4.</span> <span class="nav-text">★\(Ex4.\) 程序的並行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ex5.-共享變數"><span class="nav-number">5.2.5.</span> <span class="nav-text">★\(Ex5.\) 共享變數</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ex6.-有幾個-process-被建立了-including-main-ref-p.4-54-text-book-p.150"><span class="nav-number">5.2.6.</span> <span class="nav-text">\(Ex6.\) 有幾個 process 被建立了？ including main() (Ref p. 4-54, Text book p. 150)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cpu-排程"><span class="nav-number">6.</span> <span class="nav-text">CPU 排程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#評估-cpu-scheduking-效能之五個準則criteria"><span class="nav-number">6.1.</span> <span class="nav-text">評估 CPU scheduking 效能之五個準則(criteria)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排班法則"><span class="nav-number">6.2.</span> <span class="nav-text">排班法則</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#starvation"><span class="nav-number">6.2.1.</span> <span class="nav-text">Starvation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#non-preemptive-與-premptive-法則"><span class="nav-number">6.2.2.</span> <span class="nav-text">Non-preemptive 與 premptive 法則</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#觀點一"><span class="nav-number">6.2.2.1.</span> <span class="nav-text">觀點一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#觀點二"><span class="nav-number">6.2.2.2.</span> <span class="nav-text">★觀點二</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#預估-process-next-cpu-burst-time"><span class="nav-number">6.2.3.</span> <span class="nav-text">預估 Process Next CPU Burst Time</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fifo"><span class="nav-number">6.2.4.</span> <span class="nav-text">FIFO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sjf-shortest-job-first"><span class="nav-number">6.2.5.</span> <span class="nav-text">SJF ( Shortest Job First )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#srtf-shorest-remaining-time-job-first"><span class="nav-number">6.2.6.</span> <span class="nav-text">SRTF ( Shorest Remaining-time Job First )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#priority-method"><span class="nav-number">6.2.7.</span> <span class="nav-text">Priority Method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#round-robin"><span class="nav-number">6.2.8.</span> <span class="nav-text">★Round Robin</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#round-robin-with-priority"><span class="nav-number">6.2.8.1.</span> <span class="nav-text">Round robin with priority</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multilevel-queues"><span class="nav-number">6.2.9.</span> <span class="nav-text">Multilevel Queues</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multilevel-feedback-queues"><span class="nav-number">6.2.10.</span> <span class="nav-text">Multilevel Feedback Queues</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#結論"><span class="nav-number">6.2.11.</span> <span class="nav-text">結論</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#補充-cpu-utilization-計算"><span class="nav-number">6.2.12.</span> <span class="nav-text">(補充) CPU utilization 計算</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊系統之排班設計考量"><span class="nav-number">6.3.</span> <span class="nav-text">特殊系統之排班設計考量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#multiprocessor-system"><span class="nav-number">6.3.1.</span> <span class="nav-text">Multiprocessor system</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#process-affinity"><span class="nav-number">6.3.2.</span> <span class="nav-text">Process affinity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#real-time-system-排班設計考量"><span class="nav-number">6.4.</span> <span class="nav-text">Real-time system 排班設計考量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hard-read-time-system"><span class="nav-number">6.4.1.</span> <span class="nav-text">Hard read-time system</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#rate-monotonic"><span class="nav-number">6.4.1.1.</span> <span class="nav-text">Rate-monotonic</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#earliest-deadline-first-edf"><span class="nav-number">6.4.1.2.</span> <span class="nav-text">Earliest deadline First (EDF)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#soft-real-time-system"><span class="nav-number">6.4.2.</span> <span class="nav-text">Soft real-time system</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#priority-inversion---優先權反轉"><span class="nav-number">6.4.2.1.</span> <span class="nav-text">Priority inversion - 優先權反轉</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#real-time-system-之-dipatch-latency-的架構"><span class="nav-number">6.4.3.</span> <span class="nav-text">Real-time system 之 dipatch latency 的架構</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#thread-management"><span class="nav-number">7.</span> <span class="nav-text">Thread management</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#process-vs.-thread"><span class="nav-number">7.1.</span> <span class="nav-text">Process VS. Thread</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#user-thread-and-kernel-thread"><span class="nav-number">7.2.</span> <span class="nav-text">User thread and Kernel thread</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#user-level-thread"><span class="nav-number">7.2.1.</span> <span class="nav-text">User-level Thread</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kernel-level-thread"><span class="nav-number">7.2.2.</span> <span class="nav-text">Kernel-level thread</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multithreading-model"><span class="nav-number">7.2.3.</span> <span class="nav-text">Multithreading model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#many-to-one-user-thread"><span class="nav-number">7.2.3.1.</span> <span class="nav-text">Many to one ( User thread )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#one-to-one-kernel-thread"><span class="nav-number">7.2.3.2.</span> <span class="nav-text">One to one ( Kernel thread )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#many-to-many-kernel-thread"><span class="nav-number">7.2.3.3.</span> <span class="nav-text">Many to many ( Kernel thread )</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multithreading-issues"><span class="nav-number">7.3.</span> <span class="nav-text">Multithreading issues</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fork-issue"><span class="nav-number">7.3.1.</span> <span class="nav-text">fork() issue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#signal-delivery-issue"><span class="nav-number">7.3.2.</span> <span class="nav-text">Signal delivery issue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#signal"><span class="nav-number">7.3.2.1.</span> <span class="nav-text">Signal</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#signal-delivery-issue-1"><span class="nav-number">7.3.2.2.</span> <span class="nav-text">Signal Delivery Issue</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#thread-pool"><span class="nav-number">7.3.3.</span> <span class="nav-text">Thread pool</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#thread-程式追蹤"><span class="nav-number">7.4.</span> <span class="nav-text">Thread 程式追蹤</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#補充例題"><span class="nav-number">8.</span> <span class="nav-text">補充例題</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#參考"><span class="nav-number">9.</span> <span class="nav-text">參考</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#operating-systems-internals-and-design-principles"><span class="nav-number">9.0.1.</span> <span class="nav-text">Operating Systems: Internals and Design Principles</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#process"><span class="nav-number">1.</span> <span class="nav-text">Process</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#procress-control-block"><span class="nav-number">1.1.</span> <span class="nav-text">Procress Control Block</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#state-trasition-diagram-s.t.d."><span class="nav-number">1.2.</span> <span class="nav-text">State trasition diagram (S.T.D.)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E5%80%8B%E7%8B%80%E6%85%8B"><span class="nav-number">1.2.1.</span> <span class="nav-text">五個狀態</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%83%E5%80%8B%E7%8B%80%E6%85%8B"><span class="nav-number">1.2.2.</span> <span class="nav-text">*七個狀態</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#unix-std"><span class="nav-number">1.2.3.</span> <span class="nav-text">UNIX STD</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scheduler"><span class="nav-number">2.</span> <span class="nav-text">Scheduler</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#io-bound-cpu-bound"><span class="nav-number">2.1.</span> <span class="nav-text">I&#x2F;O-bound &amp; CPU-bound</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#long-term-schduler"><span class="nav-number">2.2.</span> <span class="nav-text">Long-term schduler</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#short-term-schduler"><span class="nav-number">2.3.</span> <span class="nav-text">Short-term schduler</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#midium-term-scheduler"><span class="nav-number">2.4.</span> <span class="nav-text">★Midium-term scheduler</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#context-switching"><span class="nav-number">3.</span> <span class="nav-text">Context switching</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E9%99%8D%E4%BD%8E-context-switching-%E7%9A%84%E8%B2%A0%E6%93%94"><span class="nav-number">3.1.</span> <span class="nav-text">如何降低 Context switching 的負擔？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dispatcher-and-dispatch-latency-%E5%88%86%E6%B4%BE%E5%99%A8%E8%88%87%E5%88%86%E6%B4%BE%E5%BB%B6%E6%99%82"><span class="nav-number">4.</span> <span class="nav-text">Dispatcher and dispatch latency （分派器與分派延時）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#process-control-operations"><span class="nav-number">5.</span> <span class="nav-text">Process control operations</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#unix-system-call"><span class="nav-number">5.1.</span> <span class="nav-text">UNIX system call</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%8B%E5%BC%8F%E5%AF%A6%E9%9A%9B%E6%93%8D%E4%BD%9C"><span class="nav-number">5.2.</span> <span class="nav-text">程式實際操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ex1."><span class="nav-number">5.2.1.</span> <span class="nav-text">\(Ex1.\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ex2.-ref-p.-4-52"><span class="nav-number">5.2.2.</span> <span class="nav-text">\(Ex2.\) (Ref p. 4-52)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ex3.-ref-p.-4-53"><span class="nav-number">5.2.3.</span> <span class="nav-text">\(Ex3.\) (Ref p. 4-53)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ex4.-%E7%A8%8B%E5%BA%8F%E7%9A%84%E4%B8%A6%E8%A1%8C"><span class="nav-number">5.2.4.</span> <span class="nav-text">★\(Ex4.\) 程序的並行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ex5.-%E5%85%B1%E4%BA%AB%E8%AE%8A%E6%95%B8"><span class="nav-number">5.2.5.</span> <span class="nav-text">★\(Ex5.\) 共享變數</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ex6.-%E6%9C%89%E5%B9%BE%E5%80%8B-process-%E8%A2%AB%E5%BB%BA%E7%AB%8B%E4%BA%86-including-main-ref-p.-4-54-text-book-p.-150"><span class="nav-number">5.2.6.</span> <span class="nav-text">\(Ex6.\) 有幾個 process 被建立了？ including main() (Ref p. 4-54, Text book p. 150)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cpu-%E6%8E%92%E7%A8%8B"><span class="nav-number">6.</span> <span class="nav-text">CPU 排程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A9%95%E4%BC%B0-cpu-scheduking-%E6%95%88%E8%83%BD%E4%B9%8B%E4%BA%94%E5%80%8B%E6%BA%96%E5%89%87criteria"><span class="nav-number">6.1.</span> <span class="nav-text">評估 CPU scheduking 效能之五個準則(criteria)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%92%E7%8F%AD%E6%B3%95%E5%89%87"><span class="nav-number">6.2.</span> <span class="nav-text">排班法則</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#starvation"><span class="nav-number">6.2.1.</span> <span class="nav-text">Starvation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#non-preemptive-%E8%88%87-premptive-%E6%B3%95%E5%89%87"><span class="nav-number">6.2.2.</span> <span class="nav-text">Non-preemptive 與 premptive 法則</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%80%E9%BB%9E%E4%B8%80"><span class="nav-number">6.2.2.1.</span> <span class="nav-text">觀點一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%80%E9%BB%9E%E4%BA%8C"><span class="nav-number">6.2.2.2.</span> <span class="nav-text">★觀點二</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A0%90%E4%BC%B0-process-next-cpu-burst-time"><span class="nav-number">6.2.3.</span> <span class="nav-text">預估 Process Next CPU Burst Time</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fifo"><span class="nav-number">6.2.4.</span> <span class="nav-text">FIFO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sjf-shortest-job-first"><span class="nav-number">6.2.5.</span> <span class="nav-text">SJF ( Shortest Job First )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#srtf-shorest-remaining-time-job-first"><span class="nav-number">6.2.6.</span> <span class="nav-text">SRTF ( Shorest Remaining-time Job First )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#priority-method"><span class="nav-number">6.2.7.</span> <span class="nav-text">Priority Method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#round-robin"><span class="nav-number">6.2.8.</span> <span class="nav-text">★Round Robin</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#round-robin-with-priority"><span class="nav-number">6.2.8.1.</span> <span class="nav-text">Round robin with priority</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multilevel-queues"><span class="nav-number">6.2.9.</span> <span class="nav-text">Multilevel Queues</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multilevel-feedback-queues"><span class="nav-number">6.2.10.</span> <span class="nav-text">Multilevel Feedback Queues</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B5%90%E8%AB%96"><span class="nav-number">6.2.11.</span> <span class="nav-text">結論</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A3%9C%E5%85%85-cpu-utilization-%E8%A8%88%E7%AE%97"><span class="nav-number">6.2.12.</span> <span class="nav-text">(補充) CPU utilization 計算</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E7%B3%BB%E7%B5%B1%E4%B9%8B%E6%8E%92%E7%8F%AD%E8%A8%AD%E8%A8%88%E8%80%83%E9%87%8F"><span class="nav-number">6.3.</span> <span class="nav-text">特殊系統之排班設計考量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#multiprocessor-system"><span class="nav-number">6.3.1.</span> <span class="nav-text">Multiprocessor system</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#process-affinity"><span class="nav-number">6.3.2.</span> <span class="nav-text">Process affinity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#real-time-system-%E6%8E%92%E7%8F%AD%E8%A8%AD%E8%A8%88%E8%80%83%E9%87%8F"><span class="nav-number">6.4.</span> <span class="nav-text">Real-time system 排班設計考量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hard-read-time-system"><span class="nav-number">6.4.1.</span> <span class="nav-text">Hard read-time system</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#rate-monotonic"><span class="nav-number">6.4.1.1.</span> <span class="nav-text">Rate-monotonic</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#earliest-deadline-first-edf"><span class="nav-number">6.4.1.2.</span> <span class="nav-text">Earliest deadline First (EDF)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#soft-real-time-system"><span class="nav-number">6.4.2.</span> <span class="nav-text">Soft real-time system</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#priority-inversion---%E5%84%AA%E5%85%88%E6%AC%8A%E5%8F%8D%E8%BD%89"><span class="nav-number">6.4.2.1.</span> <span class="nav-text">Priority inversion - 優先權反轉</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#real-time-system-%E4%B9%8B-dipatch-latency-%E7%9A%84%E6%9E%B6%E6%A7%8B"><span class="nav-number">6.4.3.</span> <span class="nav-text">Real-time system 之 dipatch latency 的架構</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#thread-management"><span class="nav-number">7.</span> <span class="nav-text">Thread management</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#process-vs.-thread"><span class="nav-number">7.1.</span> <span class="nav-text">Process VS. Thread</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#user-thread-and-kernel-thread"><span class="nav-number">7.2.</span> <span class="nav-text">User thread and Kernel thread</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#user-level-thread"><span class="nav-number">7.2.1.</span> <span class="nav-text">User-level Thread</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kernel-level-thread"><span class="nav-number">7.2.2.</span> <span class="nav-text">Kernel-level thread</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multithreading-model"><span class="nav-number">7.2.3.</span> <span class="nav-text">Multithreading model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#many-to-one-user-thread"><span class="nav-number">7.2.3.1.</span> <span class="nav-text">Many to one ( User thread )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#one-to-one-kernel-thread"><span class="nav-number">7.2.3.2.</span> <span class="nav-text">One to one ( Kernel thread )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#many-to-many-kernel-thread"><span class="nav-number">7.2.3.3.</span> <span class="nav-text">Many to many ( Kernel thread )</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multithreading-issues"><span class="nav-number">7.3.</span> <span class="nav-text">Multithreading issues</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fork-issue"><span class="nav-number">7.3.1.</span> <span class="nav-text">fork() issue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#signal-delivery-issue"><span class="nav-number">7.3.2.</span> <span class="nav-text">Signal delivery issue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#signal"><span class="nav-number">7.3.2.1.</span> <span class="nav-text">Signal</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#signal-delivery-issue-1"><span class="nav-number">7.3.2.2.</span> <span class="nav-text">Signal Delivery Issue</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#thread-pool"><span class="nav-number">7.3.3.</span> <span class="nav-text">Thread pool</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#thread-%E7%A8%8B%E5%BC%8F%E8%BF%BD%E8%B9%A4"><span class="nav-number">7.4.</span> <span class="nav-text">Thread 程式追蹤</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A3%9C%E5%85%85%E4%BE%8B%E9%A1%8C"><span class="nav-number">8.</span> <span class="nav-text">補充例題</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83"><span class="nav-number">9.</span> <span class="nav-text">參考</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#operating-systems-internals-and-design-principles"><span class="nav-number">9.0.1.</span> <span class="nav-text">Operating Systems: Internals and Design Principles</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -2701,11 +2703,11 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+  <span class="author" itemprop="copyrightHolder">Wang Yu Li</span>
 
   
 
@@ -2849,7 +2851,7 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/07/10/Operating-System-Process-Management-and-Thread-Management/';
+        this.page.url = 'http://wangwilly.github.io/willywangkaa/2018/07/10/Operating-System-Process-Management-and-Thread-Management/';
         this.page.identifier = '2018/07/10/Operating-System-Process-Management-and-Thread-Management/';
         this.page.title = 'Operating System - Process Management and Thread Management';
       };
@@ -3284,24 +3286,7 @@
   
     bookmark.scrollToMark('auto', "#more");
   
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>

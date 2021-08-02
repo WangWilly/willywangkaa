@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/willywangkaa/',
+    root: '',
     scheme: 'Pisces',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -103,14 +103,13 @@
   <meta name="keywords" content="Process Synchronization," />
 
 
-<meta name="description" content="Process Synchronization ( Process Communication, Inter Process Communication )   Synchronization  Process 因為「某件事情」的已發生或是未發生( 有多個 process 相互合作的時候 )，導致必須等待該事件完成或發生才得以繼續進行。   Process Communicatio">
-<meta name="keywords" content="Process Synchronization">
+<meta name="description" content="Process Synchronization ( Process Communication, Inter Process Communication )   Synchronization  Process 因為「某件事情」的已發生或是未發生( 有多個 process 相互合作的時候 )，導致必須等待該事件完成或發生才得以繼續進行。   Process Communication Shared">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Operating System - Process Synchronization 1">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/07/10/Operating-System-Process-Synchronization/index.html">
+<meta property="og:url" content="http://wangwilly.github.io/willywangkaa/2018/07/10/Operating-System-Process-Synchronization/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="Process Synchronization ( Process Communication, Inter Process Communication )   Synchronization  Process 因為「某件事情」的已發生或是未發生( 有多個 process 相互合作的時候 )，導致必須等待該事件完成或發生才得以繼續進行。   Process Communicatio">
-<meta property="og:locale" content="zh-tw">
+<meta property="og:description" content="Process Synchronization ( Process Communication, Inter Process Communication )   Synchronization  Process 因為「某件事情」的已發生或是未發生( 有多個 process 相互合作的時候 )，導致必須等待該事件完成或發生才得以繼續進行。   Process Communication Shared">
+<meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530175318032.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530176275538.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530176581925.png">
@@ -124,10 +123,11 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/dining_philosophersproblem.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/thedinningphilosopherproblem2.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/thedinningpholosopherproblem3.png">
-<meta property="og:updated_time" content="2019-01-28T09:04:19.990Z">
+<meta property="article:published_time" content="2018-07-10T15:05:00.000Z">
+<meta property="article:modified_time" content="2019-01-28T09:04:19.990Z">
+<meta property="article:author" content="Wang Yu Li">
+<meta property="article:tag" content="Process Synchronization">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Operating System - Process Synchronization 1">
-<meta name="twitter:description" content="Process Synchronization ( Process Communication, Inter Process Communication )   Synchronization  Process 因為「某件事情」的已發生或是未發生( 有多個 process 相互合作的時候 )，導致必須等待該事件完成或發生才得以繼續進行。   Process Communicatio">
 <meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/1530175318032.png">
 
 
@@ -180,9 +180,11 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
@@ -207,7 +209,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Live more like human</p>
+        <p class="site-subtitle">The higher up, the greater the fall.</p>
       
   </div>
 
@@ -228,25 +230,25 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/willywangkaa/" rel="section">
+          <a href="/willywangkaa/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/willywangkaa/archives/" rel="section">
+          <a href="/willywangkaa/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/willywangkaa/categories/" rel="section">
+          <a href="/willywangkaa/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/willywangkaa/tags/" rel="section">
+          <a href="/willywangkaa/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
@@ -327,7 +329,7 @@
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/07/10/Operating-System-Process-Synchronization/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -446,7 +448,7 @@
 <h2 id="process-communication">Process Communication</h2>
 <h3 id="shared-memory">Shared memory</h3>
 <figure>
-<img src="\willywangkaa\images\1530175318032.png" alt="1530175318032"><figcaption>1530175318032</figcaption>
+<img src="\willywangkaa\images\1530175318032.png" alt="1530175318032"><figcaption aria-hidden="true">1530175318032</figcaption>
 </figure>
 <p>Process 透過對共享變數 ( Shared variables ) 之存 ( Write )、取 ( Read )，達到構通 ( Infomation exchange ) 的目的。</p>
 <ul>
@@ -533,7 +535,7 @@
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// assembly processing flow</span></span><br><span class="line"><span class="comment">// P_i</span></span><br><span class="line">load x; <span class="comment">// x = 0</span></span><br><span class="line"><span class="comment">// P_j</span></span><br><span class="line">load x; <span class="comment">// x = 0</span></span><br><span class="line"><span class="comment">// P_i</span></span><br><span class="line">x = x + <span class="number">1</span>;</span><br><span class="line">restore x; <span class="comment">// x = 1</span></span><br><span class="line"><span class="comment">// P_j</span></span><br><span class="line">x = x + <span class="number">1</span>;</span><br><span class="line">restore x; <span class="comment">// x = 1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// P_i</span></span><br><span class="line">load x; <span class="comment">// x = 1</span></span><br><span class="line"><span class="comment">// P_j</span></span><br><span class="line">load x; <span class="comment">// x = 1</span></span><br><span class="line"><span class="comment">// P_i</span></span><br><span class="line">x = x + <span class="number">1</span>;</span><br><span class="line">restore x; <span class="comment">// x = 2</span></span><br><span class="line"><span class="comment">// P_j</span></span><br><span class="line">x = x + <span class="number">1</span>;</span><br><span class="line">restore x; <span class="comment">// x = 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// P_i</span></span><br><span class="line">load x; <span class="comment">// x = 2</span></span><br><span class="line"><span class="comment">// P_j</span></span><br><span class="line">load x; <span class="comment">// x = 2</span></span><br><span class="line"><span class="comment">// P_i</span></span><br><span class="line">x = x + <span class="number">1</span>;</span><br><span class="line">restore x; <span class="comment">// x = 3</span></span><br><span class="line"><span class="comment">// P_j</span></span><br><span class="line">x = x + <span class="number">1</span>;</span><br><span class="line">restore x; <span class="comment">// x = 3</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>正常結束：6</li>
+<li><p>正常結束：6</p></li>
 <li><p>所以 x 的值會介於在 3 ～ 6 之間，都是有可能會出現的狀況。</p></li>
 <li><p><span class="math inline">\(Ex 3.\)</span> x 是共享變數<strong>初值等於零</strong> ， i 為<em>區域變數</em>，另外有兩個 process <span class="math inline">\(P_i, P_j\)</span> 分別程式碼如下。</p></li>
 </ul>
@@ -574,12 +576,12 @@
 <p><strong>通常「 Disable interrupt 解決方法」不會下放給 User process，通常只存在於作業系統 Kernel 的實踐之中。</strong>( 只有作業系統開發者可以使用 )</p>
 </blockquote>
 <figure>
-<img src="\willywangkaa\images\1530176275538.png" alt="1530176275538"><figcaption>1530176275538</figcaption>
+<img src="\willywangkaa\images\1530176275538.png" alt="1530176275538"><figcaption aria-hidden="true">1530176275538</figcaption>
 </figure>
 <h4 id="critical-section-design-針對共享資料製作臨界區塊">Critical section design( 針對共享資料製作臨界區塊 )</h4>
 <p>針對「共享變數」的存取進行管制，當 P_i 取得共享變數存取管制，在該 Process 尚未完成之期間，任何其餘 Processes 即便已取得 CPU 的使用權之下，<strong>仍無法存取共享變數</strong>。</p>
 <figure>
-<img src="\willywangkaa\images\1530176581925.png" alt="1530176581925"><figcaption>1530176581925</figcaption>
+<img src="\willywangkaa\images\1530176581925.png" alt="1530176581925"><figcaption aria-hidden="true">1530176581925</figcaption>
 </figure>
 <blockquote>
 <ul>
@@ -647,7 +649,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1531041864596.png" alt="1531041864596"><figcaption>1531041864596</figcaption>
+<img src="\willywangkaa\images\1531041864596.png" alt="1531041864596"><figcaption aria-hidden="true">1531041864596</figcaption>
 </figure>
 <blockquote>
 <p>恐龍課本<strong>的錯誤</strong>：因為 Critical Section 設計當中，「Entery section」中經常使用 Busy-waiting ( spinlock ) 技巧，而課本將 Busy-waiting ( Spinlock ) 與 Critical Section 視為相同，<strong>進而與 Disable interrupt 比較( 應是 Busy waiting 與 Non-busy waiting 來比較 )</strong>。</p>
@@ -669,8 +671,8 @@
 <li><strong>關鍵性質</strong>
 <ul>
 <li><strong>Mutual exclution：在任何時間點最多只允許一個 Process 進入它的 C.S. ，不可以有多個 Processes 分別進入各自的 C.S.。</strong></li>
-<li><strong>Progress：不想進入 C.S. 的 Process ( 在 R.S. 中活動的 Process )，不可阻礙( 不參與「 進入C.S.」的決策 )其他 Processes 進入 C.S.。</strong><br>「安排欲進入 C.S 的 Process」之決策，要在<strong>有限的時間中完成 ( Non-deadlock：不可以無窮等待，使得全部之 Process 皆無法進入 C.S. )。</strong>—全部 Process 都無法進入</li>
-<li><strong>Bounded waiting：</strong>當有 Process 提出「進入 C.S.」之申請，等待核准的時間是有限的( 防止該 Process 出現 Starvation 的情形 )。—單一 Process 一直無法進入<br><strong>若有 n 個 Process 欲進入 C.S. 則每個 Process 最多等待 n-1 次後即可進入 C.S.。</strong></li>
+<li><strong>Progress：不想進入 C.S. 的 Process ( 在 R.S. 中活動的 Process )，不可阻礙( 不參與「 進入C.S.」的決策 )其他 Processes 進入 C.S.。</strong><br>「安排欲進入 C.S 的 Process」之決策，要在<strong>有限的時間中完成 ( Non-deadlock：不可以無窮等待，使得全部之 Process 皆無法進入 C.S. )。</strong>---全部 Process 都無法進入</li>
+<li><strong>Bounded waiting：</strong>當有 Process 提出「進入 C.S.」之申請，等待核准的時間是有限的( 防止該 Process 出現 Starvation 的情形 )。---單一 Process 一直無法進入<br><strong>若有 n 個 Process 欲進入 C.S. 則每個 Process 最多等待 n-1 次後即可進入 C.S.。</strong></li>
 </ul></li>
 </ul>
 <table>
@@ -729,7 +731,7 @@
 </ol>
 <h6 id="algorithm-2-fall-意願層面">Algorithm 2 ( Fall )：意願層面</h6>
 <ul>
-<li>共享變數：flag[ i … j ] of Boolean。( 初值皆為 False )
+<li>共享變數：flag[ i ... j ] of Boolean。( 初值皆為 False )
 <ul>
 <li><span class="math inline">\(flag[i] = \left\{\begin{matrix}True \quad P_i \; 有意願進入 \; C.S.\\ False \quad P_i \; 無意願進入\; C.S. \end{matrix}\right.\)</span></li>
 </ul></li>
@@ -743,10 +745,10 @@
 <li>Bounded waiting ( OK )</li>
 </ol>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">flag[i] = <span class="literal">true</span>; <span class="comment">// P_i 表達意願</span></span><br><span class="line">flag[j] = <span class="literal">true</span>; <span class="comment">// P_j表達意願</span></span><br><span class="line">	<span class="keyword">while</span> (flag[j]); <span class="comment">// P_i can't enter</span></span><br><span class="line">	<span class="keyword">while</span> (flag[j]); <span class="comment">// P_j can't enter</span></span><br><span class="line">... <span class="comment">// Progress fall ( Deadlock )</span></span><br></pre></td></tr></table></figure>
-<h6 id="algorithm-3---petersons-algorithm-ok-權力意願層面">Algorithm 3 - Peterson’s Algorithm ( OK )：權力、意願層面</h6>
+<h6 id="algorithm-3---petersons-algorithm-ok-權力意願層面">Algorithm 3 - Peterson's Algorithm ( OK )：權力、意願層面</h6>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//============================================================================</span></span><br><span class="line"><span class="comment">// Name        : Softwaresolution.cpp</span></span><br><span class="line"><span class="comment">// Author      : willywangkaa</span></span><br><span class="line"><span class="comment">// Description : Hello World in C++, Ansi-style</span></span><br><span class="line"><span class="comment">//============================================================================</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> sharedvar = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> turn;</span><br><span class="line"><span class="keyword">int</span> flag[<span class="number">2</span>];</span><br><span class="line"><span class="keyword">int</span> condition[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">worker</span><span class="params">(<span class="keyword">int</span> tid)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(condition[tid]) &#123;</span><br><span class="line">        <span class="keyword">double</span> delaySum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10000</span>; ++ i )</span><br><span class="line">            <span class="keyword">for</span>( <span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">10000</span>; ++ j )</span><br><span class="line">                delaySum += i*j;</span><br><span class="line"></span><br><span class="line">        flag[tid] = <span class="literal">true</span>;</span><br><span class="line">        turn = (tid^<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">while</span>(flag[tid^<span class="number">1</span>] &amp;&amp; turn == (tid^<span class="number">1</span>)) ;</span><br><span class="line">        turn = tid;</span><br><span class="line"></span><br><span class="line">        this_thread::get_id();</span><br><span class="line">        sharedvar = tid;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"Shared variable is edit by "</span>&lt;&lt; sharedvar &lt;&lt; <span class="string">".\n"</span>;</span><br><span class="line"></span><br><span class="line">        flag[tid] = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">vector</span>&lt;thread&gt; ths;</span><br><span class="line">    turn = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">        condition[i] = <span class="literal">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">        ths.push_back(thread(worker, i));</span><br><span class="line">        Sleep(<span class="number">10</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Sleep(<span class="number">1000</span>);</span><br><span class="line">    condition[<span class="number">0</span>] = <span class="literal">false</span>;</span><br><span class="line">    Sleep(<span class="number">2000</span>);</span><br><span class="line">    condition[<span class="number">1</span>] = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (thread &amp; th : ths) &#123;</span><br><span class="line">		<span class="keyword">if</span> (th.joinable())</span><br><span class="line">			th.join();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; sharedvar &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>共享變數：flag[ i … j ] of Boolean。( 初值皆為 False )
+<li>共享變數：flag[ i ... j ] of Boolean。( 初值皆為 False )
 <ul>
 <li><span class="math inline">\(flag[i] = \left\{\begin{matrix}True \quad P_i \; 有意願進入 \; C.S.\\ False \quad P_i \; 無意願進入\; C.S. \end{matrix}\right.\)</span></li>
 </ul></li>
@@ -782,7 +784,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_i</span></span><br><span class="line">Repeat</span><br><span class="line">	flag[j] = <span class="literal">true</span>;                 <span class="comment">// 表達意願</span></span><br><span class="line">	turn = i;                       <span class="comment">// * enter ( 權力先給對方 )</span></span><br><span class="line">	<span class="keyword">while</span> ( flag[i] &amp;&amp; turn == i ); <span class="comment">//   enter</span></span><br><span class="line">	C.S.</span><br><span class="line">	flag[j] = <span class="literal">false</span>;                <span class="comment">// leave</span></span><br><span class="line">Until <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// P_j</span></span><br><span class="line">Repeat</span><br><span class="line">	flag[i] = <span class="literal">true</span>;                 <span class="comment">// 表達意願</span></span><br><span class="line">	turn = j;                       <span class="comment">// *enter</span></span><br><span class="line">	<span class="keyword">while</span> ( flag[j] &amp;&amp; turn == j ); <span class="comment">//  enter</span></span><br><span class="line">	C.S.</span><br><span class="line">	flag[i] = <span class="literal">false</span>;                <span class="comment">// leave</span></span><br><span class="line">Until <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 <h5 id="n-個-process-之-critical-section-design">N 個 Process 之 Critical Section design</h5>
-<h6 id="bakerys-algorithm-麵包店號碼牌演算法">Bakery’s Algorithm ( 麵包店號碼牌演算法 )</h6>
+<h6 id="bakerys-algorithm-麵包店號碼牌演算法">Bakery's Algorithm ( 麵包店號碼牌演算法 )</h6>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//============================================================================</span></span><br><span class="line"><span class="comment">// Name        : Softwaresolution.cpp</span></span><br><span class="line"><span class="comment">// Author      : willywangkaa</span></span><br><span class="line"><span class="comment">// Description : Hello World in C++, Ansi-style</span></span><br><span class="line"><span class="comment">//============================================================================</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;thread&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> sharedvar = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">bool</span> choosing[<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> number[<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">worker</span><span class="params">(<span class="keyword">int</span> tid)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">double</span> delaySum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10000</span>; ++ i )</span><br><span class="line">		<span class="keyword">for</span>( <span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">10000</span>; ++ j )</span><br><span class="line">			delaySum += i*j;</span><br><span class="line"></span><br><span class="line">    choosing[tid] = <span class="literal">true</span>;</span><br><span class="line">    number[tid] = *max_element(number, number+<span class="number">10</span>) + <span class="number">1</span>;</span><br><span class="line">    choosing[tid] = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">while</span>(choosing[i]) (<span class="keyword">void</span>)<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(number[i]&gt;<span class="number">0</span> &amp;&amp; (</span><br><span class="line">				(number[i] &lt; number[tid])</span><br><span class="line">					|| (number[i] == number[tid] &amp;&amp; i &lt; tid)</span><br><span class="line">								))</span><br><span class="line">				(<span class="keyword">void</span>)<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    this_thread::get_id();</span><br><span class="line">    sharedvar = tid;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Shared variable is edit by "</span>&lt;&lt; sharedvar &lt;&lt; <span class="string">".\n"</span>;</span><br><span class="line"></span><br><span class="line">	number[tid] = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">vector</span>&lt;thread&gt; tharr;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">        choosing[i] = <span class="literal">false</span>;</span><br><span class="line">        number[i] = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">        choosing[i] = <span class="literal">false</span>;</span><br><span class="line">        tharr.push_back(thread(worker, i));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (thread &amp; th : tharr) &#123;</span><br><span class="line">		<span class="keyword">if</span> (th.joinable())</span><br><span class="line">			th.join();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; sharedvar &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>核心觀念：
@@ -793,10 +795,10 @@
 </ol></li>
 <li>共享變數
 <ul>
-<li><strong>choosing: [0 … n-1] fo boolean：初值皆為 false。</strong><br><span class="math inline">\(choose[i] = \left\{\begin{matrix}True &amp; P_i \; 正在取得號碼牌中，但尚未取得\\ False &amp; P_i \; 已取得號碼牌(init) \end{matrix}\right.\)</span></li>
-<li><strong>number: [0 … n-1] of int：初值為 0。</strong><br><span class="math inline">\(number[i] = \left\{\begin{matrix}=0 &amp; 代表 \; P_i \;無意願進入\\ &gt;0 &amp; P_i \; 有意願進入 \end{matrix}\right.\)</span></li>
+<li><strong>choosing: [0 ... n-1] fo boolean：初值皆為 false。</strong><br><span class="math inline">\(choose[i] = \left\{\begin{matrix}True &amp; P_i \; 正在取得號碼牌中，但尚未取得\\ False &amp; P_i \; 已取得號碼牌(init) \end{matrix}\right.\)</span></li>
+<li><strong>number: [0 ... n-1] of int：初值為 0。</strong><br><span class="math inline">\(number[i] = \left\{\begin{matrix}=0 &amp; 代表 \; P_i \;無意願進入\\ &gt;0 &amp; P_i \; 有意願進入 \end{matrix}\right.\)</span></li>
 </ul></li>
-<li>MAX(i … j)：從 i … j 挑最大值。</li>
+<li>MAX(i ... j)：從 i ... j 挑最大值。</li>
 <li>(a, b) &lt; (c, d)：<strong>代表</strong><br>1. a &lt; c<br>or 2. a==c and b &lt; d</li>
 <li>P_i 之程式碼</li>
 </ul>
@@ -828,7 +830,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Repeat</span><br><span class="line">	choosing[i] = <span class="literal">true</span>;</span><br><span class="line">	number[i] = Max(number[<span class="number">0</span>], ... , number[n<span class="number">-1</span>]) + <span class="number">1</span> </span><br><span class="line">	choosing[i] = <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">for</span>( j = <span class="number">0</span>; j &lt; n; j++ ) &#123;</span><br><span class="line">		~~<span class="keyword">while</span> (choosing[j]) <span class="keyword">do</span> no-op;~~  <span class="comment">// 移除這行程式碼是否還正確？請解釋。</span></span><br><span class="line">		<span class="keyword">while</span>(number[j]&gt;<span class="number">0</span> &amp;&amp; (numbeer[j], j) &lt; (number[i], i)) <span class="keyword">do</span> no-op; </span><br><span class="line">	&#125;</span><br><span class="line">	C.S.</span><br><span class="line">	Number[i] = <span class="number">0</span>;</span><br><span class="line">	R.S.</span><br><span class="line">util <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>不正確，違反「Mutual exclusion」</li>
-<li>令目前 number[0 … n-1] 所有的值皆為 0 ，今有兩 Process <span class="math inline">\(P_i, P_j \quad where \; i \neq j\)</span> 欲進入 C.S. ，並且假設 Process ID 為 <span class="math inline">\(P_i &lt; P_j\)</span></li>
+<li>令目前 number[0 ... n-1] 所有的值皆為 0 ，今有兩 Process <span class="math inline">\(P_i, P_j \quad where \; i \neq j\)</span> 欲進入 C.S. ，並且假設 Process ID 為 <span class="math inline">\(P_i &lt; P_j\)</span></li>
 <li><strong>小結論</strong>
 <ul>
 <li>此行程式碼存在的目的，是為了讓<strong>所有可能會同一時間拿到號碼牌的 Processes 能公平的取得該號碼牌，不會有的早拿到或是晚拿到該「同一號碼」之號碼牌。</strong></li>
@@ -864,7 +866,7 @@
 <li>共享變數
 <ul>
 <li><strong>Lock：bool = False</strong> ( Initial value )</li>
-<li><strong>Waiting：[0 … n-1] of bool 初值皆為 False</strong><br><span class="math inline">\(waiting[i] = \left\{\begin{matrix}True \quad P_i \; 有意願進入 \; C.S. ，且正在等待\\ False \quad 初值。P_i \; 不用等待，可以直接進入\; C.S. \end{matrix}\right.\)</span></li>
+<li><strong>Waiting：[0 ... n-1] of bool 初值皆為 False</strong><br><span class="math inline">\(waiting[i] = \left\{\begin{matrix}True \quad P_i \; 有意願進入 \; C.S. ，且正在等待\\ False \quad 初值。P_i \; 不用等待，可以直接進入\; C.S. \end{matrix}\right.\)</span></li>
 </ul></li>
 <li><span class="math inline">\(P_i\)</span> 之程式碼：</li>
 </ul>
@@ -905,7 +907,7 @@
 <li>共享變數
 <ul>
 <li><strong>Lock：bool = False</strong> ( Initial value )</li>
-<li><strong>Waiting：[0 … n-1] of bool 初值皆為 False</strong><br><span class="math inline">\(waiting[i] = \left\{\begin{matrix}True \quad P_i \; 有意願進入 \; C.S. ，且正在等待\\ False \quad 初值。P_i \; 不用等待，可以直接進入\; C.S. \end{matrix}\right.\)</span></li>
+<li><strong>Waiting：[0 ... n-1] of bool 初值皆為 False</strong><br><span class="math inline">\(waiting[i] = \left\{\begin{matrix}True \quad P_i \; 有意願進入 \; C.S. ，且正在等待\\ False \quad 初值。P_i \; 不用等待，可以直接進入\; C.S. \end{matrix}\right.\)</span></li>
 </ul></li>
 <li><span class="math inline">\(P_i\)</span> 之程式碼：</li>
 </ul>
@@ -1028,7 +1030,7 @@
 </blockquote>
 <h4 id="producer-consumer-problem-生產者消費者問題">Producer Consumer Problem ( 生產者消費者問題 )</h4>
 <figure>
-<img src="\willywangkaa\images\producercomsumerproblem.png" alt="producercomsumerproblem"><figcaption>producercomsumerproblem</figcaption>
+<img src="\willywangkaa\images\producercomsumerproblem.png" alt="producercomsumerproblem"><figcaption aria-hidden="true">producercomsumerproblem</figcaption>
 </figure>
 <ul>
 <li>Producer：這種 Processes 專門產生資料，以供其他 Processes 使用。</li>
@@ -1056,7 +1058,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// consumer</span></span><br><span class="line"><span class="keyword">while</span>(condition == <span class="literal">true</span>) &#123;</span><br><span class="line">	...</span><br><span class="line">	<span class="keyword">while</span>(in == out) ;</span><br><span class="line">	assign Buffer[out] to <span class="string">"I"</span>;</span><br><span class="line">	out = (out + <span class="number">1</span>) % n;</span><br><span class="line">	...</span><br><span class="line">	<span class="comment">// using "I" item</span></span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h6 id="algorithm2-fall">Algorithm2( Fall )</h6>
 <figure>
-<img src="\willywangkaa\images\circulerqueue.png" alt="circulerqueue"><figcaption>circulerqueue</figcaption>
+<img src="\willywangkaa\images\circulerqueue.png" alt="circulerqueue"><figcaption aria-hidden="true">circulerqueue</figcaption>
 </figure>
 <p>若使用「Algorithm1」的算法，在上圖所表示的狀態中，算法會判斷為 Buffer 已滿 (<code>(in + 1) % n == out</code>)，無法再加入，所以導致最多只能用 n-1 個 Buffer。</p>
 <ul>
@@ -1095,7 +1097,7 @@
 </ul>
 <h4 id="reader-writer-problem">Reader Writer Problem</h4>
 <figure>
-<img src="\willywangkaa\images\readerwiterproblem.png" alt="readerwiterproblem"><figcaption>readerwiterproblem</figcaption>
+<img src="\willywangkaa\images\readerwiterproblem.png" alt="readerwiterproblem"><figcaption aria-hidden="true">readerwiterproblem</figcaption>
 </figure>
 <ul>
 <li>☆<strong>問題重點</strong>
@@ -1106,7 +1108,7 @@
 </ul>
 <h5 id="first-reader-writer-problem">First reader writer problem</h5>
 <figure>
-<img src="\willywangkaa\images\firstreaderwiterproblem.png" alt="firstreaderwiterproblem"><figcaption>firstreaderwiterproblem</figcaption>
+<img src="\willywangkaa\images\firstreaderwiterproblem.png" alt="firstreaderwiterproblem"><figcaption aria-hidden="true">firstreaderwiterproblem</figcaption>
 </figure>
 <p>對於 Reader 有利，而對於 Writer 不利所以可能導致 Writer 「Starvation」。</p>
 <ul>
@@ -1128,7 +1130,7 @@
 <ul>
 <li>需要執行 <code>wait(wrt);</code> <strong>以檢查目前是否有其他的 Writer 正在使用此檔案。</strong><br>1. 若有，則不繼續執行。<br>2. 若無，則通過且將 Writer 阻擋住。</li>
 </ul></li>
-<li>EX：根據上方程式，假設目前 <span class="math inline">\(W_1\)</span> 已在寫入之中。
+<li><p>EX：根據上方程式，假設目前 <span class="math inline">\(W_1\)</span> 已在寫入之中。</p>
 <ol type="1">
 <li>若 <span class="math inline">\(R_1\)</span> 接上面之後開始執行，則 <span class="math inline">\(R_1\)</span> 會卡在程式碼何處？而此時的 readcnt 又為何？<br><code>wait(wrt);</code>，readcnt = 1。</li>
 <li>若 <span class="math inline">\(R_2\)</span> 接上面之後開始執行，則 <span class="math inline">\(R_2\)</span> 會卡在程式碼何處？而此時的 readcnt 又為何？<br><code>wait(mutex);</code>，readcnt = 1。</li>
@@ -1137,7 +1139,7 @@
 </ul>
 <h5 id="second-reader-writer-problem">Second reader writer problem</h5>
 <figure>
-<img src="\willywangkaa\images\secondreaderwriterproblem.png" alt="secondreaderwriterproblem"><figcaption>secondreaderwriterproblem</figcaption>
+<img src="\willywangkaa\images\secondreaderwriterproblem.png" alt="secondreaderwriterproblem"><figcaption aria-hidden="true">secondreaderwriterproblem</figcaption>
 </figure>
 <p>對於 Writer 有利，而對於 Reader 不利所以可能導致 Reader 「Starvation」。</p>
 <p><strong>只要 Writer 離開，發現尚有 Writers 也在等待佇列，則優先讓 Writer 對資料進行寫入，所以可能會導致 Reader Starvation。</strong></p>
@@ -1192,11 +1194,11 @@
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// customer: 注意! customer 並沒有需要 loop 剪髮的需求。</span></span><br><span class="line">wait(mutex);</span><br><span class="line">	<span class="keyword">if</span>(waiting &lt; n) &#123;</span><br><span class="line">		waiting++;</span><br><span class="line">		signal(customer); <span class="comment">// 叫醒/通知 Barber。</span></span><br><span class="line">signal(mutex);</span><br><span class="line">		wait(barber);		</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">signal(mutex);    </span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 <figure>
-<img src="\willywangkaa\images\secondreaderwriterproblem_2.png" alt="secondreaderwriterproblem_2"><figcaption>secondreaderwriterproblem_2</figcaption>
+<img src="\willywangkaa\images\secondreaderwriterproblem_2.png" alt="secondreaderwriterproblem_2"><figcaption aria-hidden="true">secondreaderwriterproblem_2</figcaption>
 </figure>
 <h4 id="the-dining-philosophers-problem-哲學家用餐問題">The Dining-philosophers Problem (哲學家用餐問題)</h4>
 <figure>
-<img src="\willywangkaa\images\dining_philosophersproblem.png" alt="dining_philosophersproblem"><figcaption>dining_philosophersproblem</figcaption>
+<img src="\willywangkaa\images\dining_philosophersproblem.png" alt="dining_philosophersproblem"><figcaption aria-hidden="true">dining_philosophersproblem</figcaption>
 </figure>
 <p><strong>倆倆之間有一隻筷子，哲學家若感到飢餓，必須要能夠同時取得左右兩根筷子才能用餐。用完餐後放下左右兩根筷子，進行思考模式。</strong></p>
 <p><strong>＜Note＞</strong></p>
@@ -1205,20 +1207,20 @@
 <li>西餐，一定為偶數個哲學家，因為為吃飯需要<strong>一副刀叉</strong>。</li>
 </ol>
 <figure>
-<img src="\willywangkaa\images\thedinningphilosopherproblem2.png" alt="thedinningphilosopherproblem2"><figcaption>thedinningphilosopherproblem2</figcaption>
+<img src="\willywangkaa\images\thedinningphilosopherproblem2.png" alt="thedinningphilosopherproblem2"><figcaption aria-hidden="true">thedinningphilosopherproblem2</figcaption>
 </figure>
 <ul>
 <li>共享變數
 <ul>
-<li>chopstick[0…4] of semaphore = {1 … 1}<br><strong>對 5 根筷子進行互斥控制。</strong></li>
-<li>i (i：0…4) 哲學家：<span class="math inline">\(Process \; P_i\)</span></li>
+<li>chopstick[0...4] of semaphore = {1 ... 1}<br><strong>對 5 根筷子進行互斥控制。</strong></li>
+<li>i (i：0...4) 哲學家：<span class="math inline">\(Process \; P_i\)</span></li>
 </ul></li>
 <li>Philosopher 程式 (fall)</li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// philosopher</span></span><br><span class="line"><span class="keyword">while</span>(condition==<span class="literal">false</span>) &#123;</span><br><span class="line">    <span class="comment">// need processing...</span></span><br><span class="line">    wait(chopstick[i]);</span><br><span class="line">        wait(chopstick[(i+<span class="number">1</span>)%<span class="number">5</span>]);</span><br><span class="line">        	<span class="comment">// processing</span></span><br><span class="line">    signal(chopstick[i]);</span><br><span class="line">    	signal(chopstick[(i+<span class="number">1</span>)%<span class="number">5</span>]);</span><br><span class="line">    <span class="comment">// thinking</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在上述程式碼中，若每位哲學家都依序先取得左筷，之後每位哲學家在取得右筷時，會直接形成「Circular waiting」，所以這程式很有可能會造成「Deadlock」。</p>
 <figure>
-<img src="\willywangkaa\images\thedinningpholosopherproblem3.png" alt="thedinningpholosopherproblem3"><figcaption>thedinningpholosopherproblem3</figcaption>
+<img src="\willywangkaa\images\thedinningpholosopherproblem3.png" alt="thedinningpholosopherproblem3"><figcaption aria-hidden="true">thedinningpholosopherproblem3</figcaption>
 </figure>
 <h5 id="解法一">解法一</h5>
 <ul>
@@ -1330,7 +1332,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// exit section</span></span><br><span class="line">    tmp = (i + <span class="number">1</span>) % n;</span><br><span class="line">    <span class="keyword">while</span>(tmp != i) &#123;</span><br><span class="line">        tmp = (tmp + <span class="number">1</span>) % n;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(tmp == i) &#123;</span><br><span class="line">        lock = <span class="literal">false</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        waiting[tmp] = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <h6 id="software-solution">software solution</h6>
 <ul>
-<li>使用「Bakery’s solution」。</li>
+<li>使用「Bakery's solution」。</li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// entery section</span></span><br><span class="line"><span class="comment">// global chooseing: boolean[] = false</span></span><br><span class="line"><span class="comment">// global number:int[] = false</span></span><br><span class="line">	choosing[i] = <span class="literal">true</span>;</span><br><span class="line">	number[i] = Max(number[<span class="number">0</span>], ... , number[n<span class="number">-1</span>]) + <span class="number">1</span> </span><br><span class="line">	choosing[i] = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span>( j = <span class="number">0</span>; j &lt; n; j++ ) &#123;</span><br><span class="line">        <span class="keyword">while</span> (choosing[j]) <span class="keyword">do</span> no-op;  <span class="comment">// 等待P_j 取得號碼牌。</span></span><br><span class="line">        <span class="comment">//比較號碼牌與 Process ID。</span></span><br><span class="line">        <span class="keyword">while</span>(number[j]&gt;<span class="number">0</span> &amp;&amp; (numbeer[j], j) &lt; (number[i], i)) <span class="keyword">do</span> no-op; </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// exit section</span></span><br><span class="line">	number[i] = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
@@ -1346,7 +1348,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// exit section</span></span><br><span class="line">    tmp = (i + <span class="number">1</span>) % n;</span><br><span class="line">    <span class="keyword">while</span>(tmp != i) &#123;</span><br><span class="line">        tmp = (tmp + <span class="number">1</span>) % n;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(tmp == i) &#123;</span><br><span class="line">        lock = <span class="literal">false</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        waiting[tmp] = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <h6 id="software-solution-1">software solution</h6>
 <ul>
-<li>使用「Bakery’s solution」。</li>
+<li>使用「Bakery's solution」。</li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// entery section</span></span><br><span class="line"><span class="comment">// global chooseing: boolean[] = false</span></span><br><span class="line"><span class="comment">// global number:int[] = false</span></span><br><span class="line">	choosing[i] = <span class="literal">true</span>;</span><br><span class="line">	number[i] = Max(number[<span class="number">0</span>], ... , number[n<span class="number">-1</span>]) + <span class="number">1</span> </span><br><span class="line">	choosing[i] = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span>( j = <span class="number">0</span>; j &lt; n; j++ ) &#123;</span><br><span class="line">        <span class="keyword">while</span> (choosing[j]) <span class="keyword">do</span> no-op;  <span class="comment">// 等待P_j 取得號碼牌。</span></span><br><span class="line">        <span class="comment">//比較號碼牌與 Process ID。</span></span><br><span class="line">        <span class="keyword">while</span>(number[j]&gt;<span class="number">0</span> &amp;&amp; (numbeer[j], j) &lt; (number[i], i)) <span class="keyword">do</span> no-op; </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// exit section</span></span><br><span class="line">	number[i] = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
@@ -1462,7 +1464,7 @@
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -1506,10 +1508,10 @@
             
               <img class="site-author-image" itemprop="image"
                 src="/willywangkaa/images/avatar_me.gif"
-                alt="Willy Wang (willywangkaa)" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
-              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -1517,7 +1519,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/willywangkaa/archives/">
+                  <a href="/willywangkaa/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">posts</span>
@@ -1564,8 +1566,6 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -1781,7 +1781,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#process-synchronization-process-communication-inter-process-communication"><span class="nav-number">1.</span> <span class="nav-text">Process Synchronization ( Process Communication, Inter Process Communication )</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#process-communication"><span class="nav-number">1.1.</span> <span class="nav-text">Process Communication</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#shared-memory"><span class="nav-number">1.1.1.</span> <span class="nav-text">Shared memory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#message-passing"><span class="nav-number">1.1.2.</span> <span class="nav-text">Message passing</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#race-condition-problem-in-memory-communication"><span class="nav-number">1.2.</span> <span class="nav-text">Race Condition Problem in Memory Communication</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解決-race-condition"><span class="nav-number">1.2.1.</span> <span class="nav-text">解決 Race Condition</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#disable-inrerrput-針對cpu"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">Disable inrerrput ( 針對CPU )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#critical-section-design-針對共享資料製作臨界區塊"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">Critical section design( 針對共享資料製作臨界區塊 )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#critical-section-spinlock-busy-wiating-vs.-disable-interrupt"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">Critical Section ( Spinlock, Busy-wiating ) VS. Disable interrupt</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#busy-waiting-spinlock-技巧"><span class="nav-number">1.2.2.</span> <span class="nav-text">Busy waiting ( Spinlock ) 技巧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#non-busy-waiting-技巧"><span class="nav-number">1.2.3.</span> <span class="nav-text">Non-busy waiting 技巧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#critical-section-design"><span class="nav-number">1.2.4.</span> <span class="nav-text">Critical Section Design</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#software-solutions"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">Software Solutions</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#兩個-processes-之-critical-section-design"><span class="nav-number">1.2.4.1.1.</span> <span class="nav-text">兩個 Processes 之 critical section design</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#algorithm-1-fall-權力層面"><span class="nav-number">1.2.4.1.1.1.</span> <span class="nav-text">Algorithm 1 ( Fall )：權力層面</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#algorithm-2-fall-意願層面"><span class="nav-number">1.2.4.1.1.2.</span> <span class="nav-text">Algorithm 2 ( Fall )：意願層面</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#algorithm-3---petersons-algorithm-ok-權力意願層面"><span class="nav-number">1.2.4.1.1.3.</span> <span class="nav-text">Algorithm 3 - Peterson’s Algorithm ( OK )：權力、意願層面</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#n-個-process-之-critical-section-design"><span class="nav-number">1.2.4.1.2.</span> <span class="nav-text">N 個 Process 之 Critical Section design</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#bakerys-algorithm-麵包店號碼牌演算法"><span class="nav-number">1.2.4.1.2.1.</span> <span class="nav-text">Bakery’s Algorithm ( 麵包店號碼牌演算法 )</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hardware-cpu-intructions-support"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">Hardware (CPU) Intructions Support</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#test_and_setbool-lock機器指令"><span class="nav-number">1.2.4.2.1.</span> <span class="nav-text">「test_and_set(bool *lock)」機器指令</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#algorithm-1-fall"><span class="nav-number">1.2.4.2.1.1.</span> <span class="nav-text">Algorithm 1 ( Fall )</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#algorithm-2-pass---fifo"><span class="nav-number">1.2.4.2.1.2.</span> <span class="nav-text">★★Algorithm 2 ( Pass ) - FIFO</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#compare_and_swapint-value-int-expected-int-new_value-指令"><span class="nav-number">1.2.4.2.2.</span> <span class="nav-text">「compare_and_swap(int *value, int expected, int new_value) 」指令</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#algorithm-1-fall-1"><span class="nav-number">1.2.4.2.2.1.</span> <span class="nav-text">Algorithm 1 (Fall)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#algorithm-2-pass---fifo-1"><span class="nav-number">1.2.4.2.2.2.</span> <span class="nav-text">★★Algorithm 2 ( Pass ) - FIFO</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#問題探討"><span class="nav-number">1.2.4.2.3.</span> <span class="nav-text">問題探討</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#semaphore-號誌"><span class="nav-number">1.2.5.</span> <span class="nav-text">Semaphore ( 號誌 )</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解決簡單的同步問題-synchronization-problem"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">解決簡單的同步問題 ( synchronization problem )</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ex.-a-必須要在-b-之前執行"><span class="nav-number">1.2.5.1.1.</span> <span class="nav-text">\(Ex.\) \(A;\) 必須要在 \(B;\) 之前執行。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ex.-執行順序為-acb"><span class="nav-number">1.2.5.1.2.</span> <span class="nav-text">\(Ex.\) 執行順序為 \(A、C、B\)。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ex.-一直重複執行依照-abc-的順序"><span class="nav-number">1.2.5.1.3.</span> <span class="nav-text">\(Ex.\) 一直重複執行依照 「\(A、B、C\) 」的順序。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ex.-c-為共享變數且初值為-3追蹤下列程式判斷可能的結果值"><span class="nav-number">1.2.5.1.4.</span> <span class="nav-text">\(Ex.\) \(C\) 為共享變數且初值為 3，追蹤下列程式判斷可能的結果值。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ex.-求-abc-可能的執行順序"><span class="nav-number">1.2.5.1.5.</span> <span class="nav-text">\(Ex.\) 求 \(A、B、C\) 可能的執行順序。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#semaphore-誤用"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">Semaphore 誤用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#違反互斥"><span class="nav-number">1.2.5.2.1.</span> <span class="nav-text">違反「互斥」</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#形成死結"><span class="nav-number">1.2.5.2.2.</span> <span class="nav-text">☆形成死結</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#producer-consumer-problem-生產者消費者問題"><span class="nav-number">1.2.5.3.</span> <span class="nav-text">Producer Consumer Problem ( 生產者消費者問題 )</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#bounded-buffer-producer-consumer-有限緩衝區"><span class="nav-number">1.2.5.3.1.</span> <span class="nav-text">☆Bounded Buffer Producer-Consumer ( 有限緩衝區 )</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#algorithm1-未使用semaphore"><span class="nav-number">1.2.5.3.1.1.</span> <span class="nav-text">Algorithm1 ( 未使用「Semaphore」 )</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#algorithm2-fall"><span class="nav-number">1.2.5.3.1.2.</span> <span class="nav-text">Algorithm2( Fall )</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#algorithm3-用-semaphore-解決-algorithm2"><span class="nav-number">1.2.5.3.1.3.</span> <span class="nav-text">Algorithm3 ( 用 Semaphore 解決 Algorithm2 )</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#unbunded-buffer-producer-consumer-無限緩衝區"><span class="nav-number">1.2.5.3.2.</span> <span class="nav-text">Unbunded Buffer Producer-Consumer ( 無限緩衝區 )</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#reader-writer-problem"><span class="nav-number">1.2.5.4.</span> <span class="nav-text">Reader Writer Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#first-reader-writer-problem"><span class="nav-number">1.2.5.4.1.</span> <span class="nav-text">First reader writer problem</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#second-reader-writer-problem"><span class="nav-number">1.2.5.4.2.</span> <span class="nav-text">Second reader writer problem</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#the-sleeping-barber-problem-理髮師睡覺問題"><span class="nav-number">1.2.5.5.</span> <span class="nav-text">The sleeping Barber Problem ( 理髮師睡覺問題 )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#the-dining-philosophers-problem-哲學家用餐問題"><span class="nav-number">1.2.5.6.</span> <span class="nav-text">The Dining-philosophers Problem (哲學家用餐問題)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#解法一"><span class="nav-number">1.2.5.6.1.</span> <span class="nav-text">解法一</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解法二"><span class="nav-number">1.2.5.6.2.</span> <span class="nav-text">解法二</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解法三"><span class="nav-number">1.2.5.6.3.</span> <span class="nav-text">解法三</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#semaphore-種類"><span class="nav-number">1.2.6.</span> <span class="nav-text">Semaphore 種類</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分類一---區分號誌值域"><span class="nav-number">1.2.6.1.</span> <span class="nav-text">分類一 - 區分號誌值域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分類二---是否-busy-waiting"><span class="nav-number">1.2.6.2.</span> <span class="nav-text">分類二 - 是否 Busy-waiting</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#spinlock"><span class="nav-number">1.2.6.2.1.</span> <span class="nav-text">Spinlock</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#non-busy-waiting-semaphore"><span class="nav-number">1.2.6.2.2.</span> <span class="nav-text">Non-Busy-waiting semaphore</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#實現-counting-semaphore"><span class="nav-number">1.2.6.3.</span> <span class="nav-text">實現 Counting semaphore</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#alogrithm1"><span class="nav-number">1.2.6.3.1.</span> <span class="nav-text">Alogrithm1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#algorithm2"><span class="nav-number">1.2.6.3.2.</span> <span class="nav-text">Algorithm2</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#hardware-solution"><span class="nav-number">1.2.6.3.2.1.</span> <span class="nav-text">Hardware solution</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#software-solution"><span class="nav-number">1.2.6.3.2.2.</span> <span class="nav-text">software solution</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#algorithm3"><span class="nav-number">1.2.6.3.3.</span> <span class="nav-text">Algorithm3</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#alogorithm4"><span class="nav-number">1.2.6.3.4.</span> <span class="nav-text">Alogorithm4</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#hardware-solution-1"><span class="nav-number">1.2.6.3.4.1.</span> <span class="nav-text">Hardware solution</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#software-solution-1"><span class="nav-number">1.2.6.3.4.2.</span> <span class="nav-text">software solution</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#無法完全避免的-busy-waiting"><span class="nav-number">1.2.6.4.</span> <span class="nav-text">無法完全避免的 Busy-waiting</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#process-synchronization-process-communication-inter-process-communication"><span class="nav-number">1.</span> <span class="nav-text">Process Synchronization ( Process Communication, Inter Process Communication )</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#process-communication"><span class="nav-number">1.1.</span> <span class="nav-text">Process Communication</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#shared-memory"><span class="nav-number">1.1.1.</span> <span class="nav-text">Shared memory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#message-passing"><span class="nav-number">1.1.2.</span> <span class="nav-text">Message passing</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#race-condition-problem-in-memory-communication"><span class="nav-number">1.2.</span> <span class="nav-text">Race Condition Problem in Memory Communication</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B1%BA-race-condition"><span class="nav-number">1.2.1.</span> <span class="nav-text">解決 Race Condition</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#disable-inrerrput-%E9%87%9D%E5%B0%8Dcpu"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">Disable inrerrput ( 針對CPU )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#critical-section-design-%E9%87%9D%E5%B0%8D%E5%85%B1%E4%BA%AB%E8%B3%87%E6%96%99%E8%A3%BD%E4%BD%9C%E8%87%A8%E7%95%8C%E5%8D%80%E5%A1%8A"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">Critical section design( 針對共享資料製作臨界區塊 )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#critical-section-spinlock-busy-wiating-vs.-disable-interrupt"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">Critical Section ( Spinlock, Busy-wiating ) VS. Disable interrupt</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#busy-waiting-spinlock-%E6%8A%80%E5%B7%A7"><span class="nav-number">1.2.2.</span> <span class="nav-text">Busy waiting ( Spinlock ) 技巧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#non-busy-waiting-%E6%8A%80%E5%B7%A7"><span class="nav-number">1.2.3.</span> <span class="nav-text">Non-busy waiting 技巧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#critical-section-design"><span class="nav-number">1.2.4.</span> <span class="nav-text">Critical Section Design</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#software-solutions"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">Software Solutions</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%A9%E5%80%8B-processes-%E4%B9%8B-critical-section-design"><span class="nav-number">1.2.4.1.1.</span> <span class="nav-text">兩個 Processes 之 critical section design</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#algorithm-1-fall-%E6%AC%8A%E5%8A%9B%E5%B1%A4%E9%9D%A2"><span class="nav-number">1.2.4.1.1.1.</span> <span class="nav-text">Algorithm 1 ( Fall )：權力層面</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#algorithm-2-fall-%E6%84%8F%E9%A1%98%E5%B1%A4%E9%9D%A2"><span class="nav-number">1.2.4.1.1.2.</span> <span class="nav-text">Algorithm 2 ( Fall )：意願層面</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#algorithm-3---petersons-algorithm-ok-%E6%AC%8A%E5%8A%9B%E6%84%8F%E9%A1%98%E5%B1%A4%E9%9D%A2"><span class="nav-number">1.2.4.1.1.3.</span> <span class="nav-text">Algorithm 3 - Peterson&#39;s Algorithm ( OK )：權力、意願層面</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#n-%E5%80%8B-process-%E4%B9%8B-critical-section-design"><span class="nav-number">1.2.4.1.2.</span> <span class="nav-text">N 個 Process 之 Critical Section design</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#bakerys-algorithm-%E9%BA%B5%E5%8C%85%E5%BA%97%E8%99%9F%E7%A2%BC%E7%89%8C%E6%BC%94%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.4.1.2.1.</span> <span class="nav-text">Bakery&#39;s Algorithm ( 麵包店號碼牌演算法 )</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hardware-cpu-intructions-support"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">Hardware (CPU) Intructions Support</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#test_and_setbool-lock%E6%A9%9F%E5%99%A8%E6%8C%87%E4%BB%A4"><span class="nav-number">1.2.4.2.1.</span> <span class="nav-text">「test_and_set(bool *lock)」機器指令</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#algorithm-1-fall"><span class="nav-number">1.2.4.2.1.1.</span> <span class="nav-text">Algorithm 1 ( Fall )</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#algorithm-2-pass---fifo"><span class="nav-number">1.2.4.2.1.2.</span> <span class="nav-text">★★Algorithm 2 ( Pass ) - FIFO</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#compare_and_swapint-value-int-expected-int-new_value-%E6%8C%87%E4%BB%A4"><span class="nav-number">1.2.4.2.2.</span> <span class="nav-text">「compare_and_swap(int *value, int expected, int new_value) 」指令</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#algorithm-1-fall-1"><span class="nav-number">1.2.4.2.2.1.</span> <span class="nav-text">Algorithm 1 (Fall)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#algorithm-2-pass---fifo-1"><span class="nav-number">1.2.4.2.2.2.</span> <span class="nav-text">★★Algorithm 2 ( Pass ) - FIFO</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%95%8F%E9%A1%8C%E6%8E%A2%E8%A8%8E"><span class="nav-number">1.2.4.2.3.</span> <span class="nav-text">問題探討</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#semaphore-%E8%99%9F%E8%AA%8C"><span class="nav-number">1.2.5.</span> <span class="nav-text">Semaphore ( 號誌 )</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%B1%BA%E7%B0%A1%E5%96%AE%E7%9A%84%E5%90%8C%E6%AD%A5%E5%95%8F%E9%A1%8C-synchronization-problem"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">解決簡單的同步問題 ( synchronization problem )</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ex.-a-%E5%BF%85%E9%A0%88%E8%A6%81%E5%9C%A8-b-%E4%B9%8B%E5%89%8D%E5%9F%B7%E8%A1%8C"><span class="nav-number">1.2.5.1.1.</span> <span class="nav-text">\(Ex.\) \(A;\) 必須要在 \(B;\) 之前執行。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ex.-%E5%9F%B7%E8%A1%8C%E9%A0%86%E5%BA%8F%E7%82%BA-acb"><span class="nav-number">1.2.5.1.2.</span> <span class="nav-text">\(Ex.\) 執行順序為 \(A、C、B\)。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ex.-%E4%B8%80%E7%9B%B4%E9%87%8D%E8%A4%87%E5%9F%B7%E8%A1%8C%E4%BE%9D%E7%85%A7-abc-%E7%9A%84%E9%A0%86%E5%BA%8F"><span class="nav-number">1.2.5.1.3.</span> <span class="nav-text">\(Ex.\) 一直重複執行依照 「\(A、B、C\) 」的順序。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ex.-c-%E7%82%BA%E5%85%B1%E4%BA%AB%E8%AE%8A%E6%95%B8%E4%B8%94%E5%88%9D%E5%80%BC%E7%82%BA-3%E8%BF%BD%E8%B9%A4%E4%B8%8B%E5%88%97%E7%A8%8B%E5%BC%8F%E5%88%A4%E6%96%B7%E5%8F%AF%E8%83%BD%E7%9A%84%E7%B5%90%E6%9E%9C%E5%80%BC"><span class="nav-number">1.2.5.1.4.</span> <span class="nav-text">\(Ex.\) \(C\) 為共享變數且初值為 3，追蹤下列程式判斷可能的結果值。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ex.-%E6%B1%82-abc-%E5%8F%AF%E8%83%BD%E7%9A%84%E5%9F%B7%E8%A1%8C%E9%A0%86%E5%BA%8F"><span class="nav-number">1.2.5.1.5.</span> <span class="nav-text">\(Ex.\) 求 \(A、B、C\) 可能的執行順序。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#semaphore-%E8%AA%A4%E7%94%A8"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">Semaphore 誤用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%81%95%E5%8F%8D%E4%BA%92%E6%96%A5"><span class="nav-number">1.2.5.2.1.</span> <span class="nav-text">違反「互斥」</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BD%A2%E6%88%90%E6%AD%BB%E7%B5%90"><span class="nav-number">1.2.5.2.2.</span> <span class="nav-text">☆形成死結</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#producer-consumer-problem-%E7%94%9F%E7%94%A2%E8%80%85%E6%B6%88%E8%B2%BB%E8%80%85%E5%95%8F%E9%A1%8C"><span class="nav-number">1.2.5.3.</span> <span class="nav-text">Producer Consumer Problem ( 生產者消費者問題 )</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#bounded-buffer-producer-consumer-%E6%9C%89%E9%99%90%E7%B7%A9%E8%A1%9D%E5%8D%80"><span class="nav-number">1.2.5.3.1.</span> <span class="nav-text">☆Bounded Buffer Producer-Consumer ( 有限緩衝區 )</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#algorithm1-%E6%9C%AA%E4%BD%BF%E7%94%A8semaphore"><span class="nav-number">1.2.5.3.1.1.</span> <span class="nav-text">Algorithm1 ( 未使用「Semaphore」 )</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#algorithm2-fall"><span class="nav-number">1.2.5.3.1.2.</span> <span class="nav-text">Algorithm2( Fall )</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#algorithm3-%E7%94%A8-semaphore-%E8%A7%A3%E6%B1%BA-algorithm2"><span class="nav-number">1.2.5.3.1.3.</span> <span class="nav-text">Algorithm3 ( 用 Semaphore 解決 Algorithm2 )</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#unbunded-buffer-producer-consumer-%E7%84%A1%E9%99%90%E7%B7%A9%E8%A1%9D%E5%8D%80"><span class="nav-number">1.2.5.3.2.</span> <span class="nav-text">Unbunded Buffer Producer-Consumer ( 無限緩衝區 )</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#reader-writer-problem"><span class="nav-number">1.2.5.4.</span> <span class="nav-text">Reader Writer Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#first-reader-writer-problem"><span class="nav-number">1.2.5.4.1.</span> <span class="nav-text">First reader writer problem</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#second-reader-writer-problem"><span class="nav-number">1.2.5.4.2.</span> <span class="nav-text">Second reader writer problem</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#the-sleeping-barber-problem-%E7%90%86%E9%AB%AE%E5%B8%AB%E7%9D%A1%E8%A6%BA%E5%95%8F%E9%A1%8C"><span class="nav-number">1.2.5.5.</span> <span class="nav-text">The sleeping Barber Problem ( 理髮師睡覺問題 )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#the-dining-philosophers-problem-%E5%93%B2%E5%AD%B8%E5%AE%B6%E7%94%A8%E9%A4%90%E5%95%8F%E9%A1%8C"><span class="nav-number">1.2.5.6.</span> <span class="nav-text">The Dining-philosophers Problem (哲學家用餐問題)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80"><span class="nav-number">1.2.5.6.1.</span> <span class="nav-text">解法一</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C"><span class="nav-number">1.2.5.6.2.</span> <span class="nav-text">解法二</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%89"><span class="nav-number">1.2.5.6.3.</span> <span class="nav-text">解法三</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#semaphore-%E7%A8%AE%E9%A1%9E"><span class="nav-number">1.2.6.</span> <span class="nav-text">Semaphore 種類</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E9%A1%9E%E4%B8%80---%E5%8D%80%E5%88%86%E8%99%9F%E8%AA%8C%E5%80%BC%E5%9F%9F"><span class="nav-number">1.2.6.1.</span> <span class="nav-text">分類一 - 區分號誌值域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E9%A1%9E%E4%BA%8C---%E6%98%AF%E5%90%A6-busy-waiting"><span class="nav-number">1.2.6.2.</span> <span class="nav-text">分類二 - 是否 Busy-waiting</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#spinlock"><span class="nav-number">1.2.6.2.1.</span> <span class="nav-text">Spinlock</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#non-busy-waiting-semaphore"><span class="nav-number">1.2.6.2.2.</span> <span class="nav-text">Non-Busy-waiting semaphore</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%A6%E7%8F%BE-counting-semaphore"><span class="nav-number">1.2.6.3.</span> <span class="nav-text">實現 Counting semaphore</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#alogrithm1"><span class="nav-number">1.2.6.3.1.</span> <span class="nav-text">Alogrithm1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#algorithm2"><span class="nav-number">1.2.6.3.2.</span> <span class="nav-text">Algorithm2</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#hardware-solution"><span class="nav-number">1.2.6.3.2.1.</span> <span class="nav-text">Hardware solution</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#software-solution"><span class="nav-number">1.2.6.3.2.2.</span> <span class="nav-text">software solution</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#algorithm3"><span class="nav-number">1.2.6.3.3.</span> <span class="nav-text">Algorithm3</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#alogorithm4"><span class="nav-number">1.2.6.3.4.</span> <span class="nav-text">Alogorithm4</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#hardware-solution-1"><span class="nav-number">1.2.6.3.4.1.</span> <span class="nav-text">Hardware solution</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#software-solution-1"><span class="nav-number">1.2.6.3.4.2.</span> <span class="nav-text">software solution</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%84%A1%E6%B3%95%E5%AE%8C%E5%85%A8%E9%81%BF%E5%85%8D%E7%9A%84-busy-waiting"><span class="nav-number">1.2.6.4.</span> <span class="nav-text">無法完全避免的 Busy-waiting</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1801,11 +1801,11 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+  <span class="author" itemprop="copyrightHolder">Wang Yu Li</span>
 
   
 
@@ -1949,7 +1949,7 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/07/10/Operating-System-Process-Synchronization/';
+        this.page.url = 'http://wangwilly.github.io/willywangkaa/2018/07/10/Operating-System-Process-Synchronization/';
         this.page.identifier = '2018/07/10/Operating-System-Process-Synchronization/';
         this.page.title = 'Operating System - Process Synchronization 1';
       };
@@ -2384,24 +2384,7 @@
   
     bookmark.scrollToMark('auto', "#more");
   
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>

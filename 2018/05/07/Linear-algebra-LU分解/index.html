@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/willywangkaa/',
+    root: '',
     scheme: 'Pisces',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -103,18 +103,19 @@
   <meta name="keywords" content="LU分解,LU Decomposition," />
 
 
-<meta name="description" content="Linear Algebra - LU分解  LU 分解的外表看似平淡無奇，但它可以用來解線性方程，逆矩陣和計算行列式，堪稱是最具實用價值的矩陣分解式之一。 令 \(A\) 為一個 \(n\cdot n\) 階矩陣。LU 分解是指將 \(A\) 表示為兩個 \(n \cdot n\) 階三角矩陣的乘積 \[ A = L\cdot U \] 其中 \(L\) 是下三角矩陣，\(U\) 是">
-<meta name="keywords" content="LU分解,LU Decomposition">
+<meta name="description" content="Linear Algebra - LU分解  LU 分解的外表看似平淡無奇，但它可以用來解線性方程，逆矩陣和計算行列式，堪稱是最具實用價值的矩陣分解式之一。 令 \(A\) 為一個 \(n\cdot n\) 階矩陣。LU 分解是指將 \(A\) 表示為兩個 \(n \cdot n\) 階三角矩陣的乘積 \[ A &#x3D; L\cdot U \] 其中 \(L\) 是下三角矩陣，\(U\) 是上三角矩陣，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linear algebra - LU分解">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/05/07/Linear-algebra-LU分解/index.html">
+<meta property="og:url" content="http://wangwilly.github.io/willywangkaa/2018/05/07/Linear-algebra-LU%E5%88%86%E8%A7%A3/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="Linear Algebra - LU分解  LU 分解的外表看似平淡無奇，但它可以用來解線性方程，逆矩陣和計算行列式，堪稱是最具實用價值的矩陣分解式之一。 令 \(A\) 為一個 \(n\cdot n\) 階矩陣。LU 分解是指將 \(A\) 表示為兩個 \(n \cdot n\) 階三角矩陣的乘積 \[ A = L\cdot U \] 其中 \(L\) 是下三角矩陣，\(U\) 是">
-<meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2019-02-08T04:41:21.372Z">
+<meta property="og:description" content="Linear Algebra - LU分解  LU 分解的外表看似平淡無奇，但它可以用來解線性方程，逆矩陣和計算行列式，堪稱是最具實用價值的矩陣分解式之一。 令 \(A\) 為一個 \(n\cdot n\) 階矩陣。LU 分解是指將 \(A\) 表示為兩個 \(n \cdot n\) 階三角矩陣的乘積 \[ A &#x3D; L\cdot U \] 其中 \(L\) 是下三角矩陣，\(U\) 是上三角矩陣，">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2018-05-07T08:01:00.000Z">
+<meta property="article:modified_time" content="2019-02-08T04:41:21.372Z">
+<meta property="article:author" content="Wang Yu Li">
+<meta property="article:tag" content="LU分解">
+<meta property="article:tag" content="LU Decomposition">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linear algebra - LU分解">
-<meta name="twitter:description" content="Linear Algebra - LU分解  LU 分解的外表看似平淡無奇，但它可以用來解線性方程，逆矩陣和計算行列式，堪稱是最具實用價值的矩陣分解式之一。 令 \(A\) 為一個 \(n\cdot n\) 階矩陣。LU 分解是指將 \(A\) 表示為兩個 \(n \cdot n\) 階三角矩陣的乘積 \[ A = L\cdot U \] 其中 \(L\) 是下三角矩陣，\(U\) 是">
 
 
 
@@ -166,9 +167,11 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
@@ -193,7 +196,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Live more like human</p>
+        <p class="site-subtitle">The higher up, the greater the fall.</p>
       
   </div>
 
@@ -214,25 +217,25 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/willywangkaa/" rel="section">
+          <a href="/willywangkaa/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/willywangkaa/archives/" rel="section">
+          <a href="/willywangkaa/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/willywangkaa/categories/" rel="section">
+          <a href="/willywangkaa/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/willywangkaa/tags/" rel="section">
+          <a href="/willywangkaa/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
@@ -310,10 +313,10 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/05/07/Linear-algebra-LU分解/">
+    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/05/07/Linear-algebra-LU%E5%88%86%E8%A7%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -391,7 +394,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/willywangkaa/2018/05/07/Linear-algebra-LU分解/#comments" itemprop="discussionUrl">
+                <a href="/willywangkaa/2018/05/07/Linear-algebra-LU%E5%88%86%E8%A7%A3/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
                         data-disqus-identifier="2018/05/07/Linear-algebra-LU分解/" itemprop="commentCount"></span>
                 </a>
@@ -503,7 +506,7 @@ A\mathbf{x}_1=\begin{bmatrix}  1\\  0\\  0  \end{bmatrix},~ A\mathbf{x}_2=\begin
       
         <div class="post-tags">
           
-            <a href="/willywangkaa/tags/LU分解/" rel="tag"># LU分解</a>
+            <a href="/willywangkaa/tags/LU%E5%88%86%E8%A7%A3/" rel="tag"># LU分解</a>
           
             <a href="/willywangkaa/tags/LU-Decomposition/" rel="tag"># LU Decomposition</a>
           
@@ -518,7 +521,7 @@ A\mathbf{x}_1=\begin{bmatrix}  1\\  0\\  0  \end{bmatrix},~ A\mathbf{x}_2=\begin
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/willywangkaa/2018/05/05/Technical Patent-Study-Patent-Claim-專利聲明/" rel="next" title="Technical Patent Study - Patent Claim">
+              <a href="/willywangkaa/2018/05/05/Technical%20Patent-Study-Patent-Claim-%E5%B0%88%E5%88%A9%E8%81%B2%E6%98%8E/" rel="next" title="Technical Patent Study - Patent Claim">
                 <i class="fa fa-chevron-left"></i> Technical Patent Study - Patent Claim
               </a>
             
@@ -561,7 +564,7 @@ A\mathbf{x}_1=\begin{bmatrix}  1\\  0\\  0  \end{bmatrix},~ A\mathbf{x}_2=\begin
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -605,10 +608,10 @@ A\mathbf{x}_1=\begin{bmatrix}  1\\  0\\  0  \end{bmatrix},~ A\mathbf{x}_2=\begin
             
               <img class="site-author-image" itemprop="image"
                 src="/willywangkaa/images/avatar_me.gif"
-                alt="Willy Wang (willywangkaa)" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
-              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -616,7 +619,7 @@ A\mathbf{x}_1=\begin{bmatrix}  1\\  0\\  0  \end{bmatrix},~ A\mathbf{x}_2=\begin
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/willywangkaa/archives/">
+                  <a href="/willywangkaa/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">posts</span>
@@ -663,8 +666,6 @@ A\mathbf{x}_1=\begin{bmatrix}  1\\  0\\  0  \end{bmatrix},~ A\mathbf{x}_2=\begin
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -880,7 +881,7 @@ A\mathbf{x}_1=\begin{bmatrix}  1\\  0\\  0  \end{bmatrix},~ A\mathbf{x}_2=\begin
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linear-algebra---lu分解"><span class="nav-number">1.</span> <span class="nav-text">Linear Algebra - LU分解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#存在性"><span class="nav-number">2.</span> <span class="nav-text">存在性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#應用"><span class="nav-number">3.</span> <span class="nav-text">應用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#參考"><span class="nav-number">4.</span> <span class="nav-text">參考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linear-algebra---lu%E5%88%86%E8%A7%A3"><span class="nav-number">1.</span> <span class="nav-text">Linear Algebra - LU分解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%98%E5%9C%A8%E6%80%A7"><span class="nav-number">2.</span> <span class="nav-text">存在性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%87%89%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">應用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83"><span class="nav-number">4.</span> <span class="nav-text">參考</span></a></li></ol></div>
             
 
           </div>
@@ -900,11 +901,11 @@ A\mathbf{x}_1=\begin{bmatrix}  1\\  0\\  0  \end{bmatrix},~ A\mathbf{x}_2=\begin
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+  <span class="author" itemprop="copyrightHolder">Wang Yu Li</span>
 
   
 
@@ -1048,7 +1049,7 @@ A\mathbf{x}_1=\begin{bmatrix}  1\\  0\\  0  \end{bmatrix},~ A\mathbf{x}_2=\begin
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/05/07/Linear-algebra-LU分解/';
+        this.page.url = 'http://wangwilly.github.io/willywangkaa/2018/05/07/Linear-algebra-LU%E5%88%86%E8%A7%A3/';
         this.page.identifier = '2018/05/07/Linear-algebra-LU分解/';
         this.page.title = 'Linear algebra - LU分解';
       };
@@ -1483,24 +1484,7 @@ A\mathbf{x}_1=\begin{bmatrix}  1\\  0\\  0  \end{bmatrix},~ A\mathbf{x}_2=\begin
   
     bookmark.scrollToMark('auto', "#more");
   
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>

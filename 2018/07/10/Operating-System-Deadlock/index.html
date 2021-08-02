@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/willywangkaa/',
+    root: '',
     scheme: 'Pisces',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -103,14 +103,13 @@
   <meta name="keywords" content="Deadlock," />
 
 
-<meta name="description" content="Deadlock  系統中存在一組 processes，彼此形成 循環等待 的情況，造成這些 processes 皆無法往下執行，並降低產量 ( throughput ) 的現象。  1530163891325   死結成立的四個必要條件 ( 所以有一個不成立，則死結必不發生，但是若四個條件全部成立時，死結不一定會發生。 )If there are 4 conditions are">
-<meta name="keywords" content="Deadlock">
+<meta name="description" content="Deadlock  系統中存在一組 processes，彼此形成 循環等待 的情況，造成這些 processes 皆無法往下執行，並降低產量 ( throughput ) 的現象。  1530163891325   死結成立的四個必要條件 ( 所以有一個不成立，則死結必不發生，但是若四個條件全部成立時，死結不一定會發生。 )If there are 4 conditions are true, t">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Operating System - Deadlock">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/07/10/Operating-System-Deadlock/index.html">
+<meta property="og:url" content="http://wangwilly.github.io/willywangkaa/2018/07/10/Operating-System-Deadlock/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="Deadlock  系統中存在一組 processes，彼此形成 循環等待 的情況，造成這些 processes 皆無法往下執行，並降低產量 ( throughput ) 的現象。  1530163891325   死結成立的四個必要條件 ( 所以有一個不成立，則死結必不發生，但是若四個條件全部成立時，死結不一定會發生。 )If there are 4 conditions are">
-<meta property="og:locale" content="zh-tw">
+<meta property="og:description" content="Deadlock  系統中存在一組 processes，彼此形成 循環等待 的情況，造成這些 processes 皆無法往下執行，並降低產量 ( throughput ) 的現象。  1530163891325   死結成立的四個必要條件 ( 所以有一個不成立，則死結必不發生，但是若四個條件全部成立時，死結不一定會發生。 )If there are 4 conditions are true, t">
+<meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530163891325.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530163425234.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/deadlock.png">
@@ -140,10 +139,11 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530174756704.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1529287297237.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1529287327536.png">
-<meta property="og:updated_time" content="2019-01-28T10:47:41.451Z">
+<meta property="article:published_time" content="2018-07-10T13:54:00.000Z">
+<meta property="article:modified_time" content="2019-01-28T10:47:41.451Z">
+<meta property="article:author" content="Wang Yu Li">
+<meta property="article:tag" content="Deadlock">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Operating System - Deadlock">
-<meta name="twitter:description" content="Deadlock  系統中存在一組 processes，彼此形成 循環等待 的情況，造成這些 processes 皆無法往下執行，並降低產量 ( throughput ) 的現象。  1530163891325   死結成立的四個必要條件 ( 所以有一個不成立，則死結必不發生，但是若四個條件全部成立時，死結不一定會發生。 )If there are 4 conditions are">
 <meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/1530163891325.png">
 
 
@@ -196,9 +196,11 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
@@ -223,7 +225,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Live more like human</p>
+        <p class="site-subtitle">The higher up, the greater the fall.</p>
       
   </div>
 
@@ -244,25 +246,25 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/willywangkaa/" rel="section">
+          <a href="/willywangkaa/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/willywangkaa/archives/" rel="section">
+          <a href="/willywangkaa/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/willywangkaa/categories/" rel="section">
+          <a href="/willywangkaa/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/willywangkaa/tags/" rel="section">
+          <a href="/willywangkaa/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
@@ -343,7 +345,7 @@
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/07/10/Operating-System-Deadlock/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -455,19 +457,19 @@
 <hr>
 <p>系統中存在一組 processes，彼此形成 <em>循環等待</em> 的情況，<strong>造成這些 processes 皆無法往下執行，並降低產量 ( throughput ) 的現象。</strong></p>
 <figure>
-<img src="\willywangkaa\images\1530163891325.png" alt="1530163891325"><figcaption>1530163891325</figcaption>
+<img src="\willywangkaa\images\1530163891325.png" alt="1530163891325"><figcaption aria-hidden="true">1530163891325</figcaption>
 </figure>
 <ul>
 <li>死結成立的四個必要條件 ( 所以有一個不成立，則死結必不發生，<strong>但是若四個條件全部成立時，死結不一定會發生。</strong> )<br>If there are 4 conditions are true, then the deadlock <strong>will/can</strong> arise. <span class="math inline">\(\rightarrow\)</span> <strong>false/true.</strong>
 <ul>
-<li>Mutual exclusion：<strong>對於 Resource 而言，</strong>具有此性質的 resource ，在<strong>任何時間點最多只允許一個 process 持有/使用</strong>，不可多個 processes 同時持有/使用。<br>$Ex. $ 大多數的資源皆具有此性質。如：CPU, memory, disk, printer…<br>$Counter ; Ex. $ <strong>Read-only file 不具此性質。</strong></li>
+<li>Mutual exclusion：<strong>對於 Resource 而言，</strong>具有此性質的 resource ，在<strong>任何時間點最多只允許一個 process 持有/使用</strong>，不可多個 processes 同時持有/使用。<br>$Ex. $ 大多數的資源皆具有此性質。如：CPU, memory, disk, printer...<br>$Counter ; Ex. $ <strong>Read-only file 不具此性質。</strong></li>
 <li>Hold and wait：<strong>Process 持有部分的資源，且又在等待其他 processes 所持有的資源。</strong></li>
 <li>No preemption：<strong>Process 不可以任意剝奪其他 processes 所持有的資源</strong>，必須等待對方釋放資源才有機會取得資源。<br><strong>＜Note＞：</strong>若可 Preemption 則必無 Deadlock 頂多只有 Starvation。</li>
 <li>Circular waiting：<strong>系統中存在一組 Processes 形成循環等待之情況。 </strong></li>
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530163425234.png" alt="1530163425234"><figcaption>1530163425234</figcaption>
+<img src="\willywangkaa\images\1530163425234.png" alt="1530163425234"><figcaption aria-hidden="true">1530163425234</figcaption>
 </figure>
 <p>＜Note＞<br>1. (恐龍版本)Circular waiting 代表 Hold and wait。<br>2. (其他版本)Circular waiting 代表 Mutual exclusion、Hold and wait、No preemption。<br>3. <strong>為何 Single-process 必不會造成 Deadlock ？ 因為 Circular waiting 不存在，所以 Deadlock 不發生。</strong></p>
 <ul>
@@ -478,7 +480,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\deadlock.png" alt="deadlock"><figcaption>deadlock</figcaption>
+<img src="\willywangkaa\images\deadlock.png" alt="deadlock"><figcaption aria-hidden="true">deadlock</figcaption>
 </figure>
 <ul>
 <li>與 Starvation 比較。
@@ -527,13 +529,13 @@
 <li>Process</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530164365297.png" alt="1530164365297"><figcaption>1530164365297</figcaption>
+<img src="\willywangkaa\images\1530164365297.png" alt="1530164365297"><figcaption aria-hidden="true">1530164365297</figcaption>
 </figure>
 <ul>
 <li>Resource</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530164408843.png" alt="1530164408843"><figcaption>1530164408843</figcaption>
+<img src="\willywangkaa\images\1530164408843.png" alt="1530164408843"><figcaption aria-hidden="true">1530164408843</figcaption>
 </figure>
 <p>其中「。」數目代表該項資源的數目。</p>
 <ul>
@@ -541,19 +543,19 @@
 <li>Allocation edge</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530164614789.png" alt="1530164614789"><figcaption>1530164614789</figcaption>
+<img src="\willywangkaa\images\1530164614789.png" alt="1530164614789"><figcaption aria-hidden="true">1530164614789</figcaption>
 </figure>
 <ul>
 <li>Request edge</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530164672585.png" alt="1530164672585"><figcaption>1530164672585</figcaption>
+<img src="\willywangkaa\images\1530164672585.png" alt="1530164672585"><figcaption aria-hidden="true">1530164672585</figcaption>
 </figure>
 <ul>
 <li>$Ex. $</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530166364004.png" alt="1530166364004"><figcaption>1530166364004</figcaption>
+<img src="\willywangkaa\images\1530166364004.png" alt="1530166364004"><figcaption aria-hidden="true">1530166364004</figcaption>
 </figure>
 <h3 id="結論">結論</h3>
 <ul>
@@ -561,11 +563,11 @@
 <li><p><strong>Cycle 不一定有 deadlock。</strong></p></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530166810415.png" alt="1530166810415"><figcaption>1530166810415</figcaption>
+<img src="\willywangkaa\images\1530166810415.png" alt="1530166810415"><figcaption aria-hidden="true">1530166810415</figcaption>
 </figure>
 <p>此圖雖然有 Cycle，但因為 P3 必可以完工且會釋出一個 R2 Resource，再配置給 P2 使用，所以無死結。</p>
 <figure>
-<img src="\willywangkaa\images\1530166364004.png" alt="1530166364004"><figcaption>1530166364004</figcaption>
+<img src="\willywangkaa\images\1530166364004.png" alt="1530166364004"><figcaption aria-hidden="true">1530166364004</figcaption>
 </figure>
 <p>因為 P4 必可以完工且會釋出 R3 Resource，再配置給 P3 使用，所以無死結。</p>
 <ul>
@@ -647,15 +649,15 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530168967415.png" alt="1530168967415"><figcaption>1530168967415</figcaption>
+<img src="\willywangkaa\images\1530168967415.png" alt="1530168967415"><figcaption aria-hidden="true">1530168967415</figcaption>
 </figure>
 <h3 id="deadlock-aviodance">Deadlock aviodance</h3>
-<p>當某個 process 提出某些資源申請時，則作業系統必須執行「Banker’s algorithm」以確認<strong>倘若分配給 Process 其申請資源後，系統未來是否處於「Safe state」；若為「Saft state」，則核准申請，否則為「Unsafe state」系統會否決該資源申請，</strong>Process 必須等一段時間後再重新申請資源，系統會再確認當時的狀態是否安全。</p>
+<p>當某個 process 提出某些資源申請時，則作業系統必須執行「Banker's algorithm」以確認<strong>倘若分配給 Process 其申請資源後，系統未來是否處於「Safe state」；若為「Saft state」，則核准申請，否則為「Unsafe state」系統會否決該資源申請，</strong>Process 必須等一段時間後再重新申請資源，系統會再確認當時的狀態是否安全。</p>
 <figure>
-<img src="\willywangkaa\images\1528970642055.png" alt="1528970642055"><figcaption>1528970642055</figcaption>
+<img src="\willywangkaa\images\1528970642055.png" alt="1528970642055"><figcaption aria-hidden="true">1528970642055</figcaption>
 </figure>
 <p>Deadlock 是 Unsafe 集合的 Subset。</p>
-<h4 id="bankers-algorithm">Banker’s Algorithm</h4>
+<h4 id="bankers-algorithm">Banker's Algorithm</h4>
 <ul>
 <li>資料結構
 <ul>
@@ -669,7 +671,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1528971381784.png" alt="1528971381784"><figcaption>1528971381784</figcaption>
+<img src="\willywangkaa\images\1528971381784.png" alt="1528971381784"><figcaption aria-hidden="true">1528971381784</figcaption>
 </figure>
 <ul>
 <li>演算步驟
@@ -713,13 +715,13 @@
 <li>起始資源量：<span class="math inline">\((A, B, C) = (10, 5, 7)\)</span><br>求取 <span class="math inline">\(Need[]\)</span> 與<span class="math inline">\(Available[]\)</span><br><span class="math inline">\(P_1\)</span> 提出 <span class="math inline">\((A, B, C) = (1, 0, 2)\)</span> 之資源申請，請問是否予以核准或是核駁，請說明。</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1531184487179.png" alt="1531184487179"><figcaption>1531184487179</figcaption>
+<img src="\willywangkaa\images\1531184487179.png" alt="1531184487179"><figcaption aria-hidden="true">1531184487179</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1531184825933.png" alt="1531184825933"><figcaption>1531184825933</figcaption>
+<img src="\willywangkaa\images\1531184825933.png" alt="1531184825933"><figcaption aria-hidden="true">1531184825933</figcaption>
 </figure>
 <ul>
-<li><p><strong>Banker’s algorithm</strong></p>
+<li><p><strong>Banker's algorithm</strong></p>
 <ul>
 <li><span class="math inline">\(Request_1 = (1, 0, 2)\)</span></li>
 </ul>
@@ -732,7 +734,7 @@
 <ol type="1">
 <li>Initial value：<span class="math inline">\(Work = Available = ＜2, 3, 0＞\)</span></li>
 <li>因為可以找到一個 Process <span class="math inline">\(P_1\)</span> 供應 Resource 並使之得以完成該工作。<br>滿足：<span class="math inline">\(Finish[1] = False\quad Need_1 \leq Work\)</span>，OK ( goto step3 )。</li>
-<li><strong>設定</strong> <span class="math inline">\(Finish[1] = True \quad Work = Work + Allocation_i\)</span>，<strong>goto step2。</strong><br>…<strong>在 Step2 不斷重複的尋找是否有 <span class="math inline">\(P_i\)</span> 尚未完工且目前資源可以予以完工</strong>…</li>
+<li><strong>設定</strong> <span class="math inline">\(Finish[1] = True \quad Work = Work + Allocation_i\)</span>，<strong>goto step2。</strong><br>...<strong>在 Step2 不斷重複的尋找是否有 <span class="math inline">\(P_i\)</span> 尚未完工且目前資源可以予以完工</strong>...</li>
 <li>最後確認 <span class="math inline">\(Finish[]\)</span> 全皆為 <span class="math inline">\(True\)</span> 後回傳「Safe state」。</li>
 </ol></li>
 <li><p>列出其 Safe sequence</p>
@@ -747,13 +749,13 @@
 <li>起始資源量：<span class="math inline">\((A, B, C) = (10, 5, 7)\)</span><br>求取 <span class="math inline">\(Need[]\)</span> 與<span class="math inline">\(Available[]\)</span><br><span class="math inline">\(P_4\)</span> 提出 <span class="math inline">\((A, B, C) = (3, 3, 0)\)</span> 之資源申請，請問是否予以核准或是核駁，請說明。</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1531184487179.png" alt="1531184487179"><figcaption>1531184487179</figcaption>
+<img src="\willywangkaa\images\1531184487179.png" alt="1531184487179"><figcaption aria-hidden="true">1531184487179</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1531184825933.png" alt="1531184825933"><figcaption>1531184825933</figcaption>
+<img src="\willywangkaa\images\1531184825933.png" alt="1531184825933"><figcaption aria-hidden="true">1531184825933</figcaption>
 </figure>
 <ul>
-<li>Banker’s algorithm
+<li>Banker's algorithm
 <ol type="1">
 <li>確認 $ Request_4 (3, 3, 0) Need_4(4, 3, 1)$，OK ( goto step2 )。</li>
 <li>確認 $ Request_1 (3, 3, 0) Available(3, 3, 2)$，OK ( goto step3 )。</li>
@@ -766,7 +768,7 @@
 <li>最後確認 <span class="math inline">\(Finish[]\)</span> 非全皆為 <span class="math inline">\(True\)</span> 後回傳「Not safe state」。</li>
 </ol></li>
 </ul>
-<h4 id="bankers-algorithm-的-time-complexity">Banker’s algorithm 的 Time complexity</h4>
+<h4 id="bankers-algorithm-的-time-complexity">Banker's algorithm 的 Time complexity</h4>
 <ul>
 <li>令 n：process 數目、m：resource 種類數。
 <ul>
@@ -788,7 +790,7 @@
 <li>利用 RAG，加上<strong>「Claim edge」使用。</strong></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530172024919.png" alt="1530172024919"><figcaption>1530172024919</figcaption>
+<img src="\willywangkaa\images\1530172024919.png" alt="1530172024919"><figcaption aria-hidden="true">1530172024919</figcaption>
 </figure>
 <ul>
 <li><p>clam edge (虛線)：代表 <span class="math inline">\(P_i\)</span> <strong>未來</strong>會對 <span class="math inline">\(R_j\)</span> 提出申請。(即為 Max/Need 的意義)</p></li>
@@ -802,31 +804,31 @@
 <li><p><span class="math inline">\(Ex .\)</span></p></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530172534581.png" alt="1530172534581"><figcaption>1530172534581</figcaption>
+<img src="\willywangkaa\images\1530172534581.png" alt="1530172534581"><figcaption aria-hidden="true">1530172534581</figcaption>
 </figure>
 <ul>
 <li>若<span class="math inline">\(P_1\)</span> 對 <span class="math inline">\(R_2\)</span> 提出申請是否核准？<strong>因為沒有 Cycle 存在，所以 Safe 核准申請。</strong></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530172797528.png" alt="1530172797528"><figcaption>1530172797528</figcaption>
+<img src="\willywangkaa\images\1530172797528.png" alt="1530172797528"><figcaption aria-hidden="true">1530172797528</figcaption>
 </figure>
 <ul>
 <li>若為 <span class="math inline">\(P_2\)</span> 對 <span class="math inline">\(R_2\)</span> 提出申請是否核准？<strong>因為有 cycle 存在，所以核駁申請。</strong></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530172966437.png" alt="1530172966437"><figcaption>1530172966437</figcaption>
+<img src="\willywangkaa\images\1530172966437.png" alt="1530172966437"><figcaption aria-hidden="true">1530172966437</figcaption>
 </figure>
 <ul>
 <li><strong>＜Note＞：Deadlock 位於 Unsafe state 的集合之中，也就是說若目前的狀態是 unsafe state 有可能會導致死結，但也有可能不會導致死結。</strong></li>
 </ul>
 <h4 id="theorem-deadlock-free">*＜Theorem＞ Deadlock free</h4>
 <figure>
-<img src="\willywangkaa\images\1530173438706.png" alt="1530173438706"><figcaption>1530173438706</figcaption>
+<img src="\willywangkaa\images\1530173438706.png" alt="1530173438706"><figcaption aria-hidden="true">1530173438706</figcaption>
 </figure>
 <p>系統若有 n 個 processes、m 個 resources intsance ( 單一種類 )，<strong>且滿足下列條件</strong>：</p>
 <ol type="1">
 <li><span class="math inline">\(1 \leq Max_i \leq m\)</span> ，單一 Process 不得要求超過該種類資源的上限。</li>
-<li><span class="math inline">\(\sum_{i = 1}^n Max_i &lt; n + m \Rightarrow \sum_{i = 1}^n Max_i - n &lt; m\)</span> ，假設目前所有的 processes 都剩下一個資源未取得，而剩下的資源小於 m 代表的意思就是 $ m - （_{i = 1}^n (Max_i - n) ）1$，<strong>代表我們還有至少一個以上的資源可以使某些 processes 可以先結束</strong>，接著回收的資源就可以再分配給其他 processes。</li>
+<li><span class="math inline">\(\sum_{i = 1}^n Max_i &lt; n + m \Rightarrow \sum_{i = 1}^n Max_i - n &lt; m\)</span> ，假設目前所有的 processes 都剩下一個資源未取得，而剩下的資源小於 m 代表的意思就是 $ m - （_{i = 1}^n (Max_i - n) ）$，<strong>代表我們還有至少一個以上的資源可以使某些 processes 可以先結束</strong>，接著回收的資源就可以再分配給其他 processes。</li>
 </ol>
 <p>則<strong>系統是不可能會有死結的 ( Deadlock free )</strong>。</p>
 <ul>
@@ -852,7 +854,7 @@
 <ul>
 <li><strong>＜Note＞</strong>
 <ul>
-<li>Avoidance ( Banker’s algorithm ) 含有<strong>未來</strong>的資訊 (Max, Need)。</li>
+<li>Avoidance ( Banker's algorithm ) 含有<strong>未來</strong>的資訊 (Max, Need)。</li>
 <li>Detection 只有<strong>目前的資訊 ( Current infomation )</strong>。</li>
 </ul></li>
 <li>資料結構
@@ -879,7 +881,7 @@
 </ul>
 <h4 id="實際演練一-1">實際演練一</h4>
 <figure>
-<img src="\willywangkaa\images\1531188159444.png" alt="1531188159444"><figcaption>1531188159444</figcaption>
+<img src="\willywangkaa\images\1531188159444.png" alt="1531188159444"><figcaption aria-hidden="true">1531188159444</figcaption>
 </figure>
 <ul>
 <li><ol type="1">
@@ -904,7 +906,7 @@
 </ul>
 <h4 id="實際演練二-1">實際演練二</h4>
 <figure>
-<img src="\willywangkaa\images\1531188115016.png" alt="1531188115016"><figcaption>1531188115016</figcaption>
+<img src="\willywangkaa\images\1531188115016.png" alt="1531188115016"><figcaption aria-hidden="true">1531188115016</figcaption>
 </figure>
 <ul>
 <li><span class="math inline">\(Work = Available = (0, 0, 0)\)</span></li>
@@ -926,16 +928,16 @@
 <li>令 <span class="math inline">\(G = ＜V, E＞\)</span> 有向圖代表「Wait-for Graph」，其中<br>1. Vertex：<strong>只有 Process 而已，無 Resource 頂點</strong>。<br>2. Edge：Wait-for edge。</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530174622303.png" alt="1530174622303"><figcaption>1530174622303</figcaption>
+<img src="\willywangkaa\images\1530174622303.png" alt="1530174622303"><figcaption aria-hidden="true">1530174622303</figcaption>
 </figure>
 <ul>
 <li>從 RAG 簡化而成，即為：</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530174725109.png" alt="1530174725109"><figcaption>1530174725109</figcaption>
+<img src="\willywangkaa\images\1530174725109.png" alt="1530174725109"><figcaption aria-hidden="true">1530174725109</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1530174756704.png" alt="1530174756704"><figcaption>1530174756704</figcaption>
+<img src="\willywangkaa\images\1530174756704.png" alt="1530174756704"><figcaption aria-hidden="true">1530174756704</figcaption>
 </figure>
 <ul>
 <li>較為 Detection 演算法<strong>簡單</strong>
@@ -944,13 +946,13 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1529287297237.png" alt="1529287297237"><figcaption>1529287297237</figcaption>
+<img src="\willywangkaa\images\1529287297237.png" alt="1529287297237"><figcaption aria-hidden="true">1529287297237</figcaption>
 </figure>
 <ul>
 <li>此「Wait-for Graph」有 Cycle，所以有死結存在。</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1529287327536.png" alt="1529287327536"><figcaption>1529287327536</figcaption>
+<img src="\willywangkaa\images\1529287327536.png" alt="1529287327536"><figcaption aria-hidden="true">1529287327536</figcaption>
 </figure>
 <h4 id="recovery">Recovery</h4>
 <ul>
@@ -1046,7 +1048,7 @@
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -1090,10 +1092,10 @@
             
               <img class="site-author-image" itemprop="image"
                 src="/willywangkaa/images/avatar_me.gif"
-                alt="Willy Wang (willywangkaa)" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
-              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -1101,7 +1103,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/willywangkaa/archives/">
+                  <a href="/willywangkaa/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">posts</span>
@@ -1148,8 +1150,6 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -1365,7 +1365,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#deadlock"><span class="nav-number">1.</span> <span class="nav-text">Deadlock</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#resource-allcation-graph-r.-a.-g.-資源分配圖"><span class="nav-number">1.1.</span> <span class="nav-text">Resource allcation graph ( R. A. G. ) 資源分配圖</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#結論"><span class="nav-number">1.1.1.</span> <span class="nav-text">結論</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解決-deadlock"><span class="nav-number">1.2.</span> <span class="nav-text">解決 Deadlock</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#deadlock-prevention"><span class="nav-number">1.2.1.</span> <span class="nav-text">Deadlock prevention</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#deadlock-aviodance"><span class="nav-number">1.2.2.</span> <span class="nav-text">Deadlock aviodance</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bankers-algorithm"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">Banker’s Algorithm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#safty-algorithm"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">Safty algorithm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#實際演練一"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">實際演練一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#實際演練二"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">實際演練二</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bankers-algorithm-的-time-complexity"><span class="nav-number">1.2.2.5.</span> <span class="nav-text">Banker’s algorithm 的 Time complexity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#single-instance-resource-algorithm"><span class="nav-number">1.2.2.6.</span> <span class="nav-text">Single-instance resource algorithm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#theorem-deadlock-free"><span class="nav-number">1.2.2.7.</span> <span class="nav-text">*＜Theorem＞ Deadlock free</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#deadlock-detection-and-recovery"><span class="nav-number">1.2.3.</span> <span class="nav-text">Deadlock detection and recovery</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#detection"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">Detection</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#實際演練一-1"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">實際演練一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#實際演練二-1"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">實際演練二</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#single-instance-resource-algorithm-1"><span class="nav-number">1.2.3.4.</span> <span class="nav-text">Single instance resource algorithm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#recovery"><span class="nav-number">1.2.3.5.</span> <span class="nav-text">Recovery</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#deadlock"><span class="nav-number">1.</span> <span class="nav-text">Deadlock</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#resource-allcation-graph-r.-a.-g.-%E8%B3%87%E6%BA%90%E5%88%86%E9%85%8D%E5%9C%96"><span class="nav-number">1.1.</span> <span class="nav-text">Resource allcation graph ( R. A. G. ) 資源分配圖</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B5%90%E8%AB%96"><span class="nav-number">1.1.1.</span> <span class="nav-text">結論</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%B1%BA-deadlock"><span class="nav-number">1.2.</span> <span class="nav-text">解決 Deadlock</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#deadlock-prevention"><span class="nav-number">1.2.1.</span> <span class="nav-text">Deadlock prevention</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#deadlock-aviodance"><span class="nav-number">1.2.2.</span> <span class="nav-text">Deadlock aviodance</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bankers-algorithm"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">Banker&#39;s Algorithm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#safty-algorithm"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">Safty algorithm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%A6%E9%9A%9B%E6%BC%94%E7%B7%B4%E4%B8%80"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">實際演練一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%A6%E9%9A%9B%E6%BC%94%E7%B7%B4%E4%BA%8C"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">實際演練二</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bankers-algorithm-%E7%9A%84-time-complexity"><span class="nav-number">1.2.2.5.</span> <span class="nav-text">Banker&#39;s algorithm 的 Time complexity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#single-instance-resource-algorithm"><span class="nav-number">1.2.2.6.</span> <span class="nav-text">Single-instance resource algorithm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#theorem-deadlock-free"><span class="nav-number">1.2.2.7.</span> <span class="nav-text">*＜Theorem＞ Deadlock free</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#deadlock-detection-and-recovery"><span class="nav-number">1.2.3.</span> <span class="nav-text">Deadlock detection and recovery</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#detection"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">Detection</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%A6%E9%9A%9B%E6%BC%94%E7%B7%B4%E4%B8%80-1"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">實際演練一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%A6%E9%9A%9B%E6%BC%94%E7%B7%B4%E4%BA%8C-1"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">實際演練二</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#single-instance-resource-algorithm-1"><span class="nav-number">1.2.3.4.</span> <span class="nav-text">Single instance resource algorithm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#recovery"><span class="nav-number">1.2.3.5.</span> <span class="nav-text">Recovery</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1385,11 +1385,11 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+  <span class="author" itemprop="copyrightHolder">Wang Yu Li</span>
 
   
 
@@ -1533,7 +1533,7 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/07/10/Operating-System-Deadlock/';
+        this.page.url = 'http://wangwilly.github.io/willywangkaa/2018/07/10/Operating-System-Deadlock/';
         this.page.identifier = '2018/07/10/Operating-System-Deadlock/';
         this.page.title = 'Operating System - Deadlock';
       };
@@ -1968,24 +1968,7 @@
   
     bookmark.scrollToMark('auto', "#more");
   
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>

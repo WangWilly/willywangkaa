@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/willywangkaa/',
+    root: '',
     scheme: 'Pisces',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -103,13 +103,13 @@
   <meta name="keywords" content="Hexo, NexT" />
 
 
-<meta name="description" content="Dynamic programming 將已計算的結果記錄在表格中的技巧，目的是為了要避免重複計算相同子問題，以「Button up」的方式實踐。  為何要使用這種方法，以費氏數列程式開始討論。  \[ F_n = \left\{\begin{matrix} 0 &amp;amp; , if \; n = 0\\ 1 &amp;amp; , if \; n = 1\\ F_{n-1} + F_{">
+<meta name="description" content="Dynamic programming 將已計算的結果記錄在表格中的技巧，目的是為了要避免重複計算相同子問題，以「Button up」的方式實踐。  為何要使用這種方法，以費氏數列程式開始討論。  \[ F_n &#x3D; \left\{\begin{matrix} 0 &amp; , if \; n &#x3D; 0\\ 1 &amp; , if \; n &#x3D; 1\\ F_{n-1} + F_{n-2} &amp;amp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Algorithm - Dynamic programming">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/09/23/Algorithm-Dynamic-programming/index.html">
+<meta property="og:url" content="http://wangwilly.github.io/willywangkaa/2018/09/23/Algorithm-Dynamic-programming/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="Dynamic programming 將已計算的結果記錄在表格中的技巧，目的是為了要避免重複計算相同子問題，以「Button up」的方式實踐。  為何要使用這種方法，以費氏數列程式開始討論。  \[ F_n = \left\{\begin{matrix} 0 &amp;amp; , if \; n = 0\\ 1 &amp;amp; , if \; n = 1\\ F_{n-1} + F_{">
-<meta property="og:locale" content="zh-tw">
+<meta property="og:description" content="Dynamic programming 將已計算的結果記錄在表格中的技巧，目的是為了要避免重複計算相同子問題，以「Button up」的方式實踐。  為何要使用這種方法，以費氏數列程式開始討論。  \[ F_n &#x3D; \left\{\begin{matrix} 0 &amp; , if \; n &#x3D; 0\\ 1 &amp; , if \; n &#x3D; 1\\ F_{n-1} + F_{n-2} &amp;amp">
+<meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/overlappingsubproblem.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/fibonassidp.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/observedp.png">
@@ -119,10 +119,10 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/KPstatesearchtree.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/matrixchaindp.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/martixchainproblem_2.png">
-<meta property="og:updated_time" content="2019-02-03T08:06:39.520Z">
+<meta property="article:published_time" content="2018-09-23T02:46:21.000Z">
+<meta property="article:modified_time" content="2019-02-03T08:06:39.520Z">
+<meta property="article:author" content="Wang Yu Li">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Algorithm - Dynamic programming">
-<meta name="twitter:description" content="Dynamic programming 將已計算的結果記錄在表格中的技巧，目的是為了要避免重複計算相同子問題，以「Button up」的方式實踐。  為何要使用這種方法，以費氏數列程式開始討論。  \[ F_n = \left\{\begin{matrix} 0 &amp;amp; , if \; n = 0\\ 1 &amp;amp; , if \; n = 1\\ F_{n-1} + F_{">
 <meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/overlappingsubproblem.png">
 
 
@@ -175,9 +175,11 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
@@ -202,7 +204,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Live more like human</p>
+        <p class="site-subtitle">The higher up, the greater the fall.</p>
       
   </div>
 
@@ -223,25 +225,25 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/willywangkaa/" rel="section">
+          <a href="/willywangkaa/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/willywangkaa/archives/" rel="section">
+          <a href="/willywangkaa/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/willywangkaa/categories/" rel="section">
+          <a href="/willywangkaa/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/willywangkaa/tags/" rel="section">
+          <a href="/willywangkaa/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
@@ -322,7 +324,7 @@
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/09/23/Algorithm-Dynamic-programming/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -425,11 +427,11 @@ F_{n-1} + F_{n-2} &amp; , if \; n \geq 2
 \end{matrix}\right.
 \]</span> 欲求出 <span class="math inline">\(F_5\)</span> ，以遞迴程式執行，會造成「Overlapping subproblem」，如下圖 <span class="math inline">\(F_2\)</span> 重複計算了 3 次，<span class="math inline">\(F_3\)</span> 重複計算 2 次。</p>
 <figure>
-<img src="\willywangkaa\images\overlappingsubproblem.png" alt="overlappingsubproblem"><figcaption>overlappingsubproblem</figcaption>
+<img src="\willywangkaa\images\overlappingsubproblem.png" alt="overlappingsubproblem"><figcaption aria-hidden="true">overlappingsubproblem</figcaption>
 </figure>
 <p>使用動態表格執行之，可以省去很多不必要的重複計算，如下圖。</p>
 <figure>
-<img src="\willywangkaa\images\fibonassidp.png" alt="fibonassidp"><figcaption>fibonassidp</figcaption>
+<img src="\willywangkaa\images\fibonassidp.png" alt="fibonassidp"><figcaption aria-hidden="true">fibonassidp</figcaption>
 </figure>
 <ul>
 <li>構思動態規劃題目的流程
@@ -438,20 +440,20 @@ F_{n-1} + F_{n-2} &amp; , if \; n \geq 2
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\observedp.png" alt="observedp"><figcaption>observedp</figcaption>
+<img src="\willywangkaa\images\observedp.png" alt="observedp"><figcaption aria-hidden="true">observedp</figcaption>
 </figure>
 <h2 id="shortest-path-problem">Shortest path problem</h2>
 <ul>
 <li><strong>Optimal substructure</strong></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\shortestpathproblem_subproblem.png" alt="shortestpathproblem_subproblem"><figcaption>shortestpathproblem_subproblem</figcaption>
+<img src="\willywangkaa\images\shortestpathproblem_subproblem.png" alt="shortestpathproblem_subproblem"><figcaption aria-hidden="true">shortestpathproblem_subproblem</figcaption>
 </figure>
 <blockquote>
 <p>(98 交大資工) 問 longest path problem 有無 optimal substructure。</p>
 <p>無，所以不可以使用動態規劃解此問題。</p>
 <figure>
-<img src="\willywangkaa\images\longestpathproblem.png" alt="longestpathproblem"><figcaption>longestpathproblem</figcaption>
+<img src="\willywangkaa\images\longestpathproblem.png" alt="longestpathproblem"><figcaption aria-hidden="true">longestpathproblem</figcaption>
 </figure>
 <p><strong>但是</strong>如果此圖加上「Acyclic」、「Direct」等條件限制之後，可以用動態規劃解「longest path problem」。</p>
 </blockquote>
@@ -553,7 +555,7 @@ F_{n-1} + F_{n-2} &amp; , if \; n \geq 2
 <li>取物品 3，取物品之 2 單位重量，背包剩餘空間 0 單位重量，<strong>獲利 24 單位價值</strong>。</li>
 </ol>
 <figure>
-<img src="\willywangkaa\images\kpdp.png" alt="kpdp"><figcaption>kpdp</figcaption>
+<img src="\willywangkaa\images\kpdp.png" alt="kpdp"><figcaption aria-hidden="true">kpdp</figcaption>
 </figure>
 <table>
 <thead>
@@ -622,7 +624,7 @@ x_n = \left\{\begin{matrix}
 \]</span></p>
 <h3 id="knapsack-problem-1">0-1 Knapsack problem</h3>
 <ul>
-<li>Input：
+<li><p>Input：</p>
 <ul>
 <li>n 個物件
 <ul>
@@ -637,7 +639,7 @@ x_n = \left\{\begin{matrix}
 <ul>
 <li>最大的獲利值</li>
 </ul></li>
-<li>限制條件：
+<li><p>限制條件：</p>
 <ul>
 <li>取得物品的總重量 <span class="math inline">\(\leq\)</span> W</li>
 <li>只能取物品的<strong>整體</strong></li>
@@ -647,7 +649,7 @@ x_n = \left\{\begin{matrix}
 <li><p>無法使用 Greedy method 解決</p></li>
 <li><p><strong>使用動態規劃解決，物品的重量必為正整數</strong></p>
 <ul>
-<li>遞迴結構：(令 <span class="math inline">\(C[i][k]\)</span> 在負重 k 之下考慮物品 1 … i 之最大獲利</li>
+<li>遞迴結構：(令 <span class="math inline">\(C[i][k]\)</span> 在負重 k 之下考慮物品 1 ... i 之最大獲利</li>
 </ul>
 <p><span class="math display">\[
 C[i][k] = \left\{\begin{matrix}
@@ -687,12 +689,12 @@ C[i-1][k] &amp; , if \; w_i &gt; k \\
 </blockquote>
 <ul>
 <li><p>將球最佳解的過程視為在一個「State space tree」中尋找最好的節點。</p></li>
-<li>實務上，通常是設計一 個<strong>「Bounding function」</strong>以估計目前狀態可到最佳解的可能性。
+<li><p>實務上，通常是設計一 個<strong>「Bounding function」</strong>以估計目前狀態可到最佳解的可能性。</p>
 <ul>
 <li>建構「State space tree」時，每次都先<strong>展開「Bounding function」的節點。( Branch )</strong></li>
 <li>在每次展開的過程中，都可以得到一個<strong>目前最佳解 (葉節點)，接著，之後不展開「Bounding function 值</strong> <span class="math inline">\(\leq\)</span> <strong>目前最佳解」</strong>的內部節點。<strong>( Bound )</strong></li>
 </ul></li>
-<li>以 Branch and bound 解 0-1 Knapsack problem
+<li><p>以 Branch and bound 解 0-1 Knapsack problem</p>
 <ul>
 <li>每個節點須紀錄
 <ul>
@@ -744,7 +746,7 @@ Bounding \;funciotn(目前的節點)\\
 (將背包剩餘的重量以「Fractional \;knapsack \;problem」拿取剩下的物品的獲利)
 \]</span></p>
 <figure>
-<img src="\willywangkaa\images\KPstatesearchtree.png" alt="KPstatesearchtree"><figcaption>KPstatesearchtree</figcaption>
+<img src="\willywangkaa\images\KPstatesearchtree.png" alt="KPstatesearchtree"><figcaption aria-hidden="true">KPstatesearchtree</figcaption>
 </figure>
 <ol start="3" type="1">
 <li>拓展節點
@@ -826,10 +828,10 @@ max(c[i-1, j], c[i, j-1])&amp; , if \; X[i] \ne Y[j] \; &amp; （該兩個字絕
 <th style="text-align: center;">-</th>
 <th style="text-align: center;">-</th>
 <th style="text-align: center;">-</th>
-<th style="text-align: center;">“a”</th>
-<th style="text-align: center;">“b”</th>
-<th style="text-align: center;">“a”</th>
-<th style="text-align: center;">“c”</th>
+<th style="text-align: center;">"a"</th>
+<th style="text-align: center;">"b"</th>
+<th style="text-align: center;">"a"</th>
+<th style="text-align: center;">"c"</th>
 </tr>
 </thead>
 <tbody>
@@ -852,7 +854,7 @@ max(c[i-1, j], c[i, j-1])&amp; , if \; X[i] \ne Y[j] \; &amp; （該兩個字絕
 <td style="text-align: center;">0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><strong>“a”</strong></td>
+<td style="text-align: center;"><strong>"a"</strong></td>
 <td style="text-align: center;"><strong>1</strong></td>
 <td style="text-align: center;">0</td>
 <td style="text-align: center;">1（↖）</td>
@@ -861,7 +863,7 @@ max(c[i-1, j], c[i, j-1])&amp; , if \; X[i] \ne Y[j] \; &amp; （該兩個字絕
 <td style="text-align: center;">1（←）</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><strong>“b”</strong></td>
+<td style="text-align: center;"><strong>"b"</strong></td>
 <td style="text-align: center;"><strong>2</strong></td>
 <td style="text-align: center;">0</td>
 <td style="text-align: center;">1（↑）</td>
@@ -870,7 +872,7 @@ max(c[i-1, j], c[i, j-1])&amp; , if \; X[i] \ne Y[j] \; &amp; （該兩個字絕
 <td style="text-align: center;">2（←）</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><strong>“c”</strong></td>
+<td style="text-align: center;"><strong>"c"</strong></td>
 <td style="text-align: center;"><strong>3</strong></td>
 <td style="text-align: center;">0</td>
 <td style="text-align: center;">1（↑）</td>
@@ -879,7 +881,7 @@ max(c[i-1, j], c[i, j-1])&amp; , if \; X[i] \ne Y[j] \; &amp; （該兩個字絕
 <td style="text-align: center;">3（↖）</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><strong>“a”</strong></td>
+<td style="text-align: center;"><strong>"a"</strong></td>
 <td style="text-align: center;"><strong>4</strong></td>
 <td style="text-align: center;">0</td>
 <td style="text-align: center;">1（↖）</td>
@@ -934,7 +936,7 @@ c[i-1, j-1] + 1 &amp; , if \; X[i] = Y[j] &amp; \\
 <ul>
 <li>Input：
 <ul>
-<li><strong>n</strong> 個矩陣的<strong>大小 P[0 … n]</strong> ( 其中<span class="math inline">\(A_i\)</span> 的大小為 <span class="math inline">\(P_{i-1}\times P_i\)</span> )</li>
+<li><strong>n</strong> 個矩陣的<strong>大小 P[0 ... n]</strong> ( 其中<span class="math inline">\(A_i\)</span> 的大小為 <span class="math inline">\(P_{i-1}\times P_i\)</span> )</li>
 </ul></li>
 <li>Output：
 <ul>
@@ -954,7 +956,7 @@ c[i-1, j-1] + 1 &amp; , if \; X[i] = Y[j] &amp; \\
 </ul></li>
 </ul>
 <blockquote>
-<p>若每一個矩陣均為相同大小的「方陣」，改變乘法的順序無法影響所需的純量乘法數，只能使用<strong>「Strassen’s algorithm」以加速。</strong></p>
+<p>若每一個矩陣均為相同大小的「方陣」，改變乘法的順序無法影響所需的純量乘法數，只能使用<strong>「Strassen's algorithm」以加速。</strong></p>
 </blockquote>
 <ul>
 <li>遞迴結構
@@ -992,10 +994,10 @@ MIN_{i\leq k \leq j-1}(m[i, k] + m[k+1, j] + P_i\times P_k \times P_j) &amp; , i
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\matrixchaindp.png" alt="matrixchaindp"><figcaption>matrixchaindp</figcaption>
+<img src="\willywangkaa\images\matrixchaindp.png" alt="matrixchaindp"><figcaption aria-hidden="true">matrixchaindp</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\martixchainproblem_2.png" alt="martixchainproblem_2"><figcaption>martixchainproblem_2</figcaption>
+<img src="\willywangkaa\images\martixchainproblem_2.png" alt="martixchainproblem_2"><figcaption aria-hidden="true">martixchainproblem_2</figcaption>
 </figure>
 <table>
 <thead>
@@ -1145,7 +1147,7 @@ MIN_{i\leq k \leq j-1}(m[i, k] + m[k+1, j] + P_i\times P_k \times P_j) &amp; , i
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/willywangkaa/2018/09/11/Discrete Mathematics-Principle-of-inclusion-and-exclusion/" rel="next" title="Discrete Mathematics - Principle of inclusion and exclusion（排容原理）">
+              <a href="/willywangkaa/2018/09/11/Discrete%20Mathematics-Principle-of-inclusion-and-exclusion/" rel="next" title="Discrete Mathematics - Principle of inclusion and exclusion（排容原理）">
                 <i class="fa fa-chevron-left"></i> Discrete Mathematics - Principle of inclusion and exclusion（排容原理）
               </a>
             
@@ -1188,7 +1190,7 @@ MIN_{i\leq k \leq j-1}(m[i, k] + m[k+1, j] + P_i\times P_k \times P_j) &amp; , i
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -1232,10 +1234,10 @@ MIN_{i\leq k \leq j-1}(m[i, k] + m[k+1, j] + P_i\times P_k \times P_j) &amp; , i
             
               <img class="site-author-image" itemprop="image"
                 src="/willywangkaa/images/avatar_me.gif"
-                alt="Willy Wang (willywangkaa)" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
-              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -1243,7 +1245,7 @@ MIN_{i\leq k \leq j-1}(m[i, k] + m[k+1, j] + P_i\times P_k \times P_j) &amp; , i
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/willywangkaa/archives/">
+                  <a href="/willywangkaa/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">posts</span>
@@ -1290,8 +1292,6 @@ MIN_{i\leq k \leq j-1}(m[i, k] + m[k+1, j] + P_i\times P_k \times P_j) &amp; , i
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -1507,7 +1507,7 @@ MIN_{i\leq k \leq j-1}(m[i, k] + m[k+1, j] + P_i\times P_k \times P_j) &amp; , i
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#dynamic-programming"><span class="nav-number">1.</span> <span class="nav-text">Dynamic programming</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#shortest-path-problem"><span class="nav-number">1.1.</span> <span class="nav-text">Shortest path problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#knapsack-problem"><span class="nav-number">1.2.</span> <span class="nav-text">Knapsack problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fractional-knapsack-problem"><span class="nav-number">1.2.1.</span> <span class="nav-text">Fractional knapsack problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#knapsack-problem-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">0-1 Knapsack problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#branch-and-bound-解-0-1-knapsack-problem"><span class="nav-number">1.2.3.</span> <span class="nav-text">Branch and bound 解 0-1 Knapsack problem</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#longest-common-subsequence"><span class="nav-number">1.3.</span> <span class="nav-text">Longest Common Subsequence</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#longest-increasing-subsequence"><span class="nav-number">1.3.1.</span> <span class="nav-text">Longest Increasing Subsequence</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#longest-common-substring"><span class="nav-number">1.3.2.</span> <span class="nav-text">Longest Common Substring</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matrix-chain-multiplication"><span class="nav-number">1.4.</span> <span class="nav-text">Matrix Chain Multiplication</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#補充例題"><span class="nav-number">2.</span> <span class="nav-text">補充例題</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#dynamic-programming"><span class="nav-number">1.</span> <span class="nav-text">Dynamic programming</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#shortest-path-problem"><span class="nav-number">1.1.</span> <span class="nav-text">Shortest path problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#knapsack-problem"><span class="nav-number">1.2.</span> <span class="nav-text">Knapsack problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fractional-knapsack-problem"><span class="nav-number">1.2.1.</span> <span class="nav-text">Fractional knapsack problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#knapsack-problem-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">0-1 Knapsack problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#branch-and-bound-%E8%A7%A3-0-1-knapsack-problem"><span class="nav-number">1.2.3.</span> <span class="nav-text">Branch and bound 解 0-1 Knapsack problem</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#longest-common-subsequence"><span class="nav-number">1.3.</span> <span class="nav-text">Longest Common Subsequence</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#longest-increasing-subsequence"><span class="nav-number">1.3.1.</span> <span class="nav-text">Longest Increasing Subsequence</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#longest-common-substring"><span class="nav-number">1.3.2.</span> <span class="nav-text">Longest Common Substring</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matrix-chain-multiplication"><span class="nav-number">1.4.</span> <span class="nav-text">Matrix Chain Multiplication</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A3%9C%E5%85%85%E4%BE%8B%E9%A1%8C"><span class="nav-number">2.</span> <span class="nav-text">補充例題</span></a></li></ol></div>
             
 
           </div>
@@ -1527,11 +1527,11 @@ MIN_{i\leq k \leq j-1}(m[i, k] + m[k+1, j] + P_i\times P_k \times P_j) &amp; , i
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+  <span class="author" itemprop="copyrightHolder">Wang Yu Li</span>
 
   
 
@@ -1675,7 +1675,7 @@ MIN_{i\leq k \leq j-1}(m[i, k] + m[k+1, j] + P_i\times P_k \times P_j) &amp; , i
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/09/23/Algorithm-Dynamic-programming/';
+        this.page.url = 'http://wangwilly.github.io/willywangkaa/2018/09/23/Algorithm-Dynamic-programming/';
         this.page.identifier = '2018/09/23/Algorithm-Dynamic-programming/';
         this.page.title = 'Algorithm - Dynamic programming';
       };
@@ -2110,24 +2110,7 @@ MIN_{i\leq k \leq j-1}(m[i, k] + m[k+1, j] + P_i\times P_k \times P_j) &amp; , i
   
     bookmark.scrollToMark('auto', "#more");
   
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>

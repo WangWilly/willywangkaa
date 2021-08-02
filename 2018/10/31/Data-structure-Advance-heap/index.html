@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/willywangkaa/',
+    root: '',
     scheme: 'Pisces',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -103,14 +103,13 @@
   <meta name="keywords" content="Heap," />
 
 
-<meta name="description" content="Binary heap Build heap Top down 依序插入所有資料逐步建立「Heap」  Time complexity for heap insertion：log n   Time complexity 若要建立一個 n 筆資料之「Heap」  \(\sum_{i = 1}^n \log i = \log(n!) = n\log n\) \(\Theta(n">
-<meta name="keywords" content="Heap">
+<meta name="description" content="Binary heap Build heap Top down 依序插入所有資料逐步建立「Heap」  Time complexity for heap insertion：log n   Time complexity 若要建立一個 n 筆資料之「Heap」  \(\sum_{i &#x3D; 1}^n \log i &#x3D; \log(n!) &#x3D; n\log n\) \(\Theta(n\log n)\)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Data structure - Advance heap">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/10/31/Data-structure-Advance-heap/index.html">
+<meta property="og:url" content="http://wangwilly.github.io/willywangkaa/2018/10/31/Data-structure-Advance-heap/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="Binary heap Build heap Top down 依序插入所有資料逐步建立「Heap」  Time complexity for heap insertion：log n   Time complexity 若要建立一個 n 筆資料之「Heap」  \(\sum_{i = 1}^n \log i = \log(n!) = n\log n\) \(\Theta(n">
-<meta property="og:locale" content="zh-tw">
+<meta property="og:description" content="Binary heap Build heap Top down 依序插入所有資料逐步建立「Heap」  Time complexity for heap insertion：log n   Time complexity 若要建立一個 n 筆資料之「Heap」  \(\sum_{i &#x3D; 1}^n \log i &#x3D; \log(n!) &#x3D; n\log n\) \(\Theta(n\log n)\)">
+<meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/buildheap.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/buildheap_2.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/minmaxheap.png">
@@ -160,10 +159,11 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/decreasekeyfibonacciheap_1.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/decreasekeyfibonacciheap_2.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/decreasekeyinbinaryheap.png">
-<meta property="og:updated_time" content="2019-02-03T12:56:52.692Z">
+<meta property="article:published_time" content="2018-10-31T05:37:00.000Z">
+<meta property="article:modified_time" content="2019-02-03T12:56:52.692Z">
+<meta property="article:author" content="Wang Yu Li">
+<meta property="article:tag" content="Heap">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Data structure - Advance heap">
-<meta name="twitter:description" content="Binary heap Build heap Top down 依序插入所有資料逐步建立「Heap」  Time complexity for heap insertion：log n   Time complexity 若要建立一個 n 筆資料之「Heap」  \(\sum_{i = 1}^n \log i = \log(n!) = n\log n\) \(\Theta(n">
 <meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/buildheap.png">
 
 
@@ -216,9 +216,11 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
@@ -243,7 +245,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Live more like human</p>
+        <p class="site-subtitle">The higher up, the greater the fall.</p>
       
   </div>
 
@@ -264,25 +266,25 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/willywangkaa/" rel="section">
+          <a href="/willywangkaa/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/willywangkaa/archives/" rel="section">
+          <a href="/willywangkaa/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/willywangkaa/categories/" rel="section">
+          <a href="/willywangkaa/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/willywangkaa/tags/" rel="section">
+          <a href="/willywangkaa/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
@@ -363,7 +365,7 @@
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/10/31/Data-structure-Advance-heap/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -488,10 +490,10 @@
 <h3 id="buttum-up">Buttum up</h3>
 <ol type="1">
 <li><strong>將 n 個輸入資料先以「Complete binary tree」( 陣列 ) 放置好</strong></li>
-<li>從最後一個父節點 (A[i]) 開始，往回執行 ( A[i-1], A[i-2] … ) 對各個父節點，調整子樹成為「Heap」，直到 A[1] 為止</li>
+<li>從最後一個父節點 (A[i]) 開始，往回執行 ( A[i-1], A[i-2] ... ) 對各個父節點，調整子樹成為「Heap」，直到 A[1] 為止</li>
 </ol>
 <figure>
-<img src="\willywangkaa\images\buildheap.png" alt="buildheap"><figcaption>buildheap</figcaption>
+<img src="\willywangkaa\images\buildheap.png" alt="buildheap"><figcaption aria-hidden="true">buildheap</figcaption>
 </figure>
 <h4 id="time-complexity">Time complexity</h4>
 <blockquote>
@@ -499,7 +501,7 @@
 </blockquote>
 <p>討論</p>
 <figure>
-<img src="\willywangkaa\images\buildheap_2.png" alt="buildheap_2"><figcaption>buildheap_2</figcaption>
+<img src="\willywangkaa\images\buildheap_2.png" alt="buildheap_2"><figcaption aria-hidden="true">buildheap_2</figcaption>
 </figure>
 <p>若父節點位於「Level i」調整其子樹成為「Heap」之最大成本為 <strong>K-i</strong></p>
 <p>而第 i 層最多有 <span class="math inline">\(2^{i-1}\)</span> 個子樹需要調整，則最大總成本為 <span class="math inline">\(\sum_{i=1}^k 2^{i-1}\times (K-i) = \sum_{i=1}^{k-1} 2^{i-1}\times (K-i)\)</span></p>
@@ -554,7 +556,7 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\minmaxheap.png" alt="minmaxheap"><figcaption>minmaxheap</figcaption>
+<img src="\willywangkaa\images\minmaxheap.png" alt="minmaxheap"><figcaption aria-hidden="true">minmaxheap</figcaption>
 </figure>
 <blockquote>
 <p>Minimum value = 樹根節點</p>
@@ -585,63 +587,63 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Del_min (H, n) &#123;</span><br><span class="line">    swap(H[<span class="number">1</span>], H[n]);</span><br><span class="line">    re = H[n];</span><br><span class="line">    n--;</span><br><span class="line">	Del_reinsert(H, n, <span class="number">1</span>, H[<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Example (Delete 3 times)</p>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_1.png" alt="delminmaxheap_1"><figcaption>delminmaxheap_1</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_1.png" alt="delminmaxheap_1"><figcaption aria-hidden="true">delminmaxheap_1</figcaption>
 </figure>
 <ul>
 <li>1 st deletion</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_2.png" alt="delminmaxheap_2"><figcaption>delminmaxheap_2</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_2.png" alt="delminmaxheap_2"><figcaption aria-hidden="true">delminmaxheap_2</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_3.png" alt="delminmaxheap_3"><figcaption>delminmaxheap_3</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_3.png" alt="delminmaxheap_3"><figcaption aria-hidden="true">delminmaxheap_3</figcaption>
 </figure>
 <p><strong>Seep 3</strong> ↓</p>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_4.png" alt="delminmaxheap_4"><figcaption>delminmaxheap_4</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_4.png" alt="delminmaxheap_4"><figcaption aria-hidden="true">delminmaxheap_4</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_5.png" alt="delminmaxheap_5"><figcaption>delminmaxheap_5</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_5.png" alt="delminmaxheap_5"><figcaption aria-hidden="true">delminmaxheap_5</figcaption>
 </figure>
 <ul>
 <li>2nd delition</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_6.png" alt="delminmaxheap_6"><figcaption>delminmaxheap_6</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_6.png" alt="delminmaxheap_6"><figcaption aria-hidden="true">delminmaxheap_6</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_7.png" alt="delminmaxheap_7"><figcaption>delminmaxheap_7</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_7.png" alt="delminmaxheap_7"><figcaption aria-hidden="true">delminmaxheap_7</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_8.png" alt="delminmaxheap_8"><figcaption>delminmaxheap_8</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_8.png" alt="delminmaxheap_8"><figcaption aria-hidden="true">delminmaxheap_8</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_9.png" alt="delminmaxheap_9"><figcaption>delminmaxheap_9</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_9.png" alt="delminmaxheap_9"><figcaption aria-hidden="true">delminmaxheap_9</figcaption>
 </figure>
 <ul>
 <li>3rd delietion</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_10.png" alt="delminmaxheap_10"><figcaption>delminmaxheap_10</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_10.png" alt="delminmaxheap_10"><figcaption aria-hidden="true">delminmaxheap_10</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_11.png" alt="delminmaxheap_11"><figcaption>delminmaxheap_11</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_11.png" alt="delminmaxheap_11"><figcaption aria-hidden="true">delminmaxheap_11</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_12.png" alt="delminmaxheap_12"><figcaption>delminmaxheap_12</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_12.png" alt="delminmaxheap_12"><figcaption aria-hidden="true">delminmaxheap_12</figcaption>
 </figure>
 <h4 id="delete-max">Delete-max</h4>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_1.png" alt="delminmaxheap_1"><figcaption>delminmaxheap_1</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_1.png" alt="delminmaxheap_1"><figcaption aria-hidden="true">delminmaxheap_1</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_13.png" alt="delminmaxheap_13"><figcaption>delminmaxheap_13</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_13.png" alt="delminmaxheap_13"><figcaption aria-hidden="true">delminmaxheap_13</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_14.png" alt="delminmaxheap_14"><figcaption>delminmaxheap_14</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_14.png" alt="delminmaxheap_14"><figcaption aria-hidden="true">delminmaxheap_14</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\delminmaxheap_15.png" alt="delminmaxheap_15"><figcaption>delminmaxheap_15</figcaption>
+<img src="\willywangkaa\images\delminmaxheap_15.png" alt="delminmaxheap_15"><figcaption aria-hidden="true">delminmaxheap_15</figcaption>
 </figure>
 <h2 id="double-ended-heap-deap">Double-ended heap (DEAP)</h2>
 <p>Complete binary tree</p>
@@ -651,7 +653,7 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 <li>樹根右子樹為「Max heap」</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\deapnodemap.png" alt="deapnodemap"><figcaption>deapnodemap</figcaption>
+<img src="\willywangkaa\images\deapnodemap.png" alt="deapnodemap"><figcaption aria-hidden="true">deapnodemap</figcaption>
 </figure>
 <ul>
 <li><strong>「Min heap」與「Max heap」對應編號</strong>
@@ -680,23 +682,23 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 <li>對該空缺作「Insert data in deap」</li>
 </ol>
 <figure>
-<img src="\willywangkaa\images\deap.png" alt="deap"><figcaption>deap</figcaption>
+<img src="\willywangkaa\images\deap.png" alt="deap"><figcaption aria-hidden="true">deap</figcaption>
 </figure>
 <p>Example</p>
 <figure>
-<img src="\willywangkaa\images\deldeap_1.png" alt="deldeap_1"><figcaption>deldeap_1</figcaption>
+<img src="\willywangkaa\images\deldeap_1.png" alt="deldeap_1"><figcaption aria-hidden="true">deldeap_1</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\deldeap_2.png" alt="deldeap_2"><figcaption>deldeap_2</figcaption>
+<img src="\willywangkaa\images\deldeap_2.png" alt="deldeap_2"><figcaption aria-hidden="true">deldeap_2</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\deldeap_3.png" alt="deldeap_3"><figcaption>deldeap_3</figcaption>
+<img src="\willywangkaa\images\deldeap_3.png" alt="deldeap_3"><figcaption aria-hidden="true">deldeap_3</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\deldeap_4.png" alt="deldeap_4"><figcaption>deldeap_4</figcaption>
+<img src="\willywangkaa\images\deldeap_4.png" alt="deldeap_4"><figcaption aria-hidden="true">deldeap_4</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\deldeap_5.png" alt="deldeap_5"><figcaption>deldeap_5</figcaption>
+<img src="\willywangkaa\images\deldeap_5.png" alt="deldeap_5"><figcaption aria-hidden="true">deldeap_5</figcaption>
 </figure>
 <h2 id="symmetric-min-max-heap-smmh">Symmetric min-max heap (SMMH)</h2>
 <p>Complete binary tree</p>
@@ -708,7 +710,7 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 </ul>
 <p>針對下方全部綠色節點，全部鍵值都比 2 大，都比 80 小</p>
 <figure>
-<img src="\willywangkaa\images\SMMH.png" alt="SMMH"><figcaption>SMMH</figcaption>
+<img src="\willywangkaa\images\SMMH.png" alt="SMMH"><figcaption aria-hidden="true">SMMH</figcaption>
 </figure>
 <blockquote>
 <p>由上方性質可以反映出</p>
@@ -733,26 +735,26 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 </ol>
 <p>Example</p>
 <figure>
-<img src="\willywangkaa\images\SMMH_2.png" alt="SMMH_2"><figcaption>SMMH_2</figcaption>
+<img src="\willywangkaa\images\SMMH_2.png" alt="SMMH_2"><figcaption aria-hidden="true">SMMH_2</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\delSMMH_1.png" alt="delSMMH_1"><figcaption>delSMMH_1</figcaption>
+<img src="\willywangkaa\images\delSMMH_1.png" alt="delSMMH_1"><figcaption aria-hidden="true">delSMMH_1</figcaption>
 </figure>
 <p>在藍色中選出一個最小值</p>
 <figure>
-<img src="\willywangkaa\images\delSMMH_2.png" alt="delSMMH_2"><figcaption>delSMMH_2</figcaption>
+<img src="\willywangkaa\images\delSMMH_2.png" alt="delSMMH_2"><figcaption aria-hidden="true">delSMMH_2</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\delSMMH_3.png" alt="delSMMH_3"><figcaption>delSMMH_3</figcaption>
+<img src="\willywangkaa\images\delSMMH_3.png" alt="delSMMH_3"><figcaption aria-hidden="true">delSMMH_3</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\delSMMH_4.png" alt="delSMMH_4"><figcaption>delSMMH_4</figcaption>
+<img src="\willywangkaa\images\delSMMH_4.png" alt="delSMMH_4"><figcaption aria-hidden="true">delSMMH_4</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\delSMMH_5.png" alt="delSMMH_5"><figcaption>delSMMH_5</figcaption>
+<img src="\willywangkaa\images\delSMMH_5.png" alt="delSMMH_5"><figcaption aria-hidden="true">delSMMH_5</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\delSMMH_6.png" alt="delSMMH_6"><figcaption>delSMMH_6</figcaption>
+<img src="\willywangkaa\images\delSMMH_6.png" alt="delSMMH_6"><figcaption aria-hidden="true">delSMMH_6</figcaption>
 </figure>
 <h1 id="leftist-heap">Leftist heap</h1>
 <table>
@@ -805,13 +807,13 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 </ol>
 <p>Example</p>
 <figure>
-<img src="\willywangkaa\images\leftisttreemerge_1.png" alt="leftisttreemerge_1"><figcaption>leftisttreemerge_1</figcaption>
+<img src="\willywangkaa\images\leftisttreemerge_1.png" alt="leftisttreemerge_1"><figcaption aria-hidden="true">leftisttreemerge_1</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\leftisttreemerge_2.png" alt="leftisttreemerge_2"><figcaption>leftisttreemerge_2</figcaption>
+<img src="\willywangkaa\images\leftisttreemerge_2.png" alt="leftisttreemerge_2"><figcaption aria-hidden="true">leftisttreemerge_2</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\leftisttreemerge_3.png" alt="leftisttreemerge_3"><figcaption>leftisttreemerge_3</figcaption>
+<img src="\willywangkaa\images\leftisttreemerge_3.png" alt="leftisttreemerge_3"><figcaption aria-hidden="true">leftisttreemerge_3</figcaption>
 </figure>
 <h3 id="delete-min-in-leftist-heap">Delete-min in leftist heap</h3>
 <p>步驟：</p>
@@ -863,10 +865,10 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 <li>合併直到此<strong>集合中無相同高度之「Binominal 」</strong></li>
 </ol>
 <figure>
-<img src="\willywangkaa\images\leftistheapmerge_1.png" alt="leftistheapmerge_1"><figcaption>leftistheapmerge_1</figcaption>
+<img src="\willywangkaa\images\leftistheapmerge_1.png" alt="leftistheapmerge_1"><figcaption aria-hidden="true">leftistheapmerge_1</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\leftistheapmerge_2.png" alt="leftistheapmerge_2"><figcaption>leftistheapmerge_2</figcaption>
+<img src="\willywangkaa\images\leftistheapmerge_2.png" alt="leftistheapmerge_2"><figcaption aria-hidden="true">leftistheapmerge_2</figcaption>
 </figure>
 <blockquote>
 <ol type="1">
@@ -899,13 +901,13 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 </ol>
 <p>Example (<strong>Amotize 計算</strong>) 給 1, 2, 3, 4, 5, 6, 7 以建立「Binominal heap」</p>
 <figure>
-<img src="\willywangkaa\images\insertbinominalheap_1.png" alt="insertbinominalheap_1"><figcaption>insertbinominalheap_1</figcaption>
+<img src="\willywangkaa\images\insertbinominalheap_1.png" alt="insertbinominalheap_1"><figcaption aria-hidden="true">insertbinominalheap_1</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\insertbinominalheap_2.png" alt="insertbinominalheap_2"><figcaption>insertbinominalheap_2</figcaption>
+<img src="\willywangkaa\images\insertbinominalheap_2.png" alt="insertbinominalheap_2"><figcaption aria-hidden="true">insertbinominalheap_2</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\insertbinominalheap_3.png" alt="insertbinominalheap_3"><figcaption>insertbinominalheap_3</figcaption>
+<img src="\willywangkaa\images\insertbinominalheap_3.png" alt="insertbinominalheap_3"><figcaption aria-hidden="true">insertbinominalheap_3</figcaption>
 </figure>
 <blockquote>
 <ul>
@@ -919,7 +921,7 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 </blockquote>
 <h2 id="binominal-heap-不同版本">Binominal heap ( 不同版本 )</h2>
 <figure>
-<img src="\willywangkaa\images\datastructurebinominalheap.png" alt="datastructurebinominalheap"><figcaption>datastructurebinominalheap</figcaption>
+<img src="\willywangkaa\images\datastructurebinominalheap.png" alt="datastructurebinominalheap"><figcaption aria-hidden="true">datastructurebinominalheap</figcaption>
 </figure>
 <ul>
 <li>著重於「Data structure」之表示</li>
@@ -970,16 +972,16 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 </ol>
 <h3 id="delete-x-in-fibonacci-heap">Delete x in fibonacci heap</h3>
 <figure>
-<img src="\willywangkaa\images\delfibonacciheap.png" alt="delfibonacciheap"><figcaption>delfibonacciheap</figcaption>
+<img src="\willywangkaa\images\delfibonacciheap.png" alt="delfibonacciheap"><figcaption aria-hidden="true">delfibonacciheap</figcaption>
 </figure>
 <p>Example 刪除節點 12</p>
 <p>刪除該節點後，其兩棵子樹獨立，成為樹根之間之「Sibling」，<strong>並且遇到相同高度「Binominal tree」時不合併 ( 偷懶合併法 )</strong></p>
 <figure>
-<img src="\willywangkaa\images\delfibonacciheap_2.png" alt="delfibonacciheap_2"><figcaption>delfibonacciheap_2</figcaption>
+<img src="\willywangkaa\images\delfibonacciheap_2.png" alt="delfibonacciheap_2"><figcaption aria-hidden="true">delfibonacciheap_2</figcaption>
 </figure>
 <h3 id="decrease-key-in-fibonacci-heap">Decrease key in fibonacci heap</h3>
 <figure>
-<img src="\willywangkaa\images\delfibonacciheap.png" alt="delfibonacciheap"><figcaption>delfibonacciheap</figcaption>
+<img src="\willywangkaa\images\delfibonacciheap.png" alt="delfibonacciheap"><figcaption aria-hidden="true">delfibonacciheap</figcaption>
 </figure>
 <ul>
 <li>針對節點（1）減少 1：<strong>（1）→（0），其餘不動</strong>
@@ -1004,10 +1006,10 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\decreasekeyfibonacciheap_1.png" alt="decreasekeyfibonacciheap_1"><figcaption>decreasekeyfibonacciheap_1</figcaption>
+<img src="\willywangkaa\images\decreasekeyfibonacciheap_1.png" alt="decreasekeyfibonacciheap_1"><figcaption aria-hidden="true">decreasekeyfibonacciheap_1</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\decreasekeyfibonacciheap_2.png" alt="decreasekeyfibonacciheap_2"><figcaption>decreasekeyfibonacciheap_2</figcaption>
+<img src="\willywangkaa\images\decreasekeyfibonacciheap_2.png" alt="decreasekeyfibonacciheap_2"><figcaption aria-hidden="true">decreasekeyfibonacciheap_2</figcaption>
 </figure>
 <blockquote>
 <table>
@@ -1060,7 +1062,7 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 <li>Decrease key in binary heap ( <span class="math inline">\(\Theta(\log n)\)</span> )</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\decreasekeyinbinaryheap.png" alt="decreasekeyinbinaryheap"><figcaption>decreasekeyinbinaryheap</figcaption>
+<img src="\willywangkaa\images\decreasekeyinbinaryheap.png" alt="decreasekeyinbinaryheap"><figcaption aria-hidden="true">decreasekeyinbinaryheap</figcaption>
 </figure>
 </blockquote>
 <blockquote>
@@ -1320,7 +1322,7 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -1364,10 +1366,10 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
             
               <img class="site-author-image" itemprop="image"
                 src="/willywangkaa/images/avatar_me.gif"
-                alt="Willy Wang (willywangkaa)" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
-              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -1375,7 +1377,7 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/willywangkaa/archives/">
+                  <a href="/willywangkaa/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">posts</span>
@@ -1422,8 +1424,6 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -1639,7 +1639,7 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#binary-heap"><span class="nav-number">1.</span> <span class="nav-text">Binary heap</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#build-heap"><span class="nav-number">1.1.</span> <span class="nav-text">Build heap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#top-down"><span class="nav-number">1.1.1.</span> <span class="nav-text">Top down</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#buttum-up"><span class="nav-number">1.1.2.</span> <span class="nav-text">Buttum up</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#time-complexity"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">Time complexity</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#double-ended-priority-queue"><span class="nav-number">2.</span> <span class="nav-text">Double ended priority queue</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#min-max-heap"><span class="nav-number">2.1.</span> <span class="nav-text">Min-max heap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#insert-node-in-min-max-heap"><span class="nav-number">2.1.1.</span> <span class="nav-text">Insert node in min-max heap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete-min-in-min-max-heap"><span class="nav-number">2.1.2.</span> <span class="nav-text">Delete-min in min-max heap</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#delete-max"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">Delete-max</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#double-ended-heap-deap"><span class="nav-number">2.2.</span> <span class="nav-text">Double-ended heap (DEAP)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#insert-data-in-deap"><span class="nav-number">2.2.1.</span> <span class="nav-text">Insert data in deap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete-data-in-deap"><span class="nav-number">2.2.2.</span> <span class="nav-text">Delete data in deap</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#symmetric-min-max-heap-smmh"><span class="nav-number">2.3.</span> <span class="nav-text">Symmetric min-max heap (SMMH)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#insert-data-in-smmh"><span class="nav-number">2.3.1.</span> <span class="nav-text">Insert data in SMMH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete-min-in-smmh"><span class="nav-number">2.3.2.</span> <span class="nav-text">Delete min in SMMH</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leftist-heap"><span class="nav-number">3.</span> <span class="nav-text">Leftist heap</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#leftist-tree-minimum-leftist-tree"><span class="nav-number">3.1.</span> <span class="nav-text">Leftist tree (Minimum leftist tree)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#leftist-heap-1"><span class="nav-number">3.2.</span> <span class="nav-text">Leftist heap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#merge-leftist-heap-h_1-h_2"><span class="nav-number">3.2.1.</span> <span class="nav-text">Merge leftist heap (\(H_1, H_2\))</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete-min-in-leftist-heap"><span class="nav-number">3.2.2.</span> <span class="nav-text">Delete-min in leftist heap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#insert-data-in-leftist-heap"><span class="nav-number">3.2.3.</span> <span class="nav-text">Insert data in leftist heap</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#binominal-heap"><span class="nav-number">4.</span> <span class="nav-text">Binominal heap</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#binominal-tree"><span class="nav-number">4.1.</span> <span class="nav-text">Binominal tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#binominal-heap-1"><span class="nav-number">4.2.</span> <span class="nav-text">Binominal heap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#merge-binominal-heap"><span class="nav-number">4.2.1.</span> <span class="nav-text">Merge binominal heap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete-min-in-binominal-heap"><span class="nav-number">4.2.2.</span> <span class="nav-text">Delete-min in binominal heap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#insert-data-in-binominal-heap-h_1"><span class="nav-number">4.2.3.</span> <span class="nav-text">Insert data in binominal heap (\(H_1\))</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#binominal-heap-不同版本"><span class="nav-number">4.3.</span> <span class="nav-text">Binominal heap ( 不同版本 )</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#fibonacci-heap"><span class="nav-number">5.</span> <span class="nav-text">Fibonacci heap</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#fibonacci-heap---data-structure"><span class="nav-number">5.1.</span> <span class="nav-text">Fibonacci heap - Data structure</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#delete-x-in-fibonacci-heap"><span class="nav-number">5.1.1.</span> <span class="nav-text">Delete x in fibonacci heap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#decrease-key-in-fibonacci-heap"><span class="nav-number">5.1.2.</span> <span class="nav-text">Decrease key in fibonacci heap</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#binary-heap"><span class="nav-number">1.</span> <span class="nav-text">Binary heap</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#build-heap"><span class="nav-number">1.1.</span> <span class="nav-text">Build heap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#top-down"><span class="nav-number">1.1.1.</span> <span class="nav-text">Top down</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#buttum-up"><span class="nav-number">1.1.2.</span> <span class="nav-text">Buttum up</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#time-complexity"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">Time complexity</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#double-ended-priority-queue"><span class="nav-number">2.</span> <span class="nav-text">Double ended priority queue</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#min-max-heap"><span class="nav-number">2.1.</span> <span class="nav-text">Min-max heap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#insert-node-in-min-max-heap"><span class="nav-number">2.1.1.</span> <span class="nav-text">Insert node in min-max heap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete-min-in-min-max-heap"><span class="nav-number">2.1.2.</span> <span class="nav-text">Delete-min in min-max heap</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#delete-max"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">Delete-max</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#double-ended-heap-deap"><span class="nav-number">2.2.</span> <span class="nav-text">Double-ended heap (DEAP)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#insert-data-in-deap"><span class="nav-number">2.2.1.</span> <span class="nav-text">Insert data in deap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete-data-in-deap"><span class="nav-number">2.2.2.</span> <span class="nav-text">Delete data in deap</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#symmetric-min-max-heap-smmh"><span class="nav-number">2.3.</span> <span class="nav-text">Symmetric min-max heap (SMMH)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#insert-data-in-smmh"><span class="nav-number">2.3.1.</span> <span class="nav-text">Insert data in SMMH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete-min-in-smmh"><span class="nav-number">2.3.2.</span> <span class="nav-text">Delete min in SMMH</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leftist-heap"><span class="nav-number">3.</span> <span class="nav-text">Leftist heap</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#leftist-tree-minimum-leftist-tree"><span class="nav-number">3.1.</span> <span class="nav-text">Leftist tree (Minimum leftist tree)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#leftist-heap-1"><span class="nav-number">3.2.</span> <span class="nav-text">Leftist heap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#merge-leftist-heap-h_1-h_2"><span class="nav-number">3.2.1.</span> <span class="nav-text">Merge leftist heap (\(H_1, H_2\))</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete-min-in-leftist-heap"><span class="nav-number">3.2.2.</span> <span class="nav-text">Delete-min in leftist heap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#insert-data-in-leftist-heap"><span class="nav-number">3.2.3.</span> <span class="nav-text">Insert data in leftist heap</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#binominal-heap"><span class="nav-number">4.</span> <span class="nav-text">Binominal heap</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#binominal-tree"><span class="nav-number">4.1.</span> <span class="nav-text">Binominal tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#binominal-heap-1"><span class="nav-number">4.2.</span> <span class="nav-text">Binominal heap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#merge-binominal-heap"><span class="nav-number">4.2.1.</span> <span class="nav-text">Merge binominal heap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete-min-in-binominal-heap"><span class="nav-number">4.2.2.</span> <span class="nav-text">Delete-min in binominal heap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#insert-data-in-binominal-heap-h_1"><span class="nav-number">4.2.3.</span> <span class="nav-text">Insert data in binominal heap (\(H_1\))</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#binominal-heap-%E4%B8%8D%E5%90%8C%E7%89%88%E6%9C%AC"><span class="nav-number">4.3.</span> <span class="nav-text">Binominal heap ( 不同版本 )</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#fibonacci-heap"><span class="nav-number">5.</span> <span class="nav-text">Fibonacci heap</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#fibonacci-heap---data-structure"><span class="nav-number">5.1.</span> <span class="nav-text">Fibonacci heap - Data structure</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#delete-x-in-fibonacci-heap"><span class="nav-number">5.1.1.</span> <span class="nav-text">Delete x in fibonacci heap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#decrease-key-in-fibonacci-heap"><span class="nav-number">5.1.2.</span> <span class="nav-text">Decrease key in fibonacci heap</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1659,11 +1659,11 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+  <span class="author" itemprop="copyrightHolder">Wang Yu Li</span>
 
   
 
@@ -1807,7 +1807,7 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/10/31/Data-structure-Advance-heap/';
+        this.page.url = 'http://wangwilly.github.io/willywangkaa/2018/10/31/Data-structure-Advance-heap/';
         this.page.identifier = '2018/10/31/Data-structure-Advance-heap/';
         this.page.title = 'Data structure - Advance heap';
       };
@@ -2242,24 +2242,7 @@ S = 2^0 \cdot (k-1) + 2^1 \cdot (k-2) + \ldots + 2^{k-2} \cdot (k-(k-1)) + 2^{k-
   
     bookmark.scrollToMark('auto', "#more");
   
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>

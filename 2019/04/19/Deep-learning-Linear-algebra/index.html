@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/willywangkaa/',
+    root: '',
     scheme: 'Pisces',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -103,20 +103,20 @@
   <meta name="keywords" content="Hexo, NexT" />
 
 
-<meta name="description" content="Deep learning - Linear algebra 矩陣的正定性（Positive definiteness）  Eigen decomposition 矩陣的特徵值分解  一個矩陣 \(A\) 可作特徵值分解  若且唯若矩陣 \(A\) 的「代數重根數」（特徵根）等於其「幾何重根數」（特徵向量）  矩陣的特徵值分解不一定唯一  當有兩個或多個特徵向量屬於同一個特徵">
+<meta name="description" content="Deep learning - Linear algebra 矩陣的正定性（Positive definiteness）  Eigen decomposition 矩陣的特徵值分解  一個矩陣 \(A\) 可作特徵值分解  若且唯若矩陣 \(A\) 的「代數重根數」（特徵根）等於其「幾何重根數」（特徵向量）  矩陣的特徵值分解不一定唯一  當有兩個或多個特徵向量屬於同一個特徵值時 取其原始「特徵向">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Deep learning - Linear algebra">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2019/04/19/Deep-learning-Linear-algebra/index.html">
+<meta property="og:url" content="http://wangwilly.github.io/willywangkaa/2019/04/19/Deep-learning-Linear-algebra/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="Deep learning - Linear algebra 矩陣的正定性（Positive definiteness）  Eigen decomposition 矩陣的特徵值分解  一個矩陣 \(A\) 可作特徵值分解  若且唯若矩陣 \(A\) 的「代數重根數」（特徵根）等於其「幾何重根數」（特徵向量）  矩陣的特徵值分解不一定唯一  當有兩個或多個特徵向量屬於同一個特徵">
-<meta property="og:locale" content="zh-tw">
+<meta property="og:description" content="Deep learning - Linear algebra 矩陣的正定性（Positive definiteness）  Eigen decomposition 矩陣的特徵值分解  一個矩陣 \(A\) 可作特徵值分解  若且唯若矩陣 \(A\) 的「代數重根數」（特徵根）等於其「幾何重根數」（特徵向量）  矩陣的特徵值分解不一定唯一  當有兩個或多個特徵向量屬於同一個特徵值時 取其原始「特徵向">
+<meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1553931898849.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1553933848943.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1553944007423.png">
-<meta property="og:updated_time" content="2019-04-19T13:30:23.654Z">
+<meta property="article:published_time" content="2019-04-19T13:13:00.000Z">
+<meta property="article:modified_time" content="2019-04-19T13:30:23.654Z">
+<meta property="article:author" content="Wang Yu Li">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Deep learning - Linear algebra">
-<meta name="twitter:description" content="Deep learning - Linear algebra 矩陣的正定性（Positive definiteness）  Eigen decomposition 矩陣的特徵值分解  一個矩陣 \(A\) 可作特徵值分解  若且唯若矩陣 \(A\) 的「代數重根數」（特徵根）等於其「幾何重根數」（特徵向量）  矩陣的特徵值分解不一定唯一  當有兩個或多個特徵向量屬於同一個特徵">
 <meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/1553931898849.png">
 
 
@@ -169,9 +169,11 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
@@ -196,7 +198,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Live more like human</p>
+        <p class="site-subtitle">The higher up, the greater the fall.</p>
       
   </div>
 
@@ -217,25 +219,25 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/willywangkaa/" rel="section">
+          <a href="/willywangkaa/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/willywangkaa/archives/" rel="section">
+          <a href="/willywangkaa/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/willywangkaa/categories/" rel="section">
+          <a href="/willywangkaa/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/willywangkaa/tags/" rel="section">
+          <a href="/willywangkaa/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
@@ -316,7 +318,7 @@
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2019/04/19/Deep-learning-Linear-algebra/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -477,10 +479,10 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1553931898849.png" alt="1553931898849"><figcaption>1553931898849</figcaption>
+<img src="\willywangkaa\images\1553931898849.png" alt="1553931898849"><figcaption aria-hidden="true">1553931898849</figcaption>
 </figure>
 <p><strong>Theorem</strong></p>
-<p>Rayleigh’s quotient</p>
+<p>Rayleigh's quotient</p>
 <ul>
 <li>給定一對稱矩陣 <span class="math inline">\(A\in \mathbf R^{n\times n}\)</span>，對於所有向量 <span class="math inline">\(x\in\mathbf R^{n}\)</span>
 <ul>
@@ -544,7 +546,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1553933848943.png" alt="1553933848943"><figcaption>1553933848943</figcaption>
+<img src="\willywangkaa\images\1553933848943.png" alt="1553933848943"><figcaption aria-hidden="true">1553933848943</figcaption>
 </figure>
 <h2 id="singular-value-decomposition">Singular value decomposition</h2>
 <ul>
@@ -641,7 +643,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1553944007423.png" alt="1553944007423"><figcaption>1553944007423</figcaption>
+<img src="\willywangkaa\images\1553944007423.png" alt="1553944007423"><figcaption aria-hidden="true">1553944007423</figcaption>
 </figure>
 <ul>
 <li>一個函數 <span class="math inline">\(T\)</span> 的行列式值比「特徵值分解」更能簡潔表達其函數的<strong>伸縮性</strong></li>
@@ -729,7 +731,7 @@
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -773,10 +775,10 @@
             
               <img class="site-author-image" itemprop="image"
                 src="/willywangkaa/images/avatar_me.gif"
-                alt="Willy Wang (willywangkaa)" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
-              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -784,7 +786,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/willywangkaa/archives/">
+                  <a href="/willywangkaa/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">posts</span>
@@ -831,8 +833,6 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -1048,7 +1048,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#deep-learning---linear-algebra"><span class="nav-number">1.</span> <span class="nav-text">Deep learning - Linear algebra</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#矩陣的正定性positive-definiteness"><span class="nav-number">1.1.</span> <span class="nav-text">矩陣的正定性（Positive definiteness）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#quadretic-function"><span class="nav-number">1.2.</span> <span class="nav-text">Quadretic function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#singular-value-decomposition"><span class="nav-number">1.3.</span> <span class="nav-text">Singular value decomposition</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#moore-penrose-pseudoinverse虛反矩陣"><span class="nav-number">1.3.1.</span> <span class="nav-text">Moore-Penrose pseudoinverse（虛反矩陣）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#trace矩陣的跡"><span class="nav-number">1.4.</span> <span class="nav-text">Trace（矩陣的跡）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#determinant矩陣的行列式"><span class="nav-number">1.5.</span> <span class="nav-text">Determinant（矩陣的行列式）</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#deep-learning---linear-algebra"><span class="nav-number">1.</span> <span class="nav-text">Deep learning - Linear algebra</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A9%E9%99%A3%E7%9A%84%E6%AD%A3%E5%AE%9A%E6%80%A7positive-definiteness"><span class="nav-number">1.1.</span> <span class="nav-text">矩陣的正定性（Positive definiteness）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#quadretic-function"><span class="nav-number">1.2.</span> <span class="nav-text">Quadretic function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#singular-value-decomposition"><span class="nav-number">1.3.</span> <span class="nav-text">Singular value decomposition</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#moore-penrose-pseudoinverse%E8%99%9B%E5%8F%8D%E7%9F%A9%E9%99%A3"><span class="nav-number">1.3.1.</span> <span class="nav-text">Moore-Penrose pseudoinverse（虛反矩陣）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#trace%E7%9F%A9%E9%99%A3%E7%9A%84%E8%B7%A1"><span class="nav-number">1.4.</span> <span class="nav-text">Trace（矩陣的跡）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#determinant%E7%9F%A9%E9%99%A3%E7%9A%84%E8%A1%8C%E5%88%97%E5%BC%8F"><span class="nav-number">1.5.</span> <span class="nav-text">Determinant（矩陣的行列式）</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1068,11 +1068,11 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+  <span class="author" itemprop="copyrightHolder">Wang Yu Li</span>
 
   
 
@@ -1216,7 +1216,7 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/willywangkaa/2019/04/19/Deep-learning-Linear-algebra/';
+        this.page.url = 'http://wangwilly.github.io/willywangkaa/2019/04/19/Deep-learning-Linear-algebra/';
         this.page.identifier = '2019/04/19/Deep-learning-Linear-algebra/';
         this.page.title = 'Deep learning - Linear algebra';
       };
@@ -1651,24 +1651,7 @@
   
     bookmark.scrollToMark('auto', "#more");
   
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>

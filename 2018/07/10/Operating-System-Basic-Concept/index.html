@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/willywangkaa/',
+    root: '',
     scheme: 'Pisces',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -103,14 +103,13 @@
   <meta name="keywords" content="Basic Concept," />
 
 
-<meta name="description" content="基礎觀念 - Basic Concept (壹)  機器種類 - Machine type  Bare Machine（裸機）  只有「Hardware Components」所組成（CPU、memory、I/O device），沒有任何輔助使用者（ User ）的系統程式（System Program）存在  Extended Machine  以「Bare Machine」">
-<meta name="keywords" content="Basic Concept">
+<meta name="description" content="基礎觀念 - Basic Concept (壹)  機器種類 - Machine type  Bare Machine（裸機）  只有「Hardware Components」所組成（CPU、memory、I&#x2F;O device），沒有任何輔助使用者（ User ）的系統程式（System Program）存在  Extended Machine  以「Bare Machine」為底加上輔助使用者的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Operating System - Basic Concept 1">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/07/10/Operating-System-Basic-Concept/index.html">
+<meta property="og:url" content="http://wangwilly.github.io/willywangkaa/2018/07/10/Operating-System-Basic-Concept/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="基礎觀念 - Basic Concept (壹)  機器種類 - Machine type  Bare Machine（裸機）  只有「Hardware Components」所組成（CPU、memory、I/O device），沒有任何輔助使用者（ User ）的系統程式（System Program）存在  Extended Machine  以「Bare Machine」">
-<meta property="og:locale" content="zh-tw">
+<meta property="og:description" content="基礎觀念 - Basic Concept (壹)  機器種類 - Machine type  Bare Machine（裸機）  只有「Hardware Components」所組成（CPU、memory、I&#x2F;O device），沒有任何輔助使用者（ User ）的系統程式（System Program）存在  Extended Machine  以「Bare Machine」為底加上輔助使用者的">
+<meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1529920981306.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1529918563313.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530087435637.png">
@@ -123,10 +122,11 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530103496272.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530157733165.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1530159007395.png">
-<meta property="og:updated_time" content="2019-01-27T09:16:43.069Z">
+<meta property="article:published_time" content="2018-07-10T02:51:00.000Z">
+<meta property="article:modified_time" content="2019-01-27T09:16:43.069Z">
+<meta property="article:author" content="Wang Yu Li">
+<meta property="article:tag" content="Basic Concept">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Operating System - Basic Concept 1">
-<meta name="twitter:description" content="基礎觀念 - Basic Concept (壹)  機器種類 - Machine type  Bare Machine（裸機）  只有「Hardware Components」所組成（CPU、memory、I/O device），沒有任何輔助使用者（ User ）的系統程式（System Program）存在  Extended Machine  以「Bare Machine」">
 <meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/1529920981306.png">
 
 
@@ -179,9 +179,11 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
@@ -206,7 +208,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Live more like human</p>
+        <p class="site-subtitle">The higher up, the greater the fall.</p>
       
   </div>
 
@@ -227,25 +229,25 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/willywangkaa/" rel="section">
+          <a href="/willywangkaa/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/willywangkaa/archives/" rel="section">
+          <a href="/willywangkaa/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/willywangkaa/categories/" rel="section">
+          <a href="/willywangkaa/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/willywangkaa/tags/" rel="section">
+          <a href="/willywangkaa/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
@@ -326,7 +328,7 @@
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/07/10/Operating-System-Basic-Concept/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -460,7 +462,7 @@
 </ul>
 <h4 id="脫機-off-line-非即時運作-io">脫機 (Off-line 非即時運作 I/O)</h4>
 <figure>
-<img src="\willywangkaa\images\1529920981306.png" alt="1529920981306"><figcaption>1529920981306</figcaption>
+<img src="\willywangkaa\images\1529920981306.png" alt="1529920981306"><figcaption aria-hidden="true">1529920981306</figcaption>
 </figure>
 <p>不即時的將 CPU 演算完的資料給予讀取或是列印，<strong>利用專門的外圍控制機，將低速 I/O 設備上的數據傳送到高速磁碟（磁帶）上；或者相反，CPU 直接對於磁帶讀寫，使電腦加快讀取的速度</strong></p>
 <ul>
@@ -503,7 +505,7 @@
 <h4 id="假脫機線上同時周邊處理技術-simultaneous-peripheral-operation-on-line-spool">假脫機－線上同時周邊處理技術( Simultaneous Peripheral Operation On-Line, SPOOL )</h4>
 <p>又稱為「排隊緩存技術」；當系統中引入了多程序技術（Multiprocess）後，完全可以利用其中的一道程序，<strong>來模擬脫機輸入時的外圍控制機功能</strong>，把低速 I/O 設備上的數據傳送到高速磁碟上；<strong>再用另一道程序來模擬脫機（Off-line）輸出時外圍控制機的功能</strong>，把數據從磁碟傳送到低速輸出設備上。這樣，便可在主機的直接控制（On-line）下實現脫機輸入、輸出功能</p>
 <figure>
-<img src="\willywangkaa\images\1529918563313.png" alt="1529918563313"><figcaption>1529918563313</figcaption>
+<img src="\willywangkaa\images\1529918563313.png" alt="1529918563313"><figcaption aria-hidden="true">1529918563313</figcaption>
 </figure>
 <ul>
 <li>外圍操作與 CPU 對數據的處理可以<strong>同時進行</strong></li>
@@ -568,10 +570,10 @@
 </blockquote>
 <h2 id="系統種類---system-type">系統種類 - System Type</h2>
 <h3 id="多元程序系統---multiprogramming-system">多元程序系統 - Multiprogramming System</h3>
-<p><strong>允許系統 ( 或在記憶體 ) 中存在多個 Process ( 處理程序 ) 同時執行</strong>；透過 CPU Scheduling 技術，當某個 Process 取得 CPU 執行時，若因為某些事件發生（如：Wait for I/O completed 、Resource Not Available…）而無法往下執行時，作業系統可將 CPU 切換給其他 Process 使用，則 CPU 在各個 Processes 切換，可以使 CPU 的使用率提升</p>
+<p><strong>允許系統 ( 或在記憶體 ) 中存在多個 Process ( 處理程序 ) 同時執行</strong>；透過 CPU Scheduling 技術，當某個 Process 取得 CPU 執行時，若因為某些事件發生（如：Wait for I/O completed 、Resource Not Available...）而無法往下執行時，作業系統可將 CPU 切換給其他 Process 使用，則 CPU 在各個 Processes 切換，可以使 CPU 的使用率提升</p>
 <ul>
 <li><p>主要用於避免 CPU 的空等（Idle），提高 CPU 效能（Utilization）</p></li>
-<li>Multiprogramming Degree
+<li><p>Multiprogramming Degree</p>
 <ul>
 <li><strong>系統中存在執行的 Process 個數</strong></li>
 <li>通常 Multiprogramming Degree 越高，<strong>且非為 Thrashing 狀態</strong>，則 CPU 效能越高</li>
@@ -582,16 +584,16 @@
 <li>Concurrent ( 並行 )：<strong>一個 CPU，多個 Processes 共同使用</strong></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530087435637.png" alt="1530087435637"><figcaption>1530087435637</figcaption>
+<img src="\willywangkaa\images\1530087435637.png" alt="1530087435637"><figcaption aria-hidden="true">1530087435637</figcaption>
 </figure>
 <ul>
 <li>Parallel ( 平行 )：<strong>多核心 CPU 共同執行多個 Processes</strong></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530087726413.png" alt="1530087726413"><figcaption>1530087726413</figcaption>
+<img src="\willywangkaa\images\1530087726413.png" alt="1530087726413"><figcaption aria-hidden="true">1530087726413</figcaption>
 </figure>
 <h3 id="分時系統---time-sharing-system">分時系統 - Time Sharing System</h3>
-<p>It’s a <strong>logical extension of multiprogramming system, the CPU in this kind of system switch highly frequently.</strong></p>
+<p>It's a <strong>logical extension of multiprogramming system, the CPU in this kind of system switch highly frequently.</strong></p>
 <ul>
 <li>Multiprogramming 的一種，又可以稱為「Multitasking」
 <ul>
@@ -609,7 +611,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530091014614.png" alt="1530091014614"><figcaption>1530091014614</figcaption>
+<img src="\willywangkaa\images\1530091014614.png" alt="1530091014614"><figcaption aria-hidden="true">1530091014614</figcaption>
 </figure>
 <h3 id="分散式系統---distributed-system">分散式系統 - Distributed System</h3>
 <h4 id="多處理器系統---multiprocessors-system-緊密耦合---tightly-coupled">多處理器系統 - Multiprocessors System ( 緊密耦合 - Tightly Coupled )</h4>
@@ -627,11 +629,11 @@
 <ul>
 <li><strong>增加吞吐量 ( Throughput )</strong>：可以使多個程序在不同的 CPUs 上執行 ( Parallel computing )。<br><strong>＜Note＞：「 N 個 CPUs 之產能」&lt;&lt;「一個有 N 倍 CPU 的產能」，因為會有問題存在使得產能抵銷：</strong><br>1. Resource contention - 資源競爭。<br>2. Processor 之間的 communication。</li>
 <li><strong>增加可靠度 ( Reliability )：若有一個 CPUs 在執行時失效，然而還有其餘的 CPUs 可以繼續執行，使得系統不會因此停頓。</strong><br><strong>＜Note＞</strong><br>1. <strong>Graceful degradation</strong> ( 漸進式滅亡 )：又稱為「Fail - soft」，<strong>系統不會因為某些硬體或是軟體元件故障而停頓，仍然保持運作的能力。</strong><br>2. <strong>Faild - Tolerent system ( 容錯系統 )：具有「Graceful degradation」特性的系統。</strong></li>
-<li><strong>提升運算的經濟效益 ( Economy of scale )</strong>：因為「N 個 CPUs 在同一部機器」<strong>可共享該機器的資源 ( Memory、Bus、I/O - devices … ) </strong>，所以較於「N 部機器」更為便宜而寫有效率。</li>
+<li><strong>提升運算的經濟效益 ( Economy of scale )</strong>：因為「N 個 CPUs 在同一部機器」<strong>可共享該機器的資源 ( Memory、Bus、I/O - devices ... ) </strong>，所以較於「N 部機器」更為便宜而寫有效率。</li>
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530093944139.png" alt="1530093944139"><figcaption>1530093944139</figcaption>
+<img src="\willywangkaa\images\1530093944139.png" alt="1530093944139"><figcaption aria-hidden="true">1530093944139</figcaption>
 </figure>
 <h5 id="symmtric-multiprocessor---smp">Symmtric Multiprocessor - SMP</h5>
 <p><strong>每個 Processors 的工作能力是相同的 ( Identical )，並且每個 Processors 皆有對等的權利存取資源。</strong></p>
@@ -648,7 +650,7 @@
 </ul>
 <h5 id="asymmtric-multiprocessor---asmp">Asymmtric Multiprocessor - ASMP</h5>
 <figure>
-<img src="\willywangkaa\images\ASMP_2.png" alt="ASMP_2"><figcaption>ASMP_2</figcaption>
+<img src="\willywangkaa\images\ASMP_2.png" alt="ASMP_2"><figcaption aria-hidden="true">ASMP_2</figcaption>
 </figure>
 <p><strong>每個 Processors 的工作能力不盡相同，通常採取「Master-Slave ( Boss-Employee )」架構。Master Processor 負責工作分派、資源分配與監督 Slave Processor 等管理工作，</strong>其餘的 Slave Processors 負責執行工作。</p>
 <ul>
@@ -671,7 +673,7 @@
 <li>Multiprocessor</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530099598137.png" alt="1530099598137"><figcaption>1530099598137</figcaption>
+<img src="\willywangkaa\images\1530099598137.png" alt="1530099598137"><figcaption aria-hidden="true">1530099598137</figcaption>
 </figure>
 <ul>
 <li>Multicore Processor
@@ -680,13 +682,13 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\multicore.png" alt="multicore"><figcaption>multicore</figcaption>
+<img src="\willywangkaa\images\multicore.png" alt="multicore"><figcaption aria-hidden="true">multicore</figcaption>
 </figure>
 <h4 id="分散式系統---distributed-system-1">分散式系統 - Distributed System</h4>
 <p>又<strong>稱為「Loosely-Coupled system ( 鬆散耦合系統 )」。</strong></p>
 <ul>
 <li>多部機器彼此透過網路( Network )、Bus 的方式相互串聯。</li>
-<li>每部機器之 CPU 都有各個自有的 Memory、Bus、I/O-device … ，<strong>且並不共享，Clock time 也不盡相同</strong>。</li>
+<li>每部機器之 CPU 都有各個自有的 Memory、Bus、I/O-device ... ，<strong>且並不共享，Clock time 也不盡相同</strong>。</li>
 <li>每部機器的作業系統也不盡相同。</li>
 <li><strong>溝通採用「Message Passing」的方式。</strong>
 <ol type="1">
@@ -696,7 +698,7 @@
 </ol></li>
 <li>實現「Client - Server Computing Model」
 <ul>
-<li>Server：提供服務的機器。<br>$Ex. $ Mail server、File server、DNS、Printer server、Computing server…。</li>
+<li>Server：提供服務的機器。<br>$Ex. $ Mail server、File server、DNS、Printer server、Computing server...。</li>
 <li>Client：本身不提供服務，當需要某項服務時，向對應的 Server 發出請求，當 Server 服務完成，再將結果回傳至 Client。</li>
 <li><strong>＜Note＞：「Peer-to-Peer Model」</strong><br>Peer：同時具有 Server 與 Client 的角色。</li>
 </ul></li>
@@ -714,14 +716,14 @@
 <h3 id="即時系統---real-time-system">即時系統 - Real-time System</h3>
 <h4 id="hard-real-time-system">Hard Real-time System</h4>
 <figure>
-<img src="\willywangkaa\images\1530103496272.png" alt="1530103496272"><figcaption>1530103496272</figcaption>
+<img src="\willywangkaa\images\1530103496272.png" alt="1530103496272"><figcaption aria-hidden="true">1530103496272</figcaption>
 </figure>
 <p><strong>This system must ensure the critical task completed on time.</strong></p>
 <p><strong>工作必須要再規定的時間內完成，否則會有重大危害的狀況發生。</strong></p>
 <ul>
 <li>設計考量：
 <ul>
-<li>所有時間延遲之因素皆須納入考量( 如：感測器資料傳輸速度、運算速度、Signal 傳輸速度… )，<strong>並且確保這些時間加總能在 Deadline 前做完</strong>。</li>
+<li>所有時間延遲之因素皆須納入考量( 如：感測器資料傳輸速度、運算速度、Signal 傳輸速度... )，<strong>並且確保這些時間加總能在 Deadline 前做完</strong>。</li>
 <li><strong>所有會造成時間過久或無法預測之設備或機制，最好少用或不要使用。</strong><br>$Ex. $ <strong>磁碟 ( Disk ) 最好少用或不用、虛擬記憶體 ( Virtual Memory ) 絕不使用。</strong></li>
 <li>針對 CPU 排班的設計，<strong>需要先考量是否可排程化 ( Schedulable )，在進行排程規劃 ( 如：Rate-monotonic、EDF scheduling )。</strong></li>
 </ul></li>
@@ -731,12 +733,12 @@
 <ul>
 <li><strong>＜Note＞：一般實務上，Hard Real-time System 少有作業系統的存在。</strong></li>
 </ul></li>
-<li>應用於：<strong>軍事防衛系統、核能安控系統、工廠自動化生產、機器人控制 …。</strong></li>
+<li>應用於：<strong>軍事防衛系統、核能安控系統、工廠自動化生產、機器人控制 ...。</strong></li>
 </ul>
 <h4 id="soft-real-time-system">Soft Real-time System</h4>
 <p><strong>This system must ensure the real-time process get the highest priority than the others and retain this priority level until it completed.</strong></p>
 <ul>
-<li>應用於：<strong>Multimedia system、Simulation system、VR system …。</strong></li>
+<li>應用於：<strong>Multimedia system、Simulation system、VR system ...。</strong></li>
 <li>針對 CPU 排班的設計
 <ul>
 <li><strong>必須支持「Preemptive priority scheduling - 可插隊排程」。</strong></li>
@@ -753,16 +755,16 @@
 <h3 id="批次系統---batch-system">批次系統 - Batch system</h3>
 <p><strong>將一些較不緊急、定期性、非交談互動性 ( non-interactive ) 的工作，</strong>累積成堆，再分批送入系統處理。</p>
 <ul>
-<li><strong>主要目的：提高資源的利用度 ( Resource utilization )</strong>
+<li><p><strong>主要目的：提高資源的利用度 ( Resource utilization )</strong></p>
 <ul>
 <li>利用冷門時段的時間批次將工作送入執行。</li>
 </ul></li>
 <li><p><strong>不適合用於 Real-time system、User-interactive application。</strong></p></li>
-<li><p>$Ex. $ <strong>庫存盤點、報稅、掃毒、磁碟重組、清算系統 …。</strong></p></li>
+<li><p>$Ex. $ <strong>庫存盤點、報稅、掃毒、磁碟重組、清算系統 ...。</strong></p></li>
 </ul>
 <h3 id="掌上型系統---hand-held-system">掌上型系統 - Hand Held System</h3>
 <ul>
-<li>$Ex. $ PDA、Smartphone (智慧型手機)、PAD (平板) …。</li>
+<li>$Ex. $ PDA、Smartphone (智慧型手機)、PAD (平板) ...。</li>
 <li><strong>硬體天生的限制會導致軟體必須配合的功能。</strong></li>
 </ul>
 <table>
@@ -807,7 +809,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530157733165.png" alt="1530157733165"><figcaption>1530157733165</figcaption>
+<img src="\willywangkaa\images\1530157733165.png" alt="1530157733165"><figcaption aria-hidden="true">1530157733165</figcaption>
 </figure>
 <h3 id="中斷式-io---interrupted-io">中斷式 I/O - Interrupted I/O</h3>
 <ul>
@@ -839,7 +841,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1530159007395.png" alt="1530159007395"><figcaption>1530159007395</figcaption>
+<img src="\willywangkaa\images\1530159007395.png" alt="1530159007395"><figcaption aria-hidden="true">1530159007395</figcaption>
 </figure>
 <h3 id="dma-direct-memory-access-io">DMA (Direct Memory Access) I/O</h3>
 <p>DMA-controller 負責 I/O 裝製與記憶體之間的資料傳輸工作，過程中<strong>無須 CPU 5 參與監督，所以讓 CPU 有更多時間用於 Process 執行上。</strong></p>
@@ -901,7 +903,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/willywangkaa/2018/05/13/Machine Learning-KNN-and-Radial-Basis-Function/" rel="next" title="Machine Learning - KNN and Radial Basis Function">
+              <a href="/willywangkaa/2018/05/13/Machine%20Learning-KNN-and-Radial-Basis-Function/" rel="next" title="Machine Learning - KNN and Radial Basis Function">
                 <i class="fa fa-chevron-left"></i> Machine Learning - KNN and Radial Basis Function
               </a>
             
@@ -944,7 +946,7 @@
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -988,10 +990,10 @@
             
               <img class="site-author-image" itemprop="image"
                 src="/willywangkaa/images/avatar_me.gif"
-                alt="Willy Wang (willywangkaa)" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
-              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -999,7 +1001,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/willywangkaa/archives/">
+                  <a href="/willywangkaa/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">posts</span>
@@ -1046,8 +1048,6 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -1263,7 +1263,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基礎觀念---basic-concept-壹"><span class="nav-number">1.</span> <span class="nav-text">基礎觀念 - Basic Concept (壹)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#機器種類---machine-type"><span class="nav-number">1.1.</span> <span class="nav-text">機器種類 - Machine type</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cpu-的等待時間idle-time"><span class="nav-number">1.1.1.</span> <span class="nav-text">CPU 的等待時間（Idle time）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#脫機-off-line-非即時運作-io"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">脫機 (Off-line 非即時運作 I/O)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#緩衝區-buffering"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">緩衝區 ( Buffering )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#假脫機線上同時周邊處理技術-simultaneous-peripheral-operation-on-line-spool"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">假脫機－線上同時周邊處理技術( Simultaneous Peripheral Operation On-Line, SPOOL )</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系統種類---system-type"><span class="nav-number">1.2.</span> <span class="nav-text">系統種類 - System Type</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多元程序系統---multiprogramming-system"><span class="nav-number">1.2.1.</span> <span class="nav-text">多元程序系統 - Multiprogramming System</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分時系統---time-sharing-system"><span class="nav-number">1.2.2.</span> <span class="nav-text">分時系統 - Time Sharing System</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分散式系統---distributed-system"><span class="nav-number">1.2.3.</span> <span class="nav-text">分散式系統 - Distributed System</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多處理器系統---multiprocessors-system-緊密耦合---tightly-coupled"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">多處理器系統 - Multiprocessors System ( 緊密耦合 - Tightly Coupled )</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#symmtric-multiprocessor---smp"><span class="nav-number">1.2.3.1.1.</span> <span class="nav-text">Symmtric Multiprocessor - SMP</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#asymmtric-multiprocessor---asmp"><span class="nav-number">1.2.3.1.2.</span> <span class="nav-text">Asymmtric Multiprocessor - ASMP</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#multiprocessor-v.s-multicore-processor"><span class="nav-number">1.2.3.1.3.</span> <span class="nav-text">「Multiprocessor」 V.S 「Multicore Processor」</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分散式系統---distributed-system-1"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">分散式系統 - Distributed System</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#即時系統---real-time-system"><span class="nav-number">1.2.4.</span> <span class="nav-text">即時系統 - Real-time System</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#hard-real-time-system"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">Hard Real-time System</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#soft-real-time-system"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">Soft Real-time System</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#批次系統---batch-system"><span class="nav-number">1.2.5.</span> <span class="nav-text">批次系統 - Batch system</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#掌上型系統---hand-held-system"><span class="nav-number">1.2.6.</span> <span class="nav-text">掌上型系統 - Hand Held System</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#io-運作方式"><span class="nav-number">1.3.</span> <span class="nav-text">I/O 運作方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#詢問式-io---polling-io"><span class="nav-number">1.3.1.</span> <span class="nav-text">詢問式 I/O - Polling I/O</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中斷式-io---interrupted-io"><span class="nav-number">1.3.2.</span> <span class="nav-text">中斷式 I/O - Interrupted I/O</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dma-direct-memory-access-io"><span class="nav-number">1.3.3.</span> <span class="nav-text">DMA (Direct Memory Access) I/O</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#參考"><span class="nav-number">2.</span> <span class="nav-text">參考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A4%8E%E8%A7%80%E5%BF%B5---basic-concept-%E5%A3%B9"><span class="nav-number">1.</span> <span class="nav-text">基礎觀念 - Basic Concept (壹)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A9%9F%E5%99%A8%E7%A8%AE%E9%A1%9E---machine-type"><span class="nav-number">1.1.</span> <span class="nav-text">機器種類 - Machine type</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cpu-%E7%9A%84%E7%AD%89%E5%BE%85%E6%99%82%E9%96%93idle-time"><span class="nav-number">1.1.1.</span> <span class="nav-text">CPU 的等待時間（Idle time）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%84%AB%E6%A9%9F-off-line-%E9%9D%9E%E5%8D%B3%E6%99%82%E9%81%8B%E4%BD%9C-io"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">脫機 (Off-line 非即時運作 I&#x2F;O)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B7%A9%E8%A1%9D%E5%8D%80-buffering"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">緩衝區 ( Buffering )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%81%87%E8%84%AB%E6%A9%9F%E7%B7%9A%E4%B8%8A%E5%90%8C%E6%99%82%E5%91%A8%E9%82%8A%E8%99%95%E7%90%86%E6%8A%80%E8%A1%93-simultaneous-peripheral-operation-on-line-spool"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">假脫機－線上同時周邊處理技術( Simultaneous Peripheral Operation On-Line, SPOOL )</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%B5%B1%E7%A8%AE%E9%A1%9E---system-type"><span class="nav-number">1.2.</span> <span class="nav-text">系統種類 - System Type</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E5%85%83%E7%A8%8B%E5%BA%8F%E7%B3%BB%E7%B5%B1---multiprogramming-system"><span class="nav-number">1.2.1.</span> <span class="nav-text">多元程序系統 - Multiprogramming System</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%99%82%E7%B3%BB%E7%B5%B1---time-sharing-system"><span class="nav-number">1.2.2.</span> <span class="nav-text">分時系統 - Time Sharing System</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%95%A3%E5%BC%8F%E7%B3%BB%E7%B5%B1---distributed-system"><span class="nav-number">1.2.3.</span> <span class="nav-text">分散式系統 - Distributed System</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E8%99%95%E7%90%86%E5%99%A8%E7%B3%BB%E7%B5%B1---multiprocessors-system-%E7%B7%8A%E5%AF%86%E8%80%A6%E5%90%88---tightly-coupled"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">多處理器系統 - Multiprocessors System ( 緊密耦合 - Tightly Coupled )</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#symmtric-multiprocessor---smp"><span class="nav-number">1.2.3.1.1.</span> <span class="nav-text">Symmtric Multiprocessor - SMP</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#asymmtric-multiprocessor---asmp"><span class="nav-number">1.2.3.1.2.</span> <span class="nav-text">Asymmtric Multiprocessor - ASMP</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#multiprocessor-v.s-multicore-processor"><span class="nav-number">1.2.3.1.3.</span> <span class="nav-text">「Multiprocessor」 V.S 「Multicore Processor」</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E6%95%A3%E5%BC%8F%E7%B3%BB%E7%B5%B1---distributed-system-1"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">分散式系統 - Distributed System</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%B3%E6%99%82%E7%B3%BB%E7%B5%B1---real-time-system"><span class="nav-number">1.2.4.</span> <span class="nav-text">即時系統 - Real-time System</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#hard-real-time-system"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">Hard Real-time System</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#soft-real-time-system"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">Soft Real-time System</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%B9%E6%AC%A1%E7%B3%BB%E7%B5%B1---batch-system"><span class="nav-number">1.2.5.</span> <span class="nav-text">批次系統 - Batch system</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%8C%E4%B8%8A%E5%9E%8B%E7%B3%BB%E7%B5%B1---hand-held-system"><span class="nav-number">1.2.6.</span> <span class="nav-text">掌上型系統 - Hand Held System</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#io-%E9%81%8B%E4%BD%9C%E6%96%B9%E5%BC%8F"><span class="nav-number">1.3.</span> <span class="nav-text">I&#x2F;O 運作方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A9%A2%E5%95%8F%E5%BC%8F-io---polling-io"><span class="nav-number">1.3.1.</span> <span class="nav-text">詢問式 I&#x2F;O - Polling I&#x2F;O</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E6%96%B7%E5%BC%8F-io---interrupted-io"><span class="nav-number">1.3.2.</span> <span class="nav-text">中斷式 I&#x2F;O - Interrupted I&#x2F;O</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dma-direct-memory-access-io"><span class="nav-number">1.3.3.</span> <span class="nav-text">DMA (Direct Memory Access) I&#x2F;O</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">參考</span></a></li></ol></div>
             
 
           </div>
@@ -1283,11 +1283,11 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+  <span class="author" itemprop="copyrightHolder">Wang Yu Li</span>
 
   
 
@@ -1431,7 +1431,7 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/07/10/Operating-System-Basic-Concept/';
+        this.page.url = 'http://wangwilly.github.io/willywangkaa/2018/07/10/Operating-System-Basic-Concept/';
         this.page.identifier = '2018/07/10/Operating-System-Basic-Concept/';
         this.page.title = 'Operating System - Basic Concept 1';
       };
@@ -1866,24 +1866,7 @@
   
     bookmark.scrollToMark('auto', "#more");
   
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>

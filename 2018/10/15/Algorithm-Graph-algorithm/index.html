@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/willywangkaa/',
+    root: '',
     scheme: 'Pisces',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -103,14 +103,13 @@
   <meta name="keywords" content="Graph," />
 
 
-<meta name="description" content="Graph algorithm Depth first search  考慮圖中一點 u  color(u)：目前 u 節點的狀態  White  初始值，尚未訪查過  Gray  已被訪查過，但未訪查完其子節點  Black  已經訪查完其子節點   d(u)  發現時間點（Discover time） 第一次被訪查的時間點  f(u)  完">
-<meta name="keywords" content="Graph">
+<meta name="description" content="Graph algorithm Depth first search  考慮圖中一點 u  color(u)：目前 u 節點的狀態  White  初始值，尚未訪查過  Gray  已被訪查過，但未訪查完其子節點  Black  已經訪查完其子節點   d(u)  發現時間點（Discover time） 第一次被訪查的時間點  f(u)  完結時間點（Finish time） 訪查完其子節點的時">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Algorithm - Graph algorithm">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/10/15/Algorithm-Graph-algorithm/index.html">
+<meta property="og:url" content="http://wangwilly.github.io/willywangkaa/2018/10/15/Algorithm-Graph-algorithm/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="Graph algorithm Depth first search  考慮圖中一點 u  color(u)：目前 u 節點的狀態  White  初始值，尚未訪查過  Gray  已被訪查過，但未訪查完其子節點  Black  已經訪查完其子節點   d(u)  發現時間點（Discover time） 第一次被訪查的時間點  f(u)  完">
-<meta property="og:locale" content="zh-tw">
+<meta property="og:description" content="Graph algorithm Depth first search  考慮圖中一點 u  color(u)：目前 u 節點的狀態  White  初始值，尚未訪查過  Gray  已被訪查過，但未訪查完其子節點  Black  已經訪查完其子節點   d(u)  發現時間點（Discover time） 第一次被訪查的時間點  f(u)  完結時間點（Finish time） 訪查完其子節點的時">
+<meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/forwardedge.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/crossedge.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/minimumspainingtree_1.png">
@@ -131,10 +130,11 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549708938056.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549709744238.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/vertexcover.png">
-<meta property="og:updated_time" content="2019-02-22T04:33:59.806Z">
+<meta property="article:published_time" content="2018-10-15T08:51:00.000Z">
+<meta property="article:modified_time" content="2019-02-22T04:33:59.806Z">
+<meta property="article:author" content="Wang Yu Li">
+<meta property="article:tag" content="Graph">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Algorithm - Graph algorithm">
-<meta name="twitter:description" content="Graph algorithm Depth first search  考慮圖中一點 u  color(u)：目前 u 節點的狀態  White  初始值，尚未訪查過  Gray  已被訪查過，但未訪查完其子節點  Black  已經訪查完其子節點   d(u)  發現時間點（Discover time） 第一次被訪查的時間點  f(u)  完">
 <meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/forwardedge.png">
 
 
@@ -187,9 +187,11 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
@@ -214,7 +216,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Live more like human</p>
+        <p class="site-subtitle">The higher up, the greater the fall.</p>
       
   </div>
 
@@ -235,25 +237,25 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/willywangkaa/" rel="section">
+          <a href="/willywangkaa/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/willywangkaa/archives/" rel="section">
+          <a href="/willywangkaa/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/willywangkaa/categories/" rel="section">
+          <a href="/willywangkaa/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/willywangkaa/tags/" rel="section">
+          <a href="/willywangkaa/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
@@ -334,7 +336,7 @@
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/10/15/Algorithm-Graph-algorithm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -546,7 +548,7 @@ u_{灰} \rightarrow_{Back–edge} v_{灰}
 u_{灰} \rightarrow_{Forward–edge} ｛v_{黑} \;＆＆ \; d(u)&lt;d(v) ｝
 \]</span></p>
 <figure>
-<img src="\willywangkaa\images\forwardedge.png" alt="forwardedge"><figcaption>forwardedge</figcaption>
+<img src="\willywangkaa\images\forwardedge.png" alt="forwardedge"><figcaption aria-hidden="true">forwardedge</figcaption>
 </figure>
 <ol start="4" type="1">
 <li><strong>Cross edge</strong></li>
@@ -555,7 +557,7 @@ u_{灰} \rightarrow_{Forward–edge} ｛v_{黑} \;＆＆ \; d(u)&lt;d(v) ｝
 u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 \]</span></p>
 <figure>
-<img src="\willywangkaa\images\crossedge.png" alt="crossedge"><figcaption>crossedge</figcaption>
+<img src="\willywangkaa\images\crossedge.png" alt="crossedge"><figcaption aria-hidden="true">crossedge</figcaption>
 </figure>
 <ul>
 <li>Ex （96 年台大資工）</li>
@@ -607,7 +609,7 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 </ul>
 <p>（<strong>反證法</strong>）</p>
 <figure>
-<img src="\willywangkaa\images\minimumspainingtree_1.png" alt="minimumspainingtree_1"><figcaption>minimumspainingtree_1</figcaption>
+<img src="\willywangkaa\images\minimumspainingtree_1.png" alt="minimumspainingtree_1"><figcaption aria-hidden="true">minimumspainingtree_1</figcaption>
 </figure>
 <ul>
 <li>假設 T 為 G 的一個最小生成樹
@@ -618,9 +620,9 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 <li>C 存在一邊 e≠(u,v)，其 Weight(e) ≧ Weight(u,v)</li>
 </ul></li>
 </ul></li>
-<li>令 T’ = T ∪ {(u,v)} - {e}
+<li>令 T' = T ∪ {(u,v)} - {e}
 <ul>
-<li>則 Weight(T’) ≦ Weight(T)</li>
+<li>則 Weight(T') ≦ Weight(T)</li>
 <li><strong>T 不為 G 的最小生成樹</strong></li>
 </ul></li>
 </ul>
@@ -650,7 +652,7 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 <blockquote>
 <p>前提為該圖 G 各個權重不相等，否則反例如下：</p>
 <figure>
-<img src="\willywangkaa\images\minimumspainingtree_2.png" alt="minimumspainingtree_2"><figcaption>minimumspainingtree_2</figcaption>
+<img src="\willywangkaa\images\minimumspainingtree_2.png" alt="minimumspainingtree_2"><figcaption aria-hidden="true">minimumspainingtree_2</figcaption>
 </figure>
 </blockquote>
 <ul>
@@ -665,9 +667,9 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 </ul></li>
 </ul></li>
 </ul></li>
-<li>令 T’ = T ∪ {(u,v)} - {e}
+<li>令 T' = T ∪ {(u,v)} - {e}
 <ul>
-<li>則 Weight(T’) ≦ Weight(T)</li>
+<li>則 Weight(T') ≦ Weight(T)</li>
 <li><strong>T 不為 G 的最小生成樹</strong></li>
 </ul></li>
 </ul>
@@ -677,46 +679,46 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 <li>Counter example</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\minimumspainingtree_3.png" alt="minimumspainingtree_3"><figcaption>minimumspainingtree_3</figcaption>
+<img src="\willywangkaa\images\minimumspainingtree_3.png" alt="minimumspainingtree_3"><figcaption aria-hidden="true">minimumspainingtree_3</figcaption>
 </figure>
 </blockquote>
-<h4 id="kruskals-algorithm-的正確性">Kruskal’s algorithm 的正確性</h4>
+<h4 id="kruskals-algorithm-的正確性">Kruskal's algorithm 的正確性</h4>
 <ul>
 <li>T=(V,E)
 <ul>
-<li>使用「Kruskal’s algorithm」找出的生成樹</li>
+<li>使用「Kruskal's algorithm」找出的生成樹</li>
 </ul></li>
-<li>T’=(V,E’)
+<li>T'=(V,E')
 <ul>
 <li>真正的最小生成樹</li>
 </ul></li>
 </ul>
 <ol type="1">
-<li>若 T = T’​
+<li>若 T = T'​
 <ul>
 <li>得證</li>
 </ul></li>
-<li>若 T ≠ T’
+<li>若 T ≠ T'
 <ul>
-<li>T 必有邊不包含在 T’ 之中
+<li>T 必有邊不包含在 T' 之中
 <ul>
-<li>則挑一權重最小的邊 e ∈ E - E’</li>
-<li>T’ ∪ {e} 形成一環路 C</li>
-<li>T’ ∪ {e} 存在 e’ ≠ e 且 w(e’) ≧ w(e)
+<li>則挑一權重最小的邊 e ∈ E - E'</li>
+<li>T' ∪ {e} 形成一環路 C</li>
+<li>T' ∪ {e} 存在 e' ≠ e 且 w(e') ≧ w(e)
 <ul>
-<li>若 w(e’) &lt; w(e)，「Kruskal’s algorithm」執行時必優先選擇 e’（矛盾）</li>
+<li>若 w(e') &lt; w(e)，「Kruskal's algorithm」執行時必優先選擇 e'（矛盾）</li>
 </ul></li>
 </ul></li>
-<li>可造一個生成樹 T’’ = (V, <strong>(E’ - {e’})</strong> ∪ {e})
+<li>可造一個生成樹 T'' = (V, <strong>(E' - {e'})</strong> ∪ {e})
 <ul>
-<li>Weight(T’‘) ≦ Weight(T’)</li>
+<li>Weight(T'') ≦ Weight(T')</li>
 </ul></li>
 <li>重複上述步驟
 <ul>
 <li><span class="math inline">\(T&#39; \xrightarrow{用\;T\;有而\;T&#39;\;沒有的邊做替換} T&#39;&#39; \xrightarrow{用\;T\;有而\;T&#39;&#39;\;沒有的邊做替換} \dots \rightarrow T\)</span></li>
 <li>其過程中生成樹的權重不會增加
 <ul>
-<li>則可以證明 Weight(T’) = Weight(T)</li>
+<li>則可以證明 Weight(T') = Weight(T)</li>
 <li>T 為最小生成樹</li>
 </ul></li>
 </ul></li>
@@ -727,7 +729,7 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 <ul>
 <li><p>含有唯一「<strong>in-degree = 0</strong>」的點 S（Source；源點）</p></li>
 <li><p>含有唯一「<strong>out-degree = 0</strong>」的點 T（Sink；匯點）</p></li>
-<li>對於 (u,v) ∈ E
+<li><p>對於 (u,v) ∈ E</p>
 <ul>
 <li>定義<strong>容量 c：</strong><span class="math inline">\(E→R^+\)</span>
 <ul>
@@ -798,7 +800,7 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\flownetwork.png" alt="flownetwork"><figcaption>flownetwork</figcaption>
+<img src="\willywangkaa\images\flownetwork.png" alt="flownetwork"><figcaption aria-hidden="true">flownetwork</figcaption>
 </figure>
 <h4 id="ford-fulkerson-algorithm">Ford-Fulkerson algorithm</h4>
 <p>步驟</p>
@@ -841,7 +843,7 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1549795349837.png" alt="1549795349837"><figcaption>1549795349837</figcaption>
+<img src="\willywangkaa\images\1549795349837.png" alt="1549795349837"><figcaption aria-hidden="true">1549795349837</figcaption>
 </figure>
 </blockquote>
 <blockquote>
@@ -908,7 +910,7 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 <li><span class="math inline">\(\Rightarrow \delta_{f&#39;}(s,v) = \delta_{f&#39;}(s,u)+1\)</span></li>
 <li>因為「增廣前 s 至 u 的最短路徑」≦「增廣後 s 至 u 的最短路徑」
 <ul>
-<li>$<em>f(s,u) </em>{f’}(s,u) $
+<li>$<em>f(s,u) </em>{f'}(s,u) $
 <ul>
 <li>則 <span class="math inline">\(\Rightarrow \delta_f(s,u)+1 \leq \delta_{f&#39;}(s,u)+1 = \delta_{f&#39;}(s,v) &lt; \delta_f(s,v)\\ \Rightarrow \delta_f(s,v)&gt; \delta_f(s,u)+1 \;......（1）\)</span></li>
 </ul></li>
@@ -977,7 +979,7 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 </ul></li>
 <li>所以最差的情況就是每條邊都被選成為增廣路徑
 <ul>
-<li>$O(2∣E∣) =O(∣V∣∣E∣) $</li>
+<li>$O(∣E∣) =O(∣V∣∣E∣) $</li>
 </ul></li>
 </ul></li>
 </ol>
@@ -1041,19 +1043,19 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 </ul>
 <p>「流量網路」G = (V,E)</p>
 <figure>
-<img src="\willywangkaa\images\1549793031130.png" alt="1549793031130"><figcaption>1549793031130</figcaption>
+<img src="\willywangkaa\images\1549793031130.png" alt="1549793031130"><figcaption aria-hidden="true">1549793031130</figcaption>
 </figure>
 <p>其「剩餘網路」<span class="math inline">\(G_f = (V, E_f)\)</span></p>
 <figure>
-<img src="\willywangkaa\images\1549793298592.png" alt="1549793298592"><figcaption>1549793298592</figcaption>
+<img src="\willywangkaa\images\1549793298592.png" alt="1549793298592"><figcaption aria-hidden="true">1549793298592</figcaption>
 </figure>
 <p>一種由源點開始的「容許網路」</p>
 <figure>
-<img src="\willywangkaa\images\1549793355647.png" alt="1549793355647"><figcaption>1549793355647</figcaption>
+<img src="\willywangkaa\images\1549793355647.png" alt="1549793355647"><figcaption aria-hidden="true">1549793355647</figcaption>
 </figure>
 <p>一種由匯點開始的「容許網路」</p>
 <figure>
-<img src="\willywangkaa\images\1549793388148.png" alt="1549793388148"><figcaption>1549793388148</figcaption>
+<img src="\willywangkaa\images\1549793388148.png" alt="1549793388148"><figcaption aria-hidden="true">1549793388148</figcaption>
 </figure>
 <blockquote>
 <ul>
@@ -1072,7 +1074,7 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 </ul>
 <p>容許網路就是剩餘網路的「最短路徑圖」</p>
 <figure>
-<img src="\willywangkaa\images\1549793497499.png" alt="1549793497499"><figcaption>1549793497499</figcaption>
+<img src="\willywangkaa\images\1549793497499.png" alt="1549793497499"><figcaption aria-hidden="true">1549793497499</figcaption>
 </figure>
 <p>（左圖為源點開始的「容許網路」分層圖；右圖為匯點開始的「容許網路」分層圖）</p>
 </blockquote>
@@ -1089,7 +1091,7 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 </ul></li>
 </ol>
 <figure>
-<img src="\willywangkaa\images\1549794137394.png" alt="1549794137394"><figcaption>1549794137394</figcaption>
+<img src="\willywangkaa\images\1549794137394.png" alt="1549794137394"><figcaption aria-hidden="true">1549794137394</figcaption>
 </figure>
 <blockquote>
 <ul>
@@ -1121,14 +1123,14 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 <h4 id="補充例題">補充例題</h4>
 <p><strong>Example</strong>（P.4-80 ex.20；<strong>Escape problem</strong>）</p>
 <figure>
-<img src="\willywangkaa\images\escapeproblem.png" alt="escapeproblem"><figcaption>escapeproblem</figcaption>
+<img src="\willywangkaa\images\escapeproblem.png" alt="escapeproblem"><figcaption aria-hidden="true">escapeproblem</figcaption>
 </figure>
 <blockquote>
 <p>將問題轉換成「邊與點均有 <strong>Capacity</strong> 的最大流量問題」</p>
 <p><strong>（將問題「Reduce」至「Flow network」中解決）</strong></p>
 </blockquote>
 <figure>
-<img src="\willywangkaa\images\escapeproblem_sol.png" alt="escapeproblem_sol"><figcaption>escapeproblem_sol</figcaption>
+<img src="\willywangkaa\images\escapeproblem_sol.png" alt="escapeproblem_sol"><figcaption aria-hidden="true">escapeproblem_sol</figcaption>
 </figure>
 <p>給定一個「Escape problem」的格子圖 ( Grid；有 m 個<strong>起點</strong>與 4n-4 個<strong>出口</strong> )</p>
 <p>建立「Flow network」G=(V,E)：</p>
@@ -1142,7 +1144,7 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 <blockquote>
 <p><strong>點與邊均有「Capacity」 的流量網路可以用傳統的流量網路實現</strong></p>
 <figure>
-<img src="\willywangkaa\images\escapeproblem_solconti.png" alt="escapeproblem_solconti"><figcaption>escapeproblem_solconti</figcaption>
+<img src="\willywangkaa\images\escapeproblem_solconti.png" alt="escapeproblem_solconti"><figcaption aria-hidden="true">escapeproblem_solconti</figcaption>
 </figure>
 </blockquote>
 <p><strong>Example（2）（101交通大學資料結構與演算法）</strong></p>
@@ -1158,7 +1160,7 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1549709412486.png" alt="1549709412486"><figcaption>1549709412486</figcaption>
+<img src="\willywangkaa\images\1549709412486.png" alt="1549709412486"><figcaption aria-hidden="true">1549709412486</figcaption>
 </figure>
 <ul>
 <li><strong>Which statement is wrong for a flow network G=(V,E)?</strong>
@@ -1171,7 +1173,7 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1549708938056.png" alt="1549708938056"><figcaption>1549708938056</figcaption>
+<img src="\willywangkaa\images\1549708938056.png" alt="1549708938056"><figcaption aria-hidden="true">1549708938056</figcaption>
 </figure>
 <ul>
 <li><strong>Let G=(V,E) be a bipartite graph, where V = L ∪ R. Which statement is wrong about finding a maximum bipartite matching?</strong>
@@ -1185,7 +1187,7 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 </ul>
 <p><strong>「Maximum flow」必為整數，但是 Edge 上的「Flow」未必</strong></p>
 <figure>
-<img src="\willywangkaa\images\1549709744238.png" alt="1549709744238"><figcaption>1549709744238</figcaption>
+<img src="\willywangkaa\images\1549709744238.png" alt="1549709744238"><figcaption aria-hidden="true">1549709744238</figcaption>
 </figure>
 <h2 id="其它問題">其它問題</h2>
 <ul>
@@ -1222,7 +1224,7 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 <p>Vertex cover：會和圖上所有邊相連的一個<strong>點集合</strong></p>
 <p>下圖的「Vertex cover」為｛b, d, f｝</p>
 <figure>
-<img src="\willywangkaa\images\vertexcover.png" alt="vertexcover"><figcaption>vertexcover</figcaption>
+<img src="\willywangkaa\images\vertexcover.png" alt="vertexcover"><figcaption aria-hidden="true">vertexcover</figcaption>
 </figure>
 </blockquote>
 <h1 id="補充例題-1">補充例題</h1>
@@ -1396,7 +1398,7 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 </ul></li>
 <li><strong>對數函數不改變權重單調性</strong>
 <ul>
-<li><a href="\willywangkaa\2018\12\02\Data-structure-graph#johnsons-algorithm">單調性改變範例 - Johnson’s algorithm</a></li>
+<li><a href="\willywangkaa\2018\12\02\Data-structure-graph#johnsons-algorithm">單調性改變範例 - Johnson's algorithm</a></li>
 </ul></li>
 </ul></li>
 <li>轉換為「最短路徑問題」
@@ -1409,7 +1411,7 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 </ul></li>
 </ul></li>
 </ul></li>
-<li><strong>以「Dijkstra’s algorithm」解決轉換後的問題</strong>
+<li><strong>以「Dijkstra's algorithm」解決轉換後的問題</strong>
 <ul>
 <li>p=argument path, <span class="math inline">\(min(\sum_{i = 0}^k w(v_{i-1},v_i))\)</span></li>
 <li>時間複雜度：O(∣V∣log∣V∣+∣E∣)</li>
@@ -1496,7 +1498,7 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -1540,10 +1542,10 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
             
               <img class="site-author-image" itemprop="image"
                 src="/willywangkaa/images/avatar_me.gif"
-                alt="Willy Wang (willywangkaa)" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
-              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -1551,7 +1553,7 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/willywangkaa/archives/">
+                  <a href="/willywangkaa/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">posts</span>
@@ -1598,8 +1600,6 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -1815,7 +1815,7 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#graph-algorithm"><span class="nav-number">1.</span> <span class="nav-text">Graph algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#depth-first-search"><span class="nav-number">1.1.</span> <span class="nav-text">Depth first search</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#應用"><span class="nav-number">1.1.1.</span> <span class="nav-text">應用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dfs-tree---edge"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">DFS tree - Edge</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dfs-tree---acyclic"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">DFS tree - Acyclic</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#minimum-spainning-tree"><span class="nav-number">1.2.</span> <span class="nav-text">Minimum spainning tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#問題探討"><span class="nav-number">1.2.1.</span> <span class="nav-text">問題探討</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#kruskals-algorithm-的正確性"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">Kruskal’s algorithm 的正確性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flow-network"><span class="nav-number">1.3.</span> <span class="nav-text">Flow network</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#max-flow-problem"><span class="nav-number">1.3.1.</span> <span class="nav-text">Max flow problem</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ford-fulkerson-algorithm"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">Ford-Fulkerson algorithm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#edmond-karp-algorithm"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">Edmond-Karp algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#時間複雜度證明"><span class="nav-number">1.3.1.2.1.</span> <span class="nav-text">時間複雜度證明</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dinic-algorithm"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">Dinic algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#容許網路"><span class="nav-number">1.3.1.3.1.</span> <span class="nav-text">容許網路</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#阻塞流"><span class="nav-number">1.3.1.3.2.</span> <span class="nav-text">阻塞流</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#補充例題"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">補充例題</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它問題"><span class="nav-number">1.4.</span> <span class="nav-text">其它問題</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#補充例題-1"><span class="nav-number">2.</span> <span class="nav-text">補充例題</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#graph-algorithm"><span class="nav-number">1.</span> <span class="nav-text">Graph algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#depth-first-search"><span class="nav-number">1.1.</span> <span class="nav-text">Depth first search</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%87%89%E7%94%A8"><span class="nav-number">1.1.1.</span> <span class="nav-text">應用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dfs-tree---edge"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">DFS tree - Edge</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dfs-tree---acyclic"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">DFS tree - Acyclic</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#minimum-spainning-tree"><span class="nav-number">1.2.</span> <span class="nav-text">Minimum spainning tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%95%8F%E9%A1%8C%E6%8E%A2%E8%A8%8E"><span class="nav-number">1.2.1.</span> <span class="nav-text">問題探討</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#kruskals-algorithm-%E7%9A%84%E6%AD%A3%E7%A2%BA%E6%80%A7"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">Kruskal&#39;s algorithm 的正確性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flow-network"><span class="nav-number">1.3.</span> <span class="nav-text">Flow network</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#max-flow-problem"><span class="nav-number">1.3.1.</span> <span class="nav-text">Max flow problem</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ford-fulkerson-algorithm"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">Ford-Fulkerson algorithm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#edmond-karp-algorithm"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">Edmond-Karp algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6%E8%AD%89%E6%98%8E"><span class="nav-number">1.3.1.2.1.</span> <span class="nav-text">時間複雜度證明</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dinic-algorithm"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">Dinic algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%B9%E8%A8%B1%E7%B6%B2%E8%B7%AF"><span class="nav-number">1.3.1.3.1.</span> <span class="nav-text">容許網路</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%98%BB%E5%A1%9E%E6%B5%81"><span class="nav-number">1.3.1.3.2.</span> <span class="nav-text">阻塞流</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A3%9C%E5%85%85%E4%BE%8B%E9%A1%8C"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">補充例題</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E5%AE%83%E5%95%8F%E9%A1%8C"><span class="nav-number">1.4.</span> <span class="nav-text">其它問題</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A3%9C%E5%85%85%E4%BE%8B%E9%A1%8C-1"><span class="nav-number">2.</span> <span class="nav-text">補充例題</span></a></li></ol></div>
             
 
           </div>
@@ -1835,11 +1835,11 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+  <span class="author" itemprop="copyrightHolder">Wang Yu Li</span>
 
   
 
@@ -1983,7 +1983,7 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/10/15/Algorithm-Graph-algorithm/';
+        this.page.url = 'http://wangwilly.github.io/willywangkaa/2018/10/15/Algorithm-Graph-algorithm/';
         this.page.identifier = '2018/10/15/Algorithm-Graph-algorithm/';
         this.page.title = 'Algorithm - Graph algorithm';
       };
@@ -2418,24 +2418,7 @@ u_{灰} \rightarrow_{Cross–edge} ｛v_{黑} \;＆＆ \; d(v)&lt;d(u) ｝
   
     bookmark.scrollToMark('auto', "#more");
   
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>

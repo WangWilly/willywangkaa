@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/willywangkaa/',
+    root: '',
     scheme: 'Pisces',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -103,23 +103,24 @@
   <meta name="keywords" content="Process,Synchronization," />
 
 
-<meta name="description" content="Process Synchronization ( Process Communication, Inter Process Communication )  Race Condition Problem in Memory Communication  thesolutionofracecondition  Monitor  thestructofmonitor  monit">
-<meta name="keywords" content="Process,Synchronization">
+<meta name="description" content="Process Synchronization ( Process Communication, Inter Process Communication )  Race Condition Problem in Memory Communication  thesolutionofracecondition  Monitor  thestructofmonitor  monitor 是一個用來解決">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Operating System - Process Synchronization 2">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/08/04/Operating-System-Process-Synchronization-2/index.html">
+<meta property="og:url" content="http://wangwilly.github.io/willywangkaa/2018/08/04/Operating-System-Process-Synchronization-2/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="Process Synchronization ( Process Communication, Inter Process Communication )  Race Condition Problem in Memory Communication  thesolutionofracecondition  Monitor  thestructofmonitor  monit">
-<meta property="og:locale" content="zh-tw">
+<meta property="og:description" content="Process Synchronization ( Process Communication, Inter Process Communication )  Race Condition Problem in Memory Communication  thesolutionofracecondition  Monitor  thestructofmonitor  monitor 是一個用來解決">
+<meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/thesolutionofracecondition.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/thestructofmonitor.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/thetypeofmonitor.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/thetypeofmessagepassing.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/linkcapacity.png">
-<meta property="og:updated_time" content="2018-08-29T16:44:45.589Z">
+<meta property="article:published_time" content="2018-08-04T03:09:00.000Z">
+<meta property="article:modified_time" content="2018-08-29T16:44:45.589Z">
+<meta property="article:author" content="Wang Yu Li">
+<meta property="article:tag" content="Process">
+<meta property="article:tag" content="Synchronization">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Operating System - Process Synchronization 2">
-<meta name="twitter:description" content="Process Synchronization ( Process Communication, Inter Process Communication )  Race Condition Problem in Memory Communication  thesolutionofracecondition  Monitor  thestructofmonitor  monit">
 <meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/thesolutionofracecondition.png">
 
 
@@ -172,9 +173,11 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
@@ -199,7 +202,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Live more like human</p>
+        <p class="site-subtitle">The higher up, the greater the fall.</p>
       
   </div>
 
@@ -220,25 +223,25 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/willywangkaa/" rel="section">
+          <a href="/willywangkaa/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/willywangkaa/archives/" rel="section">
+          <a href="/willywangkaa/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/willywangkaa/categories/" rel="section">
+          <a href="/willywangkaa/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/willywangkaa/tags/" rel="section">
+          <a href="/willywangkaa/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
@@ -319,7 +322,7 @@
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/08/04/Operating-System-Process-Synchronization-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -431,11 +434,11 @@
 <hr>
 <h2 id="race-condition-problem-in-memory-communication">Race Condition Problem in Memory Communication</h2>
 <figure>
-<img src="\willywangkaa\images\thesolutionofracecondition.png" alt="thesolutionofracecondition"><figcaption>thesolutionofracecondition</figcaption>
+<img src="\willywangkaa\images\thesolutionofracecondition.png" alt="thesolutionofracecondition"><figcaption aria-hidden="true">thesolutionofracecondition</figcaption>
 </figure>
 <h3 id="monitor">Monitor</h3>
 <figure>
-<img src="\willywangkaa\images\thestructofmonitor.png" alt="thestructofmonitor"><figcaption>thestructofmonitor</figcaption>
+<img src="\willywangkaa\images\thestructofmonitor.png" alt="thestructofmonitor"><figcaption aria-hidden="true">thestructofmonitor</figcaption>
 </figure>
 <p>monitor 是一個用來解決同步問題的高階「資料結構」，是一種 <strong>ADT ( Abstract data type )</strong>。</p>
 <ul>
@@ -470,11 +473,11 @@
 </ul>
 <h4 id="解決-dining-philosophers-problem">解決 Dining-philosophers Problem</h4>
 <ol type="1">
-<li>先定義所需的 Monitor ADT。<br>type Dining-ph = Monitor<br>var state：[0…4] of ｛ think, hungry, eating ｝。</li>
-<li>self：[0…4] of condition</li>
+<li>先定義所需的 Monitor ADT。<br>type Dining-ph = Monitor<br>var state：[0...4] of ｛ think, hungry, eating ｝。</li>
+<li>self：[0...4] of condition</li>
 </ol>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">procedure entry <span class="title">pickup</span><span class="params">(i:<span class="number">0.</span>.<span class="number">.4</span>)</span></span></span><br><span class="line">    state[i] = hungry</span><br><span class="line">    test(i);</span><br><span class="line">	<span class="keyword">if</span>(state[i] != eating) then</span><br><span class="line">    	self[i].wait              <span class="comment">// 繼續餓著，將該 Process blocked</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">procedure <span class="title">test</span><span class="params">(k:<span class="number">0.</span>.<span class="number">.4</span>)</span></span></span><br><span class="line">    if(state[(k+4)%5]!= eating &amp;&amp;     // 左邊哲學家沒吃飯</span><br><span class="line">           state[k] == hungry &amp;&amp;      <span class="comment">// 由於 putdown 會要讓左右邊的哲學家是否要吃飯，所以必須存在 </span></span><br><span class="line">           state[(k+<span class="number">1</span>)%<span class="number">5</span>] != eating   <span class="comment">// 右邊哲學家沒吃飯</span></span><br><span class="line">           ) then</span><br><span class="line">    	state[k] = eating            <span class="comment">// 改為正在吃飯</span></span><br><span class="line">    	self[k].signal               <span class="comment">// *將自己喚醒</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">procedure <span class="title">test</span><span class="params">(k:<span class="number">0.</span>.<span class="number">.4</span>)</span></span></span><br><span class="line"><span class="function">    <span class="title">if</span><span class="params">(state[(k+<span class="number">4</span>)%<span class="number">5</span>]!= eating &amp;&amp;     <span class="comment">// 左邊哲學家沒吃飯</span></span></span></span><br><span class="line"><span class="function"><span class="params">           state[k] == hungry &amp;&amp;      <span class="comment">// 由於 putdown 會要讓左右邊的哲學家是否要吃飯，所以必須存在 </span></span></span></span><br><span class="line"><span class="function"><span class="params">           state[(k+<span class="number">1</span>)%<span class="number">5</span>] != eating   <span class="comment">// 右邊哲學家沒吃飯</span></span></span></span><br><span class="line"><span class="function"><span class="params">           )</span> then</span></span><br><span class="line">    	state[k] = eating            // 改為正在吃飯</span><br><span class="line">    	self[k].signal               <span class="comment">// *將自己喚醒</span></span><br></pre></td></tr></table></figure>
 <p><strong>＜Note＞：</strong> <code>state[...]!= eating</code> <strong>為何是測試「是否正在吃飯而不是測試是否飢餓」？</strong><br><strong>因為能呼叫到目前的函式代表該 Process 是正在進行的 ( Active )</strong>。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">procedure entry <span class="title">putdown</span><span class="params">(i:<span class="number">0.</span>.<span class="number">.4</span>)</span></span></span><br><span class="line">	state[i] = thinking</span><br><span class="line">	test((i+<span class="number">4</span>)%<span class="number">5</span>)               <span class="comment">// 給左右邊哲學家機會使用</span></span><br><span class="line">	test((i+<span class="number">1</span>)%<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">init()</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</span><br><span class="line">        state[i] = thinking</span><br></pre></td></tr></table></figure>
@@ -498,8 +501,8 @@
 <h5 id="互斥資源配置問題">互斥資源配置問題</h5>
 <ul>
 <li><p>Process ID 越小者優先權越高可以優先取得資源。</p></li>
-<li>定義 Monitor<br>type ResourceAllocator = Monitor<br>var busy：boolean // 代表資源已經配置與否<br>var x：condition // 用以將 Process blocked</li>
-<li>想法
+<li><p>定義 Monitor<br>type ResourceAllocator = Monitor<br>var busy：boolean // 代表資源已經配置與否<br>var x：condition // 用以將 Process blocked</p></li>
+<li><p>想法</p>
 <ul>
 <li><span class="math inline">\(\left\{\begin{matrix} 非優先權需求 \Rightarrow 寫入\; Monitor \; 的函式定義中處理。 \\ 優先權需求 \Rightarrow 只須告知閱卷人你的\; Monitor \; 是以 \;Priority \; queue\; 實現的。 \end{matrix}\right.\)</span></li>
 <li><span class="math inline">\(此題之分析\left\{\begin{matrix} 非優先權需求 \Rightarrow 互斥資源配置。\\ 優先權需求 \Rightarrow Process \;ID \;之優先權。 \end{matrix}\right.\)</span></li>
@@ -543,7 +546,7 @@
 <h5 id="印表機使用權問題">印表機使用權問題</h5>
 <p>(P.6-72) 有三部 Printer 被 processes 使用且規定 process ID 越小優先權越高。</p>
 <ul>
-<li>定義 Monitor<br>type Allocator = Monitor<br>var p：[0…2] of boolean<br>x：condition</li>
+<li>定義 Monitor<br>type Allocator = Monitor<br>var p：[0...2] of boolean<br>x：condition</li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Acquire</span><span class="params">(i:processID)</span></span></span><br><span class="line"><span class="function">	<span class="title">if</span><span class="params">(p[<span class="number">0</span>] &amp;&amp; p[<span class="number">1</span>] &amp;&amp; p[<span class="number">2</span>])</span></span></span><br><span class="line">		x.wait(i)</span><br><span class="line">	<span class="keyword">if</span>(!p[<span class="number">0</span>])</span><br><span class="line">		tmp = <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(!p[<span class="number">1</span>])</span><br><span class="line">		tmp = <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">		tmp = <span class="number">2</span></span><br><span class="line"></span><br><span class="line">    p[tmp] = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> tmp</span><br></pre></td></tr></table></figure>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Release</span><span class="params">(y:printerNum)</span></span></span><br><span class="line">    p[y] = false</span><br><span class="line">    x.signal()</span><br></pre></td></tr></table></figure>
@@ -578,7 +581,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\thetypeofmonitor.png" alt="thetypeofmonitor"><figcaption>thetypeofmonitor</figcaption>
+<img src="\willywangkaa\images\thetypeofmonitor.png" alt="thetypeofmonitor"><figcaption aria-hidden="true">thetypeofmonitor</figcaption>
 </figure>
 <h4 id="type-1---hoare-monitor-效果最好">Type 1 - Hoare Monitor ( 效果最好 )</h4>
 <p><strong>P waits Q until Q completed function or Q is blocked again.</strong></p>
@@ -684,7 +687,7 @@
 </tbody>
 </table>
 <figure>
-<img src="\willywangkaa\images\thetypeofmessagepassing.png" alt="thetypeofmessagepassing"><figcaption>thetypeofmessagepassing</figcaption>
+<img src="\willywangkaa\images\thetypeofmessagepassing.png" alt="thetypeofmessagepassing"><figcaption aria-hidden="true">thetypeofmessagepassing</figcaption>
 </figure>
 <h3 id="直接通訊-direct-communication">直接通訊 ( Direct Communication )</h3>
 <h4 id="symmetric">Symmetric</h4>
@@ -713,7 +716,7 @@
 <h4 id="link-capacity">Link capacity</h4>
 <p>假設「收受的 Process」是以：若未收到訊息則<strong>暫停執行，直到收到訊息後才往下執行</strong>；<strong>而對於「傳送的 Process」看待 Link capacity 時，其實針對每條傳輸鏈結裡的「Message queue」</strong>( 用以保存「除了正在傳輸中的訊息以外之其他 <em>送方</em> 訊息」)<strong>之容量</strong>。</p>
 <figure>
-<img src="\willywangkaa\images\linkcapacity.png" alt="linkcapacity"><figcaption>linkcapacity</figcaption>
+<img src="\willywangkaa\images\linkcapacity.png" alt="linkcapacity"><figcaption aria-hidden="true">linkcapacity</figcaption>
 </figure>
 <ul>
 <li><strong>★ Zero capacity</strong>
@@ -861,7 +864,7 @@
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -905,10 +908,10 @@
             
               <img class="site-author-image" itemprop="image"
                 src="/willywangkaa/images/avatar_me.gif"
-                alt="Willy Wang (willywangkaa)" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
-              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -916,7 +919,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/willywangkaa/archives/">
+                  <a href="/willywangkaa/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">posts</span>
@@ -963,8 +966,6 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -1180,7 +1181,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#process-synchronization-process-communication-inter-process-communication"><span class="nav-number">1.</span> <span class="nav-text">Process Synchronization ( Process Communication, Inter Process Communication )</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#race-condition-problem-in-memory-communication"><span class="nav-number">1.1.</span> <span class="nav-text">Race Condition Problem in Memory Communication</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#monitor"><span class="nav-number">1.1.1.</span> <span class="nav-text">Monitor</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#condition-資料型別"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">Condition ( 資料型別 )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解決-dining-philosophers-problem"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">解決 Dining-philosophers Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#使用方式"><span class="nav-number">1.1.1.2.1.</span> <span class="nav-text">使用方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#conditional-monitor"><span class="nav-number">1.1.2.</span> <span class="nav-text">Conditional Monitor</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解決互斥問題之應用"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">解決互斥問題之應用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#互斥資源配置問題"><span class="nav-number">1.1.2.1.1.</span> <span class="nav-text">互斥資源配置問題</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#使用方式-1"><span class="nav-number">1.1.2.1.1.1.</span> <span class="nav-text">使用方式</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#共享檔案問題"><span class="nav-number">1.1.2.1.2.</span> <span class="nav-text">共享檔案問題</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#使用方式-2"><span class="nav-number">1.1.2.1.2.1.</span> <span class="nav-text">使用方式</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#印表機使用權問題"><span class="nav-number">1.1.2.1.3.</span> <span class="nav-text">印表機使用權問題</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#使用方式-3"><span class="nav-number">1.1.2.1.3.1.</span> <span class="nav-text">使用方式</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用-monitor-定義-semaphore"><span class="nav-number">1.1.2.1.4.</span> <span class="nav-text">使用 Monitor 定義 Semaphore？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#monitor-的種類-3種"><span class="nav-number">1.1.3.</span> <span class="nav-text">Monitor 的種類 ( 3種 )</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#type-1---hoare-monitor-效果最好"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">Type 1 - Hoare Monitor ( 效果最好 )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#type-2-效果最差"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">Type 2 ( 效果最差 )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#type-3"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">Type 3</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目前的分類-2種"><span class="nav-number">1.1.4.</span> <span class="nav-text">目前的分類 ( 2種 )</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#signal-and-wait"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">Signal-and-wait</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#signal-and-continue"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">Signal-and-continue</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#實作-monitor"><span class="nav-number">1.1.5.</span> <span class="nav-text">實作 Monitor</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#問題與討論"><span class="nav-number">1.1.5.1.</span> <span class="nav-text">問題與討論</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#message-passing"><span class="nav-number">1.2.</span> <span class="nav-text">Message Passing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#直接通訊-direct-communication"><span class="nav-number">1.2.1.</span> <span class="nav-text">直接通訊 ( Direct Communication )</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#symmetric"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">Symmetric</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#asummetric"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">Asummetric</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#間接通訊-indirect-communication"><span class="nav-number">1.2.2.</span> <span class="nav-text">間接通訊 ( Indirect Communication )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用-message-passing-解決-producer-comsumer-problem"><span class="nav-number">1.2.3.</span> <span class="nav-text">用 Message Passing 解決 Producer-comsumer Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同步意義之呈現"><span class="nav-number">1.2.4.</span> <span class="nav-text">「同步」意義之呈現</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#link-capacity"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">Link capacity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#條指令之組合來表現不同之同步模式"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">4 條指令之組合來表現不同之「同步模式」</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#問題與討論-1"><span class="nav-number">1.2.4.2.1.</span> <span class="nav-text">問題與討論</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#exception-handling"><span class="nav-number">1.2.4.3.</span> <span class="nav-text">Exception handling</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#process-synchronization-process-communication-inter-process-communication"><span class="nav-number">1.</span> <span class="nav-text">Process Synchronization ( Process Communication, Inter Process Communication )</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#race-condition-problem-in-memory-communication"><span class="nav-number">1.1.</span> <span class="nav-text">Race Condition Problem in Memory Communication</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#monitor"><span class="nav-number">1.1.1.</span> <span class="nav-text">Monitor</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#condition-%E8%B3%87%E6%96%99%E5%9E%8B%E5%88%A5"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">Condition ( 資料型別 )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%B1%BA-dining-philosophers-problem"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">解決 Dining-philosophers Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">1.1.1.2.1.</span> <span class="nav-text">使用方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#conditional-monitor"><span class="nav-number">1.1.2.</span> <span class="nav-text">Conditional Monitor</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%B1%BA%E4%BA%92%E6%96%A5%E5%95%8F%E9%A1%8C%E4%B9%8B%E6%87%89%E7%94%A8"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">解決互斥問題之應用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%92%E6%96%A5%E8%B3%87%E6%BA%90%E9%85%8D%E7%BD%AE%E5%95%8F%E9%A1%8C"><span class="nav-number">1.1.2.1.1.</span> <span class="nav-text">互斥資源配置問題</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F-1"><span class="nav-number">1.1.2.1.1.1.</span> <span class="nav-text">使用方式</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%B1%E4%BA%AB%E6%AA%94%E6%A1%88%E5%95%8F%E9%A1%8C"><span class="nav-number">1.1.2.1.2.</span> <span class="nav-text">共享檔案問題</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F-2"><span class="nav-number">1.1.2.1.2.1.</span> <span class="nav-text">使用方式</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8D%B0%E8%A1%A8%E6%A9%9F%E4%BD%BF%E7%94%A8%E6%AC%8A%E5%95%8F%E9%A1%8C"><span class="nav-number">1.1.2.1.3.</span> <span class="nav-text">印表機使用權問題</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F-3"><span class="nav-number">1.1.2.1.3.1.</span> <span class="nav-text">使用方式</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-monitor-%E5%AE%9A%E7%BE%A9-semaphore"><span class="nav-number">1.1.2.1.4.</span> <span class="nav-text">使用 Monitor 定義 Semaphore？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#monitor-%E7%9A%84%E7%A8%AE%E9%A1%9E-3%E7%A8%AE"><span class="nav-number">1.1.3.</span> <span class="nav-text">Monitor 的種類 ( 3種 )</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#type-1---hoare-monitor-%E6%95%88%E6%9E%9C%E6%9C%80%E5%A5%BD"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">Type 1 - Hoare Monitor ( 效果最好 )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#type-2-%E6%95%88%E6%9E%9C%E6%9C%80%E5%B7%AE"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">Type 2 ( 效果最差 )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#type-3"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">Type 3</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%AE%E5%89%8D%E7%9A%84%E5%88%86%E9%A1%9E-2%E7%A8%AE"><span class="nav-number">1.1.4.</span> <span class="nav-text">目前的分類 ( 2種 )</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#signal-and-wait"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">Signal-and-wait</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#signal-and-continue"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">Signal-and-continue</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%A6%E4%BD%9C-monitor"><span class="nav-number">1.1.5.</span> <span class="nav-text">實作 Monitor</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%95%8F%E9%A1%8C%E8%88%87%E8%A8%8E%E8%AB%96"><span class="nav-number">1.1.5.1.</span> <span class="nav-text">問題與討論</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#message-passing"><span class="nav-number">1.2.</span> <span class="nav-text">Message Passing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E9%80%9A%E8%A8%8A-direct-communication"><span class="nav-number">1.2.1.</span> <span class="nav-text">直接通訊 ( Direct Communication )</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#symmetric"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">Symmetric</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#asummetric"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">Asummetric</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%96%93%E6%8E%A5%E9%80%9A%E8%A8%8A-indirect-communication"><span class="nav-number">1.2.2.</span> <span class="nav-text">間接通訊 ( Indirect Communication )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8-message-passing-%E8%A7%A3%E6%B1%BA-producer-comsumer-problem"><span class="nav-number">1.2.3.</span> <span class="nav-text">用 Message Passing 解決 Producer-comsumer Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E6%84%8F%E7%BE%A9%E4%B9%8B%E5%91%88%E7%8F%BE"><span class="nav-number">1.2.4.</span> <span class="nav-text">「同步」意義之呈現</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#link-capacity"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">Link capacity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A2%9D%E6%8C%87%E4%BB%A4%E4%B9%8B%E7%B5%84%E5%90%88%E4%BE%86%E8%A1%A8%E7%8F%BE%E4%B8%8D%E5%90%8C%E4%B9%8B%E5%90%8C%E6%AD%A5%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">4 條指令之組合來表現不同之「同步模式」</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%95%8F%E9%A1%8C%E8%88%87%E8%A8%8E%E8%AB%96-1"><span class="nav-number">1.2.4.2.1.</span> <span class="nav-text">問題與討論</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#exception-handling"><span class="nav-number">1.2.4.3.</span> <span class="nav-text">Exception handling</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1200,11 +1201,11 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+  <span class="author" itemprop="copyrightHolder">Wang Yu Li</span>
 
   
 
@@ -1348,7 +1349,7 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/08/04/Operating-System-Process-Synchronization-2/';
+        this.page.url = 'http://wangwilly.github.io/willywangkaa/2018/08/04/Operating-System-Process-Synchronization-2/';
         this.page.identifier = '2018/08/04/Operating-System-Process-Synchronization-2/';
         this.page.title = 'Operating System - Process Synchronization 2';
       };
@@ -1783,24 +1784,7 @@
   
     bookmark.scrollToMark('auto', "#more");
   
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>

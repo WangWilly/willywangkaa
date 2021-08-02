@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/willywangkaa/',
+    root: '',
     scheme: 'Pisces',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -103,21 +103,21 @@
   <meta name="keywords" content="Dynamic Programming," />
 
 
-<meta name="description" content="Minimum edit cost problem 最常使用在檔案的比較以及更新上，若在系統上有多個類似的檔案，可以輕鬆比較差異，而若系統中有若干個不同版本的檔案，亦可以藉由此辦法儲存其差異而非整個檔案，如此一來便可以節省其儲存空間。 問題敘述  給定兩個字串 A[1…n]、B[1…m]，在下列三種運算之下，使用最小運算成本將字串 A 轉換成字串 B  插入：在字串中插入一個字元 刪">
-<meta name="keywords" content="Dynamic Programming">
+<meta name="description" content="Minimum edit cost problem 最常使用在檔案的比較以及更新上，若在系統上有多個類似的檔案，可以輕鬆比較差異，而若系統中有若干個不同版本的檔案，亦可以藉由此辦法儲存其差異而非整個檔案，如此一來便可以節省其儲存空間。 問題敘述  給定兩個字串 A[1...n]、B[1...m]，在下列三種運算之下，使用最小運算成本將字串 A 轉換成字串 B  插入：在字串中插入一個字元 刪除：在">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Algorithm - Minimum edit cost problem">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2019/01/18/Algorithm-Minimum-edit-cost-problem/index.html">
+<meta property="og:url" content="http://wangwilly.github.io/willywangkaa/2019/01/18/Algorithm-Minimum-edit-cost-problem/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="Minimum edit cost problem 最常使用在檔案的比較以及更新上，若在系統上有多個類似的檔案，可以輕鬆比較差異，而若系統中有若干個不同版本的檔案，亦可以藉由此辦法儲存其差異而非整個檔案，如此一來便可以節省其儲存空間。 問題敘述  給定兩個字串 A[1…n]、B[1…m]，在下列三種運算之下，使用最小運算成本將字串 A 轉換成字串 B  插入：在字串中插入一個字元 刪">
-<meta property="og:locale" content="zh-tw">
+<meta property="og:description" content="Minimum edit cost problem 最常使用在檔案的比較以及更新上，若在系統上有多個類似的檔案，可以輕鬆比較差異，而若系統中有若干個不同版本的檔案，亦可以藉由此辦法儲存其差異而非整個檔案，如此一來便可以節省其儲存空間。 問題敘述  給定兩個字串 A[1...n]、B[1...m]，在下列三種運算之下，使用最小運算成本將字串 A 轉換成字串 B  插入：在字串中插入一個字元 刪除：在">
+<meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1547791902730.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1547794356093.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1547798815815.png">
-<meta property="og:updated_time" content="2019-01-18T08:19:01.327Z">
+<meta property="article:published_time" content="2019-01-18T08:14:00.000Z">
+<meta property="article:modified_time" content="2019-01-18T08:19:01.327Z">
+<meta property="article:author" content="Wang Yu Li">
+<meta property="article:tag" content="Dynamic Programming">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Algorithm - Minimum edit cost problem">
-<meta name="twitter:description" content="Minimum edit cost problem 最常使用在檔案的比較以及更新上，若在系統上有多個類似的檔案，可以輕鬆比較差異，而若系統中有若干個不同版本的檔案，亦可以藉由此辦法儲存其差異而非整個檔案，如此一來便可以節省其儲存空間。 問題敘述  給定兩個字串 A[1…n]、B[1…m]，在下列三種運算之下，使用最小運算成本將字串 A 轉換成字串 B  插入：在字串中插入一個字元 刪">
 <meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/1547791902730.png">
 
 
@@ -170,9 +170,11 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
@@ -197,7 +199,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Live more like human</p>
+        <p class="site-subtitle">The higher up, the greater the fall.</p>
       
   </div>
 
@@ -218,25 +220,25 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/willywangkaa/" rel="section">
+          <a href="/willywangkaa/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/willywangkaa/archives/" rel="section">
+          <a href="/willywangkaa/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/willywangkaa/categories/" rel="section">
+          <a href="/willywangkaa/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/willywangkaa/tags/" rel="section">
+          <a href="/willywangkaa/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
@@ -317,7 +319,7 @@
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2019/01/18/Algorithm-Minimum-edit-cost-problem/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -429,7 +431,7 @@
 <p>最常使用在檔案的<strong>比較</strong>以及<strong>更新</strong>上，若在系統上有多個類似的檔案，可以輕鬆比較差異，而若系統中有若干個不同版本的檔案，亦可以藉由此辦法儲存其差異而非整個檔案，如此一來便可以節省其儲存空間。</p>
 <p>問題敘述</p>
 <ul>
-<li>給定兩個字串 A[1…n]、B[1…m]，在下列三種運算之下，使用最小運算成本將字串 A 轉換成字串 B
+<li>給定兩個字串 A[1...n]、B[1...m]，在下列三種運算之下，使用最小運算成本將字串 A 轉換成字串 B
 <ol type="1">
 <li>插入：在字串中插入一個字元</li>
 <li>刪除：在字串中刪除一個字元</li>
@@ -437,13 +439,13 @@
 </ol></li>
 <li>Optimal substructure （以最後一個字元做討論）
 <ul>
-<li>假設將 A 轉換為 B 的<strong>最少運算序列為 R[1…k]</strong>，若 A[n] ≠ B[m]，則當 R[k] 為
+<li>假設將 A 轉換為 B 的<strong>最少運算序列為 R[1...k]</strong>，若 A[n] ≠ B[m]，則當 R[k] 為
 <ol type="1">
-<li>「刪除 A 尾端的 A[n]」時，則 R[k-1] 為「A[1…n-1] 轉換為 B[1…m]」的<strong>最少運算序列</strong></li>
-<li>「 A[n] 中插入一個字元」時，則 R[k-1] 為「A[1…n] 轉換為 B[1…m-1]」的<strong>最少運算序列</strong></li>
-<li>「將 A[n] 替換成 B[m]」時，則 R[k-1] 為「A[1…n-1] 轉換為 B[1…m-1]」的<strong>最少運算序列</strong></li>
+<li>「刪除 A 尾端的 A[n]」時，則 R[k-1] 為「A[1...n-1] 轉換為 B[1...m]」的<strong>最少運算序列</strong></li>
+<li>「 A[n] 中插入一個字元」時，則 R[k-1] 為「A[1...n] 轉換為 B[1...m-1]」的<strong>最少運算序列</strong></li>
+<li>「將 A[n] 替換成 B[m]」時，則 R[k-1] 為「A[1...n-1] 轉換為 B[1...m-1]」的<strong>最少運算序列</strong></li>
 </ol></li>
-<li>若 A[n] = B[m]，則 R[k] 為「A[1…n-1] 轉換為 B[1…m-1]」的<strong>最少運算序列</strong></li>
+<li>若 A[n] = B[m]，則 R[k] 為「A[1...n-1] 轉換為 B[1...m-1]」的<strong>最少運算序列</strong></li>
 </ul></li>
 <li>Recursion（c[i,j]：A[1..i] 轉換成 B[1..j] 之最大成本）
 <ul>
@@ -487,7 +489,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1547791902730.png" alt="1547791902730"><figcaption>1547791902730</figcaption>
+<img src="\willywangkaa\images\1547791902730.png" alt="1547791902730"><figcaption aria-hidden="true">1547791902730</figcaption>
 </figure>
 <p>Ex （轉換的成本不一致）</p>
 <p>給定兩序列 A[1..3]，B[1..4]，以最少成本將 A 序列轉換成 B 序列</p>
@@ -502,14 +504,14 @@
 <ul>
 <li><span class="math inline">\(\begin{bmatrix} 5 &amp; 3 &amp; 1 &amp; 1 \end{bmatrix}\)</span></li>
 </ul></li>
-<li>將 A[i] 字元轉換成 B[j] 字元 C[1..3, 1…4]
+<li>將 A[i] 字元轉換成 B[j] 字元 C[1..3, 1...4]
 <ul>
 <li><span class="math inline">\(\begin{bmatrix} 1 &amp; 2 &amp; 1 &amp; 1\\ 2 &amp; 1 &amp; 2 &amp; 2\\ 3 &amp; 1 &amp; 2 &amp; 4 \end{bmatrix}\)</span></li>
 </ul></li>
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1547794356093.png" alt="1547794356093"><figcaption>1547794356093</figcaption>
+<img src="\willywangkaa\images\1547794356093.png" alt="1547794356093"><figcaption aria-hidden="true">1547794356093</figcaption>
 </figure>
 <h2 id="dna-comparsion-problem">DNA comparsion problem</h2>
 <p>Ex（生物資訊比較問題）</p>
@@ -547,7 +549,7 @@ w[i, j-1]-1 &amp; 跳過對 \;B[i]\; 的比較，其剩餘最大相似度等於\
 </ul>
 <p>給定兩個 DNA 序列 A = ACGCTGA；B = AACTGT，使用最少<strong>「運算/比較 — 權重」</strong>以比較 A、B 字串：</p>
 <figure>
-<img src="\willywangkaa\images\1547798815815.png" alt="1547798815815"><figcaption>1547798815815</figcaption>
+<img src="\willywangkaa\images\1547798815815.png" alt="1547798815815"><figcaption aria-hidden="true">1547798815815</figcaption>
 </figure>
 
       
@@ -629,7 +631,7 @@ w[i, j-1]-1 &amp; 跳過對 \;B[i]\; 的比較，其剩餘最大相似度等於\
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -673,10 +675,10 @@ w[i, j-1]-1 &amp; 跳過對 \;B[i]\; 的比較，其剩餘最大相似度等於\
             
               <img class="site-author-image" itemprop="image"
                 src="/willywangkaa/images/avatar_me.gif"
-                alt="Willy Wang (willywangkaa)" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
-              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -684,7 +686,7 @@ w[i, j-1]-1 &amp; 跳過對 \;B[i]\; 的比較，其剩餘最大相似度等於\
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/willywangkaa/archives/">
+                  <a href="/willywangkaa/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">posts</span>
@@ -731,8 +733,6 @@ w[i, j-1]-1 &amp; 跳過對 \;B[i]\; 的比較，其剩餘最大相似度等於\
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -968,11 +968,11 @@ w[i, j-1]-1 &amp; 跳過對 \;B[i]\; 的比較，其剩餘最大相似度等於\
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+  <span class="author" itemprop="copyrightHolder">Wang Yu Li</span>
 
   
 
@@ -1116,7 +1116,7 @@ w[i, j-1]-1 &amp; 跳過對 \;B[i]\; 的比較，其剩餘最大相似度等於\
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/willywangkaa/2019/01/18/Algorithm-Minimum-edit-cost-problem/';
+        this.page.url = 'http://wangwilly.github.io/willywangkaa/2019/01/18/Algorithm-Minimum-edit-cost-problem/';
         this.page.identifier = '2019/01/18/Algorithm-Minimum-edit-cost-problem/';
         this.page.title = 'Algorithm - Minimum edit cost problem';
       };
@@ -1551,24 +1551,7 @@ w[i, j-1]-1 &amp; 跳過對 \;B[i]\; 的比較，其剩餘最大相似度等於\
   
     bookmark.scrollToMark('auto', "#more");
   
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>

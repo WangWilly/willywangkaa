@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/willywangkaa/',
+    root: '',
     scheme: 'Pisces',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -103,14 +103,13 @@
   <meta name="keywords" content="Probability,Information theories," />
 
 
-<meta name="description" content="Deep learning - Probability and Information theories II Principal components analysis（PCA；主成份分析）  PCA 視覺化：Principal Component Analysis   給定一組資料點 \(\mathbf X = \left\{x^{(i)}\right\}_{i = 1}^{N}\">
-<meta name="keywords" content="Probability,Information theories">
+<meta name="description" content="Deep learning - Probability and Information theories II Principal components analysis（PCA；主成份分析）  PCA 視覺化：Principal Component Analysis   給定一組資料點 \(\mathbf X &#x3D; \left\{x^{(i)}\right\}_{i &#x3D; 1}^{N}\)  每個資">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Deep learning - Probability and Information theories II">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2019/04/19/Deep-learning-Probability-and-Information-theories-II/index.html">
+<meta property="og:url" content="http://wangwilly.github.io/willywangkaa/2019/04/19/Deep-learning-Probability-and-Information-theories-II/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="Deep learning - Probability and Information theories II Principal components analysis（PCA；主成份分析）  PCA 視覺化：Principal Component Analysis   給定一組資料點 \(\mathbf X = \left\{x^{(i)}\right\}_{i = 1}^{N}\">
-<meta property="og:locale" content="zh-tw">
+<meta property="og:description" content="Deep learning - Probability and Information theories II Principal components analysis（PCA；主成份分析）  PCA 視覺化：Principal Component Analysis   給定一組資料點 \(\mathbf X &#x3D; \left\{x^{(i)}\right\}_{i &#x3D; 1}^{N}\)  每個資">
+<meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1554452077532.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1554452186787.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1554453026001.png">
@@ -123,10 +122,12 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1554966387154.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1554968485171.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1554969621742.png">
-<meta property="og:updated_time" content="2019-04-22T09:33:47.903Z">
+<meta property="article:published_time" content="2019-04-19T13:17:00.000Z">
+<meta property="article:modified_time" content="2019-04-25T06:24:30.439Z">
+<meta property="article:author" content="Wang Yu Li">
+<meta property="article:tag" content="Probability">
+<meta property="article:tag" content="Information theories">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Deep learning - Probability and Information theories II">
-<meta name="twitter:description" content="Deep learning - Probability and Information theories II Principal components analysis（PCA；主成份分析）  PCA 視覺化：Principal Component Analysis   給定一組資料點 \(\mathbf X = \left\{x^{(i)}\right\}_{i = 1}^{N}\">
 <meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/1554452077532.png">
 
 
@@ -179,9 +180,11 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
@@ -206,7 +209,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Live more like human</p>
+        <p class="site-subtitle">The higher up, the greater the fall.</p>
       
   </div>
 
@@ -227,25 +230,25 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/willywangkaa/" rel="section">
+          <a href="/willywangkaa/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/willywangkaa/archives/" rel="section">
+          <a href="/willywangkaa/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/willywangkaa/categories/" rel="section">
+          <a href="/willywangkaa/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/willywangkaa/tags/" rel="section">
+          <a href="/willywangkaa/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
@@ -326,7 +329,7 @@
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2019/04/19/Deep-learning-Probability-and-Information-theories-II/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -373,7 +376,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-04-22T17:33:47+08:00">2019-04-22</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2019-04-25T14:24:30+08:00">2019-04-25</time>
             
           </span>
 
@@ -455,11 +458,11 @@
 <li>假設有一組資料變數包含身高與體重，欲求一個向量來投影這些資料點</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1554452077532.png" alt="1554452077532"><figcaption>1554452077532</figcaption>
+<img src="\willywangkaa\images\1554452077532.png" alt="1554452077532"><figcaption aria-hidden="true">1554452077532</figcaption>
 </figure>
 <p>先將這些資料作「正規化」（Normalization）</p>
 <figure>
-<img src="\willywangkaa\images\1554452186787.png" alt="1554452186787"><figcaption>1554452186787</figcaption>
+<img src="\willywangkaa\images\1554452186787.png" alt="1554452186787"><figcaption aria-hidden="true">1554452186787</figcaption>
 </figure>
 <p>先撇開中間橢圓與其兩軸，正規化的資料將原本絕對關係的資料轉換成相對關係的資料以避免資料的極端情形，但是仍無法對此資料進行更多著墨，所以欲求另外一組基底以標示這些資料點來更直覺的分析資料</p>
 <ul>
@@ -474,11 +477,11 @@
 </ul>
 <p>在一組六個點的正規資料下，有兩個候選的基底向量 <span class="math inline">\(v, v&#39;\)</span> 分別如下</p>
 <figure>
-<img src="\willywangkaa\images\1554453026001.png" alt="1554453026001"><figcaption>1554453026001</figcaption>
+<img src="\willywangkaa\images\1554453026001.png" alt="1554453026001"><figcaption aria-hidden="true">1554453026001</figcaption>
 </figure>
 <p>比較後可以發現以左側為基底的情形下，其投影分量的差距會比以右側為基底的狀況還大（其變異數的值亦會比較大）</p>
 <figure>
-<img src="\willywangkaa\images\1554453264290.png" alt="1554453264290"><figcaption>1554453264290</figcaption>
+<img src="\willywangkaa\images\1554453264290.png" alt="1554453264290"><figcaption aria-hidden="true">1554453264290</figcaption>
 </figure>
 <ul>
 <li>上述何者比較適合當作新的基底
@@ -500,7 +503,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1554462474803.png" alt="1554462474803"><figcaption>1554462474803</figcaption>
+<img src="\willywangkaa\images\1554462474803.png" alt="1554462474803"><figcaption aria-hidden="true">1554462474803</figcaption>
 </figure>
 </blockquote>
 <ul>
@@ -547,7 +550,7 @@
 <li>Designed matrix <span class="math inline">\(X\)</span>
 <ul>
 <li><span class="math inline">\(X^TX\)</span> 為對稱矩陣，因此可被<strong>正交對角化</strong></li>
-<li>由於「Rayleigh’s quotient」，對於每個對稱矩陣
+<li>由於「Rayleigh's quotient」，對於每個對稱矩陣
 <ul>
 <li><span class="math inline">\(\forall v, \lambda_{\min}\leq \frac{v^TX^TXv}{v^Tv}\leq\lambda_{\max}\)</span></li>
 </ul></li>
@@ -562,7 +565,7 @@
 <li><span class="math inline">\(\arg \underset{w^{(2)}\in\mathbf R^D}{\max} w^{(2)T}X^TXw^{(2)}, \mathrm{subject \; to }\left\|w^{(2)}\right\| = 1\)</span></li>
 <li><span class="math inline">\(w^{(2)T}w^{(1)} = 0\)</span></li>
 </ul></li>
-<li>經由「Rayleigh’s quotient」可知，次大的特徵值所對應的特徵向量就是欲求取的 <span class="math inline">\(w^{(2)}\)</span></li>
+<li>經由「Rayleigh's quotient」可知，次大的特徵值所對應的特徵向量就是欲求取的 <span class="math inline">\(w^{(2)}\)</span></li>
 </ul>
 <blockquote>
 <p>由此可知，<span class="math inline">\(K&gt;1, w^{(1)}, \ldots, w^{(K)}\)</span> 為 <span class="math inline">\(X^TX\)</span> 前 <span class="math inline">\(K\)</span> 大的特徵值所對應的特徵向量（由歸納法可知）</p>
@@ -571,11 +574,11 @@
 <blockquote>
 <p>連續型隨機變數與機率密度函數的深度理解需要用到「測度論」（Measure theory）的相關內容來擴展<strong>機率論</strong></p>
 <ul>
-<li>連續型隨機向量 <span class="math inline">\(\boldsymbol X\)</span> 落在一個集合 <span class="math inline">\(\mathbb S\)</span> 中的機率
+<li><p>連續型隨機向量 <span class="math inline">\(\boldsymbol X\)</span> 落在一個集合 <span class="math inline">\(\mathbb S\)</span> 中的機率</p>
 <ul>
 <li>透過 <span class="math inline">\(f_{\boldsymbol X}(\boldsymbol x)\)</span> 對集合 <span class="math inline">\(\mathbb S\)</span> 積分得到</li>
 </ul></li>
-<li>在一些選擇之下可能引起悖論
+<li><p>在一些選擇之下可能引起悖論</p>
 <ul>
 <li>給兩集合 <span class="math inline">\(\mathbb S_1、\mathbb S_2 \ni f_{\boldsymbol X}(\boldsymbol x\in \mathbb S_1)+f_{\boldsymbol X}(\boldsymbol x\in \mathbb S_2)&gt;1\)</span></li>
 <li>且 <span class="math inline">\(\mathbb S_1 \cap \mathbb S_2 = \O\)</span></li>
@@ -586,14 +589,14 @@
 </ul></li>
 </ul></li>
 <li><p>測度論提供一些集合的特徵，使計算該機率時不會遇到悖論</p></li>
-<li>測度論提供一種嚴格的方式<strong>描述那些非常微小的點集</strong>
+<li><p>測度論提供一種嚴格的方式<strong>描述那些非常微小的點集</strong></p>
 <ul>
 <li>稱為「零測度」（Measure zero）</li>
 <li>可以認為零測度集合在「度量空間」中不佔有任何<strong>體積</strong></li>
 <li>在 <span class="math inline">\(\mathbb R^2\)</span> 空間中，一直線的測度為零，一多面體具有真正的測度</li>
 <li>一個單獨的點其測度為零；「可數多個零測度集合的聯集」依然為零測度</li>
 </ul></li>
-<li><strong>幾乎處處（Almost everywhere）</strong>
+<li><p><strong>幾乎處處（Almost everywhere）</strong></p>
 <ul>
 <li>某個性質是幾乎處處都成立
 <ul>
@@ -806,7 +809,7 @@
 </ul></li>
 <li>可以得到
 <ul>
-<li><span class="math inline">\(F_{\mathrm Y}(y) = \frac{F_{\mathrm X}(x)\mathrm dx}{\mathrm dy} = F_{\mathrm X}(f^{-1}(y))\vert \frac{\part f^{-1}(y)}{\part y}\vert\)</span> （或 <span class="math inline">\(F_{\mathrm X}(x) = F_{\mathrm Y}(f(x))\vert\frac{\part f(x)}{\part x}\vert\)</span>）</li>
+<li><span class="math inline">\(F_{\mathrm Y}(y) = \frac{F_{\mathrm X}(x)\mathrm dx}{\mathrm dy} = F_{\mathrm X}(f^{-1}(y))\vert \frac{\partial f^{-1}(y)}{\partial y}\vert\)</span> （或 <span class="math inline">\(F_{\mathrm X}(x) = F_{\mathrm Y}(f(x))\vert\frac{\partial f(x)}{\partial x}\vert\)</span>）</li>
 <li>在之前的範例中：<span class="math inline">\(F_{\mathrm Y}(y) = 2\cdot F_{\mathrm X}(2y)\)</span></li>
 </ul></li>
 <li>在「多元隨機變數」中，則
@@ -814,7 +817,7 @@
 <li><span class="math inline">\(F_{\mathrm Y}(y) = F_{\mathrm X}(f^{-1}(y))\vert \det(J(f^{-1})(y))\vert\)</span></li>
 <li>而 <span class="math inline">\(J(f^{-1})(y)\)</span> 為<strong>「雅可比矩陣」（Jacobian matrix）</strong>
 <ul>
-<li><span class="math inline">\(J(f^{-1})(y)_{i,j} = \part f^{-1}_i(y)/\part y_i\)</span></li>
+<li><span class="math inline">\(J(f^{-1})(y)_{i,j} = \partial f^{-1}_i(y)/\partial y_i\)</span></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -842,7 +845,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1554962546955.png" alt="1554962546955"><figcaption>1554962546955</figcaption>
+<img src="\willywangkaa\images\1554962546955.png" alt="1554962546955"><figcaption aria-hidden="true">1554962546955</figcaption>
 </figure>
 <ul>
 <li>累進分佈函數（Cumulative distribution function）
@@ -851,7 +854,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1554963118110.png" alt="1554963118110"><figcaption>1554963118110</figcaption>
+<img src="\willywangkaa\images\1554963118110.png" alt="1554963118110"><figcaption aria-hidden="true">1554963118110</figcaption>
 </figure>
 <p>Example</p>
 <ul>
@@ -908,7 +911,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1554964948225.png" alt="1554964948225"><figcaption>1554964948225</figcaption>
+<img src="\willywangkaa\images\1554964948225.png" alt="1554964948225"><figcaption aria-hidden="true">1554964948225</figcaption>
 </figure>
 <ul>
 <li>累進分佈函數（Cumulative distribution function）
@@ -937,7 +940,7 @@
 \mathrm {X～GEO}(p)
 \]</span></p>
 <figure>
-<img src="\willywangkaa\images\1554966200838.png" alt="1554966200838"><figcaption>1554966200838</figcaption>
+<img src="\willywangkaa\images\1554966200838.png" alt="1554966200838"><figcaption aria-hidden="true">1554966200838</figcaption>
 </figure>
 <ul>
 <li>機率質量函數（Probability distribution function）
@@ -951,7 +954,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1554966387154.png" alt="1554966387154"><figcaption>1554966387154</figcaption>
+<img src="\willywangkaa\images\1554966387154.png" alt="1554966387154"><figcaption aria-hidden="true">1554966387154</figcaption>
 </figure>
 <ul>
 <li>累進分佈函數（Cumulative distribution function）
@@ -980,7 +983,7 @@
 \mathrm {X～PASCAC}(k, p)
 \]</span></p>
 <figure>
-<img src="\willywangkaa\images\1554968485171.png" alt="1554968485171"><figcaption>1554968485171</figcaption>
+<img src="\willywangkaa\images\1554968485171.png" alt="1554968485171"><figcaption aria-hidden="true">1554968485171</figcaption>
 </figure>
 <ul>
 <li>機率質量函數（Probability mass function）
@@ -995,7 +998,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1554969621742.png" alt="1554969621742"><figcaption>1554969621742</figcaption>
+<img src="\willywangkaa\images\1554969621742.png" alt="1554969621742"><figcaption aria-hidden="true">1554969621742</figcaption>
 </figure>
 <ul>
 <li>累進分佈函數（Cumulative distribution function）
@@ -1139,7 +1142,7 @@ P_{\mathrm X}(x) = \mathrm P(\mathrm X = x) = \left\{\begin{matrix}\binom nx p^x
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -1183,10 +1186,10 @@ P_{\mathrm X}(x) = \mathrm P(\mathrm X = x) = \left\{\begin{matrix}\binom nx p^x
             
               <img class="site-author-image" itemprop="image"
                 src="/willywangkaa/images/avatar_me.gif"
-                alt="Willy Wang (willywangkaa)" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
-              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -1194,7 +1197,7 @@ P_{\mathrm X}(x) = \mathrm P(\mathrm X = x) = \left\{\begin{matrix}\binom nx p^x
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/willywangkaa/archives/">
+                  <a href="/willywangkaa/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">posts</span>
@@ -1241,8 +1244,6 @@ P_{\mathrm X}(x) = \mathrm P(\mathrm X = x) = \left\{\begin{matrix}\binom nx p^x
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -1458,7 +1459,7 @@ P_{\mathrm X}(x) = \mathrm P(\mathrm X = x) = \left\{\begin{matrix}\binom nx p^x
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#deep-learning---probability-and-information-theories-ii"><span class="nav-number">1.</span> <span class="nav-text">Deep learning - Probability and Information theories II</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#principal-components-analysispca主成份分析"><span class="nav-number">1.1.</span> <span class="nav-text">Principal components analysis（PCA；主成份分析）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#solving-w"><span class="nav-number">1.1.1.</span> <span class="nav-text">Solving W</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#technical-details-of-continuous-random-variables"><span class="nav-number">1.2.</span> <span class="nav-text">Technical details of continuous random variables</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sure-and-almost-sure-events"><span class="nav-number">1.2.1.</span> <span class="nav-text">Sure and almost sure events</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#equality-of-random-variables"><span class="nav-number">1.2.2.</span> <span class="nav-text">Equality of random variables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#convergence-of-random-variables"><span class="nav-number">1.2.3.</span> <span class="nav-text">Convergence of random variables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#distribution-of-derived-variables"><span class="nav-number">1.2.4.</span> <span class="nav-text">Distribution of derived variables</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#common-probability-distribution"><span class="nav-number">1.3.</span> <span class="nav-text">Common probability distribution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#random-experiments"><span class="nav-number">1.3.1.</span> <span class="nav-text">Random experiments</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bernoulli-distributiondiscrete"><span class="nav-number">1.3.2.</span> <span class="nav-text">Bernoulli distribution（Discrete）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#binominal-distributiondiscrete"><span class="nav-number">1.3.3.</span> <span class="nav-text">Binominal distribution（Discrete）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#uniform-distributiondiscrete"><span class="nav-number">1.3.4.</span> <span class="nav-text">Uniform distribution（Discrete）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#geometric-distributiondiscrete"><span class="nav-number">1.3.5.</span> <span class="nav-text">Geometric distribution（Discrete）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pascal-distributiondiscrete"><span class="nav-number">1.3.6.</span> <span class="nav-text">Pascal distribution（Discrete）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#poisson-distributiondiscrete"><span class="nav-number">1.3.7.</span> <span class="nav-text">Poisson distribution（Discrete）</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#deep-learning---probability-and-information-theories-ii"><span class="nav-number">1.</span> <span class="nav-text">Deep learning - Probability and Information theories II</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#principal-components-analysispca%E4%B8%BB%E6%88%90%E4%BB%BD%E5%88%86%E6%9E%90"><span class="nav-number">1.1.</span> <span class="nav-text">Principal components analysis（PCA；主成份分析）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#solving-w"><span class="nav-number">1.1.1.</span> <span class="nav-text">Solving W</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#technical-details-of-continuous-random-variables"><span class="nav-number">1.2.</span> <span class="nav-text">Technical details of continuous random variables</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sure-and-almost-sure-events"><span class="nav-number">1.2.1.</span> <span class="nav-text">Sure and almost sure events</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#equality-of-random-variables"><span class="nav-number">1.2.2.</span> <span class="nav-text">Equality of random variables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#convergence-of-random-variables"><span class="nav-number">1.2.3.</span> <span class="nav-text">Convergence of random variables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#distribution-of-derived-variables"><span class="nav-number">1.2.4.</span> <span class="nav-text">Distribution of derived variables</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#common-probability-distribution"><span class="nav-number">1.3.</span> <span class="nav-text">Common probability distribution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#random-experiments"><span class="nav-number">1.3.1.</span> <span class="nav-text">Random experiments</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bernoulli-distributiondiscrete"><span class="nav-number">1.3.2.</span> <span class="nav-text">Bernoulli distribution（Discrete）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#binominal-distributiondiscrete"><span class="nav-number">1.3.3.</span> <span class="nav-text">Binominal distribution（Discrete）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#uniform-distributiondiscrete"><span class="nav-number">1.3.4.</span> <span class="nav-text">Uniform distribution（Discrete）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#geometric-distributiondiscrete"><span class="nav-number">1.3.5.</span> <span class="nav-text">Geometric distribution（Discrete）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pascal-distributiondiscrete"><span class="nav-number">1.3.6.</span> <span class="nav-text">Pascal distribution（Discrete）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#poisson-distributiondiscrete"><span class="nav-number">1.3.7.</span> <span class="nav-text">Poisson distribution（Discrete）</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1478,11 +1479,11 @@ P_{\mathrm X}(x) = \mathrm P(\mathrm X = x) = \left\{\begin{matrix}\binom nx p^x
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+  <span class="author" itemprop="copyrightHolder">Wang Yu Li</span>
 
   
 
@@ -1626,7 +1627,7 @@ P_{\mathrm X}(x) = \mathrm P(\mathrm X = x) = \left\{\begin{matrix}\binom nx p^x
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/willywangkaa/2019/04/19/Deep-learning-Probability-and-Information-theories-II/';
+        this.page.url = 'http://wangwilly.github.io/willywangkaa/2019/04/19/Deep-learning-Probability-and-Information-theories-II/';
         this.page.identifier = '2019/04/19/Deep-learning-Probability-and-Information-theories-II/';
         this.page.title = 'Deep learning - Probability and Information theories II';
       };
@@ -2061,24 +2062,7 @@ P_{\mathrm X}(x) = \mathrm P(\mathrm X = x) = \left\{\begin{matrix}\binom nx p^x
   
     bookmark.scrollToMark('auto', "#more");
   
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>

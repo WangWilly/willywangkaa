@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/willywangkaa/',
+    root: '',
     scheme: 'Pisces',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -103,24 +103,25 @@
   <meta name="keywords" content="NP-Complete,Reduce," />
 
 
-<meta name="description" content="基本概念  目的  將問題依照難度做分類 如何定義 A 問題比 B 問題難？ 如何分類？ 分幾類？   Decision problem 答案只有 Yse/No 的問題  Ex  一個圖中有無「Hamiltonian cycle」？   每一個最佳化問題 ( Optimization problem ) 均可用參數化的方式化成一對應的「Decision prob">
-<meta name="keywords" content="NP-Complete,Reduce">
+<meta name="description" content="基本概念  目的  將問題依照難度做分類 如何定義 A 問題比 B 問題難？ 如何分類？ 分幾類？   Decision problem 答案只有 Yse&#x2F;No 的問題  Ex  一個圖中有無「Hamiltonian cycle」？   每一個最佳化問題 ( Optimization problem ) 均可用參數化的方式化成一對應的「Decision problem」  Ex  KP-optim">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Algorithm - NP-completeness">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/10/15/Algorithm-NP-completeness/index.html">
+<meta property="og:url" content="http://wangwilly.github.io/willywangkaa/2018/10/15/Algorithm-NP-completeness/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="基本概念  目的  將問題依照難度做分類 如何定義 A 問題比 B 問題難？ 如何分類？ 分幾類？   Decision problem 答案只有 Yse/No 的問題  Ex  一個圖中有無「Hamiltonian cycle」？   每一個最佳化問題 ( Optimization problem ) 均可用參數化的方式化成一對應的「Decision prob">
-<meta property="og:locale" content="zh-tw">
+<meta property="og:description" content="基本概念  目的  將問題依照難度做分類 如何定義 A 問題比 B 問題難？ 如何分類？ 分幾類？   Decision problem 答案只有 Yse&#x2F;No 的問題  Ex  一個圖中有無「Hamiltonian cycle」？   每一個最佳化問題 ( Optimization problem ) 均可用參數化的方式化成一對應的「Decision problem」  Ex  KP-optim">
+<meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/decisionproblem.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/reduce_1.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/reduce_2.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/nprelation.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/longestpathproblem_NPC.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/TSP_NPC.png">
-<meta property="og:updated_time" content="2019-02-09T12:29:24.281Z">
+<meta property="article:published_time" content="2018-10-15T10:41:00.000Z">
+<meta property="article:modified_time" content="2019-02-09T12:29:24.281Z">
+<meta property="article:author" content="Wang Yu Li">
+<meta property="article:tag" content="NP-Complete">
+<meta property="article:tag" content="Reduce">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Algorithm - NP-completeness">
-<meta name="twitter:description" content="基本概念  目的  將問題依照難度做分類 如何定義 A 問題比 B 問題難？ 如何分類？ 分幾類？   Decision problem 答案只有 Yse/No 的問題  Ex  一個圖中有無「Hamiltonian cycle」？   每一個最佳化問題 ( Optimization problem ) 均可用參數化的方式化成一對應的「Decision prob">
 <meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/decisionproblem.png">
 
 
@@ -173,9 +174,11 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
@@ -200,7 +203,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Live more like human</p>
+        <p class="site-subtitle">The higher up, the greater the fall.</p>
       
   </div>
 
@@ -221,25 +224,25 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/willywangkaa/" rel="section">
+          <a href="/willywangkaa/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/willywangkaa/archives/" rel="section">
+          <a href="/willywangkaa/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/willywangkaa/categories/" rel="section">
+          <a href="/willywangkaa/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/willywangkaa/tags/" rel="section">
+          <a href="/willywangkaa/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
@@ -320,7 +323,7 @@
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/10/15/Algorithm-NP-completeness/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -465,7 +468,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\decisionproblem.png" alt="decisionproblem"><figcaption>decisionproblem</figcaption>
+<img src="\willywangkaa\images\decisionproblem.png" alt="decisionproblem"><figcaption aria-hidden="true">decisionproblem</figcaption>
 </figure>
 <h2 id="reduce">Reduce</h2>
 <blockquote>
@@ -480,7 +483,7 @@
 </ol></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\reduce_1.png" alt="reduce_1"><figcaption>reduce_1</figcaption>
+<img src="\willywangkaa\images\reduce_1.png" alt="reduce_1"><figcaption aria-hidden="true">reduce_1</figcaption>
 </figure>
 <ul>
 <li>若 <span class="math inline">\(A \leq_P B\)</span> 代表可以用<strong>解決 B 問題的演算法</strong>，來實作<strong>解決 A 問題的演算法</strong></li>
@@ -490,7 +493,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\reduce_2.png" alt="reduce_2"><figcaption>reduce_2</figcaption>
+<img src="\willywangkaa\images\reduce_2.png" alt="reduce_2"><figcaption aria-hidden="true">reduce_2</figcaption>
 </figure>
 <h1 id="pnpnp-hardnp-complete">P、NP、NP-hard、NP-complete</h1>
 <blockquote>
@@ -543,7 +546,7 @@
 </ul>
 <h2 id="集合關係">集合關係</h2>
 <figure>
-<img src="\willywangkaa\images\nprelation.png" alt="nprelation"><figcaption>nprelation</figcaption>
+<img src="\willywangkaa\images\nprelation.png" alt="nprelation"><figcaption aria-hidden="true">nprelation</figcaption>
 </figure>
 <ul>
 <li>Ex ( true or false )
@@ -638,7 +641,7 @@ Traveling \; salesman \; prblem
 </ol></li>
 </ol>
 <figure>
-<img src="\willywangkaa\images\longestpathproblem_NPC.png" alt="longestpathproblem_NPC"><figcaption>longestpathproblem_NPC</figcaption>
+<img src="\willywangkaa\images\longestpathproblem_NPC.png" alt="longestpathproblem_NPC"><figcaption aria-hidden="true">longestpathproblem_NPC</figcaption>
 </figure>
 <h3 id="證明-traveling-salesman-problem-屬於-npc-集合">證明 Traveling salesman problem 屬於 NPC 集合</h3>
 <blockquote>
@@ -652,23 +655,23 @@ Traveling \; salesman \; prblem
 </ol></li>
 <li>Claim：Hamilton cycle problem <span class="math inline">\(\leq_P\)</span> Traveling salesman problem
 <ol type="1">
-<li><strong>給定一個 Hamilton 的輸入：G = (V, E)，定義一個 f：G → (G’, k = |V|)，</strong> <strong>其中 G’ 的定義如下：G’ = (V, E’)，</strong> <span class="math inline">\(\left\{\begin{matrix} (u, v) \in E&#39;, weight(u, v) = 1, if \;(u, v)\in E \\ (u, v) \in E&#39;, weight(u, v) = 2, if \;(u, v)\notin E \end{matrix}\right.\)</span></li>
+<li><strong>給定一個 Hamilton 的輸入：G = (V, E)，定義一個 f：G → (G', k = |V|)，</strong> <strong>其中 G' 的定義如下：G' = (V, E')，</strong> <span class="math inline">\(\left\{\begin{matrix} (u, v) \in E&#39;, weight(u, v) = 1, if \;(u, v)\in E \\ (u, v) \in E&#39;, weight(u, v) = 2, if \;(u, v)\notin E \end{matrix}\right.\)</span></li>
 <li>f 顯然為「Polynominal time computable」</li>
-<li><strong>G 有 Hamilton cycle</strong> <span class="math inline">\(\Leftrightarrow\)</span> <strong>G’ 有一「Hamilton cycle」且其總權重 ≦ |V|</strong></li>
+<li><strong>G 有 Hamilton cycle</strong> <span class="math inline">\(\Leftrightarrow\)</span> <strong>G' 有一「Hamilton cycle」且其總權重 ≦ |V|</strong></li>
 </ol></li>
 </ol>
 <figure>
-<img src="\willywangkaa\images\TSP_NPC.png" alt="TSP_NPC"><figcaption>TSP_NPC</figcaption>
+<img src="\willywangkaa\images\TSP_NPC.png" alt="TSP_NPC"><figcaption aria-hidden="true">TSP_NPC</figcaption>
 </figure>
 <blockquote>
 <p>(<span class="math inline">\(\Rightarrow\)</span>)</p>
 <p>G 若有一個「Hamilton cycle」<span class="math inline">\(C\)</span></p>
 <p><span class="math inline">\(\because (u, v) \in E&#39;, weight(u, v) = 1, if \;(u, v)\in E\)</span></p>
-<p><span class="math inline">\(\Rightarrow\)</span> G’ 必也有一個相對應的「Hamilton cycle」<span class="math inline">\(C&#39;\)</span> 其權重總和 ≦ |V|</p>
+<p><span class="math inline">\(\Rightarrow\)</span> G' 必也有一個相對應的「Hamilton cycle」<span class="math inline">\(C&#39;\)</span> 其權重總和 ≦ |V|</p>
 <p>(<span class="math inline">\(\Leftarrow\)</span>)</p>
-<p>G’ 若有「Hamilton cycle」<span class="math inline">\(C\)</span> 且權重總和 ≦ |V|</p>
+<p>G' 若有「Hamilton cycle」<span class="math inline">\(C\)</span> 且權重總和 ≦ |V|</p>
 <p><span class="math inline">\(\because (u, v) \in E&#39;, weight(u, v) = 2, if \;(u, v)\notin E\)</span></p>
-<p><span class="math inline">\(\Rightarrow C\)</span> 上的每一邊在 G’ 的權重必為 1</p>
+<p><span class="math inline">\(\Rightarrow C\)</span> 上的每一邊在 G' 的權重必為 1</p>
 <p><span class="math inline">\(\because (u, v) \in E&#39;, weight(u, v) = 1, if \;(u, v)\in E\)</span></p>
 <p><span class="math inline">\(\Rightarrow C\)</span> 通過 G 每節點一次</p>
 <p><span class="math inline">\(\Rightarrow C\)</span> 為一個在 G 中的「Hamilton cycle」</p>
@@ -681,7 +684,7 @@ Traveling \; salesman \; prblem
 <ul>
 <li>HamP(G)</li>
 <li>Input：an undirected graph G</li>
-<li>Output：“Yes”, if G has a Hamiltonian path; “No”, otherwise</li>
+<li>Output："Yes", if G has a Hamiltonian path; "No", otherwise</li>
 </ul></li>
 <li>Give an <span class="math inline">\(O(n^7)\)</span>-time algorithm that decides HamEx(G, x) for any n-node graph G, and prove the correctness of your algorithm</li>
 <li>Note that your algorithm must have running time <span class="math inline">\(O(n^7)\)</span></li>
@@ -689,39 +692,39 @@ Traveling \; salesman \; prblem
 <ul>
 <li>HamEx(G, x)</li>
 <li>Input：an undirected graph G, and a node x in G</li>
-<li>Output：“Yes”, if G has a Hamiltonian path from node u to v so that u≠x and v≠x; “No”, otherwise</li>
+<li>Output："Yes", if G has a Hamiltonian path from node u to v so that u≠x and v≠x; "No", otherwise</li>
 </ul></li>
 </ul>
 <p>（參考：<a href="https://www.ptt.cc/bbs/Grad-ProbAsk/M.1548560644.A.EB0.html" target="_blank" rel="noopener">Re: ［理工］ 107 交大資演10 - 看板Grad-ProbAsk - 批踢踢實業坊</a>）</p>
 <blockquote>
-<p>令 G’ = (V’, E’)，其中</p>
+<p>令 G' = (V', E')，其中</p>
 <ul>
-<li>V’ = V ∪ {s, t, s’, t’}
+<li>V' = V ∪ {s, t, s', t'}
 <ul>
-<li>|V’| = O(|V|)</li>
+<li>|V'| = O(|V|)</li>
 </ul></li>
-<li>E’ = E ∪ {(s, s’), (t, t’)} ∪ {(s’, y) | for all y != x)} ∪ {(z, t’) | for all z != x)}</li>
+<li>E' = E ∪ {(s, s'), (t, t')} ∪ {(s', y) | for all y != x)} ∪ {(z, t') | for all z != x)}</li>
 </ul>
-<p><strong>證明HamEx(G, x) = “Yes” iff HamP(G’) = “Yes”</strong></p>
+<p><strong>證明HamEx(G, x) = "Yes" iff HamP(G') = "Yes"</strong></p>
 <ul>
-<li>If HamEx(G, x) = “Yes”, then HamP(G’) = “Yes”
+<li>If HamEx(G, x) = "Yes", then HamP(G') = "Yes"
 <ul>
 <li>G 中的「Hamiltonian path」頭尾不為 x</li>
-<li>因為 s’ 與 G 中所有不是 x 的點相連且 t’ 跟 G 中所有不是 x 的點相連</li>
-<li>則 ( s, s’ ,HP in G, t’, t ) 必是一條 G’ 上的「Hamiltonian path」</li>
+<li>因為 s' 與 G 中所有不是 x 的點相連且 t' 跟 G 中所有不是 x 的點相連</li>
+<li>則 ( s, s' ,HP in G, t', t ) 必是一條 G' 上的「Hamiltonian path」</li>
 </ul></li>
-<li>If HamP(G’) = “Yes”, then HamEx(G, x) = “Yes”
+<li>If HamP(G') = "Yes", then HamEx(G, x) = "Yes"
 <ul>
-<li>令 HP 為 G’ 中的「Hamiltonian path」</li>
-<li>因為 s 和 t 在 G’ 中的 Degree 只有 1
+<li>令 HP 為 G' 中的「Hamiltonian path」</li>
+<li>因為 s 和 t 在 G' 中的 Degree 只有 1
 <ul>
-<li><strong>G’ 中的「Hamiltonian path」頭尾必為 s 和 t</strong></li>
+<li><strong>G' 中的「Hamiltonian path」頭尾必為 s 和 t</strong></li>
 </ul></li>
-<li>s 和 t 只分別跟 s’ 和 t’ 相連
+<li>s 和 t 只分別跟 s' 和 t' 相連
 <ul>
-<li>「Hamiltonian path」在 G’ 中必為 ( s, s’, HP in G, t’, t )</li>
+<li>「Hamiltonian path」在 G' 中必為 ( s, s', HP in G, t', t )</li>
 </ul></li>
-<li>s’ 和 t’ 都不與 x 相連
+<li>s' 和 t' 都不與 x 相連
 <ul>
 <li><strong>在 G 中的「Hamiltonian path」頭尾必不為 x</strong></li>
 </ul></li>
@@ -754,7 +757,7 @@ Traveling \; salesman \; prblem
 <ul>
 <li>（A）If a spanning tree has the maximum degree as 2, then it is a Hamiltonian path.</li>
 <li>（B）If Problem III can be solved in polynomial time, then we can find a Hamiltonian path in polynomial time.</li>
-<li><strong>（C）Problem I can be solved with the Prim’s algorithm.</strong></li>
+<li><strong>（C）Problem I can be solved with the Prim's algorithm.</strong></li>
 <li>（D）A graph can have more than one spanning tree.</li>
 <li>（E）If P=NP, then Problem II can be solved in polynomial time.</li>
 </ul></li>
@@ -849,7 +852,7 @@ Traveling \; salesman \; prblem
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -893,10 +896,10 @@ Traveling \; salesman \; prblem
             
               <img class="site-author-image" itemprop="image"
                 src="/willywangkaa/images/avatar_me.gif"
-                alt="Willy Wang (willywangkaa)" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
-              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -904,7 +907,7 @@ Traveling \; salesman \; prblem
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/willywangkaa/archives/">
+                  <a href="/willywangkaa/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">posts</span>
@@ -951,8 +954,6 @@ Traveling \; salesman \; prblem
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -1168,7 +1169,7 @@ Traveling \; salesman \; prblem
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本概念"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#decision-problem"><span class="nav-number">1.1.</span> <span class="nav-text">Decision problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reduce"><span class="nav-number">1.2.</span> <span class="nav-text">Reduce</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pnpnp-hardnp-complete"><span class="nav-number">2.</span> <span class="nav-text">P、NP、NP-hard、NP-complete</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#集合關係"><span class="nav-number">2.1.</span> <span class="nav-text">集合關係</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#證明問題是否為-np-complete"><span class="nav-number">3.</span> <span class="nav-text">證明問題是否為 NP-complete</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sat-problem"><span class="nav-number">3.1.</span> <span class="nav-text">SAT problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常見的證明流程"><span class="nav-number">3.2.</span> <span class="nav-text">常見的證明流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#證明-longest-path-problem-屬於-npc-集合"><span class="nav-number">3.2.1.</span> <span class="nav-text">證明 Longest path problem 屬於 NPC 集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#證明-traveling-salesman-problem-屬於-npc-集合"><span class="nav-number">3.2.2.</span> <span class="nav-text">證明 Traveling salesman problem 屬於 NPC 集合</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#補充例題"><span class="nav-number">4.</span> <span class="nav-text">補充例題</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#decision-problem"><span class="nav-number">1.1.</span> <span class="nav-text">Decision problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reduce"><span class="nav-number">1.2.</span> <span class="nav-text">Reduce</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pnpnp-hardnp-complete"><span class="nav-number">2.</span> <span class="nav-text">P、NP、NP-hard、NP-complete</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E9%97%9C%E4%BF%82"><span class="nav-number">2.1.</span> <span class="nav-text">集合關係</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AD%89%E6%98%8E%E5%95%8F%E9%A1%8C%E6%98%AF%E5%90%A6%E7%82%BA-np-complete"><span class="nav-number">3.</span> <span class="nav-text">證明問題是否為 NP-complete</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sat-problem"><span class="nav-number">3.1.</span> <span class="nav-text">SAT problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A6%8B%E7%9A%84%E8%AD%89%E6%98%8E%E6%B5%81%E7%A8%8B"><span class="nav-number">3.2.</span> <span class="nav-text">常見的證明流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AD%89%E6%98%8E-longest-path-problem-%E5%B1%AC%E6%96%BC-npc-%E9%9B%86%E5%90%88"><span class="nav-number">3.2.1.</span> <span class="nav-text">證明 Longest path problem 屬於 NPC 集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AD%89%E6%98%8E-traveling-salesman-problem-%E5%B1%AC%E6%96%BC-npc-%E9%9B%86%E5%90%88"><span class="nav-number">3.2.2.</span> <span class="nav-text">證明 Traveling salesman problem 屬於 NPC 集合</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A3%9C%E5%85%85%E4%BE%8B%E9%A1%8C"><span class="nav-number">4.</span> <span class="nav-text">補充例題</span></a></li></ol></div>
             
 
           </div>
@@ -1188,11 +1189,11 @@ Traveling \; salesman \; prblem
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+  <span class="author" itemprop="copyrightHolder">Wang Yu Li</span>
 
   
 
@@ -1336,7 +1337,7 @@ Traveling \; salesman \; prblem
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/10/15/Algorithm-NP-completeness/';
+        this.page.url = 'http://wangwilly.github.io/willywangkaa/2018/10/15/Algorithm-NP-completeness/';
         this.page.identifier = '2018/10/15/Algorithm-NP-completeness/';
         this.page.title = 'Algorithm - NP-completeness';
       };
@@ -1771,24 +1772,7 @@ Traveling \; salesman \; prblem
   
     bookmark.scrollToMark('auto', "#more");
   
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>

@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/willywangkaa/',
+    root: '',
     scheme: 'Pisces',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -103,16 +103,15 @@
   <meta name="keywords" content="Hexo, NexT" />
 
 
-<meta name="description" content="coding, computer relate">
+<meta name="description" content="Coding and computer related.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="WillyWangkaa">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/page/4/index.html">
+<meta property="og:url" content="http://wangwilly.github.io/willywangkaa/page/4/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="coding, computer relate">
-<meta property="og:locale" content="zh-tw">
+<meta property="og:description" content="Coding and computer related.">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:author" content="Wang Yu Li">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WillyWangkaa">
-<meta name="twitter:description" content="coding, computer relate">
 
 
 
@@ -128,7 +127,7 @@
     sidebar: "",
   };
 </script>
-  <title> WillyWangkaa - coding, computer relate </title>
+  <title> WillyWangkaa -  </title>
   
 
 
@@ -164,9 +163,11 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
@@ -192,7 +193,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Live more like human</p>
+        <p class="site-subtitle">The higher up, the greater the fall.</p>
       
   </div>
 
@@ -213,25 +214,25 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/willywangkaa/" rel="section">
+          <a href="/willywangkaa/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/willywangkaa/archives/" rel="section">
+          <a href="/willywangkaa/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/willywangkaa/categories/" rel="section">
+          <a href="/willywangkaa/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/willywangkaa/tags/" rel="section">
+          <a href="/willywangkaa/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
@@ -310,7 +311,7 @@
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/09/10/Operating-System-Disk-Management/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -432,7 +433,8 @@ disksystem
 
 每片磁片通常雙面都可存取資料。
 每一面劃分為多個同心圓軌道，稱為「Track」( 磁軌 )。
-每條「Track」由多個「Sector」( 磁區 ) 
+每條「Track」由多個「Sector」( 磁區 ) 組成。
+不同面之相同
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -495,7 +497,7 @@ disksystem
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/09/10/Operating-system-Virtual-memory/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -619,7 +621,7 @@ Pros
 Additional pros
 
 RAM 的利用度 ( Utilization ) 高
-儘
+儘可能地提高系統的多工度 
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -682,7 +684,7 @@ RAM 的利用度 ( Utilization ) 高
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/09/08/Operating-System-Memory-Management/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -802,7 +804,7 @@ Binding
 
 Compiling time：由編譯器主導 Binding，也稱為 Static binding。(通常用在作業系統的命令檔之中 )
 
-產生的 Object
+產生的 Object code 又稱
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -865,7 +867,7 @@ Compiling time：由編譯器主導 Binding，也稱為 Static binding。(通常
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/09/01/Algorithm-Recurrence/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -990,7 +992,8 @@ Compiling time：由編譯器主導 Binding，也稱為 Static binding。(通常
 每呼叫一次就需搬動圓盤一次
 
 當圓盤的個數 n 為 64
-總共需要搬動圓盤 \(2^{64}-1
+總共需要搬動圓盤 \(2^{64}-1\) 次
+演算法的複雜度等
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1053,7 +1056,7 @@ Compiling time：由編譯器主導 Binding，也稱為 Static binding。(通常
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/08/28/Algorithm-Time-Complexity/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -1179,7 +1182,9 @@ Time complexity 的比較
 
 定義法
 極值法 ( limit )：以大資料的手法比較演算法的優劣
-對數法 ( log )：當該算法的等級
+對數法 ( log )：當該算法的等級差距大時方便判斷與解釋
+
+計
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1242,7 +1247,7 @@ Time complexity 的比較
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/08/04/Operating-System-Process-Synchronization-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -1358,7 +1363,7 @@ Time complexity 的比較
 
 Race Condition Problem in Memory Communication
 
-thesolutionofracec
+thesolutionofracecondi
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1421,7 +1426,7 @@ thesolutionofracec
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/07/10/Operating-System-Process-Synchronization/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -1538,7 +1543,7 @@ thesolutionofracec
 
 Synchronization
 
-Process 因為「某件事情」的已發生或是未發生( 有多個 process 相互合作的時候 
+Process 因為「某件事情」的已發生或是未發生( 有多個 process 相互合作的時候 )，導致必
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1601,7 +1606,7 @@ Process 因為「某件事情」的已發生或是未發生( 有多個 process �
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/07/10/Operating-System-Process-Management-and-Thread-Management/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -1717,7 +1722,7 @@ Process 因為「某件事情」的已發生或是未發生( 有多個 process �
 
 定義：A program in execution.
 
-Process 建立後，主要組成有：\(^{[1]}\)Process NO.(ID), \(^{[2]}\)Process state, \(^{[3]}\)Process menory space：Code sec
+Process 建立後，主要組成有：\(^{[1]}\)Process NO.(ID), \(^{[2]}\)Process state, \(^{[3]}\)Process menory space：Code section
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1780,7 +1785,7 @@ Process 建立後，主要組成有：\(^{[1]}\)Process NO.(ID), \(^{[2]}\)Proce
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/07/10/Operating-System-Deadlock/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -1899,7 +1904,7 @@ Process 建立後，主要組成有：\(^{[1]}\)Process NO.(ID), \(^{[2]}\)Proce
 1530163891325
 
 
-死結成立的四個必要條件 ( 所以有一個不成立，則死結必不發生，但是若四
+死結成立的四個必要條件 ( 所以有一個不成立，則死結必不發生，但是若四個條件全部成立
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1962,7 +1967,7 @@ Process 建立後，主要組成有：\(^{[1]}\)Process NO.(ID), \(^{[2]}\)Proce
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/07/10/Operating-System-Basic-Concept-3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -2076,9 +2081,9 @@ Process 建立後，主要組成有：\(^{[1]}\)Process NO.(ID), \(^{[2]}\)Proce
           
           System Call
 
-It’s a programming interface to the services provides by the OS.
+It's a programming interface to the services provides by the OS.
 
-定義：幫助執行中的 user process 與 kernel 之間溝通，當 user peocess 需要OS提供某種服務時，會先以
+定義：幫助執行中的 user process 與 kernel 之間溝通，當 user peocess 需要OS提供某種服務時，會先以 Tra
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -2127,7 +2132,7 @@ It’s a programming interface to the services provides by the OS.
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/willywangkaa/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/willywangkaa/">1</a><span class="space">&hellip;</span><a class="page-number" href="/willywangkaa/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/willywangkaa/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/willywangkaa/page/7/">7</a><a class="extend next" rel="next" href="/willywangkaa/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/willywangkaa/page/3/">&lt;i class&#x3D;&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/willywangkaa/">1</a><span class="space">&hellip;</span><a class="page-number" href="/willywangkaa/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/willywangkaa/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/willywangkaa/page/7/">7</a><a class="extend next" rel="next" href="/willywangkaa/page/5/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
   </nav>
 
 
@@ -2161,10 +2166,10 @@ It’s a programming interface to the services provides by the OS.
             
               <img class="site-author-image" itemprop="image"
                 src="/willywangkaa/images/avatar_me.gif"
-                alt="Willy Wang (willywangkaa)" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
-              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -2172,7 +2177,7 @@ It’s a programming interface to the services provides by the OS.
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/willywangkaa/archives/">
+                  <a href="/willywangkaa/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">posts</span>
@@ -2219,8 +2224,6 @@ It’s a programming interface to the services provides by the OS.
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -2440,11 +2443,11 @@ It’s a programming interface to the services provides by the OS.
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+  <span class="author" itemprop="copyrightHolder">Wang Yu Li</span>
 
   
 
@@ -3024,24 +3027,7 @@ It’s a programming interface to the services provides by the OS.
   
     bookmark.loadBookmark();
   
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>

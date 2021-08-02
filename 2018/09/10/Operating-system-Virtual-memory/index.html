@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/willywangkaa/',
+    root: '',
     scheme: 'Pisces',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -103,14 +103,13 @@
   <meta name="keywords" content="Virtual Memory," />
 
 
-<meta name="description" content="Virtual memory  Pros  允許 Process 大小超過實體記憶體可用空間大小時，Process 仍可以正確執行，主要是作業系統要解決之議題，開發者無須擔心。     Additional pros  RAM 的利用度 ( Utilization ) 高 儘可能地提高系統的多工度 ( Multiprogramming degree )，亦也提高 CPU 的">
-<meta name="keywords" content="Virtual Memory">
+<meta name="description" content="Virtual memory  Pros  允許 Process 大小超過實體記憶體可用空間大小時，Process 仍可以正確執行，主要是作業系統要解決之議題，開發者無須擔心。     Additional pros  RAM 的利用度 ( Utilization ) 高 儘可能地提高系統的多工度 ( Multiprogramming degree )，亦也提高 CPU 的利用度( Utiliza">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Operating System - Virtual memory">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/09/10/Operating-system-Virtual-memory/index.html">
+<meta property="og:url" content="http://wangwilly.github.io/willywangkaa/2018/09/10/Operating-system-Virtual-memory/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="Virtual memory  Pros  允許 Process 大小超過實體記憶體可用空間大小時，Process 仍可以正確執行，主要是作業系統要解決之議題，開發者無須擔心。     Additional pros  RAM 的利用度 ( Utilization ) 高 儘可能地提高系統的多工度 ( Multiprogramming degree )，亦也提高 CPU 的">
-<meta property="og:locale" content="zh-tw">
+<meta property="og:description" content="Virtual memory  Pros  允許 Process 大小超過實體記憶體可用空間大小時，Process 仍可以正確執行，主要是作業系統要解決之議題，開發者無須擔心。     Additional pros  RAM 的利用度 ( Utilization ) 高 儘可能地提高系統的多工度 ( Multiprogramming degree )，亦也提高 CPU 的利用度( Utiliza">
+<meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/demandpaging.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/handlingpagefault.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/FIFO3frame.png">
@@ -130,10 +129,11 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/localittmodel.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/workingset.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/copyonwrite.png">
-<meta property="og:updated_time" content="2019-02-08T04:29:27.933Z">
+<meta property="article:published_time" content="2018-09-10T06:06:00.000Z">
+<meta property="article:modified_time" content="2019-02-08T04:29:27.933Z">
+<meta property="article:author" content="Wang Yu Li">
+<meta property="article:tag" content="Virtual Memory">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Operating System - Virtual memory">
-<meta name="twitter:description" content="Virtual memory  Pros  允許 Process 大小超過實體記憶體可用空間大小時，Process 仍可以正確執行，主要是作業系統要解決之議題，開發者無須擔心。     Additional pros  RAM 的利用度 ( Utilization ) 高 儘可能地提高系統的多工度 ( Multiprogramming degree )，亦也提高 CPU 的">
 <meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/demandpaging.png">
 
 
@@ -186,9 +186,11 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
@@ -213,7 +215,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Live more like human</p>
+        <p class="site-subtitle">The higher up, the greater the fall.</p>
       
   </div>
 
@@ -234,25 +236,25 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/willywangkaa/" rel="section">
+          <a href="/willywangkaa/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/willywangkaa/archives/" rel="section">
+          <a href="/willywangkaa/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/willywangkaa/categories/" rel="section">
+          <a href="/willywangkaa/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/willywangkaa/tags/" rel="section">
+          <a href="/willywangkaa/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
@@ -333,7 +335,7 @@
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/09/10/Operating-system-Virtual-memory/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -469,7 +471,7 @@
 <h2 id="實現虛擬記憶體">實現虛擬記憶體</h2>
 <h3 id="demand-paging-需求分頁技術">Demand paging ( 需求分頁技術 )</h3>
 <figure>
-<img src="\willywangkaa\images\demandpaging.png" alt="demandpaging"><figcaption>demandpaging</figcaption>
+<img src="\willywangkaa\images\demandpaging.png" alt="demandpaging"><figcaption aria-hidden="true">demandpaging</figcaption>
 </figure>
 <ul>
 <li><p>架構於 Page memory management 的基礎之上</p>
@@ -506,7 +508,7 @@
 </ul>
 <h3 id="處理-page-fault">處理 Page fault</h3>
 <figure>
-<img src="\willywangkaa\images\handlingpagefault.png" alt="handlingpagefault"><figcaption>handlingpagefault</figcaption>
+<img src="\willywangkaa\images\handlingpagefault.png" alt="handlingpagefault"><figcaption aria-hidden="true">handlingpagefault</figcaption>
 </figure>
 <ul>
 <li><strong>處理時間長</strong></li>
@@ -524,7 +526,7 @@
 <li><strong>作業系統恢復中斷之前 Process 的執行。</strong></li>
 </ol>
 <blockquote>
-<p>Ref P8.7 步驟六 …作業系統<strong>可</strong>將 CPU 分給…</p>
+<p>Ref P8.7 步驟六 ...作業系統<strong>可</strong>將 CPU 分給...</p>
 </blockquote>
 <h3 id="計算-effective-memory-access-time-virtual-memory">計算 Effective memory access time ( Virtual memory )</h3>
 <p>當 P 是「Page fault ratio」時，有效的記憶體存取時間為： <span class="math display">\[
@@ -656,12 +658,12 @@ p \times (TLB \;time + Memory \;access \;time) + (1-p) \times (TLB \;time + \\ M
 \]</span></p>
 <p>配置<strong>三個</strong>頁框：</p>
 <figure>
-<img src="\willywangkaa\images\FIFO3frame.png" alt="FIFO3frame"><figcaption>FIFO3frame</figcaption>
+<img src="\willywangkaa\images\FIFO3frame.png" alt="FIFO3frame"><figcaption aria-hidden="true">FIFO3frame</figcaption>
 </figure>
 <p>9 次「Page fault」</p>
 <p>配置<strong>四個</strong>頁框：</p>
 <figure>
-<img src="\willywangkaa\images\FIFO4frame.png" alt="FIFO4frame"><figcaption>FIFO4frame</figcaption>
+<img src="\willywangkaa\images\FIFO4frame.png" alt="FIFO4frame"><figcaption aria-hidden="true">FIFO4frame</figcaption>
 </figure>
 <p><strong>10 次「Page fault」</strong></p>
 <ul>
@@ -680,7 +682,7 @@ p \times (TLB \;time + Memory \;access \;time) + (1-p) \times (TLB \;time + \\ M
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\stackproperty.png" alt="stackproperty"><figcaption>stackproperty</figcaption>
+<img src="\willywangkaa\images\stackproperty.png" alt="stackproperty"><figcaption aria-hidden="true">stackproperty</figcaption>
 </figure>
 </blockquote>
 <h5 id="fifo-法則">FIFO 法則</h5>
@@ -712,7 +714,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 \]</span></p>
 </blockquote>
 <figure>
-<img src="\willywangkaa\images\FIFOpagereplace.png" alt="FIFOpagereplace"><figcaption>FIFOpagereplace</figcaption>
+<img src="\willywangkaa\images\FIFOpagereplace.png" alt="FIFOpagereplace"><figcaption aria-hidden="true">FIFOpagereplace</figcaption>
 </figure>
 <p><strong>總共 15 次。</strong></p>
 <h5 id="optimal-法則-opt">Optimal 法則 ( OPT )</h5>
@@ -739,7 +741,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0 ,1
 \]</span></p>
 <figure>
-<img src="\willywangkaa\images\pagereplacement_opt.png" alt="pagereplacement_opt"><figcaption>pagereplacement_opt</figcaption>
+<img src="\willywangkaa\images\pagereplacement_opt.png" alt="pagereplacement_opt"><figcaption aria-hidden="true">pagereplacement_opt</figcaption>
 </figure>
 <p><strong>總共 9 次。</strong></p>
 <h5 id="least-recently-used-lru-法則">Least recently used ( LRU ) 法則</h5>
@@ -770,7 +772,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 <li><p>作業系統在挑選 LRU 分頁時，就挑選「last reference time」最小的分頁。</p></li>
 </ol></li>
 </ul></li>
-<li>以 Stack 製作
+<li><p>以 Stack 製作</p>
 <ul>
 <li>最後一次存取之分頁必定置於 Stack <strong>頂端</strong>。</li>
 <li>Stack 之<strong>底端即為 LRU 分頁。</strong></li>
@@ -778,7 +780,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\LRU_stack.png" alt="LRU_stack"><figcaption>LRU_stack</figcaption>
+<img src="\willywangkaa\images\LRU_stack.png" alt="LRU_stack"><figcaption aria-hidden="true">LRU_stack</figcaption>
 </figure>
 <ul>
 <li>3 個頁框有 10 次「Page fault」</li>
@@ -796,14 +798,14 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0 ,1
 \]</span></p>
 <figure>
-<img src="\willywangkaa\images\pagereplacement_LRU.png" alt="pagereplacement_LRU"><figcaption>pagereplacement_LRU</figcaption>
+<img src="\willywangkaa\images\pagereplacement_LRU.png" alt="pagereplacement_LRU"><figcaption aria-hidden="true">pagereplacement_LRU</figcaption>
 </figure>
 <p><strong>總共 12 次。</strong></p>
 <h5 id="least-recently-used-近似法則">Least recently used 近似法則</h5>
 <p>主要以「Reference bit」為基礎 <span class="math inline">\(\left\{\begin{matrix} 0 &amp; ： &amp; 此分頁未曾被修改過 \\ 1 &amp; ： &amp; 此分頁曾經被修改過 \end{matrix}\right.\)</span>，但不確定何時被存取( 與 LRU 的差異 )。</p>
 <h6 id="additional-reference-bit">Additional reference bit</h6>
 <blockquote>
-<p><strong>每個分頁有一個欄位 ( 或暫存器； 8 bit … )，當發生記憶體存取時，該分頁之「Reference bit」會被設置為 1，系統每隔一段時間會將各分頁的暫存器值「右移」一位 ( 空出最高位元並將最右側位元捨去 )，並將各分頁之「Reference bit」值複製到暫存器之「最高」位元並重設各個分頁的「Reference bit」。</strong></p>
+<p><strong>每個分頁有一個欄位 ( 或暫存器； 8 bit ... )，當發生記憶體存取時，該分頁之「Reference bit」會被設置為 1，系統每隔一段時間會將各分頁的暫存器值「右移」一位 ( 空出最高位元並將最右側位元捨去 )，並將各分頁之「Reference bit」值複製到暫存器之「最高」位元並重設各個分頁的「Reference bit」。</strong></p>
 <p>將來要挑選犧牲頁面時，<strong>挑選「暫存器最小值」之分頁</strong>，若多個分頁具有相同的值，則以「FIFO 法則」加以篩選。</p>
 <ul>
 <li>Ex
@@ -815,7 +817,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 1, 2, 1, 1 ,1 ,1, 3, 1, 3, 3, 3, 3, 5
 \]</span></p>
 <figure>
-<img src="\willywangkaa\images\pagereplacement_addbit.png" alt="pagereplacement_addbit"><figcaption>pagereplacement_addbit</figcaption>
+<img src="\willywangkaa\images\pagereplacement_addbit.png" alt="pagereplacement_addbit"><figcaption aria-hidden="true">pagereplacement_addbit</figcaption>
 </figure>
 <p>遇到「Page 5」時，因為<strong>「Page 2」</strong>的暫存器值最小所以選擇該分頁為犧牲分頁。</p>
 </blockquote>
@@ -834,7 +836,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 <li>☆Ex ( 四個頁框中，依目前狀態挑一頁框為犧牲頁框 )</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\pagereplacement_secondchance.png" alt="pagereplacement_secondchance"><figcaption>pagereplacement_secondchance</figcaption>
+<img src="\willywangkaa\images\pagereplacement_secondchance.png" alt="pagereplacement_secondchance"><figcaption aria-hidden="true">pagereplacement_secondchance</figcaption>
 </figure>
 <p>挑「Page 3」為犧牲頁框。</p>
 <ul>
@@ -844,7 +846,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 1, 2, 3, 4, 2, 5, 2, 6, 1, 2
 \]</span></p>
 <figure>
-<img src="\willywangkaa\images\pagereplecement_secondchoice_2.png" alt="pagereplecement_secondchoice_2"><figcaption>pagereplecement_secondchoice_2</figcaption>
+<img src="\willywangkaa\images\pagereplecement_secondchoice_2.png" alt="pagereplecement_secondchoice_2"><figcaption aria-hidden="true">pagereplecement_secondchoice_2</figcaption>
 </figure>
 <p><strong>8 次「Page fault」。</strong></p>
 <blockquote>
@@ -982,7 +984,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 </ol></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\freefreampool.png" alt="freefreampool"><figcaption>freefreampool</figcaption>
+<img src="\willywangkaa\images\freefreampool.png" alt="freefreampool"><figcaption aria-hidden="true">freefreampool</figcaption>
 </figure>
 <h5 id="modification-list">Modification list</h5>
 <ul>
@@ -1005,11 +1007,11 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 <h5 id="問題與討論-1">問題與討論</h5>
 <ul>
 <li><p>Ex (P. 8-90 ex89)</p></li>
-<li>舉例說明 LFU 之「Page fault」次數<strong>少於</strong> LRU 的可能。
+<li><p>舉例說明 LFU 之「Page fault」次數<strong>少於</strong> LRU 的可能。</p>
 <ul>
 <li>給三個頁框一開始為空。</li>
 </ul></li>
-<li>舉例說明 LFU 之「Page fault」次數<strong>多於</strong> LRU 的可能。
+<li><p>舉例說明 LFU 之「Page fault」次數<strong>多於</strong> LRU 的可能。</p>
 <ul>
 <li>給三個頁框一開始為空。</li>
 </ul></li>
@@ -1041,7 +1043,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 </ul>
 <h3 id="thrashing-現象">Thrashing 現象</h3>
 <figure>
-<img src="\willywangkaa\images\thrashing.png" alt="thrashing"><figcaption>thrashing</figcaption>
+<img src="\willywangkaa\images\thrashing.png" alt="thrashing"><figcaption aria-hidden="true">thrashing</figcaption>
 </figure>
 <p><strong>若 Process 分配到的頁框不足時，</strong>則此 Process 會經常「Page fault」，所以作業系統要作 Page replacement，若作業系統採用「Global replacement policy」，可能會挑選到其他 Process 所把持的頁框當作犧牲頁面，而如此一來也會造成其他 Process page fault 使得其他 Process 也發生 Page fault，最後又去搶奪其他 Process 的頁框來使用，導致所有 Process 皆發生 Page fault 且<strong>等待 Paging I/O 裝置運作完成 ( Swap out / Swap in )，此時 CPU 利用度下降，作業系統會企圖調高「Multiprogramming degree」</strong>，將導入更多 Process 進入執行，<strong>但是記憶體原本就不夠，</strong>所以這些 Process 也立刻發生「Page fault」，而作業系統又在調高「Multiprogramming degree」，<strong>不斷循環下去</strong>，此時系統呈現：</p>
 <ul>
@@ -1057,7 +1059,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 </ul>
 <h5 id="使用-page-fault-frequency-control-機制---預防">使用 Page fault frequency control 機制 - 預防</h5>
 <figure>
-<img src="\willywangkaa\images\pagefaultfrequencycontrol.png" alt="pagefaultfrequencycontrol"><figcaption>pagefaultfrequencycontrol</figcaption>
+<img src="\willywangkaa\images\pagefaultfrequencycontrol.png" alt="pagefaultfrequencycontrol"><figcaption aria-hidden="true">pagefaultfrequencycontrol</figcaption>
 </figure>
 <p>使用 <strong>Page fault frequency contro</strong>l 機制，來防止 Thrashing 發生。</p>
 <ul>
@@ -1075,10 +1077,10 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 <p>運用 Working set model 技術預估 Process 在不同時間執行時，所需之頁框數量，作業系統根據此資訊，分配 Process 足夠的數量，以防止 Thrashing。</p>
 <p>此技術是基於「Locality model」( 集中模型 )之理論基礎之上。</p>
 <figure>
-<img src="\willywangkaa\images\workingsetwindow.png" alt="workingsetwindow"><figcaption>workingsetwindow</figcaption>
+<img src="\willywangkaa\images\workingsetwindow.png" alt="workingsetwindow"><figcaption aria-hidden="true">workingsetwindow</figcaption>
 </figure>
 <ul>
-<li>相關名詞解釋
+<li><p>相關名詞解釋</p>
 <ul>
 <li>Working set window：<span class="math inline">\(\Delta\)</span>
 <ul>
@@ -1094,7 +1096,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 <li><strong>代表 Process 此時所需要頁框數量。</strong></li>
 </ul></li>
 </ul></li>
-<li><strong>☆☆ 作業系統應用的方法</strong>
+<li><p><strong>☆☆ 作業系統應用的方法</strong></p>
 <ul>
 <li>假設 <em>n</em> 為 Processes 個數。</li>
 <li><span class="math inline">\(WSS_i\)</span><strong>：</strong><span class="math inline">\(Process_i\)</span> <strong>在此時期的「Working set size」。</strong></li>
@@ -1104,7 +1106,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 <li><strong>若</strong><span class="math inline">\(D &gt; M\)</span><strong>：則作業系統會選擇一些 Process 並對他們作「Swap out」，以降低 D 直到</strong> <span class="math inline">\(D \leq M\)</span> <strong>為止</strong>，作業系統再進行分配頁框。</li>
 </ul></li>
 </ul></li>
-<li>Pros
+<li><p>Pros</p>
 <ul>
 <li>可以防止「Thrashing」。</li>
 <li>對於「Prepaging」有助益：<strong>事先猜測哪些資源 Process 會使用到哪些分頁，並預先載入至記憶體之中，如果猜測精準，則可以避免初期之大量「Page fault」</strong>。</li>
@@ -1114,7 +1116,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 <li>不易制定精確的「Working set」。</li>
 <li>若前後期的「Working sey」內容分頁差異很大，則 I/O 次數會上升。</li>
 </ul></li>
-<li><strong>Ex (P.8-58 39)</strong>
+<li><p><strong>Ex (P.8-58 39)</strong></p>
 <ul>
 <li>下列狀況增加「Multiprogramming degree」是否有助於提高「CPU utilization」？
 <ul>
@@ -1162,7 +1164,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 <h6 id="locality-model">☆Locality model</h6>
 <blockquote>
 <figure>
-<img src="\willywangkaa\images\localittmodel.png" alt="localittmodel"><figcaption>localittmodel</figcaption>
+<img src="\willywangkaa\images\localittmodel.png" alt="localittmodel"><figcaption aria-hidden="true">localittmodel</figcaption>
 </figure>
 <p>Process 執行時，對於所存取之「記憶體區塊」，<strong>並非是均勻的，而是具有某種 局部/集中 區域存取之特性。</strong></p>
 <ul>
@@ -1172,7 +1174,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 <li>可能導致的因素
 <ul>
 <li><strong>Loop 敘述</strong></li>
-<li><strong>Subroutine ( function, pure code… )：常被使用的一段程式碼片段。</strong></li>
+<li><strong>Subroutine ( function, pure code... )：常被使用的一段程式碼片段。</strong></li>
 <li><strong>Counter ：經常存取之變數。</strong></li>
 <li><strong>Stack</strong>：頂端之元素。</li>
 </ul></li>
@@ -1226,7 +1228,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 </blockquote>
 <h3 id="program-structure-對於記憶體存取之影響">Program structure 對於記憶體存取之影響</h3>
 <figure>
-<img src="\willywangkaa\images\workingset.png" alt="workingset"><figcaption>workingset</figcaption>
+<img src="\willywangkaa\images\workingset.png" alt="workingset"><figcaption aria-hidden="true">workingset</figcaption>
 </figure>
 <ul>
 <li><p>若 Program 中使用的指令、資料結構、演算法符合「Locality model」，則有助於降低「Page fault ratio」。</p>
@@ -1236,7 +1238,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 <li><p><strong>程式中對於陣列元素的處理程序最好與陣列元素在記憶體中的儲存方式 ( Row-major 或 Column-major )對應，有助於降低「Page fault ratio」</strong></p></li>
 <li><p>Ex</p>
 <ul>
-<li><p>A：array [1… 128, 1 … 128] of int</p></li>
+<li><p>A：array [1... 128, 1 ... 128] of int</p></li>
 <li><p>每個 int 佔有 1 B</p></li>
 <li><p>A 以 Row-major 方式存於記憶體中</p></li>
 <li><p>Page size = 128 B</p></li>
@@ -1252,7 +1254,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 <p>每一行發生 128 次「Page fault」，共 128 行，所以總共發生 128 <span class="math inline">\(\times\)</span> 128 次「Page fault」。</p></li>
 <li><p>Ex</p>
 <ul>
-<li><p>A：array [1… 100, 1 … 100] of int</p></li>
+<li><p>A：array [1... 100, 1 ... 100] of int</p></li>
 <li><p>每個 int 佔有 1 B</p></li>
 <li><p>A 以 Row-major 方式存於記憶體中</p></li>
 <li><p>Page size = 200 B</p></li>
@@ -1270,7 +1272,7 @@ FAF, 1DC, 21E, 147, 747, 0AF, 5D7...
 <h3 id="copy-on-write">Copy-on-write</h3>
 <p>主要談論到三種 <code>fork()</code> 的差異。</p>
 <figure>
-<img src="\willywangkaa\images\copyonwrite.png" alt="copyonwrite"><figcaption>copyonwrite</figcaption>
+<img src="\willywangkaa\images\copyonwrite.png" alt="copyonwrite"><figcaption aria-hidden="true">copyonwrite</figcaption>
 </figure>
 <ul>
 <li><code>fork()</code> without「copy-on-write」
@@ -1428,7 +1430,7 @@ TLB \; reach = TLB \;entry \;數量 \times Page \;size
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -1472,10 +1474,10 @@ TLB \; reach = TLB \;entry \;數量 \times Page \;size
             
               <img class="site-author-image" itemprop="image"
                 src="/willywangkaa/images/avatar_me.gif"
-                alt="Willy Wang (willywangkaa)" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
-              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -1483,7 +1485,7 @@ TLB \; reach = TLB \;entry \;數量 \times Page \;size
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/willywangkaa/archives/">
+                  <a href="/willywangkaa/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">posts</span>
@@ -1530,8 +1532,6 @@ TLB \; reach = TLB \;entry \;數量 \times Page \;size
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -1747,7 +1747,7 @@ TLB \; reach = TLB \;entry \;數量 \times Page \;size
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#virtual-memory"><span class="nav-number">1.</span> <span class="nav-text">Virtual memory</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#實現虛擬記憶體"><span class="nav-number">1.1.</span> <span class="nav-text">實現虛擬記憶體</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#demand-paging-需求分頁技術"><span class="nav-number">1.1.1.</span> <span class="nav-text">Demand paging ( 需求分頁技術 )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#處理-page-fault"><span class="nav-number">1.1.2.</span> <span class="nav-text">處理 Page fault</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#計算-effective-memory-access-time-virtual-memory"><span class="nav-number">1.1.3.</span> <span class="nav-text">計算 Effective memory access time ( Virtual memory )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#影響-page-fault-ratio-因素"><span class="nav-number">1.1.4.</span> <span class="nav-text">影響 Page fault ratio 因素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#page-replacement-頁面替換"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">Page replacement (頁面替換)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#replacement-policy"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">Replacement policy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#page-replacement-schema-法則"><span class="nav-number">1.1.4.3.</span> <span class="nav-text">Page replacement schema ( 法則 )</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#belady-anomaly"><span class="nav-number">1.1.4.3.0.1.</span> <span class="nav-text">Belady anomaly</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#fifo-法則"><span class="nav-number">1.1.4.3.1.</span> <span class="nav-text">FIFO 法則</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#optimal-法則-opt"><span class="nav-number">1.1.4.3.2.</span> <span class="nav-text">Optimal 法則 ( OPT )</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#least-recently-used-lru-法則"><span class="nav-number">1.1.4.3.3.</span> <span class="nav-text">Least recently used ( LRU ) 法則</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#lru-的製作方法"><span class="nav-number">1.1.4.3.3.1.</span> <span class="nav-text">LRU 的製作方法</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#least-recently-used-近似法則"><span class="nav-number">1.1.4.3.4.</span> <span class="nav-text">Least recently used 近似法則</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#additional-reference-bit"><span class="nav-number">1.1.4.3.4.1.</span> <span class="nav-text">Additional reference bit</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#second-chance-法則"><span class="nav-number">1.1.4.3.4.2.</span> <span class="nav-text">Second chance 法則</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#enhanced-second-chance-法則"><span class="nav-number">1.1.4.3.4.3.</span> <span class="nav-text">Enhanced second chance 法則</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#lfu-與-mfu-法則-無計算題"><span class="nav-number">1.1.4.3.5.</span> <span class="nav-text">LFU 與 MFU 法則 ( 無計算題 )</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#least-frequently-used"><span class="nav-number">1.1.4.3.5.1.</span> <span class="nav-text">Least frequently used</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#most-frequently-used"><span class="nav-number">1.1.4.3.5.2.</span> <span class="nav-text">Most frequently used</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#問題與討論"><span class="nav-number">1.1.4.3.6.</span> <span class="nav-text">問題與討論</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#page-buffering-機制"><span class="nav-number">1.1.4.4.</span> <span class="nav-text">Page buffering 機制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#free-frame-pool"><span class="nav-number">1.1.4.4.1.</span> <span class="nav-text">Free frame pool</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#modification-list"><span class="nav-number">1.1.4.4.2.</span> <span class="nav-text">Modification list</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#強化-free-frame-pool"><span class="nav-number">1.1.4.4.3.</span> <span class="nav-text">☆ 強化 Free frame pool</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#問題與討論-1"><span class="nav-number">1.1.4.4.4.</span> <span class="nav-text">問題與討論</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#頁框數量分配多寡之影響"><span class="nav-number">1.1.4.5.</span> <span class="nav-text">頁框數量分配多寡之影響</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#thrashing-現象"><span class="nav-number">1.1.5.</span> <span class="nav-text">Thrashing 現象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解決與預防-thrashing"><span class="nav-number">1.1.5.1.</span> <span class="nav-text">解決與預防 Thrashing</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#decrease-multiprogramming-degree---解決"><span class="nav-number">1.1.5.1.1.</span> <span class="nav-text">Decrease multiprogramming degree - 解決</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用-page-fault-frequency-control-機制---預防"><span class="nav-number">1.1.5.1.2.</span> <span class="nav-text">使用 Page fault frequency control 機制 - 預防</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#working-set-model-技術"><span class="nav-number">1.1.5.1.3.</span> <span class="nav-text">☆Working set model 技術</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#locality-model"><span class="nav-number">1.1.5.1.3.1.</span> <span class="nav-text">☆Locality model</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#page-size-的影響"><span class="nav-number">1.1.5.1.3.2.</span> <span class="nav-text">Page size 的影響</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#program-structure-對於記憶體存取之影響"><span class="nav-number">1.1.6.</span> <span class="nav-text">Program structure 對於記憶體存取之影響</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#copy-on-write"><span class="nav-number">1.1.7.</span> <span class="nav-text">Copy-on-write</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tlb-reach"><span class="nav-number">1.1.8.</span> <span class="nav-text">TLB reach</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#virtual-memory"><span class="nav-number">1.</span> <span class="nav-text">Virtual memory</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%A6%E7%8F%BE%E8%99%9B%E6%93%AC%E8%A8%98%E6%86%B6%E9%AB%94"><span class="nav-number">1.1.</span> <span class="nav-text">實現虛擬記憶體</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#demand-paging-%E9%9C%80%E6%B1%82%E5%88%86%E9%A0%81%E6%8A%80%E8%A1%93"><span class="nav-number">1.1.1.</span> <span class="nav-text">Demand paging ( 需求分頁技術 )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%99%95%E7%90%86-page-fault"><span class="nav-number">1.1.2.</span> <span class="nav-text">處理 Page fault</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A8%88%E7%AE%97-effective-memory-access-time-virtual-memory"><span class="nav-number">1.1.3.</span> <span class="nav-text">計算 Effective memory access time ( Virtual memory )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%B1%E9%9F%BF-page-fault-ratio-%E5%9B%A0%E7%B4%A0"><span class="nav-number">1.1.4.</span> <span class="nav-text">影響 Page fault ratio 因素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#page-replacement-%E9%A0%81%E9%9D%A2%E6%9B%BF%E6%8F%9B"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">Page replacement (頁面替換)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#replacement-policy"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">Replacement policy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#page-replacement-schema-%E6%B3%95%E5%89%87"><span class="nav-number">1.1.4.3.</span> <span class="nav-text">Page replacement schema ( 法則 )</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#belady-anomaly"><span class="nav-number">1.1.4.3.0.1.</span> <span class="nav-text">Belady anomaly</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#fifo-%E6%B3%95%E5%89%87"><span class="nav-number">1.1.4.3.1.</span> <span class="nav-text">FIFO 法則</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#optimal-%E6%B3%95%E5%89%87-opt"><span class="nav-number">1.1.4.3.2.</span> <span class="nav-text">Optimal 法則 ( OPT )</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#least-recently-used-lru-%E6%B3%95%E5%89%87"><span class="nav-number">1.1.4.3.3.</span> <span class="nav-text">Least recently used ( LRU ) 法則</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#lru-%E7%9A%84%E8%A3%BD%E4%BD%9C%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.4.3.3.1.</span> <span class="nav-text">LRU 的製作方法</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#least-recently-used-%E8%BF%91%E4%BC%BC%E6%B3%95%E5%89%87"><span class="nav-number">1.1.4.3.4.</span> <span class="nav-text">Least recently used 近似法則</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#additional-reference-bit"><span class="nav-number">1.1.4.3.4.1.</span> <span class="nav-text">Additional reference bit</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#second-chance-%E6%B3%95%E5%89%87"><span class="nav-number">1.1.4.3.4.2.</span> <span class="nav-text">Second chance 法則</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#enhanced-second-chance-%E6%B3%95%E5%89%87"><span class="nav-number">1.1.4.3.4.3.</span> <span class="nav-text">Enhanced second chance 法則</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#lfu-%E8%88%87-mfu-%E6%B3%95%E5%89%87-%E7%84%A1%E8%A8%88%E7%AE%97%E9%A1%8C"><span class="nav-number">1.1.4.3.5.</span> <span class="nav-text">LFU 與 MFU 法則 ( 無計算題 )</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#least-frequently-used"><span class="nav-number">1.1.4.3.5.1.</span> <span class="nav-text">Least frequently used</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#most-frequently-used"><span class="nav-number">1.1.4.3.5.2.</span> <span class="nav-text">Most frequently used</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%95%8F%E9%A1%8C%E8%88%87%E8%A8%8E%E8%AB%96"><span class="nav-number">1.1.4.3.6.</span> <span class="nav-text">問題與討論</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#page-buffering-%E6%A9%9F%E5%88%B6"><span class="nav-number">1.1.4.4.</span> <span class="nav-text">Page buffering 機制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#free-frame-pool"><span class="nav-number">1.1.4.4.1.</span> <span class="nav-text">Free frame pool</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#modification-list"><span class="nav-number">1.1.4.4.2.</span> <span class="nav-text">Modification list</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%B7%E5%8C%96-free-frame-pool"><span class="nav-number">1.1.4.4.3.</span> <span class="nav-text">☆ 強化 Free frame pool</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%95%8F%E9%A1%8C%E8%88%87%E8%A8%8E%E8%AB%96-1"><span class="nav-number">1.1.4.4.4.</span> <span class="nav-text">問題與討論</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A0%81%E6%A1%86%E6%95%B8%E9%87%8F%E5%88%86%E9%85%8D%E5%A4%9A%E5%AF%A1%E4%B9%8B%E5%BD%B1%E9%9F%BF"><span class="nav-number">1.1.4.5.</span> <span class="nav-text">頁框數量分配多寡之影響</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#thrashing-%E7%8F%BE%E8%B1%A1"><span class="nav-number">1.1.5.</span> <span class="nav-text">Thrashing 現象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%B1%BA%E8%88%87%E9%A0%90%E9%98%B2-thrashing"><span class="nav-number">1.1.5.1.</span> <span class="nav-text">解決與預防 Thrashing</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#decrease-multiprogramming-degree---%E8%A7%A3%E6%B1%BA"><span class="nav-number">1.1.5.1.1.</span> <span class="nav-text">Decrease multiprogramming degree - 解決</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-page-fault-frequency-control-%E6%A9%9F%E5%88%B6---%E9%A0%90%E9%98%B2"><span class="nav-number">1.1.5.1.2.</span> <span class="nav-text">使用 Page fault frequency control 機制 - 預防</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#working-set-model-%E6%8A%80%E8%A1%93"><span class="nav-number">1.1.5.1.3.</span> <span class="nav-text">☆Working set model 技術</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#locality-model"><span class="nav-number">1.1.5.1.3.1.</span> <span class="nav-text">☆Locality model</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#page-size-%E7%9A%84%E5%BD%B1%E9%9F%BF"><span class="nav-number">1.1.5.1.3.2.</span> <span class="nav-text">Page size 的影響</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#program-structure-%E5%B0%8D%E6%96%BC%E8%A8%98%E6%86%B6%E9%AB%94%E5%AD%98%E5%8F%96%E4%B9%8B%E5%BD%B1%E9%9F%BF"><span class="nav-number">1.1.6.</span> <span class="nav-text">Program structure 對於記憶體存取之影響</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#copy-on-write"><span class="nav-number">1.1.7.</span> <span class="nav-text">Copy-on-write</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tlb-reach"><span class="nav-number">1.1.8.</span> <span class="nav-text">TLB reach</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1767,11 +1767,11 @@ TLB \; reach = TLB \;entry \;數量 \times Page \;size
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+  <span class="author" itemprop="copyrightHolder">Wang Yu Li</span>
 
   
 
@@ -1915,7 +1915,7 @@ TLB \; reach = TLB \;entry \;數量 \times Page \;size
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/09/10/Operating-system-Virtual-memory/';
+        this.page.url = 'http://wangwilly.github.io/willywangkaa/2018/09/10/Operating-system-Virtual-memory/';
         this.page.identifier = '2018/09/10/Operating-system-Virtual-memory/';
         this.page.title = 'Operating System - Virtual memory';
       };
@@ -2350,24 +2350,7 @@ TLB \; reach = TLB \;entry \;數量 \times Page \;size
   
     bookmark.scrollToMark('auto', "#more");
   
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>

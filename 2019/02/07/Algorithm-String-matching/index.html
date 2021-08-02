@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/willywangkaa/',
+    root: '',
     scheme: 'Pisces',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -103,14 +103,13 @@
   <meta name="keywords" content="String matching," />
 
 
-<meta name="description" content="Algorithm - String matching 給兩個字串 T 和 P，找出 T 當中是否有一段字串正好是 P，並且找出其位置  字串搜尋當中，通常將兩字串的象徵符號取做 T 和 P  T 意指 Text P 意指 Pattern  可以想作是從長篇文字 T 之中搜索小段文字 P   若 P 在平移 s 個單位後（T [s+1 … s+m] = P [1 … m]，0">
-<meta name="keywords" content="String matching">
+<meta name="description" content="Algorithm - String matching 給兩個字串 T 和 P，找出 T 當中是否有一段字串正好是 P，並且找出其位置  字串搜尋當中，通常將兩字串的象徵符號取做 T 和 P  T 意指 Text P 意指 Pattern  可以想作是從長篇文字 T 之中搜索小段文字 P   若 P 在平移 s 個單位後（T [s+1 … s+m] &#x3D; P [1 … m]，0 ≦ s ≦ n-m）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Algorithm - String matching">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2019/02/07/Algorithm-String-matching/index.html">
+<meta property="og:url" content="http://wangwilly.github.io/willywangkaa/2019/02/07/Algorithm-String-matching/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="Algorithm - String matching 給兩個字串 T 和 P，找出 T 當中是否有一段字串正好是 P，並且找出其位置  字串搜尋當中，通常將兩字串的象徵符號取做 T 和 P  T 意指 Text P 意指 Pattern  可以想作是從長篇文字 T 之中搜索小段文字 P   若 P 在平移 s 個單位後（T [s+1 … s+m] = P [1 … m]，0">
-<meta property="og:locale" content="zh-tw">
+<meta property="og:description" content="Algorithm - String matching 給兩個字串 T 和 P，找出 T 當中是否有一段字串正好是 P，並且找出其位置  字串搜尋當中，通常將兩字串的象徵符號取做 T 和 P  T 意指 Text P 意指 Pattern  可以想作是從長篇文字 T 之中搜索小段文字 P   若 P 在平移 s 個單位後（T [s+1 … s+m] &#x3D; P [1 … m]，0 ≦ s ≦ n-m）">
+<meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549517694185.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549518031466.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549518053082.png">
@@ -131,10 +130,11 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549535284950.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549535607960.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1549541112414.png">
-<meta property="og:updated_time" content="2019-02-07T12:26:33.937Z">
+<meta property="article:published_time" content="2019-02-07T12:25:00.000Z">
+<meta property="article:modified_time" content="2019-02-07T12:26:33.937Z">
+<meta property="article:author" content="Wang Yu Li">
+<meta property="article:tag" content="String matching">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Algorithm - String matching">
-<meta name="twitter:description" content="Algorithm - String matching 給兩個字串 T 和 P，找出 T 當中是否有一段字串正好是 P，並且找出其位置  字串搜尋當中，通常將兩字串的象徵符號取做 T 和 P  T 意指 Text P 意指 Pattern  可以想作是從長篇文字 T 之中搜索小段文字 P   若 P 在平移 s 個單位後（T [s+1 … s+m] = P [1 … m]，0">
 <meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/1549517694185.png">
 
 
@@ -187,9 +187,11 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
@@ -214,7 +216,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Live more like human</p>
+        <p class="site-subtitle">The higher up, the greater the fall.</p>
       
   </div>
 
@@ -235,25 +237,25 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/willywangkaa/" rel="section">
+          <a href="/willywangkaa/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/willywangkaa/archives/" rel="section">
+          <a href="/willywangkaa/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/willywangkaa/categories/" rel="section">
+          <a href="/willywangkaa/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/willywangkaa/tags/" rel="section">
+          <a href="/willywangkaa/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
@@ -334,7 +336,7 @@
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2019/02/07/Algorithm-String-matching/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -466,7 +468,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1549517694185.png" alt="1549517694185"><figcaption>1549517694185</figcaption>
+<img src="\willywangkaa\images\1549517694185.png" alt="1549517694185"><figcaption aria-hidden="true">1549517694185</figcaption>
 </figure>
 <table>
 <thead>
@@ -507,16 +509,16 @@
 </ol>
 <p>Example</p>
 <figure>
-<img src="\willywangkaa\images\1549518031466.png" alt="1549518031466"><figcaption>1549518031466</figcaption>
+<img src="\willywangkaa\images\1549518031466.png" alt="1549518031466"><figcaption aria-hidden="true">1549518031466</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1549518053082.png" alt="1549518053082"><figcaption>1549518053082</figcaption>
+<img src="\willywangkaa\images\1549518053082.png" alt="1549518053082"><figcaption aria-hidden="true">1549518053082</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1549518063746.png" alt="1549518063746"><figcaption>1549518063746</figcaption>
+<img src="\willywangkaa\images\1549518063746.png" alt="1549518063746"><figcaption aria-hidden="true">1549518063746</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1549518076863.png" alt="1549518076863"><figcaption>1549518076863</figcaption>
+<img src="\willywangkaa\images\1549518076863.png" alt="1549518076863"><figcaption aria-hidden="true">1549518076863</figcaption>
 </figure>
 <ul>
 <li>Algorithm</li>
@@ -604,7 +606,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1549521217587.png" alt="1549521217587"><figcaption>1549521217587</figcaption>
+<img src="\willywangkaa\images\1549521217587.png" alt="1549521217587"><figcaption aria-hidden="true">1549521217587</figcaption>
 </figure>
 <ul>
 <li>Algorithm</li>
@@ -647,15 +649,15 @@
 </ul>
 <p>（從左往右一一比對字元，一旦發現字元不同，將 P 往右挪動一位）</p>
 <figure>
-<img src="\willywangkaa\images\1549522985570.png" alt="1549522985570"><figcaption>1549522985570</figcaption>
+<img src="\willywangkaa\images\1549522985570.png" alt="1549522985570"><figcaption aria-hidden="true">1549522985570</figcaption>
 </figure>
 <p>（在往右挪動 P 之前，當下比對成功的字串片段「abzab」可以加以利用）</p>
 <figure>
-<img src="\willywangkaa\images\1549523718157.png" alt="1549523718157"><figcaption>1549523718157</figcaption>
+<img src="\willywangkaa\images\1549523718157.png" alt="1549523718157"><figcaption aria-hidden="true">1549523718157</figcaption>
 </figure>
 <p>（繼續往右挪動 P，挪動一個位置、挪動兩個位置、…）</p>
 <figure>
-<img src="\willywangkaa\images\1549523787809.png" alt="1549523787809"><figcaption>1549523787809</figcaption>
+<img src="\willywangkaa\images\1549523787809.png" alt="1549523787809"><figcaption aria-hidden="true">1549523787809</figcaption>
 </figure>
 <p>觀察上述行為</p>
 <ul>
@@ -677,11 +679,11 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1549524105095.png" alt="1549524105095"><figcaption>1549524105095</figcaption>
+<img src="\willywangkaa\images\1549524105095.png" alt="1549524105095"><figcaption aria-hidden="true">1549524105095</figcaption>
 </figure>
 <p><strong>「相同前綴後綴」</strong>（Prefix-suffix）</p>
 <figure>
-<img src="\willywangkaa\images\1549524327132.png" alt="1549524327132"><figcaption>1549524327132</figcaption>
+<img src="\willywangkaa\images\1549524327132.png" alt="1549524327132"><figcaption aria-hidden="true">1549524327132</figcaption>
 </figure>
 <p><strong>「次長相同前綴後綴」</strong></p>
 <ul>
@@ -690,7 +692,7 @@
 <li>「次長相同前綴後綴」就是第二長的「相同前綴後綴」</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1549524493648.png" alt="1549524493648"><figcaption>1549524493648</figcaption>
+<img src="\willywangkaa\images\1549524493648.png" alt="1549524493648"><figcaption aria-hidden="true">1549524493648</figcaption>
 </figure>
 <p>窮舉法的過程當中，<strong>當前比對成功的字串片段是 P 的前綴</strong></p>
 <ul>
@@ -772,10 +774,10 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1549524903137.png" alt="1549524903137"><figcaption>1549524903137</figcaption>
+<img src="\willywangkaa\images\1549524903137.png" alt="1549524903137"><figcaption aria-hidden="true">1549524903137</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1549529928795.png" alt="1549529928795"><figcaption>1549529928795</figcaption>
+<img src="\willywangkaa\images\1549529928795.png" alt="1549529928795"><figcaption aria-hidden="true">1549529928795</figcaption>
 </figure>
 <ul>
 <li>計算「Failure function」
@@ -783,50 +785,50 @@
 <li>Dynamic Programming</li>
 <li>分割問題
 <ul>
-<li>P[0…i] 除去尾端字元 P[i]</li>
-<li>利用已知 P[0…i-1] 的「次長相同前綴後綴」</li>
-<li>得到 P[0…i] 的「次長相同前綴後綴」</li>
+<li>P[0...i] 除去尾端字元 P[i]</li>
+<li>利用已知 P[0...i-1] 的「次長相同前綴後綴」</li>
+<li>得到 P[0...i] 的「次長相同前綴後綴」</li>
 </ul></li>
 </ul></li>
 </ul>
-<p>F[k]：P[0…k] 之「次長的相同前綴後綴」<strong>長度</strong></p>
+<p>F[k]：P[0...k] 之「次長的相同前綴後綴」<strong>長度</strong></p>
 <p>（1）將 F[0] 初始化為 -1</p>
 <ul>
 <li>長度為 1 的子字串，不存在「次長相同前綴後綴」</li>
 </ul>
-<p>（2）F[k]：<strong>探討 P[1…k-1] 與 P[k] 之間的關係</strong></p>
+<p>（2）F[k]：<strong>探討 P[1...k-1] 與 P[k] 之間的關係</strong></p>
 <figure>
-<img src="\willywangkaa\images\1549530552160.png" alt="1549530552160"><figcaption>1549530552160</figcaption>
+<img src="\willywangkaa\images\1549530552160.png" alt="1549530552160"><figcaption aria-hidden="true">1549530552160</figcaption>
 </figure>
 <ul>
 <li><strong>P[ F[k-1]+1 ] == P[k]</strong>
 <ul>
-<li>意旨「<strong>第 k 個字元</strong>」與「<strong>P[1…k-1] 之『次長的相同前綴後綴』下一個字元</strong>」相等</li>
+<li>意旨「<strong>第 k 個字元</strong>」與「<strong>P[1...k-1] 之『次長的相同前綴後綴』下一個字元</strong>」相等</li>
 <li><span class="math inline">\(\Rightarrow\)</span> <strong>F[k] = F[k-1]+1</strong></li>
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1549530722575.png" alt="1549530722575"><figcaption>1549530722575</figcaption>
+<img src="\willywangkaa\images\1549530722575.png" alt="1549530722575"><figcaption aria-hidden="true">1549530722575</figcaption>
 </figure>
 <blockquote>
-<p><strong>對「P[1…k-1] 之『次長的相同前綴後綴』」作探討</strong></p>
+<p><strong>對「P[1...k-1] 之『次長的相同前綴後綴』」作探討</strong></p>
 <figure>
-<img src="\willywangkaa\images\1549534207507.png" alt="1549534207507"><figcaption>1549534207507</figcaption>
+<img src="\willywangkaa\images\1549534207507.png" alt="1549534207507"><figcaption aria-hidden="true">1549534207507</figcaption>
 </figure>
 </blockquote>
 <ul>
 <li>P[ F[k-1]+1 ] ≠ P[k]
 <ul>
-<li>「<strong>第 k 個字元</strong>」與「P[1…k-1] 之『次長的相同前綴後綴』下一個字元」相異</li>
+<li>「<strong>第 k 個字元</strong>」與「P[1...k-1] 之『次長的相同前綴後綴』下一個字元」相異</li>
 </ul></li>
 </ul>
-<p><strong>若存在 P[ F…[F[k-1]]+1 ] == P[k]，則 F[k] = F…[F[k-1]]+1</strong></p>
+<p><strong>若存在 P[ F...[F[k-1]]+1 ] == P[k]，則 F[k] = F...[F[k-1]]+1</strong></p>
 <figure>
-<img src="\willywangkaa\images\1549535284950.png" alt="1549535284950"><figcaption>1549535284950</figcaption>
+<img src="\willywangkaa\images\1549535284950.png" alt="1549535284950"><figcaption aria-hidden="true">1549535284950</figcaption>
 </figure>
-<p><strong>若不存在 P[ F…[F[k-1]]+1 ] == P[k]，則 F[k] = -1</strong></p>
+<p><strong>若不存在 P[ F...[F[k-1]]+1 ] == P[k]，則 F[k] = -1</strong></p>
 <figure>
-<img src="\willywangkaa\images\1549535607960.png" alt="1549535607960"><figcaption>1549535607960</figcaption>
+<img src="\willywangkaa\images\1549535607960.png" alt="1549535607960"><figcaption aria-hidden="true">1549535607960</figcaption>
 </figure>
 <p>上述可以表達為：</p>
 <ul>
@@ -844,7 +846,7 @@
 <p>轉化的原理，是針對每個狀態，都找出經由「Failure function」能到達的狀態們，然後建立轉移邊，連到那些狀態們的下一個狀態</p>
 </blockquote>
 <figure>
-<img src="\willywangkaa\images\1549541112414.png" alt="1549541112414"><figcaption>1549541112414</figcaption>
+<img src="\willywangkaa\images\1549541112414.png" alt="1549541112414"><figcaption aria-hidden="true">1549541112414</figcaption>
 </figure>
 
       
@@ -926,7 +928,7 @@
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -970,10 +972,10 @@
             
               <img class="site-author-image" itemprop="image"
                 src="/willywangkaa/images/avatar_me.gif"
-                alt="Willy Wang (willywangkaa)" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
-              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -981,7 +983,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/willywangkaa/archives/">
+                  <a href="/willywangkaa/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">posts</span>
@@ -1028,8 +1030,6 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -1245,7 +1245,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#algorithm---string-matching"><span class="nav-number">1.</span> <span class="nav-text">Algorithm - String matching</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#naive-string-matching窮舉法"><span class="nav-number">1.1.</span> <span class="nav-text">Naive string matching（窮舉法）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rabin-karp-演算法"><span class="nav-number">1.2.</span> <span class="nav-text">Rabin-Karp 演算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#knuth-morris-pratt-演算法"><span class="nav-number">1.3.</span> <span class="nav-text">Knuth-Morris-Pratt 演算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#時間複雜度分析均攤分析"><span class="nav-number">1.3.1.</span> <span class="nav-text">時間複雜度分析（均攤分析）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#failure-function"><span class="nav-number">1.3.2.</span> <span class="nav-text">Failure function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#morris-pratt-automaton"><span class="nav-number">1.3.3.</span> <span class="nav-text">Morris-Pratt Automaton</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#algorithm---string-matching"><span class="nav-number">1.</span> <span class="nav-text">Algorithm - String matching</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#naive-string-matching%E7%AA%AE%E8%88%89%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">Naive string matching（窮舉法）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rabin-karp-%E6%BC%94%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">Rabin-Karp 演算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#knuth-morris-pratt-%E6%BC%94%E7%AE%97%E6%B3%95"><span class="nav-number">1.3.</span> <span class="nav-text">Knuth-Morris-Pratt 演算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6%E5%88%86%E6%9E%90%E5%9D%87%E6%94%A4%E5%88%86%E6%9E%90"><span class="nav-number">1.3.1.</span> <span class="nav-text">時間複雜度分析（均攤分析）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#failure-function"><span class="nav-number">1.3.2.</span> <span class="nav-text">Failure function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#morris-pratt-automaton"><span class="nav-number">1.3.3.</span> <span class="nav-text">Morris-Pratt Automaton</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1265,11 +1265,11 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+  <span class="author" itemprop="copyrightHolder">Wang Yu Li</span>
 
   
 
@@ -1413,7 +1413,7 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/willywangkaa/2019/02/07/Algorithm-String-matching/';
+        this.page.url = 'http://wangwilly.github.io/willywangkaa/2019/02/07/Algorithm-String-matching/';
         this.page.identifier = '2019/02/07/Algorithm-String-matching/';
         this.page.title = 'Algorithm - String matching';
       };
@@ -1848,24 +1848,7 @@
   
     bookmark.scrollToMark('auto', "#more");
   
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>

@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/willywangkaa/',
+    root: '',
     scheme: 'Pisces',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -103,14 +103,13 @@
   <meta name="keywords" content="Decision Tree Lrearning,Data Mining,Machine Learning," />
 
 
-<meta name="description" content="Decision Tree Learning 決策樹學習  簡介  最受歡迎的歸納推理演算法( inductive inference algorithm )。 廣泛且實務的方法。 對於干擾值( Noise )相當敏感。 可用來學習如何以聯集( Disjunctive )表示限制集( Constraints )。 ( Concept Learning 以交集( Conjunctive">
-<meta name="keywords" content="Decision Tree Lrearning,Data Mining,Machine Learning">
+<meta name="description" content="Decision Tree Learning 決策樹學習  簡介  最受歡迎的歸納推理演算法( inductive inference algorithm )。 廣泛且實務的方法。 對於干擾值( Noise )相當敏感。 可用來學習如何以聯集( Disjunctive )表示限制集( Constraints )。 ( Concept Learning 以交集( Conjunctive )表示 )">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Machine learning - Decision Tree Learning">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/04/18/Machine-learning-Decision-Tree-Learning/index.html">
+<meta property="og:url" content="http://wangwilly.github.io/willywangkaa/2018/04/18/Machine-learning-Decision-Tree-Learning/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="Decision Tree Learning 決策樹學習  簡介  最受歡迎的歸納推理演算法( inductive inference algorithm )。 廣泛且實務的方法。 對於干擾值( Noise )相當敏感。 可用來學習如何以聯集( Disjunctive )表示限制集( Constraints )。 ( Concept Learning 以交集( Conjunctive">
-<meta property="og:locale" content="zh-tw">
+<meta property="og:description" content="Decision Tree Learning 決策樹學習  簡介  最受歡迎的歸納推理演算法( inductive inference algorithm )。 廣泛且實務的方法。 對於干擾值( Noise )相當敏感。 可用來學習如何以聯集( Disjunctive )表示限制集( Constraints )。 ( Concept Learning 以交集( Conjunctive )表示 )">
+<meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/decisiontreelearning_training%20example.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/decisiontreelearning_exampletree.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/decisiontreelearning_builddecisiontree_algorithm.png">
@@ -123,10 +122,13 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/decisiontreelearning_overfitting1.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/decisiontreelearning_overfitting2.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/decisiontreelearning_subtreeraising.png">
-<meta property="og:updated_time" content="2019-02-08T04:34:35.309Z">
+<meta property="article:published_time" content="2018-04-18T04:06:00.000Z">
+<meta property="article:modified_time" content="2019-02-08T04:34:35.309Z">
+<meta property="article:author" content="Wang Yu Li">
+<meta property="article:tag" content="Decision Tree Lrearning">
+<meta property="article:tag" content="Data Mining">
+<meta property="article:tag" content="Machine Learning">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Machine learning - Decision Tree Learning">
-<meta name="twitter:description" content="Decision Tree Learning 決策樹學習  簡介  最受歡迎的歸納推理演算法( inductive inference algorithm )。 廣泛且實務的方法。 對於干擾值( Noise )相當敏感。 可用來學習如何以聯集( Disjunctive )表示限制集( Constraints )。 ( Concept Learning 以交集( Conjunctive">
 <meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/decisiontreelearning_training%20example.png">
 
 
@@ -179,9 +181,11 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
@@ -206,7 +210,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Live more like human</p>
+        <p class="site-subtitle">The higher up, the greater the fall.</p>
       
   </div>
 
@@ -227,25 +231,25 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/willywangkaa/" rel="section">
+          <a href="/willywangkaa/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/willywangkaa/archives/" rel="section">
+          <a href="/willywangkaa/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/willywangkaa/categories/" rel="section">
+          <a href="/willywangkaa/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/willywangkaa/tags/" rel="section">
+          <a href="/willywangkaa/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
@@ -326,7 +330,7 @@
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/04/18/Machine-learning-Decision-Tree-Learning/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -441,18 +445,18 @@
 <li><p>最受歡迎的<strong>歸納推理演算法( inductive inference algorithm )</strong>。</p></li>
 <li><p>廣泛且實務的方法。</p></li>
 <li><p><strong>對於干擾值( Noise )相當敏感</strong>。</p></li>
-<li><p>可用來學習如何以<strong>聯集( Disjunctive )</strong>表示<strong>限制集( Constraints )</strong>。 ( <a href="">Concept Learning</a> 以<strong>交集( Conjunctive )</strong>表示 )</p></li>
+<li><p>可用來學習如何以<strong>聯集( Disjunctive )</strong>表示<strong>限制集( Constraints )</strong>。 ( <a href>Concept Learning</a> 以<strong>交集( Conjunctive )</strong>表示 )</p></li>
 <li><p>呈現的方式相當簡單。</p></li>
 <li><p>樹狀結構( Tree Structure )、若則表示式( If-Then rules )</p></li>
 </ul>
 <h2 id="ex.-play-tennis"><span class="math inline">\(Ex.\)</span> Play Tennis</h2>
 <h3 id="範例訓練資料-training-example">範例訓練資料( Training Example )</h3>
 <figure>
-<img src="\willywangkaa\images\decisiontreelearning_training%20example.png" alt="decisiontreelearning_training example"><figcaption>decisiontreelearning_training example</figcaption>
+<img src="\willywangkaa\images\decisiontreelearning_training%20example.png" alt="decisiontreelearning_training example"><figcaption aria-hidden="true">decisiontreelearning_training example</figcaption>
 </figure>
 <h3 id="決策樹-decision-tree">決策樹( Decision Tree )</h3>
 <figure>
-<img src="\willywangkaa\images\decisiontreelearning_exampletree.png" alt="decisiontreelearning_exampletree"><figcaption>decisiontreelearning_exampletree</figcaption>
+<img src="\willywangkaa\images\decisiontreelearning_exampletree.png" alt="decisiontreelearning_exampletree"><figcaption aria-hidden="true">decisiontreelearning_exampletree</figcaption>
 </figure>
 <h2 id="決策樹-decision-tree-的介紹">決策樹( Decision Tree )的介紹</h2>
 <h3 id="決策樹表示法-decision-tree-representation">決策樹表示法( Decision Tree Representation )</h3>
@@ -515,36 +519,36 @@ or
 <h4 id="虛擬碼-pseudo-code">虛擬碼( Pseudo Code )</h4>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 使用屬性計算與之相關的樣本熵值</span><br><span class="line">2. 選取其中熵值最小的屬性(資訊獲利最大)</span><br><span class="line">3. 生成包含該屬性的節點</span><br><span class="line">4. 遞迴直到終止</span><br></pre></td></tr></table></figure>
 <figure>
-<img src="\willywangkaa\images\decisiontreelearning_builddecisiontree_algorithm.png" alt="decisiontreelearning_builddecisiontree_algorithm"><figcaption>decisiontreelearning_builddecisiontree_algorithm</figcaption>
+<img src="\willywangkaa\images\decisiontreelearning_builddecisiontree_algorithm.png" alt="decisiontreelearning_builddecisiontree_algorithm"><figcaption aria-hidden="true">decisiontreelearning_builddecisiontree_algorithm</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\decisiontreelearning_howtochoosenode.png" alt="decisiontreelearning_howtochoosenode"><figcaption>decisiontreelearning_howtochoosenode</figcaption>
+<img src="\willywangkaa\images\decisiontreelearning_howtochoosenode.png" alt="decisiontreelearning_howtochoosenode"><figcaption aria-hidden="true">decisiontreelearning_howtochoosenode</figcaption>
 </figure>
-<p><strong>＜討論＞</strong> ID3演算法的終極目標，就是要將決策樹中每個節點都擺上最優的<strong>環境因素( Attributes )</strong>。<br> <span class="math inline">\(Question.\)</span><br> 到底以甚麼條件決定甚麼因素要擺放於哪個節點？ <span class="math inline">\(Answer.\)</span> 資訊獎賞 or 資訊獲利( Information gain )。 - 資訊獲利( Information gain ) 統計該價值以檢視該環境因素置於何處來分類我們的資料，我們使用<strong>熵( entropy 又稱“亂度” )</strong>來定義這邊的<strong>資訊獲利( Information gain )</strong>。( 原文：Statistical quantity measuring how well an attribute classifies the data. Use entropy to define information gain. )</p>
+<p><strong>＜討論＞</strong> ID3演算法的終極目標，就是要將決策樹中每個節點都擺上最優的<strong>環境因素( Attributes )</strong>。<br> <span class="math inline">\(Question.\)</span><br> 到底以甚麼條件決定甚麼因素要擺放於哪個節點？ <span class="math inline">\(Answer.\)</span> 資訊獎賞 or 資訊獲利( Information gain )。 - 資訊獲利( Information gain ) 統計該價值以檢視該環境因素置於何處來分類我們的資料，我們使用<strong>熵( entropy 又稱"亂度" )</strong>來定義這邊的<strong>資訊獲利( Information gain )</strong>。( 原文：Statistical quantity measuring how well an attribute classifies the data. Use entropy to define information gain. )</p>
 <h3 id="id3-和-c4.5---information-gain-資訊獲利-與-gain-ratio">ID3 和 C4.5 - Information gain ( 資訊獲利 ) 與 Gain ratio</h3>
 <h4 id="定義">定義</h4>
 <p>關心其中一個環境因素( Attribute )<span class="math inline">\(A\)</span> 的資訊獲利( Information gain )我們標記為 <span class="math inline">\(Gain( S, A )\)</span>，且我們關心的目標樣本群體為 <span class="math inline">\(S\)</span>，其中： <span class="math display">\[Gain( S, A ) = Entropy( S ) - \sum_{ v \in Values(A) } ( \frac{S_v}{S}Entropy(S_v) )\]</span> - <span class="math inline">\(v\)</span> ranges over values of <span class="math inline">\(A\)</span> - <span class="math inline">\(S_v\)</span>: members of <span class="math inline">\(S\)</span> with <span class="math inline">\(A = v\)</span> - <span class="math inline">\(1^{st}\)</span> term: the entropy of <span class="math inline">\(S\)</span> - <span class="math inline">\(2^{nd}\)</span> term: expected value of entropy after partitioning with <span class="math inline">\(A\)</span></p>
 <h4 id="example-playtennies">Example： PlayTennies</h4>
 <ul>
-<li>四個環境變因
+<li><p>四個環境變因</p>
 <ul>
 <li>Outlook = {Sunny, Overcast, Rain}</li>
 </ul></li>
-<li>Temperature = {Hot, Mild, Cool}
+<li><p>Temperature = {Hot, Mild, Cool}</p>
 <ul>
 <li>Humidity = {High, Normal} Wind = {Weak, Strong}</li>
 </ul></li>
-<li>欲看討的結果 - <strong>開心</strong>或是<strong>不開心</strong>( Target Attributes - Binary )
+<li><p>欲看討的結果 - <strong>開心</strong>或是<strong>不開心</strong>( Target Attributes - Binary )</p>
 <ul>
 <li>PlayTennis = {Yes, No}</li>
 </ul></li>
-<li>今天有14組訓練資料</li>
-<li>9筆的結果是開心的 ( Positive )</li>
+<li><p>今天有14組訓練資料</p></li>
+<li><p>9筆的結果是開心的 ( Positive )</p></li>
 <li><p>5筆的結果是不開心的( Negative )</p></li>
 <li><p>訓練資料表</p></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\decisiontreelearning_trainningdataform.png" alt="decisiontreelearning_trainningdataform"><figcaption>decisiontreelearning_trainningdataform</figcaption>
+<img src="\willywangkaa\images\decisiontreelearning_trainningdataform.png" alt="decisiontreelearning_trainningdataform"><figcaption aria-hidden="true">decisiontreelearning_trainningdataform</figcaption>
 </figure>
 <h5 id="step-1.-計算整體的亂度-entropy">Step 1. 計算整體的亂度( Entropy )</h5>
 <p><span class="math inline">\(N_\oplus = 9, N_\ominus = 5, N_{Total} = 14\)</span> <span class="math inline">\(Entropy( S ) = -\frac{9}{14} \cdot \lg (\frac{9}{14}) - \frac{5}{14} \cdot \lg ( \frac{5}{14} ) = 0.940\)</span></p>
@@ -579,11 +583,11 @@ or
 <p><span class="math display">\[ Gain( S, Wind ) = 0.048 \]</span></p>
 <p>從亂度的點看來，似乎Outlook的亂度最低( 與宇亂度相減後剩餘比較多資訊獲利 )，所以我們選擇<strong>Outlook</strong>作為我們根結點( root node )，如下圖：</p>
 <figure>
-<img src="\willywangkaa\images\decisiontreelearning_choosenode.png" alt="decisiontreelearning_choosenode"><figcaption>decisiontreelearning_choosenode</figcaption>
+<img src="\willywangkaa\images\decisiontreelearning_choosenode.png" alt="decisiontreelearning_choosenode"><figcaption aria-hidden="true">decisiontreelearning_choosenode</figcaption>
 </figure>
 <p>選擇了Outlook做為決策樹的根結點後，緊接著，我們可以將三種不同的Outlook作為分支，其中特別的是，Overcast狀態之中( 上圖中間綠色部分 )，全部皆為開心狀態( Positive outcome )，所以可以直接決定Overcast輸出為開心( Positive )。</p>
 <h5 id="step-2.-conti.---選擇下一個節點-子樹的根結點">Step 2. Conti. - 選擇下一個節點( 子樹的根結點 )</h5>
-<p>( 從何子節點開始建子樹？ I don’t know yet. )</p>
+<p>( 從何子節點開始建子樹？ I don't know yet. )</p>
 <ul>
 <li>Same steps as earlier but only examples sorted to the node are used in Gain computations.( 無法理解 )</li>
 <li>選一個點( 隨機？ )繼續建子樹</li>
@@ -595,7 +599,7 @@ or
 <p>由上式可以看出來<strong>Humidity</strong>的亂度最小，所以選擇之為此子樹的根。</p>
 <h5 id="final-decision-tree">Final Decision Tree</h5>
 <figure>
-<img src="\willywangkaa\images\decisiontreelearning_finaldecisiontree.png" alt="decisiontreelearning_finaldecisiontree"><figcaption>decisiontreelearning_finaldecisiontree</figcaption>
+<img src="\willywangkaa\images\decisiontreelearning_finaldecisiontree.png" alt="decisiontreelearning_finaldecisiontree"><figcaption aria-hidden="true">decisiontreelearning_finaldecisiontree</figcaption>
 </figure>
 <h1 id="熵亂度-entropy">熵、亂度 (Entropy)</h1>
 <hr>
@@ -609,7 +613,7 @@ or
 <h2 id="定義-1">定義</h2>
 <p>首先，我們可以先從簡單的看討當目前的結果最多只有兩種情況，如拋硬幣，最多只有正面或是反面，下圖<span class="math inline">\(x\)</span>軸<span class="math inline">\(P_\oplus\)</span>代表擲出正面的機率函數，而<span class="math inline">\(y\)</span>軸則是對應的熵值，而<span class="math inline">\(P_\ominus\)</span>的機率軸則是會隨著<span class="math inline">\(P_\oplus\)</span>下降而上升( 兩者互補 )，但是對應到的熵值會一樣大。</p>
 <figure>
-<img src="\willywangkaa\images\decisiontreelearning_entropygraph.png" alt="decisiontreelearning_entropygraph"><figcaption>decisiontreelearning_entropygraph</figcaption>
+<img src="\willywangkaa\images\decisiontreelearning_entropygraph.png" alt="decisiontreelearning_entropygraph"><figcaption aria-hidden="true">decisiontreelearning_entropygraph</figcaption>
 </figure>
 <p><span class="math inline">\(S\)</span> is a sample of training examples( 隨機變量 ). 當今天的結果只有正與反 ( 與硬幣一樣 )時，觀察目前的<strong>隨機變量</strong> - 我們令： - <span class="math inline">\(P_\oplus\)</span> ( 就目前隨機變數產生的機率 ) is the portion of the positive examples ( 正面 ) in <span class="math inline">\(S\)</span>. - <span class="math inline">\(P_\ominus\)</span> ( 就目前隨機變數產生的機率 ) is the portion of the negative examples ( 反面 ) in <span class="math inline">\(S\)</span>. Entropy ( 熵 ) measures the impurity ( 亂度 ) of <span class="math inline">\(S\)</span>.</p>
 <p>我們先定義熵值 ( Entropy ) 如下： <span class="math display">\[ Entropy( S ) = E( I( S ) ) = E(- \ln ( P ( S ) ) ) \]</span> 其中，<span class="math inline">\(E\)</span>為<strong>期望函數</strong>，<span class="math inline">\(I( S )\)</span>是 <span class="math inline">\(S\)</span> 的<strong>資訊量</strong>（又稱為<a href="https://zh.wikipedia.org/wiki/%E8%87%AA%E4%BF%A1%E6%81%AF" target="_blank" rel="noopener">資訊本體</a>），<span class="math inline">\(I( S )\)</span>也是一個<strong>隨機變數</strong>。 所以在取硬幣的樣本( <span class="math inline">\(S\)</span> )完後，我們可以將熵值寫成：</p>
@@ -619,24 +623,24 @@ or
 <p><strong>＜Note＞</strong> <span class="math display">\[\sum_{i = 1}^N P_i = 1 \; and \;  0 \leq P_i \leq 1 \]</span></p>
 <h3 id="推廣至一般式"><strong>推廣至一般式</strong></h3>
 <figure>
-<img src="\willywangkaa\images\decisiontreelearning_generalentropygraph.png" alt="decisiontreelearning_generalentropygraph"><figcaption>decisiontreelearning_generalentropygraph</figcaption>
+<img src="\willywangkaa\images\decisiontreelearning_generalentropygraph.png" alt="decisiontreelearning_generalentropygraph"><figcaption aria-hidden="true">decisiontreelearning_generalentropygraph</figcaption>
 </figure>
 <p>當取自有限的樣本時，熵的公式可以表示為： <span class="math display">\[H(X) = \sum _{i} P(x_i) \, I(x_i)=-\sum_i P(x_i)\log _b P(x_i)\]</span></p>
 <p>在這裏 <span class="math inline">\(b\)</span> 通常是<span class="math inline">\(2\)</span>,自然常數 <span class="math inline">\(e\)</span>，或是<span class="math inline">\(10\)</span>。當<span class="math inline">\(b = 2\)</span>，熵的單位是<span class="math inline">\(bit\)</span>；當<span class="math inline">\(b = e\)</span>，熵的單位是<span class="math inline">\(nat\)</span>；而當<span class="math inline">\(b = 10\)</span>,熵的單位是<span class="math inline">\(Hart\)</span>。</p>
 <p><strong>＜Note＞</strong> 定義當<span class="math inline">\(P_i = 0\)</span>時，對於一些 <span class="math inline">\(i\)</span> 值，對應的被加數 <span class="math inline">\(0 \log_b 0\)</span> 的值將會是 <span class="math inline">\(0\)</span>，這與極限一致。 <span class="math display">\[ \Rightarrow \lim_{p\to0+} ( p\log p ) = 0 \]</span></p>
 <h1 id="cart-classification-and-regression-tree">CART (Classification and Regression Tree)</h1>
 <hr>
-<p>見 <a href="http://mropengate.blogspot.tw/2015/06/ai-ch13-2-decision-tree.html" target="_blank" rel="noopener">Mr’ opengate - AI - Ch14 機器學習(2), 決策樹 Decision Tree</a></p>
+<p>見 <a href="http://mropengate.blogspot.tw/2015/06/ai-ch13-2-decision-tree.html" target="_blank" rel="noopener">Mr' opengate - AI - Ch14 機器學習(2), 決策樹 Decision Tree</a></p>
 <h1 id="決策樹學習的常見問題">決策樹學習的常見問題</h1>
 <hr>
 <h2 id="避免過度適配資料-prevent-overfitting">避免過度適配資料( Prevent Overfitting )</h2>
 <p>首先，相較於很冗長的樹，在機器學習中其實比較偏向於比較矮的樹，然而，為何？我們可以由<a href="https://zh.wikipedia.org/wiki/%E5%A5%A5%E5%8D%A1%E5%A7%86%E5%89%83%E5%88%80" target="_blank" rel="noopener">Occam’s Razor ( 奧坎剃刀 )</a>得知，若有兩個假說同時都能解釋該現象，我們偏向於比較沒那麼嚴個的假說( 可以表達比較廣的概念 )。<br>過度配適是指模型對於範例的過度訓練，導致模型記住的不是訓練資料的一般特性，反而是訓練資料的局部特性。對測試樣本的分類將會變得很不精確。</p>
 <p><strong>＜注意＞</strong>通常過度適配發生在訓練範例含有雜訊和離異值時，但當訓練數據沒有雜訊時，過度適配也有可能發生，特別是當訓練範例的數量太少，使得某一些屬性「恰巧」可以很好地分割目前的訓練範例，但卻與實際的狀況並無太多關係。</p>
 <figure>
-<img src="\willywangkaa\images\decisiontreelearning_overfitting1.png" alt="decisiontreelearning_overfitting1"><figcaption>decisiontreelearning_overfitting1</figcaption>
+<img src="\willywangkaa\images\decisiontreelearning_overfitting1.png" alt="decisiontreelearning_overfitting1"><figcaption aria-hidden="true">decisiontreelearning_overfitting1</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\decisiontreelearning_overfitting2.png" alt="decisiontreelearning_overfitting2"><figcaption>decisiontreelearning_overfitting2</figcaption>
+<img src="\willywangkaa\images\decisiontreelearning_overfitting2.png" alt="decisiontreelearning_overfitting2"><figcaption aria-hidden="true">decisiontreelearning_overfitting2</figcaption>
 </figure>
 <h2 id="解決方案修剪決策樹移除不可信賴的分支">解決方案：修剪決策樹移除不可信賴的分支</h2>
 <ul>
@@ -646,7 +650,7 @@ or
 <li>子樹提升 (Subtree Raising)：</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\decisiontreelearning_subtreeraising.png" alt="decisiontreelearning_subtreeraising"><figcaption>decisiontreelearning_subtreeraising</figcaption>
+<img src="\willywangkaa\images\decisiontreelearning_subtreeraising.png" alt="decisiontreelearning_subtreeraising"><figcaption aria-hidden="true">decisiontreelearning_subtreeraising</figcaption>
 </figure>
 <h2 id="合併連續值屬性">合併連續值屬性</h2>
 <p>透過動態地定義新的離散值屬性來實現，即先把連續值屬性的值域分割為離散的區間集合，或設定門檻值以進行二分法。</p>
@@ -691,7 +695,7 @@ or
 </ul>
 <h1 id="參考">參考</h1>
 <hr>
-<p><a href="http://mropengate.blogspot.tw/2015/06/ai-ch13-2-decision-tree.html" target="_blank" rel="noopener">Mr’ opengate - AI - Ch14 機器學習(2), 決策樹 Decision Tree</a></p>
+<p><a href="http://mropengate.blogspot.tw/2015/06/ai-ch13-2-decision-tree.html" target="_blank" rel="noopener">Mr' opengate - AI - Ch14 機器學習(2), 決策樹 Decision Tree</a></p>
 <p><a href="https://zh.wikipedia.org/wiki/%E7%86%B5_%E4%BF%A1%E6%81%AF%E8%AE%BA" target="_blank" rel="noopener">Wiki - 熵 - 資訊理論</a></p>
 <p><a href="https://zh.wikipedia.org/wiki/%E5%A5%A5%E5%8D%A1%E5%A7%86%E5%89%83%E5%88%80" target="_blank" rel="noopener">奧坎剃刀</a></p>
 
@@ -735,7 +739,7 @@ or
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/willywangkaa/2018/03/21/Algorithm-字串名詞簡介/" rel="next" title="Algorithm - 字串名詞簡介">
+              <a href="/willywangkaa/2018/03/21/Algorithm-%E5%AD%97%E4%B8%B2%E5%90%8D%E8%A9%9E%E7%B0%A1%E4%BB%8B/" rel="next" title="Algorithm - 字串名詞簡介">
                 <i class="fa fa-chevron-left"></i> Algorithm - 字串名詞簡介
               </a>
             
@@ -745,7 +749,7 @@ or
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/willywangkaa/2018/04/20/Machine-learning-機器學習地圖/" rel="prev" title="Machine learning - 機器學習地圖">
+              <a href="/willywangkaa/2018/04/20/Machine-learning-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92%E5%9C%B0%E5%9C%96/" rel="prev" title="Machine learning - 機器學習地圖">
                 Machine learning - 機器學習地圖 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -778,7 +782,7 @@ or
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -822,10 +826,10 @@ or
             
               <img class="site-author-image" itemprop="image"
                 src="/willywangkaa/images/avatar_me.gif"
-                alt="Willy Wang (willywangkaa)" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
-              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -833,7 +837,7 @@ or
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/willywangkaa/archives/">
+                  <a href="/willywangkaa/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">posts</span>
@@ -880,8 +884,6 @@ or
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -1097,7 +1099,7 @@ or
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#decision-tree-learning-決策樹學習"><span class="nav-number">1.</span> <span class="nav-text">Decision Tree Learning 決策樹學習</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#簡介"><span class="nav-number">1.1.</span> <span class="nav-text">簡介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ex.-play-tennis"><span class="nav-number">1.2.</span> <span class="nav-text">\(Ex.\) Play Tennis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#範例訓練資料-training-example"><span class="nav-number">1.2.1.</span> <span class="nav-text">範例訓練資料( Training Example )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#決策樹-decision-tree"><span class="nav-number">1.2.2.</span> <span class="nav-text">決策樹( Decision Tree )</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#決策樹-decision-tree-的介紹"><span class="nav-number">1.3.</span> <span class="nav-text">決策樹( Decision Tree )的介紹</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#決策樹表示法-decision-tree-representation"><span class="nav-number">1.3.1.</span> <span class="nav-text">決策樹表示法( Decision Tree Representation )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#決策樹引導的假說-hypotheses"><span class="nav-number">1.3.2.</span> <span class="nav-text">決策樹引導的假說( Hypotheses )</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注意"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">注意！</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#決策樹的種類"><span class="nav-number">1.3.3.</span> <span class="nav-text">決策樹的種類</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注意-1"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#id3演算法"><span class="nav-number">1.3.4.</span> <span class="nav-text">ID3演算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#虛擬碼-pseudo-code"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">虛擬碼( Pseudo Code )</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#id3-和-c4.5---information-gain-資訊獲利-與-gain-ratio"><span class="nav-number">1.3.5.</span> <span class="nav-text">ID3 和 C4.5 - Information gain ( 資訊獲利 ) 與 Gain ratio</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定義"><span class="nav-number">1.3.5.1.</span> <span class="nav-text">定義</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#example-playtennies"><span class="nav-number">1.3.5.2.</span> <span class="nav-text">Example： PlayTennies</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#step-1.-計算整體的亂度-entropy"><span class="nav-number">1.3.5.2.1.</span> <span class="nav-text">Step 1. 計算整體的亂度( Entropy )</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#step2.-不斷計算資訊獲利-找亂度比較低attribute的-選擇最大值當作根結點"><span class="nav-number">1.3.5.2.2.</span> <span class="nav-text">Step2. 不斷計算資訊獲利( 找亂度比較低attribute的 )，選擇最大值當作根結點</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#step-2.-conti.---選擇下一個節點-子樹的根結點"><span class="nav-number">1.3.5.2.3.</span> <span class="nav-text">Step 2. Conti. - 選擇下一個節點( 子樹的根結點 )</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#final-decision-tree"><span class="nav-number">1.3.5.2.4.</span> <span class="nav-text">Final Decision Tree</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#熵亂度-entropy"><span class="nav-number">2.</span> <span class="nav-text">熵、亂度 (Entropy)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#介紹"><span class="nav-number">2.1.</span> <span class="nav-text">介紹</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ex1."><span class="nav-number">2.1.1.</span> <span class="nav-text">\(Ex1.\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ex2."><span class="nav-number">2.1.2.</span> <span class="nav-text">\(Ex2.\)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定義-1"><span class="nav-number">2.2.</span> <span class="nav-text">定義</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#推廣至一般式"><span class="nav-number">2.2.1.</span> <span class="nav-text">推廣至一般式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cart-classification-and-regression-tree"><span class="nav-number">3.</span> <span class="nav-text">CART (Classification and Regression Tree)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#決策樹學習的常見問題"><span class="nav-number">4.</span> <span class="nav-text">決策樹學習的常見問題</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#避免過度適配資料-prevent-overfitting"><span class="nav-number">4.1.</span> <span class="nav-text">避免過度適配資料( Prevent Overfitting )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解決方案修剪決策樹移除不可信賴的分支"><span class="nav-number">4.2.</span> <span class="nav-text">解決方案：修剪決策樹移除不可信賴的分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合併連續值屬性"><span class="nav-number">4.3.</span> <span class="nav-text">合併連續值屬性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#屬性選擇指標的其他度量標準"><span class="nav-number">4.4.</span> <span class="nav-text">屬性選擇指標的其他度量標準</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#例題"><span class="nav-number">5.</span> <span class="nav-text">例題</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#補充"><span class="nav-number">6.</span> <span class="nav-text">補充</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#參考"><span class="nav-number">7.</span> <span class="nav-text">參考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#decision-tree-learning-%E6%B1%BA%E7%AD%96%E6%A8%B9%E5%AD%B8%E7%BF%92"><span class="nav-number">1.</span> <span class="nav-text">Decision Tree Learning 決策樹學習</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B0%A1%E4%BB%8B"><span class="nav-number">1.1.</span> <span class="nav-text">簡介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ex.-play-tennis"><span class="nav-number">1.2.</span> <span class="nav-text">\(Ex.\) Play Tennis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B%E8%A8%93%E7%B7%B4%E8%B3%87%E6%96%99-training-example"><span class="nav-number">1.2.1.</span> <span class="nav-text">範例訓練資料( Training Example )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%BA%E7%AD%96%E6%A8%B9-decision-tree"><span class="nav-number">1.2.2.</span> <span class="nav-text">決策樹( Decision Tree )</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%BA%E7%AD%96%E6%A8%B9-decision-tree-%E7%9A%84%E4%BB%8B%E7%B4%B9"><span class="nav-number">1.3.</span> <span class="nav-text">決策樹( Decision Tree )的介紹</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%BA%E7%AD%96%E6%A8%B9%E8%A1%A8%E7%A4%BA%E6%B3%95-decision-tree-representation"><span class="nav-number">1.3.1.</span> <span class="nav-text">決策樹表示法( Decision Tree Representation )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%BA%E7%AD%96%E6%A8%B9%E5%BC%95%E5%B0%8E%E7%9A%84%E5%81%87%E8%AA%AA-hypotheses"><span class="nav-number">1.3.2.</span> <span class="nav-text">決策樹引導的假說( Hypotheses )</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">注意！</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%BA%E7%AD%96%E6%A8%B9%E7%9A%84%E7%A8%AE%E9%A1%9E"><span class="nav-number">1.3.3.</span> <span class="nav-text">決策樹的種類</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F-1"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#id3%E6%BC%94%E7%AE%97%E6%B3%95"><span class="nav-number">1.3.4.</span> <span class="nav-text">ID3演算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%99%9B%E6%93%AC%E7%A2%BC-pseudo-code"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">虛擬碼( Pseudo Code )</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#id3-%E5%92%8C-c4.5---information-gain-%E8%B3%87%E8%A8%8A%E7%8D%B2%E5%88%A9-%E8%88%87-gain-ratio"><span class="nav-number">1.3.5.</span> <span class="nav-text">ID3 和 C4.5 - Information gain ( 資訊獲利 ) 與 Gain ratio</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E7%BE%A9"><span class="nav-number">1.3.5.1.</span> <span class="nav-text">定義</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#example-playtennies"><span class="nav-number">1.3.5.2.</span> <span class="nav-text">Example： PlayTennies</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#step-1.-%E8%A8%88%E7%AE%97%E6%95%B4%E9%AB%94%E7%9A%84%E4%BA%82%E5%BA%A6-entropy"><span class="nav-number">1.3.5.2.1.</span> <span class="nav-text">Step 1. 計算整體的亂度( Entropy )</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#step2.-%E4%B8%8D%E6%96%B7%E8%A8%88%E7%AE%97%E8%B3%87%E8%A8%8A%E7%8D%B2%E5%88%A9-%E6%89%BE%E4%BA%82%E5%BA%A6%E6%AF%94%E8%BC%83%E4%BD%8Eattribute%E7%9A%84-%E9%81%B8%E6%93%87%E6%9C%80%E5%A4%A7%E5%80%BC%E7%95%B6%E4%BD%9C%E6%A0%B9%E7%B5%90%E9%BB%9E"><span class="nav-number">1.3.5.2.2.</span> <span class="nav-text">Step2. 不斷計算資訊獲利( 找亂度比較低attribute的 )，選擇最大值當作根結點</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#step-2.-conti.---%E9%81%B8%E6%93%87%E4%B8%8B%E4%B8%80%E5%80%8B%E7%AF%80%E9%BB%9E-%E5%AD%90%E6%A8%B9%E7%9A%84%E6%A0%B9%E7%B5%90%E9%BB%9E"><span class="nav-number">1.3.5.2.3.</span> <span class="nav-text">Step 2. Conti. - 選擇下一個節點( 子樹的根結點 )</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#final-decision-tree"><span class="nav-number">1.3.5.2.4.</span> <span class="nav-text">Final Decision Tree</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%86%B5%E4%BA%82%E5%BA%A6-entropy"><span class="nav-number">2.</span> <span class="nav-text">熵、亂度 (Entropy)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%B4%B9"><span class="nav-number">2.1.</span> <span class="nav-text">介紹</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ex1."><span class="nav-number">2.1.1.</span> <span class="nav-text">\(Ex1.\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ex2."><span class="nav-number">2.1.2.</span> <span class="nav-text">\(Ex2.\)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E7%BE%A9-1"><span class="nav-number">2.2.</span> <span class="nav-text">定義</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A8%E5%BB%A3%E8%87%B3%E4%B8%80%E8%88%AC%E5%BC%8F"><span class="nav-number">2.2.1.</span> <span class="nav-text">推廣至一般式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cart-classification-and-regression-tree"><span class="nav-number">3.</span> <span class="nav-text">CART (Classification and Regression Tree)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B1%BA%E7%AD%96%E6%A8%B9%E5%AD%B8%E7%BF%92%E7%9A%84%E5%B8%B8%EF%A8%8A%E5%95%8F%E9%A1%8C"><span class="nav-number">4.</span> <span class="nav-text">決策樹學習的常見問題</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%BF%E5%85%8D%E9%81%8E%EF%A8%81%E9%81%A9%E9%85%8D%E8%B3%87%EF%A6%BE-prevent-overfitting"><span class="nav-number">4.1.</span> <span class="nav-text">避免過度適配資料( Prevent Overfitting )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%B1%BA%E6%96%B9%E6%A1%88%E4%BF%AE%E5%89%AA%E6%B1%BA%E7%AD%96%E6%A8%B9%E7%A7%BB%E9%99%A4%EF%A5%A7%E5%8F%AF%E4%BF%A1%E8%B3%B4%E7%9A%84%E5%88%86%E6%94%AF"><span class="nav-number">4.2.</span> <span class="nav-text">解決方案：修剪決策樹移除不可信賴的分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%88%E4%BD%B5%EF%A6%9A%E7%BA%8C%E5%80%BC%E5%B1%AC%E6%80%A7"><span class="nav-number">4.3.</span> <span class="nav-text">合併連續值屬性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%AC%E6%80%A7%E9%81%B8%E6%93%87%E6%8C%87%E6%A8%99%E7%9A%84%E5%85%B6%E4%BB%96%EF%A8%81%EF%A5%BE%E6%A8%99%E6%BA%96"><span class="nav-number">4.4.</span> <span class="nav-text">屬性選擇指標的其他度量標準</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BE%8B%E9%A1%8C"><span class="nav-number">5.</span> <span class="nav-text">例題</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A3%9C%E5%85%85"><span class="nav-number">6.</span> <span class="nav-text">補充</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83"><span class="nav-number">7.</span> <span class="nav-text">參考</span></a></li></ol></div>
             
 
           </div>
@@ -1117,11 +1119,11 @@ or
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+  <span class="author" itemprop="copyrightHolder">Wang Yu Li</span>
 
   
 
@@ -1265,7 +1267,7 @@ or
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/04/18/Machine-learning-Decision-Tree-Learning/';
+        this.page.url = 'http://wangwilly.github.io/willywangkaa/2018/04/18/Machine-learning-Decision-Tree-Learning/';
         this.page.identifier = '2018/04/18/Machine-learning-Decision-Tree-Learning/';
         this.page.title = 'Machine learning - Decision Tree Learning';
       };
@@ -1700,24 +1702,7 @@ or
   
     bookmark.scrollToMark('auto', "#more");
   
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>

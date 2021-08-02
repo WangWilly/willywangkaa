@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/willywangkaa/',
+    root: '',
     scheme: 'Pisces',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -103,20 +103,22 @@
   <meta name="keywords" content="String,Substring,Z Algorithm," />
 
 
-<meta name="description" content="Z 演算法 可以線性時間在一段文本（Text） 裡面找到所有我們欲求的段落（Pattern）  文本（Text）的長度為 \(n\) 段落（Pattern）為 \(m\)  搜尋過程需要線性等級的時間複雜度：\(O(m+n)\)  雖然這個演算法需要的空間（Space complexity）與時間複雜度（Time complexity）都與KMP algorithm一致，但是這個演">
-<meta name="keywords" content="String,Substring,Z Algorithm">
+<meta name="description" content="Z 演算法 可以線性時間在一段文本（Text） 裡面找到所有我們欲求的段落（Pattern）  文本（Text）的長度為 \(n\) 段落（Pattern）為 \(m\)  搜尋過程需要線性等級的時間複雜度：\(O(m+n)\)  雖然這個演算法需要的空間（Space complexity）與時間複雜度（Time complexity）都與KMP algorithm一致，但是這個演算法比起「KMP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Algorithm - Z 演算法">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/03/19/Algorithm-Z-演算法/index.html">
+<meta property="og:url" content="http://wangwilly.github.io/willywangkaa/2018/03/19/Algorithm-Z-%E6%BC%94%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="Z 演算法 可以線性時間在一段文本（Text） 裡面找到所有我們欲求的段落（Pattern）  文本（Text）的長度為 \(n\) 段落（Pattern）為 \(m\)  搜尋過程需要線性等級的時間複雜度：\(O(m+n)\)  雖然這個演算法需要的空間（Space complexity）與時間複雜度（Time complexity）都與KMP algorithm一致，但是這個演">
-<meta property="og:locale" content="zh-tw">
+<meta property="og:description" content="Z 演算法 可以線性時間在一段文本（Text） 裡面找到所有我們欲求的段落（Pattern）  文本（Text）的長度為 \(n\) 段落（Pattern）為 \(m\)  搜尋過程需要線性等級的時間複雜度：\(O(m+n)\)  雖然這個演算法需要的空間（Space complexity）與時間複雜度（Time complexity）都與KMP algorithm一致，但是這個演算法比起「KMP">
+<meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/Z演算法的表示法.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/Z演算法的子問題.png">
-<meta property="og:updated_time" content="2019-02-08T05:12:26.515Z">
+<meta property="article:published_time" content="2018-03-19T05:27:00.000Z">
+<meta property="article:modified_time" content="2019-02-08T05:12:26.515Z">
+<meta property="article:author" content="Wang Yu Li">
+<meta property="article:tag" content="String">
+<meta property="article:tag" content="Substring">
+<meta property="article:tag" content="Z Algorithm">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Algorithm - Z 演算法">
-<meta name="twitter:description" content="Z 演算法 可以線性時間在一段文本（Text） 裡面找到所有我們欲求的段落（Pattern）  文本（Text）的長度為 \(n\) 段落（Pattern）為 \(m\)  搜尋過程需要線性等級的時間複雜度：\(O(m+n)\)  雖然這個演算法需要的空間（Space complexity）與時間複雜度（Time complexity）都與KMP algorithm一致，但是這個演">
 <meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/Z演算法的表示法.png">
 
 
@@ -169,9 +171,11 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
@@ -196,7 +200,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Live more like human</p>
+        <p class="site-subtitle">The higher up, the greater the fall.</p>
       
   </div>
 
@@ -217,25 +221,25 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/willywangkaa/" rel="section">
+          <a href="/willywangkaa/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/willywangkaa/archives/" rel="section">
+          <a href="/willywangkaa/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/willywangkaa/categories/" rel="section">
+          <a href="/willywangkaa/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/willywangkaa/tags/" rel="section">
+          <a href="/willywangkaa/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
@@ -313,10 +317,10 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/03/19/Algorithm-Z-演算法/">
+    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/03/19/Algorithm-Z-%E6%BC%94%E7%AE%97%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -394,7 +398,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/willywangkaa/2018/03/19/Algorithm-Z-演算法/#comments" itemprop="discussionUrl">
+                <a href="/willywangkaa/2018/03/19/Algorithm-Z-%E6%BC%94%E7%AE%97%E6%B3%95/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
                         data-disqus-identifier="2018/03/19/Algorithm-Z-演算法/" itemprop="commentCount"></span>
                 </a>
@@ -440,7 +444,7 @@
 <p>當我們將欲檢索的文本存為一個字串 $ str[0 n-1] $ 時，同時也建立一個與字串一樣長的<span class="math inline">\(Z\)</span>陣列。 在<span class="math inline">\(Z\)</span>陣列中，第 <span class="math inline">\(i\)</span> 元素紀錄「<strong>最長共同前總和 (Longest Common Prefix)</strong>的長度」，而 <em>LCP 的長度</em> 是由「從 <span class="math inline">\(i\)</span> 開始的後總和 (Postfix)」與「該文本」共同決定。 ( <strong>注意： </strong> <span class="math inline">\(Z[0]\)</span> <strong>毫無意義可言，因為從第0個開始的後總和(Postfix) 必與原本的文本字串相同。</strong> )</p>
 <p>大致上我們可以看成如下的函式：</p>
 <figure>
-<img src="\willywangkaa\images\Z演算法的表示法.png" alt="Z演算法的表示法"><figcaption>Z演算法的表示法</figcaption>
+<img src="\willywangkaa\images\Z演算法的表示法.png" alt="Z演算法的表示法"><figcaption aria-hidden="true">Z演算法的表示法</figcaption>
 </figure>
 <p><span class="math inline">\(Ex.\)</span> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Index            0   1   2   3   4   5   6   7   8   9  10  11 </span><br><span class="line">Text             a   a   b   c   a   a   b   x   a   a   a   z</span><br><span class="line">Z values             1   0   0   3   1   0   0   2   2   1   0</span><br></pre></td></tr></table></figure></p>
 <p><span class="math inline">\(More\)</span> <span class="math inline">\(ex.\)</span> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">str  = &quot;aaaaaa&quot;</span><br><span class="line">Z[]  = &#123;x, 5, 4, 3, 2, 1&#125;</span><br><span class="line"></span><br><span class="line">str = &quot;aabaacd&quot;</span><br><span class="line">Z[] = &#123;x, 1, 0, 2, 1, 0, 0&#125;</span><br><span class="line"></span><br><span class="line">str = &quot;abababab&quot;</span><br><span class="line">Z[] = &#123;x, 0, 6, 0, 4, 0, 2, 0&#125;</span><br></pre></td></tr></table></figure></p>
@@ -465,7 +469,7 @@
 <p>想要了解上述的演算法可以經由這個連結觀看<a href="http://www.utdallas.edu/~besp/demo/John2010/z-algorithm.htm" target="_blank" rel="noopener">動畫</a>。</p>
 <p><strong>小視窗</strong></p>
 <figure>
-<img src="\willywangkaa\images\Z演算法的子問題.png" alt="Z演算法的子問題"><figcaption>Z演算法的子問題</figcaption>
+<img src="\willywangkaa\images\Z演算法的子問題.png" alt="Z演算法的子問題"><figcaption aria-hidden="true">Z演算法的子問題</figcaption>
 </figure>
 <p>如果一個位置 <span class="math inline">\(i\)</span> 位於之前比過的那段 <span class="math inline">\([L, R]\)</span> 當中，他是否跟 <span class="math inline">\(Z[i − L]\)</span> 相同呢？我們可以分成三種情形： 1. 要比的後綴根本不在以前比過的範圍<span class="math inline">\([L, R]\)</span>內 → 就去比吧！ 2. 要比的後綴在以前比過的範圍<span class="math inline">\([L, R]\)</span>但長度未知 → 還是去比吧！ 3. 要比的後綴在以前比過的範圍<span class="math inline">\([L, R]\)</span>但長度已知 → 直接記錄囉！</p>
 <h1 id="程式碼實作">程式碼實作</h1>
@@ -541,7 +545,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/willywangkaa/2018/03/16/Discrete-mathematics-泰勒級數/" rel="next" title="Discrete mathematics - 泰勒級數">
+              <a href="/willywangkaa/2018/03/16/Discrete-mathematics-%E6%B3%B0%E5%8B%92%E7%B4%9A%E6%95%B8/" rel="next" title="Discrete mathematics - 泰勒級數">
                 <i class="fa fa-chevron-left"></i> Discrete mathematics - 泰勒級數
               </a>
             
@@ -551,7 +555,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/willywangkaa/2018/03/21/Algorithm-字串名詞簡介/" rel="prev" title="Algorithm - 字串名詞簡介">
+              <a href="/willywangkaa/2018/03/21/Algorithm-%E5%AD%97%E4%B8%B2%E5%90%8D%E8%A9%9E%E7%B0%A1%E4%BB%8B/" rel="prev" title="Algorithm - 字串名詞簡介">
                 Algorithm - 字串名詞簡介 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -584,7 +588,7 @@
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -628,10 +632,10 @@
             
               <img class="site-author-image" itemprop="image"
                 src="/willywangkaa/images/avatar_me.gif"
-                alt="Willy Wang (willywangkaa)" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
-              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -639,7 +643,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/willywangkaa/archives/">
+                  <a href="/willywangkaa/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">posts</span>
@@ -686,8 +690,6 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -903,7 +905,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#z-演算法"><span class="nav-number">1.</span> <span class="nav-text">Z 演算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#z-陣列"><span class="nav-number">1.1.</span> <span class="nav-text">\(Z\) 陣列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#z-陣列如何幫助演算法加速"><span class="nav-number">1.2.</span> <span class="nav-text">\(Z\) 陣列如何幫助演算法加速?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何建立-z陣列"><span class="nav-number">1.3.</span> <span class="nav-text">如何建立 \(Z\)陣列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#程式碼實作"><span class="nav-number">2.</span> <span class="nav-text">程式碼實作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#台大資工ppt-by-nkng"><span class="nav-number">2.1.</span> <span class="nav-text">台大資工PPT by nkng</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#z-algorithm---geeksforgeeks"><span class="nav-number">2.2.</span> <span class="nav-text">Z algorithm - GeeksforGeeks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建國中學-2012-年資訊能力競賽培訓講義---08"><span class="nav-number">2.3.</span> <span class="nav-text">建國中學 2012 年資訊能力競賽培訓講義 - 08</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#z-algorithm---codeforces"><span class="nav-number">2.4.</span> <span class="nav-text">Z algorithm - codeforces</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#z-algorithm1---日月卦長的模板庫"><span class="nav-number">2.5.</span> <span class="nav-text">Z algorithm1 - 日月卦長的模板庫</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#z-algorithm2---日月卦長的模板庫"><span class="nav-number">2.6.</span> <span class="nav-text">Z algorithm2 - 日月卦長的模板庫</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#培訓-4-字串--tioj"><span class="nav-number">2.7.</span> <span class="nav-text">培訓-4 字串- tioj</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#例題"><span class="nav-number">3.</span> <span class="nav-text">例題</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#參考"><span class="nav-number">4.</span> <span class="nav-text">參考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#待補充"><span class="nav-number">5.</span> <span class="nav-text">待補充</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#kmp-字串比對演算法"><span class="nav-number">5.1.</span> <span class="nav-text">KMP 字串比對演算法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#z-%E6%BC%94%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">Z 演算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#z-%E9%99%A3%E5%88%97"><span class="nav-number">1.1.</span> <span class="nav-text">\(Z\) 陣列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#z-%E9%99%A3%E5%88%97%E5%A6%82%E4%BD%95%E5%B9%AB%E5%8A%A9%E6%BC%94%E7%AE%97%E6%B3%95%E5%8A%A0%E9%80%9F"><span class="nav-number">1.2.</span> <span class="nav-text">\(Z\) 陣列如何幫助演算法加速?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%BB%BA%E7%AB%8B-z%E9%99%A3%E5%88%97"><span class="nav-number">1.3.</span> <span class="nav-text">如何建立 \(Z\)陣列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A8%8B%E5%BC%8F%E7%A2%BC%E5%AF%A6%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">程式碼實作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%B0%E5%A4%A7%E8%B3%87%E5%B7%A5ppt-by-nkng"><span class="nav-number">2.1.</span> <span class="nav-text">台大資工PPT by nkng</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#z-algorithm---geeksforgeeks"><span class="nav-number">2.2.</span> <span class="nav-text">Z algorithm - GeeksforGeeks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E5%9C%8B%E4%B8%AD%E5%AD%B8-2012-%E5%B9%B4%E8%B3%87%E8%A8%8A%E8%83%BD%E5%8A%9B%E7%AB%B6%E8%B3%BD%E5%9F%B9%E8%A8%93%E8%AC%9B%E7%BE%A9---08"><span class="nav-number">2.3.</span> <span class="nav-text">建國中學 2012 年資訊能力競賽培訓講義 - 08</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#z-algorithm---codeforces"><span class="nav-number">2.4.</span> <span class="nav-text">Z algorithm - codeforces</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#z-algorithm1---%E6%97%A5%E6%9C%88%E5%8D%A6%E9%95%B7%E7%9A%84%E6%A8%A1%E6%9D%BF%E5%BA%AB"><span class="nav-number">2.5.</span> <span class="nav-text">Z algorithm1 - 日月卦長的模板庫</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#z-algorithm2---%E6%97%A5%E6%9C%88%E5%8D%A6%E9%95%B7%E7%9A%84%E6%A8%A1%E6%9D%BF%E5%BA%AB"><span class="nav-number">2.6.</span> <span class="nav-text">Z algorithm2 - 日月卦長的模板庫</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%B9%E8%A8%93-4-%E5%AD%97%E4%B8%B2--tioj"><span class="nav-number">2.7.</span> <span class="nav-text">培訓-4 字串- tioj</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BE%8B%E9%A1%8C"><span class="nav-number">3.</span> <span class="nav-text">例題</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83"><span class="nav-number">4.</span> <span class="nav-text">參考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BE%85%E8%A3%9C%E5%85%85"><span class="nav-number">5.</span> <span class="nav-text">待補充</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#kmp-%E5%AD%97%E4%B8%B2%E6%AF%94%E5%B0%8D%E6%BC%94%E7%AE%97%E6%B3%95"><span class="nav-number">5.1.</span> <span class="nav-text">KMP 字串比對演算法</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -923,11 +925,11 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+  <span class="author" itemprop="copyrightHolder">Wang Yu Li</span>
 
   
 
@@ -1071,7 +1073,7 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/03/19/Algorithm-Z-演算法/';
+        this.page.url = 'http://wangwilly.github.io/willywangkaa/2018/03/19/Algorithm-Z-%E6%BC%94%E7%AE%97%E6%B3%95/';
         this.page.identifier = '2018/03/19/Algorithm-Z-演算法/';
         this.page.title = 'Algorithm - Z 演算法';
       };
@@ -1506,24 +1508,7 @@
   
     bookmark.scrollToMark('auto', "#more");
   
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>

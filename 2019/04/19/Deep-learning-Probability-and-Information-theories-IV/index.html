@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/willywangkaa/',
+    root: '',
     scheme: 'Pisces',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -103,23 +103,24 @@
   <meta name="keywords" content="Probability,Information theories," />
 
 
-<meta name="description" content="Deep learning - Probability and Information theories IV Common probability distribution Multivariate Gaussian distribution（多元常態分佈；Continuous）  \(\mathrm{X～Gaussian}(\mu, \sigma)\quad f_{\mathrm X}">
-<meta name="keywords" content="Probability,Information theories">
+<meta name="description" content="Deep learning - Probability and Information theories IV Common probability distribution Multivariate Gaussian distribution（多元常態分佈；Continuous）  \(\mathrm{X～Gaussian}(\mu, \sigma)\quad f_{\mathrm X}(x)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Deep learning - Probability and Information theories IV">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2019/04/19/Deep-learning-Probability-and-Information-theories-IV/index.html">
+<meta property="og:url" content="http://wangwilly.github.io/willywangkaa/2019/04/19/Deep-learning-Probability-and-Information-theories-IV/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="Deep learning - Probability and Information theories IV Common probability distribution Multivariate Gaussian distribution（多元常態分佈；Continuous）  \(\mathrm{X～Gaussian}(\mu, \sigma)\quad f_{\mathrm X}">
-<meta property="og:locale" content="zh-tw">
+<meta property="og:description" content="Deep learning - Probability and Information theories IV Common probability distribution Multivariate Gaussian distribution（多元常態分佈；Continuous）  \(\mathrm{X～Gaussian}(\mu, \sigma)\quad f_{\mathrm X}(x)">
+<meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1555650665915.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1555650853286.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1555651404197.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1555580591425.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1555580920252.png">
-<meta property="og:updated_time" content="2019-04-19T13:33:31.781Z">
+<meta property="article:published_time" content="2019-04-19T13:19:00.000Z">
+<meta property="article:modified_time" content="2019-04-19T13:33:31.781Z">
+<meta property="article:author" content="Wang Yu Li">
+<meta property="article:tag" content="Probability">
+<meta property="article:tag" content="Information theories">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Deep learning - Probability and Information theories IV">
-<meta name="twitter:description" content="Deep learning - Probability and Information theories IV Common probability distribution Multivariate Gaussian distribution（多元常態分佈；Continuous）  \(\mathrm{X～Gaussian}(\mu, \sigma)\quad f_{\mathrm X}">
 <meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/1555650665915.png">
 
 
@@ -172,9 +173,11 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
@@ -199,7 +202,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Live more like human</p>
+        <p class="site-subtitle">The higher up, the greater the fall.</p>
       
   </div>
 
@@ -220,25 +223,25 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/willywangkaa/" rel="section">
+          <a href="/willywangkaa/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/willywangkaa/archives/" rel="section">
+          <a href="/willywangkaa/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/willywangkaa/categories/" rel="section">
+          <a href="/willywangkaa/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/willywangkaa/tags/" rel="section">
+          <a href="/willywangkaa/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
@@ -319,7 +322,7 @@
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2019/04/19/Deep-learning-Probability-and-Information-theories-IV/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -494,19 +497,19 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1555650665915.png" alt="1555650665915"><figcaption>1555650665915</figcaption>
+<img src="\willywangkaa\images\1555650665915.png" alt="1555650665915"><figcaption aria-hidden="true">1555650665915</figcaption>
 </figure>
 <p><strong>共變異數矩陣</strong> <span class="math inline">\(\Sigma\)</span> <strong>的作用在於決定常態分布的伸縮</strong> <span class="math inline">\(\Lambda^{1/2}\)</span> <strong>和旋轉</strong> <span class="math inline">\(Q\)</span></p>
 </blockquote>
 <figure>
-<img src="\willywangkaa\images\1555650853286.png" alt="1555650853286"><figcaption>1555650853286</figcaption>
+<img src="\willywangkaa\images\1555650853286.png" alt="1555650853286"><figcaption aria-hidden="true">1555650853286</figcaption>
 </figure>
 <ul>
 <li>隨著 <span class="math inline">\(\mathrm{Cov}[X_1,X_2]\)</span> 增長，會將等高線沿著 45 度伸長</li>
 <li>隨著 <span class="math inline">\(\mathrm{Cov}[X_1,X_2]\)</span> 減少，會將等高線沿著 -45 度伸長</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1555651404197.png" alt="1555651404197"><figcaption>1555651404197</figcaption>
+<img src="\willywangkaa\images\1555651404197.png" alt="1555651404197"><figcaption aria-hidden="true">1555651404197</figcaption>
 </figure>
 <ul>
 <li>上圖高度為 <span class="math inline">\(f_X(\boldsymbol x) = \sqrt{\frac{1}{(2\pi)^d\det(\Sigma)}}e^{-\frac12(\boldsymbol x-\boldsymbol \mu)^T\Sigma^{-1}(\boldsymbol x-\boldsymbol \mu)}\)</span> 的輸出
@@ -593,7 +596,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1555580591425.png" alt="1555580591425"><figcaption>1555580591425</figcaption>
+<img src="\willywangkaa\images\1555580591425.png" alt="1555580591425"><figcaption aria-hidden="true">1555580591425</figcaption>
 </figure>
 <blockquote>
 <p>在實作上經常<strong>限制共變異數矩陣的型態</strong></p>
@@ -610,7 +613,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1555580920252.png" alt="1555580920252"><figcaption>1555580920252</figcaption>
+<img src="\willywangkaa\images\1555580920252.png" alt="1555580920252"><figcaption aria-hidden="true">1555580920252</figcaption>
 </figure>
 </blockquote>
 <h4 id="moment動差">Moment（動差）</h4>
@@ -775,7 +778,7 @@
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -819,10 +822,10 @@
             
               <img class="site-author-image" itemprop="image"
                 src="/willywangkaa/images/avatar_me.gif"
-                alt="Willy Wang (willywangkaa)" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
-              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -830,7 +833,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/willywangkaa/archives/">
+                  <a href="/willywangkaa/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">posts</span>
@@ -877,8 +880,6 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -1094,7 +1095,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#deep-learning---probability-and-information-theories-iv"><span class="nav-number">1.</span> <span class="nav-text">Deep learning - Probability and Information theories IV</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#common-probability-distribution"><span class="nav-number">1.1.</span> <span class="nav-text">Common probability distribution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#multivariate-gaussian-distribution多元常態分佈continuous"><span class="nav-number">1.1.1.</span> <span class="nav-text">Multivariate Gaussian distribution（多元常態分佈；Continuous）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特性"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mahalanobis-distance馬氏距離"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">Mahalanobis distance（馬氏距離）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#contour-line等高線"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">Contour line（等高線）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#moment動差"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">Moment（動差）</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#deep-learning---probability-and-information-theories-iv"><span class="nav-number">1.</span> <span class="nav-text">Deep learning - Probability and Information theories IV</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#common-probability-distribution"><span class="nav-number">1.1.</span> <span class="nav-text">Common probability distribution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#multivariate-gaussian-distribution%E5%A4%9A%E5%85%83%E5%B8%B8%E6%85%8B%E5%88%86%E4%BD%88continuous"><span class="nav-number">1.1.1.</span> <span class="nav-text">Multivariate Gaussian distribution（多元常態分佈；Continuous）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E6%80%A7"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mahalanobis-distance%E9%A6%AC%E6%B0%8F%E8%B7%9D%E9%9B%A2"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">Mahalanobis distance（馬氏距離）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#contour-line%E7%AD%89%E9%AB%98%E7%B7%9A"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">Contour line（等高線）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#moment%E5%8B%95%E5%B7%AE"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">Moment（動差）</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1114,11 +1115,11 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+  <span class="author" itemprop="copyrightHolder">Wang Yu Li</span>
 
   
 
@@ -1262,7 +1263,7 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/willywangkaa/2019/04/19/Deep-learning-Probability-and-Information-theories-IV/';
+        this.page.url = 'http://wangwilly.github.io/willywangkaa/2019/04/19/Deep-learning-Probability-and-Information-theories-IV/';
         this.page.identifier = '2019/04/19/Deep-learning-Probability-and-Information-theories-IV/';
         this.page.title = 'Deep learning - Probability and Information theories IV';
       };
@@ -1697,24 +1698,7 @@
   
     bookmark.scrollToMark('auto', "#more");
   
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>

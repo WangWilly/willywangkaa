@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/willywangkaa/',
+    root: '',
     scheme: 'Pisces',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -103,18 +103,18 @@
   <meta name="keywords" content="Chinese Remainder Theorem," />
 
 
-<meta name="description" content="Modular 反元素 (模反元素、數論倒數)  整數 \(a\) 對同於 \(n\) 之模反元素滿足以下： \[a^{-1} \equiv b \quad (mod \; n)\] 等價於 \[a \cdot b \equiv 1 \quad (mod \; n)\] ＜Note＞：整數 \(a\) 對模數 \(n\) 之模反元素存在的充分必要條件(iff)是“\(a\)”與“\(n">
-<meta name="keywords" content="Chinese Remainder Theorem">
+<meta name="description" content="Modular 反元素 (模反元素、數論倒數)  整數 \(a\) 對同於 \(n\) 之模反元素滿足以下： \[a^{-1} \equiv b \quad (mod \; n)\] 等價於 \[a \cdot b \equiv 1 \quad (mod \; n)\] ＜Note＞：整數 \(a\) 對模數 \(n\) 之模反元素存在的充分必要條件(iff)是&quot;\(a\)&quot;與&quot;\(n\)&quot;互質。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Discrete mathematics - Chinese Remainder Theorem">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/05/08/Discrete-mathematics-Chinese-Remainder-Theorem/index.html">
+<meta property="og:url" content="http://wangwilly.github.io/willywangkaa/2018/05/08/Discrete-mathematics-Chinese-Remainder-Theorem/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="Modular 反元素 (模反元素、數論倒數)  整數 \(a\) 對同於 \(n\) 之模反元素滿足以下： \[a^{-1} \equiv b \quad (mod \; n)\] 等價於 \[a \cdot b \equiv 1 \quad (mod \; n)\] ＜Note＞：整數 \(a\) 對模數 \(n\) 之模反元素存在的充分必要條件(iff)是“\(a\)”與“\(n">
-<meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2019-02-08T04:43:54.294Z">
+<meta property="og:description" content="Modular 反元素 (模反元素、數論倒數)  整數 \(a\) 對同於 \(n\) 之模反元素滿足以下： \[a^{-1} \equiv b \quad (mod \; n)\] 等價於 \[a \cdot b \equiv 1 \quad (mod \; n)\] ＜Note＞：整數 \(a\) 對模數 \(n\) 之模反元素存在的充分必要條件(iff)是&quot;\(a\)&quot;與&quot;\(n\)&quot;互質。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2018-05-08T13:33:00.000Z">
+<meta property="article:modified_time" content="2019-02-08T04:43:54.294Z">
+<meta property="article:author" content="Wang Yu Li">
+<meta property="article:tag" content="Chinese Remainder Theorem">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Discrete mathematics - Chinese Remainder Theorem">
-<meta name="twitter:description" content="Modular 反元素 (模反元素、數論倒數)  整數 \(a\) 對同於 \(n\) 之模反元素滿足以下： \[a^{-1} \equiv b \quad (mod \; n)\] 等價於 \[a \cdot b \equiv 1 \quad (mod \; n)\] ＜Note＞：整數 \(a\) 對模數 \(n\) 之模反元素存在的充分必要條件(iff)是“\(a\)”與“\(n">
 
 
 
@@ -166,9 +166,11 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
@@ -193,7 +195,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Live more like human</p>
+        <p class="site-subtitle">The higher up, the greater the fall.</p>
       
   </div>
 
@@ -214,25 +216,25 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/willywangkaa/" rel="section">
+          <a href="/willywangkaa/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/willywangkaa/archives/" rel="section">
+          <a href="/willywangkaa/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/willywangkaa/categories/" rel="section">
+          <a href="/willywangkaa/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/willywangkaa/tags/" rel="section">
+          <a href="/willywangkaa/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
@@ -313,7 +315,7 @@
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/05/08/Discrete-mathematics-Chinese-Remainder-Theorem/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -427,7 +429,7 @@
 <p><span class="math display">\[a^{-1} \equiv b \quad (mod \; n)\]</span></p>
 <p>等價於</p>
 <p><span class="math display">\[a \cdot b \equiv 1 \quad (mod \; n)\]</span></p>
-<p><strong>＜Note＞：</strong>整數 <span class="math inline">\(a\)</span> 對模數 <span class="math inline">\(n\)</span> 之模反元素存在的<strong>充分必要條件(iff)</strong>是“<span class="math inline">\(a\)</span>”與“<span class="math inline">\(n\)</span>”<strong>互質</strong>。</p>
+<p><strong>＜Note＞：</strong>整數 <span class="math inline">\(a\)</span> 對模數 <span class="math inline">\(n\)</span> 之模反元素存在的<strong>充分必要條件(iff)</strong>是"<span class="math inline">\(a\)</span>"與"<span class="math inline">\(n\)</span>"<strong>互質</strong>。</p>
 <h2 id="求-modular-反元素">求 Modular 反元素</h2>
 <ul>
 <li>輾轉相除法( 歐基里德演算法 )
@@ -439,14 +441,14 @@
 </ul>
 <p>使用<strong>原理</strong>的過程之中，較大的數的最大公因數可以由較小的數所代表，所以繼續進行同樣的計算可以不斷縮小<span class="math inline">\(a, b\)</span>兩數，直到最後有一數變為 <span class="math inline">\(0\)</span> 。這時所剩下的<strong>非零數</strong>就是兩數的最大公因數。</p>
 <p>由歐幾里得演算法的過程之中，可以推出兩數的最大公因數能用<strong>兩數的整數倍</strong>( <span class="math inline">\(\forall k \in \mathbb{Z}\)</span> )相加來表示，承上例：<br><span class="math inline">\(21 = 5 \cdot 105 + (-2) \cdot 252\)</span></p>
-<h3 id="bézouts-lemma---貝組定理-丟番圖方程">Bézout’s lemma - 貝組定理 (<a href="https://zh.wikipedia.org/wiki/%E4%B8%9F%E7%95%AA%E5%9C%96%E6%96%B9%E7%A8%8B" target="_blank" rel="noopener">丟番圖方程</a>)</h3>
+<h3 id="bézouts-lemma---貝組定理-丟番圖方程">Bézout's lemma - 貝組定理 (<a href="https://zh.wikipedia.org/wiki/%E4%B8%9F%E7%95%AA%E5%9C%96%E6%96%B9%E7%A8%8B" target="_blank" rel="noopener">丟番圖方程</a>)</h3>
 <p><span class="math inline">\(\forall a, b, m \in \mathbb{Z}\)</span> ，求未知數 <span class="math inline">\(x, y\)</span> 的<a href="https://zh.wikipedia.org/wiki/%E7%B7%9A%E6%80%A7%E6%96%B9%E7%A8%8B" target="_blank" rel="noopener">線性</a><a href="https://zh.wikipedia.org/wiki/%E4%B8%9F%E7%95%AA%E5%9C%96%E6%96%B9%E7%A8%8B" target="_blank" rel="noopener">丟番圖方程式</a>（稱為<strong>貝祖等式</strong>）：</p>
 <p><span class="math display">\[a \cdot x + b \cdot y = m\]</span></p>
 <p>當 $x, y $有<strong>整數解</strong>時若且唯若( <span class="math inline">\(\Leftrightarrow\)</span> ) <span class="math inline">\(gcd(a, b)\; | \; m\)</span> 。此等式有解時必然有無窮多個解，每組解 <span class="math inline">\(x, y\)</span> 都稱為<strong>貝組數</strong>可用<a href="https://zh.wikipedia.org/wiki/%E6%93%B4%E5%B1%95%E6%AD%90%E5%B9%BE%E9%87%8C%E5%BE%97%E6%BC%94%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">擴展歐幾里得演算法</a>求得，也就是說若 <span class="math inline">\(a\)</span> 為負數<span class="math inline">\(a \cdot (-x) + b \cdot y = m\)</span> 有整數解時<span class="math inline">\(gcd(|a|, b) \;| \; m\)</span>。</p>
 <ul>
 <li>$Ex. $ 求 <span class="math inline">\(47 \cdot x + 30 \cdot y = 1\)</span>，求 <span class="math inline">\(x, y\)</span>？
 <ul>
-<li>$47 = 1 30 + 17 $ <br> <span class="math inline">\(\Rightarrow 30 = 1\cdot 17 + 13\)</span> <br> <span class="math inline">\(\Rightarrow 17 = 1 \cdot 13 + 4\)</span><br><span class="math inline">\(\Rightarrow 13 = 3\cdot 4 +1\)</span> <br> 我們得知 <span class="math inline">\(gcd(47, 30) = 1\)</span>且<span class="math inline">\(1 \; | \; 1\)</span>，所以接著改寫成「餘數等於」的形式<br><span class="math inline">\(17 = 1\cdot 47 - 1 \cdot 30\)</span> <br> <span class="math inline">\(13 = 1\cdot 30 - 1 \cdot 17\)</span> <br> <span class="math inline">\(4 = 1\cdot 17 - 1 \cdot 13\)</span><br><span class="math inline">\(1 = 1\cdot 13 - 3 \cdot 4\)</span><br>最後再反著倒寫回去<br><span class="math inline">\(1 = 1\cdot 13 - 3 \cdot 4\)</span><br><span class="math inline">\(\Rightarrow 1 = 1\cdot 13 - 3 \cdot (1\cdot 17 - 1\cdot 13)\)</span><br><span class="math inline">\(\Rightarrow 1 = (-3)\cdot 17 - 4 \cdot 13\)</span><br><span class="math inline">\(\Rightarrow 1 = (-3)\cdot 17 - 4 \cdot (1\cdot 30 - 1 \cdot 17)\)</span> <br> $1 = 430 + (-7)17 $ <br> <span class="math inline">\(\Rightarrow 1 = 4\cdot 30 + (-7)\cdot ( 1 \cdot 47 - 1 \cdot 30 )\)</span> <br> <span class="math inline">\(\Rightarrow 1 = 47 \cdot (-7) + 30\cdot 11\)</span> <br>其中， <span class="math inline">\(x = -7\)</span> 與 <span class="math inline">\(y = 11\)</span> 為其中一組<strong>貝組數</strong>，其無限解為 <span class="math inline">\(x = -7 + 30\cdot k, y = 11 - 47 \cdot k, \forall k \in \mathbb{Z}\)</span></li>
+<li>$47 = 1  + 17 $ <br> <span class="math inline">\(\Rightarrow 30 = 1\cdot 17 + 13\)</span> <br> <span class="math inline">\(\Rightarrow 17 = 1 \cdot 13 + 4\)</span><br><span class="math inline">\(\Rightarrow 13 = 3\cdot 4 +1\)</span> <br> 我們得知 <span class="math inline">\(gcd(47, 30) = 1\)</span>且<span class="math inline">\(1 \; | \; 1\)</span>，所以接著改寫成「餘數等於」的形式<br><span class="math inline">\(17 = 1\cdot 47 - 1 \cdot 30\)</span> <br> <span class="math inline">\(13 = 1\cdot 30 - 1 \cdot 17\)</span> <br> <span class="math inline">\(4 = 1\cdot 17 - 1 \cdot 13\)</span><br><span class="math inline">\(1 = 1\cdot 13 - 3 \cdot 4\)</span><br>最後再反著倒寫回去<br><span class="math inline">\(1 = 1\cdot 13 - 3 \cdot 4\)</span><br><span class="math inline">\(\Rightarrow 1 = 1\cdot 13 - 3 \cdot (1\cdot 17 - 1\cdot 13)\)</span><br><span class="math inline">\(\Rightarrow 1 = (-3)\cdot 17 - 4 \cdot 13\)</span><br><span class="math inline">\(\Rightarrow 1 = (-3)\cdot 17 - 4 \cdot (1\cdot 30 - 1 \cdot 17)\)</span> <br> $ = 4 + (-7) $ <br> <span class="math inline">\(\Rightarrow 1 = 4\cdot 30 + (-7)\cdot ( 1 \cdot 47 - 1 \cdot 30 )\)</span> <br> <span class="math inline">\(\Rightarrow 1 = 47 \cdot (-7) + 30\cdot 11\)</span> <br>其中， <span class="math inline">\(x = -7\)</span> 與 <span class="math inline">\(y = 11\)</span> 為其中一組<strong>貝組數</strong>，其無限解為 <span class="math inline">\(x = -7 + 30\cdot k, y = 11 - 47 \cdot k, \forall k \in \mathbb{Z}\)</span></li>
 </ul></li>
 <li>Modular 反元素
 <ul>
@@ -570,7 +572,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/willywangkaa/2018/05/07/Linear-algebra-LU分解/" rel="next" title="Linear algebra - LU分解">
+              <a href="/willywangkaa/2018/05/07/Linear-algebra-LU%E5%88%86%E8%A7%A3/" rel="next" title="Linear algebra - LU分解">
                 <i class="fa fa-chevron-left"></i> Linear algebra - LU分解
               </a>
             
@@ -580,7 +582,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/willywangkaa/2018/05/13/Machine Learning-KNN-and-Radial-Basis-Function/" rel="prev" title="Machine Learning - KNN and Radial Basis Function">
+              <a href="/willywangkaa/2018/05/13/Machine%20Learning-KNN-and-Radial-Basis-Function/" rel="prev" title="Machine Learning - KNN and Radial Basis Function">
                 Machine Learning - KNN and Radial Basis Function <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -613,7 +615,7 @@
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -657,10 +659,10 @@
             
               <img class="site-author-image" itemprop="image"
                 src="/willywangkaa/images/avatar_me.gif"
-                alt="Willy Wang (willywangkaa)" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
-              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -668,7 +670,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/willywangkaa/archives/">
+                  <a href="/willywangkaa/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">posts</span>
@@ -715,8 +717,6 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -932,7 +932,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#modular-反元素-模反元素數論倒數"><span class="nav-number">1.</span> <span class="nav-text">Modular 反元素 (模反元素、數論倒數)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#求-modular-反元素"><span class="nav-number">1.1.</span> <span class="nav-text">求 Modular 反元素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bézouts-lemma---貝組定理-丟番圖方程"><span class="nav-number">1.1.1.</span> <span class="nav-text">Bézout’s lemma - 貝組定理 (丟番圖方程)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#modular---同餘的性質"><span class="nav-number">2.</span> <span class="nav-text">Modular - 同餘的性質</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chinese-remainder-theorem---中國剩餘定理"><span class="nav-number">3.</span> <span class="nav-text">Chinese Remainder Theorem - 中國剩餘定理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常見題目類型"><span class="nav-number">3.1.</span> <span class="nav-text">常見題目類型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#type-1-模數都互質"><span class="nav-number">3.1.1.</span> <span class="nav-text">Type 1 (模數都互質)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#type-2-模數不全是互質"><span class="nav-number">3.1.2.</span> <span class="nav-text">Type 2 (模數不全是互質)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#type-3-模數重疊"><span class="nav-number">3.1.3.</span> <span class="nav-text">Type 3 (模數重疊)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#type-4-矛盾---無解"><span class="nav-number">3.1.4.</span> <span class="nav-text">Type 4 (矛盾 - 無解)</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#modular-%E5%8F%8D%E5%85%83%E7%B4%A0-%E6%A8%A1%E5%8F%8D%E5%85%83%E7%B4%A0%E6%95%B8%E8%AB%96%E5%80%92%E6%95%B8"><span class="nav-number">1.</span> <span class="nav-text">Modular 反元素 (模反元素、數論倒數)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%82-modular-%E5%8F%8D%E5%85%83%E7%B4%A0"><span class="nav-number">1.1.</span> <span class="nav-text">求 Modular 反元素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#b%C3%A9zouts-lemma---%E8%B2%9D%E7%B5%84%E5%AE%9A%E7%90%86-%E4%B8%9F%E7%95%AA%E5%9C%96%E6%96%B9%E7%A8%8B"><span class="nav-number">1.1.1.</span> <span class="nav-text">Bézout&#39;s lemma - 貝組定理 (丟番圖方程)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#modular---%E5%90%8C%E9%A4%98%E7%9A%84%E6%80%A7%E8%B3%AA"><span class="nav-number">2.</span> <span class="nav-text">Modular - 同餘的性質</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chinese-remainder-theorem---%E4%B8%AD%E5%9C%8B%E5%89%A9%E9%A4%98%E5%AE%9A%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">Chinese Remainder Theorem - 中國剩餘定理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A6%8B%E9%A1%8C%E7%9B%AE%E9%A1%9E%E5%9E%8B"><span class="nav-number">3.1.</span> <span class="nav-text">常見題目類型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#type-1-%E6%A8%A1%E6%95%B8%E9%83%BD%E4%BA%92%E8%B3%AA"><span class="nav-number">3.1.1.</span> <span class="nav-text">Type 1 (模數都互質)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#type-2-%E6%A8%A1%E6%95%B8%E4%B8%8D%E5%85%A8%E6%98%AF%E4%BA%92%E8%B3%AA"><span class="nav-number">3.1.2.</span> <span class="nav-text">Type 2 (模數不全是互質)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#type-3-%E6%A8%A1%E6%95%B8%E9%87%8D%E7%96%8A"><span class="nav-number">3.1.3.</span> <span class="nav-text">Type 3 (模數重疊)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#type-4-%E7%9F%9B%E7%9B%BE---%E7%84%A1%E8%A7%A3"><span class="nav-number">3.1.4.</span> <span class="nav-text">Type 4 (矛盾 - 無解)</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -952,11 +952,11 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+  <span class="author" itemprop="copyrightHolder">Wang Yu Li</span>
 
   
 
@@ -1100,7 +1100,7 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/05/08/Discrete-mathematics-Chinese-Remainder-Theorem/';
+        this.page.url = 'http://wangwilly.github.io/willywangkaa/2018/05/08/Discrete-mathematics-Chinese-Remainder-Theorem/';
         this.page.identifier = '2018/05/08/Discrete-mathematics-Chinese-Remainder-Theorem/';
         this.page.title = 'Discrete mathematics - Chinese Remainder Theorem';
       };
@@ -1535,24 +1535,7 @@
   
     bookmark.scrollToMark('auto', "#more");
   
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>

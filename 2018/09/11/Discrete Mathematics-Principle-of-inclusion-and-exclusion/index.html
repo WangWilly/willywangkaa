@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/willywangkaa/',
+    root: '',
     scheme: 'Pisces',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -103,18 +103,19 @@
   <meta name="keywords" content="Algorithm,排容原理," />
 
 
-<meta name="description" content="Principle of inclusion and exclusion（排容原理） 假設 \(U\) 為與集合，其中 \(|U| = N\)，令 \(a_1, a_2, ..., a_n\) 為 n 個性質，其中這些性質直接定義在 \(U\) 上且 \(N(a_i)\) 表示 \(U\) 中滿足性質 \(a_i\) 的元素個數。  定義  \(N(\bar{a_i})\) 表示 \(U">
-<meta name="keywords" content="Algorithm,排容原理">
+<meta name="description" content="Principle of inclusion and exclusion（排容原理） 假設 \(U\) 為與集合，其中 \(|U| &#x3D; N\)，令 \(a_1, a_2, ..., a_n\) 為 n 個性質，其中這些性質直接定義在 \(U\) 上且 \(N(a_i)\) 表示 \(U\) 中滿足性質 \(a_i\) 的元素個數。  定義  \(N(\bar{a_i})\) 表示 \(U\) 中不">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Discrete Mathematics - Principle of inclusion and exclusion（排容原理）">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/09/11/Discrete Mathematics-Principle-of-inclusion-and-exclusion/index.html">
+<meta property="og:url" content="http://wangwilly.github.io/willywangkaa/2018/09/11/Discrete%20Mathematics-Principle-of-inclusion-and-exclusion/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="Principle of inclusion and exclusion（排容原理） 假設 \(U\) 為與集合，其中 \(|U| = N\)，令 \(a_1, a_2, ..., a_n\) 為 n 個性質，其中這些性質直接定義在 \(U\) 上且 \(N(a_i)\) 表示 \(U\) 中滿足性質 \(a_i\) 的元素個數。  定義  \(N(\bar{a_i})\) 表示 \(U">
-<meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2019-02-08T04:49:15.562Z">
+<meta property="og:description" content="Principle of inclusion and exclusion（排容原理） 假設 \(U\) 為與集合，其中 \(|U| &#x3D; N\)，令 \(a_1, a_2, ..., a_n\) 為 n 個性質，其中這些性質直接定義在 \(U\) 上且 \(N(a_i)\) 表示 \(U\) 中滿足性質 \(a_i\) 的元素個數。  定義  \(N(\bar{a_i})\) 表示 \(U\) 中不">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2018-09-11T02:51:00.000Z">
+<meta property="article:modified_time" content="2019-02-08T04:49:15.562Z">
+<meta property="article:author" content="Wang Yu Li">
+<meta property="article:tag" content="Algorithm">
+<meta property="article:tag" content="排容原理">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Discrete Mathematics - Principle of inclusion and exclusion（排容原理）">
-<meta name="twitter:description" content="Principle of inclusion and exclusion（排容原理） 假設 \(U\) 為與集合，其中 \(|U| = N\)，令 \(a_1, a_2, ..., a_n\) 為 n 個性質，其中這些性質直接定義在 \(U\) 上且 \(N(a_i)\) 表示 \(U\) 中滿足性質 \(a_i\) 的元素個數。  定義  \(N(\bar{a_i})\) 表示 \(U">
 
 
 
@@ -166,9 +167,11 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
@@ -193,7 +196,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Live more like human</p>
+        <p class="site-subtitle">The higher up, the greater the fall.</p>
       
   </div>
 
@@ -214,25 +217,25 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/willywangkaa/" rel="section">
+          <a href="/willywangkaa/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/willywangkaa/archives/" rel="section">
+          <a href="/willywangkaa/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/willywangkaa/categories/" rel="section">
+          <a href="/willywangkaa/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/willywangkaa/tags/" rel="section">
+          <a href="/willywangkaa/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
@@ -310,10 +313,10 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/09/11/Discrete Mathematics-Principle-of-inclusion-and-exclusion/">
+    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/09/11/Discrete%20Mathematics-Principle-of-inclusion-and-exclusion/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -391,7 +394,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/willywangkaa/2018/09/11/Discrete Mathematics-Principle-of-inclusion-and-exclusion/#comments" itemprop="discussionUrl">
+                <a href="/willywangkaa/2018/09/11/Discrete%20Mathematics-Principle-of-inclusion-and-exclusion/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
                         data-disqus-identifier="2018/09/11/Discrete Mathematics-Principle-of-inclusion-and-exclusion/" itemprop="commentCount"></span>
                 </a>
@@ -623,7 +626,7 @@ S(m+1, n) = S(m, n-1)+S(m, n)
           
             <a href="/willywangkaa/tags/Algorithm/" rel="tag"># Algorithm</a>
           
-            <a href="/willywangkaa/tags/排容原理/" rel="tag"># 排容原理</a>
+            <a href="/willywangkaa/tags/%E6%8E%92%E5%AE%B9%E5%8E%9F%E7%90%86/" rel="tag"># 排容原理</a>
           
         </div>
       
@@ -679,7 +682,7 @@ S(m+1, n) = S(m, n-1)+S(m, n)
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -723,10 +726,10 @@ S(m+1, n) = S(m, n-1)+S(m, n)
             
               <img class="site-author-image" itemprop="image"
                 src="/willywangkaa/images/avatar_me.gif"
-                alt="Willy Wang (willywangkaa)" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
-              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -734,7 +737,7 @@ S(m+1, n) = S(m, n-1)+S(m, n)
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/willywangkaa/archives/">
+                  <a href="/willywangkaa/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">posts</span>
@@ -781,8 +784,6 @@ S(m+1, n) = S(m, n-1)+S(m, n)
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -998,7 +999,7 @@ S(m+1, n) = S(m, n-1)+S(m, n)
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#principle-of-inclusion-and-exclusion排容原理"><span class="nav-number">1.</span> <span class="nav-text">Principle of inclusion and exclusion（排容原理）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#lemma-1"><span class="nav-number">1.1.</span> <span class="nav-text">Lemma 1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#proof"><span class="nav-number">1.1.1.</span> <span class="nav-text">Proof</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ex-97-清大"><span class="nav-number">1.2.</span> <span class="nav-text">Ex ( 97 清大 )</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sol"><span class="nav-number">1.2.1.</span> <span class="nav-text">Sol</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ex-97-台大-尤拉公式說明"><span class="nav-number">1.3.</span> <span class="nav-text">Ex ( 97 台大 ) 尤拉公式說明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#proof-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">Proof</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#theorem"><span class="nav-number">1.4.</span> <span class="nav-text">Theorem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#proof-2"><span class="nav-number">1.4.1.</span> <span class="nav-text">Proof</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stirling-number-of-the-second-kind"><span class="nav-number">1.5.</span> <span class="nav-text">Stirling number of the second kind</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#theorem---第二種-stirling-數的遞迴結構"><span class="nav-number">1.6.</span> <span class="nav-text">Theorem - 第二種 Stirling 數的遞迴結構</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#proof-組合證法"><span class="nav-number">1.6.1.</span> <span class="nav-text">Proof ( 組合證法 )</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#principle-of-inclusion-and-exclusion%E6%8E%92%E5%AE%B9%E5%8E%9F%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">Principle of inclusion and exclusion（排容原理）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#lemma-1"><span class="nav-number">1.1.</span> <span class="nav-text">Lemma 1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#proof"><span class="nav-number">1.1.1.</span> <span class="nav-text">Proof</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ex-97-%E6%B8%85%E5%A4%A7"><span class="nav-number">1.2.</span> <span class="nav-text">Ex ( 97 清大 )</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sol"><span class="nav-number">1.2.1.</span> <span class="nav-text">Sol</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ex-97-%E5%8F%B0%E5%A4%A7-%E5%B0%A4%E6%8B%89%E5%85%AC%E5%BC%8F%E8%AA%AA%E6%98%8E"><span class="nav-number">1.3.</span> <span class="nav-text">Ex ( 97 台大 ) 尤拉公式說明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#proof-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">Proof</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#theorem"><span class="nav-number">1.4.</span> <span class="nav-text">Theorem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#proof-2"><span class="nav-number">1.4.1.</span> <span class="nav-text">Proof</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stirling-number-of-the-second-kind"><span class="nav-number">1.5.</span> <span class="nav-text">Stirling number of the second kind</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#theorem---%E7%AC%AC%E4%BA%8C%E7%A8%AE-stirling-%E6%95%B8%E7%9A%84%E9%81%9E%E8%BF%B4%E7%B5%90%E6%A7%8B"><span class="nav-number">1.6.</span> <span class="nav-text">Theorem - 第二種 Stirling 數的遞迴結構</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#proof-%E7%B5%84%E5%90%88%E8%AD%89%E6%B3%95"><span class="nav-number">1.6.1.</span> <span class="nav-text">Proof ( 組合證法 )</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1018,11 +1019,11 @@ S(m+1, n) = S(m, n-1)+S(m, n)
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+  <span class="author" itemprop="copyrightHolder">Wang Yu Li</span>
 
   
 
@@ -1166,7 +1167,7 @@ S(m+1, n) = S(m, n-1)+S(m, n)
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/09/11/Discrete Mathematics-Principle-of-inclusion-and-exclusion/';
+        this.page.url = 'http://wangwilly.github.io/willywangkaa/2018/09/11/Discrete%20Mathematics-Principle-of-inclusion-and-exclusion/';
         this.page.identifier = '2018/09/11/Discrete Mathematics-Principle-of-inclusion-and-exclusion/';
         this.page.title = 'Discrete Mathematics - Principle of inclusion and exclusion（排容原理）';
       };
@@ -1601,24 +1602,7 @@ S(m+1, n) = S(m, n-1)+S(m, n)
   
     bookmark.scrollToMark('auto', "#more");
   
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>

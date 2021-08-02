@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/willywangkaa/',
+    root: '',
     scheme: 'Pisces',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -103,14 +103,13 @@
   <meta name="keywords" content="Graph," />
 
 
-<meta name="description" content="The structure of graph [Note] Adjacency list 有一圖 G = (V, E), |V| = n, |E| = e，需要 n 條相鄰串列（vertex[1…n] : pointer）來表達，其中 vertex[i] 代表頂點 i 的相鄰串列，紀錄所有與頂點 i 相鄰的頂點編號  以「相鄰串列」表示無向圖時，因為 邊(i,j) = 邊(j,i)（一條邊">
-<meta name="keywords" content="Graph">
+<meta name="description" content="The structure of graph [Note] Adjacency list 有一圖 G &#x3D; (V, E), |V| &#x3D; n, |E| &#x3D; e，需要 n 條相鄰串列（vertex[1...n] : pointer）來表達，其中 vertex[i] 代表頂點 i 的相鄰串列，紀錄所有與頂點 i 相鄰的頂點編號  以「相鄰串列」表示無向圖時，因為 邊(i,j) &#x3D; 邊(j,i)（一條邊有兩">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Data structure - Graph">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/12/02/Data-structure-graph/index.html">
+<meta property="og:url" content="http://wangwilly.github.io/willywangkaa/2018/12/02/Data-structure-graph/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="The structure of graph [Note] Adjacency list 有一圖 G = (V, E), |V| = n, |E| = e，需要 n 條相鄰串列（vertex[1…n] : pointer）來表達，其中 vertex[i] 代表頂點 i 的相鄰串列，紀錄所有與頂點 i 相鄰的頂點編號  以「相鄰串列」表示無向圖時，因為 邊(i,j) = 邊(j,i)（一條邊">
-<meta property="og:locale" content="zh-tw">
+<meta property="og:description" content="The structure of graph [Note] Adjacency list 有一圖 G &#x3D; (V, E), |V| &#x3D; n, |E| &#x3D; e，需要 n 條相鄰串列（vertex[1...n] : pointer）來表達，其中 vertex[i] 代表頂點 i 的相鄰串列，紀錄所有與頂點 i 相鄰的頂點編號  以「相鄰串列」表示無向圖時，因為 邊(i,j) &#x3D; 邊(j,i)（一條邊有兩">
+<meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543649110616.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543649696312.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543650099846.png">
@@ -151,10 +150,11 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543748935456.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543749321235.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1543749964256.png">
-<meta property="og:updated_time" content="2019-02-22T08:25:00.635Z">
+<meta property="article:published_time" content="2018-12-02T11:41:00.000Z">
+<meta property="article:modified_time" content="2019-02-22T08:25:00.635Z">
+<meta property="article:author" content="Wang Yu Li">
+<meta property="article:tag" content="Graph">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Data structure - Graph">
-<meta name="twitter:description" content="The structure of graph [Note] Adjacency list 有一圖 G = (V, E), |V| = n, |E| = e，需要 n 條相鄰串列（vertex[1…n] : pointer）來表達，其中 vertex[i] 代表頂點 i 的相鄰串列，紀錄所有與頂點 i 相鄰的頂點編號  以「相鄰串列」表示無向圖時，因為 邊(i,j) = 邊(j,i)（一條邊">
 <meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/1543649110616.png">
 
 
@@ -207,9 +207,11 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
@@ -234,7 +236,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Live more like human</p>
+        <p class="site-subtitle">The higher up, the greater the fall.</p>
       
   </div>
 
@@ -255,25 +257,25 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/willywangkaa/" rel="section">
+          <a href="/willywangkaa/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/willywangkaa/archives/" rel="section">
+          <a href="/willywangkaa/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/willywangkaa/categories/" rel="section">
+          <a href="/willywangkaa/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/willywangkaa/tags/" rel="section">
+          <a href="/willywangkaa/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
@@ -354,7 +356,7 @@
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/12/02/Data-structure-graph/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -464,7 +466,7 @@
       
         <h1 id="the-structure-of-graph">The structure of graph</h1>
 <h2 id="note-adjacency-list">[Note] Adjacency list</h2>
-<p>有一圖 G = (V, E), |V| = n, |E| = e，需要 n 條相鄰串列（vertex[1…n] : pointer）來表達，其中 vertex[i] 代表頂點 i 的相鄰串列，紀錄所有與頂點 i 相鄰的頂點編號</p>
+<p>有一圖 G = (V, E), |V| = n, |E| = e，需要 n 條相鄰串列（vertex[1...n] : pointer）來表達，其中 vertex[i] 代表頂點 i 的相鄰串列，紀錄所有與頂點 i 相鄰的頂點編號</p>
 <ul>
 <li>以「相鄰串列」表示無向圖時，因為 邊(i,j) = 邊(j,i)（一條邊有兩個頂點），所以串列需要 2×e 個節點來儲存這張圖
 <ul>
@@ -515,7 +517,7 @@
 <td>時間複雜度 O(e)，不適合</td>
 </tr>
 <tr class="odd">
-<td>求圖上的邊數（判斷連通…）</td>
+<td>求圖上的邊數（判斷連通...）</td>
 <td>時間複雜度 <span class="math inline">\(O(n^2)\)</span>，不適合</td>
 <td>時間複雜度 O(n+e)，適合</td>
 </tr>
@@ -527,16 +529,16 @@
 <li>每一條<strong>邊</strong>以一個<strong>節點</strong>表示</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1543649110616.png" alt="1543649110616"><figcaption>1543649110616</figcaption>
+<img src="\willywangkaa\images\1543649110616.png" alt="1543649110616"><figcaption aria-hidden="true">1543649110616</figcaption>
 </figure>
 <ul>
-<li>指標陣列（vertex[1…n] : pointer）
+<li>指標陣列（vertex[1...n] : pointer）
 <ul>
 <li>Vertex[i] <strong>指向第一個包含</strong> <span class="math inline">\(V_i\)</span> <strong>的邊節點</strong></li>
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1543649696312.png" alt="1543649696312"><figcaption>1543649696312</figcaption>
+<img src="\willywangkaa\images\1543649696312.png" alt="1543649696312"><figcaption aria-hidden="true">1543649696312</figcaption>
 </figure>
 <ul>
 <li>空間複雜度：O(n+e)</li>
@@ -544,11 +546,11 @@
 <h2 id="index-array">Index array</h2>
 <p>欲表示圖 G = (V,E), |V| = n, |E| = e</p>
 <ul>
-<li><p>一個一維陣列（Array[1… 2×e]）<strong>紀錄所有點之相鄰頂點編號</strong></p></li>
-<li><p>一個一維陣列為「Index」（Index[1…n]）表示頂點 i 在 Array 中紀錄的<strong>起始位置</strong></p></li>
+<li><p>一個一維陣列（Array[1... 2×e]）<strong>紀錄所有點之相鄰頂點編號</strong></p></li>
+<li><p>一個一維陣列為「Index」（Index[1...n]）表示頂點 i 在 Array 中紀錄的<strong>起始位置</strong></p></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1543650099846.png" alt="1543650099846"><figcaption>1543650099846</figcaption>
+<img src="\willywangkaa\images\1543650099846.png" alt="1543650099846"><figcaption aria-hidden="true">1543650099846</figcaption>
 </figure>
 <ul>
 <li>空間複雜度：O(n+e)</li>
@@ -556,20 +558,20 @@
 <h2 id="incident-matrix-離散數學">Incident matrix （離散數學）</h2>
 <p>欲表示圖 G = (V,E), |V| = n, |E| = e</p>
 <ul>
-<li>一個二維陣列（A[1…n, 1…e] : boolean）
+<li>一個二維陣列（A[1...n, 1...e] : boolean）
 <ul>
 <li>若圖中存在邊 <span class="math inline">\(e_k\)</span>=(i,j)，則 A[i, <span class="math inline">\(e_k\)</span>]=A[j, <span class="math inline">\(e_k\)</span>]=1，其餘為 0</li>
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1543650560718.png" alt="1543650560718"><figcaption>1543650560718</figcaption>
+<img src="\willywangkaa\images\1543650560718.png" alt="1543650560718"><figcaption aria-hidden="true">1543650560718</figcaption>
 </figure>
 <h1 id="圖的追蹤">圖的追蹤</h1>
 <p>G = (V,E), |V| = n, |E| = e</p>
 <ul>
 <li>比較表
 <ul>
-<li>在演算法書籍中，使用「Adjacency list」作深度追蹤與廣度追蹤時，<strong>時間複雜度分析考慮了 visit[1…n] 陣列初值的設定</strong>，所以為 O(n+e)，而資料結構書籍則無考慮</li>
+<li>在演算法書籍中，使用「Adjacency list」作深度追蹤與廣度追蹤時，<strong>時間複雜度分析考慮了 visit[1...n] 陣列初值的設定</strong>，所以為 O(n+e)，而資料結構書籍則無考慮</li>
 </ul></li>
 </ul>
 <table>
@@ -630,12 +632,12 @@
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Global variable:</span></span><br><span class="line"><span class="comment">//                    G: adjacency matrix</span></span><br><span class="line"><span class="comment">//          visit[1..n]: 頂點搜尋紀錄，且全部元素已經重設為 false</span></span><br><span class="line"><span class="comment">// Parameter:</span></span><br><span class="line"><span class="comment">//          v: 起始頂點</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">BFS</span><span class="params">(v)</span> </span>&#123;</span><br><span class="line">    visit[v] = <span class="literal">true</span>;</span><br><span class="line">    CreateQueue(q);</span><br><span class="line">    Enqueue(q, v);</span><br><span class="line">    <span class="keyword">while</span>(!q.empty()) &#123;</span><br><span class="line">        u = Dequeue(q);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> w = <span class="number">0</span>; w &lt;= n; w++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(G[u,w])</span><br><span class="line">                <span class="keyword">if</span>(!visit[w])&#123;</span><br><span class="line">                    visit[w] = <span class="literal">true</span>;</span><br><span class="line">                    Enqueue(q, w);</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure>
-<img src="\willywangkaa\images\1543651440091.png" alt="1543651440091"><figcaption>1543651440091</figcaption>
+<img src="\willywangkaa\images\1543651440091.png" alt="1543651440091"><figcaption aria-hidden="true">1543651440091</figcaption>
 </figure>
 <blockquote>
 <p>無向圖二元樹</p>
 <figure>
-<img src="\willywangkaa\images\1543651513624.png" alt="1543651513624"><figcaption>1543651513624</figcaption>
+<img src="\willywangkaa\images\1543651513624.png" alt="1543651513624"><figcaption aria-hidden="true">1543651513624</figcaption>
 </figure>
 <ul>
 <li>(見上圖) 在圖中執行 DFS(1) 類似在二元樹中作「前序追蹤」</li>
@@ -775,19 +777,19 @@
 <p>一個連通無向圖 G，則 G 上任意的「Spanning tree」，必定包含 ≧ 1 條「共同的邊」？</p>
 <p><strong>False（見下圖）</strong></p>
 <figure>
-<img src="\willywangkaa\images\1543652365094.png" alt="1543652365094"><figcaption>1543652365094</figcaption>
+<img src="\willywangkaa\images\1543652365094.png" alt="1543652365094"><figcaption aria-hidden="true">1543652365094</figcaption>
 </figure>
 <h2 id="minimum-spanning-tree">Minimum spanning tree</h2>
 <ul>
-<li>若圖中有多條邊具有相同的值，則「Minimum spanning tree」≧ 1</li>
+<li><p>若圖中有多條邊具有相同的值，則「Minimum spanning tree」≧ 1</p></li>
 <li><p>若每條邊權重皆不同則「Minimum spanning tree」唯一</p></li>
-<li>應用
+<li><p>應用</p>
 <ul>
 <li>電路布局成本最小化</li>
 <li>連結 n 城市之最少建設成本</li>
 </ul></li>
 </ul>
-<h3 id="kruskals-algorithm-algorithm-書上版本">Kruskal’s algorithm [Algorithm 書上版本]</h3>
+<h3 id="kruskals-algorithm-algorithm-書上版本">Kruskal's algorithm [Algorithm 書上版本]</h3>
 <p>G = (V,E), |V| = n, |E| = e</p>
 <ul>
 <li>最多作 |E| 回合，而每一回合主要有兩個工作
@@ -819,15 +821,15 @@
 <blockquote>
 <p>Example（102 交通大學資料結構與演算法）</p>
 <ul>
-<li>The running time of Kruskal’s algorithm for a connected undirected weighted graph G = (V, E) is ＿＿＿.</li>
+<li>The running time of Kruskal's algorithm for a connected undirected weighted graph G = (V, E) is ＿＿＿.</li>
 </ul>
 <p>O(∣E∣log∣V∣)</p>
 <ul>
-<li>Suppose that all edge weights in a graph G are integers <strong>in the range from 1 to ∣V∣</strong>. How fast can you make Kruskal’s algorithm run?</li>
+<li>Suppose that all edge weights in a graph G are integers <strong>in the range from 1 to ∣V∣</strong>. How fast can you make Kruskal's algorithm run?</li>
 </ul>
 <p>O(∣E∣ α(∣V∣))，α 為「<a href="https://en.wikipedia.org/wiki/Ackermann_function" target="_blank" rel="noopener">Ackermann function</a>」反函數</p>
 </blockquote>
-<h3 id="prims-algorithm-ds-書上版本">Prim’s algorithm [DS 書上版本]</h3>
+<h3 id="prims-algorithm-ds-書上版本">Prim's algorithm [DS 書上版本]</h3>
 <ul>
 <li>Time complexity
 <ul>
@@ -848,7 +850,7 @@
 <li><p>Loop A：總共會檢視 2 ×|E| 個頂點</p>
 <ul>
 <li><p>Line B：<code>v.key = W[u,v]</code> 相當於是作「Decrease key of node in heap」</p></li>
-<li>因為為「Binary heap」，所以需要 O(log|V|) 的時間複雜度</li>
+<li><p>因為為「Binary heap」，所以需要 O(log|V|) 的時間複雜度</p></li>
 <li><p>迴圈總共的時間複雜度為 <strong>O(|E|log|V|)</strong></p></li>
 </ul></li>
 </ol></li>
@@ -861,7 +863,7 @@
 </ul>
 </blockquote>
 <figure>
-<img src="\willywangkaa\images\1543730410752.png" alt="1543730410752"><figcaption>1543730410752</figcaption>
+<img src="\willywangkaa\images\1543730410752.png" alt="1543730410752"><figcaption aria-hidden="true">1543730410752</figcaption>
 </figure>
 <ul>
 <li><p>Time complexity （用「Fibonacci heap」作為「Priority queue」）</p>
@@ -875,13 +877,13 @@
 <li><p>Loop A：總共會檢視 2 ×|E| 個頂點</p>
 <ul>
 <li><p>Line B：<code>v.key = W[u,v]</code> 相當於是作「Decrease key of node in heap」</p></li>
-<li>因為為「Fibonacci heap」，所以需要 O(1) 的時間複雜度</li>
+<li><p>因為為「Fibonacci heap」，所以需要 O(1) 的時間複雜度</p></li>
 <li><p>迴圈總共的時間複雜度為 O(|E|)</p></li>
 </ul></li>
 </ol></li>
 </ul>
 <p>總共需要 O(|V|) + O(|V|) + O(|V|log|V|) + <strong>O(|E|)</strong> ，<strong>因為 |E|≧ |V|-1 ，所以時間複雜度為 O(|V|log|V|+|E|)</strong></p>
-<h3 id="sollins-algorithm">Sollin’s algorithm</h3>
+<h3 id="sollins-algorithm">Sollin's algorithm</h3>
 <p>步驟：（開始時先將每個頂點視為獨立的數根）</p>
 <ol type="1">
 <li>針對每棵樹，各自挑出「Minimum cost tree edge」</li>
@@ -921,7 +923,7 @@
 <thead>
 <tr class="header">
 <th></th>
-<th>Dijkstra’s algorithm</th>
+<th>Dijkstra's algorithm</th>
 <th>Bellman-ford algorithm</th>
 <th>Folyed-warshall algorihm</th>
 </tr>
@@ -965,7 +967,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="dijkstras-algorithm-ds-書上版本">Dijkstra’s algorithm [DS 書上版本]</h2>
+<h2 id="dijkstras-algorithm-ds-書上版本">Dijkstra's algorithm [DS 書上版本]</h2>
 <p>適用於有向圖或無向圖皆可以</p>
 <p>Data structure</p>
 <ul>
@@ -973,35 +975,35 @@
 </ul>
 <p><span class="math inline">\(cost[i, j] = \left\{\begin{matrix} 邊成本值 &amp; ,if \;＜i,j＞ \in E \\ 0 &amp; ,if \; i=j \\ \infty &amp; ,if \;＜i,j＞ \notin E\end{matrix}\right.\)</span></p>
 <ul>
-<li>S[1…n]：Boolean</li>
+<li>S[1...n]：Boolean</li>
 </ul>
 <p><span class="math inline">\(S[i] = \left\{\begin{matrix}False &amp; , 起點到 \;i \;點的最短距離尚未決定 \\True &amp; , 起點到 \;i \;點的最短距離已決定\end{matrix}\right.\)</span></p>
 <ul>
-<li>Dist[1…n]：Integer</li>
+<li>Dist[1...n]：Integer</li>
 </ul>
 <p>Dist[i] ： 起點到 i 點的最短路徑長（初值為「Cost matrix」起點到該點值）</p>
 <ul>
 <li>概念</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1543730847726.png" alt="1543730847726"><figcaption>1543730847726</figcaption>
+<img src="\willywangkaa\images\1543730847726.png" alt="1543730847726"><figcaption aria-hidden="true">1543730847726</figcaption>
 </figure>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(Dist[i]&gt;Dist[u]+Cost[u,i]) &#123;</span><br><span class="line">    Dist[i] = Dist[u] + Cost[u,i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>圖中不可有負邊，否則無法求初正確的最短路徑</p>
 <figure>
-<img src="\willywangkaa\images\1543731055463.png" alt="1543731055463"><figcaption>1543731055463</figcaption>
+<img src="\willywangkaa\images\1543731055463.png" alt="1543731055463"><figcaption aria-hidden="true">1543731055463</figcaption>
 </figure>
-<p>以（1）作為起點，使用「Dijkstra’s algorithm」則 <code>Dist[2] = 5</code>，但其實應為 <code>Dist[2] = 2</code></p>
+<p>以（1）作為起點，使用「Dijkstra's algorithm」則 <code>Dist[2] = 5</code>，但其實應為 <code>Dist[2] = 2</code></p>
 <p>不得對所有邊以加權種方式使得負邊為正，因為若有一路徑經過點越多，則該路徑權重也倍數成長，如下：</p>
 <figure>
-<img src="\willywangkaa\images\1543731311974.png" alt="1543731311974"><figcaption>1543731311974</figcaption>
+<img src="\willywangkaa\images\1543731311974.png" alt="1543731311974"><figcaption aria-hidden="true">1543731311974</figcaption>
 </figure>
 <p>在路徑＜1,2＞路徑上只有增加權重 6 ，但是在路徑＜1,3,2＞上路徑增加權重為 12</p>
 </blockquote>
 <p>Example</p>
 <figure>
-<img src="\willywangkaa\images\1543736203059.png" alt="1543736203059"><figcaption>1543736203059</figcaption>
+<img src="\willywangkaa\images\1543736203059.png" alt="1543736203059"><figcaption aria-hidden="true">1543736203059</figcaption>
 </figure>
 <ul>
 <li>Algorithm</li>
@@ -1013,14 +1015,14 @@
 <li>Binary heap：O(|V|) + O(|V|) + O(|V|log|V|) + <strong>O(|E|log|V|)</strong> = <strong>O(|E|log|V|)</strong></li>
 <li>Fibonacci heap：O(|V|) + O(|V|) + O(|V|log|V|) + <strong>O(|E|)</strong> = <strong>O(|V|log|V|+|E|)</strong>
 <ul>
-<li>等同於「Prim’s algorithm」</li>
+<li>等同於「Prim's algorithm」</li>
 </ul></li>
 </ul></li>
 </ul>
 <blockquote>
 <ol type="1">
-<li>與「Prim’s algorithm」的時間複雜度相同</li>
-<li>「Prim’s algorithm」與「Dijkstra’s algorithm」都採用「廣度優先搜尋法」</li>
+<li>與「Prim's algorithm」的時間複雜度相同</li>
+<li>「Prim's algorithm」與「Dijkstra's algorithm」都採用「廣度優先搜尋法」</li>
 </ol>
 </blockquote>
 <h2 id="bellman-ford-algorithm">Bellman-Ford algorithm</h2>
@@ -1033,12 +1035,12 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1543736615438.png" alt="1543736615438"><figcaption>1543736615438</figcaption>
+<img src="\willywangkaa\images\1543736615438.png" alt="1543736615438"><figcaption aria-hidden="true">1543736615438</figcaption>
 </figure>
 <p><span class="math inline">\(Dist^k[i] = min_{\forall u}｛Dist^{k-1}[i], min｛Dist^{k-1}[u]+Cost[u, i]｝｝\)</span>，<strong>u 為有邊指向 i 的頂點</strong></p>
 <p>Example</p>
 <figure>
-<img src="\willywangkaa\images\1543737721578.png" alt="1543737721578"><figcaption>1543737721578</figcaption>
+<img src="\willywangkaa\images\1543737721578.png" alt="1543737721578"><figcaption aria-hidden="true">1543737721578</figcaption>
 </figure>
 <ul>
 <li>Algorithm</li>
@@ -1056,7 +1058,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    tmp_Dist[<span class="number">1.</span>..n];</span><br><span class="line">    <span class="function"><span class="keyword">for</span> each u that has <span class="title">edge</span><span class="params">(u,i)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(Dist[i] &gt; Dist[u]+Cost[u,i]) &#123;</span><br><span class="line">            <span class="keyword">if</span>(i==n) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"存在負環"</span>; </span><br><span class="line">            &#125;</span><br><span class="line">            tmp_Dist[i] = Dist[u]+Cost[u,i];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            tmp_Dist[i] = Dist[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    copy(Dist[<span class="number">1.</span>..n], tmp_Dist[<span class="number">1.</span>.n]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Example（102交通大學資料結構與演算法 - <strong>差分約束系統</strong>（System of Difference Constraints））</p>
 <ul>
-<li>Consider the problem of finding a vector <span class="math inline">\((x_1, x_2, x_3, x_4, x_5)\)</span> satisfying the following constrains such that <span class="math inline">\(x_1+x_2+x_3+x_4+x_5\)</span> is maximized, where <span class="math inline">\(x_i \leq 0\)</span> for i = 1, …, 5. What are <strong>the maximum value</strong> and the corresponding vector?</li>
+<li>Consider the problem of finding a vector <span class="math inline">\((x_1, x_2, x_3, x_4, x_5)\)</span> satisfying the following constrains such that <span class="math inline">\(x_1+x_2+x_3+x_4+x_5\)</span> is maximized, where <span class="math inline">\(x_i \leq 0\)</span> for i = 1, ..., 5. What are <strong>the maximum value</strong> and the corresponding vector?</li>
 </ul>
 <p><span class="math inline">\(x_1 - x_2 \leq 1 \\x_1 - x_5 \leq -1 \\ x_2 - x_5 \leq 1 \\ x_3 - x_1 \leq 15 \\ x_4 - x_1 \leq 4 \\ x_4 - x_3 \leq -1 \\ x_5 - x_3 \leq -3 \\ x_5 - x_4 \leq 0\)</span></p>
 <p><strong>在此條件下求最大解</strong>可以轉換成「Single source all shortest path problem」</p>
@@ -1082,10 +1084,10 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1549622277405.png" alt="1549622277405"><figcaption>1549622277405</figcaption>
+<img src="\willywangkaa\images\1549622277405.png" alt="1549622277405"><figcaption aria-hidden="true">1549622277405</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1549627232982.png" alt="1549627232982"><figcaption>1549627232982</figcaption>
+<img src="\willywangkaa\images\1549627232982.png" alt="1549627232982"><figcaption aria-hidden="true">1549627232982</figcaption>
 </figure>
 <ul>
 <li>對 s 頂點使用「Bellman-Ford algorithm」
@@ -1119,10 +1121,10 @@
 </ul>
 <p><span class="math inline">\(x_2 - x_1 \geq -1 \\x_5 - x_1 \geq 1 \\ x_5 - x_2 \geq -1 \\ x_1 - x_3 \geq -15 \\ x_1 - x_4 \geq -4 \\ x_3 - x_4 \geq 1 \\ x_3 - x_5 \geq 3 \\ x_4 - x_5 \geq 0\)</span></p>
 <figure>
-<img src="\willywangkaa\images\1549628472201.png" alt="1549628472201"><figcaption>1549628472201</figcaption>
+<img src="\willywangkaa\images\1549628472201.png" alt="1549628472201"><figcaption aria-hidden="true">1549628472201</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\1549628610514.png" alt="1549628610514"><figcaption>1549628610514</figcaption>
+<img src="\willywangkaa\images\1549628610514.png" alt="1549628610514"><figcaption aria-hidden="true">1549628610514</figcaption>
 </figure>
 <ul>
 <li><del>對 s 頂點使用「Bellman-Ford algorithm」（Single source all <strong>longest path</strong>）</del></li>
@@ -1141,21 +1143,21 @@
 <p>概念</p>
 <p><span class="math inline">\(A^k[i,j]= min｛A^{k-1}[i,j], A^{k-1}[i,k]+A^{k-1}[k,j]｝\)</span>，針對點（k）作討論，如果使用此頂點作為中介點路徑是否可以縮短</p>
 <figure>
-<img src="\willywangkaa\images\1543738191981.png" alt="1543738191981"><figcaption>1543738191981</figcaption>
+<img src="\willywangkaa\images\1543738191981.png" alt="1543738191981"><figcaption aria-hidden="true">1543738191981</figcaption>
 </figure>
 <p>Example</p>
 <figure>
-<img src="\willywangkaa\images\1543739868201.png" alt="1543739868201"><figcaption>1543739868201</figcaption>
+<img src="\willywangkaa\images\1543739868201.png" alt="1543739868201"><figcaption aria-hidden="true">1543739868201</figcaption>
 </figure>
 <ul>
 <li>Algorithm</li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Cost[1..n, 1..n]: 邊的權重集合</span></span><br><span class="line"><span class="comment">// n: 頂點數</span></span><br><span class="line"><span class="comment">// A[1..n,1..n]: A^k[1..n,1..n]</span></span><br><span class="line">FloydWarshell(Cost, n, A) &#123;</span><br><span class="line">    <span class="comment">// Initialization</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++) </span><br><span class="line">            A[i,j] = Cost[i,j];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 求取 A^1, A^2, A^3, ..., A^n</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= n; k++) &#123;              <span class="comment">// ↑</span></span><br><span class="line">        tmpA[<span class="number">1.</span>.n,<span class="number">1.</span>.n];                       <span class="comment">// ︳</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)            <span class="comment">// ︳</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)        <span class="comment">//  O(|V|^3)</span></span><br><span class="line">                <span class="keyword">if</span>(A[i,j]&gt;A[i,k]+A[k,j])       <span class="comment">// ︳</span></span><br><span class="line">                    tmpA[i,j] = A[i,k]+A[k,j]; <span class="comment">// ︳</span></span><br><span class="line">        copy(tmpA, A);                         <span class="comment">// ︳</span></span><br><span class="line">    &#125;                                          <span class="comment">// ↓</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="johnsons-algorithm">Johnson’s algorithm</h2>
+<h2 id="johnsons-algorithm">Johnson's algorithm</h2>
 <p>All pair shortest path problem for <strong>sparse graph</strong></p>
 <blockquote>
 <ol type="1">
-<li>一個 n 個頂點的<strong>無負邊有向圖</strong>上，可以在每個點上做一次「Dijkstra’s algorithm」以求出「All pair shortest path」
+<li>一個 n 個頂點的<strong>無負邊有向圖</strong>上，可以在每個點上做一次「Dijkstra's algorithm」以求出「All pair shortest path」
 <ul>
 <li>時間複雜度（All pair shortest path）
 <ul>
@@ -1163,7 +1165,7 @@
 <li>[Algorithm 版本：鄰接串列] |V|×O(|E|log|V|)（Binary heap）；<strong>|V|×O(|V|log|V|+|E|)（Fibonacci heap）</strong></li>
 </ul></li>
 </ul></li>
-<li>一個 n 個頂點的<strong>有負邊有向圖</strong>上，可以在每個點上做一次「Bellman-Ford’s algorithm」以求出「All pair shortest path」
+<li>一個 n 個頂點的<strong>有負邊有向圖</strong>上，可以在每個點上做一次「Bellman-Ford's algorithm」以求出「All pair shortest path」
 <ul>
 <li>時間複雜度（All pair shortest path）
 <ul>
@@ -1171,52 +1173,52 @@
 </ul></li>
 </ul></li>
 </ol>
-<p>「Johnson’s algorithm」藉由融合「Bellman-Ford’s algorithm」可以<strong>對負邊進行運算的優點</strong>，與「Dijkstra’s algorithm」在<strong>邊數很少時可以讓複雜度降低的優點</strong>，所以在「Sparse graph」計算「All pair shortest path」時，可以因為邊數少而降低時間複雜度，又不因負邊而無法計算正確的數值</p>
+<p>「Johnson's algorithm」藉由融合「Bellman-Ford's algorithm」可以<strong>對負邊進行運算的優點</strong>，與「Dijkstra's algorithm」在<strong>邊數很少時可以讓複雜度降低的優點</strong>，所以在「Sparse graph」計算「All pair shortest path」時，可以因為邊數少而降低時間複雜度，又不因負邊而無法計算正確的數值</p>
 <ul>
 <li>演算法概念
 <ul>
-<li><strong>以「Bellman-Ford’s algorithm」解決負邊問題</strong></li>
-<li><strong>使用「Dijkstra’s algorithm」計算無負邊圖的「Shortest path」</strong></li>
+<li><strong>以「Bellman-Ford's algorithm」解決負邊問題</strong></li>
+<li><strong>使用「Dijkstra's algorithm」計算無負邊圖的「Shortest path」</strong></li>
 </ul></li>
 </ul>
 </blockquote>
 <p>給定一圖 G = ＜V,E＞</p>
 <p>步驟：</p>
 <ol type="1">
-<li>加入一個新的頂點 s 與 G 上的每個點連接成為新的圖 G’ = ＜V’, E’＞，且每條新增的邊之權重為 0</li>
-<li>對 s 頂點執行「Bellman-ford’s algorithm」（Single source shortest path）
+<li>加入一個新的頂點 s 與 G 上的每個點連接成為新的圖 G' = ＜V', E'＞，且每條新增的邊之權重為 0</li>
+<li>對 s 頂點執行「Bellman-ford's algorithm」（Single source shortest path）
 <ul>
 <li><strong>令 s 到其他 G 上的頂點 v 之「Shortest path」為 h(v)</strong></li>
 </ul></li>
-<li>對 G’ 上每個邊進行「重設權重」（Reweight）
+<li>對 G' 上每個邊進行「重設權重」（Reweight）
 <ul>
 <li><span class="math inline">\(\hat{w}(u,v) = w(u,v) + h(u)-h(v)\)</span></li>
 </ul></li>
-<li>將 G’ 上 s 點與連接的邊移除，保留「重設權重」的邊，對剩下的每個頂點做「Dijkstra’s algorithm」</li>
+<li>將 G' 上 s 點與連接的邊移除，保留「重設權重」的邊，對剩下的每個頂點做「Dijkstra's algorithm」</li>
 </ol>
-<p>時間複雜度：（等價於對每個頂點做「Dijkstra’s algorithm」，只是需要前置處理）</p>
+<p>時間複雜度：（等價於對每個頂點做「Dijkstra's algorithm」，只是需要前置處理）</p>
 <ul>
 <li>$O(|V|) + O(|V||E|) + O(|E|) + |V|O(|V| |V|+|E|) = O(|V|^2 |V|+|V||E|) $</li>
-<li>（新增|V|條邊）+（修正負邊）+（重設權重）+（對每個頂點做「Dijkstra’s algorithm」）</li>
+<li>（新增|V|條邊）+（修正負邊）+（重設權重）+（對每個頂點做「Dijkstra's algorithm」）</li>
 </ul>
-<p><strong>Example（證明「Johnson’s algorithm」對邊的修正必不會產生負邊）</strong></p>
+<p><strong>Example（證明「Johnson's algorithm」對邊的修正必不會產生負邊）</strong></p>
 <ul>
-<li>考慮一個「強連通有向圖」G = ＜V,E＞，並且圖上<strong>存在負邊</strong>但無負環路</li>
-<li>假設 c(u,v) 表示 u 到 v 頂點的權重</li>
+<li><p>考慮一個「強連通有向圖」G = ＜V,E＞，並且圖上<strong>存在負邊</strong>但無負環路</p></li>
+<li><p>假設 c(u,v) 表示 u 到 v 頂點的權重</p></li>
 <li><p>假設 d(u,v) 表示 u 到 v 頂點的最小權重</p></li>
 <li><p>證明 c(w,v) + d(u,w) - d(u,v) ≧ 0，對於圖上任意三個相異頂點</p></li>
 </ul>
 <p>令 u 到 v 頂點的「Shortest path」為 d(u,v) ，所以<strong>任何其他從 u 到 v 頂點的路徑必 ≧ d(u,v)</strong>，且 d(u,w)+c(w,v) 亦為一個從 u 到 v 頂點的路徑，所以：</p>
 <p><span class="math inline">\(d(u,w) + c(w,v) \geq d(u,v) \Rightarrow c(w,v) + d(u,w) - d(u,v) \geq 0\)</span></p>
 <figure>
-<img src="\willywangkaa\images\johnsonalgorithm_1.png" alt="johnsonalgorithm_1"><figcaption>johnsonalgorithm_1</figcaption>
+<img src="\willywangkaa\images\johnsonalgorithm_1.png" alt="johnsonalgorithm_1"><figcaption aria-hidden="true">johnsonalgorithm_1</figcaption>
 </figure>
-<p><strong>Example（證明「重設權重」的圖 G’，其計算的「All pair shortest path」與圖 G 計算相等）</strong></p>
+<p><strong>Example（證明「重設權重」的圖 G'，其計算的「All pair shortest path」與圖 G 計算相等）</strong></p>
 <ul>
-<li>考慮一個「強連通有向圖」G = ＜V,E＞，並且圖上<strong>存在負邊</strong>但無負環路</li>
-<li>假設 c(u,v) 表示 u 到 v 頂點的權重</li>
+<li><p>考慮一個「強連通有向圖」G = ＜V,E＞，並且圖上<strong>存在負邊</strong>但無負環路</p></li>
+<li><p>假設 c(u,v) 表示 u 到 v 頂點的權重</p></li>
 <li><p>假設 d(u,v) 表示 u 到 v 頂點的最小權重</p></li>
-<li><p>新增一頂點 s 並對各個頂點連接且權重為 0，將每個邊以 c(u,v) + d(s,u) - d(s,v)（c(u,v)+h(u)-h(v)）的數值重設權重後成為 G’，證明其「Shortest path」在 G 上亦成立</p></li>
+<li><p>新增一頂點 s 並對各個頂點連接且權重為 0，將每個邊以 c(u,v) + d(s,u) - d(s,v)（c(u,v)+h(u)-h(v)）的數值重設權重後成為 G'，證明其「Shortest path」在 G 上亦成立</p></li>
 </ul>
 <p>考慮 P = ＜<span class="math inline">\(u = v_0, v_1, \ldots, v = v_k\)</span>＞ 為一條從 u 到 v 的一條路徑</p>
 <p>令 <span class="math inline">\(\hat{w}(u,v) = c(u, v)+d(s,u) - d(s,v)\)</span>，則該路徑的權重總和為：</p>
@@ -1228,8 +1230,8 @@
 <p>因為 <span class="math inline">\(h(v_0)\)</span> 與 h(<span class="math inline">\(v_1\)</span>) 為<strong>固定值</strong>，所以當 <span class="math inline">\(\hat{w}(P)\)</span> 愈小時，<strong>等價於</strong> <span class="math inline">\(w(P)\)</span> 也隨之愈小，且不會因為路徑長短而讓修正的邊影響答案（見下例）</p>
 <p><strong>Example（失敗的「Reweight」方法）</strong></p>
 <ol type="1">
-<li>給定一圖 G = ＜V,E＞，而 P 為一條從 s 到 t 頂點的「Shortest path」，假設將 G 上的<strong>每條邊的權重減一</strong>成為 G’，請問是否 P 路徑仍為 s 到 t 在 G’ 中的「Shortest path」？</li>
-<li>給定一圖 G = ＜V,E＞，而 P 為一條從 s 到 t 頂點的「Shortest path」，假設將 G 上的<strong>每條邊的權重改為</strong> <span class="math inline">\(\hat{w}(u,v) = w(u, v) - w^＊\)</span> 成為 G’，請問是否 P 路徑仍為 s 到 t 在 G’ 中的「Shortest path」？
+<li>給定一圖 G = ＜V,E＞，而 P 為一條從 s 到 t 頂點的「Shortest path」，假設將 G 上的<strong>每條邊的權重減一</strong>成為 G'，請問是否 P 路徑仍為 s 到 t 在 G' 中的「Shortest path」？</li>
+<li>給定一圖 G = ＜V,E＞，而 P 為一條從 s 到 t 頂點的「Shortest path」，假設將 G 上的<strong>每條邊的權重改為</strong> <span class="math inline">\(\hat{w}(u,v) = w(u, v) - w^＊\)</span> 成為 G'，請問是否 P 路徑仍為 s 到 t 在 G' 中的「Shortest path」？
 <ul>
 <li><span class="math inline">\(w^＊ = min_{(u,v)\in G.E}｛w(u, v)｝\)</span></li>
 </ul></li>
@@ -1237,20 +1239,20 @@
 <p>（1）否，因為<strong>若路徑越長，權重扣除的越多</strong>：</p>
 <p>從 u 到 v 頂點的原始「Shortest path」為 ＜u, v＞</p>
 <figure>
-<img src="\willywangkaa\images\johnsonalgorithm_2.png" alt="johnsonalgorithm_2"><figcaption>johnsonalgorithm_2</figcaption>
+<img src="\willywangkaa\images\johnsonalgorithm_2.png" alt="johnsonalgorithm_2"><figcaption aria-hidden="true">johnsonalgorithm_2</figcaption>
 </figure>
 <p>因為路徑 ＜u,x,y,v＞ 比路徑 ＜u,v＞ 還要長，所以扣除的權重也越多（每條邊的權重扣 1），所以使 ＜u,x,y,v＞ 成為 u 到 v 的新「Shortest path」</p>
 <figure>
-<img src="\willywangkaa\images\johnsonalgorithm_3.png" alt="johnsonalgorithm_3"><figcaption>johnsonalgorithm_3</figcaption>
+<img src="\willywangkaa\images\johnsonalgorithm_3.png" alt="johnsonalgorithm_3"><figcaption aria-hidden="true">johnsonalgorithm_3</figcaption>
 </figure>
 <p>（2）否，概念與上題一致：</p>
 <p>從 u 到 v 頂點的原始「Shortest path」為 ＜u, x, y, v＞</p>
 <figure>
-<img src="\willywangkaa\images\johnsonalgorithm_4.png" alt="johnsonalgorithm_4"><figcaption>johnsonalgorithm_4</figcaption>
+<img src="\willywangkaa\images\johnsonalgorithm_4.png" alt="johnsonalgorithm_4"><figcaption aria-hidden="true">johnsonalgorithm_4</figcaption>
 </figure>
 <p>因為路徑 ＜u,x,y,v＞ 比路徑 ＜u,v＞ 還要長，所以扣除的權重也越多（每條邊的權重扣 -5；應該說增加權重），所以使 ＜u,v＞ 成為 u 到 v 的新「Shortest path」</p>
 <figure>
-<img src="\willywangkaa\images\johnsonalgorithm_5.png" alt="johnsonalgorithm_5"><figcaption>johnsonalgorithm_5</figcaption>
+<img src="\willywangkaa\images\johnsonalgorithm_5.png" alt="johnsonalgorithm_5"><figcaption aria-hidden="true">johnsonalgorithm_5</figcaption>
 </figure>
 <h1 id="activity-on-vertex-network-and-topological-sort">Activity on vertex network and topological sort</h1>
 <p>令 G = ＜V,E＞ 為有向圖，若為一個「Activity on vertex network」，則：</p>
@@ -1283,7 +1285,7 @@
 </blockquote>
 <p>Example</p>
 <figure>
-<img src="\willywangkaa\images\1543740383474.png" alt="1543740383474"><figcaption>1543740383474</figcaption>
+<img src="\willywangkaa\images\1543740383474.png" alt="1543740383474"><figcaption aria-hidden="true">1543740383474</figcaption>
 </figure>
 <ul>
 <li>Algorithm [Algorithm 書上版本]</li>
@@ -1291,7 +1293,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">DFS_visit</span><span class="params">(G, u, p)</span> </span>&#123;</span><br><span class="line">    time++;</span><br><span class="line">    u.color  = gray;</span><br><span class="line">    u.d      = time;</span><br><span class="line">    <span class="keyword">for</span> each w in G.adj[u] &#123;</span><br><span class="line">        <span class="keyword">if</span>(w==white) &#123;</span><br><span class="line">            w.parent = u;</span><br><span class="line">            DFS_visit(G, w, p);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    time++;</span><br><span class="line">    u.color = black;</span><br><span class="line">    u.f     = time;</span><br><span class="line">    insertFront(u, p);           <span class="comment">// 當一個頂點完成了 DFS 的搜尋，將該頂點插入連結串列的前面</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(G, p)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// O(|V|)</span></span><br><span class="line">    <span class="comment">// Initialize</span></span><br><span class="line">    <span class="keyword">for</span> each u in G.V &#123;</span><br><span class="line">        u.color  = white;</span><br><span class="line">        u.parent = null;</span><br><span class="line">    &#125;</span><br><span class="line">    time = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> each u in G.V &#123;         <span class="comment">//  ↑</span></span><br><span class="line">        <span class="keyword">if</span>(u.color==white) &#123;    <span class="comment">//  |</span></span><br><span class="line">            DFS_visit(G, u, p); <span class="comment">//  | O(|V|+|E|)</span></span><br><span class="line">        &#125;                       <span class="comment">//  |</span></span><br><span class="line">    &#125;                           <span class="comment">//  ↓</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ptr <span class="title">Topologicalsort</span><span class="params">(G)</span> </span>&#123;</span><br><span class="line">    ptr p = null;</span><br><span class="line">    DFS(G, p);</span><br><span class="line">    <span class="keyword">return</span> p;                   <span class="comment">// 回傳建立好的「Topological sort」的鍊結串列</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Example</p>
 <figure>
-<img src="\willywangkaa\images\1543740792975.png" alt="1543740792975"><figcaption>1543740792975</figcaption>
+<img src="\willywangkaa\images\1543740792975.png" alt="1543740792975"><figcaption aria-hidden="true">1543740792975</figcaption>
 </figure>
 <ul>
 <li>Time complexity
@@ -1310,7 +1312,7 @@
 <blockquote>
 <p>Example</p>
 <figure>
-<img src="\willywangkaa\images\1543741711989.png" alt="1543741711989"><figcaption>1543741711989</figcaption>
+<img src="\willywangkaa\images\1543741711989.png" alt="1543741711989"><figcaption aria-hidden="true">1543741711989</figcaption>
 </figure>
 </blockquote>
 <blockquote>
@@ -1323,16 +1325,16 @@
 <ol type="1">
 <li><p>用「Topological sort」找出 G 的所有「Strongly connected component」（SCC）</p>
 <ul>
-<li>將每個 SCC 視為一頂點組成集合 V’
+<li>將每個 SCC 視為一頂點組成集合 V'
 <ul>
 <li>假設共有 k 個 SCC</li>
 </ul></li>
-<li>各個 SCC 在 G 相連的邊組成集合 E’
+<li>各個 SCC 在 G 相連的邊組成集合 E'
 <ul>
 <li><span class="math inline">\(E&#39;=｛(V_1,V_2) ∣ \exist v_1 \in V_1 , v_2 \in V_2 \ni (v1,v2) \in E)｝\)</span></li>
 </ul></li>
 </ul></li>
-<li><p>令 G’=(V’,E’)</p>
+<li><p>令 G'=(V',E')</p>
 <ul>
 <li>必為「Directed acyclic graph」（DAG）
 <ul>
@@ -1341,7 +1343,7 @@
 <li>則該兩點必成為一個 SCC</li>
 </ul></li>
 </ul></li>
-<li>對 G’ 執行「Topological sort」
+<li>對 G' 執行「Topological sort」
 <ul>
 <li>找出序列 <span class="math inline">\(T=(v_1,\ldots,v_k )\)</span></li>
 <li>若 <span class="math inline">\((V_i, V_{i+1}) \in E&#39; ,i = 1,\ldots,k-1\)</span> 成立
@@ -1379,7 +1381,7 @@
 <blockquote>
 <p>Example</p>
 <figure>
-<img src="\willywangkaa\images\1543742596379.png" alt="1543742596379"><figcaption>1543742596379</figcaption>
+<img src="\willywangkaa\images\1543742596379.png" alt="1543742596379"><figcaption aria-hidden="true">1543742596379</figcaption>
 </figure>
 <ul>
 <li>Time complexity
@@ -1404,11 +1406,11 @@
 <li><p>「事件頂點」一旦觸發後，從此頂點指出的「工作邊」才可以開工</p></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1543742794508.png" alt="1543742794508"><figcaption>1543742794508</figcaption>
+<img src="\willywangkaa\images\1543742794508.png" alt="1543742794508"><figcaption aria-hidden="true">1543742794508</figcaption>
 </figure>
 <p>Example</p>
 <figure>
-<img src="\willywangkaa\images\1543743405702.png" alt="1543743405702"><figcaption>1543743405702</figcaption>
+<img src="\willywangkaa\images\1543743405702.png" alt="1543743405702"><figcaption aria-hidden="true">1543743405702</figcaption>
 </figure>
 <ol type="1">
 <li>完成計畫<strong>最快</strong>需要幾天？
@@ -1417,7 +1419,7 @@
 </ul></li>
 </ol>
 <figure>
-<img src="\willywangkaa\images\1543743598858.png" alt="1543743598858"><figcaption>1543743598858</figcaption>
+<img src="\willywangkaa\images\1543743598858.png" alt="1543743598858"><figcaption aria-hidden="true">1543743598858</figcaption>
 </figure>
 <ol start="2" type="1">
 <li>列出所有「Critical path」
@@ -1426,7 +1428,7 @@
 </ul></li>
 </ol>
 <figure>
-<img src="\willywangkaa\images\1543744208911.png" alt="1543744208911"><figcaption>1543744208911</figcaption>
+<img src="\willywangkaa\images\1543744208911.png" alt="1543744208911"><figcaption aria-hidden="true">1543744208911</figcaption>
 </figure>
 <ol start="3" type="1">
 <li>列出所有「Critical task」（不可延遲的工作）
@@ -1439,7 +1441,7 @@
 </ul></li>
 </ol>
 <figure>
-<img src="\willywangkaa\images\1543744339082.png" alt="1543744339082"><figcaption>1543744339082</figcaption>
+<img src="\willywangkaa\images\1543744339082.png" alt="1543744339082"><figcaption aria-hidden="true">1543744339082</figcaption>
 </figure>
 <ol start="5" type="1">
 <li>那些工作可以延遲？可以延遲多久不影響進度？
@@ -1491,12 +1493,12 @@
 <li>求各個<strong>事件頂點</strong>點之「最晚觸發時間」（終點回推各點的最小值）</li>
 </ol>
 <figure>
-<img src="\willywangkaa\images\1543745099778.png" alt="1543745099778"><figcaption>1543745099778</figcaption>
+<img src="\willywangkaa\images\1543745099778.png" alt="1543745099778"><figcaption aria-hidden="true">1543745099778</figcaption>
 </figure>
 <p>綜合以上可以發現事件頂點 x 必定要在第 7 天觸發</p>
 <p>查看指向自己的頂點以確認最晚觸發的時間，也可以確認<strong>該工作邊</strong>是否可以延遲</p>
 <figure>
-<img src="\willywangkaa\images\1543747954832.png" alt="1543747954832"><figcaption>1543747954832</figcaption>
+<img src="\willywangkaa\images\1543747954832.png" alt="1543747954832"><figcaption aria-hidden="true">1543747954832</figcaption>
 </figure>
 <table>
 <thead>
@@ -1543,7 +1545,7 @@
 </ul></li>
 </ol>
 <figure>
-<img src="\willywangkaa\images\1543748398923.png" alt="1543748398923"><figcaption>1543748398923</figcaption>
+<img src="\willywangkaa\images\1543748398923.png" alt="1543748398923"><figcaption aria-hidden="true">1543748398923</figcaption>
 </figure>
 <table>
 <thead>
@@ -1601,7 +1603,7 @@
 <h1 id="articulation-point">Articulation point</h1>
 <p>Example</p>
 <figure>
-<img src="\willywangkaa\images\1543748935456.png" alt="1543748935456"><figcaption>1543748935456</figcaption>
+<img src="\willywangkaa\images\1543748935456.png" alt="1543748935456"><figcaption aria-hidden="true">1543748935456</figcaption>
 </figure>
 <p>橘色即為「Articulation point」</p>
 <h2 id="biconnected-graph">Biconnected graph</h2>
@@ -1619,7 +1621,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1543749321235.png" alt="1543749321235"><figcaption>1543749321235</figcaption>
+<img src="\willywangkaa\images\1543749321235.png" alt="1543749321235"><figcaption aria-hidden="true">1543749321235</figcaption>
 </figure>
 <ul>
 <li>求出「Articulation point」（以上圖為例）</li>
@@ -1674,7 +1676,7 @@
 </table>
 <p>畫出「DFS spanning tree」並標出「Back edge」</p>
 <figure>
-<img src="\willywangkaa\images\1543749964256.png" alt="1543749964256"><figcaption>1543749964256</figcaption>
+<img src="\willywangkaa\images\1543749964256.png" alt="1543749964256"><figcaption aria-hidden="true">1543749964256</figcaption>
 </figure>
 <ol start="2" type="1">
 <li>求個頂點的「low」值
@@ -1828,7 +1830,7 @@
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -1872,10 +1874,10 @@
             
               <img class="site-author-image" itemprop="image"
                 src="/willywangkaa/images/avatar_me.gif"
-                alt="Willy Wang (willywangkaa)" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
-              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -1883,7 +1885,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/willywangkaa/archives/">
+                  <a href="/willywangkaa/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">posts</span>
@@ -1930,8 +1932,6 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -2147,7 +2147,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#the-structure-of-graph"><span class="nav-number">1.</span> <span class="nav-text">The structure of graph</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#note-adjacency-list"><span class="nav-number">1.1.</span> <span class="nav-text">[Note] Adjacency list</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相鄰串列與相鄰陣列比較表"><span class="nav-number">1.2.</span> <span class="nav-text">相鄰串列與相鄰陣列比較表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#adjacency-multilist相鄰多元串列"><span class="nav-number">1.3.</span> <span class="nav-text">Adjacency multilist（相鄰多元串列）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#index-array"><span class="nav-number">1.4.</span> <span class="nav-text">Index array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#incident-matrix-離散數學"><span class="nav-number">1.5.</span> <span class="nav-text">Incident matrix （離散數學）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#圖的追蹤"><span class="nav-number">2.</span> <span class="nav-text">圖的追蹤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ds-書籍版本"><span class="nav-number">2.1.</span> <span class="nav-text">DS 書籍版本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#depth-first-search"><span class="nav-number">2.1.1.</span> <span class="nav-text">Depth first search</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#breath-first-search"><span class="nav-number">2.1.2.</span> <span class="nav-text">Breath first search</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#algorithm-書籍版本"><span class="nav-number">2.2.</span> <span class="nav-text">Algorithm 書籍版本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#depth-first-search-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">Depth first search</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#有向圖"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">有向圖</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#breath-first-search-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">Breath first search</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#追蹤的應用"><span class="nav-number">2.3.</span> <span class="nav-text">追蹤的應用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spanning-tree"><span class="nav-number">3.</span> <span class="nav-text">Spanning tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#minimum-spanning-tree"><span class="nav-number">3.1.</span> <span class="nav-text">Minimum spanning tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#kruskals-algorithm-algorithm-書上版本"><span class="nav-number">3.1.1.</span> <span class="nav-text">Kruskal’s algorithm [Algorithm 書上版本]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prims-algorithm-ds-書上版本"><span class="nav-number">3.1.2.</span> <span class="nav-text">Prim’s algorithm [DS 書上版本]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sollins-algorithm"><span class="nav-number">3.1.3.</span> <span class="nav-text">Sollin’s algorithm</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#shortest-path-problem"><span class="nav-number">4.</span> <span class="nav-text">Shortest path problem</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dijkstras-algorithm-ds-書上版本"><span class="nav-number">4.1.</span> <span class="nav-text">Dijkstra’s algorithm [DS 書上版本]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bellman-ford-algorithm"><span class="nav-number">4.2.</span> <span class="nav-text">Bellman-Ford algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#floyd-warshell-algorithm"><span class="nav-number">4.3.</span> <span class="nav-text">Floyd-Warshell algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#johnsons-algorithm"><span class="nav-number">4.4.</span> <span class="nav-text">Johnson’s algorithm</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#activity-on-vertex-network-and-topological-sort"><span class="nav-number">5.</span> <span class="nav-text">Activity on vertex network and topological sort</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#activity-on-edge-network-critical-path-and-critical-task"><span class="nav-number">6.</span> <span class="nav-text">Activity on edge network, critical path and critical task</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#articulation-point"><span class="nav-number">7.</span> <span class="nav-text">Articulation point</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#biconnected-graph"><span class="nav-number">7.1.</span> <span class="nav-text">Biconnected graph</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#the-structure-of-graph"><span class="nav-number">1.</span> <span class="nav-text">The structure of graph</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#note-adjacency-list"><span class="nav-number">1.1.</span> <span class="nav-text">[Note] Adjacency list</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E9%84%B0%E4%B8%B2%E5%88%97%E8%88%87%E7%9B%B8%E9%84%B0%E9%99%A3%E5%88%97%E6%AF%94%E8%BC%83%E8%A1%A8"><span class="nav-number">1.2.</span> <span class="nav-text">相鄰串列與相鄰陣列比較表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#adjacency-multilist%E7%9B%B8%E9%84%B0%E5%A4%9A%E5%85%83%E4%B8%B2%E5%88%97"><span class="nav-number">1.3.</span> <span class="nav-text">Adjacency multilist（相鄰多元串列）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#index-array"><span class="nav-number">1.4.</span> <span class="nav-text">Index array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#incident-matrix-%E9%9B%A2%E6%95%A3%E6%95%B8%E5%AD%B8"><span class="nav-number">1.5.</span> <span class="nav-text">Incident matrix （離散數學）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%96%E7%9A%84%E8%BF%BD%E8%B9%A4"><span class="nav-number">2.</span> <span class="nav-text">圖的追蹤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ds-%E6%9B%B8%E7%B1%8D%E7%89%88%E6%9C%AC"><span class="nav-number">2.1.</span> <span class="nav-text">DS 書籍版本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#depth-first-search"><span class="nav-number">2.1.1.</span> <span class="nav-text">Depth first search</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#breath-first-search"><span class="nav-number">2.1.2.</span> <span class="nav-text">Breath first search</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#algorithm-%E6%9B%B8%E7%B1%8D%E7%89%88%E6%9C%AC"><span class="nav-number">2.2.</span> <span class="nav-text">Algorithm 書籍版本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#depth-first-search-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">Depth first search</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%89%E5%90%91%E5%9C%96"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">有向圖</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#breath-first-search-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">Breath first search</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%BD%E8%B9%A4%E7%9A%84%E6%87%89%E7%94%A8"><span class="nav-number">2.3.</span> <span class="nav-text">追蹤的應用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spanning-tree"><span class="nav-number">3.</span> <span class="nav-text">Spanning tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#minimum-spanning-tree"><span class="nav-number">3.1.</span> <span class="nav-text">Minimum spanning tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#kruskals-algorithm-algorithm-%E6%9B%B8%E4%B8%8A%E7%89%88%E6%9C%AC"><span class="nav-number">3.1.1.</span> <span class="nav-text">Kruskal&#39;s algorithm [Algorithm 書上版本]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prims-algorithm-ds-%E6%9B%B8%E4%B8%8A%E7%89%88%E6%9C%AC"><span class="nav-number">3.1.2.</span> <span class="nav-text">Prim&#39;s algorithm [DS 書上版本]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sollins-algorithm"><span class="nav-number">3.1.3.</span> <span class="nav-text">Sollin&#39;s algorithm</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#shortest-path-problem"><span class="nav-number">4.</span> <span class="nav-text">Shortest path problem</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dijkstras-algorithm-ds-%E6%9B%B8%E4%B8%8A%E7%89%88%E6%9C%AC"><span class="nav-number">4.1.</span> <span class="nav-text">Dijkstra&#39;s algorithm [DS 書上版本]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bellman-ford-algorithm"><span class="nav-number">4.2.</span> <span class="nav-text">Bellman-Ford algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#floyd-warshell-algorithm"><span class="nav-number">4.3.</span> <span class="nav-text">Floyd-Warshell algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#johnsons-algorithm"><span class="nav-number">4.4.</span> <span class="nav-text">Johnson&#39;s algorithm</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#activity-on-vertex-network-and-topological-sort"><span class="nav-number">5.</span> <span class="nav-text">Activity on vertex network and topological sort</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#activity-on-edge-network-critical-path-and-critical-task"><span class="nav-number">6.</span> <span class="nav-text">Activity on edge network, critical path and critical task</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#articulation-point"><span class="nav-number">7.</span> <span class="nav-text">Articulation point</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#biconnected-graph"><span class="nav-number">7.1.</span> <span class="nav-text">Biconnected graph</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -2167,11 +2167,11 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+  <span class="author" itemprop="copyrightHolder">Wang Yu Li</span>
 
   
 
@@ -2315,7 +2315,7 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/12/02/Data-structure-graph/';
+        this.page.url = 'http://wangwilly.github.io/willywangkaa/2018/12/02/Data-structure-graph/';
         this.page.identifier = '2018/12/02/Data-structure-graph/';
         this.page.title = 'Data structure - Graph';
       };
@@ -2750,24 +2750,7 @@
   
     bookmark.scrollToMark('auto', "#more");
   
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>

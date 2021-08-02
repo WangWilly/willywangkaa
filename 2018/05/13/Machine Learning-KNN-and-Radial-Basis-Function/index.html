@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/willywangkaa/',
+    root: '',
     scheme: 'Pisces',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -103,23 +103,24 @@
   <meta name="keywords" content="KNN,Radial Basis Function," />
 
 
-<meta name="description" content="機器學習性質  Eager algorithm(積極) 性質  將歷史資料做了很多分析與篩選( Mung )等預處理。 因為訓練出的假說很明確( Explicit )，所以自然判斷也比起 Lazy 方法更迅速。  \(Ex.\)  Artificial neural network Decision tree  Lazy algorithm(被動) 性質  簡單的處">
-<meta name="keywords" content="KNN,Radial Basis Function">
+<meta name="description" content="機器學習性質  Eager algorithm(積極) 性質  將歷史資料做了很多分析與篩選( Mung )等預處理。 因為訓練出的假說很明確( Explicit )，所以自然判斷也比起 Lazy 方法更迅速。  \(Ex.\)  Artificial neural network Decision tree  Lazy algorithm(被動) 性質  簡單的處理訓練資料，不會將資料轉成其他方">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Machine Learning - KNN and Radial Basis Function">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/05/13/Machine Learning-KNN-and-Radial-Basis-Function/index.html">
+<meta property="og:url" content="http://wangwilly.github.io/willywangkaa/2018/05/13/Machine%20Learning-KNN-and-Radial-Basis-Function/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="機器學習性質  Eager algorithm(積極) 性質  將歷史資料做了很多分析與篩選( Mung )等預處理。 因為訓練出的假說很明確( Explicit )，所以自然判斷也比起 Lazy 方法更迅速。  \(Ex.\)  Artificial neural network Decision tree  Lazy algorithm(被動) 性質  簡單的處">
-<meta property="og:locale" content="zh-tw">
+<meta property="og:description" content="機器學習性質  Eager algorithm(積極) 性質  將歷史資料做了很多分析與篩選( Mung )等預處理。 因為訓練出的假說很明確( Explicit )，所以自然判斷也比起 Lazy 方法更迅速。  \(Ex.\)  Artificial neural network Decision tree  Lazy algorithm(被動) 性質  簡單的處理訓練資料，不會將資料轉成其他方">
+<meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/knearestneighbor.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/voronoidiagram.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/knearestneighbor2.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/voronoidiagram2.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/radialbasisfunction.png">
-<meta property="og:updated_time" content="2019-02-08T04:47:56.204Z">
+<meta property="article:published_time" content="2018-05-13T12:59:00.000Z">
+<meta property="article:modified_time" content="2019-02-08T04:47:56.204Z">
+<meta property="article:author" content="Wang Yu Li">
+<meta property="article:tag" content="KNN">
+<meta property="article:tag" content="Radial Basis Function">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Machine Learning - KNN and Radial Basis Function">
-<meta name="twitter:description" content="機器學習性質  Eager algorithm(積極) 性質  將歷史資料做了很多分析與篩選( Mung )等預處理。 因為訓練出的假說很明確( Explicit )，所以自然判斷也比起 Lazy 方法更迅速。  \(Ex.\)  Artificial neural network Decision tree  Lazy algorithm(被動) 性質  簡單的處">
 <meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/knearestneighbor.png">
 
 
@@ -172,9 +173,11 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
@@ -199,7 +202,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Live more like human</p>
+        <p class="site-subtitle">The higher up, the greater the fall.</p>
       
   </div>
 
@@ -220,25 +223,25 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/willywangkaa/" rel="section">
+          <a href="/willywangkaa/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/willywangkaa/archives/" rel="section">
+          <a href="/willywangkaa/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/willywangkaa/categories/" rel="section">
+          <a href="/willywangkaa/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/willywangkaa/tags/" rel="section">
+          <a href="/willywangkaa/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
@@ -316,10 +319,10 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/05/13/Machine Learning-KNN-and-Radial-Basis-Function/">
+    <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/05/13/Machine%20Learning-KNN-and-Radial-Basis-Function/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -397,7 +400,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/willywangkaa/2018/05/13/Machine Learning-KNN-and-Radial-Basis-Function/#comments" itemprop="discussionUrl">
+                <a href="/willywangkaa/2018/05/13/Machine%20Learning-KNN-and-Radial-Basis-Function/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
                         data-disqus-identifier="2018/05/13/Machine Learning-KNN-and-Radial-Basis-Function/" itemprop="commentCount"></span>
                 </a>
@@ -479,13 +482,13 @@
 <li>K-Nearest Neighbor</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\knearestneighbor.png" alt="knearestneighbor"><figcaption>knearestneighbor</figcaption>
+<img src="\willywangkaa\images\knearestneighbor.png" alt="knearestneighbor"><figcaption aria-hidden="true">knearestneighbor</figcaption>
 </figure>
 <ul>
 <li>Voronoi Diagram (K= 1)</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\voronoidiagram.png" alt="voronoidiagram"><figcaption>voronoidiagram</figcaption>
+<img src="\willywangkaa\images\voronoidiagram.png" alt="voronoidiagram"><figcaption aria-hidden="true">voronoidiagram</figcaption>
 </figure>
 <h2 id="nearest-neighbor---最近鄰法">Nearest neighbor - 最近鄰法</h2>
 <ul>
@@ -529,7 +532,7 @@
 <li>1-NN：<span class="math inline">\(H\)</span> = Voronoi Diagram</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\voronoidiagram2.png" alt="voronoidiagram2"><figcaption>voronoidiagram2</figcaption>
+<img src="\willywangkaa\images\voronoidiagram2.png" alt="voronoidiagram2"><figcaption aria-hidden="true">voronoidiagram2</figcaption>
 </figure>
 <h2 id="距離權重近鄰法-distance---weighted-knn">距離權重近鄰法 Distance - Weighted <span class="math inline">\(K\)</span>NN</h2>
 <ul>
@@ -541,7 +544,7 @@
 </ul></li>
 <li>問題來了，那我們要選擇幾個鄰居作為參考值呢？
 <ul>
-<li>Shepard’s Method ：將整個案例空間所有的 <span class="math inline">\(x_i\)</span> 都納入考量。</li>
+<li>Shepard's Method ：將整個案例空間所有的 <span class="math inline">\(x_i\)</span> 都納入考量。</li>
 </ul></li>
 </ul>
 <h2 id="curse-of-dimensionality---維度災難-閱讀更多">Curse of Dimensionality - 維度災難 (<a href="https://willywangkaa.csdn.net/ztf312/article/details/50894224" target="_blank" rel="noopener">閱讀更多</a>)</h2>
@@ -626,7 +629,7 @@
 <p>將所有的區域逼近組合成全域型地逼近目標函數 <span class="math inline">\(f\)</span>，通常用於影像、訊號分析。</p>
 <p><strong>＜Note＞：</strong>這種網路模型是完全不相干於「Artificial Neural Network - 類神經網路」，相較起來比較與「距離加權回歸」相近，但是以積極的( Eager )的方式而不是以被動的( Lazy )的方式實現。</p>
 <figure>
-<img src="\willywangkaa\images\radialbasisfunction.png" alt="radialbasisfunction"><figcaption>radialbasisfunction</figcaption>
+<img src="\willywangkaa\images\radialbasisfunction.png" alt="radialbasisfunction"><figcaption aria-hidden="true">radialbasisfunction</figcaption>
 </figure>
 <p><span class="math display">\[
 \hat{f}(x)  = w_0 + \sum_{u  = 1}^k w_u \times K_u (d(x_u, x))
@@ -742,7 +745,7 @@ K_u (d(x_u, x)) = e^{-\frac{1}{2 \times {\delta_u}^2} d^2(x_u, x)}
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -786,10 +789,10 @@ K_u (d(x_u, x)) = e^{-\frac{1}{2 \times {\delta_u}^2} d^2(x_u, x)}
             
               <img class="site-author-image" itemprop="image"
                 src="/willywangkaa/images/avatar_me.gif"
-                alt="Willy Wang (willywangkaa)" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
-              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -797,7 +800,7 @@ K_u (d(x_u, x)) = e^{-\frac{1}{2 \times {\delta_u}^2} d^2(x_u, x)}
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/willywangkaa/archives/">
+                  <a href="/willywangkaa/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">posts</span>
@@ -844,8 +847,6 @@ K_u (d(x_u, x)) = e^{-\frac{1}{2 \times {\delta_u}^2} d^2(x_u, x)}
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -1061,7 +1062,7 @@ K_u (d(x_u, x)) = e^{-\frac{1}{2 \times {\delta_u}^2} d^2(x_u, x)}
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#機器學習性質"><span class="nav-number">1.</span> <span class="nav-text">機器學習性質</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#eager-algorithm積極"><span class="nav-number">1.1.</span> <span class="nav-text">Eager algorithm(積極)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#性質"><span class="nav-number">1.1.1.</span> <span class="nav-text">性質</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ex."><span class="nav-number">1.1.2.</span> <span class="nav-text">\(Ex.\)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lazy-algorithm被動"><span class="nav-number">1.2.</span> <span class="nav-text">Lazy algorithm(被動)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#性質-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">性質</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ex.-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">\(Ex.\)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#knn-and-radial-basis-function"><span class="nav-number">2.</span> <span class="nav-text">KNN and Radial Basis Function</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#instance-based-learning"><span class="nav-number">2.1.</span> <span class="nav-text">Instance-based Learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重點"><span class="nav-number">2.2.</span> <span class="nav-text">重點</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#voronoi-diagram---沃羅諾伊圖"><span class="nav-number">2.3.</span> <span class="nav-text">Voronoi Diagram - 沃羅諾伊圖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nearest-neighbor---最近鄰法"><span class="nav-number">2.4.</span> <span class="nav-text">Nearest neighbor - 最近鄰法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#k-nearest-neighbor-learning---近-k-個鄰法"><span class="nav-number">2.5.</span> <span class="nav-text">K-Nearest Neighbor Learning - 近 \(K\) 個鄰法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#建立的假說空間"><span class="nav-number">2.5.1.</span> <span class="nav-text">建立的假說空間</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#隱式的假說空間-h"><span class="nav-number">2.5.1.1.</span> <span class="nav-text">隱式的假說空間 \(H\)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#距離權重近鄰法-distance---weighted-knn"><span class="nav-number">2.6.</span> <span class="nav-text">距離權重近鄰法 Distance - Weighted \(K\)NN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#curse-of-dimensionality---維度災難-閱讀更多"><span class="nav-number">2.7.</span> <span class="nav-text">Curse of Dimensionality - 維度災難 (閱讀更多)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解決方法計算兩個案例之間的距離時對每個變因進行加權"><span class="nav-number">2.7.1.</span> <span class="nav-text">解決方法：計算兩個案例之間的距離時對每個變因進行加權</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些專有名詞"><span class="nav-number">2.8.</span> <span class="nav-text">一些專有名詞</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#locally-weighted-regrassion---區域加權回歸"><span class="nav-number">3.</span> <span class="nav-text">Locally Weighted Regrassion - 區域加權回歸</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#直觀"><span class="nav-number">3.1.</span> <span class="nav-text">直觀</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以各種不同的殘差函式將殘差降到最低求取最終的-f"><span class="nav-number">3.2.</span> <span class="nav-text">以各種不同的「殘差函式」將殘差降到最低求取最終的 \(f\)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#radial-basis-function-networks-放射狀基底函數網路"><span class="nav-number">4.</span> <span class="nav-text">Radial Basis Function Networks 放射狀基底函數網路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#訓練-rbf-網路"><span class="nav-number">4.1.</span> <span class="nav-text">* 訓練 RBF 網路</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#參考"><span class="nav-number">5.</span> <span class="nav-text">參考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92%E6%80%A7%E8%B3%AA"><span class="nav-number">1.</span> <span class="nav-text">機器學習性質</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#eager-algorithm%E7%A9%8D%E6%A5%B5"><span class="nav-number">1.1.</span> <span class="nav-text">Eager algorithm(積極)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%A7%E8%B3%AA"><span class="nav-number">1.1.1.</span> <span class="nav-text">性質</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ex."><span class="nav-number">1.1.2.</span> <span class="nav-text">\(Ex.\)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lazy-algorithm%E8%A2%AB%E5%8B%95"><span class="nav-number">1.2.</span> <span class="nav-text">Lazy algorithm(被動)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%A7%E8%B3%AA-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">性質</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ex.-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">\(Ex.\)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#knn-and-radial-basis-function"><span class="nav-number">2.</span> <span class="nav-text">KNN and Radial Basis Function</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#instance-based-learning"><span class="nav-number">2.1.</span> <span class="nav-text">Instance-based Learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E9%BB%9E"><span class="nav-number">2.2.</span> <span class="nav-text">重點</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#voronoi-diagram---%E6%B2%83%E7%BE%85%E8%AB%BE%E4%BC%8A%E5%9C%96"><span class="nav-number">2.3.</span> <span class="nav-text">Voronoi Diagram - 沃羅諾伊圖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nearest-neighbor---%E6%9C%80%E8%BF%91%E9%84%B0%E6%B3%95"><span class="nav-number">2.4.</span> <span class="nav-text">Nearest neighbor - 最近鄰法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#k-nearest-neighbor-learning---%E8%BF%91-k-%E5%80%8B%E9%84%B0%E6%B3%95"><span class="nav-number">2.5.</span> <span class="nav-text">K-Nearest Neighbor Learning - 近 \(K\) 個鄰法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E7%9A%84%E5%81%87%E8%AA%AA%E7%A9%BA%E9%96%93"><span class="nav-number">2.5.1.</span> <span class="nav-text">建立的假說空間</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9A%B1%E5%BC%8F%E7%9A%84%E5%81%87%E8%AA%AA%E7%A9%BA%E9%96%93-h"><span class="nav-number">2.5.1.1.</span> <span class="nav-text">隱式的假說空間 \(H\)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%9D%E9%9B%A2%E6%AC%8A%E9%87%8D%E8%BF%91%E9%84%B0%E6%B3%95-distance---weighted-knn"><span class="nav-number">2.6.</span> <span class="nav-text">距離權重近鄰法 Distance - Weighted \(K\)NN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#curse-of-dimensionality---%E7%B6%AD%E5%BA%A6%E7%81%BD%E9%9B%A3-%E9%96%B1%E8%AE%80%E6%9B%B4%E5%A4%9A"><span class="nav-number">2.7.</span> <span class="nav-text">Curse of Dimensionality - 維度災難 (閱讀更多)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B1%BA%E6%96%B9%E6%B3%95%E8%A8%88%E7%AE%97%E5%85%A9%E5%80%8B%E6%A1%88%E4%BE%8B%E4%B9%8B%E9%96%93%E7%9A%84%E8%B7%9D%E9%9B%A2%E6%99%82%E5%B0%8D%E6%AF%8F%E5%80%8B%E8%AE%8A%E5%9B%A0%E9%80%B2%E8%A1%8C%E5%8A%A0%E6%AC%8A"><span class="nav-number">2.7.1.</span> <span class="nav-text">解決方法：計算兩個案例之間的距離時對每個變因進行加權</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%B0%88%E6%9C%89%E5%90%8D%E8%A9%9E"><span class="nav-number">2.8.</span> <span class="nav-text">一些專有名詞</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#locally-weighted-regrassion---%E5%8D%80%E5%9F%9F%E5%8A%A0%E6%AC%8A%E5%9B%9E%E6%AD%B8"><span class="nav-number">3.</span> <span class="nav-text">Locally Weighted Regrassion - 區域加權回歸</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B4%E8%A7%80"><span class="nav-number">3.1.</span> <span class="nav-text">直觀</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A5%E5%90%84%E7%A8%AE%E4%B8%8D%E5%90%8C%E7%9A%84%E6%AE%98%E5%B7%AE%E5%87%BD%E5%BC%8F%E5%B0%87%E6%AE%98%E5%B7%AE%E9%99%8D%E5%88%B0%E6%9C%80%E4%BD%8E%E6%B1%82%E5%8F%96%E6%9C%80%E7%B5%82%E7%9A%84-f"><span class="nav-number">3.2.</span> <span class="nav-text">以各種不同的「殘差函式」將殘差降到最低求取最終的 \(f\)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#radial-basis-function-networks-%E6%94%BE%E5%B0%84%E7%8B%80%E5%9F%BA%E5%BA%95%E5%87%BD%E6%95%B8%E7%B6%B2%E8%B7%AF"><span class="nav-number">4.</span> <span class="nav-text">Radial Basis Function Networks 放射狀基底函數網路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A8%93%E7%B7%B4-rbf-%E7%B6%B2%E8%B7%AF"><span class="nav-number">4.1.</span> <span class="nav-text">* 訓練 RBF 網路</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83"><span class="nav-number">5.</span> <span class="nav-text">參考</span></a></li></ol></div>
             
 
           </div>
@@ -1081,11 +1082,11 @@ K_u (d(x_u, x)) = e^{-\frac{1}{2 \times {\delta_u}^2} d^2(x_u, x)}
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+  <span class="author" itemprop="copyrightHolder">Wang Yu Li</span>
 
   
 
@@ -1229,7 +1230,7 @@ K_u (d(x_u, x)) = e^{-\frac{1}{2 \times {\delta_u}^2} d^2(x_u, x)}
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/05/13/Machine Learning-KNN-and-Radial-Basis-Function/';
+        this.page.url = 'http://wangwilly.github.io/willywangkaa/2018/05/13/Machine%20Learning-KNN-and-Radial-Basis-Function/';
         this.page.identifier = '2018/05/13/Machine Learning-KNN-and-Radial-Basis-Function/';
         this.page.title = 'Machine Learning - KNN and Radial Basis Function';
       };
@@ -1664,24 +1665,7 @@ K_u (d(x_u, x)) = e^{-\frac{1}{2 \times {\delta_u}^2} d^2(x_u, x)}
   
     bookmark.scrollToMark('auto', "#more");
   
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>

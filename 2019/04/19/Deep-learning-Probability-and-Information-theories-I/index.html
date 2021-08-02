@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/willywangkaa/',
+    root: '',
     scheme: 'Pisces',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -103,19 +103,20 @@
   <meta name="keywords" content="Probability,Information theories," />
 
 
-<meta name="description" content="Deep learning - Probability and Information theories I Random variables and probability distribution Random variables（隨機變數）  在實驗的過程，所有可能的實驗結果 \(\omega\) 組成之集合稱為「樣本空間」（Sample space）\(\Omega\)  擲一">
-<meta name="keywords" content="Probability,Information theories">
+<meta name="description" content="Deep learning - Probability and Information theories I Random variables and probability distribution Random variables（隨機變數）  在實驗的過程，所有可能的實驗結果 \(\omega\) 組成之集合稱為「樣本空間」（Sample space）\(\Omega\)  擲一次六面骰子">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Deep learning - Probability and Information theories I">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2019/04/19/Deep-learning-Probability-and-Information-theories-I/index.html">
+<meta property="og:url" content="http://wangwilly.github.io/willywangkaa/2019/04/19/Deep-learning-Probability-and-Information-theories-I/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="Deep learning - Probability and Information theories I Random variables and probability distribution Random variables（隨機變數）  在實驗的過程，所有可能的實驗結果 \(\omega\) 組成之集合稱為「樣本空間」（Sample space）\(\Omega\)  擲一">
-<meta property="og:locale" content="zh-tw">
+<meta property="og:description" content="Deep learning - Probability and Information theories I Random variables and probability distribution Random variables（隨機變數）  在實驗的過程，所有可能的實驗結果 \(\omega\) 組成之集合稱為「樣本空間」（Sample space）\(\Omega\)  擲一次六面骰子">
+<meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/1554273024744.png">
-<meta property="og:updated_time" content="2019-04-19T13:32:07.045Z">
+<meta property="article:published_time" content="2019-04-19T13:16:00.000Z">
+<meta property="article:modified_time" content="2019-04-19T13:32:07.045Z">
+<meta property="article:author" content="Wang Yu Li">
+<meta property="article:tag" content="Probability">
+<meta property="article:tag" content="Information theories">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Deep learning - Probability and Information theories I">
-<meta name="twitter:description" content="Deep learning - Probability and Information theories I Random variables and probability distribution Random variables（隨機變數）  在實驗的過程，所有可能的實驗結果 \(\omega\) 組成之集合稱為「樣本空間」（Sample space）\(\Omega\)  擲一">
 <meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/1554273024744.png">
 
 
@@ -168,9 +169,11 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
@@ -195,7 +198,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Live more like human</p>
+        <p class="site-subtitle">The higher up, the greater the fall.</p>
       
   </div>
 
@@ -216,25 +219,25 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/willywangkaa/" rel="section">
+          <a href="/willywangkaa/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/willywangkaa/archives/" rel="section">
+          <a href="/willywangkaa/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/willywangkaa/categories/" rel="section">
+          <a href="/willywangkaa/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/willywangkaa/tags/" rel="section">
+          <a href="/willywangkaa/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
@@ -315,7 +318,7 @@
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2019/04/19/Deep-learning-Probability-and-Information-theories-I/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -555,7 +558,7 @@
 <h3 id="expectation期望值">Expectation（期望值）</h3>
 <ul>
 <li>可稱為「Expectation value」或「Mean」（平均值）</li>
-<li>當一個“平均值”定義在對應於 <span class="math inline">\(\mathrm X\)</span> 的函數 <span class="math inline">\(f\)</span> 中
+<li>當一個"平均值"定義在對應於 <span class="math inline">\(\mathrm X\)</span> 的函數 <span class="math inline">\(f\)</span> 中
 <ul>
 <li>將 <span class="math inline">\(f\)</span> 視為一個事件模型（分佈模型），當輸入 <span class="math inline">\(\mathrm X\)</span> 值改變時，其輸出值的加權（其出現機率）平均</li>
 <li>離散型：<span class="math inline">\(\mathrm E_{\mathrm {X～P}}[f(x)] = \sum_xP_{\mathrm X}(x)f(x)\)</span></li>
@@ -639,7 +642,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\1554273024744.png" alt="1554273024744"><figcaption>1554273024744</figcaption>
+<img src="\willywangkaa\images\1554273024744.png" alt="1554273024744"><figcaption aria-hidden="true">1554273024744</figcaption>
 </figure>
 <ul>
 <li><span class="math display">\[\mathrm{Var}(af(\mathrm X)+bg(\mathrm Y)) \equiv \mathrm{Var}(a\mathrm X+b\mathrm Y) \\ = a^2\mathrm{Var(X)}+b^2\mathrm{Var(Y)}+2ab\mathrm{Cov(X,Y)}\]</span>
@@ -723,13 +726,13 @@
 <li><span class="math inline">\(\sigma^2_{\mathrm y} = \mathrm E[(\mathrm y-\mu_{\mathrm y})^2] \\ = \mathrm E[(w^T\mathrm x-w^T\mu_{\mathrm x})^2] \\ = \mathrm E[(w^T(\mathrm x-\mu_{\mathrm x}))^2] \\ = \mathrm E[(w^T(\mathrm x-\mu_{\mathrm x}))((\mathrm x-\mu_{\mathrm x})^Tw)] \\ = w^T \mathrm E[((\mathrm x-\mu_{\mathrm x}))((\mathrm x-\mu_{\mathrm x})^T)] w = w^T\Sigma_{\mathrm x}w\)</span></li>
 </ul></li>
 </ul>
-<h2 id="bayes-rule-and-statistics">Bayes’ rule and statistics</h2>
+<h2 id="bayes-rule-and-statistics">Bayes' rule and statistics</h2>
 <blockquote>
 <p><span class="math inline">\(\Pr(\mathrm x = x)\)</span> <strong>的意義？</strong></p>
 <ol type="1">
 <li><strong>Bayesian probability（貝氏機率）</strong>
 <ul>
-<li>It’s a degree of belief or qualitative levels of certainty</li>
+<li>It's a degree of belief or qualitative levels of certainty</li>
 <li>「相信 <span class="math inline">\(\mathrm x = x\)</span> 事件發生的程度（確定性）」</li>
 </ul></li>
 <li><strong>Frequentist probability（頻率）</strong>
@@ -740,7 +743,7 @@
 </ol>
 <p><strong>上述兩個意義應為一致</strong></p>
 </blockquote>
-<h3 id="bayes-rule貝氏定理">Bayes’ rule（貝氏定理）</h3>
+<h3 id="bayes-rule貝氏定理">Bayes' rule（貝氏定理）</h3>
 <p><span class="math display">\[
 \mathrm {P(y\vert x)} = \frac{\mathrm{P(x\vert y)P(y)}}{\mathrm{P(x)}} = \frac{\mathrm{P(x\vert y)P(y)}}{\mathrm{\sum_yP(x\vert y} = y)\mathrm{P(y}=y)}
 \]</span></p>
@@ -899,7 +902,7 @@
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -943,10 +946,10 @@
             
               <img class="site-author-image" itemprop="image"
                 src="/willywangkaa/images/avatar_me.gif"
-                alt="Willy Wang (willywangkaa)" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
-              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -954,7 +957,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/willywangkaa/archives/">
+                  <a href="/willywangkaa/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">posts</span>
@@ -1001,8 +1004,6 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -1218,7 +1219,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#deep-learning---probability-and-information-theories-i"><span class="nav-number">1.</span> <span class="nav-text">Deep learning - Probability and Information theories I</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#random-variables-and-probability-distribution"><span class="nav-number">1.1.</span> <span class="nav-text">Random variables and probability distribution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#random-variables隨機變數"><span class="nav-number">1.1.1.</span> <span class="nav-text">Random variables（隨機變數）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#marginal-probability邊際機率"><span class="nav-number">1.1.2.</span> <span class="nav-text">Marginal probability（邊際機率）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#conditional-probability條件機率"><span class="nav-number">1.1.3.</span> <span class="nav-text">Conditional probability（條件機率）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#independence-and-conditional-independence獨立與條件獨立"><span class="nav-number">1.1.4.</span> <span class="nav-text">Independence and conditional independence（獨立與條件獨立）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#expectation期望值"><span class="nav-number">1.1.5.</span> <span class="nav-text">Expectation（期望值）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#variance變異數"><span class="nav-number">1.1.6.</span> <span class="nav-text">Variance（變異數）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#covariance共變異數"><span class="nav-number">1.1.7.</span> <span class="nav-text">Covariance（共變異數）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multivariate-and-derived-variables"><span class="nav-number">1.2.</span> <span class="nav-text">Multivariate and Derived variables</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#multivariate-random-variables多元隨機變數"><span class="nav-number">1.2.1.</span> <span class="nav-text">Multivariate random variables（多元隨機變數）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#derived-random-variables衍隨機變數"><span class="nav-number">1.2.2.</span> <span class="nav-text">Derived random variables（衍隨機變數）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bayes-rule-and-statistics"><span class="nav-number">1.3.</span> <span class="nav-text">Bayes’ rule and statistics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bayes-rule貝氏定理"><span class="nav-number">1.3.1.</span> <span class="nav-text">Bayes’ rule（貝氏定理）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#point-estimation點估計"><span class="nav-number">1.3.2.</span> <span class="nav-text">Point estimation（點估計）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sample-mean-and-covariance"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">Sample mean and covariance</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#deep-learning---probability-and-information-theories-i"><span class="nav-number">1.</span> <span class="nav-text">Deep learning - Probability and Information theories I</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#random-variables-and-probability-distribution"><span class="nav-number">1.1.</span> <span class="nav-text">Random variables and probability distribution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#random-variables%E9%9A%A8%E6%A9%9F%E8%AE%8A%E6%95%B8"><span class="nav-number">1.1.1.</span> <span class="nav-text">Random variables（隨機變數）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#marginal-probability%E9%82%8A%E9%9A%9B%E6%A9%9F%E7%8E%87"><span class="nav-number">1.1.2.</span> <span class="nav-text">Marginal probability（邊際機率）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#conditional-probability%E6%A2%9D%E4%BB%B6%E6%A9%9F%E7%8E%87"><span class="nav-number">1.1.3.</span> <span class="nav-text">Conditional probability（條件機率）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#independence-and-conditional-independence%E7%8D%A8%E7%AB%8B%E8%88%87%E6%A2%9D%E4%BB%B6%E7%8D%A8%E7%AB%8B"><span class="nav-number">1.1.4.</span> <span class="nav-text">Independence and conditional independence（獨立與條件獨立）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#expectation%E6%9C%9F%E6%9C%9B%E5%80%BC"><span class="nav-number">1.1.5.</span> <span class="nav-text">Expectation（期望值）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#variance%E8%AE%8A%E7%95%B0%E6%95%B8"><span class="nav-number">1.1.6.</span> <span class="nav-text">Variance（變異數）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#covariance%E5%85%B1%E8%AE%8A%E7%95%B0%E6%95%B8"><span class="nav-number">1.1.7.</span> <span class="nav-text">Covariance（共變異數）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multivariate-and-derived-variables"><span class="nav-number">1.2.</span> <span class="nav-text">Multivariate and Derived variables</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#multivariate-random-variables%E5%A4%9A%E5%85%83%E9%9A%A8%E6%A9%9F%E8%AE%8A%E6%95%B8"><span class="nav-number">1.2.1.</span> <span class="nav-text">Multivariate random variables（多元隨機變數）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#derived-random-variables%E8%A1%8D%E9%9A%A8%E6%A9%9F%E8%AE%8A%E6%95%B8"><span class="nav-number">1.2.2.</span> <span class="nav-text">Derived random variables（衍隨機變數）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bayes-rule-and-statistics"><span class="nav-number">1.3.</span> <span class="nav-text">Bayes&#39; rule and statistics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bayes-rule%E8%B2%9D%E6%B0%8F%E5%AE%9A%E7%90%86"><span class="nav-number">1.3.1.</span> <span class="nav-text">Bayes&#39; rule（貝氏定理）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#point-estimation%E9%BB%9E%E4%BC%B0%E8%A8%88"><span class="nav-number">1.3.2.</span> <span class="nav-text">Point estimation（點估計）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sample-mean-and-covariance"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">Sample mean and covariance</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1238,11 +1239,11 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+  <span class="author" itemprop="copyrightHolder">Wang Yu Li</span>
 
   
 
@@ -1386,7 +1387,7 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/willywangkaa/2019/04/19/Deep-learning-Probability-and-Information-theories-I/';
+        this.page.url = 'http://wangwilly.github.io/willywangkaa/2019/04/19/Deep-learning-Probability-and-Information-theories-I/';
         this.page.identifier = '2019/04/19/Deep-learning-Probability-and-Information-theories-I/';
         this.page.title = 'Deep learning - Probability and Information theories I';
       };
@@ -1821,24 +1822,7 @@
   
     bookmark.scrollToMark('auto', "#more");
   
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>

@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/willywangkaa/',
+    root: '',
     scheme: 'Pisces',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -103,14 +103,13 @@
   <meta name="keywords" content="Disk Management," />
 
 
-<meta name="description" content="Disk management Disk system  disksystem   硬碟系統由多片「Disk」( 磁片 ) 組成  每片磁片通常雙面都可存取資料。 每一面劃分為多個同心圓軌道，稱為「Track」( 磁軌 )。 每條「Track」由多個「Sector」( 磁區 ) 組成。 不同面之相同「Track no.」組成之集合叫做「Cyclinder」( 磁柱 )。">
-<meta name="keywords" content="Disk Management">
+<meta name="description" content="Disk management Disk system  disksystem   硬碟系統由多片「Disk」( 磁片 ) 組成  每片磁片通常雙面都可存取資料。 每一面劃分為多個同心圓軌道，稱為「Track」( 磁軌 )。 每條「Track」由多個「Sector」( 磁區 ) 組成。 不同面之相同「Track no.」組成之集合叫做「Cyclinder」( 磁柱 )。  Ex  Disk sys">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Operating System - Disk Management">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/09/10/Operating-System-Disk-Management/index.html">
+<meta property="og:url" content="http://wangwilly.github.io/willywangkaa/2018/09/10/Operating-System-Disk-Management/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="Disk management Disk system  disksystem   硬碟系統由多片「Disk」( 磁片 ) 組成  每片磁片通常雙面都可存取資料。 每一面劃分為多個同心圓軌道，稱為「Track」( 磁軌 )。 每條「Track」由多個「Sector」( 磁區 ) 組成。 不同面之相同「Track no.」組成之集合叫做「Cyclinder」( 磁柱 )。">
-<meta property="og:locale" content="zh-tw">
+<meta property="og:description" content="Disk management Disk system  disksystem   硬碟系統由多片「Disk」( 磁片 ) 組成  每片磁片通常雙面都可存取資料。 每一面劃分為多個同心圓軌道，稱為「Track」( 磁軌 )。 每條「Track」由多個「Sector」( 磁區 ) 組成。 不同面之相同「Track no.」組成之集合叫做「Cyclinder」( 磁柱 )。  Ex  Disk sys">
+<meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/disksystem.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/bitvector.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/linklistfreespace.png">
@@ -150,10 +149,11 @@
 <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/RAID_01.svg/600px-RAID_01.svg.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/RAID10.png">
 <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/RAID_10.svg/600px-RAID_10.svg.png">
-<meta property="og:updated_time" content="2018-11-06T12:31:41.494Z">
+<meta property="article:published_time" content="2018-09-10T06:24:00.000Z">
+<meta property="article:modified_time" content="2018-11-06T12:31:41.494Z">
+<meta property="article:author" content="Wang Yu Li">
+<meta property="article:tag" content="Disk Management">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Operating System - Disk Management">
-<meta name="twitter:description" content="Disk management Disk system  disksystem   硬碟系統由多片「Disk」( 磁片 ) 組成  每片磁片通常雙面都可存取資料。 每一面劃分為多個同心圓軌道，稱為「Track」( 磁軌 )。 每條「Track」由多個「Sector」( 磁區 ) 組成。 不同面之相同「Track no.」組成之集合叫做「Cyclinder」( 磁柱 )。">
 <meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/disksystem.png">
 
 
@@ -206,9 +206,11 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
@@ -233,7 +235,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Live more like human</p>
+        <p class="site-subtitle">The higher up, the greater the fall.</p>
       
   </div>
 
@@ -254,25 +256,25 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/willywangkaa/" rel="section">
+          <a href="/willywangkaa/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/willywangkaa/archives/" rel="section">
+          <a href="/willywangkaa/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/willywangkaa/categories/" rel="section">
+          <a href="/willywangkaa/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/willywangkaa/tags/" rel="section">
+          <a href="/willywangkaa/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
@@ -353,7 +355,7 @@
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/09/10/Operating-System-Disk-Management/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -464,7 +466,7 @@
         <h1 id="disk-management">Disk management</h1>
 <h2 id="disk-system">Disk system</h2>
 <figure>
-<img src="\willywangkaa\images\disksystem.png" alt="disksystem"><figcaption>disksystem</figcaption>
+<img src="\willywangkaa\images\disksystem.png" alt="disksystem"><figcaption aria-hidden="true">disksystem</figcaption>
 </figure>
 <ul>
 <li>硬碟系統由多片「Disk」( 磁片 ) 組成
@@ -489,10 +491,10 @@
 \]</span></p>
 <h2 id="disk-access-time">Disk access time</h2>
 <ul>
-<li><strong>Seek time</strong>：<strong>將磁頭移至愈存取的磁軌上方所花的時間</strong>。</li>
-<li><strong>Latency time ( or Rotation time )：將欲存取之磁區轉到磁頭下方所花的時間。</strong></li>
+<li><p><strong>Seek time</strong>：<strong>將磁頭移至愈存取的磁軌上方所花的時間</strong>。</p></li>
+<li><p><strong>Latency time ( or Rotation time )：將欲存取之磁區轉到磁頭下方所花的時間。</strong></p></li>
 <li><p><strong>Transfer time：資料在磁碟與記憶體之間傳輸的時間</strong>，與傳輸量呈正比關係。</p></li>
-<li>Ex
+<li><p>Ex</p>
 <ul>
 <li>磁碟轉速 7200 RPM</li>
 <li>求平均 Latency ( rotation ) time？</li>
@@ -556,11 +558,11 @@ Avg. Latency \;( rotation ) \;time = \frac12 \times \frac{1}{7200} \;MPR = \frac
 <li>Ex</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\bitvector.png" alt="bitvector"><figcaption>bitvector</figcaption>
+<img src="\willywangkaa\images\bitvector.png" alt="bitvector"><figcaption aria-hidden="true">bitvector</figcaption>
 </figure>
 <h3 id="link-list">Link list</h3>
 <figure>
-<img src="\willywangkaa\images\linklistfreespace.png" alt="linklistfreespace"><figcaption>linklistfreespace</figcaption>
+<img src="\willywangkaa\images\linklistfreespace.png" alt="linklistfreespace"><figcaption aria-hidden="true">linklistfreespace</figcaption>
 </figure>
 <p>作業系統直接在磁碟上，將這些「Free block」以鍊結的方式串接管理。</p>
 <ul>
@@ -585,7 +587,7 @@ Avg. Latency \;( rotation ) \;time = \frac12 \times \frac{1}{7200} \;MPR = \frac
 <li>Ex ( 令一個 Block 可以記錄 5 個欄位 )</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\Linklist_grouping.png" alt="Linklist_grouping"><figcaption>Linklist_grouping</figcaption>
+<img src="\willywangkaa\images\Linklist_grouping.png" alt="Linklist_grouping"><figcaption aria-hidden="true">Linklist_grouping</figcaption>
 </figure>
 <h4 id="counting">Counting</h4>
 <p>利用連續性配置以及歸還的特性，改變鍊結串列紀錄的方式；Free block 內除了紀錄 鍊結資訊以外，<strong>另外紀錄在此 Free block 之後的連續「Free block」的個數。</strong></p>
@@ -597,12 +599,12 @@ Avg. Latency \;( rotation ) \;time = \frac12 \times \frac{1}{7200} \;MPR = \frac
 <li>Ex</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\Linklist_counting.png" alt="Linklist_counting"><figcaption>Linklist_counting</figcaption>
+<img src="\willywangkaa\images\Linklist_counting.png" alt="Linklist_counting"><figcaption aria-hidden="true">Linklist_counting</figcaption>
 </figure>
 <h2 id="file-allocation-method">☆File Allocation method</h2>
 <h3 id="contiguous-allocation">Contiguous allocation</h3>
 <figure>
-<img src="\willywangkaa\images\contiguousallocation.png" alt="contiguousallocation"><figcaption>contiguousallocation</figcaption>
+<img src="\willywangkaa\images\contiguousallocation.png" alt="contiguousallocation"><figcaption aria-hidden="true">contiguousallocation</figcaption>
 </figure>
 <p>若檔案的大小為 n Block，則作業系統必須在磁碟中找到 n 個「連續的 Free block」，才能配置給它，此外作業系統在「Physical directory」會記錄下列資訊。</p>
 <ol type="1">
@@ -641,7 +643,7 @@ Avg. Latency \;( rotation ) \;time = \frac12 \times \frac{1}{7200} \;MPR = \frac
 </ul>
 <h3 id="linked-allocation">Linked allocation</h3>
 <figure>
-<img src="\willywangkaa\images\Linkallocation.png" alt="Linkallocation"><figcaption>Linkallocation</figcaption>
+<img src="\willywangkaa\images\Linkallocation.png" alt="Linkallocation"><figcaption aria-hidden="true">Linkallocation</figcaption>
 </figure>
 <p>若檔案大小為 n Block，則作業系統只需要在磁碟中找到 n 個 Free blocks <strong>(不需連續)</strong> 即可配置，且「Allocates block」 之間以鍊結方式串聯，另外作業系統在「Physical directory」紀錄：</p>
 <ol type="1">
@@ -666,7 +668,7 @@ Avg. Latency \;( rotation ) \;time = \frac12 \times \frac{1}{7200} \;MPR = \frac
 </ul>
 <h4 id="file-allocation-table-fat-method---microsoft-windows-採用">File Allocation Table (FAT) method - Microsoft windows 採用</h4>
 <figure>
-<img src="\willywangkaa\images\fileallocationtable.png" alt="fileallocationtable"><figcaption>fileallocationtable</figcaption>
+<img src="\willywangkaa\images\fileallocationtable.png" alt="fileallocationtable"><figcaption aria-hidden="true">fileallocationtable</figcaption>
 </figure>
 <p><strong>「Allocates block」之間的鍊結資訊存在於「作業系統記憶體區塊」中的一個表格稱為 FAT</strong>，並非存於磁碟中。</p>
 <ul>
@@ -680,7 +682,7 @@ Avg. Latency \;( rotation ) \;time = \frac12 \times \frac{1}{7200} \;MPR = \frac
 </ul>
 <h3 id="index-allocation">Index allocation</h3>
 <figure>
-<img src="\willywangkaa\images\indexallocation.png" alt="indexallocation"><figcaption>indexallocation</figcaption>
+<img src="\willywangkaa\images\indexallocation.png" alt="indexallocation"><figcaption aria-hidden="true">indexallocation</figcaption>
 </figure>
 <p>若檔案大小為 n 個 Block，則作業系統配置 n 個 Block ( <strong>無須連續</strong> ) 存放資料之外，<strong>另外需要額外配置「Index block」，儲存所有 Data block 的編號( Address )，</strong>且作業系統在「Physical directory」紀錄：</p>
 <ol type="1">
@@ -715,7 +717,7 @@ Avg. Latency \;( rotation ) \;time = \frac12 \times \frac{1}{7200} \;MPR = \frac
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\linksheme.png" alt="linksheme"><figcaption>linksheme</figcaption>
+<img src="\willywangkaa\images\linksheme.png" alt="linksheme"><figcaption aria-hidden="true">linksheme</figcaption>
 </figure>
 <ul>
 <li>Multilevel scheme - 使用階層式的 Index 架構
@@ -732,7 +734,7 @@ Avg. Latency \;( rotation ) \;time = \frac12 \times \frac{1}{7200} \;MPR = \frac
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\mulitilevelscheme.png" alt="mulitilevelscheme"><figcaption>mulitilevelscheme</figcaption>
+<img src="\willywangkaa\images\mulitilevelscheme.png" alt="mulitilevelscheme"><figcaption aria-hidden="true">mulitilevelscheme</figcaption>
 </figure>
 <ul>
 <li>Combined scheme - UNIX i-node
@@ -749,7 +751,7 @@ Avg. Latency \;( rotation ) \;time = \frac12 \times \frac{1}{7200} \;MPR = \frac
 </ul>
 <h4 id="unix-i-node">☆ UNIX i-node</h4>
 <figure>
-<img src="\willywangkaa\images\unix_inode.png" alt="unix_inode"><figcaption>unix_inode</figcaption>
+<img src="\willywangkaa\images\unix_inode.png" alt="unix_inode"><figcaption aria-hidden="true">unix_inode</figcaption>
 </figure>
 <ul>
 <li>Ex ( i-node with 15 entry，一個 block 可存放 n 個指標 )
@@ -799,7 +801,7 @@ max \;file \;size = ( 12 + 2^{12} + 2^{12^2} + 2^{12^3} ) block \\
 </blockquote>
 <h3 id="fcfs-first-come-first-service">FCFS (First come first service)</h3>
 <figure>
-<img src="\willywangkaa\images\FCFSdiskscduale.png" alt="FCFSdiskscduale"><figcaption>FCFSdiskscduale</figcaption>
+<img src="\willywangkaa\images\FCFSdiskscduale.png" alt="FCFSdiskscduale"><figcaption aria-hidden="true">FCFSdiskscduale</figcaption>
 </figure>
 <p><strong>最早到達的磁軌請求</strong>優先服務。</p>
 <ul>
@@ -823,7 +825,7 @@ max \;file \;size = ( 12 + 2^{12} + 2^{12^2} + 2^{12^3} ) block \\
 \]</span></p>
 <h3 id="sstf-shortest-seek-time-track-first">SSTF ( Shortest seek time track first )</h3>
 <figure>
-<img src="\willywangkaa\images\SSTFdiskscheduale.png" alt="SSTFdiskscheduale"><figcaption>SSTFdiskscheduale</figcaption>
+<img src="\willywangkaa\images\SSTFdiskscheduale.png" alt="SSTFdiskscheduale"><figcaption aria-hidden="true">SSTFdiskscheduale</figcaption>
 </figure>
 <p><strong>距離磁頭目前為址最近的磁軌要求</strong>，最優先服務。</p>
 <ul>
@@ -846,11 +848,11 @@ max \;file \;size = ( 12 + 2^{12} + 2^{12^2} + 2^{12^3} ) block \\
 \]</span></p>
 <h3 id="scan">Scan</h3>
 <figure>
-<img src="\willywangkaa\images\SCANdiskschedule.png" alt="SCANdiskschedule"><figcaption>SCANdiskschedule</figcaption>
+<img src="\willywangkaa\images\SCANdiskschedule.png" alt="SCANdiskschedule"><figcaption aria-hidden="true">SCANdiskschedule</figcaption>
 </figure>
 <p>磁頭來回雙向移動掃描，遇到有「磁軌請求」即執行服務，當磁頭遇到磁軌的開端或是盡頭時，才「折返」提供服務。</p>
 <figure>
-<img src="\willywangkaa\images\SCANdemo.png" alt="SCANdemo"><figcaption>SCANdemo</figcaption>
+<img src="\willywangkaa\images\SCANdemo.png" alt="SCANdemo"><figcaption aria-hidden="true">SCANdemo</figcaption>
 </figure>
 <ul>
 <li><strong>Pros</strong>
@@ -864,10 +866,10 @@ max \;file \;size = ( 12 + 2^{12} + 2^{12^2} + 2^{12^3} ) block \\
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\SCANdemo2.png" alt="SCANdemo2"><figcaption>SCANdemo2</figcaption>
+<img src="\willywangkaa\images\SCANdemo2.png" alt="SCANdemo2"><figcaption aria-hidden="true">SCANdemo2</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\SCANdemo3.png" alt="SCANdemo3"><figcaption>SCANdemo3</figcaption>
+<img src="\willywangkaa\images\SCANdemo3.png" alt="SCANdemo3"><figcaption aria-hidden="true">SCANdemo3</figcaption>
 </figure>
 <ul>
 <li>Ex
@@ -881,7 +883,7 @@ max \;file \;size = ( 12 + 2^{12} + 2^{12^2} + 2^{12^3} ) block \\
 \]</span></p>
 <h4 id="c-scan-circular-scan">C-Scan ( Circular-scan )</h4>
 <figure>
-<img src="\willywangkaa\images\CSCANschedule.png" alt="CSCANschedule"><figcaption>CSCANschedule</figcaption>
+<img src="\willywangkaa\images\CSCANschedule.png" alt="CSCANschedule"><figcaption aria-hidden="true">CSCANschedule</figcaption>
 </figure>
 <p><strong>只提供「單向的服務」</strong>，折返回程不提供服務。</p>
 <blockquote>
@@ -914,7 +916,7 @@ OR \\
 \]</span></p>
 <h5 id="c-look">C-Look</h5>
 <figure>
-<img src="\willywangkaa\images\CLOOKschedule.png" alt="CLOOKschedule"><figcaption>CLOOKschedule</figcaption>
+<img src="\willywangkaa\images\CLOOKschedule.png" alt="CLOOKschedule"><figcaption aria-hidden="true">CLOOKschedule</figcaption>
 </figure>
 <p><strong>只提供單向的服務。</strong></p>
 <blockquote>
@@ -964,7 +966,7 @@ OR \\
 <h2 id="其它名詞">其它名詞</h2>
 <h3 id="formatting-格式化">Formatting ( 格式化 )</h3>
 <figure>
-<img src="\willywangkaa\images\lowlevelformat.png" alt="lowlevelformat"><figcaption>lowlevelformat</figcaption>
+<img src="\willywangkaa\images\lowlevelformat.png" alt="lowlevelformat"><figcaption aria-hidden="true">lowlevelformat</figcaption>
 </figure>
 <ul>
 <li><strong>Physical format</strong> ( Low-level format )
@@ -988,23 +990,23 @@ OR \\
 <p>將磁碟視為一個大型的陣列使用，一個「磁區」就視為陣列的一個 entry。</p>
 <ul>
 <li><p>沒有「File system」的支援。</p></li>
-<li>Pros
+<li><p>Pros</p>
 <ul>
 <li><strong>存取速度快</strong></li>
 </ul></li>
-<li>Cons
+<li><p>Cons</p>
 <ul>
 <li>使用者不易使用，<strong>通常用在資料庫系統的底層。</strong></li>
 </ul></li>
 </ul>
 <h3 id="bootstrap-loader">☆Bootstrap loader</h3>
 <figure>
-<img src="\willywangkaa\images\windowsMBR.png" alt="windowsMBR"><figcaption>windowsMBR</figcaption>
+<img src="\willywangkaa\images\windowsMBR.png" alt="windowsMBR"><figcaption aria-hidden="true">windowsMBR</figcaption>
 </figure>
 <p><strong>開機時讓電腦可以從磁碟載入作業系統的「Object code」到記憶體的特殊「Loader」。</strong></p>
 <h4 id="早期">早期</h4>
 <figure>
-<img src="\willywangkaa\images\boot1.png" alt="boot1"><figcaption>boot1</figcaption>
+<img src="\willywangkaa\images\boot1.png" alt="boot1"><figcaption aria-hidden="true">boot1</figcaption>
 </figure>
 <ul>
 <li>流程
@@ -1023,7 +1025,7 @@ OR \\
 </ul>
 <h4 id="現今">現今</h4>
 <figure>
-<img src="\willywangkaa\images\boot2.png" alt="boot2"><figcaption>boot2</figcaption>
+<img src="\willywangkaa\images\boot2.png" alt="boot2"><figcaption aria-hidden="true">boot2</figcaption>
 </figure>
 <blockquote>
 <p>完整的 Bootstrap Loader 位於磁碟的固定「Block」位置，稱為「Boot block」；</p>
@@ -1077,25 +1079,25 @@ OR \\
 <li>圖一</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\sparesector.png" alt="sparesector"><figcaption>sparesector</figcaption>
+<img src="\willywangkaa\images\sparesector.png" alt="sparesector"><figcaption aria-hidden="true">sparesector</figcaption>
 </figure>
 <ul>
 <li>圖二</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\SCSIsparesector.png" alt="SCSIsparesector"><figcaption>SCSIsparesector</figcaption>
+<img src="\willywangkaa\images\SCSIsparesector.png" alt="SCSIsparesector"><figcaption aria-hidden="true">SCSIsparesector</figcaption>
 </figure>
 <ul>
 <li>圖三</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\sectorslipping.png" alt="sectorslipping"><figcaption>sectorslipping</figcaption>
+<img src="\willywangkaa\images\sectorslipping.png" alt="sectorslipping"><figcaption aria-hidden="true">sectorslipping</figcaption>
 </figure>
 <h3 id="swap-space-management">Swap space management</h3>
 <p>在「Vitrual memory」裡，「Medium-term scheduler」會將磁碟作為「Swap out」的分頁或「Process image」之暫存處。</p>
 <p>決定「Swap space」大小時，<strong>最好超估( Overestimate )，比較安全。</strong></p>
 <figure>
-<img src="\willywangkaa\images\swapspace.png" alt="swapspace"><figcaption>swapspace</figcaption>
+<img src="\willywangkaa\images\swapspace.png" alt="swapspace"><figcaption aria-hidden="true">swapspace</figcaption>
 </figure>
 <h4 id="方法">方法</h4>
 <p>用甚麼方式保存 Swap out page/process image？</p>
@@ -1136,7 +1138,7 @@ OR \\
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\datastriping.png" alt="datastriping"><figcaption>datastriping</figcaption>
+<img src="\willywangkaa\images\datastriping.png" alt="datastriping"><figcaption aria-hidden="true">datastriping</figcaption>
 </figure>
 <h2 id="提升disk-availibility-可靠度">提升「Disk availibility」( 可靠度 )</h2>
 <blockquote>
@@ -1186,7 +1188,7 @@ P&#39;(i) = D_3(i) \oplus D_2(i) \oplus D&#39;_1(i) \oplus D_0(i) \\
 \]</span></p>
 <blockquote>
 <ul>
-<li>需要兩次硬碟讀取 ( P、<span class="math inline">\(D_1\)</span> ) ，兩次硬碟寫入 ( P’、<span class="math inline">\(D&#39;_1\)</span> )</li>
+<li>需要兩次硬碟讀取 ( P、<span class="math inline">\(D_1\)</span> ) ，兩次硬碟寫入 ( P'、<span class="math inline">\(D&#39;_1\)</span> )</li>
 </ul>
 </blockquote>
 <h2 id="redundant-array-of-implement-disk-raid">Redundant Array of Implement Disk ( RAID )</h2>
@@ -1218,7 +1220,7 @@ N \; 個磁碟之「Reliability」 = \frac{1 \;個磁碟之「Reliability」}{N}
 <p>使用「Redundancy」可以改善磁碟陣列系統的「Avaliability」，但無法改善其「Reliability」( Mean time to failure；MTTR )；「Reliability」只能透過<strong>改善製造技術</strong>，或是<strong>使用較少的磁碟建構磁碟系統</strong>才能改善</p>
 </blockquote>
 <figure>
-<img src="\willywangkaa\images\RAID.png" alt="RAID"><figcaption>RAID</figcaption>
+<img src="\willywangkaa\images\RAID.png" alt="RAID"><figcaption aria-hidden="true">RAID</figcaption>
 </figure>
 <h3 id="raid-0">RAID 0</h3>
 <p>只提供「Block-level striping ( interleaving )」，未提供任何<strong>「Availability」技術</strong> ( 未使用附加的磁碟以保護資料 )</p>
@@ -1256,7 +1258,7 @@ Size =\min \left(S_1,S_2,S_3\ldots \right), S_i \; 為一磁碟容量\; i = 1, 2
 </ul>
 <h3 id="raid-2-double-error-detecting-and-single-correcting-code">RAID 2 ( Double error detecting and single correcting code )</h3>
 <figure>
-<img src="\willywangkaa\images\RAID2.png" alt="RAID2"><figcaption>RAID2</figcaption>
+<img src="\willywangkaa\images\RAID2.png" alt="RAID2"><figcaption aria-hidden="true">RAID2</figcaption>
 </figure>
 <p>採用記憶體的「Error correcting code」( Hamming code ) 技術來改善「Availability」，希望降低「Mirror」成本，<strong>但是成本降低有限 ( 比「RAID 1」少一部磁碟 )</strong></p>
 <blockquote>
@@ -1278,7 +1280,7 @@ Size =\min \left(S_1,S_2,S_3\ldots \right), S_i \; 為一磁碟容量\; i = 1, 2
 </blockquote>
 <h3 id="raid-3-bit-interleaved-parity">RAID 3 ( Bit-interleaved parity )</h3>
 <figure>
-<img src="\willywangkaa\images\RAID3.png" alt="RAID3"><figcaption>RAID3</figcaption>
+<img src="\willywangkaa\images\RAID3.png" alt="RAID3"><figcaption aria-hidden="true">RAID3</figcaption>
 </figure>
 <p><strong>採用「Bit-level striping」與「Parity check」技術</strong></p>
 <ul>
@@ -1305,7 +1307,7 @@ Size =\min \left(S_1,S_2,S_3\ldots \right), S_i \; 為一磁碟容量\; i = 1, 2
 </blockquote>
 <h3 id="raid-4-block-interleaved-parity">RAID 4 ( Block-interleaved parity )</h3>
 <figure>
-<img src="\willywangkaa\images\RAID4.png" alt="RAID4"><figcaption>RAID4</figcaption>
+<img src="\willywangkaa\images\RAID4.png" alt="RAID4"><figcaption aria-hidden="true">RAID4</figcaption>
 </figure>
 <p><strong>採用「Block-level striping」與「Parity check」技術</strong></p>
 <p>同位資訊以<strong>區塊的方式</strong>儲存，與一組「Data block」相關聯</p>
@@ -1335,7 +1337,7 @@ Size =\min \left(S_1,S_2,S_3\ldots \right), S_i \; 為一磁碟容量\; i = 1, 2
 </blockquote>
 <h3 id="raid-5-distributed-block-interleaved-parity">RAID 5 ( Distributed block-interleaved parity )</h3>
 <figure>
-<img src="\willywangkaa\images\RAID5.png" alt="RAID5"><figcaption>RAID5</figcaption>
+<img src="\willywangkaa\images\RAID5.png" alt="RAID5"><figcaption aria-hidden="true">RAID5</figcaption>
 </figure>
 <p><strong>採用「Block-level striping」與「Parity check」技術</strong></p>
 <p>為了改良頻繁對「Parity desk」之讀寫使得該磁碟易損耗，也避免平行寫入時會有「Bottleneck」，將「Parity block」<strong>分散存於不同的磁碟之中，並非集中在一部磁碟</strong></p>
@@ -1368,7 +1370,7 @@ Size = (N-1) \times \min (S_1,S_2,S_3\ldots, S_N), S_i \; 為一磁碟容量\; i
 </blockquote>
 <h3 id="raid-6-pq-redundancy">RAID 6 ( P+Q redundancy )</h3>
 <figure>
-<img src="\willywangkaa\images\RAID6.png" alt="RAID6"><figcaption>RAID6</figcaption>
+<img src="\willywangkaa\images\RAID6.png" alt="RAID6"><figcaption aria-hidden="true">RAID6</figcaption>
 </figure>
 <p>不用「Parity check」技術，改用類似「Reed-Solomon」( 李德-索羅門碼 ) 技術，任兩塊「Disk block」同時出錯還是能恢復資料</p>
 <ul>
@@ -1393,25 +1395,25 @@ Size = (N-2) \times \min (S_1,S_2,S_3\ldots, S_N), S_i \; 為一磁碟容量\; i
 </blockquote>
 <h3 id="raid-01">RAID 01</h3>
 <figure>
-<img src="\willywangkaa\images\RAID01.png" alt="RAID01"><figcaption>RAID01</figcaption>
+<img src="\willywangkaa\images\RAID01.png" alt="RAID01"><figcaption aria-hidden="true">RAID01</figcaption>
 </figure>
 <figure>
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/RAID_01.svg/600px-RAID_01.svg.png" alt="File:RAID 01.svg"><figcaption>File:RAID 01.svg</figcaption>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/RAID_01.svg/600px-RAID_01.svg.png" alt="File:RAID 01.svg"><figcaption aria-hidden="true">File:RAID 01.svg</figcaption>
 </figure>
 <p>先 Striping 再整體 Mirror</p>
 <ul>
 <li><p>雖然成本相當昂貴，但是通常用在高效能與高可靠度的場合</p></li>
-<li><strong>Cons</strong>
+<li><p><strong>Cons</strong></p>
 <ul>
 <li><strong>一部磁碟毀壞，須整組替換</strong></li>
 </ul></li>
 </ul>
 <h3 id="raid-10-優秀">RAID 10 ( 優秀 )</h3>
 <figure>
-<img src="\willywangkaa\images\RAID10.png" alt="RAID10"><figcaption>RAID10</figcaption>
+<img src="\willywangkaa\images\RAID10.png" alt="RAID10"><figcaption aria-hidden="true">RAID10</figcaption>
 </figure>
 <figure>
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/RAID_10.svg/600px-RAID_10.svg.png" alt="File:RAID 10.svg"><figcaption>File:RAID 10.svg</figcaption>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/RAID_10.svg/600px-RAID_10.svg.png" alt="File:RAID 10.svg"><figcaption aria-hidden="true">File:RAID 10.svg</figcaption>
 </figure>
 <p>先個別 Mirror 再整體Striping</p>
 <ul>
@@ -1517,7 +1519,7 @@ Size = (N-2) \times \min (S_1,S_2,S_3\ldots, S_N), S_i \; 為一磁碟容量\; i
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -1561,10 +1563,10 @@ Size = (N-2) \times \min (S_1,S_2,S_3\ldots, S_N), S_i \; 為一磁碟容量\; i
             
               <img class="site-author-image" itemprop="image"
                 src="/willywangkaa/images/avatar_me.gif"
-                alt="Willy Wang (willywangkaa)" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
-              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -1572,7 +1574,7 @@ Size = (N-2) \times \min (S_1,S_2,S_3\ldots, S_N), S_i \; 為一磁碟容量\; i
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/willywangkaa/archives/">
+                  <a href="/willywangkaa/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">posts</span>
@@ -1619,8 +1621,6 @@ Size = (N-2) \times \min (S_1,S_2,S_3\ldots, S_N), S_i \; 為一磁碟容量\; i
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -1836,7 +1836,7 @@ Size = (N-2) \times \min (S_1,S_2,S_3\ldots, S_N), S_i \; 為一磁碟容量\; i
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#disk-management"><span class="nav-number">1.</span> <span class="nav-text">Disk management</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#disk-system"><span class="nav-number">1.1.</span> <span class="nav-text">Disk system</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#disk-access-time"><span class="nav-number">1.2.</span> <span class="nav-text">Disk access time</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#disk-free-space-management"><span class="nav-number">1.3.</span> <span class="nav-text">Disk free space management</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bit-vector-bitmap"><span class="nav-number">1.3.1.</span> <span class="nav-text">Bit vector ( Bitmap )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#link-list"><span class="nav-number">1.3.2.</span> <span class="nav-text">Link list</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#grouping"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">Grouping</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#counting"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">Counting</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#file-allocation-method"><span class="nav-number">1.4.</span> <span class="nav-text">☆File Allocation method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#contiguous-allocation"><span class="nav-number">1.4.1.</span> <span class="nav-text">Contiguous allocation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linked-allocation"><span class="nav-number">1.4.2.</span> <span class="nav-text">Linked allocation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#file-allocation-table-fat-method---microsoft-windows-採用"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">File Allocation Table (FAT) method - Microsoft windows 採用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#index-allocation"><span class="nav-number">1.4.3.</span> <span class="nav-text">Index allocation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#unix-i-node"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">☆ UNIX i-node</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#disk-scheduling-algorithm"><span class="nav-number">1.5.</span> <span class="nav-text">Disk scheduling algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fcfs-first-come-first-service"><span class="nav-number">1.5.1.</span> <span class="nav-text">FCFS (First come first service)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sstf-shortest-seek-time-track-first"><span class="nav-number">1.5.2.</span> <span class="nav-text">SSTF ( Shortest seek time track first )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scan"><span class="nav-number">1.5.3.</span> <span class="nav-text">Scan</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#c-scan-circular-scan"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">C-Scan ( Circular-scan )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#look"><span class="nav-number">1.5.3.2.</span> <span class="nav-text">Look</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#c-look"><span class="nav-number">1.5.3.2.1.</span> <span class="nav-text">C-Look</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#補充"><span class="nav-number">1.5.4.</span> <span class="nav-text">補充</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它名詞"><span class="nav-number">1.6.</span> <span class="nav-text">其它名詞</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#formatting-格式化"><span class="nav-number">1.6.1.</span> <span class="nav-text">Formatting ( 格式化 )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#row---io"><span class="nav-number">1.6.2.</span> <span class="nav-text">Row - I/O</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bootstrap-loader"><span class="nav-number">1.6.3.</span> <span class="nav-text">☆Bootstrap loader</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#早期"><span class="nav-number">1.6.3.1.</span> <span class="nav-text">早期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#現今"><span class="nav-number">1.6.3.2.</span> <span class="nav-text">現今</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#處理-bad-sector"><span class="nav-number">1.6.4.</span> <span class="nav-text">處理 Bad sector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#swap-space-management"><span class="nav-number">1.6.5.</span> <span class="nav-text">Swap space management</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法"><span class="nav-number">1.6.5.1.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#使用-file-system"><span class="nav-number">1.6.5.1.1.</span> <span class="nav-text">使用 File system</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用獨立的partition來保存"><span class="nav-number">1.6.5.1.2.</span> <span class="nav-text">使用獨立的「Partition」來保存</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提升disk-data-access效能"><span class="nav-number">1.7.</span> <span class="nav-text">提升「Disk data access」效能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提升disk-availibility-可靠度"><span class="nav-number">1.8.</span> <span class="nav-text">提升「Disk availibility」( 可靠度 )</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mirror-shadow-技術"><span class="nav-number">1.8.1.</span> <span class="nav-text">Mirror ( shadow ) 技術</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parity-check-技術"><span class="nav-number">1.8.2.</span> <span class="nav-text">Parity-check 技術</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-parity-disk-重建資料"><span class="nav-number">1.8.2.1.</span> <span class="nav-text">使用 Parity disk 重建資料</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小量寫入與更新同位位元資料"><span class="nav-number">1.8.2.2.</span> <span class="nav-text">小量寫入與更新同位位元資料</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redundant-array-of-implement-disk-raid"><span class="nav-number">1.9.</span> <span class="nav-text">Redundant Array of Implement Disk ( RAID )</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#raid-0"><span class="nav-number">1.9.1.</span> <span class="nav-text">RAID 0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#raid-1-mirroring"><span class="nav-number">1.9.2.</span> <span class="nav-text">RAID 1 ( Mirroring )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#raid-2-double-error-detecting-and-single-correcting-code"><span class="nav-number">1.9.3.</span> <span class="nav-text">RAID 2 ( Double error detecting and single correcting code )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#raid-3-bit-interleaved-parity"><span class="nav-number">1.9.4.</span> <span class="nav-text">RAID 3 ( Bit-interleaved parity )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#raid-4-block-interleaved-parity"><span class="nav-number">1.9.5.</span> <span class="nav-text">RAID 4 ( Block-interleaved parity )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#raid-5-distributed-block-interleaved-parity"><span class="nav-number">1.9.6.</span> <span class="nav-text">RAID 5 ( Distributed block-interleaved parity )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#raid-6-pq-redundancy"><span class="nav-number">1.9.7.</span> <span class="nav-text">RAID 6 ( P+Q redundancy )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#raid-01"><span class="nav-number">1.9.8.</span> <span class="nav-text">RAID 01</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#raid-10-優秀"><span class="nav-number">1.9.9.</span> <span class="nav-text">RAID 10 ( 優秀 )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#結論"><span class="nav-number">1.9.10.</span> <span class="nav-text">結論</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#disk-management"><span class="nav-number">1.</span> <span class="nav-text">Disk management</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#disk-system"><span class="nav-number">1.1.</span> <span class="nav-text">Disk system</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#disk-access-time"><span class="nav-number">1.2.</span> <span class="nav-text">Disk access time</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#disk-free-space-management"><span class="nav-number">1.3.</span> <span class="nav-text">Disk free space management</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bit-vector-bitmap"><span class="nav-number">1.3.1.</span> <span class="nav-text">Bit vector ( Bitmap )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#link-list"><span class="nav-number">1.3.2.</span> <span class="nav-text">Link list</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#grouping"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">Grouping</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#counting"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">Counting</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#file-allocation-method"><span class="nav-number">1.4.</span> <span class="nav-text">☆File Allocation method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#contiguous-allocation"><span class="nav-number">1.4.1.</span> <span class="nav-text">Contiguous allocation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linked-allocation"><span class="nav-number">1.4.2.</span> <span class="nav-text">Linked allocation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#file-allocation-table-fat-method---microsoft-windows-%E6%8E%A1%E7%94%A8"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">File Allocation Table (FAT) method - Microsoft windows 採用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#index-allocation"><span class="nav-number">1.4.3.</span> <span class="nav-text">Index allocation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#unix-i-node"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">☆ UNIX i-node</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#disk-scheduling-algorithm"><span class="nav-number">1.5.</span> <span class="nav-text">Disk scheduling algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fcfs-first-come-first-service"><span class="nav-number">1.5.1.</span> <span class="nav-text">FCFS (First come first service)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sstf-shortest-seek-time-track-first"><span class="nav-number">1.5.2.</span> <span class="nav-text">SSTF ( Shortest seek time track first )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scan"><span class="nav-number">1.5.3.</span> <span class="nav-text">Scan</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#c-scan-circular-scan"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">C-Scan ( Circular-scan )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#look"><span class="nav-number">1.5.3.2.</span> <span class="nav-text">Look</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#c-look"><span class="nav-number">1.5.3.2.1.</span> <span class="nav-text">C-Look</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A3%9C%E5%85%85"><span class="nav-number">1.5.4.</span> <span class="nav-text">補充</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E5%AE%83%E5%90%8D%E8%A9%9E"><span class="nav-number">1.6.</span> <span class="nav-text">其它名詞</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#formatting-%E6%A0%BC%E5%BC%8F%E5%8C%96"><span class="nav-number">1.6.1.</span> <span class="nav-text">Formatting ( 格式化 )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#row---io"><span class="nav-number">1.6.2.</span> <span class="nav-text">Row - I&#x2F;O</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bootstrap-loader"><span class="nav-number">1.6.3.</span> <span class="nav-text">☆Bootstrap loader</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A9%E6%9C%9F"><span class="nav-number">1.6.3.1.</span> <span class="nav-text">早期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8F%BE%E4%BB%8A"><span class="nav-number">1.6.3.2.</span> <span class="nav-text">現今</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%99%95%E7%90%86-bad-sector"><span class="nav-number">1.6.4.</span> <span class="nav-text">處理 Bad sector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#swap-space-management"><span class="nav-number">1.6.5.</span> <span class="nav-text">Swap space management</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95"><span class="nav-number">1.6.5.1.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-file-system"><span class="nav-number">1.6.5.1.1.</span> <span class="nav-text">使用 File system</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%8D%A8%E7%AB%8B%E7%9A%84partition%E4%BE%86%E4%BF%9D%E5%AD%98"><span class="nav-number">1.6.5.1.2.</span> <span class="nav-text">使用獨立的「Partition」來保存</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%90%E5%8D%87disk-data-access%E6%95%88%E8%83%BD"><span class="nav-number">1.7.</span> <span class="nav-text">提升「Disk data access」效能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%90%E5%8D%87disk-availibility-%E5%8F%AF%E9%9D%A0%E5%BA%A6"><span class="nav-number">1.8.</span> <span class="nav-text">提升「Disk availibility」( 可靠度 )</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mirror-shadow-%E6%8A%80%E8%A1%93"><span class="nav-number">1.8.1.</span> <span class="nav-text">Mirror ( shadow ) 技術</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parity-check-%E6%8A%80%E8%A1%93"><span class="nav-number">1.8.2.</span> <span class="nav-text">Parity-check 技術</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-parity-disk-%E9%87%8D%E5%BB%BA%E8%B3%87%E6%96%99"><span class="nav-number">1.8.2.1.</span> <span class="nav-text">使用 Parity disk 重建資料</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%8F%E9%87%8F%E5%AF%AB%E5%85%A5%E8%88%87%E6%9B%B4%E6%96%B0%E5%90%8C%E4%BD%8D%E4%BD%8D%E5%85%83%E8%B3%87%E6%96%99"><span class="nav-number">1.8.2.2.</span> <span class="nav-text">小量寫入與更新同位位元資料</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redundant-array-of-implement-disk-raid"><span class="nav-number">1.9.</span> <span class="nav-text">Redundant Array of Implement Disk ( RAID )</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#raid-0"><span class="nav-number">1.9.1.</span> <span class="nav-text">RAID 0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#raid-1-mirroring"><span class="nav-number">1.9.2.</span> <span class="nav-text">RAID 1 ( Mirroring )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#raid-2-double-error-detecting-and-single-correcting-code"><span class="nav-number">1.9.3.</span> <span class="nav-text">RAID 2 ( Double error detecting and single correcting code )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#raid-3-bit-interleaved-parity"><span class="nav-number">1.9.4.</span> <span class="nav-text">RAID 3 ( Bit-interleaved parity )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#raid-4-block-interleaved-parity"><span class="nav-number">1.9.5.</span> <span class="nav-text">RAID 4 ( Block-interleaved parity )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#raid-5-distributed-block-interleaved-parity"><span class="nav-number">1.9.6.</span> <span class="nav-text">RAID 5 ( Distributed block-interleaved parity )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#raid-6-pq-redundancy"><span class="nav-number">1.9.7.</span> <span class="nav-text">RAID 6 ( P+Q redundancy )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#raid-01"><span class="nav-number">1.9.8.</span> <span class="nav-text">RAID 01</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#raid-10-%E5%84%AA%E7%A7%80"><span class="nav-number">1.9.9.</span> <span class="nav-text">RAID 10 ( 優秀 )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B5%90%E8%AB%96"><span class="nav-number">1.9.10.</span> <span class="nav-text">結論</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1856,11 +1856,11 @@ Size = (N-2) \times \min (S_1,S_2,S_3\ldots, S_N), S_i \; 為一磁碟容量\; i
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+  <span class="author" itemprop="copyrightHolder">Wang Yu Li</span>
 
   
 
@@ -2004,7 +2004,7 @@ Size = (N-2) \times \min (S_1,S_2,S_3\ldots, S_N), S_i \; 為一磁碟容量\; i
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/09/10/Operating-System-Disk-Management/';
+        this.page.url = 'http://wangwilly.github.io/willywangkaa/2018/09/10/Operating-System-Disk-Management/';
         this.page.identifier = '2018/09/10/Operating-System-Disk-Management/';
         this.page.title = 'Operating System - Disk Management';
       };
@@ -2439,24 +2439,7 @@ Size = (N-2) \times \min (S_1,S_2,S_3\ldots, S_N), S_i \; 為一磁碟容量\; i
   
     bookmark.scrollToMark('auto', "#more");
   
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>

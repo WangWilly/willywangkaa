@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/willywangkaa/',
+    root: '',
     scheme: 'Pisces',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -103,14 +103,13 @@
   <meta name="keywords" content="Binary search tree," />
 
 
-<meta name="description" content="AVL tree Height balance binary search tree  性質  \(|H_L - H_R| \leq 1\)，其中 \(H_L、H_R\) 為樹根節點左右子樹之高度 左右子樹亦為「AVL tree」    Example (True or False)  若「Binary search tree」之樹根節點左右子樹皆為「AVL tree」則整">
-<meta name="keywords" content="Binary search tree">
+<meta name="description" content="AVL tree Height balance binary search tree  性質  \(|H_L - H_R| \leq 1\)，其中 \(H_L、H_R\) 為樹根節點左右子樹之高度 左右子樹亦為「AVL tree」    Example (True or False)  若「Binary search tree」之樹根節點左右子樹皆為「AVL tree」則整棵樹為「AVL tree">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Data structure - Advance binary search tree">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/10/28/Data-structure-Advance-binary-search-tree/index.html">
+<meta property="og:url" content="http://wangwilly.github.io/willywangkaa/2018/10/28/Data-structure-Advance-binary-search-tree/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="AVL tree Height balance binary search tree  性質  \(|H_L - H_R| \leq 1\)，其中 \(H_L、H_R\) 為樹根節點左右子樹之高度 左右子樹亦為「AVL tree」    Example (True or False)  若「Binary search tree」之樹根節點左右子樹皆為「AVL tree」則整">
-<meta property="og:locale" content="zh-tw">
+<meta property="og:description" content="AVL tree Height balance binary search tree  性質  \(|H_L - H_R| \leq 1\)，其中 \(H_L、H_R\) 為樹根節點左右子樹之高度 左右子樹亦為「AVL tree」    Example (True or False)  若「Binary search tree」之樹根節點左右子樹皆為「AVL tree」則整棵樹為「AVL tree">
+<meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/AVLex_1.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/AVL_LR_1.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/AVL_LR_2.png">
@@ -137,10 +136,11 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/OBST_1.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/OBST_2.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/OBST_3.png">
-<meta property="og:updated_time" content="2019-01-28T06:06:45.642Z">
+<meta property="article:published_time" content="2018-10-28T12:28:00.000Z">
+<meta property="article:modified_time" content="2019-01-28T06:06:45.642Z">
+<meta property="article:author" content="Wang Yu Li">
+<meta property="article:tag" content="Binary search tree">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Data structure - Advance binary search tree">
-<meta name="twitter:description" content="AVL tree Height balance binary search tree  性質  \(|H_L - H_R| \leq 1\)，其中 \(H_L、H_R\) 為樹根節點左右子樹之高度 左右子樹亦為「AVL tree」    Example (True or False)  若「Binary search tree」之樹根節點左右子樹皆為「AVL tree」則整">
 <meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/AVLex_1.png">
 
 
@@ -193,9 +193,11 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
@@ -220,7 +222,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Live more like human</p>
+        <p class="site-subtitle">The higher up, the greater the fall.</p>
       
   </div>
 
@@ -241,25 +243,25 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/willywangkaa/" rel="section">
+          <a href="/willywangkaa/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/willywangkaa/archives/" rel="section">
+          <a href="/willywangkaa/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/willywangkaa/categories/" rel="section">
+          <a href="/willywangkaa/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/willywangkaa/tags/" rel="section">
+          <a href="/willywangkaa/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
@@ -340,7 +342,7 @@
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/10/28/Data-structure-Advance-binary-search-tree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -465,7 +467,7 @@
 <li><strong>在「AVL tree」，任何兩個葉節點位於的高度 (Level) 差必 ≦ 1 (FALSE)</strong>；如下圖 s、t 葉節點</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\AVLex_1.png" alt="AVLex_1"><figcaption>AVLex_1</figcaption>
+<img src="\willywangkaa\images\AVLex_1.png" alt="AVLex_1"><figcaption aria-hidden="true">AVLex_1</figcaption>
 </figure>
 <ul>
 <li>在「AVL tree」，左子樹所有節點之數必 ≦ 右子樹所有節點之數值 (TRUE)</li>
@@ -484,25 +486,25 @@
 <li>LR</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\AVL_LR_1.png" alt="AVL_LR_1"><figcaption>AVL_LR_1</figcaption>
+<img src="\willywangkaa\images\AVL_LR_1.png" alt="AVL_LR_1"><figcaption aria-hidden="true">AVL_LR_1</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\AVL_LR_2.png" alt="AVL_LR_2"><figcaption>AVL_LR_2</figcaption>
+<img src="\willywangkaa\images\AVL_LR_2.png" alt="AVL_LR_2"><figcaption aria-hidden="true">AVL_LR_2</figcaption>
 </figure>
 <ul>
 <li>RR</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\AVL_RR_1.png" alt="AVL_RR_1"><figcaption>AVL_RR_1</figcaption>
+<img src="\willywangkaa\images\AVL_RR_1.png" alt="AVL_RR_1"><figcaption aria-hidden="true">AVL_RR_1</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\AVL_RR_2.png" alt="AVL_RR_2"><figcaption>AVL_RR_2</figcaption>
+<img src="\willywangkaa\images\AVL_RR_2.png" alt="AVL_RR_2"><figcaption aria-hidden="true">AVL_RR_2</figcaption>
 </figure>
 <blockquote>
 <p>從「AVL tree」中任取兩個葉節點，該高度差取絕對值<del>小於等於一</del>。( 任何大於等於 0 的整數都有可能 )</p>
 <p>從「AVL tree」中任取<strong>其根節點位於同層</strong>的兩子樹，其子樹的高度差取絕對值<del>小於等於一</del>。( 任何大於等於 0 的整數都有可能 )</p>
 <figure>
-<img src="\willywangkaa\images\AVLex_2.png" alt="AVLex_2"><figcaption>AVLex_2</figcaption>
+<img src="\willywangkaa\images\AVLex_2.png" alt="AVLex_2"><figcaption aria-hidden="true">AVLex_2</figcaption>
 </figure>
 </blockquote>
 <p>形成高度為 h 的 AVL tree 所需之<strong>最多節點數</strong> = 「Full binary serach tree」數量 = <span class="math inline">\(2^h -1\)</span></p>
@@ -594,7 +596,7 @@
 <li><strong>所有的失敗節點皆必須位於同一層 ( Level )</strong></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\mwaybtree.png" alt="mwaybtree"><figcaption>mwaybtree</figcaption>
+<img src="\willywangkaa\images\mwaybtree.png" alt="mwaybtree"><figcaption aria-hidden="true">mwaybtree</figcaption>
 </figure>
 <p>從上一層讀取至下一層需要多一次 Block I/O</p>
 <h3 id="b-tree-of-order-3"><strong>B</strong> tree of order 3</h3>
@@ -651,7 +653,7 @@
 <li><p><strong>最少資料儲存量</strong></p>
 <ul>
 <li>根節點最少可以儲存 1 筆資料</li>
-<li>每個節點最少可以儲存 $m2 -1 $ 筆資料</li>
+<li>每個節點最少可以儲存 $m2  $ 筆資料</li>
 <li>則 <span class="math inline">\(1 + 2\cdot [\frac {\lceil\frac m2 \rceil^{h-1}-1}{\lceil\frac m2\rceil -1}] \times (\lceil \frac m2\rceil-1) \\ = 1 + 2\cdot(\lceil\frac m2\rceil^{h-1}-1) \\ = 2\cdot\lceil\frac m2\rceil^{h-1}-1\)</span></li>
 </ul></li>
 </ul>
@@ -669,7 +671,7 @@
 <p>Split</p>
 <p>將節點內的第 <span class="math inline">\(\lceil \frac m2 \rceil\)</span> 個資料上拉至父節點，其餘資料分裂成兩個子節點</p>
 <figure>
-<img src="\willywangkaa\images\mwaybtree_split.png" alt="mwaybtree_split"><figcaption>mwaybtree_split</figcaption>
+<img src="\willywangkaa\images\mwaybtree_split.png" alt="mwaybtree_split"><figcaption aria-hidden="true">mwaybtree_split</figcaption>
 </figure>
 </blockquote>
 <blockquote>
@@ -696,39 +698,39 @@
 <blockquote>
 <p>Rotation</p>
 <figure>
-<img src="\willywangkaa\images\mwaybtree_ratation.png" alt="mwaybtree_ratation"><figcaption>mwaybtree_ratation</figcaption>
+<img src="\willywangkaa\images\mwaybtree_ratation.png" alt="mwaybtree_ratation"><figcaption aria-hidden="true">mwaybtree_ratation</figcaption>
 </figure>
 </blockquote>
 <blockquote>
 <p>Combine</p>
 <figure>
-<img src="\willywangkaa\images\mwaybtree_combine.png" alt="mwaybtree_combine"><figcaption>mwaybtree_combine</figcaption>
+<img src="\willywangkaa\images\mwaybtree_combine.png" alt="mwaybtree_combine"><figcaption aria-hidden="true">mwaybtree_combine</figcaption>
 </figure>
 <p>若父節點因此發生「Underflow」，則兩代 ( 父、子 ) 所有鍊節全部斷開，再<strong>針對父節點的「Underflow」逐層往上處理</strong></p>
 <figure>
-<img src="\willywangkaa\images\mwaybtree_split_2.png" alt="mwaybtree_split_2"><figcaption>mwaybtree_split_2</figcaption>
+<img src="\willywangkaa\images\mwaybtree_split_2.png" alt="mwaybtree_split_2"><figcaption aria-hidden="true">mwaybtree_split_2</figcaption>
 </figure>
 </blockquote>
 <p>Example ( 刪除 Leaf 之資料 )</p>
 <p>2 - 3 Tree ( 2 ≦ Degree ≦ 3；1 ≦ 資料量 ≦ 2 )，刪除 5, 50, 8, 90</p>
 <figure>
-<img src="\willywangkaa\images\mwaybtree_deletion.png" alt="mwaybtree_deletion"><figcaption>mwaybtree_deletion</figcaption>
+<img src="\willywangkaa\images\mwaybtree_deletion.png" alt="mwaybtree_deletion"><figcaption aria-hidden="true">mwaybtree_deletion</figcaption>
 </figure>
 <p>刪除 5 後</p>
 <figure>
-<img src="\willywangkaa\images\mwaybtree_deletion_2.png" alt="mwaybtree_deletion_2"><figcaption>mwaybtree_deletion_2</figcaption>
+<img src="\willywangkaa\images\mwaybtree_deletion_2.png" alt="mwaybtree_deletion_2"><figcaption aria-hidden="true">mwaybtree_deletion_2</figcaption>
 </figure>
 <p>刪除 50 後</p>
 <figure>
-<img src="\willywangkaa\images\mwaybtree_deletion_3.png" alt="mwaybtree_deletion_3"><figcaption>mwaybtree_deletion_3</figcaption>
+<img src="\willywangkaa\images\mwaybtree_deletion_3.png" alt="mwaybtree_deletion_3"><figcaption aria-hidden="true">mwaybtree_deletion_3</figcaption>
 </figure>
 <p>刪除 8 後</p>
 <figure>
-<img src="\willywangkaa\images\mwaybtree_deletion_4.png" alt="mwaybtree_deletion_4"><figcaption>mwaybtree_deletion_4</figcaption>
+<img src="\willywangkaa\images\mwaybtree_deletion_4.png" alt="mwaybtree_deletion_4"><figcaption aria-hidden="true">mwaybtree_deletion_4</figcaption>
 </figure>
 <p>刪除 90 後</p>
 <figure>
-<img src="\willywangkaa\images\mwaybtree_deletion_5.png" alt="mwaybtree_deletion_5"><figcaption>mwaybtree_deletion_5</figcaption>
+<img src="\willywangkaa\images\mwaybtree_deletion_5.png" alt="mwaybtree_deletion_5"><figcaption aria-hidden="true">mwaybtree_deletion_5</figcaption>
 </figure>
 <h1 id="red-black-tree">Red black tree</h1>
 <p>Balanced binary search tree</p>
@@ -740,7 +742,7 @@
 <li>樹根至任意不同之「葉節點」路徑<strong>皆具有相同數量的黑色節點 ( Balance )</strong></li>
 </ol>
 <figure>
-<img src="\willywangkaa\images\rbtree.png" alt="rbtree"><figcaption>rbtree</figcaption>
+<img src="\willywangkaa\images\rbtree.png" alt="rbtree"><figcaption aria-hidden="true">rbtree</figcaption>
 </figure>
 <blockquote>
 <p>在紅黑樹中</p>
@@ -778,7 +780,7 @@
 <p>Rotation</p>
 <p>分為 LL、LR、RL、RR ，與 AVL tree 旋轉相似，只是加上顏色變化：中間鍵值往上拉標黑，兩子點標紅</p>
 <figure>
-<img src="\willywangkaa\images\Rbrotation.png" alt="Rbrotation"><figcaption>Rbrotation</figcaption>
+<img src="\willywangkaa\images\Rbrotation.png" alt="Rbrotation"><figcaption aria-hidden="true">Rbrotation</figcaption>
 </figure>
 </blockquote>
 <h2 id="delete-x-in-rb-tree">Delete x in RB-tree</h2>
@@ -786,7 +788,7 @@
 <h2 id="the-height-of-rb-tree">The height of RB-tree</h2>
 <ul>
 <li><p>假設原始紅黑樹為 T</p></li>
-<li>假設對於每個<strong>頂點 x</strong>
+<li><p>假設對於每個<strong>頂點 x</strong></p>
 <ul>
 <li>其頂點至葉節點之每個路徑的黑色節點數量為 BH(x) （Black node height）</li>
 <li>其樹高為 H(x)</li>
@@ -795,15 +797,15 @@
 <blockquote>
 <p>其中 H(x)、BH(x) 定義如下：</p>
 <figure>
-<img src="\willywangkaa\images\theheightofrbtree.png" alt="theheightofrbtree"><figcaption>theheightofrbtree</figcaption>
+<img src="\willywangkaa\images\theheightofrbtree.png" alt="theheightofrbtree"><figcaption aria-hidden="true">theheightofrbtree</figcaption>
 </figure>
 </blockquote>
 <ul>
-<li><strong>＜證明＞</strong>任何以 x 頂點為根的子樹 T’，其內部節點（在原本 T 的內部節點）至少有 <span class="math inline">\(2^{BH(x)}-1\)</span></li>
+<li><strong>＜證明＞</strong>任何以 x 頂點為根的子樹 T'，其內部節點（在原本 T 的內部節點）至少有 <span class="math inline">\(2^{BH(x)}-1\)</span></li>
 </ul>
 <p>（對 H(x) 做數學歸納法推導）</p>
 <ol type="1">
-<li><p>當 H(x) 為 0 時，則可以知道其為 <strong>Nil 節點</strong>，則<strong>以該節點為子樹 T’</strong>必無存在<strong>內部節點</strong>（T 的內部節點）</p>
+<li><p>當 H(x) 為 0 時，則可以知道其為 <strong>Nil 節點</strong>，則<strong>以該節點為子樹 T'</strong>必無存在<strong>內部節點</strong>（T 的內部節點）</p>
 <ul>
 <li>因為 BH(x) = 0，則 <span class="math inline">\(2^0-1 = 1-1 = 0\)</span>，無內部節點</li>
 </ul></li>
@@ -814,7 +816,7 @@
 <li>節點 y 至每個葉節點的黑色節點數量為<span class="math inline">\(\left\{\begin{matrix} BH(x),\;若\; y \;為紅色節點 \\ BH(x)-1,\;若\; y \;為黑色節點 \end{matrix}\right.\)</span></li>
 </ul></li>
 <li><strong>假設其「兩個子節點」 成立</strong>，則 y 到葉節點包含 T 的內部節點至少有 <span class="math inline">\(2^{BH(x)-1}-1\)</span></li>
-<li>考慮以 x 節點為子樹 T’ ，其包含 T 的內部節點至少有
+<li>考慮以 x 節點為子樹 T' ，其包含 T 的內部節點至少有
 <ul>
 <li>（左子點包含 T 的內部節點）+（右子點包含 T 的內部節點）+（x 本身就為 T 的內部節點）</li>
 <li><span class="math inline">\((2^{BH(x)-1}-1)+(2^{BH(x)-1}-1)+1 = 2^{BH(x)}-1\)</span>，<strong>命題得證</strong></li>
@@ -846,19 +848,19 @@
 <li>2－結點</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\2-nodetorbtree.png" alt="2-nodetorbtree"><figcaption>2-nodetorbtree</figcaption>
+<img src="\willywangkaa\images\2-nodetorbtree.png" alt="2-nodetorbtree"><figcaption aria-hidden="true">2-nodetorbtree</figcaption>
 </figure>
 <ul>
 <li>3－結點</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\3-nodetotbtree.png" alt="3-nodetotbtree"><figcaption>3-nodetotbtree</figcaption>
+<img src="\willywangkaa\images\3-nodetotbtree.png" alt="3-nodetotbtree"><figcaption aria-hidden="true">3-nodetotbtree</figcaption>
 </figure>
 <blockquote>
 <p>3－結點轉換時會有兩種可能，所以轉換不唯一</p>
 </blockquote>
 <figure>
-<img src="\willywangkaa\images\4-nodetorbtree.png" alt="4-nodetorbtree"><figcaption>4-nodetorbtree</figcaption>
+<img src="\willywangkaa\images\4-nodetorbtree.png" alt="4-nodetorbtree"><figcaption aria-hidden="true">4-nodetorbtree</figcaption>
 </figure>
 <h1 id="optimal-binary-search-tree-obst">Optimal binary search tree (OBST)</h1>
 <p>給 n 個內部節點加權值：<span class="math inline">\(p_i\)</span>，<strong>1 ≦ i ≦ n</strong>，與 n+1 個外部節點加權值：<span class="math inline">\(q_i\)</span>，<strong>0 ≦ j ≦ n</strong></p>
@@ -875,7 +877,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\orbtree.png" alt="orbtree"><figcaption>orbtree</figcaption>
+<img src="\willywangkaa\images\orbtree.png" alt="orbtree"><figcaption aria-hidden="true">orbtree</figcaption>
 </figure>
 <ul>
 <li>圖（1）
@@ -926,12 +928,12 @@
 <li>在 <span class="math inline">\(a_{i+1}, a_{i+2}, \ldots, a_{j}\)</span> 中任挑一個作為樹根 ( <span class="math inline">\(a_k\)</span> )</li>
 </ol>
 <figure>
-<img src="\willywangkaa\images\OBST_1.png" alt="OBST_1"><figcaption>OBST_1</figcaption>
+<img src="\willywangkaa\images\OBST_1.png" alt="OBST_1"><figcaption aria-hidden="true">OBST_1</figcaption>
 </figure>
 <p>則 L 子樹以 <span class="math inline">\(T_{i, k-1}\)</span> 表示； R 子樹以 <span class="math inline">\(T_{k, j}\)</span> 表示</p>
 <p><span class="math inline">\(C_{i, j} = 1\cdot p_k + c_{i, k-1} + c_{k, j} + w_{i, k-1} + w_{k, j} \\ = c_{i, k-1} + c_{k, j} + w_{i, j}\)</span></p>
 <figure>
-<img src="\willywangkaa\images\OBST_2.png" alt="OBST_2"><figcaption>OBST_2</figcaption>
+<img src="\willywangkaa\images\OBST_2.png" alt="OBST_2"><figcaption aria-hidden="true">OBST_2</figcaption>
 </figure>
 <ol start="2" type="1">
 <li>在所有可能中挑出一個能使當前子樹成本最低之樹根</li>
@@ -957,7 +959,7 @@ C_{i, j} = w_{i, j} + min_{i+1 \leq k \leq j}｛C_{i, k-1}, C_{k, j}｝
 </ul></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\OBST_3.png" alt="OBST_3"><figcaption>OBST_3</figcaption>
+<img src="\willywangkaa\images\OBST_3.png" alt="OBST_3"><figcaption aria-hidden="true">OBST_3</figcaption>
 </figure>
 <p><span class="math display">\[
 C_{i, j} = 1\cdot p_k + C_{i, k-1} + C_{k+1, j} + w_{i, k-1} + w_{k+1, j} \\
@@ -1080,7 +1082,7 @@ C_{i, j} = 1\cdot p_k + C_{i, k-1} + C_{k+1, j} + w_{i, k-1} + w_{k+1, j} \\
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -1124,10 +1126,10 @@ C_{i, j} = 1\cdot p_k + C_{i, k-1} + C_{k+1, j} + w_{i, k-1} + w_{k+1, j} \\
             
               <img class="site-author-image" itemprop="image"
                 src="/willywangkaa/images/avatar_me.gif"
-                alt="Willy Wang (willywangkaa)" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
-              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -1135,7 +1137,7 @@ C_{i, j} = 1\cdot p_k + C_{i, k-1} + C_{k+1, j} + w_{i, k-1} + w_{k+1, j} \\
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/willywangkaa/archives/">
+                  <a href="/willywangkaa/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">posts</span>
@@ -1182,8 +1184,6 @@ C_{i, j} = 1\cdot p_k + C_{i, k-1} + C_{k+1, j} + w_{i, k-1} + w_{k+1, j} \\
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -1399,7 +1399,7 @@ C_{i, j} = 1\cdot p_k + C_{i, k-1} + C_{k+1, j} + w_{i, k-1} + w_{k+1, j} \\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#avl-tree"><span class="nav-number">1.</span> <span class="nav-text">AVL tree</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#m-way-search-tree"><span class="nav-number">2.</span> <span class="nav-text">M-way search tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#b-tree-of-order-m-balance"><span class="nav-number">2.1.</span> <span class="nav-text">B-tree of order m (Balance)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#b-tree-of-order-3"><span class="nav-number">2.1.1.</span> <span class="nav-text">B tree of order 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b-tree-of-order-4"><span class="nav-number">2.1.2.</span> <span class="nav-text">B tree of order 4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#insert-data-in-b-tree"><span class="nav-number">2.2.</span> <span class="nav-text">Insert data in B-tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete-data-in-b-tree"><span class="nav-number">2.3.</span> <span class="nav-text">Delete data in B-tree</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#red-black-tree"><span class="nav-number">3.</span> <span class="nav-text">Red black tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#insert-x-in-rb-tree-top-down"><span class="nav-number">3.1.</span> <span class="nav-text">Insert x in RB-tree (Top-down)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete-x-in-rb-tree"><span class="nav-number">3.2.</span> <span class="nav-text">Delete x in RB-tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-height-of-rb-tree"><span class="nav-number">3.3.</span> <span class="nav-text">The height of RB-tree</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#red-black-tree-不同定義"><span class="nav-number">4.</span> <span class="nav-text">Red black tree ( 不同定義 )</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#optimal-binary-search-tree-obst"><span class="nav-number">5.</span> <span class="nav-text">Optimal binary search tree (OBST)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#建立-obst"><span class="nav-number">5.1.</span> <span class="nav-text">建立 OBST</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#遞迴推導"><span class="nav-number">5.1.1.</span> <span class="nav-text">遞迴推導</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊題型"><span class="nav-number">5.2.</span> <span class="nav-text">特殊題型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#splay-tree"><span class="nav-number">6.</span> <span class="nav-text">Splay tree</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#avl-tree"><span class="nav-number">1.</span> <span class="nav-text">AVL tree</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#m-way-search-tree"><span class="nav-number">2.</span> <span class="nav-text">M-way search tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#b-tree-of-order-m-balance"><span class="nav-number">2.1.</span> <span class="nav-text">B-tree of order m (Balance)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#b-tree-of-order-3"><span class="nav-number">2.1.1.</span> <span class="nav-text">B tree of order 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b-tree-of-order-4"><span class="nav-number">2.1.2.</span> <span class="nav-text">B tree of order 4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#insert-data-in-b-tree"><span class="nav-number">2.2.</span> <span class="nav-text">Insert data in B-tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete-data-in-b-tree"><span class="nav-number">2.3.</span> <span class="nav-text">Delete data in B-tree</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#red-black-tree"><span class="nav-number">3.</span> <span class="nav-text">Red black tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#insert-x-in-rb-tree-top-down"><span class="nav-number">3.1.</span> <span class="nav-text">Insert x in RB-tree (Top-down)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete-x-in-rb-tree"><span class="nav-number">3.2.</span> <span class="nav-text">Delete x in RB-tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-height-of-rb-tree"><span class="nav-number">3.3.</span> <span class="nav-text">The height of RB-tree</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#red-black-tree-%E4%B8%8D%E5%90%8C%E5%AE%9A%E7%BE%A9"><span class="nav-number">4.</span> <span class="nav-text">Red black tree ( 不同定義 )</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#optimal-binary-search-tree-obst"><span class="nav-number">5.</span> <span class="nav-text">Optimal binary search tree (OBST)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B-obst"><span class="nav-number">5.1.</span> <span class="nav-text">建立 OBST</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%9E%E8%BF%B4%E6%8E%A8%E5%B0%8E"><span class="nav-number">5.1.1.</span> <span class="nav-text">遞迴推導</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E9%A1%8C%E5%9E%8B"><span class="nav-number">5.2.</span> <span class="nav-text">特殊題型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#splay-tree"><span class="nav-number">6.</span> <span class="nav-text">Splay tree</span></a></li></ol></div>
             
 
           </div>
@@ -1419,11 +1419,11 @@ C_{i, j} = 1\cdot p_k + C_{i, k-1} + C_{k+1, j} + w_{i, k-1} + w_{k+1, j} \\
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+  <span class="author" itemprop="copyrightHolder">Wang Yu Li</span>
 
   
 
@@ -1567,7 +1567,7 @@ C_{i, j} = 1\cdot p_k + C_{i, k-1} + C_{k+1, j} + w_{i, k-1} + w_{k+1, j} \\
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/10/28/Data-structure-Advance-binary-search-tree/';
+        this.page.url = 'http://wangwilly.github.io/willywangkaa/2018/10/28/Data-structure-Advance-binary-search-tree/';
         this.page.identifier = '2018/10/28/Data-structure-Advance-binary-search-tree/';
         this.page.title = 'Data structure - Advance binary search tree';
       };
@@ -2002,24 +2002,7 @@ C_{i, j} = 1\cdot p_k + C_{i, k-1} + C_{k+1, j} + w_{i, k-1} + w_{k+1, j} \\
   
     bookmark.scrollToMark('auto', "#more");
   
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>

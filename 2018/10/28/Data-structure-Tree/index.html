@@ -74,7 +74,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/willywangkaa/',
+    root: '',
     scheme: 'Pisces',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -103,14 +103,13 @@
   <meta name="keywords" content="Tree," />
 
 
-<meta name="description" content="Binary tree 節點數量計算  二元樹之第 i 階之節點個數為 \(2^{i-1}\)，i ≧ 1 在高度為 k 的二元樹，全部節點之個數為 \(2^k-1\)，k ≧ 1 對於任一非空二原樹 T ，如果令 Leaf 節點的個數為 \(n_0\)， 而 Degree 為 2 的節點的個數為 \(n_2\)，則 \(n_0 = n_2+1\)  \[ 令\; n_1 代表 \">
-<meta name="keywords" content="Tree">
+<meta name="description" content="Binary tree 節點數量計算  二元樹之第 i 階之節點個數為 \(2^{i-1}\)，i ≧ 1 在高度為 k 的二元樹，全部節點之個數為 \(2^k-1\)，k ≧ 1 對於任一非空二原樹 T ，如果令 Leaf 節點的個數為 \(n_0\)， 而 Degree 為 2 的節點的個數為 \(n_2\)，則 \(n_0 &#x3D; n_2+1\)  \[ 令\; n_1 代表 \;Degree\">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Data structure - Tree">
-<meta property="og:url" content="http://WangWilly.github.io/willywangkaa/2018/10/28/Data-structure-Tree/index.html">
+<meta property="og:url" content="http://wangwilly.github.io/willywangkaa/2018/10/28/Data-structure-Tree/index.html">
 <meta property="og:site_name" content="WillyWangkaa">
-<meta property="og:description" content="Binary tree 節點數量計算  二元樹之第 i 階之節點個數為 \(2^{i-1}\)，i ≧ 1 在高度為 k 的二元樹，全部節點之個數為 \(2^k-1\)，k ≧ 1 對於任一非空二原樹 T ，如果令 Leaf 節點的個數為 \(n_0\)， 而 Degree 為 2 的節點的個數為 \(n_2\)，則 \(n_0 = n_2+1\)  \[ 令\; n_1 代表 \">
-<meta property="og:locale" content="zh-tw">
+<meta property="og:description" content="Binary tree 節點數量計算  二元樹之第 i 階之節點個數為 \(2^{i-1}\)，i ≧ 1 在高度為 k 的二元樹，全部節點之個數為 \(2^k-1\)，k ≧ 1 對於任一非空二原樹 T ，如果令 Leaf 節點的個數為 \(n_0\)， 而 Degree 為 2 的節點的個數為 \(n_2\)，則 \(n_0 &#x3D; n_2+1\)  \[ 令\; n_1 代表 \;Degree\">
+<meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/strictbinarytree.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/treetra_1.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/treetra_2.png">
@@ -132,10 +131,11 @@
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/threadbt.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/threadbthead.png">
 <meta property="og:image" content="http://wangwilly.github.io/willywangkaa/images/extendbinarytree.png">
-<meta property="og:updated_time" content="2019-02-11T08:18:40.532Z">
+<meta property="article:published_time" content="2018-10-28T12:11:00.000Z">
+<meta property="article:modified_time" content="2019-02-11T08:18:40.532Z">
+<meta property="article:author" content="Wang Yu Li">
+<meta property="article:tag" content="Tree">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Data structure - Tree">
-<meta name="twitter:description" content="Binary tree 節點數量計算  二元樹之第 i 階之節點個數為 \(2^{i-1}\)，i ≧ 1 在高度為 k 的二元樹，全部節點之個數為 \(2^k-1\)，k ≧ 1 對於任一非空二原樹 T ，如果令 Leaf 節點的個數為 \(n_0\)， 而 Degree 為 2 的節點的個數為 \(n_2\)，則 \(n_0 = n_2+1\)  \[ 令\; n_1 代表 \">
 <meta name="twitter:image" content="http://wangwilly.github.io/willywangkaa/images/strictbinarytree.png">
 
 
@@ -188,9 +188,11 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
@@ -215,7 +217,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Live more like human</p>
+        <p class="site-subtitle">The higher up, the greater the fall.</p>
       
   </div>
 
@@ -236,25 +238,25 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/willywangkaa/" rel="section">
+          <a href="/willywangkaa/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/willywangkaa/archives/" rel="section">
+          <a href="/willywangkaa/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/willywangkaa/categories/" rel="section">
+          <a href="/willywangkaa/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/willywangkaa/tags/" rel="section">
+          <a href="/willywangkaa/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
@@ -335,7 +337,7 @@
     <link itemprop="mainEntityOfPage" href="http://WangWilly.github.io/willywangkaa/willywangkaa/2018/10/28/Data-structure-Tree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Willy Wang (willywangkaa)">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/willywangkaa/images/avatar_me.gif">
     </span>
@@ -446,7 +448,7 @@
         <h1 id="binary-tree">Binary tree</h1>
 <h2 id="節點數量計算">節點數量計算</h2>
 <ul>
-<li>二元樹之<strong>第 i 階</strong>之節點個數為 <span class="math inline">\(2^{i-1}\)</span>，i ≧ 1</li>
+<li><p>二元樹之<strong>第 i 階</strong>之節點個數為 <span class="math inline">\(2^{i-1}\)</span>，i ≧ 1</p></li>
 <li><p>在高度為 k 的二元樹，全部節點之個數為 <span class="math inline">\(2^k-1\)</span>，k ≧ 1</p></li>
 <li><p>對於任一非空二原樹 T ，如果令 Leaf 節點的個數為 <span class="math inline">\(n_0\)</span>， 而 Degree 為 2 的節點的個數為 <span class="math inline">\(n_2\)</span>，則 <span class="math inline">\(n_0 = n_2+1\)</span></p></li>
 </ul>
@@ -530,7 +532,7 @@ By \;(1)、(2) \Rightarrow n_4 = \frac {n_0 -1}{3} \\
 <h1 id="strict-binary-tree">Strict binary tree</h1>
 <p>二元樹中，任何<strong>非葉節點</strong>必有兩個子節點 ( <span class="math inline">\(n_1\)</span> = 0 )</p>
 <figure>
-<img src="\willywangkaa\images\strictbinarytree.png" alt="strictbinarytree"><figcaption>strictbinarytree</figcaption>
+<img src="\willywangkaa\images\strictbinarytree.png" alt="strictbinarytree"><figcaption aria-hidden="true">strictbinarytree</figcaption>
 </figure>
 <ul>
 <li>Example
@@ -550,10 +552,10 @@ By \;(1)、(2) \Rightarrow n_4 = \frac {n_0 -1}{3} \\
 <li>（3）高 = <span class="math inline">\(\lceil \lg (n+1)\rceil\)</span></li>
 <li>（4）<span class="math inline">\(n_0 + n_2 \leq n \leq n_0 + n_2 + 1\)</span></li>
 </ul>
-<p>任意「Binary tree」— （1）</p>
-<p>「Full binary tree」— （1）（2）（3）<strong>（4）</strong></p>
-<p>「Complete binary tree」 — （1）（3）（4）</p>
-<p><strong>「Strict bianry tree」</strong>— （1）（2）</p>
+<p>任意「Binary tree」--- （1）</p>
+<p>「Full binary tree」--- （1）（2）（3）<strong>（4）</strong></p>
+<p>「Complete binary tree」 --- （1）（3）（4）</p>
+<p><strong>「Strict bianry tree」</strong>--- （1）（2）</p>
 </blockquote>
 <blockquote>
 <p><strong>Link list tree</strong></p>
@@ -568,16 +570,16 @@ By \;(1)、(2) \Rightarrow n_4 = \frac {n_0 -1}{3} \\
 <li>Postorder：cba</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\treetra_1.png" alt="treetra_1"><figcaption>treetra_1</figcaption>
+<img src="\willywangkaa\images\treetra_1.png" alt="treetra_1"><figcaption aria-hidden="true">treetra_1</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\treetra_2.png" alt="treetra_2"><figcaption>treetra_2</figcaption>
+<img src="\willywangkaa\images\treetra_2.png" alt="treetra_2"><figcaption aria-hidden="true">treetra_2</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\treetra_3.png" alt="treetra_3"><figcaption>treetra_3</figcaption>
+<img src="\willywangkaa\images\treetra_3.png" alt="treetra_3"><figcaption aria-hidden="true">treetra_3</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\treetra_4.png" alt="treetra_4"><figcaption>treetra_4</figcaption>
+<img src="\willywangkaa\images\treetra_4.png" alt="treetra_4"><figcaption aria-hidden="true">treetra_4</figcaption>
 </figure>
 </blockquote>
 <p>Example</p>
@@ -588,24 +590,24 @@ By \;(1)、(2) \Rightarrow n_4 = \frac {n_0 -1}{3} \\
 <p><strong>A</strong>(BCD)(EFG)</p>
 <p>(DCB)(FGE)<strong>A</strong></p>
 <figure>
-<img src="\willywangkaa\images\traex_1.png" alt="traex_1"><figcaption>traex_1</figcaption>
+<img src="\willywangkaa\images\traex_1.png" alt="traex_1"><figcaption aria-hidden="true">traex_1</figcaption>
 </figure>
 <p>討論 <strong>＜EFG＞</strong></p>
 <figure>
-<img src="\willywangkaa\images\traex_2.png" alt="traex_2"><figcaption>traex_2</figcaption>
+<img src="\willywangkaa\images\traex_2.png" alt="traex_2"><figcaption aria-hidden="true">traex_2</figcaption>
 </figure>
 <p>討論 <strong>＜BCD＞</strong></p>
 <figure>
-<img src="\willywangkaa\images\traex_3_1.png" alt="traex_3_1"><figcaption>traex_3_1</figcaption>
+<img src="\willywangkaa\images\traex_3_1.png" alt="traex_3_1"><figcaption aria-hidden="true">traex_3_1</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\traex_3_2.png" alt="traex_3_2"><figcaption>traex_3_2</figcaption>
+<img src="\willywangkaa\images\traex_3_2.png" alt="traex_3_2"><figcaption aria-hidden="true">traex_3_2</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\traex_3_3.png" alt="traex_3_3"><figcaption>traex_3_3</figcaption>
+<img src="\willywangkaa\images\traex_3_3.png" alt="traex_3_3"><figcaption aria-hidden="true">traex_3_3</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\traex_3_4.png" alt="traex_3_4"><figcaption>traex_3_4</figcaption>
+<img src="\willywangkaa\images\traex_3_4.png" alt="traex_3_4"><figcaption aria-hidden="true">traex_3_4</figcaption>
 </figure>
 <p>Example</p>
 <p>決定下列二元樹各為何？</p>
@@ -633,16 +635,16 @@ By \;(1)、(2) \Rightarrow n_4 = \frac {n_0 -1}{3} \\
 <p>Levelorder：abc</p>
 <p>Preorder：cba</p>
 <figure>
-<img src="\willywangkaa\images\traex_3_1.png" alt="traex_3_1"><figcaption>traex_3_1</figcaption>
+<img src="\willywangkaa\images\traex_3_1.png" alt="traex_3_1"><figcaption aria-hidden="true">traex_3_1</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\traex_3_2.png" alt="traex_3_2"><figcaption>traex_3_2</figcaption>
+<img src="\willywangkaa\images\traex_3_2.png" alt="traex_3_2"><figcaption aria-hidden="true">traex_3_2</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\traex_3_3.png" alt="traex_3_3"><figcaption>traex_3_3</figcaption>
+<img src="\willywangkaa\images\traex_3_3.png" alt="traex_3_3"><figcaption aria-hidden="true">traex_3_3</figcaption>
 </figure>
 <figure>
-<img src="\willywangkaa\images\traex_3_4.png" alt="traex_3_4"><figcaption>traex_3_4</figcaption>
+<img src="\willywangkaa\images\traex_3_4.png" alt="traex_3_4"><figcaption aria-hidden="true">traex_3_4</figcaption>
 </figure>
 <p>Example</p>
 <p>下列何者可以決定唯一的二元樹？</p>
@@ -669,7 +671,7 @@ By \;(1)、(2) \Rightarrow n_4 = \frac {n_0 -1}{3} \\
 <p>樹高 k = <span class="math inline">\(\lceil \lg (n+1) \rceil\)</span></p>
 <p><span class="math inline">\(\Rightarrow n = 2^k -1\)</span></p>
 </blockquote>
-<p>令 S 為全部的比較次數，若比較到第一層需要比較一次比較次數，若到第二層需要兩次比較次數…. <span class="math display">\[
+<p>令 S 為全部的比較次數，若比較到第一層需要比較一次比較次數，若到第二層需要兩次比較次數.... <span class="math display">\[
 \begin{matrix}
  S = &amp; 2^0 \cdot 1 + &amp; 2^1 \cdot 2 + 2^2 \cdot 3 + \ldots + 2^{k-1}\cdot k..................(1)\\ 
  2S= &amp; &amp; 2^1 \cdot 1 + 2^2 \cdot 2 + \ldots + 2^{k-1}\cdot (k-1) + 2^k \cdot k .....(2)
@@ -693,21 +695,21 @@ By (2)-(1) \Rightarrow S = -2^0 -2^1 - 2^2 -\ldots - 2^{k-1} + 2^k \cdot k \\
 <p>1000、5566、5203、k、1314、1510、2381、2006</p>
 <p>雖然知道 K 是多少，但可以藉由 k 之後查詢的資料判斷一定是小於 5203，所以</p>
 <figure>
-<img src="\willywangkaa\images\treeex_1.png" alt="treeex_1"><figcaption>treeex_1</figcaption>
+<img src="\willywangkaa\images\treeex_1.png" alt="treeex_1"><figcaption aria-hidden="true">treeex_1</figcaption>
 </figure>
 <p>還有兩種狀況需要討論</p>
 <ul>
 <li>若 1314、1510、2381、2006 比 k 還要小的情況</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\treeex_2.png" alt="treeex_2"><figcaption>treeex_2</figcaption>
+<img src="\willywangkaa\images\treeex_2.png" alt="treeex_2"><figcaption aria-hidden="true">treeex_2</figcaption>
 </figure>
 <p><strong>則 2381 &lt; k &lt; 5203</strong></p>
 <ul>
 <li>若 1314、1510、2381、2006 比 k 還要大的情況</li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\treeex_3.png" alt="treeex_3"><figcaption>treeex_3</figcaption>
+<img src="\willywangkaa\images\treeex_3.png" alt="treeex_3"><figcaption aria-hidden="true">treeex_3</figcaption>
 </figure>
 <p><strong>則 1000 &lt; k &lt; 1314</strong></p>
 <p>所以 2381 &lt; k &lt; 5203；1000 &lt; k &lt; 1314</p>
@@ -716,16 +718,16 @@ By (2)-(1) \Rightarrow S = -2^0 -2^1 - 2^2 -\ldots - 2^{k-1} + 2^k \cdot k \\
 <p>一棵 n 個結點並以鏈結串列製作之二元樹中，會有 2n - (n-1) = n+1 條鏈結是「Nil」</p>
 </blockquote>
 <ul>
-<li>若 x 的「Lchild」為「Nil」，則視為<strong>左引線指向中序順序中 x 的前一個節點</strong></li>
+<li><p>若 x 的「Lchild」為「Nil」，則視為<strong>左引線指向中序順序中 x 的前一個節點</strong></p></li>
 <li><p>若 x 的「Rchild」為「Nil」，則視為<strong>右引線指向中序順序中 x 的後一個節點</strong></p></li>
 <li><p>節點結構</p></li>
 </ul>
 <figure>
-<img src="\willywangkaa\images\threadbt.png" alt="threadbt"><figcaption>threadbt</figcaption>
+<img src="\willywangkaa\images\threadbt.png" alt="threadbt"><figcaption aria-hidden="true">threadbt</figcaption>
 </figure>
 <h2 id="head-node">Head node</h2>
 <figure>
-<img src="\willywangkaa\images\threadbthead.png" alt="threadbthead"><figcaption>threadbthead</figcaption>
+<img src="\willywangkaa\images\threadbthead.png" alt="threadbthead"><figcaption aria-hidden="true">threadbthead</figcaption>
 </figure>
 <ul>
 <li>Insuccess (x) 找出 x 的中序後繼者
@@ -748,7 +750,7 @@ By (2)-(1) \Rightarrow S = -2^0 -2^1 - 2^2 -\ldots - 2^{k-1} + 2^k \cdot k \\
 <h1 id="extended-binary-tree">Extended binary tree</h1>
 <p>n 個節點之二元樹，如果以鏈結串列方式建立，則<strong>有 n+1 條空鏈結</strong>，在這些空鏈結上加上特殊結點，稱為「外部節點」( Extended node；Falure node )，其餘結點稱為「內部節點」( Internal node )</p>
 <figure>
-<img src="\willywangkaa\images\extendbinarytree.png" alt="extendbinarytree"><figcaption>extendbinarytree</figcaption>
+<img src="\willywangkaa\images\extendbinarytree.png" alt="extendbinarytree"><figcaption aria-hidden="true">extendbinarytree</figcaption>
 </figure>
 <blockquote>
 <p>有些版本 ( 如離散數學 )：</p>
@@ -828,7 +830,7 @@ E = I + 2n
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">在「Stack」<strong>外</strong>的 “(”</td>
+<td style="text-align: center;">在「Stack」<strong>外</strong>的 "("</td>
 <td style="text-align: center;"><strong>高</strong></td>
 </tr>
 <tr class="even">
@@ -836,23 +838,23 @@ E = I + 2n
 <td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">在「Stack」<strong>外</strong>的 “^” （左結合）</td>
+<td style="text-align: center;">在「Stack」<strong>外</strong>的 "^" （左結合）</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">在「Stack」<strong>內</strong>的 “^”（左結合）</td>
+<td style="text-align: center;">在「Stack」<strong>內</strong>的 "^"（左結合）</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">&quot;*“、”/&quot;</td>
+<td style="text-align: center;">"*"、"/"</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">“+”、“-”</td>
+<td style="text-align: center;">"+"、"-"</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">“＞”、“＜”、“==”、“≧”、“≦”</td>
+<td style="text-align: center;">"＞"、"＜"、"=="、"≧"、"≦"</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
@@ -864,15 +866,15 @@ E = I + 2n
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">在「Stack」<strong>外</strong>的 “=”（Assign）</td>
+<td style="text-align: center;">在「Stack」<strong>外</strong>的 "="（Assign）</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">在「Stack」<strong>內</strong>的 “=”（Assign）</td>
+<td style="text-align: center;">在「Stack」<strong>內</strong>的 "="（Assign）</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">在「Stack」<strong>內</strong>的 “(”</td>
+<td style="text-align: center;">在「Stack」<strong>內</strong>的 "("</td>
 <td style="text-align: center;"><strong>低</strong></td>
 </tr>
 </tbody>
@@ -891,7 +893,7 @@ E = I + 2n
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">在「Stack」<strong>外</strong>的 “)”</td>
+<td style="text-align: center;">在「Stack」<strong>外</strong>的 ")"</td>
 <td style="text-align: center;"><strong>高</strong></td>
 </tr>
 <tr class="even">
@@ -899,23 +901,23 @@ E = I + 2n
 <td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">在「Stack」<strong>外</strong>的 “^” （左結合）</td>
+<td style="text-align: center;">在「Stack」<strong>外</strong>的 "^" （左結合）</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">在「Stack」<strong>內</strong>的 “^”（左結合）</td>
+<td style="text-align: center;">在「Stack」<strong>內</strong>的 "^"（左結合）</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">&quot;*“、”/&quot;</td>
+<td style="text-align: center;">"*"、"/"</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">“+”、“-”</td>
+<td style="text-align: center;">"+"、"-"</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">“＞”、“＜”、“==”、“≧”、“≦”</td>
+<td style="text-align: center;">"＞"、"＜"、"=="、"≧"、"≦"</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
@@ -927,15 +929,15 @@ E = I + 2n
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">在「Stack」<strong>外</strong>的 “=”（Assign）</td>
+<td style="text-align: center;">在「Stack」<strong>外</strong>的 "="（Assign）</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">在「Stack」<strong>內</strong>的 “=”（Assign）</td>
+<td style="text-align: center;">在「Stack」<strong>內</strong>的 "="（Assign）</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">在「Stack」<strong>內</strong>的 “)”</td>
+<td style="text-align: center;">在「Stack」<strong>內</strong>的 ")"</td>
 <td style="text-align: center;"><strong>低</strong></td>
 </tr>
 </tbody>
@@ -1032,7 +1034,7 @@ E = I + 2n
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -1076,10 +1078,10 @@ E = I + 2n
             
               <img class="site-author-image" itemprop="image"
                 src="/willywangkaa/images/avatar_me.gif"
-                alt="Willy Wang (willywangkaa)" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">Willy Wang (willywangkaa)</p>
-              <p class="site-description motion-element" itemprop="description">coding, computer relate</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -1087,7 +1089,7 @@ E = I + 2n
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/willywangkaa/archives/">
+                  <a href="/willywangkaa/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">posts</span>
@@ -1134,8 +1136,6 @@ E = I + 2n
                 <div class="site-state-item site-state-tags">
                   <a href="/willywangkaa/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -1351,7 +1351,7 @@ E = I + 2n
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#binary-tree"><span class="nav-number">1.</span> <span class="nav-text">Binary tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#節點數量計算"><span class="nav-number">1.1.</span> <span class="nav-text">節點數量計算</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#strict-binary-tree"><span class="nav-number">2.</span> <span class="nav-text">Strict binary tree</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tree-travesal"><span class="nav-number">3.</span> <span class="nav-text">Tree travesal</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#應用"><span class="nav-number">3.1.</span> <span class="nav-text">應用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#binary-search-tree"><span class="nav-number">4.</span> <span class="nav-text">Binary search tree</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#thread-binary-tree"><span class="nav-number">5.</span> <span class="nav-text">Thread binary tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#head-node"><span class="nav-number">5.1.</span> <span class="nav-text">Head node</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#extended-binary-tree"><span class="nav-number">6.</span> <span class="nav-text">Extended binary tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#theorem"><span class="nav-number">6.1.</span> <span class="nav-text">Theorem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#weighted-external-path-length"><span class="nav-number">6.2.</span> <span class="nav-text">Weighted external path length</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#minimum-wepl"><span class="nav-number">6.2.1.</span> <span class="nav-text">Minimum WEPL</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#infixprefixpostfix-expression"><span class="nav-number">7.</span> <span class="nav-text">Infix、Prefix、Postfix expression</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#binary-tree"><span class="nav-number">1.</span> <span class="nav-text">Binary tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AF%80%E9%BB%9E%E6%95%B8%E9%87%8F%E8%A8%88%E7%AE%97"><span class="nav-number">1.1.</span> <span class="nav-text">節點數量計算</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#strict-binary-tree"><span class="nav-number">2.</span> <span class="nav-text">Strict binary tree</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tree-travesal"><span class="nav-number">3.</span> <span class="nav-text">Tree travesal</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%87%89%E7%94%A8"><span class="nav-number">3.1.</span> <span class="nav-text">應用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#binary-search-tree"><span class="nav-number">4.</span> <span class="nav-text">Binary search tree</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#thread-binary-tree"><span class="nav-number">5.</span> <span class="nav-text">Thread binary tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#head-node"><span class="nav-number">5.1.</span> <span class="nav-text">Head node</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#extended-binary-tree"><span class="nav-number">6.</span> <span class="nav-text">Extended binary tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#theorem"><span class="nav-number">6.1.</span> <span class="nav-text">Theorem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#weighted-external-path-length"><span class="nav-number">6.2.</span> <span class="nav-text">Weighted external path length</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#minimum-wepl"><span class="nav-number">6.2.1.</span> <span class="nav-text">Minimum WEPL</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#infixprefixpostfix-expression"><span class="nav-number">7.</span> <span class="nav-text">Infix、Prefix、Postfix expression</span></a></li></ol></div>
             
 
           </div>
@@ -1371,11 +1371,11 @@ E = I + 2n
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Willy Wang (willywangkaa)</span>
+  <span class="author" itemprop="copyrightHolder">Wang Yu Li</span>
 
   
 
@@ -1519,7 +1519,7 @@ E = I + 2n
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://WangWilly.github.io/willywangkaa/2018/10/28/Data-structure-Tree/';
+        this.page.url = 'http://wangwilly.github.io/willywangkaa/2018/10/28/Data-structure-Tree/';
         this.page.identifier = '2018/10/28/Data-structure-Tree/';
         this.page.title = 'Data structure - Tree';
       };
@@ -1954,24 +1954,7 @@ E = I + 2n
   
     bookmark.scrollToMark('auto', "#more");
   
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>
