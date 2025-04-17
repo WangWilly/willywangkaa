@@ -1,0 +1,15 @@
+# ...existing code...
+
+menu:
+  home: /willywangkaa/ || home
+  archives: /willywangkaa/archives/ || archive
+  categories: /willywangkaa/categories/ || th
+  tags: /willywangkaa/tags/ || tags
+
+favicon:
+  small: /willywangkaa/images/favicon-16x16-next_cat.png
+  medium: /willywangkaa/images/favicon-32x32-next_cat.png
+  apple_touch_icon: /willywangkaa/images/apple-touch-icon-next.png
+  safari_pinned_tab: /willywangkaa/images/logo_cat.svg
+
+# ...existing code...
