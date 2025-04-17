@@ -12,4 +12,9 @@ favicon:
   apple_touch_icon: /willywangkaa/images/apple-touch-icon-next.png
   safari_pinned_tab: /willywangkaa/images/logo_cat.svg
 
+reading_progress:
+  enable: true
+  color: "#37c6c0"
+  height: 2px
+
 # ...existing code...

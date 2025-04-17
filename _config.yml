@@ -4,3 +4,7 @@ url: https://wangwilly.github.io/willywangkaa
 root: /willywangkaa/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
+reading_progress:
+  enable: true
+  color: "#37c6c0"
+  height: 2px
